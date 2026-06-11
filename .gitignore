@@ -3,3 +3,7 @@ __pycache__/
 *.pyc
 .env
 .DS_Store
+node_modules/
+model.txt
+Agent/claude-code-installed/bin/
+Agent/claude-code-installed/node_modules/

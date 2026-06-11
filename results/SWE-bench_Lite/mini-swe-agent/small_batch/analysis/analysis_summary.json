@@ -1,0 +1,56 @@
+{
+  "n_sessions": 6,
+  "prefix_distribution": {
+    "shared_prefix_tokens_api_calibrated": {
+      "min": 1183.4974003466205,
+      "max": 1278.2553956834531,
+      "mean": 1221.841685188003
+    },
+    "first_turn_prompt_tokens": {
+      "min": 1430,
+      "max": 2061,
+      "mean": 1769.1666666666667
+    }
+  },
+  "reuse_frequency": {
+    "n_groups_by_system": 1,
+    "group_sizes": {
+      "17": 6
+    }
+  },
+  "kv_cache_savings": {
+    "total_prefill_no_cache": 139139,
+    "total_prefill_session_cache": 27552,
+    "session_cache_savings": 111587,
+    "session_cache_savings_ratio": 0.8019821904713991,
+    "cross_session_savings_by_group": 6129.414893617021,
+    "cross_session_savings_by_group_ratio": 0.04405245756845328
+  },
+  "repo_stats": {
+    "astropy__astropy": {
+      "n_instances": 6,
+      "avg_shared_prefix_api_calibrated": 1221.841685188003,
+      "total_prompt_tokens": 139139,
+      "cross_session_savings": 6109.208425940015,
+      "savings_ratio": 0.0439072325224417
+    }
+  },
+  "turn_increment_analysis": {
+    "first_turn_prompt_tokens": {
+      "min": 1430,
+      "max": 2061,
+      "mean": 1769.1666666666667
+    },
+    "avg_incremental_per_turn": {
+      "min": 111.66666666666667,
+      "max": 127.66666666666667,
+      "mean": 117.07407407407408
+    }
+  },
+  "api_cached_tokens_total": 0,
+  "tiktoken_to_api_calib_ratio": {
+    "mean": 1.2292169871106673,
+    "min": 1.1906412478336221,
+    "max": 1.2859712230215827
+  }
+}

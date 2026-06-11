@@ -1,0 +1,60 @@
+{
+  "n_sessions": 1,
+  "prefix_distribution": {
+    "system_tokens": {
+      "min": 21,
+      "max": 21,
+      "mean": 21.0,
+      "median": 21
+    },
+    "instance_tokens": {
+      "min": 1302,
+      "max": 1302,
+      "mean": 1302.0,
+      "median": 1302
+    },
+    "shared_prefix_tokens": {
+      "min": 1323,
+      "max": 1323,
+      "mean": 1323.0,
+      "median": 1323
+    }
+  },
+  "reuse_frequency": {
+    "n_groups_by_system": 1,
+    "group_sizes": {
+      "21": 1
+    }
+  },
+  "kv_cache_savings": {
+    "total_prefill_no_cache": 18601,
+    "total_prefill_session_cache": 3712,
+    "session_cache_savings": 14889,
+    "session_cache_savings_ratio": 0.8004408365141659,
+    "cross_session_savings_uniform": 0.0,
+    "cross_session_savings_uniform_ratio": 0.0,
+    "cross_session_savings_by_group": 0,
+    "cross_session_savings_by_group_ratio": 0.0
+  },
+  "repo_stats": {
+    "unknown": {
+      "n_instances": 1,
+      "avg_prefix_tokens": 1323.0,
+      "total_input_tokens": 18601,
+      "cross_session_savings": 0,
+      "savings_ratio": 0.0
+    }
+  },
+  "turn_increment_analysis": {
+    "first_turn_input": {
+      "min": 1323,
+      "max": 1323,
+      "mean": 1323.0
+    },
+    "avg_incremental_per_turn": {
+      "min": 118.44444444444444,
+      "max": 118.44444444444444,
+      "mean": 118.44444444444444
+    }
+  }
+}

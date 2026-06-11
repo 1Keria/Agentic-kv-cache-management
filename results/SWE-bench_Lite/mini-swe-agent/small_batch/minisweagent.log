@@ -1,0 +1,9 @@
+2026-06-09 23:20:10,209 - minisweagent - INFO - Loading dataset /share/dai-sys/zhoulongsheng/agentkv/Dataset/SWE-bench_Lite, split test...
+2026-06-09 23:20:10,384 - minisweagent - INFO - Instance slice: 300 -> 5 instances
+2026-06-09 23:20:10,386 - minisweagent - INFO - Running on 5 instances...
+2026-06-09 23:20:10,386 - minisweagent - INFO - Building agent config from specs: ['swebench.yaml', 'agent.step_limit=10', 'model.cost_tracking=ignore_errors']
+2026-06-09 23:20:39,914 - minisweagent - INFO - Saved trajectory to '/share/dai-sys/zhoulongsheng/agentkv/results/lite_trace_small/astropy__astropy-14182/astropy__astropy-14182.traj.json'
+2026-06-09 23:20:57,135 - minisweagent - INFO - Saved trajectory to '/share/dai-sys/zhoulongsheng/agentkv/results/lite_trace_small/astropy__astropy-14365/astropy__astropy-14365.traj.json'
+2026-06-09 23:21:15,241 - minisweagent - INFO - Saved trajectory to '/share/dai-sys/zhoulongsheng/agentkv/results/lite_trace_small/astropy__astropy-14995/astropy__astropy-14995.traj.json'
+2026-06-09 23:21:31,326 - minisweagent - INFO - Saved trajectory to '/share/dai-sys/zhoulongsheng/agentkv/results/lite_trace_small/astropy__astropy-6938/astropy__astropy-6938.traj.json'
+2026-06-09 23:21:49,474 - minisweagent - INFO - Saved trajectory to '/share/dai-sys/zhoulongsheng/agentkv/results/lite_trace_small/astropy__astropy-7746/astropy__astropy-7746.traj.json'

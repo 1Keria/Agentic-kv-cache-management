@@ -1,0 +1,22 @@
+[
+  {
+    "instance_id": "unknown",
+    "n_turns": 10,
+    "n_messages": 23,
+    "exit_status": "LimitsExceeded",
+    "system_tokens": 21,
+    "system_content_length": 95,
+    "instance_tokens": 1302,
+    "instance_content_length": 5737,
+    "shared_prefix_tokens": 1323,
+    "total_input_tokens": 18601,
+    "total_output_tokens": 727,
+    "total_obs_tokens": 470,
+    "first_turn_input_tokens": 1323,
+    "incremental_tokens": 2389,
+    "session_reused_tokens": 16212,
+    "session_reuse_ratio": 0.8715660448362991,
+    "api_total_input_tokens": 21279,
+    "api_total_output_tokens": 593
+  }
+]
