@@ -2,8 +2,17 @@
 __pycache__/
 *.pyc
 .env
+.env.*
 .DS_Store
 node_modules/
 model.txt
+keys.yaml
+keys*.cfg
+.claude/
 Agent/claude-code-installed/bin/
 Agent/claude-code-installed/node_modules/
+# Local experiment runtime outputs (may contain logs)
+experiments/vllm_kv_cache/exp*/
+experiments/vllm_kv_cache/figures/
+experiments/vllm_kv_cache/metrics_snapshot_*.json
+

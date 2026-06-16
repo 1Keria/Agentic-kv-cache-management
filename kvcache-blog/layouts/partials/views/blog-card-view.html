@@ -1,0 +1,98 @@
+{{ $item := .item }}
+{{ if and $item $item.Title $item.RelPermalink }}
+
+<div class="p-4 border top-item blog-card-shell">
+  <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2">
+    <a href="{{ $item.RelPermalink }}">
+    <span class="bg-gradient-to-r from-primary-200 to-primary-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-primary-800 dark:to-primary-900">
+      {{- $item.Title -}}
+    </span></a>
+  </h2>
+
+  <!-- date and author -->
+  <div class="mt-2 text-xs opacity-70 flex items-center gap-3">
+    {{ with $item.Date }}
+      <span class="flex items-center gap-1">
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+        </svg>
+        {{ if $item.Params.dateshown }}
+          {{ $item.Params.dateshown }}
+        {{ else }}
+          {{ .Format "Jan 2, 2006" }}
+        {{ end }}
+      </span>
+    {{ end }}
+
+    {{ with $item.Params.authors }}
+      <span class="flex items-center gap-1">
+        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+        </svg>
+        {{ delimit . ", " }}
+      </span>
+    {{ end }}
+  </div>
+
+  <!-- summary -->
+  <hr class="mt-2" />
+    <p class="mt-2 line-clamp-5 text-sm">
+      <a href="{{ $item.RelPermalink }}">
+        {{ ($item.Params.summary | default $item.Summary) | plainify | htmlUnescape | chomp -}}
+      </a>
+    </p>
+
+  <!-- tags -->
+  {{ with $item.Params.tags }}
+    <div class="mt-2 flex flex-wrap gap-1">
+      {{ range . }}
+        <span class="text-xs px-2 py-1 rounded-md blog-card-tag">
+          {{ . }}
+        </span>
+      {{ end }}
+    </div>
+  {{ end }}
+
+</div>
+
+<style>
+  .top-item {
+    width: min(100%, 64rem);
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+  }
+  .top-item:last-child {
+    margin-bottom: 0;
+  }
+  .blog-card-shell {
+    background: #f8fafc;
+    color: #0f172a;
+    border-color: #dbe4ee;
+    transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+  }
+  .blog-card-shell:hover {
+    background: #f0f9ff;
+    border-color: #bae6fd;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  }
+  .blog-card-shell a {
+    color: inherit;
+  }
+  .blog-card-tag {
+    background: #e0f2fe;
+    color: #0c4a6e;
+  }
+
+  .line-clamp-5 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5
+  }
+
+</style>
+{{ end }}

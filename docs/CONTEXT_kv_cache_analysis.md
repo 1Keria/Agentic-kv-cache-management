@@ -77,12 +77,26 @@
 | 文件 | 状态 | 说明 |
 |------|------|------|
 | `docs/12_kv_cache_source_analysis_plan.md` | ✅ 已完成 | 分析规划 |
-| `docs/13_kv_cache_file_index.md` | ⬜ 待产出 | 关键文件索引 |
-| `notes/sglang_kv_cache.md` | ⬜ 待产出 | SGLang 分析笔记 |
-| `notes/vllm_kv_cache.md` | ⬜ 待产出 | vLLM 分析笔记 |
-| `notes/mooncake_kv_cache.md` | ⬜ 待产出 | Mooncake 分析笔记 |
-| `notes/lmcache_kv_cache.md` | ⬜ 待产出 | LMCache 分析笔记 |
-| `docs/14_kv_cache_source_analysis.md` | ⬜ 待产出 | 最终汇总报告 |
+| `docs/13_kv_cache_file_index.md` | ✅ 已完成 | 关键文件索引 |
+| `notes/sglang_kv_cache.md` | ✅ 已完成 | SGLang 分析笔记 |
+| `notes/vllm_kv_cache.md` | ✅ 已完成 | vLLM 分析笔记 |
+| `notes/mooncake_kv_cache.md` | ✅ 已完成 | Mooncake 分析笔记 |
+| `notes/lmcache_kv_cache.md` | ✅ 已完成 | LMCache 分析笔记 |
+| `docs/14_kv_cache_source_analysis.md` | ✅ 已完成 | 最终汇总报告 |
+| `docs/15_vllm_kv_cache_experiment_plan.md` | 📋 规划中（旧版，待更新） | vLLM KV Cache 实验规划（初版） |
+| `docs/17_vllm_kv_cache_experiment_spec.md` | ✅ 当前版本 | vLLM KV Cache 实验设计 v3（统一配置+offloading对比） |
+| `docs/18_experiment_runbook.md` | ✅ 已完成 | 实验运行控制文档（含模拟层+验证层两层架构） |
+| `docs/16_vllm_install_record.md` | ✅ 安装完成，模型完整 | vLLM 源码编译安装记录 |
+| `scripts/exp_utils.py` | ✅ 已完成（修复 token 精度） | 实验公共工具模块 |
+| `scripts/run_vllm_server.sh` | ✅ 已完成 | vLLM server 启动脚本 |
+| `scripts/run_exp1.py` | ✅ 已更新（+Timeline） | 实验1: Prefix Cache 基本命中验证 |
+| `scripts/run_exp2.py` | ✅ 已更新（+Timeline） | 实验2: Block-level 粒度浪费量化 |
+| `scripts/run_exp3.py` | ✅ 已重写（offloading对比） | 实验3: KV Offloading 效果对比 |
+| `scripts/run_exp4.py` | ✅ 已重写（6子场景） | 实验4: Agent 多 Session 复用模拟 |
+| `scripts/run_exp5.py` | ✅ 已重写（组感知驱逐） | 实验5: Agent 组感知驱逐模拟 |
+| `scripts/collect_metrics.py` | ✅ 已完成 | Prometheus 指标采集工具 |
+| `scripts/plot_results.py` | ✅ 已更新（exp4子场景） | 实验可视化脚本 |
+| `experiments/vllm_kv_cache/config.json` | ✅ 已完成 | 实验环境配置 |
 
 ---
 

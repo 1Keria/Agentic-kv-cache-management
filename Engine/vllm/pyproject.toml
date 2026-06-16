@@ -33,7 +33,8 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Information Analysis",
 ]
 requires-python = ">=3.10,<3.15"
-dynamic = [ "version", "dependencies", "optional-dependencies"]
+version = "0.8.5.dev0"
+dynamic = [ "dependencies", "optional-dependencies"]
 
 [project.urls]
 Homepage="https://github.com/vllm-project/vllm"
@@ -49,6 +50,8 @@ lora_hf_hub_resolver = "vllm.plugins.lora_resolvers.hf_hub_resolver:register_hf_
 
 [tool.setuptools_scm]
 # no extra settings needed, presence enables setuptools-scm
+# search_parent_directories = true
+# Disabled for local dev: version is set statically below
 
 [tool.setuptools.packages.find]
 where = ["."]

@@ -1,0 +1,196 @@
+{{ $item := .item }}
+{{ if and $item $item.Title (or $item.RelPermalink $item.Params.external_link) }}
+
+{{ if eq $item.Title "Mooncake"}}
+  {{ $image_moon := resources.Get (path.Join "media" "moonshot.png") }}
+  <div class="p-4 border top-item project-card-shell">
+    <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2">
+      <a href="{{ $item.Params.external_link }}">
+      <span class="bg-gradient-to-r from-primary-200 to-primary-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-primary-800 dark:to-primary-900">
+        {{- $item.Title -}}
+      </span></a>
+    </h2>
+
+    <!-- summary -->
+    <hr class="mt-2" />
+      <p class="mt-2 line-clamp-5 text-sm">
+        Mooncake, delicious mooncake made with <a href="https://www.moonshot.cn/" style=" text-decoration: underline;"><img src="{{ $image_moon.RelPermalink }}" alt="icon" style="height: 17px; vertical-align: baseline; display: inline-block;">Moonshot AI</a> !
+      </p>
+      <p class="mt-2 line-clamp-5 text-sm">
+        A KVCache-centric disaggregated architecture for LLM serving.
+      </p>
+
+    <!-- bottom button -->
+    <div class="mt-2 jump-btn-group">
+      <!-- get start button -->
+      {{ with $item.Params.external_link }}
+      <a href="{{ . }}" target="_blank" class="jump-button">
+        Get start
+      </a>
+      {{ end }}
+
+      {{ with $item.Params.doc_link }}
+      |
+      <a href="{{ . }}" target="_blank" class="jump-button">
+        Read the docs
+      </a>
+      {{ end }}
+    </div>
+  </div>
+
+{{ else if eq $item.Title "KTransformers"}}
+  {{ $image_approaching := resources.Get "media/Approaching-ai-square.png" }}
+  <div class="p-4 border top-item project-card-shell">
+    <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2">
+      <a href="{{ $item.Params.external_link }}">
+      <span class="bg-gradient-to-r from-primary-200 to-primary-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-primary-800 dark:to-primary-900">
+        {{- $item.Title -}}
+      </span></a>
+    </h2>
+
+    <!-- summary -->
+    <hr class="mt-2" />
+      <p class="mt-2 line-clamp-5 text-sm">
+        {{ ($item.Params.summary | default $item.Summary) | plainify | htmlUnescape | chomp -}} Made with
+        <a href="https://approaching-ai.com/" style=" text-decoration: underline;">
+            <img src="{{ $image_approaching.RelPermalink }}" alt="icon" style="height: 17px; vertical-align: baseline; display: inline-block;">Approaching AI</a> !
+
+      </p>
+
+    <!-- bottom button -->
+    <div class="mt-2 jump-btn-group">
+      <!-- get start button -->
+      {{ with $item.Params.external_link }}
+      <a href="{{ . }}" target="_blank" class="jump-button">
+        Get start
+      </a>
+      {{ end }}
+
+      {{ with $item.Params.doc_link }}
+      |
+      <a href="{{ . }}" target="_blank" class="jump-button">
+        Read the docs
+      </a>
+      {{ end }}
+    </div>
+  </div>
+
+{{ else if eq $item.Title "TrEnv-X"}}
+  <div class="p-4 border top-item project-card-shell">
+    <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2">
+      <a href="{{ $item.Params.external_link }}">
+      <span class="bg-gradient-to-r from-primary-200 to-primary-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-primary-800 dark:to-primary-900">
+        {{- $item.Title -}}
+      </span></a>
+    </h2>
+
+    <!-- summary -->
+    <hr class="mt-2" />
+      <p class="mt-2 line-clamp-5 text-sm">
+        An open-source runtime platform designed for AI Agent applications.
+      </p>
+
+    <!-- bottom button -->
+    <div class="mt-2 jump-btn-group">
+      <!-- get start button -->
+      {{ with $item.Params.external_link }}
+      <a href="{{ . }}" target="_blank" class="jump-button">
+        Get start
+      </a>
+      {{ end }}
+
+      {{ with $item.Params.doc_link }}
+      |
+      <a href="{{ . }}" target="_blank" class="jump-button">
+        Read the docs
+      </a>
+      {{ end }}
+    </div>
+  </div>
+
+{{ else }}
+  <div class="p-4 border top-item project-card-shell">
+    <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2">
+      <a href="{{ $item.RelPermalink }}">
+      <span class="bg-gradient-to-r from-primary-200 to-primary-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-primary-800 dark:to-primary-900">
+        {{- $item.Title -}}
+      </span></a>
+    </h2>
+
+    <!-- summary -->
+    <hr class="mt-2" />
+      <p class="mt-2 line-clamp-5 text-sm"><a
+          href="{{ $item.RelPermalink }}">
+          {{ ($item.Params.summary | default $item.Summary) | plainify | htmlUnescape | chomp -}}
+        </a></p>
+
+    <!-- bottom button -->
+    <div class="mt-2 jump-btn-group">
+      <!-- get start button -->
+      {{ with $item.Params.external_link }}
+      <a href="{{ . }}" target="_blank" class="jump-button">
+        Get start
+      </a>
+      {{ end }}
+
+      {{ with $item.Params.doc_link }}
+      |
+      <a href="{{ . }}" target="_blank" class="jump-button">
+        Read the docs
+      </a>
+      {{ end }}
+    </div>
+
+  </div>
+
+{{ end }}
+
+<style>
+  .top-item {
+    width: min(100%, 64rem);
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+  }
+  .top-item:last-child {
+    margin-bottom: 0;
+  }
+  .project-card-shell {
+    background: #f8fafc;
+    color: #0f172a;
+    border-color: #dbe4ee;
+    transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+  }
+  .project-card-shell:hover {
+    background: #f0f9ff;
+    border-color: #bae6fd;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  }
+  .project-card-shell a {
+    color: inherit;
+  }
+
+  .line-clamp-5 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5
+  }
+
+  .jump-btn-group {
+    text-align: right;
+  }
+  .jump-btn-group .jump-button {
+    color: #0369a1;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .jump-btn-group .jump-button:hover {
+    color: #0c4a6e;
+  }
+
+</style>
+{{ end }}

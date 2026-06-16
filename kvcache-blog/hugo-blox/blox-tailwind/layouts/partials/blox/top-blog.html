@@ -1,0 +1,497 @@
+<head>
+  <!-- 引入 Swiper 的 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+<!-- 引入 Swiper 的 JavaScript 文件 -->
+<style>
+/* 当屏幕宽度 ≥1200px 时生效 */
+@media (min-width: 1200px) {
+  .img_pc {
+    max-width: 300px;
+  }
+  .grid-pc{
+    display: grid;
+  }
+  .txt-lg-pc {
+    width: 400px;
+  }
+}
+</style>
+
+{{/* Hugo Blox: Collection */}}
+{{/* Documentation: https://hugoblox.com/blocks/ */}}
+{{/* License: https://github.com/HugoBlox/hugo-blox-builder/blob/main/LICENSE.md */}}
+
+{{/* Initialise */}}
+{{ $page := .wcPage }}
+{{ $block := .wcBlock }}
+{{ $view := $block.design.view | default "card" }}
+
+
+{{ $items_offset := $block.content.offset | default 0 }}
+{{ $items_count := $block.content.count }}
+{{ if eq $items_count 0 }}
+  {{ $items_count = 65535 }}
+{{ else }}
+  {{ $items_count = $items_count | default 5 }}
+{{ end }}
+
+{{/* Query */}}
+{{ $query := site.RegularPages }}
+{{ $archive_page := "" }}
+
+{{/* Filters */}}
+{{ if $block.content.page_type }}
+  {{ $query = where $query "Type" $block.content.page_type }}
+  {{ $archive_page = site.GetPage "Section" $block.content.page_type }}
+{{ end }}
+{{ if $block.content.filters.folders }}
+  {{ $folders := $block.content.filters.folders }}
+  {{ $query = where $query "Section" "in" $folders }}
+  {{/* Init archive page to main folder */}}
+  {{ $main_folder := index $folders 0 }}
+  {{ $archive_page = site.GetPage "Section" $main_folder }}
+{{ end }}
+{{ if $block.content.filters.tag }}
+  {{ $archive_page = site.GetPage (printf "tags/%s" (urlize $block.content.filters.tag)) }}
+  {{ $query = $query | intersect $archive_page.Pages }}
+{{ end }}
+{{ if $block.content.filters.category }}
+  {{ $archive_page = site.GetPage (printf "categories/%s" (urlize $block.content.filters.category)) }}
+  {{ $query = $query | intersect $archive_page.Pages }}
+{{ end }}
+{{ if $block.content.filters.publication_type }}
+  {{ $archive_page = site.GetPage (printf "publication_types/%s" $block.content.filters.publication_type) }}
+  {{ $query = $query | intersect $archive_page.Pages }}
+{{ end }}
+{{ if $block.content.filters.exclude_publication_type }}
+  {{ $query = $query | complement (site.GetPage (printf "publication_types/%s" $block.content.filters.exclude_publication_type)).Pages }}
+{{ end }}
+{{ if $block.content.filters.author }}
+  {{ $archive_page = site.GetPage (printf "authors/%s" (urlize $block.content.filters.author)) }}
+  {{ $query = $query | intersect $archive_page.Pages }}
+{{ end }}
+{{ if $block.content.filters.featured_only }}
+  {{ $query = where $query "Params.featured" "==" true }}
+{{ end }}
+{{ if $block.content.filters.exclude_featured }}
+  {{ $query = where $query "Params.featured" "!=" true }}
+{{ end }}
+{{ if $block.content.filters.exclude_past }}
+  {{ $query = where $query "Date" ">=" now }}
+{{ end }}
+{{ if $block.content.filters.exclude_future }}
+  {{ $query = where $query "Date" "<" now }}
+{{ end }}
+
+<!-- get all the repos  -->
+{{ $query_repo := site.RegularPages }}
+{{ $repo_flolders := slice "repo" }}
+{{ $query_repo = where $query_repo "Section" "in"  $repo_flolders }}
+{{ $query_repo = where $query_repo "Params.showathome" "==" true}}
+
+<!-- {{ $block.content.sort_by }} -->
+
+{{ $sort_by_repo := $block.content.sort_by }}
+{{ $sort_by_repo = partial "functions/get_sort_by_parameter" $sort_by_repo }}
+{{ $sort_ascending := $block.content.sort_ascending | default (eq $block.content.order "asc") | default false }}
+{{ $sort_order := cond $sort_ascending "asc" "desc" }}
+{{ $query_repo = sort $query_repo $sort_by_repo $sort_order }}
+
+
+<!-- get all the blogs -->
+{{ $query_blogs := site.RegularPages }}
+{{ $blog_flolders := slice "blog" }}
+{{ $query_blogs = where $query_blogs "Section" "in"  $blog_flolders }}
+{{ $query_blogs = where $query_blogs "Params.showathome" "==" true}}
+
+<!-- {{ $block.content.sort_by }} -->
+
+{{ $sort_by_blogs := $block.content.sort_by }}
+{{ $sort_by_blogs = partial "functions/get_sort_by_parameter" $sort_by_blogs }}
+{{ $sort_ascending := $block.content.sort_ascending | default (eq $block.content.order "asc") | default false }}
+{{ $sort_order := cond $sort_ascending "asc" "desc" }}
+{{ $query_blogs = sort $query_blogs $sort_by_blogs $sort_order }}
+
+
+
+{{ $count := len $query }}
+
+{{/* Sort */}}
+{{ $sort_by := $block.content.sort_by | default "Date" }}
+{{ $sort_by = partial "functions/get_sort_by_parameter" $sort_by }}
+{{ $sort_ascending := $block.content.sort_ascending | default (eq $block.content.order "asc") | default false }}
+{{ $sort_order := cond $sort_ascending "asc" "desc" }}
+{{ $query = sort $query $sort_by $sort_order }}
+
+{{/* Offset and Limit */}}
+{{ if gt $items_offset 0 }}
+  {{ $query = first $items_count (after $items_offset $query) }}
+{{ else }}
+  {{ $query = first $items_count $query }}
+{{ end }}
+
+{{ $columns := $block.design.columns | default "2" }}
+
+{{ if $block.content.title }}
+<div class="flex flex-col items-center max-w-prose mx-auto gap-3 justify-center">
+
+  <div class="mb-6 text-3xl font-bold text-gray-900 dark:text-white">
+    {{ $block.content.title | emojify | $page.RenderString }}
+  </div>
+
+  {{ with $block.content.text }}<p>{{ . | emojify | $page.RenderString }}</p>{{ end }}
+</div>
+{{ end }}
+
+<div class="flex flex-col items-center" style="padding-bottom: 1rem;">
+  <div class="container px-8 mx-auto max-w-screen-xl xl:px-5 py-5 lg:py-8">
+    <div class="grid-pc md:grid-cols-2 top-blog-container">
+
+      <div class="p-4">
+        <div class="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
+          SubProjects
+        </div>
+        {{ range $index, $item := $query_repo }}
+          <!-- if mooncake -->
+          {{ if eq $item.Title "Mooncake"}}
+            {{ $image_moon := resources.Get (path.Join "media" "moonshot.png") }} 
+            <div class="p-4 border top-item bg-black text-white hover:bg-white hover:text-black dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white">
+              <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2">
+                <a href="{{ $item.Params.external_link }}">
+                <span class="bg-gradient-to-r from-primary-200 to-primary-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-primary-800 dark:to-primary-900">
+                  {{- $item.Title -}}
+                </span></a>
+              </h2>
+
+              <!-- summary -->
+              <hr class="mt-2" />
+                <p class="mt-2 line-clamp-5 text-sm">
+                  Mooncake, delicious mooncake made with <a href="https://www.moonshot.cn/" style=" text-decoration: underline;"><img src="{{ $image_moon.RelPermalink }}" alt="icon" style="height: 17px; vertical-align: baseline; display: inline-block;">Moonshot AI</a> ! 
+                </p>
+                <p class="mt-2 line-clamp-5 text-sm">
+                  A KVCache-centric disaggregated architecture for LLM serving.
+                </p>
+
+              <!-- bottom button -->
+              <div class="mt-2 jump-btn-group">
+                <!-- get start button -->
+                {{ with $item.Params.external_link }}
+                <a href="{{ . }}" target="_blank" class="jump-button">
+                  Get start
+                </a>
+                {{ end }}
+                
+                {{ with $item.Params.doc_link }}
+                |
+                <a href="{{ . }}" target="_blank" class="jump-button">
+                  Read the docs
+                </a>
+                {{ end }}
+              </div>
+            </div>
+
+          {{ else if eq $item.Title "KTransformers"}}
+            {{ $image_approaching := resources.Get "media/Approaching-ai-square.png" }} 
+            <div class="p-4 border top-item bg-black text-white hover:bg-white hover:text-black dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white">
+              <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2">
+                <a href="{{ $item.Params.external_link }}">
+                <span class="bg-gradient-to-r from-primary-200 to-primary-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-primary-800 dark:to-primary-900">
+                  {{- $item.Title -}}
+                </span></a>
+              </h2>
+
+              <!-- summary -->
+              <hr class="mt-2" />
+                <p class="mt-2 line-clamp-5 text-sm">
+                  A Flexible Framework for Experiencing Cutting-edge LLM Inference Optimizations. Made with  
+                  <a href="https://approaching-ai.com/" style=" text-decoration: underline;">
+                      <img src="{{ $image_approaching.RelPermalink }}" alt="icon" style="height: 17px; vertical-align: baseline; display: inline-block;">Approaching AI</a> !
+                  
+                </p>
+                
+                
+
+              <!-- bottom button -->
+              <div class="mt-2 jump-btn-group">
+                <!-- get start button -->
+                {{ with $item.Params.external_link }}
+                <a href="{{ . }}" target="_blank" class="jump-button">
+                  Get start
+                </a>
+                {{ end }}
+                
+                {{ with $item.Params.doc_link }}
+                |
+                <a href="{{ . }}" target="_blank" class="jump-button">
+                  Read the docs
+                </a>
+                {{ end }}
+              </div>
+            </div>
+
+          {{ else if eq $item.Title "TrEnv-X"}}
+            <div class="p-4 border top-item bg-black text-white hover:bg-white hover:text-black dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white">
+              <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2">
+                <a href="{{ $item.Params.external_link }}">
+                <span class="bg-gradient-to-r from-primary-200 to-primary-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-primary-800 dark:to-primary-900">
+                  {{- $item.Title -}}
+                </span></a>
+              </h2>
+
+              <!-- summary -->
+              <hr class="mt-2" />
+                <p class="mt-2 line-clamp-5 text-sm">
+                  An open-source runtime platform designed for AI Agent applications.
+                </p>
+                
+                
+
+              <!-- bottom button -->
+              <div class="mt-2 jump-btn-group">
+                <!-- get start button -->
+                {{ with $item.Params.external_link }}
+                <a href="{{ . }}" target="_blank" class="jump-button">
+                  Get start
+                </a>
+                {{ end }}
+                
+                {{ with $item.Params.doc_link }}
+                |
+                <a href="{{ . }}" target="_blank" class="jump-button">
+                  Read the docs
+                </a>
+                {{ end }}
+              </div>
+            </div>
+
+          {{ else }}
+            <div class="p-4 border top-item bg-black text-white hover:bg-white hover:text-black dark:bg-white dark:text-black dark:hover:bg-black dark:hover:text-white">
+              <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2">
+                <a href="{{ $item.RelPermalink }}">
+                <span class="bg-gradient-to-r from-primary-200 to-primary-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-primary-800 dark:to-primary-900">
+                  {{- $item.Title -}}
+                </span></a>
+              </h2>
+
+              <!-- summary -->
+              <hr class="mt-2" />
+                <p class="mt-2 line-clamp-5 text-sm"><a
+                    href="{{ $item.RelPermalink }}">
+                    {{ ($item.Params.summary | default $item.Summary) | plainify | htmlUnescape | chomp -}}
+                  </a></p>
+
+              <!-- bottom button -->
+              <div class="mt-2 jump-btn-group">
+                <!-- get start button -->
+                {{ with $item.Params.external_link }}
+                <a href="{{ . }}" target="_blank" class="jump-button">
+                  Get start
+                </a>
+                {{ end }}
+                
+                {{ with $item.Params.doc_link }}
+                |
+                <a href="{{ . }}" target="_blank" class="jump-button">
+                  Read the docs
+                </a>
+                {{ end }}
+              </div>
+
+            </div>
+
+          {{ end }}
+      {{ end }}
+      </div>
+
+
+
+      {{ if $block.content.show_blog }}
+      <div class="p-4">
+        <div class="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
+          Recent blogs
+        </div>
+        {{ range $index, $item := $query_blogs }}
+            <div class="p-4 border top-item hover:bg-black dark:hover:bg-white dark:hover:text-black hover:text-white dark:border-white dark:text-white dark:hover:bg-white">
+                <h2 class="text-lg font-semibold leading-snug tracking-tight mt-2"><a
+                    href="{{ $item.RelPermalink }}"><span
+                    class="bg-gradient-to-r from-primary-200 to-primary-100 bg-[length:0px_10px] bg-left-bottom bg-no-repeat transition-[background-size] duration-500 hover:bg-[length:100%_3px] group-hover:bg-[length:100%_10px] dark:from-primary-800 dark:to-primary-900">
+                       {{- $item.Title -}}
+                      </span></a>
+                </h2>
+
+              <p class="mt-2 line-clamp-3 text-sm">by:
+                {{ range $item.Params.authors }}
+                  {{ . }},
+                {{ end }}
+                {{ $item.Params.dateshown }}
+              </p>
+              <hr class="mt-2" />
+              <p class="mt-2 line-clamp-5 text-sm">
+                <a href="{{ $item.RelPermalink }}">
+                {{ ($item.Params.summary | default $item.Summary) | plainify | htmlUnescape | chomp -}}
+                </a>
+              </p>
+            </div>
+        {{ end }}
+
+
+        {{/* show all the blogs*/}}
+        {{ $show_archive_link := $block.content.archive.enable | default true }}
+        {{ if $show_archive_link | and $archive_page }}
+
+          {{ $archive_link := "" }}
+          {{ if $block.content.archive.link }}
+            {{ $archive_link = $block.content.archive.link | relLangURL }}
+          {{ else }}
+            {{ $archive_link = $archive_page.RelPermalink }}
+          {{ end }}
+
+          {{/* Localisation */}}
+          {{ $items_type := $archive_page.Type }}
+          {{ $i18n := "" }}
+          {{ $i18n = "more_posts" }}
+          {{ $archive_text := $block.content.archive.text | default (i18n $i18n) | default "See all" }}
+
+          <div class="container mx-auto max-w-screen-lg px-8 xl:px-5 pb-5 lg:pb-8">
+            <div class="mt-10 flex justify-center">
+              <a
+                class="relative inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-2 pl-4 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300"
+                href="{{ $archive_link }}">
+                  <span>{{ $archive_text | emojify }}</span>
+                </a>
+              </div>
+          </div>
+        {{ end }}
+      </div>
+      {{ else }}
+      <div class="p-4">
+        <div class="flex flex-col items-center">
+          <div class="mb-6 text-2xl font-bold text-gray-900 dark:text-white"> Some Snaps </div> 
+            <div class="swiper relative w-full max-w-4xl mx-auto">
+                <div class="swiper-wrapper">
+                    <!-- 幻灯片 -->
+                    <div class="swiper-slide ">
+                        <div class="flex justify-center flex-col items-center">
+                            <div style="margin-left: 10px; margin-right: 10px">
+                              {{- $image := resources.Get (path.Join "media" "mingxingzhang-with-mooncake.jpg") -}}
+                              <img src="{{ $image.RelPermalink }}" class="max-w-[80%] img_pc h-auto mx-auto" alt="" style=" "/>
+                            </div>
+                        
+                            <div class="markdown-text txt-lg-pc" style="margin-top: 10px; margin-left: 10px; margin-right: 10px; ">
+                            <p>
+                                Mingxing Zhang with Mooncake-making Bunnies - Photo by Prof. Jeanna Matthews.
+                            </p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+
+                <!-- 分页器 -->
+                <!-- <div class="swiper-pagination !bottom-3"></div> -->
+
+                <!-- 左右箭头 -->
+                <!-- <button class="swiper-button-prev !left-2 !top-1/2 -translate-y-1/2
+                                w-10 h-10 rounded-full bg-white/70 hover:bg-white
+                                flex items-center justify-center shadow-md">
+                    <svg class="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+
+                <button class="swiper-button-next !right-2 !top-1/2 -translate-y-1/2
+                                w-10 h-10 rounded-full bg-white/70 hover:bg-white
+                                flex items-center justify-center shadow-md">
+                    <svg class="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button> -->
+            </div>
+        </div>
+      </div>
+      
+      {{ end }}
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<style>
+  .top-blog-container .top-item {
+    margin-bottom: 1rem;
+    border-radius:  0.5rem;
+  }
+  .top-blog-container .top-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .line-clamp-5 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5
+  }
+
+  :is(.dark .dark\:text-black) {
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0/var(--tw-text-opacity))
+  }
+  :is(.dark .dark\:bg-white) {
+    background-color: #ffffff
+  }
+
+  .hover\:bg-white:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255/var(--tw-bg-opacity))
+  }
+  .hover\:text-black:hover {
+    --tw-text-opacity: 1;
+    color: rgb(0 0 0/var(--tw-text-opacity))
+  }
+  :is(.dark .dark\:hover\:bg-black:hover) {
+    --tw-bg-opacity: 1;
+    background-color: rgb(0 0 0/var(--tw-bg-opacity))
+  }
+  :is(.dark .dark\:hover\:text-white:hover) {
+    --tw-bg-opacity: 1;
+    color: rgb(255 255 255/var(--tw-text-opacity))
+  }
+
+  .jump-btn-group {
+    text-align: right;
+  }
+  .jump-btn-group .jump-button:hover {
+    --tw-text-opacity: 1;
+    color: rgb(var(--color-primary-700)/var(--tw-text-opacity))
+  }
+
+  :is(.dark .jump-button:hover) {
+    --tw-text-opacity: 1;
+    color: rgb(var(--color-primary-300)/var(--tw-text-opacity))
+  }
+
+</style>
+
+<script>
+  const swiper = new Swiper('.swiper', {
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      // 把默认小圆点改成 Tailwind 颜色
+      bulletClass: 'swiper-pagination-bullet',
+      bulletActiveClass: 'swiper-pagination-bullet-active bg-primary',
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+  })
+</script>
