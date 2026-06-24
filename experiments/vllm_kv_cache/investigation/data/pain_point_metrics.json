@@ -1,0 +1,139 @@
+{
+  "generated_at": "2026-06-24T13:00:00",
+  "data_sources": {
+    "trace": "experiments/vllm_kv_cache/investigation/data/per_row_metrics.json (24,880 rows)",
+    "sim": "experiments/vllm_kv_cache/investigation/data/simulation_results.json",
+    "vllm_phase2b_serial": "experiments/vllm_kv_cache/investigation/data/phase2b_eviction_test.json",
+    "vllm_phase2b_concurrent": "experiments/vllm_kv_cache/investigation/data/phase2b_concurrent_pressure.json",
+    "vllm_phase3": "experiments/vllm_kv_cache/investigation/data/phase3_pain_points.json"
+  },
+  "trace_characterization": {
+    "total_rows": 24880,
+    "total_sessions": 767,
+    "l0_tokens": 6157,
+    "l0_tokens_note": "6,157 for minimax sessions (used in all vLLM experiments); weighted mean across all projects = 5,464 (varies by project: django=5,681, sympy=6,157, etc.)",
+    "l0_l1_pct_of_first_turn": 71.9,
+    "projects_count": 12,
+    "django_requests": 9926,
+    "sympy_requests": 3098,
+    "turn0_median_tokens": 8810,
+    "turn5_median_tokens": 13462,
+    "turn10_median_tokens": 17627,
+    "turn20_median_tokens": 23032,
+    "turn30_median_tokens": 28884,
+    "turn49_median_tokens": 39436,
+    "growth_ratio_median": 3.64,
+    "growth_ratio_mean": 9.12,
+    "sessions_exceeding_44k": 104,
+    "pct_exceeding_44k": 13.6
+  },
+  "vllm_measured": {
+    "config": {
+      "model": "Qwen3-8B",
+      "gpu": "NVIDIA H800",
+      "gpu_util": 0.3,
+      "gpu_kv_capacity_tokens": 44000,
+      "apc_enabled": true,
+      "block_size": 16,
+      "offloading": "disabled"
+    },
+    "serial_hit_rate_range": "97.6%-99.9%",
+    "serial_ttft_cold_ms": 1018.9,
+    "serial_ttft_warm_ms_range": "40-80",
+    "serial_ttft_reduction_pct_range": "92%-96%",
+    "concurrent_l1_hit_rate": 0.0,
+    "concurrent_l0_cached_tokens": 7824,
+    "concurrent_overall_hit_rate_9req": 0.706,
+    "concurrent_vs_serial_cache_gap_3req": 1488.0,
+    "scheduling_gap_5req": 2384,
+    "block_waste_max_per_turn": 14,
+    "block_waste_median_per_turn": 7,
+    "block_waste_pct_of_prompt": 0.07
+  },
+  "simulation": {
+    "block_size": 16,
+    "num_requests": 2048,
+    "warmup_fraction": 0.5,
+    "total_unique_blocks": 87265,
+    "infinite_capacity_hit_rate": 0.9706,
+    "h800_capacity_lru": 0.895,
+    "h800_capacity_optimal": 0.9642,
+    "h800_lru_optimal_gap": 0.0692,
+    "32k_capacity_lru": 0.5949,
+    "32k_capacity_optimal": 0.9073,
+    "32k_lru_optimal_gap": 0.3124
+  },
+  "pain_points": {
+    "P1_concurrent_prefix_sharing": {
+      "priority": "CRITICAL",
+      "evidence": "MEASURED",
+      "key_metrics": {
+        "concurrent_l1_hit_rate": 0.0,
+        "serial_l1_hit_rate": 1.0,
+        "cache_gap_per_3requests_tokens": 1488,
+        "concurrent_overall_hit_rate_9req": 0.706,
+        "ttft_concurrent_ms": 298,
+        "ttft_serial_ms": 44
+      },
+      "research_direction": "Eager Prefix Registration"
+    },
+    "P2_lru_evicts_l0": {
+      "priority": "HIGH",
+      "evidence": "SIMULATED",
+      "key_metrics": {
+        "l0_tokens_at_risk": 6157,
+        "lru_optimal_gap_44k": 0.0692,
+        "lru_optimal_gap_32k": 0.3124,
+        "lru_optimal_gap_16k": 0.4813
+      },
+      "research_direction": "Agent-Aware Eviction Policy"
+    },
+    "P3_preemption_decode_loss": {
+      "priority": "HIGH",
+      "evidence": "MECHANISM",
+      "key_metrics": {
+        "decode_loss_per_10turns_tokens": "5000-15000",
+        "preemption_recovery_ttft_ms": "~1000 (cold start equivalent)"
+      },
+      "research_direction": "Offload Decode Blocks / Partial Preemption"
+    },
+    "P4_prefix_growth_pressure": {
+      "priority": "MEDIUM",
+      "evidence": "TRACE",
+      "key_metrics": {
+        "growth_ratio_median": 3.64,
+        "growth_ratio_mean": 9.12,
+        "pct_sessions_exceeding_44k": 13.6,
+        "turn30_median_tokens": 28884
+      },
+      "research_direction": "KV Cache Growth Prediction + Dynamic Offloading"
+    },
+    "P5_block_waste": {
+      "priority": "LOW",
+      "evidence": "MEASURED",
+      "key_metrics": {
+        "max_waste_per_turn_tokens": 14,
+        "waste_pct_of_prompt": 0.07,
+        "block_size": 16
+      },
+      "research_direction": "Not needed (waste is negligible)"
+    },
+    "P6_cache_hierarchy": {
+      "priority": "MEDIUM",
+      "evidence": "PENDING",
+      "key_metrics": {
+        "theoretical_loss_tokens": 6157
+      },
+      "research_direction": "Unified Cache Hierarchy"
+    },
+    "P7_scheduling_awareness": {
+      "priority": "MEDIUM",
+      "evidence": "MEASURED",
+      "key_metrics": {
+        "scheduling_gap_tokens": 2384,
+        "gap_approx_l1_tokens": 1
+      },
+      "research_direction": "Prefix-Aware Scheduling"
+    }
+  }
+}

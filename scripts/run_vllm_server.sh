@@ -6,6 +6,7 @@
 #   KV_OFFLOAD_GIB=4       启用 KV offloading，设 4 GiB CPU 缓冲
 #   KV_OFFLOAD_BACKEND=native  offloading 后端（native 或 lmcache）
 #   ENABLE_KV_EVENTS=1     启用 ZMQ 发布 KV block 存入/驱逐事件
+#   LOG_LEVEL=debug        设置日志级别（默认 info，debug 可看 swap/preempt 调度决策）
 #
 # 关键参数说明：
 #   --enable-prefix-caching          启用 APC（block-level hash chain 复用）
@@ -36,6 +37,12 @@ KV_OFFLOAD_BACKEND=${KV_OFFLOAD_BACKEND:-native}
 # KV events 配置
 ENABLE_KV_EVENTS=${ENABLE_KV_EVENTS:-0}
 
+# vLLM 日志级别通过环境变量 VLLM_LOGGING_LEVEL 控制
+# 默认 INFO，DEBUG 可看调度决策细节（preempt/swap/evict 等）
+# uvicorn 日志级别通过 --uvicorn-log-level 参数控制
+VLLM_LOG_LEVEL=${VLLM_LOG_LEVEL:-INFO}
+UVICORN_LOG_LEVEL=${UVICORN_LOG_LEVEL:-info}
+
 echo "Starting vLLM server..."
 echo "  Model: Qwen3-8B"
 echo "  GPU util: $GPU_UTIL"
@@ -47,6 +54,8 @@ echo "  KV offloading: ${KV_OFFLOAD_GIB} GiB (backend=$KV_OFFLOAD_BACKEND)"
 echo "  KV events: $([ "$ENABLE_KV_EVENTS" = "1" ] && echo 'ON (ZMQ)' || echo 'OFF')"
 echo "  Watermark: 0.02"
 echo "  Chunked prefill: ON"
+echo "  vLLM log level: $VLLM_LOG_LEVEL"
+echo "  Uvicorn log level: $UVICORN_LOG_LEVEL"
 
 # 基础参数
 ARGS=(
@@ -64,7 +73,7 @@ ARGS=(
   --gpu-memory-utilization "$GPU_UTIL"
   --max-model-len 32768
   --port "$PORT"
-  --log-level info
+  --uvicorn-log-level "$UVICORN_LOG_LEVEL"
 )
 
 # 可选：KV offloading 到 CPU
@@ -88,4 +97,5 @@ echo ""
 echo "Launching vLLM..."
 echo ""
 
+export VLLM_LOGGING_LEVEL="$VLLM_LOG_LEVEL"
 exec /share/dai-sys/apps/anaconda3/envs/agentkv_zls/bin/python -m vllm.entrypoints.openai.api_server "${ARGS[@]}"

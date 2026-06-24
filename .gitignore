@@ -15,4 +15,10 @@ Agent/claude-code-installed/node_modules/
 experiments/vllm_kv_cache/exp*/
 experiments/vllm_kv_cache/figures/
 experiments/vllm_kv_cache/metrics_snapshot_*.json
+experiments/vllm_kv_cache/lmcache_traces/
+experiments/vllm_kv_cache/*.log
+experiments/vllm_kv_cache/server_log*.log
+# Unrelated local files
+OSINT/
+
 

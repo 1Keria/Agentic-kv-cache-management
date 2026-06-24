@@ -2,8 +2,8 @@
   "date": "2026-06-17",
   "model": "Qwen3-8B",
   "model_path": "/share/dai-sys/.cache/hub/hub/models--Qwen--Qwen3-8B/snapshots/b968826d9c46dd6066d109eabc6255188de91218/",
-  "vllm_version": "0.8.5.dev0 (source, editable install)",
-  "gpu": "NVIDIA H800 x 1 (TP=1)",
+  "vllm_version": "0.8.5.dev0 (source)",
+  "gpu": "NVIDIA H800 x 1",
   "gpu_memory_utilization": 0.3,
   "max_model_len": 32768,
   "enable_prefix_caching": true,
@@ -17,16 +17,10 @@
   "enable_chunked_prefill": true,
   "kv_offloading_size_gib": 8,
   "kv_offloading_backend": "native",
-  "kv_offloading_note": "8 GiB ≈ 1.3x GPU KV (6 GiB), per vLLM docs 'cpu_bytes_to_use should exceed GPU KV'",
-  "kv_events": "disabled by default (set ENABLE_KV_EVENTS=1 to enable ZMQ on tcp://*:5557)",
   "estimated_gpu_kv_capacity_tokens": 44000,
   "estimated_gpu_kv_capacity_gb": 6.0,
   "estimated_cpu_kv_capacity_tokens": 58667,
-  "estimated_cpu_kv_capacity_gb": 8.0,
   "estimated_total_kv_capacity_tokens": 102667,
-  "estimated_total_kv_capacity_gb": 14.0,
   "tensor_parallel_size": 1,
-  "port": 8000,
-  "conda_env": "agentkv_zls",
-  "note": "LD_LIBRARY_PATH=/usr/local/cuda-13.0/compat required for GPU access"
+  "port": 8000
 }

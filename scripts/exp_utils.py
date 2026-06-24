@@ -13,9 +13,132 @@ MODEL_PATH = "/share/dai-sys/.cache/hub/hub/models--Qwen--Qwen3-8B/snapshots/b96
 BASE_URL = "http://localhost:8000/v1"
 EXPERIMENT_DIR = "/share/dai-sys/zhoulongsheng/agentkv/experiments/vllm_kv_cache"
 BLOCK_SIZE = 16
+REAL_PROMPTS_PATH = os.path.join(EXPERIMENT_DIR, "real_prompts", "real_prompts.json")
 
 # 初始化 tokenizer
 tokenizer = AutoTokenizer.from_pretrained(MODEL_PATH)
+
+# ---------------------------------------------------------------------------
+# 真实 Agent prompt 数据加载
+# ---------------------------------------------------------------------------
+
+# 缓存真实 prompt 数据
+_real_prompts_cache = None
+
+
+def load_real_prompts() -> dict:
+    """加载 LMCache agentic traces 提取的真实 prompt 数据
+
+    返回格式:
+        {
+            "django": {"session_id": "...", "turns": [{"turn": 0, "messages": [...], "total_tokens": 10056}, ...]},
+            "sympy": {...},
+            ...
+        }
+    """
+    global _real_prompts_cache
+    if _real_prompts_cache is not None:
+        return _real_prompts_cache
+
+    if not os.path.exists(REAL_PROMPTS_PATH):
+        print(f"Warning: real prompts not found at {REAL_PROMPTS_PATH}, will use synthetic text")
+        return {}
+
+    with open(REAL_PROMPTS_PATH, "r") as f:
+        _real_prompts_cache = json.load(f)
+    print(f"Loaded real prompts from {REAL_PROMPTS_PATH}: {list(_real_prompts_cache.keys())}")
+    return _real_prompts_cache
+
+
+def get_real_session_prompt(repo: str, turn: int = 0) -> list[dict] | None:
+    """获取指定 repo 的真实 agent session prompt
+
+    Args:
+        repo: repo 名称，如 "django", "sympy", "scikit-learn", "astropy", "matplotlib"
+        turn: 第几轮对话 (0=首轮)
+
+    Returns:
+        OpenAI 格式的 messages 列表，或 None（如果数据不可用）
+    """
+    prompts = load_real_prompts()
+    if repo not in prompts:
+        return None
+    turns = prompts[repo]["turns"]
+    if turn >= len(turns):
+        return None
+    return turns[turn]["messages"]
+
+
+def get_real_l0_text() -> str | None:
+    """获取真实的 L0 (system prompt) 文本
+
+    所有 repo 的 system prompt 相同（OpenHands agent system prompt），
+    约 6163 tokens。
+    """
+    prompts = load_real_prompts()
+    for repo, data in prompts.items():
+        if data["turns"]:
+            for msg in data["turns"][0]["messages"]:
+                if msg["role"] == "system":
+                    return msg["content"]
+    return None
+
+
+def get_real_l1_text(repo: str) -> str | None:
+    """获取指定 repo 的 L1 文本（首轮请求中 system 之后的 user messages）
+
+    Args:
+        repo: repo 名称
+
+    Returns:
+        L1 文本（多条 user message 拼接），或 None
+    """
+    prompts = load_real_prompts()
+    if repo not in prompts:
+        return None
+    turns = prompts[repo]["turns"]
+    if not turns:
+        return None
+    # 首轮请求中，system 之后、最后一条 user message 之前的所有内容构成 L1
+    messages = turns[0]["messages"]
+    l1_parts = []
+    found_system = False
+    user_count = 0
+    for msg in messages:
+        if msg["role"] == "system":
+            found_system = True
+            continue
+        if found_system and msg["role"] == "user":
+            user_count += 1
+            if user_count < len([m for m in messages if m["role"] == "user"]):
+                # 不是最后一条 user message → 属于 L1
+                l1_parts.append(msg["content"])
+    return "\n".join(l1_parts) if l1_parts else None
+
+
+def make_layered_messages(l0: str, l1: str, l2: str) -> list[dict]:
+    """构造分层 Agent prompt (L0+L1 合并为 system, L2 作为 user)
+
+    这模拟了 Agent 场景中的 L0/L1/L2 层次结构：
+    - L0 (全局共享): system prompt + tool schema
+    - L1 (项目级): CLAUDE.md / README / project context
+    - L2 (session 级): problem statement / task
+
+    在 OpenAI API 格式中，L0+L1 合并为 system message，L2 作为 user message。
+    这样 vLLM APC 可以在 block level 匹配共享前缀。
+
+    Args:
+        l0: L0 全局前缀文本
+        l1: L1 项目级前缀文本
+        l2: L2 session 级内容
+
+    Returns:
+        OpenAI 格式的 messages 列表
+    """
+    return [
+        {"role": "system", "content": l0 + "\n" + l1},
+        {"role": "user", "content": l2},
+    ]
 
 
 def make_text_with_token_count(target_tokens: int, seed: int = 0) -> str:
@@ -145,8 +268,14 @@ def compute_prometheus_delta(before: dict, after: dict) -> dict:
 class KVTimelineCollector:
     """Block 生命周期时间线采集器
 
-    在实验运行期间后台持续采样 kv_cache_usage_perc 和 offload 相关指标，
-    和请求事件对齐，产出 block 分配→使用→释放→复用的完整时间线。
+    在实验运行期间后台持续采样 KV cache 相关指标，
+    和请求事件对齐，产出完整的 KV cache 生命周期时间线。
+
+    采集四个观测渠道的数据：
+    ① cached_tokens — 通过 record_event 的 extra 参数传入（请求级）
+    ② /metrics 指标 — 后台持续采样（全局聚合）
+    ③ 无（DEBUG 日志需从 server 日志文件解析，见 parse_server_log）
+    ④ 无（源码阅读需人工进行）
 
     使用方式：
         collector = KVTimelineCollector(interval=0.5)
@@ -159,13 +288,25 @@ class KVTimelineCollector:
     产出数据格式：
         [
           {"t": 0.0,  "event": "collector_start", "gpu_usage": 0.0, ...},
-          {"t": 0.5,  "event": "sample", "gpu_usage": 0.0, ...},       # 定时采样
+          {"t": 0.5,  "event": "sample", "gpu_usage": 0.0, ...},
           {"t": 1.2,  "event": "req_start", "label": "S1-T1", "gpu_usage": 0.0, ...},
           {"t": 2.8,  "event": "req_end", "label": "S1-T1", "gpu_usage": 0.35, ...},
-          {"t": 3.0,  "event": "sample", "gpu_usage": 0.35, ...},
           ...
         ]
     """
+
+    # 持续采样的指标 key 列表（从 /metrics 端点）
+    METRIC_KEYS = [
+        "kv_cache_usage_perc",             # GPU KV cache 使用百分比
+        "prefix_cache_hits",               # Prefix cache 命中次数
+        "prefix_cache_queries",            # Prefix cache 查询次数
+        "num_preemptions",                 # 请求被 preempt 次数
+        "kv_offload_store_bytes",          # GPU→CPU offload 传输量
+        "kv_offload_load_bytes",           # CPU→GPU 恢复传输量
+        "kv_offload_stores_skipped",       # 跳过的 offload 次数
+        "request_prefill_kv_computed_tokens",  # prefill 需重算的 tokens
+        "prompt_tokens_cached",            # 总 cached tokens
+    ]
 
     def __init__(self, interval: float = 0.5):
         """初始化采集器
@@ -179,10 +320,31 @@ class KVTimelineCollector:
         self._start_time: float = 0
         self._running: bool = False
         self._task: asyncio.Task | None = None
+        self._prev_metrics: dict = {}  # 上一轮采样的累计指标，用于计算 delta
 
     def _elapsed(self) -> float:
         """从采集器启动到当前的秒数"""
         return round(time.time() - self._start_time, 3)
+
+    def _extract_metrics(self, metrics: dict) -> dict:
+        """从原始 metrics dict 中提取关注的关键指标，并计算累计指标的 delta"""
+        result = {}
+        for key in self.METRIC_KEYS:
+            val = metrics.get(key)
+            if val is not None:
+                result[key] = val
+        # 额外采集所有 offload 相关指标（可能有新指标不在列表中）
+        for key in metrics:
+            if "offload" in key and key not in result:
+                result[key] = metrics[key]
+        # 计算 delta（当前值 - 上一轮值）
+        delta = {}
+        for key in result:
+            if key in self._prev_metrics:
+                delta[f"delta_{key}"] = result[key] - self._prev_metrics[key]
+        result.update(delta)
+        self._prev_metrics = dict(result)  # 保存（不含 delta）
+        return result
 
     def record_event(self, event: str, label: str = "", extra: dict | None = None):
         """记录一个事件点（请求开始/结束等），同时采集当前指标
@@ -199,12 +361,8 @@ class KVTimelineCollector:
             "t": self._elapsed(),
             "event": event,
             "label": label,
-            "gpu_usage": metrics.get("kv_cache_usage_perc", 0),
         }
-        # 采集 offload 和 prefix cache 相关指标
-        for key in metrics:
-            if "offload" in key or "prefix_cache" in key:
-                entry[key] = metrics[key]
+        entry.update(self._extract_metrics(metrics))
         if extra:
             entry.update(extra)
         self.timeline.append(entry)
@@ -216,11 +374,8 @@ class KVTimelineCollector:
             entry: dict = {
                 "t": self._elapsed(),
                 "event": "sample",
-                "gpu_usage": metrics.get("kv_cache_usage_perc", 0),
             }
-            for key in metrics:
-                if "offload" in key or "prefix_cache" in key:
-                    entry[key] = metrics[key]
+            entry.update(self._extract_metrics(metrics))
             self.timeline.append(entry)
             await asyncio.sleep(self.interval)
 
@@ -229,10 +384,12 @@ class KVTimelineCollector:
         self._start_time = time.time()
         self._running = True
         self.timeline = []
+        self._prev_metrics = {}
         # 记录起始状态
         self.record_event("collector_start")
         self._task = asyncio.create_task(self._sample_loop())
-        print(f"  KVTimelineCollector started (interval={self.interval}s)")
+        print(f"  KVTimelineCollector started (interval={self.interval}s, "
+              f"metrics={len(self.METRIC_KEYS)} keys)")
 
     async def stop(self) -> list[dict]:
         """停止采样，返回时间线数据"""
@@ -328,11 +485,21 @@ async def send_and_record(messages, label, max_tokens=50, timeline=None):
 # 数据保存与汇总
 # ---------------------------------------------------------------------------
 
-def save_run(exp_name: str, run_id: int, data: dict):
-    """保存单次运行数据到 JSON 文件"""
+def save_run(exp_name: str, run_id: int, data: dict, suffix: str = ""):
+    """保存单次运行数据到 JSON 文件
+
+    Args:
+        exp_name: 实验名（目录名）
+        run_id: 运行编号
+        data: 运行数据
+        suffix: 可选后缀（如 "4.1", "4.5_on"），用于同一目录下区分子场景
+    """
     exp_dir = os.path.join(EXPERIMENT_DIR, exp_name)
     os.makedirs(exp_dir, exist_ok=True)
-    path = os.path.join(exp_dir, f"run_{run_id}.json")
+    if suffix:
+        path = os.path.join(exp_dir, f"run_{run_id}_{suffix}.json")
+    else:
+        path = os.path.join(exp_dir, f"run_{run_id}.json")
     with open(path, "w") as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     print(f"Saved: {path}")
@@ -447,3 +614,97 @@ async def wait_for_server(timeout=120):
             await asyncio.sleep(2)
     print(f"Server not ready after {timeout}s")
     return False
+
+
+# ---------------------------------------------------------------------------
+# vLLM server 日志解析（观测渠道 ③：调度决策级）
+# ---------------------------------------------------------------------------
+
+def parse_server_log(log_path: str, start_time: float | None = None) -> list[dict]:
+    """从 vLLM server 日志中提取调度决策事件
+
+    适用于 server 以 --log-level debug 启动时的日志。
+
+    Args:
+        log_path: server 日志文件路径
+        start_time: 实验开始时间戳（time.time()），用于计算相对时间。
+                    如果为 None，使用日志中的绝对时间。
+
+    Returns:
+        list[dict]: 调度事件列表，每个事件包含：
+            - t: 相对时间（秒）
+            - event: 事件类型（preempt/swap_in/swap_out/evict/offload_store/offload_load/recompute）
+            - detail: 事件详情（原始日志行截断）
+            - raw: 完整日志行
+    """
+    # 关键词 → 事件类型映射
+    KEYWORDS = {
+        "preempt": "preempt",
+        "Preempting": "preempt",
+        "swap_in": "swap_in",
+        "swap_out": "swap_out",
+        "swapping": "swap",
+        "evict": "evict",
+        "eviction": "evict",
+        "offload_store": "offload_store",
+        "offload_load": "offload_load",
+        "storing": "offload_store",
+        "loading": "offload_load",
+        "recompute": "recompute",
+        "recomputing": "recompute",
+    }
+
+    events = []
+    try:
+        with open(log_path, "r", errors="ignore") as f:
+            for line in f:
+                for keyword, event_type in KEYWORDS.items():
+                    if keyword in line:
+                        # 提取时间戳（vLLM 日志格式：YYYY-MM-DD HH:MM:SS,mmm）
+                        t = 0.0
+                        if len(line) > 23:
+                            try:
+                                ts_str = line[:23].strip()
+                                # 解析到秒级精度
+                                from datetime import timezone
+                                ts = datetime.fromisoformat(
+                                    ts_str.replace(",", ".")
+                                ).replace(tzinfo=timezone.utc).timestamp()
+                                if start_time:
+                                    t = round(ts - start_time, 3)
+                                else:
+                                    t = round(ts, 3)
+                            except (ValueError, IndexError):
+                                pass
+
+                        events.append({
+                            "t": t,
+                            "event": event_type,
+                            "detail": line.strip()[:200],
+                            "raw": line.strip(),
+                        })
+                        break  # 一行只匹配一个事件类型
+    except FileNotFoundError:
+        print(f"Warning: server log not found: {log_path}")
+
+    return events
+
+
+def summarize_log_events(events: list[dict]) -> dict:
+    """汇总日志事件统计
+
+    Args:
+        events: parse_server_log 的返回值
+
+    Returns:
+        dict: 各事件类型的计数和关键统计
+    """
+    summary = {}
+    for e in events:
+        etype = e["event"]
+        if etype not in summary:
+            summary[etype] = {"count": 0, "first_t": e["t"], "last_t": e["t"]}
+        summary[etype]["count"] += 1
+        summary[etype]["last_t"] = e["t"]
+
+    return summary

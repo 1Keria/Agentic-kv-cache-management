@@ -1,0 +1,34 @@
+{
+  "session_id": "swebench__django__django-10097__minimax",
+  "results": [
+    {
+      "turn": 0,
+      "ttft_ms": 1632.0,
+      "prompt": 10078,
+      "cached": 0,
+      "hit_rate": 0.0
+    },
+    {
+      "turn": 1,
+      "ttft_ms": 85.4,
+      "prompt": 10102,
+      "cached": 10064,
+      "hit_rate": 99.6
+    },
+    {
+      "turn": 2,
+      "ttft_ms": 66.8,
+      "prompt": 10130,
+      "cached": 10096,
+      "hit_rate": 99.7
+    },
+    {
+      "turn": 3,
+      "ttft_ms": 60.8,
+      "prompt": 6459,
+      "cached": 6160,
+      "hit_rate": 95.4,
+      "note": "cross-project"
+    }
+  ]
+}

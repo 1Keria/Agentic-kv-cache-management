@@ -145,8 +145,60 @@ source ~/vpn/scripts/proxy-off.sh # 关闭
 |------|------------|------|---------|
 | Phase 1 | Offloading ON (8 GiB) | exp1, exp2, exp3-on, exp4(4.1~4.6 on), exp5(lru+aware) | ~3h |
 | Phase 2 | Offloading OFF (0 GiB) | exp3-off, exp4(4.5 off, 4.6 off) | ~0.5h |
+| Phase 3 | 三种 preemption 策略对比 | exp6 (swap-out/swap-in/recompute) | ~1h |
 
 具体步骤同之前 runbook（Step 1.1~1.12, 2.1~2.4），此处不重复。
+
+### Step 12.5: 实验 6 — 内存压力下调度行为对比（新增）
+
+**目的**：在 GPU KV cache 内存压力下，对比 vLLM 三种 preemption 策略对 Agent session 的影响。
+
+**三种策略解释**：
+
+| 策略 | 行为 | 代价 | 适用场景 |
+|------|------|------|---------|
+| **swap-out** | GPU 满时，把 running 请求的 KV blocks 整体拷到 CPU，腾出 GPU 空间 | CPU 内存占用 + 拷贝延迟 | 有 CPU 内存余量，请求会回来继续跑 |
+| **swap-in** | CPU 上等待的请求等到 GPU 有空间后，把 KV 从 CPU 拷回 GPU 继续跑 | 拷贝延迟 | swap-out 的逆操作，配合使用 |
+| **recompute** | 直接丢掉被 preempt 请求的 KV cache，等有空间了从头重新 prefill | 重新计算的开销（最大），但不占 CPU 内存 | CPU 内存紧张，或请求 KV 价值低 |
+
+**vLLM 中的对应配置**：
+
+| 策略 | vLLM 参数 | 说明 |
+|------|-----------|------|
+| swap-out + swap-in | `--kv-offloading-size 8` | 启用 CPU offloading，被驱逐 block 存 CPU |
+| recompute | `--kv-load-failure-policy recompute` | KV 加载失败时丢弃重算（而非报错） |
+| 默认 preemption | 无额外参数 | scheduler 直接 preempt，请求进 waiting queue 重排 |
+
+**实验设计**：同一请求序列，在三种配置下分别运行（每次重启 server）：
+
+```
+Phase 1: 发送 3 个同项目 Agent session T1 (每个 ~6500 tokens, 共 ~19.5K)
+Phase 2: 发送 2 个不同项目 session T1 (每个 ~6300 tokens, 共 ~12.6K) → 触发内存压力
+Phase 3: 发送 1 个同项目 session T2 → 观察 prefix 恢复行为
+Phase 4: 发送 1 个被 preempt 的 session 继续推理 → 观察恢复延迟
+```
+
+**三种配置运行**：
+
+| 运行 | 配置 | 观察重点 |
+|------|------|---------|
+| A (swap) | `--kv-offloading-size 8` | Phase 3/4 的 KV 从 CPU 恢复，TTFT 中等 |
+| B (recompute) | `--kv-load-failure-policy recompute`，无 offloading | Phase 3/4 需完整重算，TTFT 最慢 |
+| C (默认 preempt) | 无 offloading，无 recompute | Phase 3/4 被 preempt 后进 waiting，行为取决于 scheduler |
+
+**关键观测**：
+
+| 指标 | swap | recompute | 默认 preempt |
+|------|------|-----------|-------------|
+| Phase 3 cached_tokens | > 0（CPU 恢复） | = 0（需重算） | 取决于驱逐情况 |
+| Phase 3 TTFT | 中等 | 最慢 | 不确定 |
+| Phase 4 恢复延迟 | swap-in 延迟 | 完整 prefill 延迟 | 重新调度延迟 |
+| CPU 内存占用 | 高（存了 KV） | 低（丢弃了） | 低 |
+| `num_preemptions` Prometheus | 有 | 有 | 有 |
+
+**产出标注**：`[MEASURED]`
+
+**论文价值**：这是 AgentKV 论文的关键数据——证明在 Agent 场景下，swap-out/swap-in（即 offloading）对保护 L0/L1 prefix 至关重要，recompute 代价太大，默认 preempt 可能错误驱逐高价值 prefix。
 
 ### Step 13: 模拟层分析
 
@@ -173,7 +225,115 @@ source ~/vpn/scripts/proxy-off.sh # 关闭
 
 ---
 
-## 3. 数据验证检查点
+## 3. 四个观测渠道的分工
+
+实验中必须同时使用四个观测渠道，各有不同的粒度和适用场景：
+
+### ① cached_tokens（请求级，最直接）
+
+**来源**：OpenAI API 响应的 `prompt_tokens_details.cached_tokens` 字段
+**粒度**：单个请求
+**适用**：看单次请求的 prefix reuse 情况，回答"这个请求命中了多少"
+
+**当前覆盖**：✅ 已大量使用（所有 run_expN.py 都记录）
+
+**必须采集的指标**：
+- `prompt_tokens` — 请求总 input tokens
+- `cached_tokens` — 命中缓存的 tokens
+- `hit_rate = cached_tokens / prompt_tokens` — 命中率
+- `ttft_ms` — 首 token 延迟
+
+### ② /metrics 端点（全局聚合，看趋势）
+
+**来源**：`http://localhost:8000/metrics`（Prometheus 格式）
+**粒度**：全局累计 / gauge
+**适用**：看 KV cache 整体趋势——利用率、命中率、队列长度、offload 传输量
+
+**当前覆盖**：⚠️ 有采集（exp_utils.py 的 get_prometheus_metrics）但利用不足，只存了 before/after
+
+**必须持续采集的关键指标**：
+
+| 指标 | 类型 | 含义 |
+|------|------|------|
+| `kv_cache_usage_perc` | gauge | GPU KV cache 使用百分比 |
+| `prefix_cache_hits` | counter | prefix cache 命中次数 |
+| `prefix_cache_queries` | counter | prefix cache 查询次数 |
+| `num_preemptions` | counter | 请求被 preempt 的次数 |
+| `kv_offload_store_bytes` | counter | GPU→CPU offload 传输量 |
+| `kv_offload_load_bytes` | counter | CPU→GPU 恢复传输量 |
+| `kv_offload_stores_skipped` | counter | 跳过的 offload 次数 |
+| `request_prefill_kv_computed_tokens` | counter | prefill 阶段需重新计算的 tokens |
+| `prompt_tokens_cached` | counter | 总 cached tokens |
+
+**改进**：`KVTimelineCollector` 已实现持续采样（interval=0.5s），但需要扩展，在每次采样时不仅采 `kv_cache_usage_perc`，还要采以上所有指标。这样能产出完整的 KV cache 生命周期时间线。
+
+### ③ vLLM DEBUG 日志（调度决策级）
+
+**来源**：vLLM server 的日志输出
+**粒度**：调度事件
+**适用**：看 swap-out/swap-in/preempt/recompute 等调度决策
+
+**当前覆盖**：❌ 完全没有。server 用 `--log-level info`，看不到调度细节。
+
+**改进**：在需要观察调度行为的实验（exp3, exp4.5, exp4.6, exp5, exp6）中，server 启动时使用：
+
+```bash
+--log-level DEBUG
+```
+
+关键日志关键词：
+- `preempt` / `Preempting` — 请求被抢占
+- `swap` / `swapping` — KV block swap 事件
+- `evict` / `eviction` — block 被驱逐
+- `offload` / `store` / `load` — CPU offloading 事件
+- `recompute` — KV 重算事件
+
+**日志采集方式**：server 的 stdout 重定向到文件，实验后用 grep 提取关键事件，与 timeline 对齐。
+
+### ④ 源码阅读（机制理解，解释"为什么"）
+
+**来源**：vLLM 源码
+**粒度**：代码逻辑
+**适用**：当观测到异常行为时，读源码理解"为什么 vLLM 这样做"
+
+**当前覆盖**：❌ 脚本中未涉及，但分析报告需要
+
+**关键源码文件**：
+
+| 文件 | 内容 |
+|------|------|
+| `vllm/v1/core/sched/scheduler.py` | 调度器核心——preempt 决策、优先级、waiting/running 队列 |
+| `vllm/v1/core/single_type_kv_cache_manager.py` | KV cache 管理——block 分配、释放、prefix 匹配 |
+| `vllm/v1/simple_kv_offload/manager.py` | CPU offloading——swap-out/swap-in 逻辑 |
+| `vllm/v1/core/block_pool.py` | Block 池管理——eviction 策略 |
+
+**使用方式**：当实验数据出现意外结果（如 cached_tokens 与预期不符、preempt 行为异常），直接读源码定位原因，将解释写入分析报告。
+
+### 四渠道协同工作流
+
+```
+实验设计 → ② 持续采样 /metrics（全局趋势）
+  ↓
+发请求 → ① 记录每个请求的 cached_tokens + TTFT
+  ↓
+分析数据 → 发现异常？
+  ↓ 是
+读 ③ DEBUG 日志 → 找到具体的 swap/preempt 事件
+  ↓ 仍不理解
+读 ④ 源码 → 理解调度器的决策逻辑
+  ↓
+写分析报告：行为 + 原因 + 影响
+```
+
+**必须改进的地方**：
+1. `run_vllm_server.sh`：添加 `--log-level debug` 选项（默认 info，实验 3/4.5/4.6/5/6 开 debug）
+2. `KVTimelineCollector`：扩展采样指标，不仅采 `kv_cache_usage_perc`，还采 prefix_cache_hits/queries、num_preemptions、offload bytes 等
+3. `exp_utils.py`：添加日志解析函数，从 server 日志提取 swap/preempt 事件
+4. 分析报告：每个实验必须解释"为什么"，不能只列数据
+
+---
+
+## 4. 数据验证检查点
 
 每个实验完成后验证。**验证不通过 → 分析原因 → 修复 → 重跑。**
 
@@ -190,6 +350,7 @@ source ~/vpn/scripts/proxy-off.sh # 关闭
 - exp3: offload-on 的 req_C cached_tokens > offload-off
 - exp4: 跨 session 复用率与 L0/L1/L2 层次一致
 - exp5: aware 的 cached_tokens > lru
+- exp6: swap 的恢复延迟 < recompute 的重算延迟
 
 ---
 
@@ -254,7 +415,8 @@ results/
 |------|---------|------|
 | 前置检查 + 数据准备 | 30 min | 30 min |
 | 模拟层分析 | 15 min | 45 min |
-| Exp1~5 (Phase 1) | 150 min | 195 min |
-| Exp3/4.5/4.6 (Phase 2) | 50 min | 245 min |
-| 可视化 + 报告 | 20 min | 265 min |
-| **总计** | | **~4.5h** |
+| Exp1~5 (Phase 1) | 180 min | 225 min |
+| Exp3/4.5/4.6 (Phase 2) | 50 min | 275 min |
+| Exp6 preemption 对比 (Phase 3) | 60 min | 335 min |
+| 可视化 + 报告 | 25 min | 360 min |
+| **总计** | | **~6h** |

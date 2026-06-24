@@ -41,10 +41,11 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from exp_utils import (
-    make_text_with_token_count, make_messages, send_and_record,
+    make_text_with_token_count, make_messages, make_layered_messages, send_and_record,
     save_run, save_config, summarize_runs, get_prometheus_metrics,
     compute_prometheus_delta, wait_for_server, BLOCK_SIZE,
     KVTimelineCollector,
+    get_real_l0_text, get_real_l1_text, get_real_session_prompt,
 )
 
 # L0/L1/L2 Token 配置（与 spec v3 一致）
@@ -63,10 +64,42 @@ EXPERIMENT_DIR_NAME = "exp4_agent_session"
 
 
 def build_layered_texts():
-    """构造各层文本，所有子场景共用"""
-    l0 = make_text_with_token_count(L0_TOKENS, seed=0)
-    l1_sqlfluff = make_text_with_token_count(L1_SQLFLUFF_TOKENS, seed=10)
-    l1_astroid = make_text_with_token_count(L1_ASTROID_TOKENS, seed=11)
+    """构造各层文本，优先使用真实 Agent prompt，回退到合成文本
+
+    真实数据来源：LMCache agentic traces (zeelHz/lmcache-agentic-traces)
+    - L0: OpenHands agent system prompt (~6163 tokens)
+    - L1: 项目级 examples/demonstrations (~2000-2400 tokens)
+    - L2: session 级 problem statement (~170-1551 tokens)
+
+    使用真实 L0/L1 时，标注为 [MEASURED]；使用合成文本时标注为 [SYNTHETIC]。
+    """
+    # 尝试使用真实 L0
+    real_l0 = get_real_l0_text()
+    if real_l0:
+        l0 = real_l0
+        print(f"  Using REAL L0 from LMCache traces ({len(l0)} chars)")
+    else:
+        l0 = make_text_with_token_count(L0_TOKENS, seed=0)
+        print(f"  Using SYNTHETIC L0 ({L0_TOKENS} tokens)")
+
+    # 尝试使用真实 L1
+    real_l1_django = get_real_l1_text("django")
+    real_l1_sympy = get_real_l1_text("sympy")
+
+    if real_l1_django:
+        l1_sqlfluff = real_l1_django
+        print(f"  Using REAL L1 (django→sqlfluff) from LMCache traces ({len(l1_sqlfluff)} chars)")
+    else:
+        l1_sqlfluff = make_text_with_token_count(L1_SQLFLUFF_TOKENS, seed=10)
+        print(f"  Using SYNTHETIC L1_sqlfluff ({L1_SQLFLUFF_TOKENS} tokens)")
+
+    if real_l1_sympy:
+        l1_astroid = real_l1_sympy
+        print(f"  Using REAL L1 (sympy→astroid) from LMCache traces ({len(l1_astroid)} chars)")
+    else:
+        l1_astroid = make_text_with_token_count(L1_ASTROID_TOKENS, seed=11)
+        print(f"  Using SYNTHETIC L1_astroid ({L1_ASTROID_TOKENS} tokens)")
+
     l2_problem1 = make_text_with_token_count(L2_TOKENS, seed=20)
     l2_problem2 = make_text_with_token_count(L2_TOKENS, seed=21)
     l2_problem3 = make_text_with_token_count(L2_TOKENS, seed=22)
@@ -102,15 +135,15 @@ async def run_4_1(run_id: int, texts: dict):
     prom_before = get_prometheus_metrics()
 
     # S1-T1: [L0 + L1_sqlfluff + problem_1]
-    s1_prefix = texts["l0"] + texts["l1_sqlfluff"]
     s1_t1 = await send_and_record(
-        make_messages(s1_prefix, texts["l2_problem1"]), "S1-T1",
+        make_layered_messages(texts["l0"], texts["l1_sqlfluff"], texts["l2_problem1"]), "S1-T1",
         timeline=timeline)
     print(f"  S1-T1: prompt={s1_t1['prompt_tokens']}, cached={s1_t1['cached_tokens']}, "
           f"ttft={s1_t1['ttft_ms']}ms")
 
     # S1-T2: [L0 + L1_sqlfluff + problem_1 + history + new_msg]
-    s1_prefix_t2 = s1_prefix + texts["l2_problem1"] + texts["history1"]
+    # 注意：多轮对话中，前缀包含之前的所有内容
+    s1_prefix_t2 = texts["l0"] + "\n" + texts["l1_sqlfluff"] + texts["l2_problem1"] + texts["history1"]
     s1_t2 = await send_and_record(
         make_messages(s1_prefix_t2, texts["new_msg1"]), "S1-T2",
         timeline=timeline)
@@ -136,7 +169,7 @@ async def run_4_1(run_id: int, texts: dict):
         "prometheus_delta": compute_prometheus_delta(prom_before, prom_after),
         "timeline": timeline_data,
     }
-    save_run(EXPERIMENT_DIR_NAME, run_id, data)
+    save_run(EXPERIMENT_DIR_NAME, run_id, data, suffix="4.1")
 
     hit_rate = s1_t2["cached_tokens"] / s1_t2["prompt_tokens"] if s1_t2["prompt_tokens"] > 0 else 0
     print(f"  S1-T2 hit rate: {hit_rate*100:.1f}% (expected ~100%)")
@@ -154,16 +187,15 @@ async def run_4_2(run_id: int, texts: dict):
     prom_before = get_prometheus_metrics()
 
     # S1-T1: [L0 + L1_sqlfluff + problem_1]
-    s1_prefix = texts["l0"] + texts["l1_sqlfluff"]
     s1_t1 = await send_and_record(
-        make_messages(s1_prefix, texts["l2_problem1"]), "S1-T1",
+        make_layered_messages(texts["l0"], texts["l1_sqlfluff"], texts["l2_problem1"]), "S1-T1",
         timeline=timeline)
     print(f"  S1-T1: prompt={s1_t1['prompt_tokens']}, cached={s1_t1['cached_tokens']}, "
           f"ttft={s1_t1['ttft_ms']}ms")
 
     # S2-T1: [L0 + L1_sqlfluff + problem_2] — 同项目不同 problem
     s2_t1 = await send_and_record(
-        make_messages(s1_prefix, texts["l2_problem2"]), "S2-T1",
+        make_layered_messages(texts["l0"], texts["l1_sqlfluff"], texts["l2_problem2"]), "S2-T1",
         timeline=timeline)
     print(f"  S2-T1: prompt={s2_t1['prompt_tokens']}, cached={s2_t1['cached_tokens']}, "
           f"ttft={s2_t1['ttft_ms']}ms")
@@ -187,7 +219,7 @@ async def run_4_2(run_id: int, texts: dict):
         "prometheus_delta": compute_prometheus_delta(prom_before, prom_after),
         "timeline": timeline_data,
     }
-    save_run(EXPERIMENT_DIR_NAME, run_id, data)
+    save_run(EXPERIMENT_DIR_NAME, run_id, data, suffix="4.2")
 
     hit_rate = s2_t1["cached_tokens"] / s2_t1["prompt_tokens"] if s2_t1["prompt_tokens"] > 0 else 0
     expected_rate = expected_cached_s2 / (L0_TOKENS + L1_SQLFLUFF_TOKENS + L2_TOKENS) * 100
@@ -206,17 +238,15 @@ async def run_4_3(run_id: int, texts: dict):
     prom_before = get_prometheus_metrics()
 
     # S1-T1: [L0 + L1_sqlfluff + problem_1]
-    s1_prefix = texts["l0"] + texts["l1_sqlfluff"]
     s1_t1 = await send_and_record(
-        make_messages(s1_prefix, texts["l2_problem1"]), "S1-T1",
+        make_layered_messages(texts["l0"], texts["l1_sqlfluff"], texts["l2_problem1"]), "S1-T1",
         timeline=timeline)
     print(f"  S1-T1: prompt={s1_t1['prompt_tokens']}, cached={s1_t1['cached_tokens']}, "
           f"ttft={s1_t1['ttft_ms']}ms")
 
     # S3-T1: [L0 + L1_astroid + problem_3] — 不同项目
-    s3_prefix = texts["l0"] + texts["l1_astroid"]
     s3_t1 = await send_and_record(
-        make_messages(s3_prefix, texts["l2_problem3"]), "S3-T1",
+        make_layered_messages(texts["l0"], texts["l1_astroid"], texts["l2_problem3"]), "S3-T1",
         timeline=timeline)
     print(f"  S3-T1: prompt={s3_t1['prompt_tokens']}, cached={s3_t1['cached_tokens']}, "
           f"ttft={s3_t1['ttft_ms']}ms")
@@ -241,7 +271,7 @@ async def run_4_3(run_id: int, texts: dict):
         "prometheus_delta": compute_prometheus_delta(prom_before, prom_after),
         "timeline": timeline_data,
     }
-    save_run(EXPERIMENT_DIR_NAME, run_id, data)
+    save_run(EXPERIMENT_DIR_NAME, run_id, data, suffix="4.3")
 
     hit_rate = s3_t1["cached_tokens"] / s3_t1["prompt_tokens"] if s3_t1["prompt_tokens"] > 0 else 0
     expected_rate = expected_cached_s3 / (L0_TOKENS + L1_ASTROID_TOKENS + L2_TOKENS) * 100
@@ -260,15 +290,12 @@ async def run_4_4(run_id: int, texts: dict):
     prom_before = get_prometheus_metrics()
 
     # 3 个并发请求
-    sqlfluff_prefix = texts["l0"] + texts["l1_sqlfluff"]
-    astroid_prefix = texts["l0"] + texts["l1_astroid"]
-
     tasks = [
-        send_and_record(make_messages(sqlfluff_prefix, texts["l2_problem_a"]),
+        send_and_record(make_layered_messages(texts["l0"], texts["l1_sqlfluff"], texts["l2_problem_a"]),
                         "S_A", timeline=timeline),
-        send_and_record(make_messages(sqlfluff_prefix, texts["l2_problem_b"]),
+        send_and_record(make_layered_messages(texts["l0"], texts["l1_sqlfluff"], texts["l2_problem_b"]),
                         "S_B", timeline=timeline),
-        send_and_record(make_messages(astroid_prefix, texts["l2_problem_c"]),
+        send_and_record(make_layered_messages(texts["l0"], texts["l1_astroid"], texts["l2_problem_c"]),
                         "S_C", timeline=timeline),
     ]
 
@@ -304,7 +331,7 @@ async def run_4_4(run_id: int, texts: dict):
         "prometheus_delta": compute_prometheus_delta(prom_before, prom_after),
         "timeline": timeline_data,
     }
-    save_run(EXPERIMENT_DIR_NAME, run_id, data)
+    save_run(EXPERIMENT_DIR_NAME, run_id, data, suffix="4.4")
 
     # 分析
     a_results = [r for r in results if r["label"] == "S_A"]
@@ -343,15 +370,15 @@ async def run_4_5(run_id: int, texts: dict, config: str):
 
     prom_before = get_prometheus_metrics()
 
-    sqlfluff_prefix = texts["l0"] + texts["l1_sqlfluff"]
-    astroid_prefix = texts["l0"] + texts["l1_astroid"]
+    sqlfluff_prefix = texts["l0"] + "\n" + texts["l1_sqlfluff"]
+    astroid_prefix = texts["l0"] + "\n" + texts["l1_astroid"]
 
     # Phase 1: 5 个 sqlfluff session T1 (每个 ~6500 tokens, 共 ~32.5K)
     timeline.record_event("phase_start", "phase1")
     phase1_results = []
     for i in range(5):
         l2 = make_text_with_token_count(L2_TOKENS, seed=100 + i)
-        r = await send_and_record(make_messages(sqlfluff_prefix, l2),
+        r = await send_and_record(make_layered_messages(texts["l0"], texts["l1_sqlfluff"], l2),
                                    f"sqlfluff_T1_{i}",
                                    timeline=timeline)
         phase1_results.append(r)
@@ -364,7 +391,7 @@ async def run_4_5(run_id: int, texts: dict, config: str):
     phase2_results = []
     for i in range(2):
         l2 = make_text_with_token_count(L2_TOKENS, seed=200 + i)
-        r = await send_and_record(make_messages(astroid_prefix, l2),
+        r = await send_and_record(make_layered_messages(texts["l0"], texts["l1_astroid"], l2),
                                    f"astroid_T1_{i}",
                                    timeline=timeline)
         phase2_results.append(r)
@@ -380,7 +407,7 @@ async def run_4_5(run_id: int, texts: dict, config: str):
     timeline.record_event("phase_start", "phase3")
     l2_recovery = make_text_with_token_count(L2_TOKENS, seed=300)
     r_recovery = await send_and_record(
-        make_messages(sqlfluff_prefix, l2_recovery), "recovery_sqlfluff",
+        make_layered_messages(texts["l0"], texts["l1_sqlfluff"], l2_recovery), "recovery_sqlfluff",
         timeline=timeline)
     print(f"    Phase 3 recovery: prompt={r_recovery['prompt_tokens']}, "
           f"cached={r_recovery['cached_tokens']}, ttft={r_recovery['ttft_ms']}ms")
@@ -407,7 +434,7 @@ async def run_4_5(run_id: int, texts: dict, config: str):
         "prometheus_delta": compute_prometheus_delta(prom_before, prom_after),
         "timeline": timeline_data,
     }
-    save_run(EXPERIMENT_DIR_NAME, run_id, data)
+    save_run(EXPERIMENT_DIR_NAME, run_id, data, suffix=f"4.5_{config}")
 
     hit_rate = r_recovery["cached_tokens"] / r_recovery["prompt_tokens"] if r_recovery["prompt_tokens"] > 0 else 0
     print(f"\n  Recovery analysis (offload={config}):")
@@ -534,7 +561,7 @@ async def run_4_6(run_id: int, config: str):
         "prometheus_delta": compute_prometheus_delta(prom_before, prom_after),
         "timeline": timeline_data,
     }
-    save_run(EXPERIMENT_DIR_NAME, run_id, data)
+    save_run(EXPERIMENT_DIR_NAME, run_id, data, suffix=f"4.6_{config}")
 
     print(f"\n  Three-path TTFT comparison (offload={config}):")
     print(f"    GPU direct hit:    {gpu_hit_ttft:.0f}ms (cached={r_gpu_hit['cached_tokens']})")
@@ -561,6 +588,7 @@ async def main():
                         required=True, help="Sub-experiment to run")
     parser.add_argument("--config", choices=["on", "off"], default=None,
                         help="Offloading config (required for 4.5 and 4.6)")
+    parser.add_argument("--num-runs", type=int, default=None, help="Override NUM_RUNS")
     args = parser.parse_args()
 
     # 验证 4.5/4.6 需要 --config
@@ -570,7 +598,7 @@ async def main():
     save_config()
     await wait_for_server()
 
-    for i in range(1, NUM_RUNS + 1):
+    for i in range(1, (args.num_runs or NUM_RUNS) + 1):
         print(f"\n{'='*50}")
         print(f"Run {i}/{NUM_RUNS} (subexp={args.subexp})"
               + (f", config={args.config}" if args.config else ""))
@@ -595,8 +623,7 @@ async def main():
             await run_4_6(i, args.config)
 
         if i < NUM_RUNS:
-            print("\n⚠️  请重启 vLLM server 后按 Enter 继续...")
-            input()
+            print("  → Restarting server (auto mode)...")
 
     print(f"\n{'='*50}")
     print("Summarizing...")

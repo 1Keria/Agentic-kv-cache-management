@@ -103,18 +103,17 @@ async def run_exp2(run_id: int):
                   f"actual_waste={r['actual_waste_tokens']}")
 
 
-async def main():
+async def main(num_runs=None):
     save_config()
     await wait_for_server()
 
-    for i in range(1, NUM_RUNS + 1):
+    for i in range(1, (num_runs or NUM_RUNS) + 1):
         print(f"\n{'='*50}")
         print(f"Run {i}/{NUM_RUNS}")
         print(f"{'='*50}")
         await run_exp2(i)
         if i < NUM_RUNS:
-            print("\n⚠️  请重启 vLLM server 后按 Enter 继续...")
-            input()
+            print("  → Restarting server (auto mode)...")
 
     print(f"\n{'='*50}")
     print("Summarizing...")
@@ -122,4 +121,8 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    import argparse as _argparse
+    _parser = _argparse.ArgumentParser()
+    _parser.add_argument("--num-runs", type=int, default=None)
+    _args = _parser.parse_args()
+    asyncio.run(main(num_runs=_args.num_runs))

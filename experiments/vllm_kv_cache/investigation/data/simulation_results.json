@@ -1,0 +1,217 @@
+{
+  "block_size": 16,
+  "num_requests": 2048,
+  "measurement_requests": 1024,
+  "total_unique_blocks": 87265,
+  "warmup_fraction": 0.5,
+  "capacities": [
+    100,
+    200,
+    500,
+    1000,
+    2000,
+    2750,
+    5000,
+    10000
+  ],
+  "results": {
+    "fifo": [
+      {
+        "capacity_blocks": 100,
+        "capacity_tokens": 1600,
+        "hit_tokens": 0,
+        "total_tokens": 24483504,
+        "hit_rate": 0.0,
+        "sim_time_s": 0.24
+      },
+      {
+        "capacity_blocks": 200,
+        "capacity_tokens": 3200,
+        "hit_tokens": 0,
+        "total_tokens": 24483504,
+        "hit_rate": 0.0,
+        "sim_time_s": 0.26
+      },
+      {
+        "capacity_blocks": 500,
+        "capacity_tokens": 8000,
+        "hit_tokens": 0,
+        "total_tokens": 24483504,
+        "hit_rate": 0.0,
+        "sim_time_s": 0.32
+      },
+      {
+        "capacity_blocks": 1000,
+        "capacity_tokens": 16000,
+        "hit_tokens": 3139104,
+        "total_tokens": 24483504,
+        "hit_rate": 0.1282,
+        "sim_time_s": 0.35
+      },
+      {
+        "capacity_blocks": 2000,
+        "capacity_tokens": 32000,
+        "hit_tokens": 15859360,
+        "total_tokens": 24483504,
+        "hit_rate": 0.6478,
+        "sim_time_s": 0.23
+      },
+      {
+        "capacity_blocks": 2750,
+        "capacity_tokens": 44000,
+        "hit_tokens": 22384208,
+        "total_tokens": 24483504,
+        "hit_rate": 0.9143,
+        "sim_time_s": 0.14
+      },
+      {
+        "capacity_blocks": 5000,
+        "capacity_tokens": 80000,
+        "hit_tokens": 23692736,
+        "total_tokens": 24483504,
+        "hit_rate": 0.9677,
+        "sim_time_s": 0.13
+      },
+      {
+        "capacity_blocks": 10000,
+        "capacity_tokens": 160000,
+        "hit_tokens": 23731472,
+        "total_tokens": 24483504,
+        "hit_rate": 0.9693,
+        "sim_time_s": 0.17
+      }
+    ],
+    "lru": [
+      {
+        "capacity_blocks": 100,
+        "capacity_tokens": 1600,
+        "hit_tokens": 0,
+        "total_tokens": 24483504,
+        "hit_rate": 0.0,
+        "sim_time_s": 4.59
+      },
+      {
+        "capacity_blocks": 200,
+        "capacity_tokens": 3200,
+        "hit_tokens": 0,
+        "total_tokens": 24483504,
+        "hit_rate": 0.0,
+        "sim_time_s": 8.76
+      },
+      {
+        "capacity_blocks": 500,
+        "capacity_tokens": 8000,
+        "hit_tokens": 0,
+        "total_tokens": 24483504,
+        "hit_rate": 0.0,
+        "sim_time_s": 21.88
+      },
+      {
+        "capacity_blocks": 1000,
+        "capacity_tokens": 16000,
+        "hit_tokens": 3139104,
+        "total_tokens": 24483504,
+        "hit_rate": 0.1282,
+        "sim_time_s": 38.83
+      },
+      {
+        "capacity_blocks": 2000,
+        "capacity_tokens": 32000,
+        "hit_tokens": 14565472,
+        "total_tokens": 24483504,
+        "hit_rate": 0.5949,
+        "sim_time_s": 35.96
+      },
+      {
+        "capacity_blocks": 2750,
+        "capacity_tokens": 44000,
+        "hit_tokens": 21913408,
+        "total_tokens": 24483504,
+        "hit_rate": 0.895,
+        "sim_time_s": 12.76
+      },
+      {
+        "capacity_blocks": 5000,
+        "capacity_tokens": 80000,
+        "hit_tokens": 23762432,
+        "total_tokens": 24483504,
+        "hit_rate": 0.9705,
+        "sim_time_s": 6.73
+      },
+      {
+        "capacity_blocks": 10000,
+        "capacity_tokens": 160000,
+        "hit_tokens": 23762448,
+        "total_tokens": 24483504,
+        "hit_rate": 0.9705,
+        "sim_time_s": 12.2
+      }
+    ],
+    "optimal": [
+      {
+        "capacity_blocks": 100,
+        "capacity_tokens": 1600,
+        "hit_tokens": 1580832,
+        "total_tokens": 24483504,
+        "hit_rate": 0.0646,
+        "sim_time_s": 38.17
+      },
+      {
+        "capacity_blocks": 200,
+        "capacity_tokens": 3200,
+        "hit_tokens": 3177632,
+        "total_tokens": 24483504,
+        "hit_rate": 0.1298,
+        "sim_time_s": 44.19
+      },
+      {
+        "capacity_blocks": 500,
+        "capacity_tokens": 8000,
+        "hit_tokens": 7968032,
+        "total_tokens": 24483504,
+        "hit_rate": 0.3254,
+        "sim_time_s": 57.37
+      },
+      {
+        "capacity_blocks": 1000,
+        "capacity_tokens": 16000,
+        "hit_tokens": 14903248,
+        "total_tokens": 24483504,
+        "hit_rate": 0.6087,
+        "sim_time_s": 62.01
+      },
+      {
+        "capacity_blocks": 2000,
+        "capacity_tokens": 32000,
+        "hit_tokens": 22214736,
+        "total_tokens": 24483504,
+        "hit_rate": 0.9073,
+        "sim_time_s": 45.21
+      },
+      {
+        "capacity_blocks": 2750,
+        "capacity_tokens": 44000,
+        "hit_tokens": 23607648,
+        "total_tokens": 24483504,
+        "hit_rate": 0.9642,
+        "sim_time_s": 38.04
+      },
+      {
+        "capacity_blocks": 5000,
+        "capacity_tokens": 80000,
+        "hit_tokens": 23762496,
+        "total_tokens": 24483504,
+        "hit_rate": 0.9706,
+        "sim_time_s": 42.28
+      },
+      {
+        "capacity_blocks": 10000,
+        "capacity_tokens": 160000,
+        "hit_tokens": 23762496,
+        "total_tokens": 24483504,
+        "hit_rate": 0.9706,
+        "sim_time_s": 54.67
+      }
+    ]
+  }
+}

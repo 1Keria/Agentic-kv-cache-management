@@ -1,0 +1,65 @@
+{
+  "mooncake_fast25": {
+    "label": "Mooncake FAST25 Tool&Agent Trace",
+    "requests": 23608,
+    "avgInputTokens": 8590,
+    "uniqueBlockRatio": 0.4474,
+    "reuseCeiling": 59.1,
+    "isAgentTrace": false,
+    "dataSource": "[SIMULATED]"
+  },
+  "ragpulse": {
+    "label": "RAGPulse",
+    "requests": 7106,
+    "avgInputTokens": 2944,
+    "uniqueBlockRatio": 0.8204,
+    "reuseCeiling": 17.8,
+    "isAgentTrace": false,
+    "dataSource": "[SIMULATED]"
+  },
+  "lmcache_agentic_sample": {
+    "label": "LMCache Agentic Traces",
+    "requests": 1200,
+    "avgInputTokens": 23475,
+    "uniqueBlockRatio": 0.0353,
+    "reuseCeiling": 99.7,
+    "isAgentTrace": true,
+    "dataSource": "[SIMULATED]"
+  },
+  "bailian_qwen_trace_a": {
+    "label": "Qwen Bailian Trace A",
+    "requests": 43058,
+    "avgInputTokens": 2331,
+    "uniqueBlockRatio": 0.4221,
+    "reuseCeiling": 62.2,
+    "isAgentTrace": false,
+    "dataSource": "[SIMULATED]"
+  },
+  "semianalysis_weka_no_subagents": {
+    "label": "Weka Claude Code",
+    "requests": 136118,
+    "avgInputTokens": 178018,
+    "uniqueBlockRatio": 0.1421,
+    "reuseCeiling": 89.5,
+    "isAgentTrace": true,
+    "dataSource": "[SIMULATED]"
+  },
+  "semianalysis_weka_with_subagents_256k": {
+    "label": "Weka Claude Code + Subagents",
+    "requests": 77858,
+    "avgInputTokens": 122583,
+    "uniqueBlockRatio": 0.0291,
+    "reuseCeiling": 97.2,
+    "isAgentTrace": true,
+    "dataSource": "[SIMULATED]"
+  },
+  "kv_cache_tester_claude_code": {
+    "label": "kv-cache-tester Claude Code",
+    "requests": 59937,
+    "avgInputTokens": 138737,
+    "uniqueBlockRatio": 0.0326,
+    "reuseCeiling": 97.5,
+    "isAgentTrace": true,
+    "dataSource": "[SIMULATED]"
+  }
+}

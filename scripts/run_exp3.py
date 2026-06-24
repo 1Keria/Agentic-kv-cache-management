@@ -26,10 +26,11 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from exp_utils import (
-    make_text_with_token_count, make_messages, send_and_record,
+    make_text_with_token_count, make_messages, make_layered_messages, send_and_record,
     save_run, save_config, summarize_runs, get_prometheus_metrics,
     compute_prometheus_delta, wait_for_server, BLOCK_SIZE,
     KVTimelineCollector,
+    get_real_l0_text, get_real_l1_text,
 )
 
 PREFIX_A_TOKENS = 8000   # prefix_A 长度
@@ -49,7 +50,14 @@ async def run_exp3(run_id: int, config: str):
     exp_name = f"exp3_offload_{config}"
     print(f"  Config: offloading={'ON (8 GiB)' if config == 'on' else 'OFF'}")
 
-    prefix_a = make_text_with_token_count(PREFIX_A_TOKENS, seed=0)
+    # 优先使用真实 L0 作为 prefix（如果可用）
+    real_l0 = get_real_l0_text()
+    if real_l0:
+        prefix_a = real_l0
+        print(f"  Using REAL L0 as prefix_A from LMCache traces ({len(prefix_a)} chars)")
+    else:
+        prefix_a = make_text_with_token_count(PREFIX_A_TOKENS, seed=0)
+        print(f"  Using SYNTHETIC prefix_A ({PREFIX_A_TOKENS} tokens)")
     unique_a = make_text_with_token_count(UNIQUE_TOKENS, seed=1)
     unique_c = make_text_with_token_count(UNIQUE_TOKENS, seed=2)
 
@@ -143,6 +151,7 @@ async def main():
     parser = argparse.ArgumentParser(description="Experiment 3: KV Offloading Effect Comparison")
     parser.add_argument("--config", choices=["on", "off"], required=True,
                         help="Offloading config: 'on' (8 GiB) or 'off' (no offloading)")
+    parser.add_argument("--num-runs", type=int, default=None, help="Override NUM_RUNS")
     args = parser.parse_args()
 
     save_config()
@@ -150,14 +159,13 @@ async def main():
 
     exp_name = f"exp3_offload_{args.config}"
 
-    for i in range(1, NUM_RUNS + 1):
+    for i in range(1, (args.num_runs or NUM_RUNS) + 1):
         print(f"\n{'='*50}")
         print(f"Run {i}/{NUM_RUNS} (offload={args.config})")
         print(f"{'='*50}")
         await run_exp3(i, args.config)
         if i < NUM_RUNS:
-            print("\n⚠️  请重启 vLLM server 后按 Enter 继续...")
-            input()
+            print("  → Restarting server (auto mode)...")
 
     print(f"\n{'='*50}")
     print("Summarizing...")

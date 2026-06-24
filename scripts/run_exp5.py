@@ -31,10 +31,11 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from exp_utils import (
-    make_text_with_token_count, make_messages, send_and_record,
+    make_text_with_token_count, make_layered_messages, send_and_record,
     save_run, save_config, summarize_runs, get_prometheus_metrics,
     compute_prometheus_delta, wait_for_server, BLOCK_SIZE,
     KVTimelineCollector,
+    get_real_l0_text, get_real_l1_text,
 )
 
 # Token 配置（与 exp4 一致）
@@ -60,13 +61,18 @@ async def run_exp5(run_id: int, run_type: str):
     print(f"  Run type: {'Default LRU' if is_lru else 'Agent-Aware (simulated)'}")
     print(f"  Astroid sessions in Phase 2: {astroid_count}")
 
-    # 构造各层文本
-    l0 = make_text_with_token_count(L0_TOKENS, seed=0)
-    l1_sqlfluff = make_text_with_token_count(L1_SQLFLUFF_TOKENS, seed=10)
-    l1_astroid = make_text_with_token_count(L1_ASTROID_TOKENS, seed=11)
+    # 构造各层文本（优先使用真实 Agent prompt）
+    real_l0 = get_real_l0_text()
+    l0 = real_l0 if real_l0 else make_text_with_token_count(L0_TOKENS, seed=0)
 
-    sqlfluff_prefix = l0 + l1_sqlfluff
-    astroid_prefix = l0 + l1_astroid
+    real_l1_django = get_real_l1_text("django")
+    l1_sqlfluff = real_l1_django if real_l1_django else make_text_with_token_count(L1_SQLFLUFF_TOKENS, seed=10)
+
+    real_l1_sympy = get_real_l1_text("sympy")
+    l1_astroid = real_l1_sympy if real_l1_sympy else make_text_with_token_count(L1_ASTROID_TOKENS, seed=11)
+
+    sqlfluff_prefix = l0 + "\n" + l1_sqlfluff
+    astroid_prefix = l0 + "\n" + l1_astroid
 
     # 启动 Timeline 采集
     timeline = KVTimelineCollector(interval=0.5)
@@ -79,7 +85,7 @@ async def run_exp5(run_id: int, run_type: str):
     phase1_results = []
     for i in range(3):
         l2 = make_text_with_token_count(L2_TOKENS, seed=100 + i)
-        r = await send_and_record(make_messages(sqlfluff_prefix, l2),
+        r = await send_and_record(make_layered_messages(l0, l1_sqlfluff, l2),
                                    f"sqlfluff_T1_{i}",
                                    timeline=timeline)
         phase1_results.append(r)
@@ -92,7 +98,7 @@ async def run_exp5(run_id: int, run_type: str):
     phase2_results = []
     for i in range(astroid_count):
         l2 = make_text_with_token_count(L2_TOKENS, seed=200 + i)
-        r = await send_and_record(make_messages(astroid_prefix, l2),
+        r = await send_and_record(make_layered_messages(l0, l1_astroid, l2),
                                    f"astroid_T1_{i}",
                                    timeline=timeline)
         phase2_results.append(r)
@@ -108,7 +114,7 @@ async def run_exp5(run_id: int, run_type: str):
     timeline.record_event("phase_start", "phase3")
     l2_t2 = make_text_with_token_count(L2_TOKENS, seed=300)
     r_t2 = await send_and_record(
-        make_messages(sqlfluff_prefix, l2_t2), "sqlfluff_T2",
+        make_layered_messages(l0, l1_sqlfluff, l2_t2), "sqlfluff_T2",
         timeline=timeline)
     print(f"    Phase 3 sqlfluff_T2: prompt={r_t2['prompt_tokens']}, "
           f"cached={r_t2['cached_tokens']}, ttft={r_t2['ttft_ms']}ms")
@@ -157,6 +163,7 @@ async def main():
     parser = argparse.ArgumentParser(description="Experiment 5: Agent-Aware Eviction Simulation")
     parser.add_argument("--run", choices=["lru", "aware"], required=True,
                         help="Run type: 'lru' (default LRU) or 'aware' (agent-aware simulated)")
+    parser.add_argument("--num-runs", type=int, default=None, help="Override NUM_RUNS")
     args = parser.parse_args()
 
     save_config()
@@ -164,14 +171,13 @@ async def main():
 
     exp_name = f"exp5_{args.run}_eviction"
 
-    for i in range(1, NUM_RUNS + 1):
+    for i in range(1, (args.num_runs or NUM_RUNS) + 1):
         print(f"\n{'='*50}")
         print(f"Run {i}/{NUM_RUNS} (type={args.run})")
         print(f"{'='*50}")
         await run_exp5(i, args.run)
         if i < NUM_RUNS:
-            print("\n⚠️  请重启 vLLM server 后按 Enter 继续...")
-            input()
+            print("  → Restarting server (auto mode)...")
 
     print(f"\n{'='*50}")
     print("Summarizing...")
