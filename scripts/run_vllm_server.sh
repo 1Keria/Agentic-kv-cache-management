@@ -20,7 +20,10 @@
 #   --watermark 0.02                 预留 2% KV 空间，避免频繁驱逐-重算抖动
 #   --enable-chunked-prefill         启用分块 prefill（长 prompt 不阻塞短请求）
 
-export LD_LIBRARY_PATH=/usr/local/cuda-13.0/compat:$LD_LIBRARY_PATH
+# 注意：不要添加 /usr/local/cuda-13.0/compat 到 LD_LIBRARY_PATH！
+# 该目录包含旧版 libcuda.so (580.95.05)，会覆盖系统驱动 (595.58.03)，
+# 导致 CUDA Error 803: "unsupported display driver / cuda driver combination"
+# 系统驱动的 libcuda.so 在 /usr/lib/x86_64-linux-gnu/ 中，无需额外路径。
 
 GPU_UTIL=${1:-0.3}
 PORT=${2:-8000}

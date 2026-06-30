@@ -1,0 +1,10 @@
+{
+  "serial_cached": 10072,
+  "concurrent_cached": [
+    8521,
+    8517,
+    8521
+  ],
+  "serial_after_cached": 10072,
+  "concurrent_avg_cached": 8519.666666666666
+}

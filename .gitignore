@@ -18,7 +18,12 @@ experiments/vllm_kv_cache/metrics_snapshot_*.json
 experiments/vllm_kv_cache/lmcache_traces/
 experiments/vllm_kv_cache/*.log
 experiments/vllm_kv_cache/server_log*.log
+# SGLang experiment runtime outputs
+experiments/sglang_kv_cache/*.log
+experiments/sglang_kv_cache/server_log*.log
 # Unrelated local files
 OSINT/
+# Local convenience symlinks (absolute paths)
+repos/serving_frameworks/
 
 

@@ -1,0 +1,54 @@
+{
+  "requests": [
+    {
+      "label": "django-t0",
+      "ttft_ms": 579.7,
+      "total_ms": 918.3,
+      "prompt_tokens": 10073,
+      "cached_tokens": 0,
+      "hit_rate": 0.0,
+      "completion_tokens": 50,
+      "response_preview": "<think>\nOkay, let's tackle this issue. The user wants to fix the URLValidator in Django to reject in"
+    },
+    {
+      "label": "django-t1",
+      "ttft_ms": 139.5,
+      "total_ms": 479.0,
+      "prompt_tokens": 10101,
+      "cached_tokens": 10071,
+      "hit_rate": 0.997,
+      "completion_tokens": 50,
+      "response_preview": "<think>\nOkay, the user is trying to fix an issue in the Django repository where the URLValidator isn"
+    },
+    {
+      "label": "django-t2",
+      "ttft_ms": 36.9,
+      "total_ms": 377.5,
+      "prompt_tokens": 10346,
+      "cached_tokens": 10101,
+      "hit_rate": 0.9763,
+      "completion_tokens": 50,
+      "response_preview": "<think>\nOkay, the user mentioned they're working on the Django repository and need to fix an issue w"
+    },
+    {
+      "label": "django-t3",
+      "ttft_ms": 70.3,
+      "total_ms": 414.6,
+      "prompt_tokens": 11485,
+      "cached_tokens": 10346,
+      "hit_rate": 0.9008,
+      "completion_tokens": 50,
+      "response_preview": "<think>\nOkay, let's tackle this issue. The user wants to fix the URLValidator in Django to reject in"
+    },
+    {
+      "label": "django-t4",
+      "ttft_ms": 37.2,
+      "total_ms": 380.3,
+      "prompt_tokens": 11630,
+      "cached_tokens": 11485,
+      "hit_rate": 0.9875,
+      "completion_tokens": 50,
+      "response_preview": "<think>\nOkay, let's tackle this issue. The user wants to fix the URLValidator in Django to reject in"
+    }
+  ]
+}
