@@ -1,0 +1,22 @@
+{
+  "search_id": "search_8afe7c8115b84903a7ec1b44bea08369",
+  "session_id": "session_8afe7c8115b84903a7ec1b44bea08369",
+  "status": "ok",
+  "results": [
+    {
+      "url": "http://github.com",
+      "title": "GitHub \u00b7 Change is constant. GitHub keeps you ahead. \u00b7 GitHub",
+      "publish_date": null,
+      "excerpts": [
+        "## Navigation Menu\n\nToggle navigation\n\nSearch or jump to...\n\n# Search code, repositories, users, issues, pull requests...\n\n Resetting focus\n\n# The future of building happens together\n\nTools and trends evolve, but collaboration endures. With GitHub, developers, agents, and code come together on one platform.\n\nEnter your email\n\nSign up for GitHub Try GitHub Copilot\n\n## GitHub features\n\nA demonstration animation of a code editor using GitHub Copilot Chat, where the user requests GitHub Copilot to refactor duplicated logic and extract it into a reusable function for a given code snippet.\n\n* \n* \n* \n* \n* \n\nCode Plan Collaborate Automate Secure\n\nCode\n\nWrite, test, and fix code quickly with GitHub Copilot, from simple boilerplate to complex features.\n\n## GitHub customers\n\n## Accelerate your entire workflow\n\nFrom your first line of code to final deployment, GitHub provides AI and automation tools to help you build and ship better software faster.\n\nA Copilot chat window with the 'Ask' mode enabled.\n\n...\n\nLaunch a full, cloud-based development environment in seconds.\n\nExplore GitHub Codespaces\n\n### Keep momentum on the go\n    Manage projects and assign tasks to Copilot, all from your mobile device.\n\nExplore GitHub Mobile\n\n### Shape your toolchain\n    Extend your stack with apps, actions, and AI models.\n\nExplore GitHub Marketplace\n\n## Built-in application security where found means fixed\n\nUse AI to find and fix vulnerabilities so your team can ship more secure software faster.\n\n### Apply fixes in seconds. Spend less time debugging and more time building features with Copilot Autofix.\n\nExplore GitHub Advanced Security\n\nCopilot Autofix identifies vulnerable code and provides an explanation, together with a secure code suggestion to remediate the vulnerability.\n\nSecurity debt, solved. Leverage security campaigns and Copilot Autofix to reduce application vulnerabilities.\n\nLearn about GitHub Code Security\n\n...\n\nA project management dashboard showing tasks for the \u2018OctoArcade Invaders\u2019 project, with tasks grouped under project phase categories like \u2018Prototype,\u2019 \u2018Beta,\u2019 and \u2018Launch\u2019 in a table layout. One of the columns displays sub-issue progress bars with percentages for each issue.\n\n### Plan with clarity. Organize everything from high-level roadmaps to everyday tasks.\n\n[Explore GitHub Projects](http://github.com/features/issues)\n\n\u201c\n\n> It helps us onboard new software engineers and get them productive right away. We have all our source code, issues, and pull requests in one place... GitHub is a complete platform that frees us from menial tasks and enables us to do our best work.\n\nFabian Faulhaber Application manager at Mercedes-Benz\n\n### Keep track of your tasks\n    Create issues and manage projects with tools that adapt to your code.\n\n[Explore GitHub Issues](http://github.com/features/issues)\n\n### Share ideas and ask questions\nCreate space for open-ended conversations alongside your project.\n\n[Explore GitHub Discussions](http://github.com/features/discussions)\n\n### Review code changes together\n    Assign initial reviews to Copilot for greater speed and quality.\n\nExplore code review\n\n### Fund open source projects\n    Become an open source partner and support the tools and libraries that power your work.\n\nExplore GitHub Sponsors\n\n## From startups to enterprises, GitHub scales with teams of any size in any industry.\n\nBy industry By size By use case\n\nBy industry\n\n* * *\n\nTechnology Figma streamlines development and strengthens security Read customer story\n\nAutomotive Mercedes-Benz standardizes source code and automates onboarding Read customer story\n\nFinancial services Mercado Libre cuts coding time by 50% Read customer story\n\nExplore customer stories\n\n* * *\n\nView all solutions\n\n## Millions of developers and businesses call GitHub home"
+      ]
+    }
+  ],
+  "usage": [
+    {
+      "name": "sku_search",
+      "count": 1
+    }
+  ],
+  "warnings": []
+}

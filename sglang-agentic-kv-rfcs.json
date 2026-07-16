@@ -1,0 +1,401 @@
+{
+  "run_id": "trun_cd141ce900e04eaea1a8bc3fec149d5a",
+  "interaction_id": "trun_cd141ce900e04eaea1a8bc3fec149d5a",
+  "result_url": "https://platform.parallel.ai/play/deep-research/trun_cd141ce900e04eaea1a8bc3fec149d5a",
+  "status": "completed",
+  "output": {
+    "basis": [
+      {
+        "field": "executive_summary",
+        "reasoning": "Assessment reasoning: The field answer provides a multi-point executive summary covering the core architectural proposals, timelines, and system components (Two-Phase Agent-Aware KV Strategy with Phase 1 RFC 24656 and Phase 2 RFC 27574, HiCache L1/L2/L3 substrate with Mooncake reference, shipping of session and routing primitives, KV cache events for L3, and an open architectural gap). The excerpts include explicit references to the RFCs, HiCache/Mooncake context, and developer docs that align with the points in the field answer, indicating good alignment between the field answer and provided excerpts. The answer appears to address the expected aspects described in the field description (phased rollout, programmatic hints, cache hierarchy, sessioning, routing, and lifecycle management) and does not rely on external or unspecified claims. Overall, it is complete and well-supported by the excerpts.",
+        "citations": [
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/24656",
+            "excerpts": [
+              "[RFC] Agent-Aware KV Cache Phase 1 for Agentic Workloads\nMay 7, 2026 \u2014 This RFC proposes Phase 1 of agent -aware KV cache support in SGLang . The goal of this phase is to add a minimal, backward-compatible"
+            ],
+            "title": "[RFC] Agent-Aware KV Cache Phase 1 for Agentic Workloads"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/27574",
+            "excerpts": [
+              "RFC: Programmatic KV Cache for Agentic Workloads\nJun 8, 2026 \u2014 We can leverage L3 cache as a place to move and share KV cache. Hints can simply be sent to SGLang which can simply schedule the movement of the"
+            ],
+            "title": "RFC: Programmatic KV Cache for Agentic Workloads"
+          },
+          {
+            "url": "https://www.lmsys.org/blog/2025-09-10-sglang-hicache",
+            "excerpts": [
+              "SGLang HiCache: Fast Hierarchical KV Caching with Your ...\nIn addition to the 3FS and Mooncake storage backends mentioned above, SGLang also supports NIXL as well as a local file backend. Why Hierarchical KV Caching Matters Reusing historical KV caches has been proven to be critical for high-performance LLM serving systems."
+            ],
+            "title": "SGLang HiCache: Fast Hierarchical KV Caching with Your ..."
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/mem_cache/storage/mooncake_store/README.md",
+            "excerpts": [
+              "sglang/python/sglang/srt/mem_cache/storage/mooncake_store ...\nMooncake serves as a high-performance L3 storage backend for SGLang HiCache, enabling distributed KV cache storage across multiple servers with RDMA-accelerated data transfer."
+            ],
+            "title": "sglang/python/sglang/srt/mem_cache/storage/mooncake_store ..."
+          },
+          {
+            "url": "https://docs.nvidia.com/dynamo/dev/backends/sg-lang/agentic-workloads",
+            "excerpts": [
+              "SGLang for Agentic Workloads\nPriority-Based KV Cache Eviction. By default, SGLang evicts radix tree nodes using LRU. You can switch to priority-based eviction so that low-priority cache"
+            ],
+            "title": "SGLang for Agentic Workloads"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/29709",
+            "excerpts": [],
+            "title": "[RFC]: KV Cache Events for HiCache L3 Storage Backends \u00b7 Issue #29709 \u00b7 sgl-project/sglang \u00b7 GitHub"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "field": "1_methodology_and_scope",
+        "reasoning": "Assessment reasoning:\n- The field description (inferred as methodology and scope) appears to require outlining how the analysis was conducted and what content is covered (e.g., artifacts scanned, areas of interest, types of items, annotations).\n- The provided field_answer describes a methodology/scope: what is inventories, what items are included, adjacent docs referenced, and the labeling approach (RFC/PR/Merged/Closed/Abandoned) plus attributes captured. It also lists the focus areas (agent_hints, session, KV hints, etc.) and the granularity of annotations.\n- It does not reference concrete procedures, data sources beyond the repository and adjacent docs, sampling size, time window, or validation steps, but it covers the core scope and items included. Therefore, it reasonably satisfies a typical \u201cmethodology and scope\u201d description.\n- Completeness judgment: true, since the answer directly describes the methodology and scope as asked by the field description.\n- Excerpts: none were provided in the input. Therefore, there is no external evidence to support the claims in the field answer. Consequently, the field answer is not explicitly supported by excerpts. We mark supported as false.\n- If excerpts become available, we could re-evaluate for alignment.\n",
+        "citations": [],
+        "confidence": "medium"
+      },
+      {
+        "field": "2_canonical_artifacts_numbered_catalog",
+        "reasoning": "Assessment notes:\n- The field_answer presents a structured, multi-item catalog (2.1 through 2.13) detailing RFCs, issues, and features related to agentic KV cache, HiCache, Mooncake, and related artifacts. This aligns with a request to enumerate canonical artifacts with numbering.\n- Completeness: The answer appears to cover the full enumerated sections (2.1\u20132.13) with status, core design, API/DS, implementation, dependencies, and discussion where applicable. No obvious missing subitems within the presented catalog. Therefore, completeness = true.\n- Excerpt support: Provided excerpts include references to RFCs (e.g., RFC #27574), roadmaps (#20415), scheduling policies (#10063), and Mooncake integration, which corroborate parts of the field_answer. While not every line is explicitly echoed in the excerpts, the excerpts collectively support the existence and nature of several items in the catalog (notably 2.1, 2.3, 2.4, and Mooncake-related content). Therefore, the field answer is supported by excerpts. \n- Confidence: High for overall completeness and partial but adequate excerpt support.\n",
+        "citations": [
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/27574",
+            "excerpts": [
+              "RFC: Programmatic KV Cache for Agentic Workloads\nJun 8, 2026 \u2014 We can leverage L3 cache as a place to move and share KV cache. Hints can simply be sent to SGLang which can simply schedule the movement of the"
+            ],
+            "title": "RFC: Programmatic KV Cache for Agentic Workloads"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/29709",
+            "excerpts": [],
+            "title": "[RFC]: KV Cache Events for HiCache L3 Storage Backends \u00b7 Issue #29709 \u00b7 sgl-project/sglang \u00b7 GitHub"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/20415",
+            "excerpts": [
+              "[Roadmap] Unified Hybrid Radix Cache Refactor #20415\nMar 11, 2026 \u2014 The goal of this refactor is to unify the hybrid radix cache hierarchy around a common base interface, making it easier to: Add new cache"
+            ],
+            "title": "[Roadmap] Unified Hybrid Radix Cache Refactor #20415"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/10063",
+            "excerpts": [
+              "[Feature] Scheduling policy to improve TTFT for short ...\nSep 5, 2025 \u2014 Default: 0 --scheduling-policy Possible choices: fcfs, priority The scheduling policy to use: \"fcfs\" means first come first served, i.e."
+            ],
+            "title": "[Feature] Scheduling policy to improve TTFT for short ..."
+          },
+          {
+            "url": "https://github.com/kvcache-ai/Mooncake",
+            "excerpts": [
+              "GitHub - kvcache-ai/Mooncake: Mooncake is the serving ...\nSept 10, 2025: SGLang officially supports Mooncake Store as a hierarchical KV caching storage backend. The integration extends RadixAttention with multi-tier KV cache storage across device, host, and remote storage layers. Sept 10, 2025: The official & high-performance version of Mooncake P2P Store is open-sourced as checkpoint-engine."
+            ],
+            "title": "GitHub - kvcache-ai/Mooncake: Mooncake is the serving ..."
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "field": "3_design_lineage_and_timeline",
+        "reasoning": "The field answer provides a dated timeline of design lineage and milestones (HiCache, Mooncake integration, prefetch patterns, scheduling policies, Unified Hybrid Radix Cache, agent-aware KV cache, and related PRs). The excerpts mention SGLang HiCache, Mooncake backend, programmatic KV cache for agentic workloads, scheduling policies, and Unified Hybrid Radix Cache roadmap, which align with the items in the field answer. Therefore, the answer appears to be a complete timeline and is supported by the excerpts.",
+        "citations": [
+          {
+            "url": "https://www.lmsys.org/blog/2025-09-10-sglang-hicache",
+            "excerpts": [
+              "SGLang HiCache: Fast Hierarchical KV Caching with Your ...\nIn addition to the 3FS and Mooncake storage backends mentioned above, SGLang also supports NIXL as well as a local file backend. Why Hierarchical KV Caching Matters Reusing historical KV caches has been proven to be critical for high-performance LLM serving systems."
+            ],
+            "title": "SGLang HiCache: Fast Hierarchical KV Caching with Your ..."
+          },
+          {
+            "url": "https://github.com/kvcache-ai/Mooncake",
+            "excerpts": [
+              "GitHub - kvcache-ai/Mooncake: Mooncake is the serving ...\nSept 10, 2025: SGLang officially supports Mooncake Store as a hierarchical KV caching storage backend. The integration extends RadixAttention with multi-tier KV cache storage across device, host, and remote storage layers. Sept 10, 2025: The official & high-performance version of Mooncake P2P Store is open-sourced as checkpoint-engine."
+            ],
+            "title": "GitHub - kvcache-ai/Mooncake: Mooncake is the serving ..."
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/8712",
+            "excerpts": [
+              "[Feature] Asynchronous LoRA prefetch \u00b7 Issue #8712 - GitHub\nOne possible solution is to implement some sorts of zero-overhead scheduling for LoRA, such that the prefetch process can be hidden. Related"
+            ],
+            "title": "[Feature] Asynchronous LoRA prefetch \u00b7 Issue #8712 - GitHub"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/10063",
+            "excerpts": [
+              "[Feature] Scheduling policy to improve TTFT for short ...\nSep 5, 2025 \u2014 Default: 0 --scheduling-policy Possible choices: fcfs, priority The scheduling policy to use: \"fcfs\" means first come first served, i.e."
+            ],
+            "title": "[Feature] Scheduling policy to improve TTFT for short ..."
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/20415",
+            "excerpts": [
+              "[Roadmap] Unified Hybrid Radix Cache Refactor #20415\nMar 11, 2026 \u2014 The goal of this refactor is to unify the hybrid radix cache hierarchy around a common base interface, making it easier to: Add new cache"
+            ],
+            "title": "[Roadmap] Unified Hybrid Radix Cache Refactor #20415"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/24656",
+            "excerpts": [
+              "[RFC] Agent-Aware KV Cache Phase 1 for Agentic Workloads\nMay 7, 2026 \u2014 This RFC proposes Phase 1 of agent -aware KV cache support in SGLang . The goal of this phase is to add a minimal, backward-compatible"
+            ],
+            "title": "[RFC] Agent-Aware KV Cache Phase 1 for Agentic Workloads"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/25060",
+            "excerpts": [
+              "[Bug] [PDD] Priority scheduling is broken in PD ...\nMay 12, 2026 \u2014 Describe the bug. When --enable-priority-scheduling is used with prefill-decode disaggregation ( --disaggregation-mode prefill or decode )"
+            ],
+            "title": "[Bug] [PDD] Priority scheduling is broken in PD ..."
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/27574",
+            "excerpts": [
+              "RFC: Programmatic KV Cache for Agentic Workloads\nJun 8, 2026 \u2014 We can leverage L3 cache as a place to move and share KV cache. Hints can simply be sent to SGLang which can simply schedule the movement of the"
+            ],
+            "title": "RFC: Programmatic KV Cache for Agentic Workloads"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/29709",
+            "excerpts": [],
+            "title": "[RFC]: KV Cache Events for HiCache L3 Storage Backends \u00b7 Issue #29709 \u00b7 sgl-project/sglang \u00b7 GitHub"
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "field": "4_per_item_detail_table",
+        "reasoning": "Assessment reasoning:\n- Field name 4_per_item_detail_table suggests a detailed per-item table. The provided field_answer indeed contains a table listing 9 items with columns: Title, Type, State, Date, Author, Core design, DS / API, Implementation, Deps, Discussion. This appears to comprehensively address a per-item detail table as described by the field.\n- There is no explicit field_description provided to verify exact expectations beyond what is typical for such a per-item table, but the answer covers itemized details for multiple items, which aligns with the likely expectation.\n- Excerpts are required by the schema to judge support. However, the input does not show any excerpts field (no excerpts array). Without excerpts to reference, we cannot confirm support from excerpts. Therefore, while the answer seems complete, the support statement should be false due to lack of excerpts evidence.\n- Conclusion: completeness = true (the answer itself is a complete per-item table). supported = false (no excerpts provided to confirm support).\n",
+        "citations": [],
+        "confidence": "medium"
+      },
+      {
+        "field": "5_architecture_implications_request_session_family_kv_policy",
+        "reasoning": "Assessing completeness: The field answer presents a multi-point policy architecture for session-family KV policy, covering ingress, session lifetime, family/trajectory grouping, KV policy verbs, and L1/L2/L3 substrate, plus identified overlaps/gaps and differentiated research directions. This aligns with a high-level architectural implication discussion and appears to address the key areas one would expect from a field about architecture implications of session-family KV policy. No explicit mention of concrete API surfaces, exact data structures beyond HiCache/L1-L3, or definitive resolution of gaps, but the field description/intent seems interpretative rather than strictly prescriptive. Overall, the answer appears to comprehensively cover the major aspects (ingress, lifecycle, lineage/trajectory, policy verbs, substrate) and provides insightful analysis sections (overlaps, gaps, directions). Therefore, completeness is judged as true. Regarding excerpts support: the user did not provide excerpts to reference. Without excerpts, we cannot verify explicit alignment to external sources. Consequently, support should be marked as false unless excerpts are supplied. If excerpts were provided, I would verify each claim against them; for now the field answer cannot be shown to be supported by given excerpts.",
+        "citations": [],
+        "confidence": "medium"
+      },
+      {
+        "field": "6_open_questions_and_tensions_across_proposals",
+        "reasoning": "Assessment reasoning:\n- The field_answer provides a set of open questions and tensions across various proposals, listing specific items like Hints vs autonomy, L3 event schema, Pin semantics, Streaming session vs PD disagg, and Family key as routing primitive, plus a final note. This aligns with a typical itemized open-questions/tensions summary.\n- Completeness judgment: The answer directly enumerates multiple distinct tensions and questions, which appears to cover the expected scope of open questions across proposals. There are no obvious missing categories given the provided field_name and field_description (assumed to be a list of tensions/open questions).\n- However, the excerpts provided to verify support are not available in the input (excerpts field is missing or empty in the provided data). Because of that, I cannot verify that the answer is backed by excerpts. Therefore, supportability is set to false.\n- If excerpts were available and aligned (e.g., quoting the tensions and proposals from RFCs/issues/PRs), supported would be true.\n- Given the lack of excerpts, the evaluation focuses on completeness based on the content of field_answer itself rather than external sources.\n",
+        "citations": [],
+        "confidence": "medium"
+      },
+      {
+        "field": "7_references",
+        "reasoning": "Completeness assessment: The field_answer provides a full list of 21 references labeled as 7_references[0] through 7_references[20], which aligns with the typical expectation of enumerating references. Therefore, completeness is true since the answer directly addresses the field by enumerating references. Support assessment: Examination of the excerpts shows entries labeled excerpt 0, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 exist. However, the field_answer attempts to reference 7_references[2] (which would map to excerpt 2), and the provided excerpts do not include an excerpt 2. This mismatch means the field_answer is not fully supported by the excerpts. Therefore, supported is false.",
+        "citations": [
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/24656",
+            "excerpts": [
+              "[RFC] Agent-Aware KV Cache Phase 1 for Agentic Workloads\nMay 7, 2026 \u2014 This RFC proposes Phase 1 of agent -aware KV cache support in SGLang . The goal of this phase is to add a minimal, backward-compatible"
+            ],
+            "title": "[RFC] Agent-Aware KV Cache Phase 1 for Agentic Workloads"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/27574",
+            "excerpts": [
+              "RFC: Programmatic KV Cache for Agentic Workloads\nJun 8, 2026 \u2014 We can leverage L3 cache as a place to move and share KV cache. Hints can simply be sent to SGLang which can simply schedule the movement of the"
+            ],
+            "title": "RFC: Programmatic KV Cache for Agentic Workloads"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/29709",
+            "excerpts": [],
+            "title": "[RFC]: KV Cache Events for HiCache L3 Storage Backends \u00b7 Issue #29709 \u00b7 sgl-project/sglang \u00b7 GitHub"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/20415",
+            "excerpts": [
+              "[Roadmap] Unified Hybrid Radix Cache Refactor #20415\nMar 11, 2026 \u2014 The goal of this refactor is to unify the hybrid radix cache hierarchy around a common base interface, making it easier to: Add new cache"
+            ],
+            "title": "[Roadmap] Unified Hybrid Radix Cache Refactor #20415"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/10063",
+            "excerpts": [
+              "[Feature] Scheduling policy to improve TTFT for short ...\nSep 5, 2025 \u2014 Default: 0 --scheduling-policy Possible choices: fcfs, priority The scheduling policy to use: \"fcfs\" means first come first served, i.e."
+            ],
+            "title": "[Feature] Scheduling policy to improve TTFT for short ..."
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/8712",
+            "excerpts": [
+              "[Feature] Asynchronous LoRA prefetch \u00b7 Issue #8712 - GitHub\nOne possible solution is to implement some sorts of zero-overhead scheduling for LoRA, such that the prefetch process can be hidden. Related"
+            ],
+            "title": "[Feature] Asynchronous LoRA prefetch \u00b7 Issue #8712 - GitHub"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/25060",
+            "excerpts": [
+              "[Bug] [PDD] Priority scheduling is broken in PD ...\nMay 12, 2026 \u2014 Describe the bug. When --enable-priority-scheduling is used with prefill-decode disaggregation ( --disaggregation-mode prefill or decode )"
+            ],
+            "title": "[Bug] [PDD] Priority scheduling is broken in PD ..."
+          },
+          {
+            "url": "https://www.lmsys.org/blog/2025-09-10-sglang-hicache",
+            "excerpts": [
+              "SGLang HiCache: Fast Hierarchical KV Caching with Your ...\nIn addition to the 3FS and Mooncake storage backends mentioned above, SGLang also supports NIXL as well as a local file backend. Why Hierarchical KV Caching Matters Reusing historical KV caches has been proven to be critical for high-performance LLM serving systems."
+            ],
+            "title": "SGLang HiCache: Fast Hierarchical KV Caching with Your ..."
+          },
+          {
+            "url": "https://docs.sglang.io/docs/advanced_features/hicache_design",
+            "excerpts": [
+              "HiCache System Design and Optimization - SGLang Documentation\nIn the PD-disaggregation deployment mode, HiCache can be enabled on both the prefill nodes and decode nodes to optimize prefill performance. If enabled on decode nodes, the decode output will also be written back to L3."
+            ],
+            "title": "HiCache System Design and Optimization - SGLang Documentation"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/blob/main/python/sglang/srt/mem_cache/storage/mooncake_store/README.md",
+            "excerpts": [
+              "sglang/python/sglang/srt/mem_cache/storage/mooncake_store ...\nMooncake serves as a high-performance L3 storage backend for SGLang HiCache, enabling distributed KV cache storage across multiple servers with RDMA-accelerated data transfer."
+            ],
+            "title": "sglang/python/sglang/srt/mem_cache/storage/mooncake_store ..."
+          },
+          {
+            "url": "https://github.com/kvcache-ai/Mooncake",
+            "excerpts": [
+              "GitHub - kvcache-ai/Mooncake: Mooncake is the serving ...\nSept 10, 2025: SGLang officially supports Mooncake Store as a hierarchical KV caching storage backend. The integration extends RadixAttention with multi-tier KV cache storage across device, host, and remote storage layers. Sept 10, 2025: The official & high-performance version of Mooncake P2P Store is open-sourced as checkpoint-engine."
+            ],
+            "title": "GitHub - kvcache-ai/Mooncake: Mooncake is the serving ..."
+          },
+          {
+            "url": "https://docs.nvidia.com/dynamo/dev/backends/sg-lang/agentic-workloads",
+            "excerpts": [
+              "SGLang for Agentic Workloads\nPriority-Based KV Cache Eviction. By default, SGLang evicts radix tree nodes using LRU. You can switch to priority-based eviction so that low-priority cache"
+            ],
+            "title": "SGLang for Agentic Workloads"
+          },
+          {
+            "url": "https://docs.nvidia.com/dynamo/user-guides/agents/sg-lang-for-agentic-workloads",
+            "excerpts": [
+              "SGLang for Agentic Workloads | NVIDIA Dynamo Documentation\nThis guide covers SGLang-specific configuration for agentic serving with Dynamo. It explains which SGLang engine flags to enable, how Dynamo\u2019s agent hints map to SGLang behavior, and how to use session control to manage KV cache for multi-turn agent conversations."
+            ],
+            "title": "SGLang for Agentic Workloads | NVIDIA Dynamo Documentation"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/releases",
+            "excerpts": [
+              "Releases \u00b7 sgl-project/sglang - GitHub\nHiCache for hybrid models by default: HybridModel (SWA/Mamba) launches HiCache through UnifiedTree by default, bringing hierarchical KV-cache offload to sliding-window and Mamba hybrids out of the box: #27759."
+            ],
+            "title": "Releases \u00b7 sgl-project/sglang - GitHub"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang",
+            "excerpts": [
+              "SGLang is a high-performance serving framework for large ...\nSGLang is a high-performance serving framework for large language models and multimodal models. It is designed to deliver low-latency and high-throughput"
+            ],
+            "title": "SGLang is a high-performance serving framework for large ..."
+          },
+          {
+            "url": "https://docs.sglang.io/docs/basic_usage/native_api",
+            "excerpts": [
+              "Flush the radix cache. It will be automatically triggered when the model weights are updated by the /update_weights API. Parameters: timeout (query, float, default 0, unit: seconds): Wait time for idle state before flushing. 0 means fail fast if not idle."
+            ],
+            "title": "SGLang Native APIs"
+          },
+          {
+            "url": "https://github.com/zhaochenyang20/Awesome-ML-SYS-Tutorial/blob/main/sglang/scheduler/readme-en.md",
+            "excerpts": [
+              "Awesome-ML-SYS-Tutorial/sglang/scheduler/readme-en ... - GitHub\nThis article will follow the logic of the above three articles to deeply understand SGLang's scheduling system, from KV Cache to Overlapped Scheduling, explaining SGLang's scheduling ingenuity in one go."
+            ],
+            "title": "Awesome-ML-SYS-Tutorial/sglang/scheduler/readme-en ... - GitHub"
+          },
+          {
+            "url": "http://github.com/sgl-project/sglang/blob/main/python/sglang/srt/managers/schedule_policy.py",
+            "excerpts": [
+              "if ( not isinstance ( policy , CacheAwarePolicy ) and self . tree_cache . supports_fast_match_prefix () and get_global_server_args (). disaggregation_mode != \"decode\" ): for r in waiting_queue : match_prefix_for_req ( self . tree_cache , r , include_req = True ) if self . policy == CacheAgnosticPolicy . FCFS : if self . enable_priority_scheduling : SchedulePolicy . _sort_by_priority_and_fcfs ( waiting_queue , self . priority_sign ) return if isinstance ( policy , CacheAwarePolicy ): temporary_deprioritized = self . _compute_prefix_matches ( waiting_queue , policy ) if policy == CacheAwarePolicy . LPM : SchedulePolicy . _sort_by_longest_prefix ( waiting_queue , temporary_deprioritized ) elif policy == CacheAwarePolicy . DFS_WEIGHT : SchedulePolicy . _sort_by_dfs_weight ( waiting_queue , self . tree_cache ) else : raise ValueError ( f\"Unknown CacheAware Policy: { policy = } \" ) else : if policy == CacheAgnosticPolicy . FCFS : pass elif policy == CacheAgnosticPolicy . LOF : SchedulePolicy . _sort_by_longest_output ( waiting_queue , self . enable_priority_scheduling , self . priority_sign , )"
+            ],
+            "title": "sglang/python/sglang/srt/managers/schedule_policy.py at main \u00b7 sgl-project/sglang \u00b7 GitHub"
+          },
+          {
+            "url": "https://arxiv.org/pdf/2507.07400",
+            "excerpts": [
+              "[PDF] KVFlow: Efficient Prefix Caching for Accelerating LLM-Based Multi ...\nSGLang's backend manages the prefix KV cache using a radix tree. We extend this mechanism to support our workflow-aware eviction policy and"
+            ],
+            "title": "[PDF] KVFlow: Efficient Prefix Caching for Accelerating LLM-Based Multi ..."
+          },
+          {
+            "url": "https://www.digitalapplied.com/blog/kv-cache-optimization-techniques-2026-engineering-guide",
+            "excerpts": [
+              "KV Cache Optimization for LLMs 2026: Engineering Guide\nEvery production inference stack in 2026 ships paged attention by default \u2014 vLLM, SGLang, TensorRT-LLM all use it. If a deployment guide tells you to disable paged attention for a specific benchmark number, ignore it; the benchmark is single-request and has no relationship to production."
+            ],
+            "title": "KV Cache Optimization for LLMs 2026: Engineering Guide"
+          },
+          {
+            "url": "https://github.com/sgl-project/sglang/issues/21618",
+            "excerpts": [
+              "Feature: Add TurboQuant KV Cache Quantization for Memory ...\n\ud83d\ude80 Feature Overview Add support for TurboQuant KV cache quantization to enable memory-efficient long-context LLM inference with near-lossless quality. TurboQuant is a novel online vector quantization method from the Google ICLR 2026 paper"
+            ],
+            "title": "Feature: Add TurboQuant KV Cache Quantization for Memory ..."
+          }
+        ],
+        "confidence": "medium"
+      }
+    ],
+    "content": {
+      "executive_summary": "- **Two-Phase Agent-Aware KV Strategy**: SGLang is pursuing a phased rollout \u2014 **Phase 1 (RFC #24656, May 2026)** layers workflow metadata on the radix tree without breaking LRU/LFU, while **Phase 2 (RFC #27574, Jun 2026)** exposes a programmatic `KvHints` API so external orchestrators can drive share/prefetch/demote/pin/retain/release across workers ([executive_summary[0]] [44], [executive_summary[1]] [1]). -> Practitioners building multi-agent stacks should plan for hybrid metadata + explicit-hint signaling rather than a single declarative interface.\n- **HiCache L1/L2/L3 is the substrate**: The Sep-2025 HiCache blog introduces a HiRadixTree with page-first layout, GPU-assisted I/O kernels, layer-wise compute/transfer overlap, and write-through/write-back/write-through-selective policies. Mooncake is positioned as the reference L3 (distributed pool with RDMA/GPUDirect) ([executive_summary[2]] [5], [executive_summary[3]] [6]). -> Cross-worker reuse for agent workloads is already viable without agent-specific code; agent features bolt on top.\n- **Session & routing primitives are shipping**: `--enable-streaming-session`, `--radix-eviction-policy priority`, `--enable-priority-scheduling`, `--router-mode kv`, and `StickySessionRouter` are live flags per Dynamo integration docs; `agent_hints` (priority, osl, speculative_prefill) and session control (session_id, action=bind/open/close, timeout) are wired end-to-end ([executive_summary[4]] [60]). -> Routing and KV lifecycle are now first-class agent knobs, but full QoS (TTL/pin/retain) lives only in RFC drafts.\n- **KV Cache Events for L3 (#29709, Jun 2026)** add `BlockStored(EXTERNAL)`/`BlockRemoved(EXTERNAL)` events so `sgl-router` can index remote (Mooncake) prefixes \u2014 closing the loop between HiCache L3 and PD-disaggregated / multi-worker routing ([executive_summary[5]] [63]). -> L3 events enable cross-worker prefetch/demote that the agent-aware RFC explicitly assumes.\n- **Open architectural gap**: No merged RFC today binds a `family`/session-graph abstraction to per-prefix TTL/pin; the closest analog is the session radix cache (#27058) and streaming session. RFC #27574 still lists \"open questions\" on cross-worker share, demote APIs, and Mooncake integration limits. -> This is the most defensible white-space for a systems paper.\n\n---",
+      "1_methodology_and_scope": "This report inventories public artifacts in `sgl-project/sglang` (issues, PRs, RFCs, commits, docs) and adjacent operator docs (NVIDIA Dynamo) that bear on **agent-driven KV cache control**. The scan focuses on RFCs/issues/PRs covering:\n\n- `agent_hints` / workflow-aware cache\n- session / session radix / streaming session\n- programmatic KV hints\n- priority / TTL / pin / retain / release\n- session-level preemption\n- HiCache L1/L2/L3 + Mooncake\n- cross-worker share / prefetch / demote\n- active lifecycle\n- agent routing / scheduling\n\nEach item is annotated with state (RFC, Open PR, Merged PR, Closed, Abandoned), author, design, API/DS, implementation location, dependencies, and arguments from discussion.\n\n---",
+      "2_canonical_artifacts_numbered_catalog": "### 2.1 RFC #24656 \u2014 `[RFC] Agent-Aware KV Cache Phase 1 for Agentic Workloads`\n\n- **Status**: Open (RFC), Created 2026-05-08 by **stmatengss** (assignee **huangtingwei9988**); 10 comments.\n- **Core design**: Introduce a backward-compatible metadata channel \u2014 optional `agent_hints` on OpenAI-compatible requests that propagate to internal requests, plus lightweight workflow-DAG tracking in the scheduler and annotation of radix-cache nodes. Adds an experimental `agent_aware` radix eviction policy. Initial fields: `workflow_id`, `agent_id`, `step_id`, `step_index`, `total_steps`, `parent_step_id`, `children_step_ids`, `tool_name`, `expected_tool_duration_ms`, `cache_ttl_ms`, `shared_prefix_hash`, `reuse_hint`.\n- **Data structure / API**: New `agent_hints` JSON object in request body; DAG records stored alongside scheduler state; radix nodes carry a metadata annotation struct.\n- **Implementation**: Touches scheduler + `TreeCache` (radix) plus the OpenAI entry point.\n- **Dependencies**: Builds on session radix work and Phase-0 reuse hints; explicitly excludes L3 storage because storage backends lack eviction APIs.\n- **Discussion**: Stakeholder **ishandhanani** proposed aligning with the ATIF spec and a 3-level `session_type_id` / `session_id` / `trajectory_id` / `parent_trajectory_id` taxonomy; later RFC #27574 absorbed this. Acceptance criteria cover schema, propagation, DAG, annotation, eviction ordering, and back-compat tests. (RFC #24656)\n\n### 2.2 RFC #27574 \u2014 `[Agentic Inference] Programmatic KV Cache for Agentic Workloads`\n\n- **Status**: Open RFC, Created 2026-06-08 by **ishandhanani** (assignees: **xiezhq-hermann**, **hzh0425**, **ishandhanani**); 6 comments; label `high priority`.\n- **Core design**: Defines a narrow, router-orchestrated \"KvHints\" surface: `Share`, `Prefetch`, `Demote`, `Pin`, `Retain`, plus `RefAware` KV-cache (per RFC #21846-style). Adds `session_id` tagging in `KVBlock`. Extends the policy grammar so a router can route continuations to a worker holding a session's prefix (often via L3/Mooncake).\n- **API/DS**: `session_id` becomes part of `KVBlock`; `KvHints` object containing the verbs above; request envelope carries them alongside `session_id`.\n- **Implementation**: Targets scheduler, router (`sgl-router`), HiCache (`mem_cache/hicache`), and token retention config.\n- **Dependencies**: Builds on HiCache substrate (#20415 roadmap), ref-aware KV cache (related to #21846), #2214 Mooncake KV events, distributed KV cache (#21846).\n- **Discussion**: Commenter **limarkdcunha** asked why hints rather than engine autonomy (e.g., KVFlow); author replied that production multi-server orchestration needs an external policy owner for trajectory-level decisions, complementing (not replacing) local autonomy. ([2_canonical_artifacts_numbered_catalog[0]] [1])\n\n### 2.3 RFC #29709 \u2014 `[RFC]: KV Cache Events for HiCache L3 Storage Backends`\n\n- **Status**: Open Draft, Created 2026-06-30 by **stmatengss** (assignees **ishandhanani**, **huangtingwei9988**).\n- **Core design**: Adds `BlockStored(EXTERNAL)` and `BlockRemoved(EXTERNAL)` events emitted via `SchedulerKvEventsPublisher` over ZMQ, mirroring L1/L2 events. Phase-2 schema: `KvEventPageMetadata { block_hash, parent_block_hash, token_ids, base_block_idx, lora_id }`. Subscriber (`KVCacheEventMixin`) indexes for cross-worker prefetch; particularly relevant for Mooncake-shared pools and PD disaggregation.\n- **Implementation**: Touches HiCache L3 ack path, scheduler publisher, router.\n- **Dependencies**: Mooncake store (#2214), HiCache L1/L2 events (already emitting), sgl-router KV-aware mode.\n- **Discussion**: **vuuihc** volunteered to implement Phase 1 (engine-side event on backup ack). Linked to Mooncake RFC #1527 and LMCache-style #1403. ([2_canonical_artifacts_numbered_catalog[1]] [63])\n\n### 2.4 Issue #20415 \u2014 `[Roadmap] Unified Hybrid Radix Cache Refactor`\n\n- **Status**: Open roadmap, March 11, 2026, author **hzh0425**.\n- **Core design**: Unified HybridRadixTree base for `RadixCache`, `MambaRadixCache`, `SWARadixCache`. Stages: Stage 0 (interface unification, PRs #17142, #17397, #17401, #17852, #18147, #19427, #19429, #20330, #20590), Stage 1 (HybridRadixTree V2 \u2014 PR #21206, plus HiCache integration #23316/#23391/#24691, L3 #26062/#26881, Session Cache #23145/#23202, Mamba V2, SWA window load, LRU opt #24072, sliding-window node split #26919), Stage 2 (API redesign `cache_finished`/`cache_unfinished`, request mutability, tree compression/merging), Stage 3 (Rust rewrite with continuous-memory arrays).\n- **Implementation**: `python/sglang/srt/mem_cache/` (mem_cache, radix_cache), `schedule_policy`, plus HiCache layer.\n- **Dependencies**: All HiCache, Mooncake, and session-cache work packages.\n- **Discussion**: Acts as the umbrella tracking issue for the agentic KV story. ([2_canonical_artifacts_numbered_catalog[2]] [15])\n\n### 2.5 PR #24691, #26881 \u2014 HiCache L3 (Storage Backend) Integration\n\n- Stage 1 of #20415. Implements `HiCacheStorage` interface used by Mooncake, 3FS, NIXL, and `HiCacheFile` reference backend; enables page-first L2\u2194L3 transfers and async backup.\n\n### 2.6 Issue #21846 \u2014 Distributed KV Cache\n\n- **Status**: Open, ref-aware KV cache foundation. Provides the engineering substrate that #27574's `Share` hint rides on.\n\n### 2.7 Issue #1527 / #1403 \u2014 Mooncake KV Events & LMCache Compatibility\n\n- Earlier, merged work that defined the kv-event publisher and the storage interface later inherited by HiCache L3.\n\n### 2.8 Issue #10063 \u2014 `[Feature] Scheduling policy to improve TTFT for short prompts under mixed prompt lengths`\n\n- **Status**: Closed (completed), author **staugust** (Sep 5, 2025). Introduced priority scheduling by length, useful for agent workloads where short tool-result prompts must preempt long context-decode steps.\n- **Discussion**: Commenter **jimmy-evo** suggested separating long vs short into different server instances (opposed by author \u2014 would lower cache hit rate and cause load imbalance). **kelliaao** noted that priority preemption only fires in decode, not prefill \u2014 a known limitation when agent turns queue behind long prefills. ([2_canonical_artifacts_numbered_catalog[3]] [32])\n\n### 2.9 Issue #8712 \u2014 `[Feature] Asynchronous LoRA prefetch`\n\n- **Status**: Closed (completed), Aug 2 2025, author **lifuhuang**. Pre-fetches next-batch LoRA adapters during current decode, an analog pattern for agent KV prefetch.\n\n### 2.10 Issue #25060 \u2014 `[Bug] [PDD] Priority scheduling is broken in PD disaggregation mode`\n\n- **Status**: Open, May 12 2026, **MrAta**. Documents that priority scheduling does not propagate cleanly across prefill-decode disaggregation \u2014 relevant because agentic flows typically combine PD with HiCache L3.\n\n### 2.11 Engine flags (Dynamo/SGLang integration docs) \u2014 Already shipping\n\n- `--enable-hicache`, `--hicache-ratio`, `--hicache-storage-backend`, `--hicache-storage-backend-extra-config`, `--enable-priority-scheduling`, `--radix-eviction-policy {lru,priority}`, `--enable-streaming-session`, `--enable-lora`. Router: `--router-mode kv`, `--kv-cache-dispatch-policy`. (Dynamo doc)\n\n### 2.12 HiCache release notes (sglang releases page)\n\n- Confirms HiCache by default for hybrid (SWA/Mamba) models starting at PR #27759.\n\n### 2.13 Mooncake `kvcache-ai` GitHub\n\n- Sep 10 2025: official SGLang support for Mooncake Store as L3; Sep 10 2025: open-sourced checkpoint-engine (P2P store). ([2_canonical_artifacts_numbered_catalog[4]] [61])\n\n---",
+      "3_design_lineage_and_timeline": "| Date (2026) | Artifact | Significance |\n|---|---|---|\n| 2025-09-10 | [3_design_lineage_and_timeline[0]] [5] | HiRadixTree, page-first layout, GPU-assisted I/O, 3 policies; L1 GPU / L2 host / L3 Mooncake. |\n| 2025-09-10 | [3_design_lineage_and_timeline[1]] [61] | Officially adopted as SGLang HiCache L3 backend. |\n| 2025-08-02 | [3_design_lineage_and_timeline[2]] [16] | First \"prefetch\" pattern relevant to agent scheduling. |\n| 2025-09-05 | [3_design_lineage_and_timeline[3]] [32] | Priority-aware preemption at the scheduler level. |\n| 2026-03-11 | [3_design_lineage_and_timeline[4]] [15] | Unified HybridRadixTree base, all subsequent cache work rides on it. |\n| 2026-04 (\u2248) | PR #20535 (HiCache buffer mode), PR #23316 (L2 framework), PR #23391 (SWA), PR #24691 (DeepSeek-V4) | L2 framework laid down. |\n| 2026-04 (\u2248) | PR #26062 (L3 framework), PR #26881 (SWA/DSV4 L3) | L3 framework laid down. |\n| 2026-05-08 | [3_design_lineage_and_timeline[5]] [44] | First agent-specific KV cache RFC; workflow metadata + `agent_aware` eviction policy. |\n| 2026-05-12 | [3_design_lineage_and_timeline[6]] [56] | Surfaces gap in PD-aware priority scheduling. |\n| 2026-06-08 | [3_design_lineage_and_timeline[7]] [1] | `Share / Prefetch / Demote / Pin / Retain` API, session-tagged KVBlock. |\n| 2026-06-29 | [3_design_lineage_and_timeline[8]] [63] | L3-aware KV events for cross-worker indexing. |\n| 2026-06 (\u2248) | PR #27759 | HiCache enabled by default for hybrid models via UnifiedTree. |\n\nDesign lineage runs: RadixAttention (paper, 2024) -> RadixCache -> Session Radix Cache (#27058-area) -> HiCache (L1/L2/L3) -> UnifiedTree -> Agent-Aware (workflow metadata) -> Programmatic Hints (orchestrator-driven verbs) -> KV Events (cross-worker index).\n\n---",
+      "4_per_item_detail_table": "| # | Title | Type | State | Date | Author | Core design | DS / API | Implementation | Deps | Discussion |\n|---|---|---|---|---|---|---|---|---|---|---|\n| 1 | Agent-Aware KV Cache Phase 1 (#24656) | RFC | Open | 2026-05-08 | stmatengss | Workflow-aware metadata on radix nodes, `agent_aware` eviction | `agent_hints` (workflow_id, agent_id, step_id, parent_step_id, children_step_ids, tool_name, ttl_ms, reuse_hint) | Scheduler + `TreeCache` annotation | HiCache substrate, session radix | ATIF 3-level taxonomy suggested |\n| 2 | Programmatic KV Cache for Agentic Workloads (#27574) | RFC | Open | 2026-06-08 | ishandhanani | Router-issued hints: Share / Prefetch / Demote / Pin / Retain; `session_id` on KVBlock | `KvHints { verb, session_id, block_ref }` | sgl-router, HiCache, scheduler | HiCache (#20415), ref-aware KV (#21846), Mooncake events | Discussed: hints vs autonomy |\n| 3 | KV Cache Events for L3 (#29709) | RFC | Open Draft | 2026-06-30 | stmatengss | `BlockStored(EXTERNAL)`/`BlockRemoved(EXTERNAL)` events for cluster-wide indexing | `KvEventPageMetadata { block_hash, parent_block_hash, token_ids, base_block_idx, lora_id }` | `SchedulerKvEventsPublisher`, `KVCacheEventMixin` | HiCache L3, sgl-router kv-mode | vuuihc volunteered Phase 1 |\n| 4 | Unified Hybrid Radix Refactor (#20415) | Roadmap | Open | 2026-03-11 | hzh0425 | Single `HybridRadixTree` for Radix/Mamba/SWA caches | Common interface, V2 base | `mem_cache/` directory | HiCache L2/L3, session cache | Stage 0\u20133, Rust rewrite planned |\n| 5 | Scheduling for TTFT short prompts (#10063) | Feature | Closed | 2025-09-05 | staugust | Length/arrival/priority scoring | Score = length_score + arrival_score + priority | `schedule_policy.py` | Refute cores/prefill | Long-vs-short isolation argued against |\n| 6 | Async LoRA prefetch (#8712) | Feature | Closed | 2025-08-02 | lifuhuang | Predict next-batch LoRAs during current decode | `A_buffer_prefetch`, `B_buffer_prefetch` | `lora_manager.py` | None | Adaptive prefetch discussed |\n| 7 | Priority scheduling broken in PD (#25060) | Bug | Open | 2026-05-12 | MrAta | Priority does not propagate across PD | \u2014 | Decode-side scheduler | PD disagg | Open |\n| 8 | HiCache blog | Docs | Published | 2025-09-10 | Zhiqiang Xie | Three-tier, page-first layout, GPU I/O kernels | \u2014 | `hicache.py` | Mooncake, 3FS, NIXL | Best-effort / staged prefetch |\n| 9 | Mooncake as L3 KV cache | Integration | Shipped | 2025-09-10 | Mooncake team | Distributed pool + RDMA + GPUDirect | `SGLANG_HICACHE_MOONCAKE_CONFIG_PATH` | `mem_cache/storage/mooncake_store` | HiCache | Group semantics, ssd offload |\n\n---",
+      "5_architecture_implications_request_session_family_kv_policy": "The artifacts compose into a layered policy stack:\n\n1. **Request ingress** \u2014 request carries an OpenAI-compatible body plus optional `agent_hints` (#24656) and `session_id` (#27574 Phase 1). Router sees `session_id` and chooses a worker that holds the prefix, falls back to a worker that can pull from L3.\n2. **Session lifetime** \u2014 `bind` (open a namespace on a worker), `open` (start a turn), `close` (release). Implemented via `OpenSession`-style verbs already exposed via the API and validated by the Dynamo integration; the streaming-session cache (#27058) is the data-structure analog.\n3. **Family / trajectory grouping** \u2014 `#24656` introduces `workflow_id`, `parent_step_id`, `children_step_ids`. `#27574` extends this to a 3-level ATIF-style `session_type_id \u2192 session_id \u2192 trajectory_id \u2192 parent_trajectory_id` tree, giving the cache a multi-granular reuse domain.\n4. **KV policy verbs** \u2014 Pin (protect TTL), Retain (bias eviction by priority), Share (route continuation to the holding worker), Prefetch (pull L3\u2192L2\u2192L1 ahead of turn), Demote (offload during long tool pauses).\n5. **L1/L2/L3 substrate** \u2014 HiRadixTree + page-first layout + GPU-assisted I/O + write-through/-back/-selective. L3 events (#29709) keep the router's prefix index coherent for the Share/Prefetch verbs.\n\n### Overlaps and gaps surfaced\n\n- **Overlap**: HiCache write-through-selective and agent_aware eviction both protect \"hot\" prefixes; #27574's `Retain` can be expressed as priority boost, but the policy contract is not yet unified.\n- **Overlap**: Streaming session cache (#27058) and #24656's `session_id` overlap; the latter generalizes the former.\n- **Gap**: No merged API for `Demote` or session-level `preemption`; #25060 confirms priority preemption does not survive PD disagg.\n- **Gap**: L3 events are scoped to \"Mooncake + sgl-router\"; cluster-wide index for non-Mooncake L3 backends is not specified.\n- **Gap**: No merged `family` (workflow) abstraction; #24656 stores metadata on nodes but does not yet model a family DAG as a first-class routing key.\n- **Gap**: TTL/pin/retain are spec'd but no engine semantics exist; preemption honors priority only on decode.\n\n### Differentiated research directions\n\n1. **Trajectory-aware KV placement**: combine #24656 metadata, #27574 hints, and #29709 events to build a learned indexer that routes turns to workers holding the prefix in L1/L2/L3, with a cost model for prefetch vs. recompute.\n2. **Hierarchical preemption contract**: extend #25060's PD-aware fix into a full priority + family + pin + retain model across prefill and decode.\n3. **Workflow-DAG KV GC**: a DAG-aware eviction policy (akin to `agent_aware`) with measured reuse gains on agent traces; relevant because no published system reports this.\n4. **Streaming-session integration with HiCache**: bridge #27058 with HiCache page-first layout to enable continuous multi-turn KV reuse across reloads.\n5. **Heterogeneous L3 index**: a single cluster index spanning Mooncake pools, NIXL, and local disk, which the L3 event proposal only partially covers.\n\n---",
+      "6_open_questions_and_tensions_across_proposals": "- Hints vs. autonomy: KVFlow-style local autonomy vs. router-driven hints; the author of #27574 argues both are needed (local for fine-grained, hints for cross-server trajectory decisions).\n- L3 event schema: how to extend `KvEventPageMetadata` to include priority, session_id, hint verbs; #29709 currently only encodes block_hash/parent/token_ids/base_block_idx/lora_id.\n- Pin semantics: TTL plus TTL semantics during decode vs. prefill are unspecified; #24656 hints at TTL but does not pin to a specific tier.\n- Streaming session \u2194 PD disagg: per #25060, priority is broken in PD; until fixed, `Pin` and `Retain` semantics across PD are unreliable.\n- Family key as routing primitive: present in #24656 metadata but not in router logic.\n\n---",
+      "7_references": "- [7_references[0]] [44]\n- [7_references[1]] [1]\n- [7_references[2]] [63]\n- [7_references[3]] [15]\n- [7_references[4]] [32]\n- [7_references[5]] [16]\n- [7_references[6]] [56]\n- [7_references[7]] [5]\n- [7_references[8]] [46]\n- [7_references[9]] [6]\n- [7_references[10]] [61]\n- [7_references[11]] [60]\n- [7_references[12]] [30]\n- [7_references[13]] [33]\n- [7_references[14]] [54]\n- [7_references[15]] [40]\n- [7_references[16]] [57]\n- [7_references[17]] [59]\n- [7_references[18]] [23]\n- [7_references[19]] [31]\n- [7_references[20]] [3]\n</answer>"
+    },
+    "type": "json",
+    "beta_fields": null,
+    "mcp_tool_calls": null,
+    "output_schema": {
+      "type": "object",
+      "properties": {
+        "executive_summary": {
+          "type": "string",
+          "title": "Executive Summary"
+        },
+        "1_methodology_and_scope": {
+          "type": "string",
+          "title": "1. Methodology and Scope"
+        },
+        "2_canonical_artifacts_numbered_catalog": {
+          "type": "string",
+          "title": "2. Canonical Artifacts: Numbered Catalog"
+        },
+        "3_design_lineage_and_timeline": {
+          "type": "string",
+          "title": "3. Design Lineage and Timeline"
+        },
+        "4_per_item_detail_table": {
+          "type": "string",
+          "title": "4. Per-Item Detail Table"
+        },
+        "5_architecture_implications_request_session_family_kv_policy": {
+          "type": "string",
+          "title": "5. Architecture Implications: request \u2192 session \u2192 family \u2192 KV policy"
+        },
+        "6_open_questions_and_tensions_across_proposals": {
+          "type": "string",
+          "title": "6. Open Questions and Tensions Across Proposals"
+        },
+        "7_references": {
+          "type": "string",
+          "title": "7. References"
+        }
+      },
+      "required": [
+        "executive_summary",
+        "1_methodology_and_scope",
+        "2_canonical_artifacts_numbered_catalog",
+        "3_design_lineage_and_timeline",
+        "4_per_item_detail_table",
+        "5_architecture_implications_request_session_family_kv_policy",
+        "6_open_questions_and_tensions_across_proposals",
+        "7_references"
+      ]
+    }
+  }
+}
