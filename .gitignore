@@ -21,9 +21,15 @@ experiments/vllm_kv_cache/server_log*.log
 # SGLang experiment runtime outputs
 experiments/sglang_kv_cache/*.log
 experiments/sglang_kv_cache/server_log*.log
+experiments/sglang_kv_cache/**/logs/
+# Large third-party datasets (keep documentation only)
+third_party/glm-5dot1_onlinedata/*.jsonl
+third_party/qwen-bailian-usagetraces-anon/
 # Unrelated local files
 OSINT/
 # Local convenience symlinks (absolute paths)
 repos/serving_frameworks/
 
 
+
+third_party/trace-replayer/
