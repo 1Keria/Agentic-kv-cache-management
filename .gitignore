@@ -22,9 +22,29 @@ experiments/vllm_kv_cache/server_log*.log
 experiments/sglang_kv_cache/*.log
 experiments/sglang_kv_cache/server_log*.log
 experiments/sglang_kv_cache/**/logs/
+experiments/sglang_kv_cache/mix_replay/
 # Large third-party datasets (keep documentation only)
 third_party/glm-5dot1_onlinedata/*.jsonl
 third_party/qwen-bailian-usagetraces-anon/
+third_party/skillsbench/**/*.jsonl
+third_party/skillsbench/.cache/
+third_party/wildchat/**/*.parquet
+third_party/wildchat/.cache/
+# Frozen mix workloads: keep spec/manifest/README, not expanded prompts
+workloads/**/workload.jsonl
+# Local model weights / training tensors (GitHub 100MB limit)
+models/
+*.npz
+# Runtime dumps too large to push
+experiments/session_return/**/server_dump*/
+experiments/session_return/**/client/*.jsonl
+experiments/**/kv_trace.jsonl
+experiments/**/kv_diag_active.jsonl
+experiments/jyf/**/workload.jsonl
+experiments/jyf/**/frontier_trace/
+third_party/opus/*.jsonl
+third_party/GPT/**/*.jsonl
+Agent/OpenHands/node_modules/
 # Unrelated local files
 OSINT/
 # Local convenience symlinks (absolute paths)

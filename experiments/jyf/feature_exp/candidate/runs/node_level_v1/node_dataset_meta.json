@@ -1,0 +1,63 @@
+{
+  "feature_names": [
+    "node_tokens",
+    "path_tokens",
+    "age_seconds",
+    "idle_seconds",
+    "hits",
+    "gap_present",
+    "recent_gap_seconds",
+    "gap_ewma_seconds",
+    "gap_std_seconds",
+    "is_agent",
+    "creation_turn_fraction",
+    "endpoint_is_tool",
+    "tool_schema_count",
+    "last_message_is_tool",
+    "last_message_is_user",
+    "prefix_gap_ewma_rel",
+    "prefix_reuse_rate8",
+    "prefix_turn_gap_last"
+  ],
+  "old10": [
+    "node_tokens",
+    "path_tokens",
+    "age_seconds",
+    "idle_seconds",
+    "hits",
+    "gap_present",
+    "recent_gap_seconds",
+    "gap_ewma_seconds",
+    "gap_std_seconds",
+    "is_agent"
+  ],
+  "candidate8": [
+    "creation_turn_fraction",
+    "endpoint_is_tool",
+    "tool_schema_count",
+    "last_message_is_tool",
+    "last_message_is_user",
+    "prefix_gap_ewma_rel",
+    "prefix_reuse_rate8",
+    "prefix_turn_gap_last"
+  ],
+  "audit": {
+    "requests_parsed": 16559,
+    "malformed": 1,
+    "sessions_lt2": 4820,
+    "rows": 284630,
+    "sessions": 8268,
+    "train_sessions": 5787,
+    "val_sessions": 1240,
+    "test_sessions": 1241,
+    "uncensored": 170170,
+    "censored": 114460,
+    "relative_tau_known": 216874
+  },
+  "unit": "persistent radix prefix node demand inside one session",
+  "session_policy": "one independent tree per inferred session; no cross-session node/history sharing",
+  "eviction": "disabled",
+  "node_key": "schema hash plus cumulative message-digest prefix; message is an edge segment, not a sample node",
+  "label": "next demand wall-clock seconds for the same node; final demand censored at session end",
+  "is_agent": "input has no explicit workload field; stored as constant zero"
+}

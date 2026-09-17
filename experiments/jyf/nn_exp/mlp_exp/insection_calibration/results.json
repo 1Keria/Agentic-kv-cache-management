@@ -1,0 +1,3898 @@
+{
+  "eligible_test_samples": 23786,
+  "events": 12019,
+  "censored": 11767,
+  "edges_s": [
+    2.0,
+    5.0,
+    10.0,
+    20.0,
+    60.0,
+    180.0,
+    600.0,
+    1800.0,
+    7200.0
+  ],
+  "interior_fractions": [
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.9
+  ],
+  "seeds": [
+    41,
+    42,
+    43
+  ],
+  "summary": [
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "interior_mean_km_ece10": 0.04184688054341967,
+      "interior_p90_km_ece10": 0.05196628624997714,
+      "conditional_mean_km_ece10": 0.01566314035485406,
+      "conditional_p90_km_ece10": 0.04400687131932544
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "interior_mean_km_ece10": 0.03992377981753684,
+      "interior_p90_km_ece10": 0.05441814859210623,
+      "conditional_mean_km_ece10": 0.015290913473590097,
+      "conditional_p90_km_ece10": 0.03871547581221668
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "interior_mean_km_ece10": 0.04224705192070657,
+      "interior_p90_km_ece10": 0.05247783571207533,
+      "conditional_mean_km_ece10": 0.015919509652108987,
+      "conditional_p90_km_ece10": 0.044006874663019564
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "interior_mean_km_ece10": 0.04068966210041962,
+      "interior_p90_km_ece10": 0.05654160139392039,
+      "conditional_mean_km_ece10": 0.015374095082732858,
+      "conditional_p90_km_ece10": 0.038900428330945
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "interior_mean_km_ece10": 0.05989470494132488,
+      "interior_p90_km_ece10": 0.11697716597040889,
+      "conditional_mean_km_ece10": 0.018921539168718037,
+      "conditional_p90_km_ece10": 0.055795895416439964
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "interior_mean_km_ece10": 0.06160363988116403,
+      "interior_p90_km_ece10": 0.12680956495346996,
+      "conditional_mean_km_ece10": 0.0179930311752314,
+      "conditional_p90_km_ece10": 0.04291838115645118
+    }
+  ],
+  "point_calibration": [
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 0.2,
+      "is_edge": 0,
+      "km_ece10": 0.0013962521718529752,
+      "mean_predicted_risk": 0.001396252171852975,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 0.2,
+      "is_edge": 0,
+      "km_ece10": 0.000981439251351578,
+      "mean_predicted_risk": 0.000981439251351578,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 0.5,
+      "is_edge": 0,
+      "km_ece10": 0.00346470343909219,
+      "mean_predicted_risk": 0.00346470343909219,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 0.5,
+      "is_edge": 0,
+      "km_ece10": 0.0024471153360247767,
+      "mean_predicted_risk": 0.002447115336024777,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 1.0,
+      "is_edge": 0,
+      "km_ece10": 0.006804907505699735,
+      "mean_predicted_risk": 0.00684694904273833,
+      "km_observed_risk": 4.204153703857294e-05
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 1.0,
+      "is_edge": 0,
+      "km_ece10": 0.004865356657285559,
+      "mean_predicted_risk": 0.00487329559005242,
+      "km_observed_risk": 7.938932766848872e-06
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 1.5,
+      "is_edge": 0,
+      "km_ece10": 0.01011162376072677,
+      "mean_predicted_risk": 0.010153665297765365,
+      "km_observed_risk": 4.204153703857294e-05
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 1.5,
+      "is_edge": 0,
+      "km_ece10": 0.007271785886595311,
+      "mean_predicted_risk": 0.007279724819362171,
+      "km_observed_risk": 7.938932766848872e-06
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 1.8,
+      "is_edge": 0,
+      "km_ece10": 0.010170141631176535,
+      "mean_predicted_risk": 0.012104052334951883,
+      "km_observed_risk": 0.0019339107037752434
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 1.8,
+      "is_edge": 0,
+      "km_ece10": 0.006994770541899605,
+      "mean_predicted_risk": 0.008714551483398785,
+      "km_observed_risk": 0.00293824713175983
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 2.0,
+      "is_edge": 1,
+      "km_ece10": 0.007579352579602213,
+      "mean_predicted_risk": 0.01339106370860871,
+      "km_observed_risk": 0.009711595055915234
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 2.0,
+      "is_edge": 1,
+      "km_ece10": 0.008658692889941649,
+      "mean_predicted_risk": 0.009667473359692265,
+      "km_observed_risk": 0.008121167359919745
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 2.3,
+      "is_edge": 0,
+      "km_ece10": 0.010829161137681668,
+      "mean_predicted_risk": 0.03701734747047429,
+      "km_observed_risk": 0.028515876694495068
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 2.3,
+      "is_edge": 0,
+      "km_ece10": 0.010351339555027893,
+      "mean_predicted_risk": 0.029141234626615633,
+      "km_observed_risk": 0.02358387304672538
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 2.75,
+      "is_edge": 0,
+      "km_ece10": 0.030631998891400766,
+      "mean_predicted_risk": 0.07041800789325815,
+      "km_observed_risk": 0.07297004362435111
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 2.75,
+      "is_edge": 0,
+      "km_ece10": 0.020900217781676125,
+      "mean_predicted_risk": 0.05698377466524424,
+      "km_observed_risk": 0.06353971323415386
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 3.5,
+      "is_edge": 0,
+      "km_ece10": 0.037416882461147084,
+      "mean_predicted_risk": 0.12126691070664569,
+      "km_observed_risk": 0.12663619571647788
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 3.5,
+      "is_edge": 0,
+      "km_ece10": 0.02796230281794095,
+      "mean_predicted_risk": 0.10010403907891553,
+      "km_observed_risk": 0.11456399711019705
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 4.25,
+      "is_edge": 0,
+      "km_ece10": 0.034270430335621674,
+      "mean_predicted_risk": 0.16693455778803346,
+      "km_observed_risk": 0.18309129744488795
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 4.25,
+      "is_edge": 0,
+      "km_ece10": 0.03616294817399201,
+      "mean_predicted_risk": 0.13962227080706766,
+      "km_observed_risk": 0.16376849976351793
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 4.7,
+      "is_edge": 0,
+      "km_ece10": 0.040458433926792055,
+      "mean_predicted_risk": 0.19218457460459748,
+      "km_observed_risk": 0.2113188483090931
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 4.7,
+      "is_edge": 0,
+      "km_ece10": 0.043899163912033766,
+      "mean_predicted_risk": 0.16180788723556017,
+      "km_observed_risk": 0.1917095327329158
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 5.0,
+      "is_edge": 1,
+      "km_ece10": 0.04326102652206569,
+      "mean_predicted_risk": 0.20821293031763613,
+      "km_observed_risk": 0.22564390780455057
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 5.0,
+      "is_edge": 1,
+      "km_ece10": 0.05043727412800436,
+      "mean_predicted_risk": 0.17601861769032487,
+      "km_observed_risk": 0.20693093745854563
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 5.5,
+      "is_edge": 0,
+      "km_ece10": 0.0517743184198964,
+      "mean_predicted_risk": 0.224979076197043,
+      "km_observed_risk": 0.2539717269147771
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 5.5,
+      "is_edge": 0,
+      "km_ece10": 0.05211194169594783,
+      "mean_predicted_risk": 0.19424847305233162,
+      "km_observed_risk": 0.23302708979965847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 6.25,
+      "is_edge": 0,
+      "km_ece10": 0.058982695621320795,
+      "mean_predicted_risk": 0.24929969400710683,
+      "km_observed_risk": 0.2812015051888014
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 6.25,
+      "is_edge": 0,
+      "km_ece10": 0.054038944357308126,
+      "mean_predicted_risk": 0.22065892053958108,
+      "km_observed_risk": 0.2593138514352161
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 7.5,
+      "is_edge": 0,
+      "km_ece10": 0.0713052154966874,
+      "mean_predicted_risk": 0.2877359848996523,
+      "km_observed_risk": 0.32779002013139336
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 7.5,
+      "is_edge": 0,
+      "km_ece10": 0.06800090739446078,
+      "mean_predicted_risk": 0.26231384061537805,
+      "km_observed_risk": 0.3139091059642911
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 8.75,
+      "is_edge": 0,
+      "km_ece10": 0.06831058612151604,
+      "mean_predicted_risk": 0.32371943198832076,
+      "km_observed_risk": 0.3599395623831326
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 8.75,
+      "is_edge": 0,
+      "km_ece10": 0.062330556383917025,
+      "mean_predicted_risk": 0.30121197323717225,
+      "km_observed_risk": 0.3469924657266904
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 9.5,
+      "is_edge": 0,
+      "km_ece10": 0.06082096788100383,
+      "mean_predicted_risk": 0.3442081330579077,
+      "km_observed_risk": 0.37106661663670704
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 9.5,
+      "is_edge": 0,
+      "km_ece10": 0.05757209571512133,
+      "mean_predicted_risk": 0.32331542296883503,
+      "km_observed_risk": 0.35648927012426224
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 10.0,
+      "is_edge": 1,
+      "km_ece10": 0.051909507658495245,
+      "mean_predicted_risk": 0.35743118764589216,
+      "km_observed_risk": 0.37934820281780257
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 10.0,
+      "is_edge": 1,
+      "km_ece10": 0.052935760151065575,
+      "mean_predicted_risk": 0.3375626458536763,
+      "km_observed_risk": 0.3628365665246679
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 11.0,
+      "is_edge": 0,
+      "km_ece10": 0.049043289453335574,
+      "mean_predicted_risk": 0.3686033961700205,
+      "km_observed_risk": 0.38779966768979224
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 11.0,
+      "is_edge": 0,
+      "km_ece10": 0.054670951415304966,
+      "mean_predicted_risk": 0.35016338452075496,
+      "km_observed_risk": 0.3779186132750315
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 12.5,
+      "is_edge": 0,
+      "km_ece10": 0.04773025020071673,
+      "mean_predicted_risk": 0.38492711637793514,
+      "km_observed_risk": 0.41758537236424087
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 12.5,
+      "is_edge": 0,
+      "km_ece10": 0.057919521275266145,
+      "mean_predicted_risk": 0.3685193305361989,
+      "km_observed_risk": 0.40548907815099333
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 15.0,
+      "is_edge": 0,
+      "km_ece10": 0.04387822208888926,
+      "mean_predicted_risk": 0.41101792745872234,
+      "km_observed_risk": 0.4375558162971809
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 15.0,
+      "is_edge": 0,
+      "km_ece10": 0.04660557332745443,
+      "mean_predicted_risk": 0.39771982523980376,
+      "km_observed_risk": 0.42473727067556455
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 17.5,
+      "is_edge": 0,
+      "km_ece10": 0.04842400219565468,
+      "mean_predicted_risk": 0.435782080704389,
+      "km_observed_risk": 0.4569433999306186
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 17.5,
+      "is_edge": 0,
+      "km_ece10": 0.04566686341497289,
+      "mean_predicted_risk": 0.4252736133808454,
+      "km_observed_risk": 0.44524195897026186
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 19.0,
+      "is_edge": 0,
+      "km_ece10": 0.04756927889151679,
+      "mean_predicted_risk": 0.45003467468633795,
+      "km_observed_risk": 0.4602204656206923
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 19.0,
+      "is_edge": 0,
+      "km_ece10": 0.04489275242209808,
+      "mean_predicted_risk": 0.4410583014962598,
+      "km_observed_risk": 0.4492001292266703
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 20.0,
+      "is_edge": 1,
+      "km_ece10": 0.047485592233625744,
+      "mean_predicted_risk": 0.4592934075937022,
+      "km_observed_risk": 0.4630719383640034
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 20.0,
+      "is_edge": 1,
+      "km_ece10": 0.04101292235866683,
+      "mean_predicted_risk": 0.4512829780995514,
+      "km_observed_risk": 0.45389758664441904
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 24.0,
+      "is_edge": 0,
+      "km_ece10": 0.04409247782705932,
+      "mean_predicted_risk": 0.4621833168470519,
+      "km_observed_risk": 0.4753724002514579
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 24.0,
+      "is_edge": 0,
+      "km_ece10": 0.04407694271424191,
+      "mean_predicted_risk": 0.45424608313375275,
+      "km_observed_risk": 0.47515244166096204
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 30.0,
+      "is_edge": 0,
+      "km_ece10": 0.047437706329733376,
+      "mean_predicted_risk": 0.4664670531819465,
+      "km_observed_risk": 0.48826863189205594
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 30.0,
+      "is_edge": 0,
+      "km_ece10": 0.053598869666892944,
+      "mean_predicted_risk": 0.45863293285899137,
+      "km_observed_risk": 0.4885601664085818
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 40.0,
+      "is_edge": 0,
+      "km_ece10": 0.05209426480336429,
+      "mean_predicted_risk": 0.47347285236706876,
+      "km_observed_risk": 0.4952874965753785
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 40.0,
+      "is_edge": 0,
+      "km_ece10": 0.04900778508467097,
+      "mean_predicted_risk": 0.4657934531677244,
+      "km_observed_risk": 0.49787178971428137
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 50.0,
+      "is_edge": 0,
+      "km_ece10": 0.04871854687678368,
+      "mean_predicted_risk": 0.48031554200714793,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 50.0,
+      "is_edge": 0,
+      "km_ece10": 0.04510807202970292,
+      "mean_predicted_risk": 0.4727705107082063,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 56.0,
+      "is_edge": 0,
+      "km_ece10": 0.047216217453670585,
+      "mean_predicted_risk": 0.4843447783386697,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 56.0,
+      "is_edge": 0,
+      "km_ece10": 0.044086496369292266,
+      "mean_predicted_risk": 0.4768710899057433,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 60.0,
+      "is_edge": 1,
+      "km_ece10": 0.045421177890618884,
+      "mean_predicted_risk": 0.48699971137625825,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 60.0,
+      "is_edge": 1,
+      "km_ece10": 0.043452737537426615,
+      "mean_predicted_risk": 0.4795698709911282,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 72.0,
+      "is_edge": 0,
+      "km_ece10": 0.04541458441882529,
+      "mean_predicted_risk": 0.4870302890682594,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 72.0,
+      "is_edge": 0,
+      "km_ece10": 0.04350248248257254,
+      "mean_predicted_risk": 0.479591639341769,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 90.0,
+      "is_edge": 0,
+      "km_ece10": 0.04540259688772395,
+      "mean_predicted_risk": 0.4870761476186527,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 90.0,
+      "is_edge": 0,
+      "km_ece10": 0.04346627989754636,
+      "mean_predicted_risk": 0.4796242873382854,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 120.0,
+      "is_edge": 0,
+      "km_ece10": 0.04521734976061582,
+      "mean_predicted_risk": 0.4871525572439783,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 120.0,
+      "is_edge": 0,
+      "km_ece10": 0.04349480043433054,
+      "mean_predicted_risk": 0.4796786885911663,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 150.0,
+      "is_edge": 0,
+      "km_ece10": 0.04502956186718447,
+      "mean_predicted_risk": 0.4872289402677754,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 150.0,
+      "is_edge": 0,
+      "km_ece10": 0.043448542624959896,
+      "mean_predicted_risk": 0.4797330747570299,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 168.0,
+      "is_edge": 0,
+      "km_ece10": 0.04501987464904341,
+      "mean_predicted_risk": 0.4872747573197797,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 168.0,
+      "is_edge": 0,
+      "km_ece10": 0.04351517352377921,
+      "mean_predicted_risk": 0.47976569921779755,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 180.0,
+      "is_edge": 1,
+      "km_ece10": 0.045013634959217466,
+      "mean_predicted_risk": 0.48730529670557093,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 180.0,
+      "is_edge": 1,
+      "km_ece10": 0.04358376006308928,
+      "mean_predicted_risk": 0.4797874458431298,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 222.0,
+      "is_edge": 0,
+      "km_ece10": 0.04483595452778119,
+      "mean_predicted_risk": 0.487339279989379,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 222.0,
+      "is_edge": 0,
+      "km_ece10": 0.043534072586022564,
+      "mean_predicted_risk": 0.4798101876645178,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 285.0,
+      "is_edge": 0,
+      "km_ece10": 0.04482396654049954,
+      "mean_predicted_risk": 0.4873902447351348,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 285.0,
+      "is_edge": 0,
+      "km_ece10": 0.04352137679317949,
+      "mean_predicted_risk": 0.47984429530241157,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 390.0,
+      "is_edge": 0,
+      "km_ece10": 0.044887678944554435,
+      "mean_predicted_risk": 0.48747515884433273,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 390.0,
+      "is_edge": 0,
+      "km_ece10": 0.04336569276242729,
+      "mean_predicted_risk": 0.47990112778607225,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 495.0,
+      "is_edge": 0,
+      "km_ece10": 0.044868155265684,
+      "mean_predicted_risk": 0.48756003905718753,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 495.0,
+      "is_edge": 0,
+      "km_ece10": 0.043377947750529555,
+      "mean_predicted_risk": 0.4799579433034937,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 558.0,
+      "is_edge": 0,
+      "km_ece10": 0.045026162271179435,
+      "mean_predicted_risk": 0.4876109509246396,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 558.0,
+      "is_edge": 0,
+      "km_ece10": 0.04345259867085104,
+      "mean_predicted_risk": 0.47999202447405126,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 600.0,
+      "is_edge": 1,
+      "km_ece10": 0.04501909268469279,
+      "mean_predicted_risk": 0.4876448853976961,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 600.0,
+      "is_edge": 1,
+      "km_ece10": 0.04353281640524544,
+      "mean_predicted_risk": 0.48001474186404897,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 720.0,
+      "is_edge": 0,
+      "km_ece10": 0.04492643980277435,
+      "mean_predicted_risk": 0.48768404559662937,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 720.0,
+      "is_edge": 0,
+      "km_ece10": 0.043801048631660865,
+      "mean_predicted_risk": 0.48004206044074266,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 900.0,
+      "is_edge": 0,
+      "km_ece10": 0.044742791184006724,
+      "mean_predicted_risk": 0.4877427722304345,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 900.0,
+      "is_edge": 0,
+      "km_ece10": 0.043716623096829825,
+      "mean_predicted_risk": 0.4800830309747509,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 1200.0,
+      "is_edge": 0,
+      "km_ece10": 0.044383074284860824,
+      "mean_predicted_risk": 0.48784061353382263,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 1200.0,
+      "is_edge": 0,
+      "km_ece10": 0.04367690336188008,
+      "mean_predicted_risk": 0.4801512956569494,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 1500.0,
+      "is_edge": 0,
+      "km_ece10": 0.044528910166290465,
+      "mean_predicted_risk": 0.48793840934401816,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 1500.0,
+      "is_edge": 0,
+      "km_ece10": 0.04371415263769034,
+      "mean_predicted_risk": 0.48021953592614214,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 1680.0,
+      "is_edge": 0,
+      "km_ece10": 0.04460308388065866,
+      "mean_predicted_risk": 0.4879970650084283,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 1680.0,
+      "is_edge": 0,
+      "km_ece10": 0.043935677776482635,
+      "mean_predicted_risk": 0.4802604683758562,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 1800.0,
+      "is_edge": 1,
+      "km_ece10": 0.04459372084869346,
+      "mean_predicted_risk": 0.4880361596971355,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 1800.0,
+      "is_edge": 1,
+      "km_ece10": 0.04418673514047376,
+      "mean_predicted_risk": 0.4802877517978112,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 2340.0,
+      "is_edge": 0,
+      "km_ece10": 0.04611724683967241,
+      "mean_predicted_risk": 0.4899225911562169,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 2340.0,
+      "is_edge": 0,
+      "km_ece10": 0.043675601462813046,
+      "mean_predicted_risk": 0.4808242083218522,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 3150.0,
+      "is_edge": 0,
+      "km_ece10": 0.04850645916926844,
+      "mean_predicted_risk": 0.4924713510674175,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 3150.0,
+      "is_edge": 0,
+      "km_ece10": 0.04228405260146119,
+      "mean_predicted_risk": 0.4815772280192198,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 4500.0,
+      "is_edge": 0,
+      "km_ece10": 0.049366476945199224,
+      "mean_predicted_risk": 0.49612293309388944,
+      "km_observed_risk": 0.5027759410944572
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 4500.0,
+      "is_edge": 0,
+      "km_ece10": 0.03944656447303371,
+      "mean_predicted_risk": 0.4827202353165521,
+      "km_observed_risk": 0.5018334662481468
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 5850.0,
+      "is_edge": 0,
+      "km_ece10": 0.048158117882553544,
+      "mean_predicted_risk": 0.49921279949324904,
+      "km_observed_risk": 0.5027759410944572
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 5850.0,
+      "is_edge": 0,
+      "km_ece10": 0.03916806156743379,
+      "mean_predicted_risk": 0.4837546683373038,
+      "km_observed_risk": 0.5018334662481468
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 6660.0,
+      "is_edge": 0,
+      "km_ece10": 0.04429856424316874,
+      "mean_predicted_risk": 0.5008614687810232,
+      "km_observed_risk": 0.5027759410944572
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 6660.0,
+      "is_edge": 0,
+      "km_ece10": 0.03694772547319376,
+      "mean_predicted_risk": 0.4843344215859254,
+      "km_observed_risk": 0.5018334662481468
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "time_s": 7200.0,
+      "is_edge": 1,
+      "km_ece10": 0.04523568253215486,
+      "mean_predicted_risk": 0.5018905102556559,
+      "km_observed_risk": 0.5027759410944572
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "time_s": 7200.0,
+      "is_edge": 1,
+      "km_ece10": 0.03708256083650334,
+      "mean_predicted_risk": 0.48470661409186033,
+      "km_observed_risk": 0.5018334662481468
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 0.2,
+      "is_edge": 0,
+      "km_ece10": 0.001339106357119815,
+      "mean_predicted_risk": 0.001339106357119815,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 0.2,
+      "is_edge": 0,
+      "km_ece10": 0.0009667473024084971,
+      "mean_predicted_risk": 0.0009667473024084971,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 0.5,
+      "is_edge": 0,
+      "km_ece10": 0.003347765892799539,
+      "mean_predicted_risk": 0.0033477658927995387,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 0.5,
+      "is_edge": 0,
+      "km_ece10": 0.002416868256021242,
+      "mean_predicted_risk": 0.002416868256021242,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 1.0,
+      "is_edge": 0,
+      "km_ece10": 0.006653490248560484,
+      "mean_predicted_risk": 0.006695531785599077,
+      "km_observed_risk": 4.204153703857294e-05
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 1.0,
+      "is_edge": 0,
+      "km_ece10": 0.004825797579275619,
+      "mean_predicted_risk": 0.004833736512042486,
+      "km_observed_risk": 7.938932766848872e-06
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 1.5,
+      "is_edge": 0,
+      "km_ece10": 0.010001256141360021,
+      "mean_predicted_risk": 0.010043297678398616,
+      "km_observed_risk": 4.204153703857294e-05
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 1.5,
+      "is_edge": 0,
+      "km_ece10": 0.007242665835296862,
+      "mean_predicted_risk": 0.007250604768063726,
+      "km_observed_risk": 7.938932766848872e-06
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 1.8,
+      "is_edge": 0,
+      "km_ece10": 0.010118046510302993,
+      "mean_predicted_risk": 0.01205195721407834,
+      "km_observed_risk": 0.0019339107037752434
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 1.8,
+      "is_edge": 0,
+      "km_ece10": 0.006981496917213103,
+      "mean_predicted_risk": 0.008700725721676471,
+      "km_observed_risk": 0.00293824713175983
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 2.0,
+      "is_edge": 1,
+      "km_ece10": 0.007579352579602213,
+      "mean_predicted_risk": 0.01339106370860871,
+      "km_observed_risk": 0.009711595055915234
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 2.0,
+      "is_edge": 1,
+      "km_ece10": 0.008658692889941649,
+      "mean_predicted_risk": 0.009667473359692265,
+      "km_observed_risk": 0.008121167359919745
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 2.3,
+      "is_edge": 0,
+      "km_ece10": 0.0125405147673687,
+      "mean_predicted_risk": 0.032873250365988406,
+      "km_observed_risk": 0.028515876694495068
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 2.3,
+      "is_edge": 0,
+      "km_ece10": 0.009161680107415675,
+      "mean_predicted_risk": 0.026302587825133394,
+      "km_observed_risk": 0.02358387304672538
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 2.75,
+      "is_edge": 0,
+      "km_ece10": 0.02679358680535189,
+      "mean_predicted_risk": 0.06209653035205796,
+      "km_observed_risk": 0.07297004362435111
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 2.75,
+      "is_edge": 0,
+      "km_ece10": 0.02137021588517703,
+      "mean_predicted_risk": 0.05125525952329511,
+      "km_observed_risk": 0.06353971323415386
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 3.5,
+      "is_edge": 0,
+      "km_ece10": 0.03681547341638394,
+      "mean_predicted_risk": 0.11080199699550723,
+      "km_observed_risk": 0.12663619571647788
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 3.5,
+      "is_edge": 0,
+      "km_ece10": 0.03225940520823639,
+      "mean_predicted_risk": 0.09284304568689795,
+      "km_observed_risk": 0.11456399711019705
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 4.25,
+      "is_edge": 0,
+      "km_ece10": 0.037984472234167475,
+      "mean_predicted_risk": 0.1595074636389565,
+      "km_observed_risk": 0.18309129744488795
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 4.25,
+      "is_edge": 0,
+      "km_ece10": 0.03972725811933129,
+      "mean_predicted_risk": 0.13443083185050078,
+      "km_observed_risk": 0.16376849976351793
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 4.7,
+      "is_edge": 0,
+      "km_ece10": 0.042218984194575634,
+      "mean_predicted_risk": 0.18873074362502604,
+      "km_observed_risk": 0.2113188483090931
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 4.7,
+      "is_edge": 0,
+      "km_ece10": 0.04488817229364041,
+      "mean_predicted_risk": 0.1593835035486625,
+      "km_observed_risk": 0.1917095327329158
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 5.0,
+      "is_edge": 1,
+      "km_ece10": 0.04326102652206569,
+      "mean_predicted_risk": 0.20821293031763613,
+      "km_observed_risk": 0.22564390780455057
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 5.0,
+      "is_edge": 1,
+      "km_ece10": 0.05043727412800436,
+      "mean_predicted_risk": 0.17601861769032487,
+      "km_observed_risk": 0.20693093745854563
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 5.5,
+      "is_edge": 0,
+      "km_ece10": 0.05264244604258658,
+      "mean_predicted_risk": 0.2231347560585977,
+      "km_observed_risk": 0.2539717269147771
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 5.5,
+      "is_edge": 0,
+      "km_ece10": 0.05394193622008851,
+      "mean_predicted_risk": 0.19217302047493867,
+      "km_observed_risk": 0.23302708979965847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 6.25,
+      "is_edge": 0,
+      "km_ece10": 0.05965225130837234,
+      "mean_predicted_risk": 0.24551749467004008,
+      "km_observed_risk": 0.2812015051888014
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 6.25,
+      "is_edge": 0,
+      "km_ece10": 0.05803383824544608,
+      "mean_predicted_risk": 0.21640462465185936,
+      "km_observed_risk": 0.2593138514352161
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 7.5,
+      "is_edge": 0,
+      "km_ece10": 0.07410281421387246,
+      "mean_predicted_risk": 0.28282205902244406,
+      "km_observed_risk": 0.32779002013139336
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 7.5,
+      "is_edge": 0,
+      "km_ece10": 0.07257837325026899,
+      "mean_predicted_risk": 0.2567906316133938,
+      "km_observed_risk": 0.3139091059642911
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 8.75,
+      "is_edge": 0,
+      "km_ece10": 0.07106474546231147,
+      "mean_predicted_risk": 0.32012662337484804,
+      "km_observed_risk": 0.3599395623831326
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 8.75,
+      "is_edge": 0,
+      "km_ece10": 0.06683928814307995,
+      "mean_predicted_risk": 0.2971766385749283,
+      "km_observed_risk": 0.3469924657266904
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 9.5,
+      "is_edge": 0,
+      "km_ece10": 0.06303272428171923,
+      "mean_predicted_risk": 0.34250936198629034,
+      "km_observed_risk": 0.37106661663670704
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 9.5,
+      "is_edge": 0,
+      "km_ece10": 0.05881279441288482,
+      "mean_predicted_risk": 0.3214082427518491,
+      "km_observed_risk": 0.35648927012426224
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 10.0,
+      "is_edge": 1,
+      "km_ece10": 0.051909507658495245,
+      "mean_predicted_risk": 0.35743118764589216,
+      "km_observed_risk": 0.37934820281780257
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 10.0,
+      "is_edge": 1,
+      "km_ece10": 0.052935760151065575,
+      "mean_predicted_risk": 0.3375626458536763,
+      "km_observed_risk": 0.3628365665246679
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 11.0,
+      "is_edge": 0,
+      "km_ece10": 0.04896116027787912,
+      "mean_predicted_risk": 0.3676174096389508,
+      "km_observed_risk": 0.38779966768979224
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 11.0,
+      "is_edge": 0,
+      "km_ece10": 0.05430324611663185,
+      "mean_predicted_risk": 0.3489346790948579,
+      "km_observed_risk": 0.3779186132750315
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 12.5,
+      "is_edge": 0,
+      "km_ece10": 0.04859796694174841,
+      "mean_predicted_risk": 0.38289674262853884,
+      "km_observed_risk": 0.41758537236424087
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 12.5,
+      "is_edge": 0,
+      "km_ece10": 0.06043615560438124,
+      "mean_predicted_risk": 0.36599272895663043,
+      "km_observed_risk": 0.40548907815099333
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 15.0,
+      "is_edge": 0,
+      "km_ece10": 0.045981238614926936,
+      "mean_predicted_risk": 0.4083622976111855,
+      "km_observed_risk": 0.4375558162971809
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 15.0,
+      "is_edge": 0,
+      "km_ece10": 0.05149509281428183,
+      "mean_predicted_risk": 0.3944228120595846,
+      "km_observed_risk": 0.42473727067556455
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 17.5,
+      "is_edge": 0,
+      "km_ece10": 0.048695246694635395,
+      "mean_predicted_risk": 0.4338278525938321,
+      "km_observed_risk": 0.4569433999306186
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 17.5,
+      "is_edge": 0,
+      "km_ece10": 0.04546742823041228,
+      "mean_predicted_risk": 0.4228528951625389,
+      "km_observed_risk": 0.44524195897026186
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 19.0,
+      "is_edge": 0,
+      "km_ece10": 0.04774929373674075,
+      "mean_predicted_risk": 0.4491071855834202,
+      "km_observed_risk": 0.4602204656206923
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 19.0,
+      "is_edge": 0,
+      "km_ece10": 0.046387591226751894,
+      "mean_predicted_risk": 0.4399109450243114,
+      "km_observed_risk": 0.4492001292266703
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 20.0,
+      "is_edge": 1,
+      "km_ece10": 0.047485592233625744,
+      "mean_predicted_risk": 0.4592934075937022,
+      "km_observed_risk": 0.4630719383640034
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 20.0,
+      "is_edge": 1,
+      "km_ece10": 0.04101292235866683,
+      "mean_predicted_risk": 0.4512829780995514,
+      "km_observed_risk": 0.45389758664441904
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 24.0,
+      "is_edge": 0,
+      "km_ece10": 0.04396285831797235,
+      "mean_predicted_risk": 0.4620640379702295,
+      "km_observed_risk": 0.4753724002514579
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 24.0,
+      "is_edge": 0,
+      "km_ece10": 0.04537758783862571,
+      "mean_predicted_risk": 0.4541116673836982,
+      "km_observed_risk": 0.47515244166096204
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 30.0,
+      "is_edge": 0,
+      "km_ece10": 0.04753277543772889,
+      "mean_predicted_risk": 0.46621998353502053,
+      "km_observed_risk": 0.48826863189205594
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 30.0,
+      "is_edge": 0,
+      "km_ece10": 0.05393855370627168,
+      "mean_predicted_risk": 0.4583547013099183,
+      "km_observed_risk": 0.4885601664085818
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 40.0,
+      "is_edge": 0,
+      "km_ece10": 0.05223092021630846,
+      "mean_predicted_risk": 0.473146559476339,
+      "km_observed_risk": 0.4952874965753785
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 40.0,
+      "is_edge": 0,
+      "km_ece10": 0.04931010439493794,
+      "mean_predicted_risk": 0.46542642452028515,
+      "km_observed_risk": 0.49787178971428137
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 50.0,
+      "is_edge": 0,
+      "km_ece10": 0.048889416952418316,
+      "mean_predicted_risk": 0.48007313541765734,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 50.0,
+      "is_edge": 0,
+      "km_ece10": 0.04385626842107702,
+      "mean_predicted_risk": 0.472498147730652,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 56.0,
+      "is_edge": 0,
+      "km_ece10": 0.04727094047846117,
+      "mean_predicted_risk": 0.4842290809824483,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 56.0,
+      "is_edge": 0,
+      "km_ece10": 0.04433164549323325,
+      "mean_predicted_risk": 0.4767411816568721,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 60.0,
+      "is_edge": 1,
+      "km_ece10": 0.045421177890618884,
+      "mean_predicted_risk": 0.48699971137625825,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 60.0,
+      "is_edge": 1,
+      "km_ece10": 0.043452737537426615,
+      "mean_predicted_risk": 0.4795698709911282,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 72.0,
+      "is_edge": 0,
+      "km_ece10": 0.04541459270757997,
+      "mean_predicted_risk": 0.48703026991227344,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 72.0,
+      "is_edge": 0,
+      "km_ece10": 0.04350248551930901,
+      "mean_predicted_risk": 0.4795916284678175,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 90.0,
+      "is_edge": 0,
+      "km_ece10": 0.045402614167218684,
+      "mean_predicted_risk": 0.4870761077162962,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 90.0,
+      "is_edge": 0,
+      "km_ece10": 0.04346628623135937,
+      "mean_predicted_risk": 0.47962426468285146,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 120.0,
+      "is_edge": 0,
+      "km_ece10": 0.04521737285507148,
+      "mean_predicted_risk": 0.4871525040563342,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 120.0,
+      "is_edge": 0,
+      "km_ece10": 0.04349480890603357,
+      "mean_predicted_risk": 0.47967865837457474,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 150.0,
+      "is_edge": 0,
+      "km_ece10": 0.04502957921708384,
+      "mean_predicted_risk": 0.48722890039637223,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 150.0,
+      "is_edge": 0,
+      "km_ece10": 0.04344854903375813,
+      "mean_predicted_risk": 0.47973305206629796,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 168.0,
+      "is_edge": 0,
+      "km_ece10": 0.045019883035882134,
+      "mean_predicted_risk": 0.487274738200395,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 168.0,
+      "is_edge": 0,
+      "km_ece10": 0.043515176688706664,
+      "mean_predicted_risk": 0.479765688281332,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 180.0,
+      "is_edge": 1,
+      "km_ece10": 0.045013634959217466,
+      "mean_predicted_risk": 0.48730529670557093,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 180.0,
+      "is_edge": 1,
+      "km_ece10": 0.04358376006308928,
+      "mean_predicted_risk": 0.4797874458431298,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 222.0,
+      "is_edge": 0,
+      "km_ece10": 0.04483596488242307,
+      "mean_predicted_risk": 0.4873392555752196,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 222.0,
+      "is_edge": 0,
+      "km_ece10": 0.043534076036964395,
+      "mean_predicted_risk": 0.4798101754353936,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 285.0,
+      "is_edge": 0,
+      "km_ece10": 0.0448239880834886,
+      "mean_predicted_risk": 0.4873901938796928,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 285.0,
+      "is_edge": 0,
+      "km_ece10": 0.04352138398353329,
+      "mean_predicted_risk": 0.47984426982378936,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 390.0,
+      "is_edge": 0,
+      "km_ece10": 0.044887707693463674,
+      "mean_predicted_risk": 0.4874750910538147,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 390.0,
+      "is_edge": 0,
+      "km_ece10": 0.04336570235521707,
+      "mean_predicted_risk": 0.47990109380444906,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 495.0,
+      "is_edge": 0,
+      "km_ece10": 0.04486817669469061,
+      "mean_predicted_risk": 0.48755998822793667,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 495.0,
+      "is_edge": 0,
+      "km_ece10": 0.043377954909558814,
+      "mean_predicted_risk": 0.4799579177851086,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 558.0,
+      "is_edge": 0,
+      "km_ece10": 0.045026172558179804,
+      "mean_predicted_risk": 0.4876109265324098,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 558.0,
+      "is_edge": 0,
+      "km_ece10": 0.043452602159898455,
+      "mean_predicted_risk": 0.4799920121735045,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 600.0,
+      "is_edge": 1,
+      "km_ece10": 0.04501909268469279,
+      "mean_predicted_risk": 0.4876448853976961,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 600.0,
+      "is_edge": 1,
+      "km_ece10": 0.04353281640524544,
+      "mean_predicted_risk": 0.48001474186404897,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 720.0,
+      "is_edge": 0,
+      "km_ece10": 0.04492645326252469,
+      "mean_predicted_risk": 0.4876840128276523,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 720.0,
+      "is_edge": 0,
+      "km_ece10": 0.04380105348222467,
+      "mean_predicted_risk": 0.48004204285505747,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 900.0,
+      "is_edge": 0,
+      "km_ece10": 0.04474281920361617,
+      "mean_predicted_risk": 0.48774270397258657,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 900.0,
+      "is_edge": 0,
+      "km_ece10": 0.04371663319538878,
+      "mean_predicted_risk": 0.4800829943415703,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 1200.0,
+      "is_edge": 0,
+      "km_ece10": 0.04438311166185354,
+      "mean_predicted_risk": 0.48784052254747684,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 1200.0,
+      "is_edge": 0,
+      "km_ece10": 0.04367691683758219,
+      "mean_predicted_risk": 0.48015124681909166,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 1500.0,
+      "is_edge": 0,
+      "km_ece10": 0.044528938015395765,
+      "mean_predicted_risk": 0.4879383411223672,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 1500.0,
+      "is_edge": 0,
+      "km_ece10": 0.04371416272428409,
+      "mean_predicted_risk": 0.480219499296613,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 1680.0,
+      "is_edge": 0,
+      "km_ece10": 0.04460309721395187,
+      "mean_predicted_risk": 0.4879970322673014,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 1680.0,
+      "is_edge": 0,
+      "km_ece10": 0.043935682651730874,
+      "mean_predicted_risk": 0.48026045078312585,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 1800.0,
+      "is_edge": 1,
+      "km_ece10": 0.04459372084869346,
+      "mean_predicted_risk": 0.4880361596971355,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 1800.0,
+      "is_edge": 1,
+      "km_ece10": 0.04418673514047376,
+      "mean_predicted_risk": 0.4802877517978112,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 2340.0,
+      "is_edge": 0,
+      "km_ece10": 0.04548058864268459,
+      "mean_predicted_risk": 0.48942159475552716,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 2340.0,
+      "is_edge": 0,
+      "km_ece10": 0.0434158816897871,
+      "mean_predicted_risk": 0.4807296380480447,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 3150.0,
+      "is_edge": 0,
+      "km_ece10": 0.049134988158149415,
+      "mean_predicted_risk": 0.49149974734311475,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 3150.0,
+      "is_edge": 0,
+      "km_ece10": 0.04439689132112863,
+      "mean_predicted_risk": 0.4813924674233949,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 4500.0,
+      "is_edge": 0,
+      "km_ece10": 0.05082669925009741,
+      "mean_predicted_risk": 0.4949633349890941,
+      "km_observed_risk": 0.5027759410944572
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 4500.0,
+      "is_edge": 0,
+      "km_ece10": 0.040226142935263415,
+      "mean_predicted_risk": 0.48249718304897865,
+      "km_observed_risk": 0.5018334662481468
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 5850.0,
+      "is_edge": 0,
+      "km_ece10": 0.049432320884569,
+      "mean_predicted_risk": 0.49842692263507343,
+      "km_observed_risk": 0.5027759410944572
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 5850.0,
+      "is_edge": 0,
+      "km_ece10": 0.03791643769210186,
+      "mean_predicted_risk": 0.48360189867456244,
+      "km_observed_risk": 0.5018334662481468
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 6660.0,
+      "is_edge": 0,
+      "km_ece10": 0.044352772698198914,
+      "mean_predicted_risk": 0.5005050752226611,
+      "km_observed_risk": 0.5027759410944572
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 6660.0,
+      "is_edge": 0,
+      "km_ece10": 0.036605754542662954,
+      "mean_predicted_risk": 0.4842647280499127,
+      "km_observed_risk": 0.5018334662481468
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "time_s": 7200.0,
+      "is_edge": 1,
+      "km_ece10": 0.04523568253215486,
+      "mean_predicted_risk": 0.5018905102556559,
+      "km_observed_risk": 0.5027759410944572
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "time_s": 7200.0,
+      "is_edge": 1,
+      "km_ece10": 0.03708256083650334,
+      "mean_predicted_risk": 0.48470661409186033,
+      "km_observed_risk": 0.5018334662481468
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 0.2,
+      "is_edge": 0,
+      "km_ece10": 0.0,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 0.2,
+      "is_edge": 0,
+      "km_ece10": 0.0,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 0.5,
+      "is_edge": 0,
+      "km_ece10": 0.0,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 0.5,
+      "is_edge": 0,
+      "km_ece10": 0.0,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 1.0,
+      "is_edge": 0,
+      "km_ece10": 4.2041537038593405e-05,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 4.204153703857294e-05
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 1.0,
+      "is_edge": 0,
+      "km_ece10": 7.938932766862118e-06,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 7.938932766848872e-06
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 1.5,
+      "is_edge": 0,
+      "km_ece10": 4.2041537038593405e-05,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 4.204153703857294e-05
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 1.5,
+      "is_edge": 0,
+      "km_ece10": 7.938932766862118e-06,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 7.938932766848872e-06
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 1.8,
+      "is_edge": 0,
+      "km_ece10": 0.0019339107037753271,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.0019339107037752434
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 1.8,
+      "is_edge": 0,
+      "km_ece10": 0.002938247131759814,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.00293824713175983
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 2.0,
+      "is_edge": 1,
+      "km_ece10": 0.007579352579602213,
+      "mean_predicted_risk": 0.01339106370860871,
+      "km_observed_risk": 0.009711595055915234
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 2.0,
+      "is_edge": 1,
+      "km_ece10": 0.008658692889941649,
+      "mean_predicted_risk": 0.009667473359692265,
+      "km_observed_risk": 0.008121167359919745
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 2.3,
+      "is_edge": 0,
+      "km_ece10": 0.021791912523289714,
+      "mean_predicted_risk": 0.01339106370860871,
+      "km_observed_risk": 0.028515876694495068
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 2.3,
+      "is_edge": 0,
+      "km_ece10": 0.017862812403364157,
+      "mean_predicted_risk": 0.009667473359692265,
+      "km_observed_risk": 0.02358387304672538
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 2.75,
+      "is_edge": 0,
+      "km_ece10": 0.05966273004979385,
+      "mean_predicted_risk": 0.01339106370860871,
+      "km_observed_risk": 0.07297004362435111
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 2.75,
+      "is_edge": 0,
+      "km_ece10": 0.0538974919004312,
+      "mean_predicted_risk": 0.009667473359692265,
+      "km_observed_risk": 0.06353971323415386
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 3.5,
+      "is_edge": 0,
+      "km_ece10": 0.11335445804347374,
+      "mean_predicted_risk": 0.01339106370860871,
+      "km_observed_risk": 0.12663619571647788
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 3.5,
+      "is_edge": 0,
+      "km_ece10": 0.10490699452279365,
+      "mean_predicted_risk": 0.009667473359692265,
+      "km_observed_risk": 0.11456399711019705
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 4.25,
+      "is_edge": 0,
+      "km_ece10": 0.16983083756431244,
+      "mean_predicted_risk": 0.01339106370860871,
+      "km_observed_risk": 0.18309129744488795
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 4.25,
+      "is_edge": 0,
+      "km_ece10": 0.15413705517394624,
+      "mean_predicted_risk": 0.009667473359692265,
+      "km_observed_risk": 0.16376849976351793
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 4.7,
+      "is_edge": 0,
+      "km_ece10": 0.19803185229659603,
+      "mean_predicted_risk": 0.01339106370860871,
+      "km_observed_risk": 0.2113188483090931
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 4.7,
+      "is_edge": 0,
+      "km_ece10": 0.1820649775215283,
+      "mean_predicted_risk": 0.009667473359692265,
+      "km_observed_risk": 0.1917095327329158
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 5.0,
+      "is_edge": 1,
+      "km_ece10": 0.04326102652206569,
+      "mean_predicted_risk": 0.20821293031763613,
+      "km_observed_risk": 0.22564390780455057
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 5.0,
+      "is_edge": 1,
+      "km_ece10": 0.05043727412800436,
+      "mean_predicted_risk": 0.17601861769032487,
+      "km_observed_risk": 0.20693093745854563
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 5.5,
+      "is_edge": 0,
+      "km_ece10": 0.055410113213757314,
+      "mean_predicted_risk": 0.20821293031763613,
+      "km_observed_risk": 0.2539717269147771
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 5.5,
+      "is_edge": 0,
+      "km_ece10": 0.06644146526321486,
+      "mean_predicted_risk": 0.17601861769032487,
+      "km_observed_risk": 0.23302708979965847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 6.25,
+      "is_edge": 0,
+      "km_ece10": 0.07985182572061901,
+      "mean_predicted_risk": 0.20821293031763613,
+      "km_observed_risk": 0.2812015051888014
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 6.25,
+      "is_edge": 0,
+      "km_ece10": 0.09119338868448942,
+      "mean_predicted_risk": 0.17601861769032487,
+      "km_observed_risk": 0.2593138514352161
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 7.5,
+      "is_edge": 0,
+      "km_ece10": 0.11939230458836564,
+      "mean_predicted_risk": 0.20821293031763613,
+      "km_observed_risk": 0.32779002013139336
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 7.5,
+      "is_edge": 0,
+      "km_ece10": 0.13725396854681826,
+      "mean_predicted_risk": 0.17601861769032487,
+      "km_observed_risk": 0.3139091059642911
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 8.75,
+      "is_edge": 0,
+      "km_ece10": 0.1509181192694453,
+      "mean_predicted_risk": 0.20821293031763613,
+      "km_observed_risk": 0.3599395623831326
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 8.75,
+      "is_edge": 0,
+      "km_ece10": 0.17038714590311826,
+      "mean_predicted_risk": 0.17601861769032487,
+      "km_observed_risk": 0.3469924657266904
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 9.5,
+      "is_edge": 0,
+      "km_ece10": 0.16203014150912262,
+      "mean_predicted_risk": 0.20821293031763613,
+      "km_observed_risk": 0.37106661663670704
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 9.5,
+      "is_edge": 0,
+      "km_ece10": 0.17987756607617753,
+      "mean_predicted_risk": 0.17601861769032487,
+      "km_observed_risk": 0.35648927012426224
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 10.0,
+      "is_edge": 1,
+      "km_ece10": 0.051909507658495245,
+      "mean_predicted_risk": 0.35743118764589216,
+      "km_observed_risk": 0.37934820281780257
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 10.0,
+      "is_edge": 1,
+      "km_ece10": 0.052935760151065575,
+      "mean_predicted_risk": 0.3375626458536763,
+      "km_observed_risk": 0.3628365665246679
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 11.0,
+      "is_edge": 0,
+      "km_ece10": 0.051491779884029726,
+      "mean_predicted_risk": 0.35743118764589216,
+      "km_observed_risk": 0.38779966768979224
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 11.0,
+      "is_edge": 0,
+      "km_ece10": 0.0585009313751483,
+      "mean_predicted_risk": 0.3375626458536763,
+      "km_observed_risk": 0.3779186132750315
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 12.5,
+      "is_edge": 0,
+      "km_ece10": 0.062365795179809565,
+      "mean_predicted_risk": 0.35743118764589216,
+      "km_observed_risk": 0.41758537236424087
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 12.5,
+      "is_edge": 0,
+      "km_ece10": 0.0758920017132256,
+      "mean_predicted_risk": 0.3375626458536763,
+      "km_observed_risk": 0.40548907815099333
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 15.0,
+      "is_edge": 0,
+      "km_ece10": 0.0794625600523834,
+      "mean_predicted_risk": 0.35743118764589216,
+      "km_observed_risk": 0.4375558162971809
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 15.0,
+      "is_edge": 0,
+      "km_ece10": 0.0924008240646351,
+      "mean_predicted_risk": 0.3375626458536763,
+      "km_observed_risk": 0.42473727067556455
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 17.5,
+      "is_edge": 0,
+      "km_ece10": 0.09884887714294069,
+      "mean_predicted_risk": 0.35743118764589216,
+      "km_observed_risk": 0.4569433999306186
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 17.5,
+      "is_edge": 0,
+      "km_ece10": 0.10843484435179294,
+      "mean_predicted_risk": 0.3375626458536763,
+      "km_observed_risk": 0.44524195897026186
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 19.0,
+      "is_edge": 0,
+      "km_ece10": 0.10212862565106032,
+      "mean_predicted_risk": 0.35743118764589216,
+      "km_observed_risk": 0.4602204656206923
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 19.0,
+      "is_edge": 0,
+      "km_ece10": 0.11114295956344743,
+      "mean_predicted_risk": 0.3375626458536763,
+      "km_observed_risk": 0.4492001292266703
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 20.0,
+      "is_edge": 1,
+      "km_ece10": 0.047485592233625744,
+      "mean_predicted_risk": 0.4592934075937022,
+      "km_observed_risk": 0.4630719383640034
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 20.0,
+      "is_edge": 1,
+      "km_ece10": 0.04101292235866683,
+      "mean_predicted_risk": 0.4512829780995514,
+      "km_observed_risk": 0.45389758664441904
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 24.0,
+      "is_edge": 0,
+      "km_ece10": 0.045127639131551586,
+      "mean_predicted_risk": 0.4592934075937022,
+      "km_observed_risk": 0.4753724002514579
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 24.0,
+      "is_edge": 0,
+      "km_ece10": 0.045289981798454663,
+      "mean_predicted_risk": 0.4512829780995514,
+      "km_observed_risk": 0.47515244166096204
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 30.0,
+      "is_edge": 0,
+      "km_ece10": 0.04879469317735522,
+      "mean_predicted_risk": 0.4592934075937022,
+      "km_observed_risk": 0.48826863189205594
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 30.0,
+      "is_edge": 0,
+      "km_ece10": 0.0547728402766311,
+      "mean_predicted_risk": 0.4512829780995514,
+      "km_observed_risk": 0.4885601664085818
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 40.0,
+      "is_edge": 0,
+      "km_ece10": 0.054045850419390196,
+      "mean_predicted_risk": 0.4592934075937022,
+      "km_observed_risk": 0.4952874965753785
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 40.0,
+      "is_edge": 0,
+      "km_ece10": 0.062350451359215596,
+      "mean_predicted_risk": 0.4512829780995514,
+      "km_observed_risk": 0.49787178971428137
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 50.0,
+      "is_edge": 0,
+      "km_ece10": 0.054083425650762004,
+      "mean_predicted_risk": 0.4592934075937022,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 50.0,
+      "is_edge": 0,
+      "km_ece10": 0.06385070311422016,
+      "mean_predicted_risk": 0.4512829780995514,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 56.0,
+      "is_edge": 0,
+      "km_ece10": 0.054083425650762004,
+      "mean_predicted_risk": 0.4592934075937022,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 56.0,
+      "is_edge": 0,
+      "km_ece10": 0.06385070311422016,
+      "mean_predicted_risk": 0.4512829780995514,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 60.0,
+      "is_edge": 1,
+      "km_ece10": 0.045421177890618884,
+      "mean_predicted_risk": 0.48699971137625825,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 60.0,
+      "is_edge": 1,
+      "km_ece10": 0.043452737537426615,
+      "mean_predicted_risk": 0.4795698709911282,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 72.0,
+      "is_edge": 0,
+      "km_ece10": 0.045421177890618884,
+      "mean_predicted_risk": 0.48699971137625825,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 72.0,
+      "is_edge": 0,
+      "km_ece10": 0.043452737537426615,
+      "mean_predicted_risk": 0.4795698709911282,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 90.0,
+      "is_edge": 0,
+      "km_ece10": 0.045421177890618884,
+      "mean_predicted_risk": 0.48699971137625825,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 90.0,
+      "is_edge": 0,
+      "km_ece10": 0.043452737537426615,
+      "mean_predicted_risk": 0.4795698709911282,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 120.0,
+      "is_edge": 0,
+      "km_ece10": 0.045421177890618884,
+      "mean_predicted_risk": 0.48699971137625825,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 120.0,
+      "is_edge": 0,
+      "km_ece10": 0.043452737537426615,
+      "mean_predicted_risk": 0.4795698709911282,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 150.0,
+      "is_edge": 0,
+      "km_ece10": 0.045421177890618884,
+      "mean_predicted_risk": 0.48699971137625825,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 150.0,
+      "is_edge": 0,
+      "km_ece10": 0.043452737537426615,
+      "mean_predicted_risk": 0.4795698709911282,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 168.0,
+      "is_edge": 0,
+      "km_ece10": 0.045421177890618884,
+      "mean_predicted_risk": 0.48699971137625825,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 168.0,
+      "is_edge": 0,
+      "km_ece10": 0.043452737537426615,
+      "mean_predicted_risk": 0.4795698709911282,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 180.0,
+      "is_edge": 1,
+      "km_ece10": 0.045013634959217466,
+      "mean_predicted_risk": 0.48730529670557093,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 180.0,
+      "is_edge": 1,
+      "km_ece10": 0.04358376006308928,
+      "mean_predicted_risk": 0.4797874458431298,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 222.0,
+      "is_edge": 0,
+      "km_ece10": 0.045013634959217466,
+      "mean_predicted_risk": 0.48730529670557093,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 222.0,
+      "is_edge": 0,
+      "km_ece10": 0.04358376006308928,
+      "mean_predicted_risk": 0.4797874458431298,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 285.0,
+      "is_edge": 0,
+      "km_ece10": 0.045013634959217466,
+      "mean_predicted_risk": 0.48730529670557093,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 285.0,
+      "is_edge": 0,
+      "km_ece10": 0.04358376006308928,
+      "mean_predicted_risk": 0.4797874458431298,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 390.0,
+      "is_edge": 0,
+      "km_ece10": 0.045013634959217466,
+      "mean_predicted_risk": 0.48730529670557093,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 390.0,
+      "is_edge": 0,
+      "km_ece10": 0.04358376006308928,
+      "mean_predicted_risk": 0.4797874458431298,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 495.0,
+      "is_edge": 0,
+      "km_ece10": 0.045013634959217466,
+      "mean_predicted_risk": 0.48730529670557093,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 495.0,
+      "is_edge": 0,
+      "km_ece10": 0.04358376006308928,
+      "mean_predicted_risk": 0.4797874458431298,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 558.0,
+      "is_edge": 0,
+      "km_ece10": 0.045013634959217466,
+      "mean_predicted_risk": 0.48730529670557093,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 558.0,
+      "is_edge": 0,
+      "km_ece10": 0.04358376006308928,
+      "mean_predicted_risk": 0.4797874458431298,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 600.0,
+      "is_edge": 1,
+      "km_ece10": 0.04501909268469279,
+      "mean_predicted_risk": 0.4876448853976961,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 600.0,
+      "is_edge": 1,
+      "km_ece10": 0.04353281640524544,
+      "mean_predicted_risk": 0.48001474186404897,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 720.0,
+      "is_edge": 0,
+      "km_ece10": 0.04501909268469279,
+      "mean_predicted_risk": 0.4876448853976961,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 720.0,
+      "is_edge": 0,
+      "km_ece10": 0.04353281640524544,
+      "mean_predicted_risk": 0.48001474186404897,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 900.0,
+      "is_edge": 0,
+      "km_ece10": 0.04501909268469279,
+      "mean_predicted_risk": 0.4876448853976961,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 900.0,
+      "is_edge": 0,
+      "km_ece10": 0.04353281640524544,
+      "mean_predicted_risk": 0.48001474186404897,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 1200.0,
+      "is_edge": 0,
+      "km_ece10": 0.04501909268469279,
+      "mean_predicted_risk": 0.4876448853976961,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 1200.0,
+      "is_edge": 0,
+      "km_ece10": 0.04353281640524544,
+      "mean_predicted_risk": 0.48001474186404897,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 1500.0,
+      "is_edge": 0,
+      "km_ece10": 0.04501909268469279,
+      "mean_predicted_risk": 0.4876448853976961,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 1500.0,
+      "is_edge": 0,
+      "km_ece10": 0.04353281640524544,
+      "mean_predicted_risk": 0.48001474186404897,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 1680.0,
+      "is_edge": 0,
+      "km_ece10": 0.04501909268469279,
+      "mean_predicted_risk": 0.4876448853976961,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 1680.0,
+      "is_edge": 0,
+      "km_ece10": 0.04353281640524544,
+      "mean_predicted_risk": 0.48001474186404897,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 1800.0,
+      "is_edge": 1,
+      "km_ece10": 0.04459372084869346,
+      "mean_predicted_risk": 0.4880361596971355,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 1800.0,
+      "is_edge": 1,
+      "km_ece10": 0.04418673514047376,
+      "mean_predicted_risk": 0.4802877517978112,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 2340.0,
+      "is_edge": 0,
+      "km_ece10": 0.04459372084869346,
+      "mean_predicted_risk": 0.4880361596971355,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 2340.0,
+      "is_edge": 0,
+      "km_ece10": 0.04418673514047376,
+      "mean_predicted_risk": 0.4802877517978112,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 3150.0,
+      "is_edge": 0,
+      "km_ece10": 0.04459372084869346,
+      "mean_predicted_risk": 0.4880361596971355,
+      "km_observed_risk": 0.496629356575907
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 3150.0,
+      "is_edge": 0,
+      "km_ece10": 0.04418673514047376,
+      "mean_predicted_risk": 0.4802877517978112,
+      "km_observed_risk": 0.49948663371262847
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 4500.0,
+      "is_edge": 0,
+      "km_ece10": 0.04869326416430487,
+      "mean_predicted_risk": 0.4880361596971355,
+      "km_observed_risk": 0.5027759410944572
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 4500.0,
+      "is_edge": 0,
+      "km_ece10": 0.04449350753948707,
+      "mean_predicted_risk": 0.4802877517978112,
+      "km_observed_risk": 0.5018334662481468
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 5850.0,
+      "is_edge": 0,
+      "km_ece10": 0.04869326416430487,
+      "mean_predicted_risk": 0.4880361596971355,
+      "km_observed_risk": 0.5027759410944572
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 5850.0,
+      "is_edge": 0,
+      "km_ece10": 0.04449350753948707,
+      "mean_predicted_risk": 0.4802877517978112,
+      "km_observed_risk": 0.5018334662481468
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 6660.0,
+      "is_edge": 0,
+      "km_ece10": 0.04869326416430487,
+      "mean_predicted_risk": 0.4880361596971355,
+      "km_observed_risk": 0.5027759410944572
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 6660.0,
+      "is_edge": 0,
+      "km_ece10": 0.04449350753948707,
+      "mean_predicted_risk": 0.4802877517978112,
+      "km_observed_risk": 0.5018334662481468
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "time_s": 7200.0,
+      "is_edge": 1,
+      "km_ece10": 0.04523568253215486,
+      "mean_predicted_risk": 0.5018905102556559,
+      "km_observed_risk": 0.5027759410944572
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "time_s": 7200.0,
+      "is_edge": 1,
+      "km_ece10": 0.03708256083650334,
+      "mean_predicted_risk": 0.48470661409186033,
+      "km_observed_risk": 0.5018334662481468
+    }
+  ],
+  "conditional_calibration": [
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "age_s": 5,
+      "horizon_s": 5,
+      "n_at_risk": 18325,
+      "km_ece10": 0.03535902983045305,
+      "mean_predicted_risk": 0.18764476143659992,
+      "km_observed_risk": 0.1984930402981282
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "age_s": 5,
+      "horizon_s": 5,
+      "n_at_risk": 18325,
+      "km_ece10": 0.022592779317860176,
+      "mean_predicted_risk": 0.19321229640955484,
+      "km_observed_risk": 0.19658518586831508
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "age_s": 5,
+      "horizon_s": 20,
+      "n_at_risk": 18325,
+      "km_ece10": 0.06014979835251015,
+      "mean_predicted_risk": 0.31976288076844583,
+      "km_observed_risk": 0.3246975840612396
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "age_s": 5,
+      "horizon_s": 20,
+      "n_at_risk": 18325,
+      "km_ece10": 0.031985779743034896,
+      "mean_predicted_risk": 0.3351919732570206,
+      "km_observed_risk": 0.3439641039135012
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "age_s": 5,
+      "horizon_s": 60,
+      "n_at_risk": 18325,
+      "km_ece10": 0.0497720989785737,
+      "mean_predicted_risk": 0.3497507171743508,
+      "km_observed_risk": 0.34994939860686014
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "age_s": 5,
+      "horizon_s": 60,
+      "n_at_risk": 18325,
+      "km_ece10": 0.03629014191592428,
+      "mean_predicted_risk": 0.36500762814555804,
+      "km_observed_risk": 0.36889056712988466
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "age_s": 20,
+      "horizon_s": 5,
+      "n_at_risk": 12616,
+      "km_ece10": 0.019127502577707168,
+      "mean_predicted_risk": 0.007002866015663496,
+      "km_observed_risk": 0.02608081562517761
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "age_s": 20,
+      "horizon_s": 5,
+      "n_at_risk": 12616,
+      "km_ece10": 0.04033236507641162,
+      "mean_predicted_risk": 0.00701019322328604,
+      "km_observed_risk": 0.0472816812767054
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "age_s": 20,
+      "horizon_s": 20,
+      "n_at_risk": 12616,
+      "km_ece10": 0.033577201520112,
+      "mean_predicted_risk": 0.0275142161048412,
+      "km_observed_risk": 0.05999976628752679
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "age_s": 20,
+      "horizon_s": 20,
+      "n_at_risk": 12616,
+      "km_ece10": 0.05364729764896268,
+      "mean_predicted_risk": 0.027501172656406517,
+      "km_observed_risk": 0.08052372960532905
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "age_s": 20,
+      "horizon_s": 60,
+      "n_at_risk": 12616,
+      "km_ece10": 0.015564149110286616,
+      "mean_predicted_risk": 0.05383736981764244,
+      "km_observed_risk": 0.06249890927595614
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "age_s": 20,
+      "horizon_s": 60,
+      "n_at_risk": 12616,
+      "km_ece10": 0.03177822658685139,
+      "mean_predicted_risk": 0.05368144140008633,
+      "km_observed_risk": 0.0834807646940855
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "age_s": 60,
+      "horizon_s": 20,
+      "n_at_risk": 11629,
+      "km_ece10": 9.825207341410743e-05,
+      "mean_predicted_risk": 9.82520734141074e-05,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "age_s": 60,
+      "horizon_s": 20,
+      "n_at_risk": 11629,
+      "km_ece10": 7.086666819454122e-05,
+      "mean_predicted_risk": 7.086666819454122e-05,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "age_s": 60,
+      "horizon_s": 60,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0002946893786997571,
+      "mean_predicted_risk": 0.0002946893786997571,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "age_s": 60,
+      "horizon_s": 60,
+      "n_at_risk": 11629,
+      "km_ece10": 0.00021255994692886786,
+      "mean_predicted_risk": 0.00021255994692886786,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "age_s": 60,
+      "horizon_s": 180,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0006827842749717001,
+      "mean_predicted_risk": 0.0006827842749717001,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "age_s": 60,
+      "horizon_s": 180,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0004888096035922022,
+      "mean_predicted_risk": 0.0004888096035922022,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "age_s": 600,
+      "horizon_s": 600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0003811120974737145,
+      "mean_predicted_risk": 0.0003811120974737146,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "age_s": 600,
+      "horizon_s": 600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.00026819582760735156,
+      "mean_predicted_risk": 0.0002681958276073516,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "age_s": 600,
+      "horizon_s": 1800,
+      "n_at_risk": 11629,
+      "km_ece10": 0.003549240144503398,
+      "mean_predicted_risk": 0.003549240144503398,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "age_s": 600,
+      "horizon_s": 1800,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0014410837311223286,
+      "mean_predicted_risk": 0.0014410837311223286,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "age_s": 600,
+      "horizon_s": 3600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.004657716348281759,
+      "mean_predicted_risk": 0.01081763145514889,
+      "km_observed_risk": 0.012210852179895149
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "age_s": 600,
+      "horizon_s": 3600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.002804000335126824,
+      "mean_predicted_risk": 0.003953164701520253,
+      "km_observed_risk": 0.004688850875105066
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "age_s": 1800,
+      "horizon_s": 600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.002788812154097115,
+      "mean_predicted_risk": 0.002788812154097115,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "age_s": 1800,
+      "horizon_s": 600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0009054690934545996,
+      "mean_predicted_risk": 0.0009054690934545995,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "age_s": 1800,
+      "horizon_s": 1800,
+      "n_at_risk": 11629,
+      "km_ece10": 0.006078845110607063,
+      "mean_predicted_risk": 0.007793034500928798,
+      "km_observed_risk": 0.012210852179895149
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "age_s": 1800,
+      "horizon_s": 1800,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0030709301059770305,
+      "mean_predicted_risk": 0.002610741877896205,
+      "km_observed_risk": 0.004688850875105066
+    },
+    {
+      "method": "log_survival",
+      "weighting": "object",
+      "age_s": 1800,
+      "horizon_s": 3600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.002865873371119541,
+      "mean_predicted_risk": 0.014230984183108286,
+      "km_observed_risk": 0.012210852179895149
+    },
+    {
+      "method": "log_survival",
+      "weighting": "token",
+      "age_s": 1800,
+      "horizon_s": 3600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0034751965028026873,
+      "mean_predicted_risk": 0.004964853961753403,
+      "km_observed_risk": 0.004688850875105066
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "age_s": 5,
+      "horizon_s": 5,
+      "n_at_risk": 18325,
+      "km_ece10": 0.03535902983045305,
+      "mean_predicted_risk": 0.18764476143659992,
+      "km_observed_risk": 0.1984930402981282
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "age_s": 5,
+      "horizon_s": 5,
+      "n_at_risk": 18325,
+      "km_ece10": 0.022592779317860176,
+      "mean_predicted_risk": 0.19321229640955484,
+      "km_observed_risk": 0.19658518586831508
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "age_s": 5,
+      "horizon_s": 20,
+      "n_at_risk": 18325,
+      "km_ece10": 0.060654395067167965,
+      "mean_predicted_risk": 0.3195844333793119,
+      "km_observed_risk": 0.3246975840612396
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "age_s": 5,
+      "horizon_s": 20,
+      "n_at_risk": 18325,
+      "km_ece10": 0.032134353210546696,
+      "mean_predicted_risk": 0.3349964898416735,
+      "km_observed_risk": 0.3439641039135012
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "age_s": 5,
+      "horizon_s": 60,
+      "n_at_risk": 18325,
+      "km_ece10": 0.04977210455139725,
+      "mean_predicted_risk": 0.34975070728626917,
+      "km_observed_risk": 0.34994939860686014
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "age_s": 5,
+      "horizon_s": 60,
+      "n_at_risk": 18325,
+      "km_ece10": 0.03629014112356602,
+      "mean_predicted_risk": 0.3650076225255624,
+      "km_observed_risk": 0.36889056712988466
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "age_s": 20,
+      "horizon_s": 5,
+      "n_at_risk": 12616,
+      "km_ece10": 0.019412118935240127,
+      "mean_predicted_risk": 0.006718195594027958,
+      "km_observed_risk": 0.02608081562517761
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "age_s": 20,
+      "horizon_s": 5,
+      "n_at_risk": 12616,
+      "km_ece10": 0.04064061980253099,
+      "mean_predicted_risk": 0.0067018652288304845,
+      "km_observed_risk": 0.0472816812767054
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "age_s": 20,
+      "horizon_s": 20,
+      "n_at_risk": 12616,
+      "km_ece10": 0.0341683917126367,
+      "mean_predicted_risk": 0.026872782376111827,
+      "km_observed_risk": 0.05999976628752679
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "age_s": 20,
+      "horizon_s": 20,
+      "n_at_risk": 12616,
+      "km_ece10": 0.05433649034923454,
+      "mean_predicted_risk": 0.026807460915321938,
+      "km_observed_risk": 0.08052372960532905
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "age_s": 20,
+      "horizon_s": 60,
+      "n_at_risk": 12616,
+      "km_ece10": 0.015564163942715925,
+      "mean_predicted_risk": 0.05383731856688231,
+      "km_observed_risk": 0.06249890927595614
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "age_s": 20,
+      "horizon_s": 60,
+      "n_at_risk": 12616,
+      "km_ece10": 0.03177825633705772,
+      "mean_predicted_risk": 0.05368141074634555,
+      "km_observed_risk": 0.0834807646940855
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "age_s": 60,
+      "horizon_s": 20,
+      "n_at_risk": 11629,
+      "km_ece10": 9.819641620712545e-05,
+      "mean_predicted_risk": 9.819641620712544e-05,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "age_s": 60,
+      "horizon_s": 20,
+      "n_at_risk": 11629,
+      "km_ece10": 7.083327169708187e-05,
+      "mean_predicted_risk": 7.083327169708186e-05,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "age_s": 60,
+      "horizon_s": 60,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0002945892486213767,
+      "mean_predicted_risk": 0.0002945892486213767,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "age_s": 60,
+      "horizon_s": 60,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0002124998150912444,
+      "mean_predicted_risk": 0.00021249981509124436,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "age_s": 60,
+      "horizon_s": 180,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0006827227631299602,
+      "mean_predicted_risk": 0.0006827227631299602,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "age_s": 60,
+      "horizon_s": 180,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0004887765330894951,
+      "mean_predicted_risk": 0.0004887765330894951,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "age_s": 600,
+      "horizon_s": 600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0003809379905317094,
+      "mean_predicted_risk": 0.00038093799053170947,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "age_s": 600,
+      "horizon_s": 600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0002680975747603716,
+      "mean_predicted_risk": 0.0002680975747603716,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "age_s": 600,
+      "horizon_s": 1800,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0029581473831619305,
+      "mean_predicted_risk": 0.002958147383161931,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "age_s": 600,
+      "horizon_s": 1800,
+      "n_at_risk": 11629,
+      "km_ece10": 0.001329046773276475,
+      "mean_predicted_risk": 0.001329046773276475,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "age_s": 600,
+      "horizon_s": 3600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.005911268205277977,
+      "mean_predicted_risk": 0.00954696157096197,
+      "km_observed_risk": 0.012210852179895149
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "age_s": 600,
+      "horizon_s": 3600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0030427213903482134,
+      "mean_predicted_risk": 0.003707601527449031,
+      "km_observed_risk": 0.004688850875105066
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "age_s": 1800,
+      "horizon_s": 600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0021976412218961882,
+      "mean_predicted_risk": 0.0021976412218961882,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "age_s": 1800,
+      "horizon_s": 600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0007934162911712355,
+      "mean_predicted_risk": 0.0007934162911712357,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "age_s": 1800,
+      "horizon_s": 1800,
+      "n_at_risk": 11629,
+      "km_ece10": 0.007443138601990538,
+      "mean_predicted_risk": 0.00659292366568856,
+      "km_observed_risk": 0.012210852179895149
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "age_s": 1800,
+      "horizon_s": 1800,
+      "n_at_risk": 11629,
+      "km_ece10": 0.003361796312208313,
+      "mean_predicted_risk": 0.0023802488735137016,
+      "km_observed_risk": 0.004688850875105066
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "object",
+      "age_s": 1800,
+      "horizon_s": 3600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0038957989112069543,
+      "mean_predicted_risk": 0.01318584733137712,
+      "km_observed_risk": 0.012210852179895149
+    },
+    {
+      "method": "linear_survival",
+      "weighting": "token",
+      "age_s": 1800,
+      "horizon_s": 3600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0032715981385542715,
+      "mean_predicted_risk": 0.0047604977470274016,
+      "km_observed_risk": 0.004688850875105066
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "age_s": 5,
+      "horizon_s": 5,
+      "n_at_risk": 18325,
+      "km_ece10": 0.03535902983045305,
+      "mean_predicted_risk": 0.18764476143659992,
+      "km_observed_risk": 0.1984930402981282
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "age_s": 5,
+      "horizon_s": 5,
+      "n_at_risk": 18325,
+      "km_ece10": 0.022592779317860176,
+      "mean_predicted_risk": 0.19321229640955484,
+      "km_observed_risk": 0.19658518586831508
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "age_s": 5,
+      "horizon_s": 20,
+      "n_at_risk": 18325,
+      "km_ece10": 0.0598085386823221,
+      "mean_predicted_risk": 0.31527719148426203,
+      "km_observed_risk": 0.3246975840612396
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "age_s": 5,
+      "horizon_s": 20,
+      "n_at_risk": 18325,
+      "km_ece10": 0.03642737721874035,
+      "mean_predicted_risk": 0.3307107367630394,
+      "km_observed_risk": 0.3439641039135012
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "age_s": 5,
+      "horizon_s": 60,
+      "n_at_risk": 18325,
+      "km_ece10": 0.049776930517616766,
+      "mean_predicted_risk": 0.34973512665980483,
+      "km_observed_risk": 0.34994939860686014
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "age_s": 5,
+      "horizon_s": 60,
+      "n_at_risk": 18325,
+      "km_ece10": 0.03628911028731586,
+      "mean_predicted_risk": 0.3649967613751986,
+      "km_observed_risk": 0.36889056712988466
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "age_s": 20,
+      "horizon_s": 5,
+      "n_at_risk": 12616,
+      "km_ece10": 0.026077996195307537,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.02608081562517761
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "age_s": 20,
+      "horizon_s": 5,
+      "n_at_risk": 12616,
+      "km_ece10": 0.04724571711492506,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.0472816812767054
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "age_s": 20,
+      "horizon_s": 20,
+      "n_at_risk": 12616,
+      "km_ece10": 0.0600524526820575,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.05999976628752679
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "age_s": 20,
+      "horizon_s": 20,
+      "n_at_risk": 12616,
+      "km_ece10": 0.08090094375173953,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.08052372960532905
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "age_s": 20,
+      "horizon_s": 60,
+      "n_at_risk": 12616,
+      "km_ece10": 0.015433156597120993,
+      "mean_predicted_risk": 0.05374556478701,
+      "km_observed_risk": 0.06249890927595614
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "age_s": 20,
+      "horizon_s": 60,
+      "n_at_risk": 12616,
+      "km_ece10": 0.03183610547535454,
+      "mean_predicted_risk": 0.053614922020652045,
+      "km_observed_risk": 0.0834807646940855
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "age_s": 60,
+      "horizon_s": 20,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "age_s": 60,
+      "horizon_s": 20,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "age_s": 60,
+      "horizon_s": 60,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "age_s": 60,
+      "horizon_s": 60,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "age_s": 60,
+      "horizon_s": 180,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0005891783633525117,
+      "mean_predicted_risk": 0.0005891783633525117,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "age_s": 60,
+      "horizon_s": 180,
+      "n_at_risk": 11629,
+      "km_ece10": 0.00042499978702902096,
+      "mean_predicted_risk": 0.0004249997870290209,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "age_s": 600,
+      "horizon_s": 600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "age_s": 600,
+      "horizon_s": 600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "age_s": 600,
+      "horizon_s": 1800,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0007618759872285841,
+      "mean_predicted_risk": 0.000761875987228584,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "age_s": 600,
+      "horizon_s": 1800,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0005361951885522881,
+      "mean_predicted_risk": 0.000536195188552288,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "age_s": 600,
+      "horizon_s": 3600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.011542224315521344,
+      "mean_predicted_risk": 0.000761875987228584,
+      "km_observed_risk": 0.012210852179895149
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "age_s": 600,
+      "horizon_s": 3600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.004264537736744108,
+      "mean_predicted_risk": 0.000536195188552288,
+      "km_observed_risk": 0.004688850875105066
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "age_s": 1800,
+      "horizon_s": 600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "age_s": 1800,
+      "horizon_s": 600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.0,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.0
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "age_s": 1800,
+      "horizon_s": 1800,
+      "n_at_risk": 11629,
+      "km_ece10": 0.012210852179895093,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.012210852179895149
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "age_s": 1800,
+      "horizon_s": 1800,
+      "n_at_risk": 11629,
+      "km_ece10": 0.004688850875104998,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.004688850875105066
+    },
+    {
+      "method": "right_step",
+      "weighting": "object",
+      "age_s": 1800,
+      "horizon_s": 3600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.012210852179895093,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.012210852179895149
+    },
+    {
+      "method": "right_step",
+      "weighting": "token",
+      "age_s": 1800,
+      "horizon_s": 3600,
+      "n_at_risk": 11629,
+      "km_ece10": 0.004688850875104998,
+      "mean_predicted_risk": 0.0,
+      "km_observed_risk": 0.004688850875105066
+    }
+  ]
+}

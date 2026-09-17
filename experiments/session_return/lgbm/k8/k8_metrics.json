@@ -1,0 +1,101 @@
+{
+  "features": [
+    "req.finished_len",
+    "client.temperature",
+    "client.max_tokens",
+    "req.cached_tokens",
+    "client.tools",
+    "req.finished_reason",
+    "req.fill_len",
+    "req.extend_input_len"
+  ],
+  "n_features": 8,
+  "run_dir": "/share/dai-sys/zhoulongsheng/agentkv/experiments/session_return/replay_small/run_20260916_012751",
+  "train": {
+    "observed": {
+      "n": 607,
+      "mae": 3.757430791540098,
+      "rmse": 5.287721747376448,
+      "r2": 0.5133689031479939
+    },
+    "mean_baseline": {
+      "n": 607,
+      "mae": 5.586341498330349,
+      "rmse": 7.579990555450623,
+      "r2": 0.0
+    },
+    "n_all": 1540,
+    "n_observed": 607,
+    "n_censored": 933
+  },
+  "val": {
+    "observed": {
+      "n": 98,
+      "mae": 3.5152750517506695,
+      "rmse": 4.664271935787337,
+      "r2": 0.4163554155828145
+    },
+    "mean_baseline": {
+      "n": 98,
+      "mae": 5.012092165807003,
+      "rmse": 6.154018849359176,
+      "r2": -0.0160109276838043
+    },
+    "n_all": 330,
+    "n_observed": 98,
+    "n_censored": 232
+  },
+  "test": {
+    "observed": {
+      "n": 102,
+      "mae": 4.62285456013242,
+      "rmse": 6.2521502411717735,
+      "r2": 0.20167052935123453
+    },
+    "mean_baseline": {
+      "n": 102,
+      "mae": 5.479822202558593,
+      "rmse": 7.095387552670563,
+      "r2": -0.028195251488164264
+    },
+    "n_all": 330,
+    "n_observed": 102,
+    "n_censored": 228
+  },
+  "best_iteration": 44,
+  "feature_importance_gain": [
+    {
+      "feature": "req.finished_len",
+      "gain": 117617.73541259766
+    },
+    {
+      "feature": "req.extend_input_len",
+      "gain": 14727.206722259521
+    },
+    {
+      "feature": "req.fill_len",
+      "gain": 13904.55782699585
+    },
+    {
+      "feature": "req.finished_reason",
+      "gain": 10040.260425567627
+    },
+    {
+      "feature": "client.temperature",
+      "gain": 9586.045097351074
+    },
+    {
+      "feature": "req.cached_tokens",
+      "gain": 9157.367181777954
+    },
+    {
+      "feature": "client.tools",
+      "gain": 7300.207416534424
+    },
+    {
+      "feature": "client.max_tokens",
+      "gain": 1299.7182159423828
+    }
+  ],
+  "note": "LightGBM on small split, δ=1 only. val used for early stopping. Nested small is not an official freeze."
+}

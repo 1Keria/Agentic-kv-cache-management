@@ -1,0 +1,20 @@
+[load] /share/dai-sys/zhoulongsheng/agentkv/experiments/sglang_kv_cache/ratio_daily_models/agent_050/samples/samples_train.jsonl.gz
+[load] samples_train.jsonl.gz 400000
+[cache] /share/dai-sys/zhoulongsheng/agentkv/experiments/sglang_kv_cache/ratio_daily_models/agent_050/samples/samples_train.npz n=602404
+[H_k] [1204.6117187499988, 1324.1031933593747, 2695.024716796875] from train uncensored n=16985
+[y] H=1204.61s train_pos=0.02678
+[y] H=1324.10s train_pos=0.02707
+[y] H=2695.02s train_pos=0.02791
+[model] params=35587 device=cpu
+[loss] pos_weight=[36.335235595703125, 35.94596862792969, 34.82539367675781]
+[epoch 1/5] loss=0.2751
+[epoch 2/5] loss=0.0202
+[epoch 3/5] loss=0.0188
+[epoch 4/5] loss=0.0151
+[epoch 5/5] loss=0.0138
+train/mlp macro_auc=0.9955 macro_ap=0.9895
+  H=1204.61s pos=0.0268 auc=0.9978 ap=0.9938 p_pos=0.993 p_neg=0.002
+  H=1324.10s pos=0.0271 auc=0.9956 ap=0.9891 p_pos=0.988 p_neg=0.002
+  H=2695.02s pos=0.0279 auc=0.9933 ap=0.9858 p_pos=0.984 p_neg=0.002
+[write] /share/dai-sys/zhoulongsheng/agentkv/experiments/sglang_kv_cache/ratio_daily_models/agent_050/checkpoint/leaf_mlp.pt
+[write] /share/dai-sys/zhoulongsheng/agentkv/experiments/sglang_kv_cache/ratio_daily_models/agent_050/checkpoint/metrics_mlp.json

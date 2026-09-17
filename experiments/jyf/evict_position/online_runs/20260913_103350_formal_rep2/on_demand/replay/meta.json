@@ -1,0 +1,76 @@
+{
+  "created_unix": 1789267045.693439,
+  "mode": "mix_workload_session_closed",
+  "base_url": "http://127.0.0.1:30000",
+  "model": "deepseek-v4-flash",
+  "workload_dir": "/share/dai-sys/zhoulongsheng/agentkv/experiments/evict_position/workload",
+  "arrival": {
+    "type": "waves",
+    "horizon_s": 300.0,
+    "n_waves": 9,
+    "wave_width_s": 20.0,
+    "wave_start_s": [
+      0.0,
+      37.5,
+      75.0,
+      112.5,
+      150.0,
+      187.5,
+      225.0,
+      262.5,
+      280.0
+    ],
+    "wave_class_counts": [
+      {
+        "openhands": 4,
+        "request": 60
+      },
+      {
+        "openhands": 4,
+        "request": 60
+      },
+      {
+        "openhands": 4,
+        "request": 60
+      },
+      {
+        "openhands": 4,
+        "request": 60
+      },
+      {
+        "openhands": 4,
+        "request": 60
+      },
+      {
+        "openhands": 4,
+        "request": 60
+      },
+      {
+        "openhands": 3,
+        "request": 60
+      },
+      {
+        "openhands": 3,
+        "request": 60
+      },
+      {
+        "openhands": 3,
+        "request": 59
+      }
+    ],
+    "arrival_seed": 42,
+    "classes": [
+      "openhands",
+      "request"
+    ]
+  },
+  "gap_scale": 0.02,
+  "request_gap_cap_s": null,
+  "ablate_zero_gap": false,
+  "flush_cache_before_run": true,
+  "dry_run": false,
+  "n_sessions": 572,
+  "n_turns": 1970,
+  "wall_clock_s": 383.28,
+  "n_issued": 1970
+}

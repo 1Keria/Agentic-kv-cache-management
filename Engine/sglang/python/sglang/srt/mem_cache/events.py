@@ -31,15 +31,27 @@ from sglang.srt.mem_cache.utils import (
 )
 
 
+def _medium_name(medium: StorageMedium) -> str:
+    return getattr(medium, "value", str(medium))
+
+
 class KVCacheEventMixin:
+    def _init_kv_diagnostics(self):
+        from sglang.srt.mem_cache.kv_diagnostics import init_kv_diagnostic_trace
+
+        self.kv_diagnostic_trace = init_kv_diagnostic_trace()
+
     def _record_store_event(self, node: Any, medium=None):
         # One BlockStored per ``page_size`` chunk.
         # ``medium`` defaults to StorageMedium.GPU but callers may override
         # for lower-tier insertions (e.g. StorageMedium.CPU for host/L2 cache).
-        if self.enable_kv_cache_events:
-            if medium is None:
-                medium = StorageMedium.GPU
+        if medium is None:
+            medium = StorageMedium.GPU
+        diag = getattr(self, "kv_diagnostic_trace", None)
+        if diag is not None and diag.enabled:
+            diag.record_store(self, node, _medium_name(medium))
 
+        if self.enable_kv_cache_events:
             # Compute hash_value lazily if not already set
             if node.hash_value is None:
                 node.hash_value = compute_node_hash_values(node, self.page_size)
@@ -87,10 +99,13 @@ class KVCacheEventMixin:
         # One BlockRemoved per chunk.
         # ``medium`` defaults to StorageMedium.GPU but callers may override for
         # lower-tier removals (e.g. StorageMedium.CPU when evicting from host).
-        if self.enable_kv_cache_events:
-            if medium is None:
-                medium = StorageMedium.GPU
+        if medium is None:
+            medium = StorageMedium.GPU
+        diag = getattr(self, "kv_diagnostic_trace", None)
+        if diag is not None and diag.enabled:
+            diag.record_remove(self, node, _medium_name(medium))
 
+        if self.enable_kv_cache_events:
             # Compute hash_value lazily if not already set (must match what was stored)
             if node.hash_value is None:
                 node.hash_value = compute_node_hash_values(node, self.page_size)
@@ -111,8 +126,26 @@ class KVCacheEventMixin:
                 page_index += 1
 
     def _record_all_cleared_event(self):
+        diag = getattr(self, "kv_diagnostic_trace", None)
+        if diag is not None and diag.enabled:
+            diag.record_reset(self)
         if self.enable_kv_cache_events:
             self.kv_event_queue.append(AllBlocksCleared())
+
+    def _record_match_diagnostic(self, req: Any, key: Any, matched_tokens: int):
+        diag = getattr(self, "kv_diagnostic_trace", None)
+        if diag is not None and diag.enabled:
+            diag.record_match(self, req, key, matched_tokens)
+
+    def _record_evict_start_diagnostic(self, requested_tokens: int):
+        diag = getattr(self, "kv_diagnostic_trace", None)
+        if diag is not None and diag.enabled:
+            diag.record_evict_boundary(self, "evict_start", requested_tokens)
+
+    def _record_evict_end_diagnostic(self, evicted_tokens: int):
+        diag = getattr(self, "kv_diagnostic_trace", None)
+        if diag is not None and diag.enabled:
+            diag.record_evict_boundary(self, "evict_end", evicted_tokens)
 
     def take_events(self):
         """Atomically takes all events and clears the queue.

@@ -24,6 +24,7 @@ The radix tree data structure for managing the KV cache.
 import hashlib
 import heapq
 import logging
+import math
 import sys
 import time
 from array import array
@@ -47,6 +48,7 @@ from sglang.srt.mem_cache.base_prefix_cache import (
     MatchResult,
 )
 from sglang.srt.mem_cache.events import KVCacheEventMixin
+from sglang.srt.mem_cache.mlp_reuse import MlpReuseMixin, copy_mlp_on_split, init_mlp_fields
 from sglang.srt.mem_cache.utils import get_eviction_strategy, split_node_hash_value
 
 if TYPE_CHECKING:
@@ -199,7 +201,6 @@ class RadixKey:
 
 
 class TreeNode:
-
     counter = 0
 
     def __init__(self, id: Optional[int] = None, priority: int = 0):
@@ -212,6 +213,15 @@ class TreeNode:
         self.creation_time = time.monotonic()
 
         self.hit_count = 0
+        # Online, label-free reuse-value metadata. These fields are inert for
+        # eviction policies other than ``reuse_value``.
+        self.reuse_strength = 0.0
+        self.last_turnover = 0.0
+        self.reuse_count = 0
+        self.terminal_count = 0
+        self.prefix_depth = 0
+        self.reuse_value_density = 0.0
+        init_mlp_fields(self)
         # indicating the node is locked to protect from eviction
         # incremented when the node is referenced by a storage operation
         self.host_ref_counter = 0
@@ -261,7 +271,7 @@ class TreeNode:
         return self.last_access_time < other.last_access_time
 
 
-class RadixCache(KVCacheEventMixin, BasePrefixCache):
+class RadixCache(MlpReuseMixin, KVCacheEventMixin, BasePrefixCache):
     def __init__(self, params: CacheInitParams):
         self.disable = params.disable
         self.req_to_token_pool = params.req_to_token_pool
@@ -271,8 +281,20 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
         self.is_eagle = params.is_eagle
         self.disable_finished_insert = params.disable_finished_insert
         self.eviction_policy = params.eviction_policy.lower()
+        self.reuse_value_shadow_only = params.reuse_value_shadow_only
+        self.reuse_value_turnover_kappa = float(params.reuse_value_turnover_kappa)
+        self.reuse_value_base_cold_strength = float(
+            params.reuse_value_base_cold_strength
+        )
+        if self.reuse_value_turnover_kappa <= 0:
+            raise ValueError("reuse_value_turnover_kappa must be greater than zero")
+        if self.reuse_value_base_cold_strength < 0:
+            raise ValueError(
+                "reuse_value_base_cold_strength must be greater than or equal to zero"
+            )
 
         self.kv_event_queue = []
+        self._init_kv_diagnostics()
 
         if params.enable_metrics:
             self.init_metrics_collector()
@@ -287,6 +309,21 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
             self.device = torch.device("cpu")
 
         self.eviction_strategy = get_eviction_strategy(self.eviction_policy)
+        active_reuse_value = bool(
+            getattr(self.eviction_strategy, "uses_reuse_value", False)
+        )
+        if self.reuse_value_shadow_only and self.eviction_policy != "lru":
+            raise ValueError("reuse_value_shadow_only requires eviction_policy='lru'")
+        self.reuse_value_enabled = (
+            active_reuse_value
+            or params.enable_reuse_value_estimator
+            or self.reuse_value_shadow_only
+        )
+        self.init_mlp_from_params(
+            params,
+            self.eviction_policy,
+            bool(getattr(self.eviction_strategy, "uses_mlp", False)),
+        )
 
         self.evictable_leaves = set()
         self.reset()
@@ -298,6 +335,11 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
         mock_allocator: Optional[Any] = None,
         page_size: int = 1,
         enable_kv_cache_events: bool = False,
+        eviction_policy: str = "lru",
+        enable_reuse_value_estimator: bool = False,
+        reuse_value_shadow_only: bool = False,
+        reuse_value_turnover_kappa: float = 1.0,
+        reuse_value_base_cold_strength: float = 1.0,
     ) -> RadixCache:
         """Init a radix cache without memory pools for simulation purpose."""
         params = CacheInitParams(
@@ -306,6 +348,11 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
             token_to_kv_pool_allocator=mock_allocator,
             page_size=page_size,
             enable_kv_cache_events=enable_kv_cache_events,
+            eviction_policy=eviction_policy,
+            enable_reuse_value_estimator=enable_reuse_value_estimator,
+            reuse_value_shadow_only=reuse_value_shadow_only,
+            reuse_value_turnover_kappa=reuse_value_turnover_kappa,
+            reuse_value_base_cold_strength=reuse_value_base_cold_strength,
         )
         return RadixCache(params)
 
@@ -319,9 +366,17 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
         self.root_node.host_value = []
         self.root_node.lock_ref = 1
         self.root_node.hash_value = []
+        self.root_node.prefix_depth = 0
+        self.reuse_value_inserted_tokens_total = 0
+        allocator_size = getattr(self.token_to_kv_pool_allocator, "size", 1)
+        if not isinstance(allocator_size, (int, float)):
+            allocator_size = 1
+        self.reuse_value_cache_capacity_tokens = max(1, int(allocator_size))
         self.evictable_size_ = 0
         self.protected_size_ = 0
         self.evictable_leaves.clear()
+        if getattr(self, "mlp_sessions", None) is not None:
+            self.mlp_sessions.clear()
         self._empty_match_result = MatchResult(
             device_indices=torch.empty(
                 (0,),
@@ -333,6 +388,101 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
             best_match_node=self.root_node,
         )
         self._record_all_cleared_event()
+
+    @property
+    def reuse_value_global_turnover(self) -> float:
+        return (
+            self.reuse_value_inserted_tokens_total
+            / self.reuse_value_cache_capacity_tokens
+        )
+
+    def _materialize_reuse_strength(self, node: TreeNode) -> float:
+        """Apply cache-turnover aging to one node only when it is needed."""
+        current_turnover = self.reuse_value_global_turnover
+        delta = max(0.0, current_turnover - node.last_turnover)
+        if delta and not math.isinf(self.reuse_value_turnover_kappa):
+            node.reuse_strength *= math.exp(-delta / self.reuse_value_turnover_kappa)
+        node.last_turnover = current_turnover
+        return node.reuse_strength
+
+    def _record_reuse(self, node: TreeNode):
+        if not self.reuse_value_enabled:
+            return
+        self._materialize_reuse_strength(node)
+        node.reuse_strength += 1.0
+        node.reuse_count += 1
+
+    def _initialize_reuse_value_node(self, node: TreeNode, parent: TreeNode):
+        """Initialize a newly inserted KV node without using traffic labels."""
+        parent_strength = self._materialize_reuse_strength(parent)
+        if parent is not self.root_node and parent.terminal_count > 0:
+            node.reuse_strength = parent_strength
+        else:
+            node.reuse_strength = self.reuse_value_base_cold_strength
+        node.prefix_depth = parent.prefix_depth + len(node.key)
+
+    def _record_reuse_value_insert(self, num_tokens: int):
+        if self.reuse_value_enabled and num_tokens > 0:
+            self.reuse_value_inserted_tokens_total += num_tokens
+
+    def _refresh_reuse_value_density(self, node: TreeNode):
+        if not self.reuse_value_enabled:
+            return
+        kv_size = len(node.value)
+        if kv_size <= 0:
+            raise RuntimeError(
+                f"reuse_value eviction candidate has no KV: node_id={node.id}"
+            )
+        effective_strength = self._materialize_reuse_strength(node)
+        # Token proxy: the marginal recompute cost is this radix segment's
+        # logical token count. KV size uses the physical indices actually freed.
+        recompute_tokens = len(node.key)
+        node.reuse_value_density = effective_strength * recompute_tokens / kv_size
+
+    def _get_eviction_priority(self, node: TreeNode):
+        self._refresh_reuse_value_density(node)
+        return self.eviction_strategy.get_priority(node)
+
+    def _log_reuse_value_shadow(self, leaves: list[TreeNode]):
+        if not self.reuse_value_shadow_only or not leaves:
+            return
+        for node in leaves:
+            self._refresh_reuse_value_density(node)
+
+        lru_victim = min(leaves, key=lambda node: node.last_access_time)
+        value_victim = min(
+            leaves,
+            key=lambda node: (node.reuse_value_density, node.last_access_time),
+        )
+        logger.info(
+            "KV_VALUE_SHADOW turnover=%.6f candidates=%d "
+            "lru_victim=%d lru_victim_value=%.6f "
+            "reuse_value_victim=%d reuse_value=%.6f agree=%s",
+            self.reuse_value_global_turnover,
+            len(leaves),
+            lru_victim.id,
+            lru_victim.reuse_value_density,
+            value_victim.id,
+            value_victim.reuse_value_density,
+            lru_victim is value_victim,
+        )
+        if logger.isEnabledFor(logging.DEBUG):
+            for node in leaves:
+                logger.debug(
+                    "KV_VALUE_CANDIDATE node=%d prefix_depth=%d kv_size=%d "
+                    "reuse_count=%d terminal_count=%d "
+                    "effective_reuse_strength=%.6f recompute_tokens=%d "
+                    "value_density=%.6f last_access_time=%.6f",
+                    node.id,
+                    node.prefix_depth,
+                    len(node.value),
+                    node.reuse_count,
+                    node.terminal_count,
+                    node.reuse_strength,
+                    len(node.key),
+                    node.reuse_value_density,
+                    node.last_access_time,
+                )
 
     def match_prefix(self, params: MatchPrefixParams) -> MatchResult:
         """Find the longest cached prefix of ``key`` in the radix tree.
@@ -382,17 +532,21 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
         if len(key) == 0:
             return self._empty_match_result
 
-        value, last_node = self._match_prefix_helper(self.root_node, key)
+        value, last_node = self._match_prefix_helper(
+            self.root_node, key, params.update_reuse_strength
+        )
         if value:
             value = torch.cat(value)
         else:
             value = self._empty_match_result.device_indices
-        return MatchResult(
+        result = MatchResult(
             device_indices=value,
             last_device_node=last_node,
             last_host_node=last_node,
             best_match_node=last_node,
         )
+        self._mlp_note_match(params.req, last_node)
+        return result
 
     def insert(self, params: InsertParams) -> InsertResult:
         if self.disable:
@@ -402,6 +556,7 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
         value = params.value
         priority = params.priority
         chunked = params.chunked
+        is_terminal = params.is_terminal
 
         key, value = key.maybe_to_bigram_view(self.is_eagle, value)
         key = key.page_aligned(self.page_size)
@@ -411,7 +566,13 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
             # Debug/test fallback: use token ids themselves as values.
             value = torch.tensor(key.token_ids[: len(key)], dtype=torch.int64)
 
-        prefix_len = self._insert_helper(self.root_node, key, value, priority, chunked)
+        self._mlp_begin_insert(params.req)
+        try:
+            prefix_len = self._insert_helper(
+                self.root_node, key, value, priority, chunked, is_terminal
+            )
+        finally:
+            self._mlp_end_insert()
         return InsertResult(prefix_len=prefix_len)
 
     def cache_finished_req(self, req: Req, is_insert: bool = True):
@@ -443,7 +604,13 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
         if is_insert:
             priority = getattr(req, "priority", 0) or 0
             result = self.insert(
-                InsertParams(key=radix_key, value=values, priority=priority)
+                InsertParams(
+                    key=radix_key,
+                    value=values,
+                    priority=priority,
+                    is_terminal=True,
+                    req=req,
+                )
             )
             # Free the duplicates that were already in the tree
             self.token_to_kv_pool_allocator.free(
@@ -453,6 +620,7 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
             self.token_to_kv_pool_allocator.free(
                 kv_indices[req.cache_protected_len : key_len]
             )
+        self._mlp_note_finished(req)
 
         # free the unaligned tail
         self.token_to_kv_pool_allocator.free(kv_indices[key_len:])
@@ -483,6 +651,7 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
                 value=values,
                 chunked=chunked,
                 priority=getattr(req, "priority", 0) or 0,
+                req=req,
             )
         )
         new_prefix_len = result.prefix_len
@@ -492,7 +661,9 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
         )
 
         # The prefix indices could be updated, reuse it
-        match_result = self.match_prefix(MatchPrefixParams(key=radix_key))
+        match_result = self.match_prefix(
+            MatchPrefixParams(key=radix_key, update_reuse_strength=False)
+        )
         new_indices, new_last_node = (
             match_result.device_indices,
             match_result.last_device_node,
@@ -539,11 +710,14 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
             return EvictResult()
 
         start_time = time.perf_counter()
+        self._mlp_on_evict_start()
         num_tokens = params.num_tokens
+        self._record_evict_start_diagnostic(num_tokens)
         leaves = list(self.evictable_leaves)
-        eviction_heap = [
-            (self.eviction_strategy.get_priority(node), node) for node in leaves
-        ]
+        self._log_reuse_value_shadow(leaves)
+        if getattr(self, "mlp_enabled", False) and leaves:
+            self._mlp_net_values(leaves)
+        eviction_heap = [(self._get_eviction_priority(node), node) for node in leaves]
         heapq.heapify(eviction_heap)
 
         num_evicted = 0
@@ -555,12 +729,18 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
             self._delete_leaf(x)
 
             if len(x.parent.children) == 0 and x.parent.lock_ref == 0:
-                new_priority = self.eviction_strategy.get_priority(x.parent)
+                if getattr(self, "mlp_enabled", False) and not getattr(
+                    self, "mlp_shadow_only", False
+                ):
+                    self._mlp_net_values([x.parent])
+                new_priority = self._get_eviction_priority(x.parent)
                 heapq.heappush(eviction_heap, (new_priority, x.parent))
 
             self._record_remove_event(x)
 
         self.update_eviction_metrics(num_evicted, start_time)
+        self._mlp_on_evict_end(time.perf_counter() - start_time, full=num_evicted)
+        self._record_evict_end_diagnostic(num_evicted)
         return EvictResult(num_tokens_evicted=num_evicted)
 
     def inc_lock_ref(self, node: TreeNode) -> IncLockRefResult:
@@ -619,7 +799,9 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
 
     ##### Internal Helper Functions #####
 
-    def _match_prefix_helper(self, node: TreeNode, key: RadixKey):
+    def _match_prefix_helper(
+        self, node: TreeNode, key: RadixKey, update_reuse_strength: bool = True
+    ):
         access_time = time.monotonic()
         node.last_access_time = access_time
 
@@ -634,10 +816,14 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
                 new_node = self._split_node(child.key, child, prefix_len)
                 value.append(new_node.value)
                 node = new_node
+                if update_reuse_strength:
+                    self._record_reuse(new_node)
                 break
             else:
                 value.append(child.value)
                 node = child
+                if update_reuse_strength:
+                    self._record_reuse(child)
                 key = key[prefix_len:]
 
                 if len(key):
@@ -650,11 +836,19 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
         # New node inherits child's priority (represents shared prefix)
         new_node = TreeNode(priority=child.priority)
         new_node.hit_count = child.hit_count
+        new_node.reuse_strength = child.reuse_strength
+        new_node.last_turnover = child.last_turnover
+        new_node.reuse_count = child.reuse_count
         new_node.children = {key[split_len:].child_key(self.page_size): child}
         new_node.parent = child.parent
         new_node.lock_ref = child.lock_ref
         new_node.key = child.key[:split_len]
         new_node.value = child.value[:split_len].clone()
+        new_node.prefix_depth = new_node.parent.prefix_depth + split_len
+        copy_mlp_on_split(new_node, child)
+        # The original request endpoint remains at the end of ``child``.
+        # A structural split must not copy terminal evidence to the prefix.
+        new_node.terminal_count = 0
         child.parent = new_node
         child.key = child.key[split_len:]
         child.value = child.value[split_len:].clone()
@@ -675,6 +869,14 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
             return
         node.hit_count += 1
 
+    def _dec_hit_count(self, node: TreeNode, chunked: bool = False, delta: int = 1):
+        if chunked or delta <= 0:
+            return
+        node.hit_count -= delta
+
+    def _demote_on_miss(self) -> bool:
+        return bool(getattr(self.eviction_strategy, "demote_on_miss", False))
+
     def _insert_helper(
         self,
         node: TreeNode,
@@ -682,6 +884,7 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
         value,
         priority: int = 0,
         chunked: bool = False,
+        is_terminal: bool = False,
     ):
         # Convert None priority to 0
         if priority is None:
@@ -696,6 +899,7 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
         child_key = key.child_key(self.page_size)
 
         total_prefix_length = 0
+        matched_nodes: list[TreeNode] = []
         while len(key) > 0 and child_key in node.children.keys():
             node = node.children[child_key]
             node.last_access_time = access_time
@@ -712,21 +916,40 @@ class RadixCache(KVCacheEventMixin, BasePrefixCache):
             else:
                 node.priority = max(node.priority, priority)
                 self._inc_hit_count(node, chunked)
+            matched_nodes.append(node)
             if len(key):
                 child_key = key.child_key(self.page_size)
 
         if len(key):
+            # agentic: relative to LFU, demote matched path by 1 when a miss
+            # suffix exists; cold miss leaf starts at -1 instead of +1.
+            if self._demote_on_miss() and not chunked:
+                for matched in matched_nodes:
+                    self._dec_hit_count(matched, chunked=False, delta=1)
             new_node = TreeNode(priority=priority)
             new_node.parent = node
             new_node.key = key
             new_node.value = value.clone()
-            self._inc_hit_count(new_node, chunked)
+            new_node.prefix_depth = node.prefix_depth + len(key)
+            self._mlp_stamp_new_node(new_node)
+            if self.reuse_value_enabled:
+                self._initialize_reuse_value_node(new_node, node)
+                self._record_reuse_value_insert(len(key))
+                # A node must not be aged by the KV tokens used to create it.
+                new_node.last_turnover = self.reuse_value_global_turnover
+            if self._demote_on_miss() and not chunked:
+                new_node.hit_count = -1
+            else:
+                self._inc_hit_count(new_node, chunked)
             node.children[child_key] = new_node
+            node = new_node
             self.evictable_size_ += len(key)
-            self._update_leaf_status(node)
+            self._update_leaf_status(new_node.parent)
             self._update_leaf_status(new_node)
             # Hash will be computed lazily during event emission
             self._record_store_event(new_node)
+        if is_terminal and self.reuse_value_enabled:
+            node.terminal_count += 1
         return total_prefix_length
 
     def _print_helper(self, node: TreeNode, indent: int):

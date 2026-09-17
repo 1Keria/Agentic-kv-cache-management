@@ -1,0 +1,46 @@
+{
+  "tp_consistent": true,
+  "evictions": 1859,
+  "finish_calls": 2001,
+  "choices": 3150,
+  "mlp_choices": 3150,
+  "mlp_fraction": 1.0,
+  "changed_choices": 1930,
+  "changed_fraction": 0.6126984126984127,
+  "fallback_choices": 0,
+  "fill_nodes": 6709,
+  "fill_batches": 1975,
+  "fill_inference_total_s": 0.8542217689999992,
+  "fill_selection_and_tp_total_s": 3.1124587439999996,
+  "submitted": 10232,
+  "dropped": 0,
+  "full_evicted_tokens": 1351936,
+  "swa_evicted_tokens": 9754880,
+  "fill_reasons": {
+    "missing_or_invalidated": 6709
+  },
+  "finish_total_us": {
+    "p50": 616.287,
+    "p99": 2869.808
+  },
+  "finish_prediction_hook_us": {
+    "p50": 260.784,
+    "p99": 1083.0
+  },
+  "finish_original_us": {
+    "p50": 240.567,
+    "p99": 2243.318
+  },
+  "evict_total_us": {
+    "p50": 23419.437,
+    "p99": 207383.97516000006
+  },
+  "evict_fill_inference_us": {
+    "p50": 260.278,
+    "p99": 2955.197320000001
+  },
+  "evict_fill_selection_and_tp_us": {
+    "p50": 1027.575,
+    "p99": 9400.594060000032
+  }
+}

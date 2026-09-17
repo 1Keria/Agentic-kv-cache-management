@@ -1,0 +1,20 @@
+{
+  "name": "evict_position_source_disjoint",
+  "source": "/share/dai-sys/zhoulongsheng/agentkv/workloads/ratio_train_v4flash/agent_050/workload.jsonl",
+  "training_trace_request_source": "/share/dai-sys/zhoulongsheng/agentkv/experiments/nn_exp/cold_predictor_exp/workloads/agent050_decode32/workload.jsonl",
+  "counts": {
+    "openhands": 943,
+    "request": 1027
+  },
+  "n_turns": 1970,
+  "n_sessions": 572,
+  "excluded_sessions": 13,
+  "overlap_checks": [
+    "session_id",
+    "source trajectory id before strict segment",
+    "first user message hash"
+  ],
+  "note": "Dataset naming train/test predates this experiment. Here the seconds model was trained on the old unseen replay; this different source is serving test only. Common system prefixes may still overlap.",
+  "source_sha256": "deeddbe73761330eaf20139508f1dc91b1ec434b5f631f072961490dcb3134e4",
+  "workload_sha256": "13cb48c9de836f62ff2186b9732120b09431d1f6991f0230f5c81bbcd6704e8c"
+}

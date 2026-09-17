@@ -1,0 +1,24 @@
+{
+  "created_unix": 1788873312.8393416,
+  "mode": "mix_workload_session_closed",
+  "base_url": "http://127.0.0.1:30000",
+  "model": "deepseek-v4-flash",
+  "workload_dir": "/share/dai-sys/zhoulongsheng/agentkv/workloads/ratio_train_v4flash/agent_050",
+  "arrival": {
+    "type": "frozen",
+    "note": "session_start_s taken from workload.jsonl",
+    "classes": [
+      "openhands",
+      "request"
+    ]
+  },
+  "gap_scale": 1.0,
+  "request_gap_cap_s": 30.0,
+  "ablate_zero_gap": false,
+  "flush_cache_before_run": true,
+  "dry_run": false,
+  "n_sessions": 585,
+  "n_turns": 2100,
+  "wall_clock_s": 11055.343,
+  "n_issued": 2100
+}

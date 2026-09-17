@@ -1,0 +1,1044 @@
+{
+  "pairs": 374,
+  "summary": [
+    {
+      "method": "log_survival",
+      "horizon_s": 1,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.6985093013634788,
+      "mean_token_weighted_average_precision": 0.08054071416773868,
+      "mean_population_km_risk": 0.014516031816709967,
+      "mean_top20pct_token_km_risk": 0.026809377271749965,
+      "mean_bottom20pct_token_victim_km_risk": 0.002922901211904729,
+      "mean_victim_to_population_risk_ratio": 0.07074089416402725
+    },
+    {
+      "method": "log_survival",
+      "horizon_s": 2,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.6485693278120014,
+      "mean_token_weighted_average_precision": 0.12725111588326554,
+      "mean_population_km_risk": 0.03161367812074407,
+      "mean_top20pct_token_km_risk": 0.05925290789821316,
+      "mean_bottom20pct_token_victim_km_risk": 0.005016319763322755,
+      "mean_victim_to_population_risk_ratio": 0.2846387834804602
+    },
+    {
+      "method": "log_survival",
+      "horizon_s": 3,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7093853628994399,
+      "mean_token_weighted_average_precision": 0.1770274594343406,
+      "mean_population_km_risk": 0.04692572087427826,
+      "mean_top20pct_token_km_risk": 0.08518332051172034,
+      "mean_bottom20pct_token_victim_km_risk": 0.007632824403578062,
+      "mean_victim_to_population_risk_ratio": 0.07150140507561763
+    },
+    {
+      "method": "log_survival",
+      "horizon_s": 5,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.6969087563521191,
+      "mean_token_weighted_average_precision": 0.24319202668426518,
+      "mean_population_km_risk": 0.071848764400858,
+      "mean_top20pct_token_km_risk": 0.11924912522142747,
+      "mean_bottom20pct_token_victim_km_risk": 0.01509400317408585,
+      "mean_victim_to_population_risk_ratio": 0.09646501156396296
+    },
+    {
+      "method": "log_survival",
+      "horizon_s": 10,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.6973851311292015,
+      "mean_token_weighted_average_precision": 0.31773360677385615,
+      "mean_population_km_risk": 0.1046040411206143,
+      "mean_top20pct_token_km_risk": 0.1631202232272989,
+      "mean_bottom20pct_token_victim_km_risk": 0.03441333371797379,
+      "mean_victim_to_population_risk_ratio": 0.13082376329780104
+    },
+    {
+      "method": "log_survival",
+      "horizon_s": 20,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7004338155684138,
+      "mean_token_weighted_average_precision": 0.37495119606673766,
+      "mean_population_km_risk": 0.12952008923380512,
+      "mean_top20pct_token_km_risk": 0.1940751681085633,
+      "mean_bottom20pct_token_victim_km_risk": 0.0510514389520793,
+      "mean_victim_to_population_risk_ratio": 0.14861915952581875
+    },
+    {
+      "method": "log_survival",
+      "horizon_s": 30,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7039978424255113,
+      "mean_token_weighted_average_precision": 0.3941177044749754,
+      "mean_population_km_risk": 0.13704132407403236,
+      "mean_top20pct_token_km_risk": 0.20372103333208544,
+      "mean_bottom20pct_token_victim_km_risk": 0.05353657627347279,
+      "mean_victim_to_population_risk_ratio": 0.144820366117363
+    },
+    {
+      "method": "log_survival",
+      "horizon_s": 60,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7042096416442973,
+      "mean_token_weighted_average_precision": 0.39800018582925795,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.2073483944603517,
+      "mean_bottom20pct_token_victim_km_risk": 0.05692256316419095,
+      "mean_victim_to_population_risk_ratio": 0.15072541810125023
+    },
+    {
+      "method": "log_survival",
+      "horizon_s": 120,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7041687769586221,
+      "mean_token_weighted_average_precision": 0.3979758223134206,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.20724255322548785,
+      "mean_bottom20pct_token_victim_km_risk": 0.056926457255164854,
+      "mean_victim_to_population_risk_ratio": 0.15074051771927943
+    },
+    {
+      "method": "log_survival",
+      "horizon_s": 180,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7041085394917306,
+      "mean_token_weighted_average_precision": 0.39795533861882093,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.20725021457077827,
+      "mean_bottom20pct_token_victim_km_risk": 0.05691424559706502,
+      "mean_victim_to_population_risk_ratio": 0.1506950016818132
+    },
+    {
+      "method": "log_survival",
+      "horizon_s": 300,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7041109645927217,
+      "mean_token_weighted_average_precision": 0.3979229382556222,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.2073069601068467,
+      "mean_bottom20pct_token_victim_km_risk": 0.05691430234267578,
+      "mean_victim_to_population_risk_ratio": 0.1506977602136373
+    },
+    {
+      "method": "log_survival",
+      "horizon_s": 600,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.703994394144768,
+      "mean_token_weighted_average_precision": 0.39784326879929915,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.20704770598792327,
+      "mean_bottom20pct_token_victim_km_risk": 0.05691944632749672,
+      "mean_victim_to_population_risk_ratio": 0.15072787419363093
+    },
+    {
+      "method": "log_survival",
+      "horizon_s": 900,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7039087254426061,
+      "mean_token_weighted_average_precision": 0.3978380932191053,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.2071357916087262,
+      "mean_bottom20pct_token_victim_km_risk": 0.056921301216669204,
+      "mean_victim_to_population_risk_ratio": 0.15073354664331698
+    },
+    {
+      "method": "log_survival",
+      "horizon_s": 1200,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7127730074778813,
+      "mean_token_weighted_average_precision": 0.3726378712684957,
+      "mean_population_km_risk": 0.13936869656463535,
+      "mean_top20pct_token_km_risk": 0.20758318269558826,
+      "mean_bottom20pct_token_victim_km_risk": 0.05701884179592773,
+      "mean_victim_to_population_risk_ratio": 0.17445204736712447
+    },
+    {
+      "method": "log_survival",
+      "horizon_s": 1800,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7200326289014944,
+      "mean_token_weighted_average_precision": 0.3512641327740612,
+      "mean_population_km_risk": 0.1395818261498674,
+      "mean_top20pct_token_km_risk": 0.20812256373454757,
+      "mean_bottom20pct_token_victim_km_risk": 0.05713428932762521,
+      "mean_victim_to_population_risk_ratio": 0.19831261288328772
+    },
+    {
+      "method": "log_survival",
+      "horizon_s": 2400,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7253286622269342,
+      "mean_token_weighted_average_precision": 0.332702497975872,
+      "mean_population_km_risk": 0.13979495573509945,
+      "mean_top20pct_token_km_risk": 0.20836809728920522,
+      "mean_bottom20pct_token_victim_km_risk": 0.05719318642996935,
+      "mean_victim_to_population_risk_ratio": 0.22208373296992726
+    },
+    {
+      "method": "log_survival",
+      "horizon_s": 3600,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.756390778248617,
+      "mean_token_weighted_average_precision": 0.2582762515572022,
+      "mean_population_km_risk": 0.14297880856726922,
+      "mean_top20pct_token_km_risk": 0.2148336729310114,
+      "mean_bottom20pct_token_victim_km_risk": 0.059797241476084964,
+      "mean_victim_to_population_risk_ratio": 0.4092351202126242
+    },
+    {
+      "method": "linear_survival",
+      "horizon_s": 1,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.6984709407369607,
+      "mean_token_weighted_average_precision": 0.08046533033977625,
+      "mean_population_km_risk": 0.014516031816709967,
+      "mean_top20pct_token_km_risk": 0.02680829948463404,
+      "mean_bottom20pct_token_victim_km_risk": 0.0029230482724089527,
+      "mean_victim_to_population_risk_ratio": 0.07074784473526158
+    },
+    {
+      "method": "linear_survival",
+      "horizon_s": 2,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.648517219027471,
+      "mean_token_weighted_average_precision": 0.12687981817922098,
+      "mean_population_km_risk": 0.03161367812074407,
+      "mean_top20pct_token_km_risk": 0.059292715386366865,
+      "mean_bottom20pct_token_victim_km_risk": 0.00501700745709112,
+      "mean_victim_to_population_risk_ratio": 0.28465108131312
+    },
+    {
+      "method": "linear_survival",
+      "horizon_s": 3,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7092292013055533,
+      "mean_token_weighted_average_precision": 0.17663729527194572,
+      "mean_population_km_risk": 0.04692572087427826,
+      "mean_top20pct_token_km_risk": 0.08495519573539546,
+      "mean_bottom20pct_token_victim_km_risk": 0.007617408196152581,
+      "mean_victim_to_population_risk_ratio": 0.07141019413890977
+    },
+    {
+      "method": "linear_survival",
+      "horizon_s": 5,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.6967229687281434,
+      "mean_token_weighted_average_precision": 0.2428374040925438,
+      "mean_population_km_risk": 0.071848764400858,
+      "mean_top20pct_token_km_risk": 0.11874512144008433,
+      "mean_bottom20pct_token_victim_km_risk": 0.01503275553305352,
+      "mean_victim_to_population_risk_ratio": 0.09613015462374598
+    },
+    {
+      "method": "linear_survival",
+      "horizon_s": 10,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.6974443330500991,
+      "mean_token_weighted_average_precision": 0.3174663280375082,
+      "mean_population_km_risk": 0.1046040411206143,
+      "mean_top20pct_token_km_risk": 0.1629278039945318,
+      "mean_bottom20pct_token_victim_km_risk": 0.03428721368421769,
+      "mean_victim_to_population_risk_ratio": 0.13050268520614436
+    },
+    {
+      "method": "linear_survival",
+      "horizon_s": 20,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7002626829644331,
+      "mean_token_weighted_average_precision": 0.3748017946462433,
+      "mean_population_km_risk": 0.12952008923380512,
+      "mean_top20pct_token_km_risk": 0.19371688244447718,
+      "mean_bottom20pct_token_victim_km_risk": 0.051009663037304455,
+      "mean_victim_to_population_risk_ratio": 0.14845757508301977
+    },
+    {
+      "method": "linear_survival",
+      "horizon_s": 30,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7038803919379686,
+      "mean_token_weighted_average_precision": 0.3939394896132914,
+      "mean_population_km_risk": 0.13704132407403236,
+      "mean_top20pct_token_km_risk": 0.20346358147553675,
+      "mean_bottom20pct_token_victim_km_risk": 0.05367039963377465,
+      "mean_victim_to_population_risk_ratio": 0.1454234951609048
+    },
+    {
+      "method": "linear_survival",
+      "horizon_s": 60,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7041766432755061,
+      "mean_token_weighted_average_precision": 0.39799127408236906,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.20690525050170078,
+      "mean_bottom20pct_token_victim_km_risk": 0.05681314912490514,
+      "mean_victim_to_population_risk_ratio": 0.15034250101879626
+    },
+    {
+      "method": "linear_survival",
+      "horizon_s": 120,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7041262475495954,
+      "mean_token_weighted_average_precision": 0.3978791419339418,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.20681747373844797,
+      "mean_bottom20pct_token_victim_km_risk": 0.05681423988561619,
+      "mean_victim_to_population_risk_ratio": 0.15035728104626642
+    },
+    {
+      "method": "linear_survival",
+      "horizon_s": 180,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.704063397314573,
+      "mean_token_weighted_average_precision": 0.39785213083936416,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.20692331213710854,
+      "mean_bottom20pct_token_victim_km_risk": 0.05680187887479098,
+      "mean_victim_to_population_risk_ratio": 0.1503145860533289
+    },
+    {
+      "method": "linear_survival",
+      "horizon_s": 300,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7040530474187926,
+      "mean_token_weighted_average_precision": 0.3978200143075258,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.2069868084973977,
+      "mean_bottom20pct_token_victim_km_risk": 0.056807374170051356,
+      "mean_victim_to_population_risk_ratio": 0.15033977095830123
+    },
+    {
+      "method": "linear_survival",
+      "horizon_s": 600,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7039486406449696,
+      "mean_token_weighted_average_precision": 0.39774959717839276,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.20691922644182625,
+      "mean_bottom20pct_token_victim_km_risk": 0.05680865442048347,
+      "mean_victim_to_population_risk_ratio": 0.15034874486938096
+    },
+    {
+      "method": "linear_survival",
+      "horizon_s": 900,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7038704066577842,
+      "mean_token_weighted_average_precision": 0.39772958719968426,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.20700786101882088,
+      "mean_bottom20pct_token_victim_km_risk": 0.05680949067277583,
+      "mean_victim_to_population_risk_ratio": 0.150355214681313
+    },
+    {
+      "method": "linear_survival",
+      "horizon_s": 1200,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7126346081819949,
+      "mean_token_weighted_average_precision": 0.3725436672279335,
+      "mean_population_km_risk": 0.13936869656463535,
+      "mean_top20pct_token_km_risk": 0.20753969338095776,
+      "mean_bottom20pct_token_victim_km_risk": 0.05691107059797839,
+      "mean_victim_to_population_risk_ratio": 0.17409017323094603
+    },
+    {
+      "method": "linear_survival",
+      "horizon_s": 1800,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7200003231268748,
+      "mean_token_weighted_average_precision": 0.35118576763310194,
+      "mean_population_km_risk": 0.1395818261498674,
+      "mean_top20pct_token_km_risk": 0.20808467598913252,
+      "mean_bottom20pct_token_victim_km_risk": 0.0570153205524679,
+      "mean_victim_to_population_risk_ratio": 0.19792123367243217
+    },
+    {
+      "method": "linear_survival",
+      "horizon_s": 2400,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7254469732803152,
+      "mean_token_weighted_average_precision": 0.3327536483444006,
+      "mean_population_km_risk": 0.13979495573509945,
+      "mean_top20pct_token_km_risk": 0.20851895463002768,
+      "mean_bottom20pct_token_victim_km_risk": 0.05702112377463005,
+      "mean_victim_to_population_risk_ratio": 0.22157067520940377
+    },
+    {
+      "method": "linear_survival",
+      "horizon_s": 3600,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.756290252034724,
+      "mean_token_weighted_average_precision": 0.2581188095031332,
+      "mean_population_km_risk": 0.14297880856726922,
+      "mean_top20pct_token_km_risk": 0.2155363617641301,
+      "mean_bottom20pct_token_victim_km_risk": 0.059723504604885076,
+      "mean_victim_to_population_risk_ratio": 0.4089865369033607
+    },
+    {
+      "method": "right_step",
+      "horizon_s": 1,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.5177651641224029,
+      "mean_token_weighted_average_precision": 0.03615967504062575,
+      "mean_population_km_risk": 0.014516031816709967,
+      "mean_top20pct_token_km_risk": 0.012529111908133005,
+      "mean_bottom20pct_token_victim_km_risk": 0.016389743802280487,
+      "mean_victim_to_population_risk_ratio": 0.3757620223804668
+    },
+    {
+      "method": "right_step",
+      "horizon_s": 2,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.5364608300458856,
+      "mean_token_weighted_average_precision": 0.07388866639786175,
+      "mean_population_km_risk": 0.03161367812074407,
+      "mean_top20pct_token_km_risk": 0.03479814865239301,
+      "mean_bottom20pct_token_victim_km_risk": 0.025864254304458392,
+      "mean_victim_to_population_risk_ratio": 0.3551072082810066
+    },
+    {
+      "method": "right_step",
+      "horizon_s": 3,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.5604110620602272,
+      "mean_token_weighted_average_precision": 0.1286128090103187,
+      "mean_population_km_risk": 0.04692572087427826,
+      "mean_top20pct_token_km_risk": 0.061812195752696315,
+      "mean_bottom20pct_token_victim_km_risk": 0.02499758033127818,
+      "mean_victim_to_population_risk_ratio": 0.29472419781239717
+    },
+    {
+      "method": "right_step",
+      "horizon_s": 5,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.6244585214840916,
+      "mean_token_weighted_average_precision": 0.23099200456155175,
+      "mean_population_km_risk": 0.071848764400858,
+      "mean_top20pct_token_km_risk": 0.1123141897247077,
+      "mean_bottom20pct_token_victim_km_risk": 0.023130017663546488,
+      "mean_victim_to_population_risk_ratio": 0.22206886337720633
+    },
+    {
+      "method": "right_step",
+      "horizon_s": 10,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.6283326950474385,
+      "mean_token_weighted_average_precision": 0.3058846764434245,
+      "mean_population_km_risk": 0.1046040411206143,
+      "mean_top20pct_token_km_risk": 0.15596374941646685,
+      "mean_bottom20pct_token_victim_km_risk": 0.03694517414120475,
+      "mean_victim_to_population_risk_ratio": 0.1923939725308328
+    },
+    {
+      "method": "right_step",
+      "horizon_s": 20,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.6473950283435506,
+      "mean_token_weighted_average_precision": 0.3621992469488188,
+      "mean_population_km_risk": 0.12952008923380512,
+      "mean_top20pct_token_km_risk": 0.18613628399435286,
+      "mean_bottom20pct_token_victim_km_risk": 0.05332478173991084,
+      "mean_victim_to_population_risk_ratio": 0.20066748327910885
+    },
+    {
+      "method": "right_step",
+      "horizon_s": 30,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.6786858727528319,
+      "mean_token_weighted_average_precision": 0.3862430028335762,
+      "mean_population_km_risk": 0.13704132407403236,
+      "mean_top20pct_token_km_risk": 0.19551549074269012,
+      "mean_bottom20pct_token_victim_km_risk": 0.05613818360981065,
+      "mean_victim_to_population_risk_ratio": 0.18085643260460862
+    },
+    {
+      "method": "right_step",
+      "horizon_s": 60,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7040787641970806,
+      "mean_token_weighted_average_precision": 0.3976164143651534,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.20569319290447427,
+      "mean_bottom20pct_token_victim_km_risk": 0.05652445670491601,
+      "mean_victim_to_population_risk_ratio": 0.14969392414795843
+    },
+    {
+      "method": "right_step",
+      "horizon_s": 120,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7040787641970806,
+      "mean_token_weighted_average_precision": 0.3976164143651534,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.20569319290447427,
+      "mean_bottom20pct_token_victim_km_risk": 0.05652445670491601,
+      "mean_victim_to_population_risk_ratio": 0.14969392414795843
+    },
+    {
+      "method": "right_step",
+      "horizon_s": 180,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7038967259032931,
+      "mean_token_weighted_average_precision": 0.39754224220257667,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.20563293601174368,
+      "mean_bottom20pct_token_victim_km_risk": 0.05653348908397557,
+      "mean_victim_to_population_risk_ratio": 0.1497313091419126
+    },
+    {
+      "method": "right_step",
+      "horizon_s": 300,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7038967259032931,
+      "mean_token_weighted_average_precision": 0.39754224220257667,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.20563293601174368,
+      "mean_bottom20pct_token_victim_km_risk": 0.05653348908397557,
+      "mean_victim_to_population_risk_ratio": 0.1497313091419126
+    },
+    {
+      "method": "right_step",
+      "horizon_s": 600,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7038393210789771,
+      "mean_token_weighted_average_precision": 0.3974552595129904,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.20561793383715052,
+      "mean_bottom20pct_token_victim_km_risk": 0.05653796488040616,
+      "mean_victim_to_population_risk_ratio": 0.14976957526691811
+    },
+    {
+      "method": "right_step",
+      "horizon_s": 900,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.7038393210789771,
+      "mean_token_weighted_average_precision": 0.3974552595129904,
+      "mean_population_km_risk": 0.1391555669794033,
+      "mean_top20pct_token_km_risk": 0.20561793383715052,
+      "mean_bottom20pct_token_victim_km_risk": 0.05653796488040616,
+      "mean_victim_to_population_risk_ratio": 0.14976957526691811
+    },
+    {
+      "method": "right_step",
+      "horizon_s": 1200,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.6868527109890623,
+      "mean_token_weighted_average_precision": 0.36473061526265554,
+      "mean_population_km_risk": 0.13936869656463535,
+      "mean_top20pct_token_km_risk": 0.20606719743162027,
+      "mean_bottom20pct_token_victim_km_risk": 0.05705898781986967,
+      "mean_victim_to_population_risk_ratio": 0.2608891125142707
+    },
+    {
+      "method": "right_step",
+      "horizon_s": 1800,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.6723482655305134,
+      "mean_token_weighted_average_precision": 0.33696790331846926,
+      "mean_population_km_risk": 0.1395818261498674,
+      "mean_top20pct_token_km_risk": 0.20650669542011366,
+      "mean_bottom20pct_token_victim_km_risk": 0.05751688558744297,
+      "mean_victim_to_population_risk_ratio": 0.3717430710331014
+    },
+    {
+      "method": "right_step",
+      "horizon_s": 2400,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.6670991152178223,
+      "mean_token_weighted_average_precision": 0.31348235168993216,
+      "mean_population_km_risk": 0.13979495573509945,
+      "mean_top20pct_token_km_risk": 0.20699663102953728,
+      "mean_bottom20pct_token_victim_km_risk": 0.057672074780635955,
+      "mean_victim_to_population_risk_ratio": 0.40484056065831775
+    },
+    {
+      "method": "right_step",
+      "horizon_s": 3600,
+      "n_ages": 22,
+      "mean_token_weighted_auroc": 0.6371982409598913,
+      "mean_token_weighted_average_precision": 0.21357293984804926,
+      "mean_population_km_risk": 0.14297880856726922,
+      "mean_top20pct_token_km_risk": 0.21293106749621735,
+      "mean_bottom20pct_token_victim_km_risk": 0.061483483632536015,
+      "mean_victim_to_population_risk_ratio": 0.6853691291364661
+    }
+  ],
+  "overlap_summary": [
+    {
+      "horizon_s": 1,
+      "side": "low",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9999485645056597,
+      "min_token_weighted_jaccard": 0.9990185318682322
+    },
+    {
+      "horizon_s": 1,
+      "side": "low",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.1469699936592113,
+      "min_token_weighted_jaccard": 0.08516229373605153
+    },
+    {
+      "horizon_s": 1,
+      "side": "high",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9997277728219097,
+      "min_token_weighted_jaccard": 0.9968910932481995
+    },
+    {
+      "horizon_s": 1,
+      "side": "high",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.1520966433362006,
+      "min_token_weighted_jaccard": 0.09874209061116579
+    },
+    {
+      "horizon_s": 2,
+      "side": "low",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9997565523716445,
+      "min_token_weighted_jaccard": 0.9958105595261167
+    },
+    {
+      "horizon_s": 2,
+      "side": "low",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.20011908637641704,
+      "min_token_weighted_jaccard": 0.08516229373605153
+    },
+    {
+      "horizon_s": 2,
+      "side": "high",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9983566159732175,
+      "min_token_weighted_jaccard": 0.975463057201236
+    },
+    {
+      "horizon_s": 2,
+      "side": "high",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.191851432333058,
+      "min_token_weighted_jaccard": 0.09872295521478815
+    },
+    {
+      "horizon_s": 3,
+      "side": "low",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9988467382173948,
+      "min_token_weighted_jaccard": 0.9878254644626538
+    },
+    {
+      "horizon_s": 3,
+      "side": "low",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.2503095561301984,
+      "min_token_weighted_jaccard": 0.08516229373605153
+    },
+    {
+      "horizon_s": 3,
+      "side": "high",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9969844061502624,
+      "min_token_weighted_jaccard": 0.9696137003927591
+    },
+    {
+      "horizon_s": 3,
+      "side": "high",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.22989560845364673,
+      "min_token_weighted_jaccard": 0.10485625067298374
+    },
+    {
+      "horizon_s": 5,
+      "side": "low",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9972252736079277,
+      "min_token_weighted_jaccard": 0.9500265948398543
+    },
+    {
+      "horizon_s": 5,
+      "side": "low",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.3666282314834606,
+      "min_token_weighted_jaccard": 0.10570190676667143
+    },
+    {
+      "horizon_s": 5,
+      "side": "high",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9934187132853011,
+      "min_token_weighted_jaccard": 0.9463762396029682
+    },
+    {
+      "horizon_s": 5,
+      "side": "high",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.36545148994533866,
+      "min_token_weighted_jaccard": 0.10485625067298374
+    },
+    {
+      "horizon_s": 10,
+      "side": "low",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9956439630175862,
+      "min_token_weighted_jaccard": 0.9707703767654103
+    },
+    {
+      "horizon_s": 10,
+      "side": "low",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.3762908563989654,
+      "min_token_weighted_jaccard": 0.10570190676667143
+    },
+    {
+      "horizon_s": 10,
+      "side": "high",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9909678137108565,
+      "min_token_weighted_jaccard": 0.9164031451647365
+    },
+    {
+      "horizon_s": 10,
+      "side": "high",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.38428843968692816,
+      "min_token_weighted_jaccard": 0.10752697718284523
+    },
+    {
+      "horizon_s": 20,
+      "side": "low",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9989985559920644,
+      "min_token_weighted_jaccard": 0.9851977452131768
+    },
+    {
+      "horizon_s": 20,
+      "side": "low",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.4561621639446098,
+      "min_token_weighted_jaccard": 0.10570190676667143
+    },
+    {
+      "horizon_s": 20,
+      "side": "high",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9940355271003881,
+      "min_token_weighted_jaccard": 0.9508900935581938
+    },
+    {
+      "horizon_s": 20,
+      "side": "high",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.43410860244804444,
+      "min_token_weighted_jaccard": 0.10752697718284523
+    },
+    {
+      "horizon_s": 30,
+      "side": "low",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9982316794185508,
+      "min_token_weighted_jaccard": 0.9853211153076716
+    },
+    {
+      "horizon_s": 30,
+      "side": "low",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.4832899041084062,
+      "min_token_weighted_jaccard": 0.10570190676667143
+    },
+    {
+      "horizon_s": 30,
+      "side": "high",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.992162913160051,
+      "min_token_weighted_jaccard": 0.9427141230998455
+    },
+    {
+      "horizon_s": 30,
+      "side": "high",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.44835006948239714,
+      "min_token_weighted_jaccard": 0.10752697718284523
+    },
+    {
+      "horizon_s": 60,
+      "side": "low",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9989906317774756,
+      "min_token_weighted_jaccard": 0.9833665153295724
+    },
+    {
+      "horizon_s": 60,
+      "side": "low",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.5816002422458262,
+      "min_token_weighted_jaccard": 0.10570190676667143
+    },
+    {
+      "horizon_s": 60,
+      "side": "high",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9964868900919782,
+      "min_token_weighted_jaccard": 0.9639612088248154
+    },
+    {
+      "horizon_s": 60,
+      "side": "high",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.5749700757852131,
+      "min_token_weighted_jaccard": 0.10752697718284523
+    },
+    {
+      "horizon_s": 120,
+      "side": "low",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9984316957991495,
+      "min_token_weighted_jaccard": 0.9833124969722827
+    },
+    {
+      "horizon_s": 120,
+      "side": "low",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.6602414500587731,
+      "min_token_weighted_jaccard": 0.10570190676667143
+    },
+    {
+      "horizon_s": 120,
+      "side": "high",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9964520846619114,
+      "min_token_weighted_jaccard": 0.9628076698340852
+    },
+    {
+      "horizon_s": 120,
+      "side": "high",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.6544534468536564,
+      "min_token_weighted_jaccard": 0.10752697718284523
+    },
+    {
+      "horizon_s": 180,
+      "side": "low",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9984828201958887,
+      "min_token_weighted_jaccard": 0.9834796660061933
+    },
+    {
+      "horizon_s": 180,
+      "side": "low",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.6587144041574956,
+      "min_token_weighted_jaccard": 0.10570190676667143
+    },
+    {
+      "horizon_s": 180,
+      "side": "high",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9963922747570432,
+      "min_token_weighted_jaccard": 0.965359645706791
+    },
+    {
+      "horizon_s": 180,
+      "side": "high",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.6534328373789186,
+      "min_token_weighted_jaccard": 0.10752697718284523
+    },
+    {
+      "horizon_s": 300,
+      "side": "low",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9984442149556045,
+      "min_token_weighted_jaccard": 0.9837489276060767
+    },
+    {
+      "horizon_s": 300,
+      "side": "low",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.6951817168060979,
+      "min_token_weighted_jaccard": 0.10570190676667143
+    },
+    {
+      "horizon_s": 300,
+      "side": "high",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9963684475155262,
+      "min_token_weighted_jaccard": 0.9638372850613135
+    },
+    {
+      "horizon_s": 300,
+      "side": "high",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.6900344198836099,
+      "min_token_weighted_jaccard": 0.10752697718284523
+    },
+    {
+      "horizon_s": 600,
+      "side": "low",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9990019888935379,
+      "min_token_weighted_jaccard": 0.983450829074095
+    },
+    {
+      "horizon_s": 600,
+      "side": "low",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.7813416435137772,
+      "min_token_weighted_jaccard": 0.10570190676667143
+    },
+    {
+      "horizon_s": 600,
+      "side": "high",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9959566509556695,
+      "min_token_weighted_jaccard": 0.9641387557793853
+    },
+    {
+      "horizon_s": 600,
+      "side": "high",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.7742452435545324,
+      "min_token_weighted_jaccard": 0.10987406948145532
+    },
+    {
+      "horizon_s": 900,
+      "side": "low",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9990608153820436,
+      "min_token_weighted_jaccard": 0.9835829691482278
+    },
+    {
+      "horizon_s": 900,
+      "side": "low",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.8106014421157188,
+      "min_token_weighted_jaccard": 0.10570190676667143
+    },
+    {
+      "horizon_s": 900,
+      "side": "high",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9959029635522225,
+      "min_token_weighted_jaccard": 0.9641835462800326
+    },
+    {
+      "horizon_s": 900,
+      "side": "high",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.7980927390460014,
+      "min_token_weighted_jaccard": 0.10992265695464667
+    },
+    {
+      "horizon_s": 1200,
+      "side": "low",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9989817951812806,
+      "min_token_weighted_jaccard": 0.9835001683656289
+    },
+    {
+      "horizon_s": 1200,
+      "side": "low",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.8399907190894297,
+      "min_token_weighted_jaccard": 0.10570190676667143
+    },
+    {
+      "horizon_s": 1200,
+      "side": "high",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9957670922340193,
+      "min_token_weighted_jaccard": 0.9601483626354306
+    },
+    {
+      "horizon_s": 1200,
+      "side": "high",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.8212057797296887,
+      "min_token_weighted_jaccard": 0.10992265695464667
+    },
+    {
+      "horizon_s": 1800,
+      "side": "low",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9979373802009971,
+      "min_token_weighted_jaccard": 0.9825534136335573
+    },
+    {
+      "horizon_s": 1800,
+      "side": "low",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.8148538486507664,
+      "min_token_weighted_jaccard": 0.10570190676667143
+    },
+    {
+      "horizon_s": 1800,
+      "side": "high",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9953362647284397,
+      "min_token_weighted_jaccard": 0.9592394502601076
+    },
+    {
+      "horizon_s": 1800,
+      "side": "high",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.776963127257551,
+      "min_token_weighted_jaccard": 0.10992265695464667
+    },
+    {
+      "horizon_s": 2400,
+      "side": "low",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9975006692928681,
+      "min_token_weighted_jaccard": 0.9815932815988094
+    },
+    {
+      "horizon_s": 2400,
+      "side": "low",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.7789684978107526,
+      "min_token_weighted_jaccard": 0.10570190676667143
+    },
+    {
+      "horizon_s": 2400,
+      "side": "high",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9933892851660594,
+      "min_token_weighted_jaccard": 0.960921308283343
+    },
+    {
+      "horizon_s": 2400,
+      "side": "high",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.7340017293738321,
+      "min_token_weighted_jaccard": 0.10988851612055803
+    },
+    {
+      "horizon_s": 3600,
+      "side": "low",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.997323155662963,
+      "min_token_weighted_jaccard": 0.9856593046455402
+    },
+    {
+      "horizon_s": 3600,
+      "side": "low",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.7952871992024773,
+      "min_token_weighted_jaccard": 0.10570190676667143
+    },
+    {
+      "horizon_s": 3600,
+      "side": "high",
+      "comparison": "log_vs_linear_survival",
+      "mean_token_weighted_jaccard": 0.9921885686438482,
+      "min_token_weighted_jaccard": 0.9622318499200807
+    },
+    {
+      "horizon_s": 3600,
+      "side": "high",
+      "comparison": "log_vs_right_step",
+      "mean_token_weighted_jaccard": 0.7328601587757213,
+      "min_token_weighted_jaccard": 0.10988851612055803
+    }
+  ]
+}

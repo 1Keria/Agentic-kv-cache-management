@@ -1,0 +1,111 @@
+{
+  "task_name": "pptx-reference-formatting",
+  "rollout_name": "pptx-reference-formatting__ff28a9f1",
+  "rewards": {
+    "reward": 1.0
+  },
+  "agent": "openhands",
+  "agent_name": "OpenHands CLI ACP Agent",
+  "model": "deepseek/deepseek-v4-flash",
+  "skill_mode": "with-skill",
+  "skill_source": "task_bundled",
+  "requested_skills_dir": "/home/benchflow/skillsbench/tasks/pptx-reference-formatting/environment/skills",
+  "effective_skills_dir": "/tmp/benchflow-task-biirrpyo/pptx-reference-formatting/environment/skills",
+  "skills_sandbox_dir": "/skills",
+  "include_task_skills": true,
+  "n_tool_calls": 57,
+  "n_skill_invocations": 1,
+  "n_prompts": 1,
+  "agent_result": {
+    "n_tool_calls": 57,
+    "n_skill_invocations": 1,
+    "n_prompts": 1,
+    "n_input_tokens": 2999441,
+    "n_output_tokens": 28166,
+    "n_cache_read_tokens": 2913280,
+    "n_cache_creation_tokens": 0,
+    "total_tokens": 3027607,
+    "cost_usd": null,
+    "usage_source": "provider_response",
+    "price_source": null
+  },
+  "final_metrics": {
+    "total_prompt_tokens": 2999441,
+    "total_completion_tokens": 28166,
+    "total_cached_tokens": 2913280,
+    "total_cost_usd": null
+  },
+  "trajectory_summary": {
+    "steps": 101,
+    "tool_call_steps": 57,
+    "user_message_steps": 1,
+    "agent_message_steps": 1,
+    "agent_thought_steps": 42,
+    "other_steps": 0,
+    "event_type_counts": {
+      "user_message": 1,
+      "agent_thought": 42,
+      "tool_call": 57,
+      "agent_message": 1
+    },
+    "tool_call_status_counts": {
+      "completed": 55,
+      "pending": 2
+    },
+    "partial_trajectory": false,
+    "trajectory_source": "acp"
+  },
+  "usage_tracking": {
+    "requested": "required",
+    "status": "enabled",
+    "environment": "docker",
+    "endpoint_kind": "host",
+    "usage_source": "provider_response"
+  },
+  "error": null,
+  "error_category": null,
+  "verifier_error": null,
+  "verifier_error_category": null,
+  "export_error": null,
+  "idle_timeout_info": null,
+  "sandbox_startup_info": null,
+  "transport_error_info": null,
+  "verifier_timeout_info": null,
+  "partial_trajectory": false,
+  "trajectory_source": "acp",
+  "started_at": "2026-06-09 06:55:18.372277",
+  "finished_at": "2026-06-09 07:03:46.597055",
+  "timing": {
+    "environment_setup": 68.8,
+    "agent_setup": 18.7,
+    "agent_execution": 325.5,
+    "verifier": 14.2,
+    "total": 508.2
+  },
+  "scenes": [
+    {
+      "name": "default",
+      "skills_dir": null,
+      "roles": [
+        {
+          "name": "agent",
+          "agent": "openhands",
+          "model": "deepseek/deepseek-v4-flash",
+          "reasoning_effort": null,
+          "timeout_sec": null,
+          "idle_timeout_sec": null,
+          "skills_dir": null,
+          "capabilities": null,
+          "env_keys": []
+        }
+      ],
+      "turns": [
+        {
+          "role": "agent",
+          "has_prompt": false
+        }
+      ]
+    }
+  ],
+  "sandbox_id": null
+}

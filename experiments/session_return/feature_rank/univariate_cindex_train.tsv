@@ -1,0 +1,47 @@
+feature	group	c_index	abs_c	direction	n_unique	std
+sampling.max_new_tokens	sampling	0.6828	0.1828	higher_longer_tau	526	237.2
+req.finished_len	req	0.6537	0.1537	higher_longer_tau	437	190.1
+req.reasoning_tokens	req	0.5856	0.0856	higher_longer_tau	247	122.5
+req.kv_allocated_len	req	0.5576	0.0576	higher_longer_tau	1495	7473
+req.kv_committed_len	req	0.5576	0.0576	higher_longer_tau	1495	7473
+req.cache_protected_len	req	0.5542	0.0542	higher_longer_tau	432	7450
+req.fill_len	req	0.5541	0.0541	higher_longer_tau	1491	7450
+client.temperature	client	0.4723	0.0277	higher_shorter_tau	4	0.1632
+sampling.temperature	sampling	0.4723	0.0277	higher_shorter_tau	4	0.1632
+req.extend_input_len	req	0.5254	0.0254	higher_longer_tau	1388	2275
+client.max_tokens	client	0.5145	0.0145	higher_longer_tau	7	1.073e+04
+req._is_reasoning_over	req	0.4861	0.0139	higher_shorter_tau	2	0.2586
+resource.evictable_size	resource	0.5098	0.0098	higher_longer_tau	525	1.172e+04
+resource.available_size	resource	0.4903	0.0097	higher_shorter_tau	222	7784
+req.cached_tokens	req	0.5032	0.0032	higher_longer_tau	69	8002
+req.cached_tokens_device	req	0.5032	0.0032	higher_longer_tau	69	8002
+client.top_p	client	0.5030	0.0030	higher_longer_tau	2	0.02007
+sampling.top_p	sampling	0.5030	0.0030	higher_longer_tau	2	0.02007
+resource.protected_size	resource	0.4980	0.0020	higher_shorter_tau	338	8651
+client.reasoning_effort	client			constant	1	0
+client.stream	client			constant	1	0
+last_node.hit_count	last_node			constant	1	0
+last_node.host_ref_counter	last_node			constant	1	0
+last_node.lock_ref	last_node			constant	1	0
+last_node.priority	last_node			constant	1	0
+req.cached_tokens_host	req			constant	1	0
+req.cached_tokens_storage	req			constant	1	0
+req.host_hit_length	req			constant	1	0
+req.mamba_host_hit_length	req			constant	1	0
+req.num_matched_prefix_tokens	req			constant	1	0
+req.priority	req			constant	0	
+req.require_reasoning	req			constant	1	0
+req.storage_hit_length	req			constant	1	0
+req.stream	req			constant	1	0
+req.swa_evicted_seqlen	req			constant	1	0
+req.swa_host_hit_length	req			constant	1	0
+resource.page_size	resource			constant	1	0
+resource.size	resource			constant	1	0
+sampling.frequency_penalty	sampling			constant	1	0
+sampling.ignore_eos	sampling			constant	1	0
+sampling.min_new_tokens	sampling			constant	1	0
+sampling.min_p	sampling			constant	1	0
+sampling.n	sampling			constant	1	0
+sampling.presence_penalty	sampling			constant	1	0
+sampling.repetition_penalty	sampling			constant	1	0
+sampling.top_k	sampling			constant	1	0

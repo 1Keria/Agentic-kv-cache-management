@@ -276,7 +276,15 @@ FP4_GEMM_RUNNER_BACKEND_CHOICES = [
     "marlin",
 ]
 
-RADIX_EVICTION_POLICY_CHOICES = ["lru", "lfu", "slru", "priority"]
+RADIX_EVICTION_POLICY_CHOICES = [
+    "lru",
+    "lfu",
+    "agentic",
+    "reuse_value",
+    "mlp",
+    "slru",
+    "priority",
+]
 
 RL_ON_POLICY_TARGET_CHOICES = ["fsdp"]
 
@@ -451,6 +459,17 @@ class ServerArgs:
     swa_full_tokens_ratio: float = 0.8
     disable_hybrid_swa_memory: bool = False
     radix_eviction_policy: str = "lru"
+    enable_kv_value_estimator: bool = False
+    kv_value_shadow_only: bool = False
+    radix_reuse_value_turnover_kappa: float = 1.0
+    radix_reuse_value_base_cold_strength: float = 1.0
+    radix_mlp_checkpoint: Optional[str] = None
+    radix_mlp_hold_lambda: float = 0.05
+    radix_mlp_delta_alpha: str = "1.0,0.7,0.5"
+    radix_mlp_horizon_index: int = -1
+    radix_mlp_occupancy_hi: float = 0.90
+    radix_mlp_occupancy_mid: float = 0.75
+    radix_mlp_shadow_only: bool = False
     enable_prefill_delayer: bool = False
     prefill_delayer_max_delay_passes: int = 30
     prefill_delayer_token_usage_low_watermark: Optional[float] = None
@@ -4715,7 +4734,6 @@ class ServerArgs:
 
     @staticmethod
     def add_cli_args(parser: argparse.ArgumentParser):
-
         # Model and tokenizer
         parser.add_argument(
             "--model-path",
@@ -5169,7 +5187,99 @@ class ServerArgs:
             type=str,
             choices=RADIX_EVICTION_POLICY_CHOICES,
             default=ServerArgs.radix_eviction_policy,
-            help="The eviction policy of radix trees. 'lru' stands for Least Recently Used, 'lfu' stands for Least Frequently Used, 'slru' stands for Segmented Least Recently Used, and 'priority' evicts lower-priority requests first.",
+            help=(
+                "The eviction policy of radix trees. 'lru' = Least Recently Used; "
+                "'lfu' = Least Frequently Used; "
+                "'agentic' = LFU plus demote hit_count by 1 on miss suffix "
+                "(matched path -1, new miss leaf starts at -1); "
+                "'reuse_value' = churn-aged prefix reuse strength times "
+                "recompute cost per KV token; "
+                "'mlp' = learned P(prefix match in H_k), controller prices "
+                "NetValue = p*tokens - λ*KVSize; "
+                "'slru' = Segmented LRU; "
+                "'priority' = request-level priority (lower first)."
+            ),
+        )
+        parser.add_argument(
+            "--enable-kv-value-estimator",
+            action="store_true",
+            help=(
+                "Collect reuse-value estimator state even when another radix "
+                "eviction policy remains active."
+            ),
+        )
+        parser.add_argument(
+            "--kv-value-shadow-only",
+            action="store_true",
+            help=(
+                "Keep LRU eviction active and log the victim that reuse_value "
+                "would select. Requires --radix-eviction-policy lru."
+            ),
+        )
+        parser.add_argument(
+            "--radix-reuse-value-turnover-kappa",
+            type=float,
+            default=ServerArgs.radix_reuse_value_turnover_kappa,
+            help=(
+                "Cache-turnover decay scale for the reuse_value radix eviction "
+                "policy. Use 'inf' to disable turnover decay."
+            ),
+        )
+        parser.add_argument(
+            "--radix-reuse-value-base-cold-strength",
+            type=float,
+            default=ServerArgs.radix_reuse_value_base_cold_strength,
+            help=(
+                "Initial reuse strength for new radix nodes that do not extend "
+                "a previously cached terminal request."
+            ),
+        )
+        parser.add_argument(
+            "--radix-mlp-checkpoint",
+            type=str,
+            default=ServerArgs.radix_mlp_checkpoint,
+            help="Path to the trained leaf-MLP checkpoint (leaf_mlp.pt). Required for --radix-eviction-policy mlp.",
+        )
+        parser.add_argument(
+            "--radix-mlp-hold-lambda",
+            type=float,
+            default=ServerArgs.radix_mlp_hold_lambda,
+            help=(
+                "Fixed hold-cost threshold λ in NetValue=(π−λ)×KVSize. "
+                "Not scaled by occupancy. Default 0.05; 0 ranks by π×KVSize."
+            ),
+        )
+        parser.add_argument(
+            "--radix-mlp-delta-alpha",
+            type=str,
+            default=ServerArgs.radix_mlp_delta_alpha,
+            help=(
+                "Comma-separated Δp weights α_k, e.g. 1.0,0.7,0.5. "
+                "π=Σ α_k Δp_k. Use 1,1,1 to ignore CDF shape."
+            ),
+        )
+        parser.add_argument(
+            "--radix-mlp-horizon-index",
+            type=int,
+            default=ServerArgs.radix_mlp_horizon_index,
+            help="Deprecated. Ignored: the fixed controller uses all H_k via Δp.",
+        )
+        parser.add_argument(
+            "--radix-mlp-occupancy-hi",
+            type=float,
+            default=ServerArgs.radix_mlp_occupancy_hi,
+            help="Deprecated. Ignored: occupancy does not select H_k or scale λ.",
+        )
+        parser.add_argument(
+            "--radix-mlp-occupancy-mid",
+            type=float,
+            default=ServerArgs.radix_mlp_occupancy_mid,
+            help="Deprecated. Ignored: occupancy does not select H_k or scale λ.",
+        )
+        parser.add_argument(
+            "--radix-mlp-shadow-only",
+            action="store_true",
+            help="Keep LRU eviction and log the MLP victim. Requires --radix-eviction-policy lru.",
         )
         parser.add_argument(
             "--enable-prefill-delayer",

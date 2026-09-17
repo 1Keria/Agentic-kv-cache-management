@@ -1,0 +1,4986 @@
+{
+  "note": "Within-group pick: least missing, then easiest online, then lowest latency, then least cross-group ρ. ρ>=0.95 skipped as duplicate. IDs / leaky cap / replay clock / native session / radix pointers excluded. Nested small is not an official freeze.",
+  "n_train_obs": 607,
+  "n_val_obs": 98,
+  "n_test_obs": 102,
+  "full_official_168": {
+    "val": {
+      "n": 98,
+      "mae": 3.352699528770589,
+      "rmse": 4.650279122365579,
+      "r2": 0.4198520296928234
+    },
+    "test": {
+      "n": 102,
+      "mae": 4.466910722995855,
+      "rmse": 6.390474047786237,
+      "r2": 0.16595496522426723
+    },
+    "n_features": 168,
+    "best_iteration": 52
+  },
+  "mean_baseline": {
+    "val": {
+      "n": 98,
+      "mae": 5.012092165807003,
+      "rmse": 6.154018849359176,
+      "r2": -0.0160109276838043
+    },
+    "test": {
+      "n": 102,
+      "mae": 5.479822202558593,
+      "rmse": 7.095387552670563,
+      "r2": -0.028195251488164264
+    }
+  },
+  "quality": [
+    {
+      "feature": "client.messages",
+      "group": "request_content",
+      "kind": "len",
+      "miss_rate": 0.0,
+      "n_unique": 103,
+      "n_finite": 1540,
+      "std": 26.42248738164698,
+      "constant": false,
+      "id_like": false,
+      "availability": 1,
+      "availability_why": "API 收包即可，序列取长度",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.39926876857025856,
+      "max_cross_partner": "req.cache_protected_len"
+    },
+    {
+      "feature": "client.input_ids",
+      "group": "prompt_occupied",
+      "kind": "len",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 1,
+      "availability_why": "API 收包即可，序列取长度",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.model",
+      "group": "request_content",
+      "kind": "cat",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.tools",
+      "group": "request_content",
+      "kind": "len",
+      "miss_rate": 0.0012987012987012436,
+      "n_unique": 50,
+      "n_finite": 1538,
+      "std": 16.664831826255632,
+      "constant": false,
+      "id_like": false,
+      "availability": 1,
+      "availability_why": "API 收包即可，序列取长度",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.6783235236295675,
+      "max_cross_partner": "req.cached_tokens"
+    },
+    {
+      "feature": "client.tool_choice",
+      "group": "request_content",
+      "kind": "cat",
+      "miss_rate": 0.9935064935064936,
+      "n_unique": 1,
+      "n_finite": 10,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.parallel_tool_calls",
+      "group": "request_content",
+      "kind": "bool",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.response_format",
+      "group": "request_content",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.reasoning_effort",
+      "group": "request_content",
+      "kind": "effort",
+      "miss_rate": 0.036363636363636376,
+      "n_unique": 1,
+      "n_finite": 1484,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.task",
+      "group": "request_content",
+      "kind": "cat",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.user",
+      "group": "identity",
+      "kind": "cat",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.max_tokens",
+      "group": "client_sampling",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 7,
+      "n_finite": 1540,
+      "std": 10726.363480600616,
+      "constant": false,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.4314475229496417,
+      "max_cross_partner": "req.cached_tokens"
+    },
+    {
+      "feature": "client.max_completion_tokens",
+      "group": "client_sampling",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.min_tokens",
+      "group": "client_sampling",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.n",
+      "group": "client_sampling",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.stop",
+      "group": "sampling_stop_penalty",
+      "kind": "len",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 1,
+      "availability_why": "API 收包即可，序列取长度",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.stop_token_ids",
+      "group": "sampling_stop_penalty",
+      "kind": "len",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 1,
+      "availability_why": "API 收包即可，序列取长度",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.stop_regex",
+      "group": "sampling_stop_penalty",
+      "kind": "len",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 1,
+      "availability_why": "API 收包即可，序列取长度",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.temperature",
+      "group": "client_sampling",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 4,
+      "n_finite": 1540,
+      "std": 0.1632244479228836,
+      "constant": false,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.26229006647304803,
+      "max_cross_partner": "req.cached_tokens"
+    },
+    {
+      "feature": "client.top_p",
+      "group": "client_sampling",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 2,
+      "n_finite": 1540,
+      "std": 0.020072682697041173,
+      "constant": false,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.3285318582148686,
+      "max_cross_partner": "req._is_reasoning_over"
+    },
+    {
+      "feature": "client.top_k",
+      "group": "client_sampling",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.min_p",
+      "group": "client_sampling",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.frequency_penalty",
+      "group": "sampling_stop_penalty",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.presence_penalty",
+      "group": "sampling_stop_penalty",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.repetition_penalty",
+      "group": "sampling_stop_penalty",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.seed",
+      "group": "client_sampling",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.ignore_eos",
+      "group": "sampling_stop_penalty",
+      "kind": "bool",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.no_stop_trim",
+      "group": "sampling_stop_penalty",
+      "kind": "bool",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.continue_final_message",
+      "group": "sampling_stop_penalty",
+      "kind": "bool",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.stream",
+      "group": "request_content",
+      "kind": "bool",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.extra_key",
+      "group": "identity",
+      "kind": "cat",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.cache_salt",
+      "group": "identity",
+      "kind": "cat",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.lora_path",
+      "group": "identity",
+      "kind": "cat",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.priority",
+      "group": "identity",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.session_params",
+      "group": "identity",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.rid",
+      "group": "identity",
+      "kind": "cat",
+      "miss_rate": 0.0,
+      "n_unique": 1540,
+      "n_finite": 1540,
+      "std": 444.5596135503089,
+      "constant": false,
+      "id_like": true,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": 0.9998032443277275,
+      "max_cross_partner": "time.scheduler_recv_time"
+    },
+    {
+      "feature": "client.image_content",
+      "group": "multimodal",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.audio_content",
+      "group": "multimodal",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.video_content",
+      "group": "multimodal",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.max_dynamic_patch",
+      "group": "multimodal",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.min_dynamic_patch",
+      "group": "multimodal",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "client.use_audio_in_video",
+      "group": "multimodal",
+      "kind": "bool",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 0,
+      "availability_why": "API 收包即可，原值标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "tokenized.input_text",
+      "group": "prompt_occupied",
+      "kind": "len",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 2,
+      "availability_why": "分词后",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "tokenized.input_ids",
+      "group": "prompt_occupied",
+      "kind": "len",
+      "miss_rate": 0.0,
+      "n_unique": 1491,
+      "n_finite": 1540,
+      "std": 7449.68609327344,
+      "constant": false,
+      "id_like": false,
+      "availability": 2,
+      "availability_why": "分词后",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.3990626767957295,
+      "max_cross_partner": "client.messages"
+    },
+    {
+      "feature": "tokenized.mm_inputs",
+      "group": "multimodal",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 2,
+      "availability_why": "分词后",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "tokenized.sampling_params",
+      "group": "container_flags",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 2,
+      "availability_why": "分词后",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "tokenized.session_params",
+      "group": "identity",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 2,
+      "availability_why": "分词后",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "tokenized.extra_key",
+      "group": "identity",
+      "kind": "cat",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 2,
+      "availability_why": "分词后",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "tokenized.routing_key",
+      "group": "identity",
+      "kind": "cat",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 2,
+      "availability_why": "分词后",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "tokenized.priority",
+      "group": "identity",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 2,
+      "availability_why": "分词后",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "tokenized.stream",
+      "group": "request_content",
+      "kind": "bool",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 2,
+      "availability_why": "分词后",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "tokenized.time_stats",
+      "group": "replay_time",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 9,
+      "availability_why": "重放时钟，不当特征",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.rid",
+      "group": "identity",
+      "kind": "cat",
+      "miss_rate": 0.0,
+      "n_unique": 1540,
+      "n_finite": 1540,
+      "std": 444.5596135503089,
+      "constant": false,
+      "id_like": true,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": 0.9998032443277275,
+      "max_cross_partner": "time.scheduler_recv_time"
+    },
+    {
+      "feature": "req.origin_input_ids",
+      "group": "prompt_occupied",
+      "kind": "len",
+      "miss_rate": 0.0,
+      "n_unique": 1491,
+      "n_finite": 1540,
+      "std": 7449.68609327344,
+      "constant": false,
+      "id_like": false,
+      "availability": 4,
+      "availability_why": "request_end 序列取长度",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.3990626767957295,
+      "max_cross_partner": "client.messages"
+    },
+    {
+      "feature": "req.origin_input_ids_unpadded",
+      "group": "prompt_occupied",
+      "kind": "len",
+      "miss_rate": 0.0,
+      "n_unique": 1491,
+      "n_finite": 1540,
+      "std": 7449.68609327344,
+      "constant": false,
+      "id_like": false,
+      "availability": 4,
+      "availability_why": "request_end 序列取长度",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.3990626767957295,
+      "max_cross_partner": "client.messages"
+    },
+    {
+      "feature": "req.output_ids",
+      "group": "output_len",
+      "kind": "len",
+      "miss_rate": 0.0,
+      "n_unique": 437,
+      "n_finite": 1540,
+      "std": 190.0824689200021,
+      "constant": false,
+      "id_like": false,
+      "availability": 4,
+      "availability_why": "request_end 序列取长度",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.862774213127547,
+      "max_cross_partner": "sampling.max_new_tokens"
+    },
+    {
+      "feature": "req.full_untruncated_fill_ids",
+      "group": "prompt_occupied",
+      "kind": "len",
+      "miss_rate": 0.0,
+      "n_unique": 1491,
+      "n_finite": 1540,
+      "std": 7449.68609327344,
+      "constant": false,
+      "id_like": false,
+      "availability": 4,
+      "availability_why": "request_end 序列取长度",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.3990626767957295,
+      "max_cross_partner": "client.messages"
+    },
+    {
+      "feature": "req.fill_len",
+      "group": "prompt_occupied",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1491,
+      "n_finite": 1540,
+      "std": 7449.68609327344,
+      "constant": false,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.3990626767957295,
+      "max_cross_partner": "client.messages"
+    },
+    {
+      "feature": "req.input_embeds",
+      "group": "multimodal",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.multimodal_inputs",
+      "group": "multimodal",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.sampling_params",
+      "group": "container_flags",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.session",
+      "group": "native_session",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.extra_key",
+      "group": "identity",
+      "kind": "cat",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.lora_id",
+      "group": "identity",
+      "kind": "cat",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.routing_key",
+      "group": "identity",
+      "kind": "cat",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.priority",
+      "group": "identity",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.require_reasoning",
+      "group": "reasoning",
+      "kind": "bool",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req._is_reasoning_over",
+      "group": "reasoning",
+      "kind": "bool",
+      "miss_rate": 0.0,
+      "n_unique": 2,
+      "n_finite": 1540,
+      "std": 0.25861688890490325,
+      "constant": false,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.8445509463588343,
+      "max_cross_partner": "scheduler.running_batch"
+    },
+    {
+      "feature": "req.reasoning_tokens",
+      "group": "reasoning",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 247,
+      "n_finite": 1540,
+      "std": 122.49221851844817,
+      "constant": false,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.3864459540552165,
+      "max_cross_partner": "last_node.parent"
+    },
+    {
+      "feature": "req.finished_reason",
+      "group": "output_len",
+      "kind": "cat",
+      "miss_rate": 0.0,
+      "n_unique": 2,
+      "n_finite": 1540,
+      "std": 0.4996925180370653,
+      "constant": false,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.301138661078455,
+      "max_cross_partner": "sampling.max_new_tokens"
+    },
+    {
+      "feature": "req.finished_len",
+      "group": "output_len",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 437,
+      "n_finite": 1540,
+      "std": 190.0824689200021,
+      "constant": false,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.862774213127547,
+      "max_cross_partner": "sampling.max_new_tokens"
+    },
+    {
+      "feature": "req.to_finish",
+      "group": "output_len",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.prefix_indices",
+      "group": "prompt_occupied",
+      "kind": "len",
+      "miss_rate": 0.0,
+      "n_unique": 1491,
+      "n_finite": 1540,
+      "std": 7449.68609327344,
+      "constant": false,
+      "id_like": false,
+      "availability": 4,
+      "availability_why": "request_end 序列取长度",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.3990626767957295,
+      "max_cross_partner": "client.messages"
+    },
+    {
+      "feature": "req.last_node",
+      "group": "radix_node",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.last_host_node",
+      "group": "radix_node",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.best_match_node",
+      "group": "radix_node",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.host_hit_length",
+      "group": "cache_hit",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.swa_host_hit_length",
+      "group": "cache_hit",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.mamba_host_hit_length",
+      "group": "cache_hit",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.num_matched_prefix_tokens",
+      "group": "cache_hit",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.storage_hit_length",
+      "group": "cache_hit",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.cache_protected_len",
+      "group": "prompt_occupied",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 432,
+      "n_finite": 1540,
+      "std": 7450.280252062937,
+      "constant": false,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.39926876857025856,
+      "max_cross_partner": "client.messages"
+    },
+    {
+      "feature": "req.cached_tokens",
+      "group": "cache_hit",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 69,
+      "n_finite": 1540,
+      "std": 8002.334592975911,
+      "constant": false,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.6783235236295675,
+      "max_cross_partner": "client.tools"
+    },
+    {
+      "feature": "req.cached_tokens_device",
+      "group": "cache_hit",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 69,
+      "n_finite": 1540,
+      "std": 8002.334592975911,
+      "constant": false,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.6783235236295675,
+      "max_cross_partner": "client.tools"
+    },
+    {
+      "feature": "req.cached_tokens_host",
+      "group": "cache_hit",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.cached_tokens_storage",
+      "group": "cache_hit",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.kv_committed_len",
+      "group": "prompt_occupied",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1495,
+      "n_finite": 1540,
+      "std": 7472.912654427882,
+      "constant": false,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.39762636575371746,
+      "max_cross_partner": "client.messages"
+    },
+    {
+      "feature": "req.kv_allocated_len",
+      "group": "prompt_occupied",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1495,
+      "n_finite": 1540,
+      "std": 7472.912654427882,
+      "constant": false,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.39762636575371746,
+      "max_cross_partner": "client.messages"
+    },
+    {
+      "feature": "req.swa_evicted_seqlen",
+      "group": "cache_hit",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "req.extend_input_len",
+      "group": "this_turn_prefill",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1388,
+      "n_finite": 1540,
+      "std": 2275.069997897822,
+      "constant": false,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.9785405933726121,
+      "max_cross_partner": "last_node.key.token_ids"
+    },
+    {
+      "feature": "req.stream",
+      "group": "request_content",
+      "kind": "bool",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "request_end 调度器标量",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "sampling.max_new_tokens",
+      "group": "leaky_replay_cap",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 526,
+      "n_finite": 1540,
+      "std": 237.15007709027438,
+      "constant": false,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "Req.sampling_params，request_end 可读；常是 client 副本",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": 0.862774213127547,
+      "max_cross_partner": "req.output_ids"
+    },
+    {
+      "feature": "sampling.temperature",
+      "group": "client_sampling",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 4,
+      "n_finite": 1540,
+      "std": 0.1632244479228836,
+      "constant": false,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "Req.sampling_params，request_end 可读；常是 client 副本",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.26229006647304803,
+      "max_cross_partner": "req.cached_tokens"
+    },
+    {
+      "feature": "sampling.top_p",
+      "group": "client_sampling",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 2,
+      "n_finite": 1540,
+      "std": 0.020072682697041173,
+      "constant": false,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "Req.sampling_params，request_end 可读；常是 client 副本",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.3285318582148686,
+      "max_cross_partner": "req._is_reasoning_over"
+    },
+    {
+      "feature": "sampling.top_k",
+      "group": "client_sampling",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "Req.sampling_params，request_end 可读；常是 client 副本",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "sampling.min_p",
+      "group": "client_sampling",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "Req.sampling_params，request_end 可读；常是 client 副本",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "sampling.frequency_penalty",
+      "group": "sampling_stop_penalty",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "Req.sampling_params，request_end 可读；常是 client 副本",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "sampling.presence_penalty",
+      "group": "sampling_stop_penalty",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "Req.sampling_params，request_end 可读；常是 client 副本",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "sampling.repetition_penalty",
+      "group": "sampling_stop_penalty",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "Req.sampling_params，request_end 可读；常是 client 副本",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "sampling.n",
+      "group": "client_sampling",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "Req.sampling_params，request_end 可读；常是 client 副本",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "sampling.ignore_eos",
+      "group": "sampling_stop_penalty",
+      "kind": "bool",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "Req.sampling_params，request_end 可读；常是 client 副本",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "sampling.no_stop_trim",
+      "group": "sampling_stop_penalty",
+      "kind": "bool",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "Req.sampling_params，request_end 可读；常是 client 副本",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "sampling.min_new_tokens",
+      "group": "client_sampling",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "Req.sampling_params，request_end 可读；常是 client 副本",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "sampling.seed",
+      "group": "client_sampling",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "Req.sampling_params，request_end 可读；常是 client 副本",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "sampling.stop_strs",
+      "group": "sampling_stop_penalty",
+      "kind": "len",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "Req.sampling_params，request_end 可读；常是 client 副本",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "sampling.stop_token_ids",
+      "group": "sampling_stop_penalty",
+      "kind": "len",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "Req.sampling_params，request_end 可读；常是 client 副本",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "sampling.stop_regex_strs",
+      "group": "sampling_stop_penalty",
+      "kind": "len",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 3,
+      "availability_why": "Req.sampling_params，request_end 可读；常是 client 副本",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "time.created_time",
+      "group": "replay_time",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 9,
+      "availability_why": "重放时钟，不当特征",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "time.tokenize_finish_time",
+      "group": "replay_time",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 9,
+      "availability_why": "重放时钟，不当特征",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "time.api_server_dispatch_time",
+      "group": "replay_time",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 9,
+      "availability_why": "重放时钟，不当特征",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "time.api_server_dispatch_finish_time",
+      "group": "replay_time",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 9,
+      "availability_why": "重放时钟，不当特征",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "time.first_token_time",
+      "group": "replay_time",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 9,
+      "availability_why": "重放时钟，不当特征",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "time.last_time",
+      "group": "replay_time",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 9,
+      "availability_why": "重放时钟，不当特征",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "time.finished_time",
+      "group": "replay_time",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 9,
+      "availability_why": "重放时钟，不当特征",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "time.response_sent_to_client_time",
+      "group": "replay_time",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 9,
+      "availability_why": "重放时钟，不当特征",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "time.scheduler_recv_time",
+      "group": "replay_time",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1540,
+      "n_finite": 1540,
+      "std": 1526.7688258472567,
+      "constant": false,
+      "id_like": true,
+      "availability": 9,
+      "availability_why": "重放时钟，不当特征",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": 1.0,
+      "max_cross_partner": "last_node.id"
+    },
+    {
+      "feature": "time.wait_queue_entry_time",
+      "group": "replay_time",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1540,
+      "n_finite": 1540,
+      "std": 1526.76882584479,
+      "constant": false,
+      "id_like": true,
+      "availability": 9,
+      "availability_why": "重放时钟，不当特征",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": 1.0,
+      "max_cross_partner": "last_node.id"
+    },
+    {
+      "feature": "time.forward_entry_time",
+      "group": "replay_time",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1540,
+      "n_finite": 1540,
+      "std": 1526.776426813397,
+      "constant": false,
+      "id_like": true,
+      "availability": 9,
+      "availability_why": "重放时钟，不当特征",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": 1.0,
+      "max_cross_partner": "last_node.id"
+    },
+    {
+      "feature": "time.prefill_finished_time",
+      "group": "replay_time",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1540,
+      "n_finite": 1540,
+      "std": 1526.7526001720175,
+      "constant": false,
+      "id_like": true,
+      "availability": 9,
+      "availability_why": "重放时钟，不当特征",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": 1.0,
+      "max_cross_partner": "last_node.id"
+    },
+    {
+      "feature": "time.completion_time",
+      "group": "replay_time",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 9,
+      "availability_why": "重放时钟，不当特征",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "session.session_id",
+      "group": "native_session",
+      "kind": "cat",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 8,
+      "availability_why": "原生 Session，Chat 路径常缺失，evict 读不到",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "session.capacity_of_str_len",
+      "group": "native_session",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 8,
+      "availability_why": "原生 Session，Chat 路径常缺失，evict 读不到",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "session.streaming",
+      "group": "native_session",
+      "kind": "bool",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 8,
+      "availability_why": "原生 Session，Chat 路径常缺失，evict 读不到",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "session.timeout",
+      "group": "native_session",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 8,
+      "availability_why": "原生 Session，Chat 路径常缺失，evict 读不到",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "session.last_active_time",
+      "group": "native_session",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 8,
+      "availability_why": "原生 Session，Chat 路径常缺失，evict 读不到",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "session.req_nodes",
+      "group": "native_session",
+      "kind": "len",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 8,
+      "availability_why": "原生 Session，Chat 路径常缺失，evict 读不到",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "session.close_on_finish",
+      "group": "native_session",
+      "kind": "bool",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 8,
+      "availability_why": "原生 Session，Chat 路径常缺失，evict 读不到",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "session._inflight",
+      "group": "native_session",
+      "kind": "bool",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 8,
+      "availability_why": "原生 Session，Chat 路径常缺失，evict 读不到",
+      "latency": 1,
+      "latency_why": "已有标量，O(1)",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.children",
+      "group": "radix_node",
+      "kind": "len",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "走 Radix 节点再取序列长度",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.parent",
+      "group": "radix_node",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1359,
+      "n_finite": 1540,
+      "std": 1567.5465092093193,
+      "constant": false,
+      "id_like": true,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": 0.9971977742732218,
+      "max_cross_partner": "time.scheduler_recv_time"
+    },
+    {
+      "feature": "last_node.key",
+      "group": "radix_node",
+      "kind": "present",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.key.token_ids",
+      "group": "prompt_occupied",
+      "kind": "len",
+      "miss_rate": 0.0,
+      "n_unique": 128,
+      "n_finite": 1540,
+      "std": 2281.7387995800905,
+      "constant": false,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "走 Radix 节点再取序列长度",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.9785405933726121,
+      "max_cross_partner": "req.extend_input_len"
+    },
+    {
+      "feature": "last_node.key.extra_key",
+      "group": "radix_node",
+      "kind": "cat",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.key.is_bigram",
+      "group": "radix_node",
+      "kind": "bool",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.value",
+      "group": "prompt_occupied",
+      "kind": "len",
+      "miss_rate": 0.0,
+      "n_unique": 128,
+      "n_finite": 1540,
+      "std": 2281.7387995800905,
+      "constant": false,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "走 Radix 节点再取序列长度",
+      "hard_excluded": false,
+      "controller_only": false,
+      "max_cross_rho": 0.9785405933726121,
+      "max_cross_partner": "req.extend_input_len"
+    },
+    {
+      "feature": "last_node.last_access_time",
+      "group": "replay_time",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1540,
+      "n_finite": 1540,
+      "std": 1526.7306148620362,
+      "constant": false,
+      "id_like": true,
+      "availability": 9,
+      "availability_why": "重放时钟，不当特征",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": 1.0,
+      "max_cross_partner": "last_node.id"
+    },
+    {
+      "feature": "last_node.hit_count",
+      "group": "radix_node",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.host_value",
+      "group": "radix_node",
+      "kind": "len",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "走 Radix 节点再取序列长度",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.hash_value",
+      "group": "radix_node",
+      "kind": "len",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "走 Radix 节点再取序列长度",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.id",
+      "group": "radix_node",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1540,
+      "n_finite": 1540,
+      "std": 1555.9381646516672,
+      "constant": false,
+      "id_like": true,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": 1.0,
+      "max_cross_partner": "time.scheduler_recv_time"
+    },
+    {
+      "feature": "last_node.lock_ref",
+      "group": "radix_node",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.creation_time",
+      "group": "replay_time",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1540,
+      "n_finite": 1540,
+      "std": 1526.7521750561764,
+      "constant": false,
+      "id_like": true,
+      "availability": 9,
+      "availability_why": "重放时钟，不当特征",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": 1.0,
+      "max_cross_partner": "last_node.id"
+    },
+    {
+      "feature": "last_node.host_ref_counter",
+      "group": "radix_node",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.write_through_pending_id",
+      "group": "radix_node",
+      "kind": "cat",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.priority",
+      "group": "radix_node",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.swa_tombstone",
+      "group": "radix_node",
+      "kind": "bool",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.full_lock_ref",
+      "group": "radix_node",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.swa_lock_ref",
+      "group": "radix_node",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.prev",
+      "group": "radix_node",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.next",
+      "group": "radix_node",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.swa_prev",
+      "group": "radix_node",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.swa_next",
+      "group": "radix_node",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": true,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "last_node.swa_uuid",
+      "group": "radix_node",
+      "kind": "cat",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 5,
+      "availability_why": "需 last_node 对象",
+      "latency": 3,
+      "latency_why": "解引用 last_node",
+      "hard_excluded": true,
+      "controller_only": false,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "resource.num_tokens",
+      "group": "resource_pool",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 6,
+      "availability_why": "分配器/队列快照，清单为控制器专用",
+      "latency": 2,
+      "latency_why": "读分配器/调度器快照",
+      "hard_excluded": false,
+      "controller_only": true,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "resource.swa_num_tokens",
+      "group": "resource_pool",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 6,
+      "availability_why": "分配器/队列快照，清单为控制器专用",
+      "latency": 2,
+      "latency_why": "读分配器/调度器快照",
+      "hard_excluded": false,
+      "controller_only": true,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "resource.size",
+      "group": "resource_pool",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 6,
+      "availability_why": "分配器/队列快照，清单为控制器专用",
+      "latency": 2,
+      "latency_why": "读分配器/调度器快照",
+      "hard_excluded": false,
+      "controller_only": true,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "resource.page_size",
+      "group": "resource_pool",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 6,
+      "availability_why": "分配器/队列快照，清单为控制器专用",
+      "latency": 2,
+      "latency_why": "读分配器/调度器快照",
+      "hard_excluded": false,
+      "controller_only": true,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "resource.available_size",
+      "group": "resource_pool",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 222,
+      "n_finite": 1540,
+      "std": 7784.228120140466,
+      "constant": false,
+      "id_like": false,
+      "availability": 6,
+      "availability_why": "分配器/队列快照，清单为控制器专用",
+      "latency": 2,
+      "latency_why": "读分配器/调度器快照",
+      "hard_excluded": false,
+      "controller_only": true,
+      "max_cross_rho": 0.11035761134857958,
+      "max_cross_partner": "sampling.max_new_tokens"
+    },
+    {
+      "feature": "resource.evictable_size",
+      "group": "resource_pool",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 525,
+      "n_finite": 1540,
+      "std": 11719.017299567951,
+      "constant": false,
+      "id_like": false,
+      "availability": 6,
+      "availability_why": "分配器/队列快照，清单为控制器专用",
+      "latency": 2,
+      "latency_why": "读分配器/调度器快照",
+      "hard_excluded": false,
+      "controller_only": true,
+      "max_cross_rho": 0.0979853442510643,
+      "max_cross_partner": "time.scheduler_recv_time"
+    },
+    {
+      "feature": "resource.protected_size",
+      "group": "resource_pool",
+      "kind": "num",
+      "miss_rate": 0.0,
+      "n_unique": 338,
+      "n_finite": 1540,
+      "std": 8651.12418989207,
+      "constant": false,
+      "id_like": false,
+      "availability": 6,
+      "availability_why": "分配器/队列快照，清单为控制器专用",
+      "latency": 2,
+      "latency_why": "读分配器/调度器快照",
+      "hard_excluded": false,
+      "controller_only": true,
+      "max_cross_rho": 0.1070467290160907,
+      "max_cross_partner": "last_node.parent"
+    },
+    {
+      "feature": "resource.full_available_size",
+      "group": "resource_pool",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 6,
+      "availability_why": "分配器/队列快照，清单为控制器专用",
+      "latency": 2,
+      "latency_why": "读分配器/调度器快照",
+      "hard_excluded": false,
+      "controller_only": true,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "resource.swa_available_size",
+      "group": "resource_pool",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 6,
+      "availability_why": "分配器/队列快照，清单为控制器专用",
+      "latency": 2,
+      "latency_why": "读分配器/调度器快照",
+      "hard_excluded": false,
+      "controller_only": true,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "resource.full_evictable_size_",
+      "group": "resource_pool",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 6,
+      "availability_why": "分配器/队列快照，清单为控制器专用",
+      "latency": 2,
+      "latency_why": "读分配器/调度器快照",
+      "hard_excluded": false,
+      "controller_only": true,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "resource.swa_evictable_size_",
+      "group": "resource_pool",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 6,
+      "availability_why": "分配器/队列快照，清单为控制器专用",
+      "latency": 2,
+      "latency_why": "读分配器/调度器快照",
+      "hard_excluded": false,
+      "controller_only": true,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "resource.full_protected_size_",
+      "group": "resource_pool",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 6,
+      "availability_why": "分配器/队列快照，清单为控制器专用",
+      "latency": 2,
+      "latency_why": "读分配器/调度器快照",
+      "hard_excluded": false,
+      "controller_only": true,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "resource.swa_protected_size_",
+      "group": "resource_pool",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 6,
+      "availability_why": "分配器/队列快照，清单为控制器专用",
+      "latency": 2,
+      "latency_why": "读分配器/调度器快照",
+      "hard_excluded": false,
+      "controller_only": true,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "resource.sliding_window_size",
+      "group": "resource_pool",
+      "kind": "num",
+      "miss_rate": 1.0,
+      "n_unique": 0,
+      "n_finite": 0,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 6,
+      "availability_why": "分配器/队列快照，清单为控制器专用",
+      "latency": 2,
+      "latency_why": "读分配器/调度器快照",
+      "hard_excluded": false,
+      "controller_only": true,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "scheduler.waiting_queue",
+      "group": "resource_pool",
+      "kind": "len",
+      "miss_rate": 0.0,
+      "n_unique": 1,
+      "n_finite": 1540,
+      "std": 0.0,
+      "constant": true,
+      "id_like": false,
+      "availability": 6,
+      "availability_why": "分配器/队列快照，清单为控制器专用",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": false,
+      "controller_only": true,
+      "max_cross_rho": null,
+      "max_cross_partner": null
+    },
+    {
+      "feature": "scheduler.running_batch",
+      "group": "resource_pool",
+      "kind": "len",
+      "miss_rate": 0.0,
+      "n_unique": 2,
+      "n_finite": 1540,
+      "std": 0.18229413584895757,
+      "constant": false,
+      "id_like": false,
+      "availability": 6,
+      "availability_why": "分配器/队列快照，清单为控制器专用",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": false,
+      "controller_only": true,
+      "max_cross_rho": 0.8445509463588343,
+      "max_cross_partner": "req._is_reasoning_over"
+    },
+    {
+      "feature": "scheduler.cur_batch",
+      "group": "resource_pool",
+      "kind": "len",
+      "miss_rate": 0.0,
+      "n_unique": 2,
+      "n_finite": 1540,
+      "std": 0.18229413584895757,
+      "constant": false,
+      "id_like": false,
+      "availability": 6,
+      "availability_why": "分配器/队列快照，清单为控制器专用",
+      "latency": 2,
+      "latency_why": "对已有 list/str 取 len",
+      "hard_excluded": false,
+      "controller_only": true,
+      "max_cross_rho": 0.8445509463588343,
+      "max_cross_partner": "req._is_reasoning_over"
+    }
+  ],
+  "collapse": [
+    {
+      "group": "leaky_replay_cap",
+      "clique": [
+        "sampling.max_new_tokens"
+      ],
+      "kept": "sampling.max_new_tokens",
+      "dropped": [],
+      "why": "miss=0.000 avail=3 lat=1 crossρ=0.862774213127547"
+    },
+    {
+      "group": "output_len",
+      "clique": [
+        "req.finished_len",
+        "req.output_ids"
+      ],
+      "kept": "req.finished_len",
+      "dropped": [
+        "req.output_ids"
+      ],
+      "why": "miss=0.000 avail=3 lat=1 crossρ=0.862774213127547"
+    },
+    {
+      "group": "output_len",
+      "clique": [
+        "req.finished_reason"
+      ],
+      "kept": "req.finished_reason",
+      "dropped": [],
+      "why": "miss=0.000 avail=3 lat=1 crossρ=0.301138661078455"
+    },
+    {
+      "group": "prompt_occupied",
+      "clique": [
+        "tokenized.input_ids",
+        "req.origin_input_ids",
+        "req.origin_input_ids_unpadded",
+        "req.full_untruncated_fill_ids",
+        "req.fill_len",
+        "req.prefix_indices",
+        "req.cache_protected_len",
+        "req.kv_committed_len",
+        "req.kv_allocated_len"
+      ],
+      "kept": "req.fill_len",
+      "dropped": [
+        "req.cache_protected_len",
+        "req.kv_committed_len",
+        "tokenized.input_ids",
+        "req.kv_allocated_len",
+        "req.full_untruncated_fill_ids",
+        "req.origin_input_ids",
+        "req.origin_input_ids_unpadded",
+        "req.prefix_indices"
+      ],
+      "why": "miss=0.000 avail=3 lat=1 crossρ=0.3990626767957295"
+    },
+    {
+      "group": "prompt_occupied",
+      "clique": [
+        "last_node.key.token_ids",
+        "last_node.value"
+      ],
+      "kept": "last_node.key.token_ids",
+      "dropped": [
+        "last_node.value"
+      ],
+      "why": "miss=0.000 avail=5 lat=3 crossρ=0.9785405933726121"
+    },
+    {
+      "group": "this_turn_prefill",
+      "clique": [
+        "req.extend_input_len"
+      ],
+      "kept": "req.extend_input_len",
+      "dropped": [],
+      "why": "miss=0.000 avail=3 lat=1 crossρ=0.9785405933726121"
+    },
+    {
+      "group": "cache_hit",
+      "clique": [
+        "req.cached_tokens",
+        "req.cached_tokens_device"
+      ],
+      "kept": "req.cached_tokens",
+      "dropped": [
+        "req.cached_tokens_device"
+      ],
+      "why": "miss=0.000 avail=3 lat=1 crossρ=0.6783235236295675"
+    },
+    {
+      "group": "client_sampling",
+      "clique": [
+        "client.max_tokens"
+      ],
+      "kept": "client.max_tokens",
+      "dropped": [],
+      "why": "miss=0.000 avail=0 lat=1 crossρ=0.4314475229496417"
+    },
+    {
+      "group": "client_sampling",
+      "clique": [
+        "client.temperature",
+        "sampling.temperature"
+      ],
+      "kept": "client.temperature",
+      "dropped": [
+        "sampling.temperature"
+      ],
+      "why": "miss=0.000 avail=0 lat=1 crossρ=0.26229006647304803"
+    },
+    {
+      "group": "client_sampling",
+      "clique": [
+        "client.top_p",
+        "sampling.top_p"
+      ],
+      "kept": "client.top_p",
+      "dropped": [
+        "sampling.top_p"
+      ],
+      "why": "miss=0.000 avail=0 lat=1 crossρ=0.3285318582148686"
+    },
+    {
+      "group": "request_content",
+      "clique": [
+        "client.messages"
+      ],
+      "kept": "client.messages",
+      "dropped": [],
+      "why": "miss=0.000 avail=1 lat=2 crossρ=0.39926876857025856"
+    },
+    {
+      "group": "request_content",
+      "clique": [
+        "client.tools"
+      ],
+      "kept": "client.tools",
+      "dropped": [],
+      "why": "miss=0.001 avail=1 lat=2 crossρ=0.6783235236295675"
+    },
+    {
+      "group": "reasoning",
+      "clique": [
+        "req.reasoning_tokens"
+      ],
+      "kept": "req.reasoning_tokens",
+      "dropped": [],
+      "why": "miss=0.000 avail=3 lat=1 crossρ=0.3864459540552165"
+    },
+    {
+      "group": "reasoning",
+      "clique": [
+        "req._is_reasoning_over"
+      ],
+      "kept": "req._is_reasoning_over",
+      "dropped": [],
+      "why": "miss=0.000 avail=3 lat=1 crossρ=0.8445509463588343"
+    },
+    {
+      "group": "resource_pool",
+      "clique": [
+        "resource.available_size"
+      ],
+      "kept": "resource.available_size",
+      "dropped": [],
+      "why": "miss=0.000 avail=6 lat=2 crossρ=0.11035761134857958"
+    },
+    {
+      "group": "resource_pool",
+      "clique": [
+        "resource.evictable_size"
+      ],
+      "kept": "resource.evictable_size",
+      "dropped": [],
+      "why": "miss=0.000 avail=6 lat=2 crossρ=0.0979853442510643"
+    },
+    {
+      "group": "resource_pool",
+      "clique": [
+        "resource.protected_size"
+      ],
+      "kept": "resource.protected_size",
+      "dropped": [],
+      "why": "miss=0.000 avail=6 lat=2 crossρ=0.1070467290160907"
+    },
+    {
+      "group": "resource_pool",
+      "clique": [
+        "scheduler.running_batch",
+        "scheduler.cur_batch"
+      ],
+      "kept": "scheduler.cur_batch",
+      "dropped": [
+        "scheduler.running_batch"
+      ],
+      "why": "miss=0.000 avail=6 lat=2 crossρ=0.8445509463588343"
+    }
+  ],
+  "eligible_core": [
+    "req.finished_len",
+    "req.finished_reason",
+    "req.fill_len",
+    "last_node.key.token_ids",
+    "req.extend_input_len",
+    "req.cached_tokens",
+    "client.max_tokens",
+    "client.temperature",
+    "client.top_p",
+    "client.messages",
+    "client.tools",
+    "req.reasoning_tokens",
+    "req._is_reasoning_over"
+  ],
+  "eligible_controller": [
+    "resource.available_size",
+    "resource.evictable_size",
+    "resource.protected_size",
+    "scheduler.cur_batch"
+  ],
+  "skipped_duplicate": [
+    {
+      "feature": "last_node.key.token_ids",
+      "duplicate_of": "req.extend_input_len",
+      "rho": 0.9785405933726121
+    }
+  ],
+  "ladder_order": [
+    "req.finished_len",
+    "client.temperature",
+    "client.max_tokens",
+    "req.cached_tokens",
+    "client.tools",
+    "req.finished_reason",
+    "req.fill_len",
+    "req.extend_input_len",
+    "client.messages",
+    "req.reasoning_tokens",
+    "req._is_reasoning_over",
+    "client.top_p",
+    "scheduler.cur_batch",
+    "resource.available_size",
+    "resource.evictable_size",
+    "resource.protected_size"
+  ],
+  "combo_ablation": [
+    {
+      "group": "output_len",
+      "candidates": [
+        "req.finished_len",
+        "req.finished_reason",
+        "req.output_ids"
+      ],
+      "runs": [
+        {
+          "kept": [
+            "req.finished_len",
+            "req.finished_reason",
+            "req.output_ids"
+          ],
+          "n_kept_in_group": 3,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.3135539645811205,
+              "rmse": 4.586252175345216,
+              "r2": 0.43571748116016795
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.5099791592099745,
+              "rmse": 6.205191387789995,
+              "r2": 0.2136177314133989
+            },
+            "n_features": 167,
+            "best_iteration": 147
+          },
+          "d_val": -0.03914556418946846,
+          "d_test": 0.04306843621411982
+        },
+        {
+          "kept": [
+            "req.finished_reason",
+            "req.output_ids"
+          ],
+          "n_kept_in_group": 2,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.337650936335712,
+              "rmse": 4.665404179618972,
+              "r2": 0.4160720237921607
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.53767964077334,
+              "rmse": 6.415854278777254,
+              "r2": 0.15931686886024132
+            },
+            "n_features": 166,
+            "best_iteration": 87
+          },
+          "d_val": -0.015048592434876884,
+          "d_test": 0.07076891777748529
+        },
+        {
+          "kept": [
+            "req.finished_len",
+            "req.finished_reason"
+          ],
+          "n_kept_in_group": 2,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.4395052365675625,
+              "rmse": 4.6414769138777565,
+              "r2": 0.422046199245113
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.550981702715842,
+              "rmse": 6.1423058308469,
+              "r2": 0.22947590614937408
+            },
+            "n_features": 166,
+            "best_iteration": 83
+          },
+          "d_val": 0.0868057077969735,
+          "d_test": 0.08407097971998745
+        },
+        {
+          "kept": [
+            "req.finished_len"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.4479415299071627,
+              "rmse": 4.685007969570597,
+              "r2": 0.4111544427087436
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.657642085027627,
+              "rmse": 6.420434643727572,
+              "r2": 0.15811609032283647
+            },
+            "n_features": 165,
+            "best_iteration": 123
+          },
+          "d_val": 0.09524200113657377,
+          "d_test": 0.1907313620317721
+        },
+        {
+          "kept": [
+            "req.output_ids"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.4479415299071627,
+              "rmse": 4.685007969570597,
+              "r2": 0.4111544427087436
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.657642085027627,
+              "rmse": 6.420434643727572,
+              "r2": 0.15811609032283647
+            },
+            "n_features": 165,
+            "best_iteration": 123
+          },
+          "d_val": 0.09524200113657377,
+          "d_test": 0.1907313620317721
+        },
+        {
+          "kept": [
+            "req.finished_len",
+            "req.output_ids"
+          ],
+          "n_kept_in_group": 2,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.5609835789935254,
+              "rmse": 4.733583801866939,
+              "r2": 0.3988804189664872
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.727125533781028,
+              "rmse": 6.360044596041281,
+              "r2": 0.1738789809464516
+            },
+            "n_features": 166,
+            "best_iteration": 88
+          },
+          "d_val": 0.2082840502229364,
+          "d_test": 0.2602148107851736
+        },
+        {
+          "kept": [
+            "req.finished_reason"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 4.155696979247836,
+              "rmse": 5.751387197323975,
+              "r2": 0.11258667124623722
+            },
+            "test": {
+              "n": 102,
+              "mae": 5.113964083601814,
+              "rmse": 6.789986965647446,
+              "r2": 0.058411313909881746
+            },
+            "n_features": 165,
+            "best_iteration": 35
+          },
+          "d_val": 0.8029974504772475,
+          "d_test": 0.647053360605959
+        },
+        {
+          "kept": [],
+          "n_kept_in_group": 0,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 4.404192279740679,
+              "rmse": 5.822938674407342,
+              "r2": 0.0903691786558165
+            },
+            "test": {
+              "n": 102,
+              "mae": 5.175662792511972,
+              "rmse": 6.8310804320050895,
+              "r2": 0.04697970734944534
+            },
+            "n_features": 164,
+            "best_iteration": 16
+          },
+          "d_val": 1.0514927509700898,
+          "d_test": 0.7087520695161169
+        }
+      ]
+    },
+    {
+      "group": "client_sampling",
+      "candidates": [
+        "client.max_tokens",
+        "client.temperature",
+        "client.top_p"
+      ],
+      "runs": [
+        {
+          "kept": [
+            "client.max_tokens",
+            "client.temperature"
+          ],
+          "n_kept_in_group": 2,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.171550068952323,
+              "rmse": 4.50701005633671,
+              "r2": 0.455048579523875
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.482938000377589,
+              "rmse": 6.42594844822583,
+              "r2": 0.1566694666002716
+            },
+            "n_features": 154,
+            "best_iteration": 151
+          },
+          "d_val": -0.18114945981826613,
+          "d_test": 0.016027277381734706
+        },
+        {
+          "kept": [
+            "client.temperature"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.247640493789273,
+              "rmse": 4.5797467531292035,
+              "r2": 0.43731717187997177
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.509910919874368,
+              "rmse": 6.385317481319453,
+              "r2": 0.1673004283099262
+            },
+            "n_features": 153,
+            "best_iteration": 159
+          },
+          "d_val": -0.10505903498131586,
+          "d_test": 0.04300019687851364
+        },
+        {
+          "kept": [
+            "client.max_tokens",
+            "client.top_p"
+          ],
+          "n_kept_in_group": 2,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.347193349792985,
+              "rmse": 4.602626750568144,
+              "r2": 0.4316809035528151
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.529850733157219,
+              "rmse": 6.393574475701709,
+              "r2": 0.16514547166207516
+            },
+            "n_features": 154,
+            "best_iteration": 98
+          },
+          "d_val": -0.0055061789776038594,
+          "d_test": 0.06294001016136441
+        },
+        {
+          "kept": [
+            "client.top_p"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.503618257872273,
+              "rmse": 4.707177040773506,
+              "r2": 0.4055685206467037
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.649514475824137,
+              "rmse": 6.3673333222457735,
+              "r2": 0.17198439667801546
+            },
+            "n_features": 153,
+            "best_iteration": 96
+          },
+          "d_val": 0.15091872910168425,
+          "d_test": 0.18260375282828267
+        },
+        {
+          "kept": [
+            "client.temperature",
+            "client.top_p"
+          ],
+          "n_kept_in_group": 2,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.525850092803514,
+              "rmse": 4.694631762713209,
+              "r2": 0.4087327826885746
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.441705337913414,
+              "rmse": 6.280893990178698,
+              "r2": 0.19431314685798395
+            },
+            "n_features": 154,
+            "best_iteration": 39
+          },
+          "d_val": 0.17315056403292495,
+          "d_test": -0.0252053850824403
+        },
+        {
+          "kept": [
+            "client.max_tokens",
+            "client.temperature",
+            "client.top_p"
+          ],
+          "n_kept_in_group": 3,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.5769973268969384,
+              "rmse": 4.74325991708568,
+              "r2": 0.3964203601835423
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.475728212725039,
+              "rmse": 6.2699795874568185,
+              "r2": 0.1971108219723977
+            },
+            "n_features": 155,
+            "best_iteration": 39
+          },
+          "d_val": 0.22429779812634942,
+          "d_test": 0.008817489729183947
+        },
+        {
+          "kept": [],
+          "n_kept_in_group": 0,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.597893442132543,
+              "rmse": 4.815403891716977,
+              "r2": 0.3779200935723971
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.5270840311478,
+              "rmse": 6.442154595019178,
+              "r2": 0.15241036844840805
+            },
+            "n_features": 152,
+            "best_iteration": 69
+          },
+          "d_val": 0.24519391336195406,
+          "d_test": 0.06017330815194555
+        },
+        {
+          "kept": [
+            "client.max_tokens"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.6351191376030956,
+              "rmse": 4.72155798835104,
+              "r2": 0.4019308642943199
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.518132751553173,
+              "rmse": 6.381823304039756,
+              "r2": 0.16821151968046832
+            },
+            "n_features": 153,
+            "best_iteration": 37
+          },
+          "d_val": 0.2824196088325066,
+          "d_test": 0.05122202855731839
+        }
+      ]
+    },
+    {
+      "group": "cache_hit",
+      "candidates": [
+        "req.cached_tokens"
+      ],
+      "runs": [
+        {
+          "kept": [],
+          "n_kept_in_group": 0,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.4211128116472915,
+              "rmse": 4.6314488057916225,
+              "r2": 0.4245408888761394
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.634746401933577,
+              "rmse": 6.2912249150096455,
+              "r2": 0.19166055133839577
+            },
+            "n_features": 158,
+            "best_iteration": 133
+          },
+          "d_val": 0.06841328287670256,
+          "d_test": 0.16783567893772222
+        },
+        {
+          "kept": [
+            "req.cached_tokens"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.574150501217339,
+              "rmse": 4.723749364994958,
+              "r2": 0.40137558195900835
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.506732627991812,
+              "rmse": 6.302443103016864,
+              "r2": 0.1887752026442696
+            },
+            "n_features": 159,
+            "best_iteration": 37
+          },
+          "d_val": 0.22145097244675016,
+          "d_test": 0.03982190499595717
+        }
+      ]
+    },
+    {
+      "group": "request_content",
+      "candidates": [
+        "client.messages",
+        "client.tools"
+      ],
+      "runs": [
+        {
+          "kept": [
+            "client.messages",
+            "client.tools"
+          ],
+          "n_kept_in_group": 2,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.3180013224574476,
+              "rmse": 4.6401874213260585,
+              "r2": 0.42236728824771974
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.472216110721885,
+              "rmse": 6.365447935158179,
+              "r2": 0.1724746800415945
+            },
+            "n_features": 159,
+            "best_iteration": 117
+          },
+          "d_val": -0.034698206313141355,
+          "d_test": 0.00530538772603073
+        },
+        {
+          "kept": [
+            "client.tools"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.379224280318093,
+              "rmse": 4.683782324282104,
+              "r2": 0.411462498269618
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.408933966252375,
+              "rmse": 6.336205174586516,
+              "r2": 0.18006049013969194
+            },
+            "n_features": 158,
+            "best_iteration": 53
+          },
+          "d_val": 0.026524751547504,
+          "d_test": -0.05797675674347946
+        },
+        {
+          "kept": [],
+          "n_kept_in_group": 0,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.634636175737535,
+              "rmse": 4.781052355550113,
+              "r2": 0.38676387061900075
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.444646101608782,
+              "rmse": 6.325098943547613,
+              "r2": 0.18293238472262863
+            },
+            "n_features": 157,
+            "best_iteration": 34
+          },
+          "d_val": 0.2819366469669462,
+          "d_test": -0.022264621387072303
+        },
+        {
+          "kept": [
+            "client.messages"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.6620696249022364,
+              "rmse": 4.781906658435502,
+              "r2": 0.38654469870394526
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.433533958232499,
+              "rmse": 6.289405021256053,
+              "r2": 0.19212814839882664
+            },
+            "n_features": 158,
+            "best_iteration": 36
+          },
+          "d_val": 0.30937009613164745,
+          "d_test": -0.03337676476335538
+        }
+      ]
+    },
+    {
+      "group": "this_turn_prefill",
+      "candidates": [
+        "req.extend_input_len"
+      ],
+      "runs": [
+        {
+          "kept": [
+            "req.extend_input_len"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.4932160121473848,
+              "rmse": 4.711004969839713,
+              "r2": 0.4046013308744758
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.429214830918564,
+              "rmse": 6.174894120082934,
+              "r2": 0.22127811397555042
+            },
+            "n_features": 168,
+            "best_iteration": 58
+          },
+          "d_val": 0.1405164833767958,
+          "d_test": -0.037695892077290516
+        },
+        {
+          "kept": [],
+          "n_kept_in_group": 0,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.508182689609935,
+              "rmse": 4.686085293254771,
+              "r2": 0.41088359996642565
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.514760681954377,
+              "rmse": 6.268611002866365,
+              "r2": 0.1974612862182491
+            },
+            "n_features": 167,
+            "best_iteration": 48
+          },
+          "d_val": 0.1554831608393461,
+          "d_test": 0.04784995895852262
+        }
+      ]
+    },
+    {
+      "group": "reasoning",
+      "candidates": [
+        "req.reasoning_tokens",
+        "req._is_reasoning_over"
+      ],
+      "runs": [
+        {
+          "kept": [
+            "req.reasoning_tokens",
+            "req._is_reasoning_over"
+          ],
+          "n_kept_in_group": 2,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.164356770550771,
+              "rmse": 4.577245793364889,
+              "r2": 0.4379315564502755
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.499558525286922,
+              "rmse": 6.434939222590324,
+              "r2": 0.15430794787305568
+            },
+            "n_features": 167,
+            "best_iteration": 197
+          },
+          "d_val": -0.18834275821981805,
+          "d_test": 0.03264780229106723
+        },
+        {
+          "kept": [],
+          "n_kept_in_group": 0,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.4631557833973847,
+              "rmse": 4.7108248154301124,
+              "r2": 0.40464686750432666
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.378091784219966,
+              "rmse": 6.288005941850002,
+              "r2": 0.19248753093225413
+            },
+            "n_features": 165,
+            "best_iteration": 45
+          },
+          "d_val": 0.11045625462679576,
+          "d_test": -0.08881893877588887
+        },
+        {
+          "kept": [
+            "req.reasoning_tokens"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.5226134718050846,
+              "rmse": 4.690913104819011,
+              "r2": 0.409669107326452
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.506996387313508,
+              "rmse": 6.30191923361194,
+              "r2": 0.18891005771001412
+            },
+            "n_features": 166,
+            "best_iteration": 40
+          },
+          "d_val": 0.16991394303449558,
+          "d_test": 0.0400856643176537
+        },
+        {
+          "kept": [
+            "req._is_reasoning_over"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.5544081865795643,
+              "rmse": 4.735663192947893,
+              "r2": 0.39835217766244324
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.491191506004194,
+              "rmse": 6.236775559068919,
+              "r2": 0.20559205067106268
+            },
+            "n_features": 166,
+            "best_iteration": 43
+          },
+          "d_val": 0.2017086578089753,
+          "d_test": 0.024280783008339135
+        }
+      ]
+    },
+    {
+      "group": "prompt_occupied",
+      "candidates": [
+        "req.fill_len",
+        "last_node.key.token_ids"
+      ],
+      "runs": [
+        {
+          "kept": [],
+          "n_kept_in_group": 0,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.292990949099182,
+              "rmse": 4.560488316400709,
+              "r2": 0.4420395323078552
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.522037393566445,
+              "rmse": 6.278059553406645,
+              "r2": 0.19504016220352216
+            },
+            "n_features": 155,
+            "best_iteration": 138
+          },
+          "d_val": -0.05970857967140697,
+          "d_test": 0.05512667057059062
+        },
+        {
+          "kept": [
+            "req.fill_len"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.452513437657916,
+              "rmse": 4.655445158840867,
+              "r2": 0.4185623306316797
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.4533252756928805,
+              "rmse": 6.248578434215179,
+              "r2": 0.20258242818048433
+            },
+            "n_features": 156,
+            "best_iteration": 43
+          },
+          "d_val": 0.09981390888732689,
+          "d_test": -0.013585447302974174
+        },
+        {
+          "kept": [
+            "last_node.key.token_ids"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.491246398989936,
+              "rmse": 4.687849233850498,
+              "r2": 0.41044000500365196
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.505450602909559,
+              "rmse": 6.251039179910673,
+              "r2": 0.2019542442656418
+            },
+            "n_features": 156,
+            "best_iteration": 42
+          },
+          "d_val": 0.13854687021934708,
+          "d_test": 0.03853987991370467
+        },
+        {
+          "kept": [
+            "req.fill_len",
+            "last_node.key.token_ids"
+          ],
+          "n_kept_in_group": 2,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.5072489611710727,
+              "rmse": 4.6832871992411444,
+              "r2": 0.4115869208975169
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.4997126763061654,
+              "rmse": 6.344623241826607,
+              "r2": 0.17788035524151635
+            },
+            "n_features": 157,
+            "best_iteration": 40
+          },
+          "d_val": 0.1545494324004837,
+          "d_test": 0.03280195331031077
+        }
+      ]
+    },
+    {
+      "group": "resource_pool",
+      "candidates": [
+        "resource.available_size",
+        "resource.evictable_size",
+        "resource.protected_size",
+        "scheduler.cur_batch"
+      ],
+      "runs": [
+        {
+          "kept": [
+            "resource.available_size"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.19828234063994,
+              "rmse": 4.515435994188322,
+              "r2": 0.453009081540818
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.742249546589787,
+              "rmse": 6.53584972325182,
+              "r2": 0.12757627708401287
+            },
+            "n_features": 152,
+            "best_iteration": 136
+          },
+          "d_val": -0.15441718813064886,
+          "d_test": 0.27533882359393225
+        },
+        {
+          "kept": [
+            "resource.available_size",
+            "scheduler.cur_batch"
+          ],
+          "n_kept_in_group": 2,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.19828234063994,
+              "rmse": 4.515435994188322,
+              "r2": 0.453009081540818
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.742249546589787,
+              "rmse": 6.53584972325182,
+              "r2": 0.12757627708401287
+            },
+            "n_features": 153,
+            "best_iteration": 136
+          },
+          "d_val": -0.15441718813064886,
+          "d_test": 0.27533882359393225
+        },
+        {
+          "kept": [
+            "resource.available_size",
+            "resource.evictable_size"
+          ],
+          "n_kept_in_group": 2,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.3253517718660848,
+              "rmse": 4.607190497280155,
+              "r2": 0.43055330819224813
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.5561442334120414,
+              "rmse": 6.3445951614847935,
+              "r2": 0.17788763237954974
+            },
+            "n_features": 153,
+            "best_iteration": 131
+          },
+          "d_val": -0.027347756904504195,
+          "d_test": 0.08923351041618677
+        },
+        {
+          "kept": [
+            "resource.available_size",
+            "resource.evictable_size",
+            "scheduler.cur_batch"
+          ],
+          "n_kept_in_group": 3,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.3253517718660848,
+              "rmse": 4.607190497280155,
+              "r2": 0.43055330819224813
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.5561442334120414,
+              "rmse": 6.3445951614847935,
+              "r2": 0.17788763237954974
+            },
+            "n_features": 154,
+            "best_iteration": 131
+          },
+          "d_val": -0.027347756904504195,
+          "d_test": 0.08923351041618677
+        },
+        {
+          "kept": [
+            "resource.available_size",
+            "resource.evictable_size",
+            "resource.protected_size"
+          ],
+          "n_kept_in_group": 3,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.352699528770589,
+              "rmse": 4.650279122365579,
+              "r2": 0.4198520296928234
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.466910722995855,
+              "rmse": 6.390474047786237,
+              "r2": 0.16595496522426723
+            },
+            "n_features": 154,
+            "best_iteration": 52
+          },
+          "d_val": 0.0,
+          "d_test": 0.0
+        },
+        {
+          "kept": [
+            "resource.available_size",
+            "resource.evictable_size",
+            "resource.protected_size",
+            "scheduler.cur_batch"
+          ],
+          "n_kept_in_group": 4,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.352699528770589,
+              "rmse": 4.650279122365579,
+              "r2": 0.4198520296928234
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.466910722995855,
+              "rmse": 6.390474047786237,
+              "r2": 0.16595496522426723
+            },
+            "n_features": 155,
+            "best_iteration": 52
+          },
+          "d_val": 0.0,
+          "d_test": 0.0
+        },
+        {
+          "kept": [
+            "resource.available_size",
+            "resource.protected_size"
+          ],
+          "n_kept_in_group": 2,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.4922261643250225,
+              "rmse": 4.722275396263492,
+              "r2": 0.40174910559199606
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.450734585751826,
+              "rmse": 6.361359469458529,
+              "r2": 0.17353736169020517
+            },
+            "n_features": 153,
+            "best_iteration": 45
+          },
+          "d_val": 0.13952663555443356,
+          "d_test": -0.016176137244028332
+        },
+        {
+          "kept": [
+            "resource.available_size",
+            "resource.protected_size",
+            "scheduler.cur_batch"
+          ],
+          "n_kept_in_group": 3,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.4922261643250225,
+              "rmse": 4.722275396263492,
+              "r2": 0.40174910559199606
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.450734585751826,
+              "rmse": 6.361359469458529,
+              "r2": 0.17353736169020517
+            },
+            "n_features": 154,
+            "best_iteration": 45
+          },
+          "d_val": 0.13952663555443356,
+          "d_test": -0.016176137244028332
+        },
+        {
+          "kept": [
+            "resource.evictable_size"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.52398632889017,
+              "rmse": 4.663598497920431,
+              "r2": 0.41652393920012387
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.546420902122473,
+              "rmse": 6.319922151457903,
+              "r2": 0.18426929921671698
+            },
+            "n_features": 152,
+            "best_iteration": 44
+          },
+          "d_val": 0.17128680011958108,
+          "d_test": 0.0795101791266184
+        },
+        {
+          "kept": [
+            "resource.evictable_size",
+            "scheduler.cur_batch"
+          ],
+          "n_kept_in_group": 2,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.52398632889017,
+              "rmse": 4.663598497920431,
+              "r2": 0.41652393920012387
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.546420902122473,
+              "rmse": 6.319922151457903,
+              "r2": 0.18426929921671698
+            },
+            "n_features": 153,
+            "best_iteration": 44
+          },
+          "d_val": 0.17128680011958108,
+          "d_test": 0.0795101791266184
+        },
+        {
+          "kept": [
+            "resource.evictable_size",
+            "resource.protected_size"
+          ],
+          "n_kept_in_group": 2,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.5452505421919343,
+              "rmse": 4.696957307109197,
+              "r2": 0.4081468544200907
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.5016579294375045,
+              "rmse": 6.340630859831964,
+              "r2": 0.17891467449667553
+            },
+            "n_features": 153,
+            "best_iteration": 41
+          },
+          "d_val": 0.19255101342134529,
+          "d_test": 0.03474720644164986
+        },
+        {
+          "kept": [
+            "resource.evictable_size",
+            "resource.protected_size",
+            "scheduler.cur_batch"
+          ],
+          "n_kept_in_group": 3,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.5452505421919343,
+              "rmse": 4.696957307109197,
+              "r2": 0.4081468544200907
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.5016579294375045,
+              "rmse": 6.340630859831964,
+              "r2": 0.17891467449667553
+            },
+            "n_features": 154,
+            "best_iteration": 41
+          },
+          "d_val": 0.19255101342134529,
+          "d_test": 0.03474720644164986
+        },
+        {
+          "kept": [],
+          "n_kept_in_group": 0,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.625659335092666,
+              "rmse": 4.749520984732748,
+              "r2": 0.3948258672895336
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.602859148343142,
+              "rmse": 6.27273100408917,
+              "r2": 0.19640601350958742
+            },
+            "n_features": 151,
+            "best_iteration": 44
+          },
+          "d_val": 0.27295980632207684,
+          "d_test": 0.13594842534728713
+        },
+        {
+          "kept": [
+            "scheduler.cur_batch"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.625659335092666,
+              "rmse": 4.749520984732748,
+              "r2": 0.3948258672895336
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.602859148343142,
+              "rmse": 6.27273100408917,
+              "r2": 0.19640601350958742
+            },
+            "n_features": 152,
+            "best_iteration": 44
+          },
+          "d_val": 0.27295980632207684,
+          "d_test": 0.13594842534728713
+        },
+        {
+          "kept": [
+            "resource.protected_size"
+          ],
+          "n_kept_in_group": 1,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.712751564565015,
+              "rmse": 4.742342568209241,
+              "r2": 0.39665380282503426
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.525132636499461,
+              "rmse": 6.282588647723002,
+              "r2": 0.1938783210190086
+            },
+            "n_features": 152,
+            "best_iteration": 30
+          },
+          "d_val": 0.36005203579442613,
+          "d_test": 0.058221913503606615
+        },
+        {
+          "kept": [
+            "resource.protected_size",
+            "scheduler.cur_batch"
+          ],
+          "n_kept_in_group": 2,
+          "metrics": {
+            "val": {
+              "n": 98,
+              "mae": 3.712751564565015,
+              "rmse": 4.742342568209241,
+              "r2": 0.39665380282503426
+            },
+            "test": {
+              "n": 102,
+              "mae": 4.525132636499461,
+              "rmse": 6.282588647723002,
+              "r2": 0.1938783210190086
+            },
+            "n_features": 153,
+            "best_iteration": 30
+          },
+          "d_val": 0.36005203579442613,
+          "d_test": 0.058221913503606615
+        }
+      ]
+    }
+  ],
+  "nested_sets": {
+    "8": {
+      "n": 8,
+      "features": [
+        "req.finished_len",
+        "client.temperature",
+        "client.max_tokens",
+        "req.cached_tokens",
+        "client.tools",
+        "req.finished_reason",
+        "req.fill_len",
+        "req.extend_input_len"
+      ],
+      "padded_with_controller": false,
+      "metrics": {
+        "val": {
+          "n": 98,
+          "mae": 3.5152750517506695,
+          "rmse": 4.664271935787337,
+          "r2": 0.4163554155828145
+        },
+        "test": {
+          "n": 102,
+          "mae": 4.62285456013242,
+          "rmse": 6.2521502411717735,
+          "r2": 0.20167052935123453
+        },
+        "n_features": 8,
+        "best_iteration": 44
+      },
+      "d_val_vs_full": 0.1625755229800805,
+      "d_test_vs_full": 0.15594383713656512,
+      "d_val_vs_mean": -1.4968171140563333,
+      "d_test_vs_mean": -0.8569676424261736
+    },
+    "12": {
+      "n": 12,
+      "features": [
+        "req.finished_len",
+        "client.temperature",
+        "client.max_tokens",
+        "req.cached_tokens",
+        "client.tools",
+        "req.finished_reason",
+        "req.fill_len",
+        "req.extend_input_len",
+        "client.messages",
+        "req.reasoning_tokens",
+        "req._is_reasoning_over",
+        "client.top_p"
+      ],
+      "padded_with_controller": false,
+      "metrics": {
+        "val": {
+          "n": 98,
+          "mae": 3.3634051291912,
+          "rmse": 4.566840575913108,
+          "r2": 0.4404840944426548
+        },
+        "test": {
+          "n": 102,
+          "mae": 4.773120339444647,
+          "rmse": 6.437586570953087,
+          "r2": 0.1536119655414966
+        },
+        "n_features": 12,
+        "best_iteration": 132
+      },
+      "d_val_vs_full": 0.010705600420611194,
+      "d_test_vs_full": 0.3062096164487924,
+      "d_val_vs_mean": -1.6486870366158026,
+      "d_test_vs_mean": -0.7067018631139463
+    },
+    "16": {
+      "n": 16,
+      "features": [
+        "req.finished_len",
+        "client.temperature",
+        "client.max_tokens",
+        "req.cached_tokens",
+        "client.tools",
+        "req.finished_reason",
+        "req.fill_len",
+        "req.extend_input_len",
+        "client.messages",
+        "req.reasoning_tokens",
+        "req._is_reasoning_over",
+        "client.top_p",
+        "scheduler.cur_batch",
+        "resource.available_size",
+        "resource.evictable_size",
+        "resource.protected_size"
+      ],
+      "padded_with_controller": true,
+      "metrics": {
+        "val": {
+          "n": 98,
+          "mae": 3.3547905407745753,
+          "rmse": 4.583553499842307,
+          "r2": 0.4363813641387342
+        },
+        "test": {
+          "n": 102,
+          "mae": 4.566982515232429,
+          "rmse": 6.193337984115174,
+          "r2": 0.21661921933694872
+        },
+        "n_features": 16,
+        "best_iteration": 96
+      },
+      "d_val_vs_full": 0.0020910120039863145,
+      "d_test_vs_full": 0.10007179223657392,
+      "d_val_vs_mean": -1.6573016250324275,
+      "d_test_vs_mean": -0.9128396873261648
+    },
+    "20": {
+      "n": 16,
+      "features": [
+        "req.finished_len",
+        "client.temperature",
+        "client.max_tokens",
+        "req.cached_tokens",
+        "client.tools",
+        "req.finished_reason",
+        "req.fill_len",
+        "req.extend_input_len",
+        "client.messages",
+        "req.reasoning_tokens",
+        "req._is_reasoning_over",
+        "client.top_p",
+        "scheduler.cur_batch",
+        "resource.available_size",
+        "resource.evictable_size",
+        "resource.protected_size"
+      ],
+      "padded_with_controller": true,
+      "metrics": {
+        "val": {
+          "n": 98,
+          "mae": 3.3547905407745753,
+          "rmse": 4.583553499842307,
+          "r2": 0.4363813641387342
+        },
+        "test": {
+          "n": 102,
+          "mae": 4.566982515232429,
+          "rmse": 6.193337984115174,
+          "r2": 0.21661921933694872
+        },
+        "n_features": 16,
+        "best_iteration": 96
+      },
+      "d_val_vs_full": 0.0020910120039863145,
+      "d_test_vs_full": 0.10007179223657392,
+      "d_val_vs_mean": -1.6573016250324275,
+      "d_test_vs_mean": -0.9128396873261648
+    },
+    "24": {
+      "n": 16,
+      "features": [
+        "req.finished_len",
+        "client.temperature",
+        "client.max_tokens",
+        "req.cached_tokens",
+        "client.tools",
+        "req.finished_reason",
+        "req.fill_len",
+        "req.extend_input_len",
+        "client.messages",
+        "req.reasoning_tokens",
+        "req._is_reasoning_over",
+        "client.top_p",
+        "scheduler.cur_batch",
+        "resource.available_size",
+        "resource.evictable_size",
+        "resource.protected_size"
+      ],
+      "padded_with_controller": true,
+      "metrics": {
+        "val": {
+          "n": 98,
+          "mae": 3.3547905407745753,
+          "rmse": 4.583553499842307,
+          "r2": 0.4363813641387342
+        },
+        "test": {
+          "n": 102,
+          "mae": 4.566982515232429,
+          "rmse": 6.193337984115174,
+          "r2": 0.21661921933694872
+        },
+        "n_features": 16,
+        "best_iteration": 96
+      },
+      "d_val_vs_full": 0.0020910120039863145,
+      "d_test_vs_full": 0.10007179223657392,
+      "d_val_vs_mean": -1.6573016250324275,
+      "d_test_vs_mean": -0.9128396873261648
+    }
+  },
+  "greedy_forward_val": [
+    {
+      "k": 1,
+      "added": "req.finished_len",
+      "val_mae": 4.060580977573231,
+      "test_mae": 4.728947940723947
+    },
+    {
+      "k": 2,
+      "added": "client.tools",
+      "val_mae": 3.69798121556654,
+      "test_mae": 4.5615713867827665
+    },
+    {
+      "k": 3,
+      "added": "client.max_tokens",
+      "val_mae": 3.3755122333142995,
+      "test_mae": 4.540419251674183
+    },
+    {
+      "k": 4,
+      "added": "req.cached_tokens",
+      "val_mae": 3.2276262253198067,
+      "test_mae": 4.4729633100350625
+    },
+    {
+      "k": 5,
+      "added": "req.finished_reason",
+      "val_mae": 3.2135314985721735,
+      "test_mae": 4.675465228362322
+    },
+    {
+      "k": 6,
+      "added": "req._is_reasoning_over",
+      "val_mae": 3.235330946077708,
+      "test_mae": 4.618079518388596
+    },
+    {
+      "k": 7,
+      "added": "req.reasoning_tokens",
+      "val_mae": 3.207157907462689,
+      "test_mae": 4.691858995744528
+    },
+    {
+      "k": 8,
+      "added": "client.temperature",
+      "val_mae": 3.1795327975586662,
+      "test_mae": 4.695821212091926
+    }
+  ]
+}

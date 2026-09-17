@@ -1,0 +1,47 @@
+{
+  "input": "/share/dai-sys/zhoulongsheng/agentkv/experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_081143/kv_trace.jsonl",
+  "event_counts": {
+    "cache_reset": 16,
+    "request_match": 1448,
+    "cache_store": 3840,
+    "evict_start": 1368,
+    "cache_evict": 3744,
+    "evict_end": 1368
+  },
+  "requests": 1448,
+  "tokens": {
+    "prompt_tokens": 32422400,
+    "matched_tokens": 13078016,
+    "miss_tokens": 19344384,
+    "cold_miss_tokens": 14833152,
+    "stored_tokens": 17332224,
+    "evicted_tokens": 15698944,
+    "evicted_pages": 245296,
+    "eviction_page_tokens": 15698944,
+    "eviction_miss_tokens": 4511232
+  },
+  "ratios": {
+    "observed_hit_ratio": 0.40336360047374653,
+    "eviction_regret_ratio": 0.233206288708909,
+    "cold_miss_ratio": 0.766793711291091,
+    "other_miss_ratio": 0.0
+  },
+  "eviction_reuse": {
+    "page_observations": 70488,
+    "time_ms_p50": 137629.96082997415,
+    "time_ms_p90": 292317.4874839606,
+    "request_distance_p50": 342.0,
+    "request_distance_p90": 793.0,
+    "inserted_token_distance_p50": 4190208.0,
+    "inserted_token_distance_p90": 8861184.0
+  },
+  "request_result_join": {
+    "input": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_081143/run_glm_kv_diag_20260801_081143.jsonl",
+    "matched": 1440,
+    "unmatched": 8,
+    "correlations": {
+      "ttft_vs_eviction_miss_tokens": 0.16530128324768473,
+      "ttft_vs_total_miss_tokens": 0.5251224502833172
+    }
+  }
+}

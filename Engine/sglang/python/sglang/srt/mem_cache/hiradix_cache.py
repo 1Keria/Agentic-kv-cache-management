@@ -70,7 +70,6 @@ logger = logging.getLogger(__name__)
 
 
 class HiRadixCache(RadixCache):
-
     def __init__(self, params: CacheInitParams, server_args: ServerArgs):
         self._enable_metrics_flag = params.enable_metrics
 
@@ -188,6 +187,11 @@ class HiRadixCache(RadixCache):
         self.evictable_host_leaves = set()
 
         super().__init__(params=params)
+        if self.reuse_value_enabled:
+            raise NotImplementedError(
+                "reuse_value eviction currently supports the classic RadixCache "
+                "path only; disable hierarchical cache for this experiment"
+            )
 
     def _all_reduce_attn_groups(self, tensor: torch.Tensor, op):
         reduced = False
@@ -1141,7 +1145,6 @@ class HiRadixCache(RadixCache):
     def load_back(
         self, node: TreeNode, mem_quota: Optional[int] = None
     ) -> Optional[torch.Tensor]:
-
         start_time = time.perf_counter()
         last_hit_node = node
         nodes_to_load = []
@@ -1570,7 +1573,9 @@ class HiRadixCache(RadixCache):
 
         return matched_length
 
-    def _match_prefix_helper(self, node: TreeNode, key: RadixKey):
+    def _match_prefix_helper(
+        self, node: TreeNode, key: RadixKey, update_reuse_strength: bool = True
+    ):
         node.last_access_time = time.monotonic()
         child_key = key.child_key(self.page_size)
         value = []
@@ -1647,6 +1652,12 @@ class HiRadixCache(RadixCache):
         node = self.root_node
         child_key = key.child_key(self.page_size)
         total_prefix_length = 0
+        matched_nodes: list[TreeNode] = []
+        demote_on_miss = (
+            bool(getattr(self.eviction_strategy, "demote_on_miss", False))
+            and not chunked
+            and self.cache_controller.write_policy != "write_back"
+        )
 
         while len(key) > 0 and child_key in node.children.keys():
             node = node.children[child_key]
@@ -1666,6 +1677,7 @@ class HiRadixCache(RadixCache):
                     self._update_leaf_status(node.parent)
                 else:
                     self._inc_hit_count(node, chunked)
+                    matched_nodes.append(node)
                     total_prefix_length += prefix_len
             else:
                 # partial match, split the node
@@ -1681,6 +1693,7 @@ class HiRadixCache(RadixCache):
                     self._update_leaf_status(new_node.parent)
                 else:
                     self._inc_hit_count(new_node, chunked)
+                    matched_nodes.append(new_node)
                     total_prefix_length += prefix_len
                 node = new_node
 
@@ -1691,6 +1704,9 @@ class HiRadixCache(RadixCache):
                 child_key = key.child_key(self.page_size)
 
         if len(key):
+            if demote_on_miss:
+                for matched in matched_nodes:
+                    matched.hit_count -= 1
             new_node = TreeNode(priority=priority)
             new_node.parent = node
             new_node.key = key
@@ -1707,7 +1723,9 @@ class HiRadixCache(RadixCache):
             # Emit BlockStored so the router indexes this block.
             self._record_store_event(new_node)
 
-            if self.cache_controller.write_policy != "write_back":
+            if demote_on_miss:
+                new_node.hit_count = -1
+            elif self.cache_controller.write_policy != "write_back":
                 self._inc_hit_count(new_node, chunked)
         return InsertResult(prefix_len=total_prefix_length)
 

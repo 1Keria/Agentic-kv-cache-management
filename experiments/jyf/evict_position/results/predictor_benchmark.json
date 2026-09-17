@@ -1,0 +1,34 @@
+{
+  "torch_threads": 1,
+  "rows": [
+    {
+      "nodes": 32,
+      "mlp_p50_us": 76.80850000000001,
+      "mlp_p99_us": 84.04365000000001,
+      "conditioning_value_p50_us": 64.9425,
+      "conditioning_value_p99_us": 71.96250000000002
+    },
+    {
+      "nodes": 128,
+      "mlp_p50_us": 130.2715,
+      "mlp_p99_us": 164.62934,
+      "conditioning_value_p50_us": 126.326,
+      "conditioning_value_p99_us": 139.4549800000001
+    },
+    {
+      "nodes": 512,
+      "mlp_p50_us": 315.7315,
+      "mlp_p99_us": 374.8775800000001,
+      "conditioning_value_p50_us": 315.043,
+      "conditioning_value_p99_us": 340.05686
+    },
+    {
+      "nodes": 2048,
+      "mlp_p50_us": 1257.3600000000001,
+      "mlp_p99_us": 1341.25214,
+      "conditioning_value_p50_us": 1065.8870000000002,
+      "conditioning_value_p99_us": 1094.90671
+    }
+  ],
+  "limitation": "Kernel-only microbenchmark. Excludes metadata snapshots, frontier traversal, queueing, future waits and TP communication. Host concurrently runs another GPU benchmark."
+}

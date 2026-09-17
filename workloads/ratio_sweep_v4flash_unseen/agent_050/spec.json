@@ -1,0 +1,58 @@
+{
+  "name": "agent_050",
+  "protocol": "v4flash-unseen-strict-segment-ratio-v1",
+  "seed": 42,
+  "target_calls": 2000,
+  "target_agent_call_fraction": 0.5,
+  "actual_agent_call_fraction": 0.5,
+  "n_agent_calls": 1000,
+  "n_request_calls": 1000,
+  "arrival": {
+    "type": "frozen",
+    "horizon_s": 10800.0,
+    "n_waves": 9,
+    "wave_width_s": 10.0,
+    "note": "Replay with --arrival frozen; starts are baked into workload.jsonl."
+  },
+  "sources": {
+    "used_model_workload_excluded": "workloads/mix_eval_longgap_oh59_g150_r1050",
+    "openhands": {
+      "all_unique_v4flash_trajectories": 108,
+      "used_content_hashes": 59,
+      "unseen_trajectories": 49,
+      "strict_segments": 64,
+      "strict_segment_calls": 2227,
+      "min_segment_turns": 12
+    },
+    "request": {
+      "excluded_conversation_hashes": 1047,
+      "selected_pool_sessions": 1536,
+      "selected_pool_calls": 2995,
+      "request_max_turns": 8,
+      "request_gap_cap_s": 30.0
+    }
+  },
+  "summary": {
+    "n_sessions": 533,
+    "n_turns": 2000,
+    "last_session_start_s": 10800.0,
+    "n_sessions_by_class": {
+      "openhands": 33,
+      "request": 500
+    },
+    "n_turns_by_class": {
+      "openhands": 1000,
+      "request": 1000
+    },
+    "n_sessions_openhands": 33,
+    "n_turns_openhands": 1000,
+    "openhands_orig_span_s_p50": 52.702,
+    "openhands_single_turn": 0,
+    "openhands_multi_turn": 33,
+    "n_sessions_request": 500,
+    "n_turns_request": 1000,
+    "request_orig_span_s_p50": 0.0,
+    "request_single_turn": 283,
+    "request_multi_turn": 217
+  }
+}

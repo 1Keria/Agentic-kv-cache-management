@@ -1,0 +1,113 @@
+{
+  "task_name": "pddl-tpp-planning",
+  "rollout_name": "pddl-tpp-planning__edd2aecf",
+  "rewards": null,
+  "agent": "openhands",
+  "agent_name": "OpenHands CLI ACP Agent",
+  "model": "deepseek/deepseek-v4-flash",
+  "skill_mode": "with-skill",
+  "skill_source": "task_bundled",
+  "requested_skills_dir": "/home/benchflow/skillsbench/tasks/pddl-tpp-planning/environment/skills",
+  "effective_skills_dir": "/tmp/benchflow-task-_y_nm0hh/pddl-tpp-planning/environment/skills",
+  "skills_sandbox_dir": "/skills",
+  "include_task_skills": true,
+  "n_tool_calls": 66,
+  "n_skill_invocations": 1,
+  "n_prompts": 1,
+  "agent_result": {
+    "n_tool_calls": 66,
+    "n_skill_invocations": 1,
+    "n_prompts": 1,
+    "n_input_tokens": 3758668,
+    "n_output_tokens": 58879,
+    "n_cache_read_tokens": 3684864,
+    "n_cache_creation_tokens": 0,
+    "total_tokens": 3817547,
+    "cost_usd": null,
+    "usage_source": "provider_response",
+    "price_source": null
+  },
+  "final_metrics": {
+    "total_prompt_tokens": 3758668,
+    "total_completion_tokens": 58879,
+    "total_cached_tokens": 3684864,
+    "total_cost_usd": null
+  },
+  "trajectory_summary": {
+    "steps": 129,
+    "tool_call_steps": 66,
+    "user_message_steps": 1,
+    "agent_message_steps": 1,
+    "agent_thought_steps": 61,
+    "other_steps": 0,
+    "event_type_counts": {
+      "user_message": 1,
+      "agent_thought": 61,
+      "tool_call": 66,
+      "agent_message": 1
+    },
+    "tool_call_status_counts": {
+      "completed": 62,
+      "pending": 4
+    },
+    "partial_trajectory": false,
+    "trajectory_source": "acp"
+  },
+  "usage_tracking": {
+    "requested": "required",
+    "status": "enabled",
+    "environment": "docker",
+    "endpoint_kind": "host",
+    "usage_source": "provider_response"
+  },
+  "error": null,
+  "error_category": null,
+  "verifier_error": "verifier timed out after 600.0s",
+  "verifier_error_category": "verifier_timeout",
+  "export_error": null,
+  "idle_timeout_info": null,
+  "sandbox_startup_info": null,
+  "transport_error_info": null,
+  "verifier_timeout_info": {
+    "timeout_budget_sec": 600.0,
+    "elapsed_sec": 605.5,
+    "task_name": "pddl-tpp-planning"
+  },
+  "partial_trajectory": false,
+  "trajectory_source": "acp",
+  "started_at": "2026-06-09 04:28:50.105406",
+  "finished_at": "2026-06-09 05:19:21.612071",
+  "timing": {
+    "environment_setup": 12.5,
+    "agent_setup": 16.0,
+    "agent_execution": 2352.3,
+    "verifier": 605.5,
+    "total": 3031.5
+  },
+  "scenes": [
+    {
+      "name": "default",
+      "skills_dir": null,
+      "roles": [
+        {
+          "name": "agent",
+          "agent": "openhands",
+          "model": "deepseek/deepseek-v4-flash",
+          "reasoning_effort": null,
+          "timeout_sec": null,
+          "idle_timeout_sec": null,
+          "skills_dir": null,
+          "capabilities": null,
+          "env_keys": []
+        }
+      ],
+      "turns": [
+        {
+          "role": "agent",
+          "has_prompt": false
+        }
+      ]
+    }
+  ],
+  "sandbox_id": null
+}

@@ -1,0 +1,4 @@
+{"kind":"init","mode":"lru","rank":0,"page_size":1,"sliding_window_size":4,"checkpoint":null,"wall_s":1789144839.0530221}
+{"kind":"evict","index":1,"seq":1,"total_us":17.252,"plan_and_tp_us":0.0,"freed_full":2,"freed_swa":2,"choices":0,"mlp_choices":0,"changed_choices":0,"digest":"4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945","wall_s":1789144839.055195}
+{"kind":"evict","index":2,"seq":1,"total_us":12.303,"plan_and_tp_us":0.0,"freed_full":4,"freed_swa":4,"choices":0,"mlp_choices":0,"changed_choices":0,"digest":"4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945","wall_s":1789144839.0552883}
+{"kind":"evict","index":3,"seq":1,"total_us":21.468,"plan_and_tp_us":0.0,"freed_full":6,"freed_swa":6,"choices":0,"mlp_choices":0,"changed_choices":0,"digest":"4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945","wall_s":1789144839.055351}

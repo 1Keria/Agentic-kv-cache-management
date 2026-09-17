@@ -1,0 +1,5 @@
+sync_fill START 2026-09-12T08:11:06+08:00
+sync_fill REPLAY 2026-09-12T08:14:28+08:00
+run_online.sh: line 16: 4099479 Killed                  ASYNC_SERVING_MODE="$mode" ASYNC_SERVING_OUT="$arm/metrics" PYTHONPATH="$EXP" "$SGLANG" serve --trust-remote-code --model-path /share/dai-sys/models/deepseek-v4-flash --served-model-name deepseek-v4-flash --tp 8 --moe-runner-backend marlin --reasoning-parser deepseek-v4 --tool-call-parser deepseekv4 --port 30000 --host 127.0.0.1 --mem-fraction-static 0.45 --watchdog-timeout 900 --random-seed 42 --enable-metrics --enable-cache-report --radix-eviction-policy lru > "$arm/server.log" 2>&1
+sync_fill COMPLETE 2026-09-12T08:24:49+08:00
+COMPLETE 2026-09-12T08:24:52+08:00

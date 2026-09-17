@@ -1,0 +1,61 @@
+{
+  "official_output": "restricted_mean_E[min(tau,60)]",
+  "evict_rule": "larger tau_hat first; missing tau_hat falls back to LRU",
+  "features": [
+    "req.finished_len",
+    "client.temperature",
+    "client.max_tokens",
+    "req.cached_tokens",
+    "client.tools",
+    "req.finished_reason",
+    "req.fill_len",
+    "req.extend_input_len"
+  ],
+  "mean": [
+    154.78571428571428,
+    0.8940194805194852,
+    32947.32467532468,
+    7996.384415584415,
+    31.224967490247074,
+    0.4824675324675325,
+    23106.0,
+    3952.4623376623376
+  ],
+  "std": [
+    190.08246892000255,
+    0.16322444792288243,
+    10726.363480600647,
+    8002.334592975894,
+    16.664831826255732,
+    0.4996925180370607,
+    7449.68609327344,
+    2275.0699978978223
+  ],
+  "edges": [
+    2.0,
+    4.0,
+    6.0,
+    8.0,
+    12.0,
+    16.0,
+    24.0,
+    36.0,
+    60.0
+  ],
+  "horizon_s": 60.0,
+  "finished_reason_map": {
+    "length": 0.0,
+    "stop": 1.0
+  },
+  "ckpt": "/share/dai-sys/zhoulongsheng/agentkv/experiments/session_return/k8_model/k8_hazard.pt",
+  "kinds": {
+    "req.finished_len": "num",
+    "client.temperature": "num",
+    "client.max_tokens": "num",
+    "req.cached_tokens": "num",
+    "client.tools": "len",
+    "req.finished_reason": "cat",
+    "req.fill_len": "num",
+    "req.extend_input_len": "num"
+  }
+}

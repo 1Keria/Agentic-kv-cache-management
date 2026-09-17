@@ -1,0 +1,12 @@
+{
+  "name": "mix_eval_idle_oh20_r1050_overlap",
+  "created_unix": 1788151301.4469485,
+  "workload_jsonl_sha256": "ccfed3c5c2075038b35b5a1b9d3e99d6519af487c6ad4951f3a6f8c93a73154a",
+  "sessions_jsonl_sha256": "ea1a82e0f7863cf57e3bf6a0c104c5793ec1b5c09f56a50513bf5813c89ef853",
+  "spec_json_sha256": "d30a894173c0d425e0dac63b919ce55c106f5bcc45d36587b144d98212f9b842",
+  "n_turns": 2051,
+  "n_sessions_by_class": {
+    "openhands": 20,
+    "request": 1050
+  }
+}

@@ -1,0 +1,13 @@
+precompute START 2026-09-13T10:01:15+08:00
+precompute REPLAY 2026-09-13T10:05:16+08:00
+run_online.sh: line 20: 234624 Killed                  EP_MODE="$mode" EP_OUT="$arm/metrics" EP_CHECKPOINT="$EXP/training/model.pt" PYTHONPATH="$EXP" "$SGLANG" serve --trust-remote-code --model-path /share/dai-sys/models/deepseek-v4-flash --served-model-name deepseek-v4-flash --tp "$TP_SIZE" --moe-runner-backend marlin --reasoning-parser deepseek-v4 --tool-call-parser deepseekv4 --port 30000 --host 127.0.0.1 --mem-fraction-static "$MEM_FRACTION" "${TOKEN_ARGS[@]}" --watchdog-timeout 900 --random-seed 42 --enable-metrics --enable-cache-report --radix-eviction-policy lru > "$arm/server.log" 2>&1
+precompute COMPLETE 2026-09-13T10:11:59+08:00
+on_demand START 2026-09-13T10:12:02+08:00
+on_demand REPLAY 2026-09-13T10:15:24+08:00
+run_online.sh: line 20: 240393 Killed                  EP_MODE="$mode" EP_OUT="$arm/metrics" EP_CHECKPOINT="$EXP/training/model.pt" PYTHONPATH="$EXP" "$SGLANG" serve --trust-remote-code --model-path /share/dai-sys/models/deepseek-v4-flash --served-model-name deepseek-v4-flash --tp "$TP_SIZE" --moe-runner-backend marlin --reasoning-parser deepseek-v4 --tool-call-parser deepseekv4 --port 30000 --host 127.0.0.1 --mem-fraction-static "$MEM_FRACTION" "${TOKEN_ARGS[@]}" --watchdog-timeout 900 --random-seed 42 --enable-metrics --enable-cache-report --radix-eviction-policy lru > "$arm/server.log" 2>&1
+on_demand COMPLETE 2026-09-13T10:21:53+08:00
+lru START 2026-09-13T10:21:56+08:00
+lru REPLAY 2026-09-13T10:25:38+08:00
+run_online.sh: line 20: 245107 Killed                  EP_MODE="$mode" EP_OUT="$arm/metrics" EP_CHECKPOINT="$EXP/training/model.pt" PYTHONPATH="$EXP" "$SGLANG" serve --trust-remote-code --model-path /share/dai-sys/models/deepseek-v4-flash --served-model-name deepseek-v4-flash --tp "$TP_SIZE" --moe-runner-backend marlin --reasoning-parser deepseek-v4 --tool-call-parser deepseekv4 --port 30000 --host 127.0.0.1 --mem-fraction-static "$MEM_FRACTION" "${TOKEN_ARGS[@]}" --watchdog-timeout 900 --random-seed 42 --enable-metrics --enable-cache-report --radix-eviction-policy lru > "$arm/server.log" 2>&1
+lru COMPLETE 2026-09-13T10:32:45+08:00
+COMPLETE 2026-09-13T10:32:48+08:00

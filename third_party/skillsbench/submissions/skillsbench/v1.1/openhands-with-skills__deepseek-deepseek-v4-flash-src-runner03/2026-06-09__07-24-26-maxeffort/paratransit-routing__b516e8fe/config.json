@@ -1,0 +1,80 @@
+{
+  "task_path": "/home/benchflow/skillsbench/tasks/paratransit-routing",
+  "agent": "openhands",
+  "model": "deepseek/deepseek-v4-flash",
+  "reasoning_effort": null,
+  "environment": "docker",
+  "skill_mode": "with-skill",
+  "skill_source": "task_bundled",
+  "requested_skills_dir": "/home/benchflow/skillsbench/tasks/paratransit-routing/environment/skills",
+  "effective_skills_dir": "/tmp/benchflow-task-h7if43jc/paratransit-routing/environment/skills",
+  "skills_sandbox_dir": "/skills",
+  "include_task_skills": true,
+  "sandbox_user": "agent",
+  "sandbox_locked_paths": [
+    "/solution",
+    "/tests"
+  ],
+  "sandbox_setup_timeout": 600,
+  "context_root": null,
+  "timeout_sec": 604800,
+  "concurrency": 1,
+  "agent_idle_timeout_sec": null,
+  "started_at": "2026-06-09 06:43:10.344569",
+  "agent_env": {
+    "LLM_REASONING_EFFORT": "max",
+    "LITELLM_REASONING_EFFORT": "max",
+    "LLM_CACHING_PROMPT": "false",
+    "DEEPSEEK_BASE_URL": "https://api.deepseek.com",
+    "AZURE_API_ENDPOINT": "https://knowhiz-service-openai-backup-2.openai.azure.com/",
+    "KIMI_BASE_URL": "https://api.moonshot.ai/v1",
+    "QWEN_BASE_URL": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "OPENAI_BASE_URL": "https://llm-proxy.eval.all-hands.dev",
+    "MINIMAX_BASE_URL": "https://api.minimax.io/v1",
+    "GLM_BASE_URL": "https://open.bigmodel.cn/api/paas/v4",
+    "HUNYUAN_BASE_URL": "https://api.lkeap.cloud.tencent.com/plan/v3",
+    "XIAOMI_BASE_URL": "https://token-plan-sgp.xiaomimimo.com/v1",
+    "DOUBAO_VOLCES_BASE_URL": "https://ark.cn-beijing.volces.com/api/v3",
+    "LITELLM_BASE_URL": "https://llm-proxy.eval.all-hands.dev",
+    "AZURE_RESOURCE": "knowhiz-service-openai-backup-2",
+    "AWS_REGION": "us-west-2",
+    "AWS_DEFAULT_REGION": "us-west-2",
+    "BENCHFLOW_BEDROCK_THINKING_EFFORT": "max",
+    "AWS_REGION_NAME": "us-west-2",
+    "BENCHFLOW_PROVIDER_MODEL": "deepseek-v4-flash",
+    "BENCHFLOW_PROVIDER_NAME": "deepseek",
+    "BENCHFLOW_PROVIDER_BASE_URL": "https://api.deepseek.com",
+    "BENCHFLOW_PROVIDER_PROTOCOL": "openai-completions",
+    "LLM_BASE_URL": "https://api.deepseek.com",
+    "LLM_MODEL": "openai/deepseek-v4-flash",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
+  },
+  "scenes": [
+    {
+      "name": "default",
+      "skills_dir": null,
+      "roles": [
+        {
+          "name": "agent",
+          "agent": "openhands",
+          "model": "deepseek/deepseek-v4-flash",
+          "reasoning_effort": null,
+          "timeout_sec": null,
+          "idle_timeout_sec": null,
+          "skills_dir": null,
+          "capabilities": null,
+          "env_keys": []
+        }
+      ],
+      "turns": [
+        {
+          "role": "agent",
+          "has_prompt": false
+        }
+      ]
+    }
+  ],
+  "usage_tracking": {
+    "requested": "required"
+  }
+}

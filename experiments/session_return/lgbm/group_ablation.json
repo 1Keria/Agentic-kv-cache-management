@@ -1,0 +1,381 @@
+{
+  "run_dir": "/share/dai-sys/zhoulongsheng/agentkv/experiments/session_return/replay_small/run_20260916_012751",
+  "features": [
+    "client.max_tokens",
+    "client.temperature",
+    "client.top_p",
+    "req._is_reasoning_over",
+    "req.cache_protected_len",
+    "req.cached_tokens",
+    "req.extend_input_len",
+    "req.fill_len",
+    "req.finished_len",
+    "req.kv_committed_len",
+    "req.reasoning_tokens",
+    "resource.available_size",
+    "resource.evictable_size",
+    "resource.protected_size"
+  ],
+  "full": {
+    "n_features": 14,
+    "best_iteration": 64,
+    "metrics": {
+      "train": {
+        "n": 607,
+        "mae": 3.3979663725560867,
+        "rmse": 4.801930346520656,
+        "r2": 0.5986766919957043
+      },
+      "val": {
+        "n": 98,
+        "mae": 3.544724215478723,
+        "rmse": 4.803768775268883,
+        "r2": 0.38092263625264766
+      },
+      "test": {
+        "n": 102,
+        "mae": 4.599111335013334,
+        "rmse": 6.3162053378824385,
+        "r2": 0.1852284969150534
+      }
+    }
+  },
+  "mean_baseline": {
+    "train": {
+      "n": 607,
+      "mae": 5.586341498330349,
+      "rmse": 7.579990555450623,
+      "r2": 0.0
+    },
+    "val": {
+      "n": 98,
+      "mae": 5.012092165807003,
+      "rmse": 6.154018849359176,
+      "r2": -0.0160109276838043
+    },
+    "test": {
+      "n": 102,
+      "mae": 5.479822202558593,
+      "rmse": 7.095387552670563,
+      "r2": -0.028195251488164264
+    }
+  },
+  "ablations": [
+    {
+      "group": "output_len",
+      "dropped": [
+        "req.finished_len"
+      ],
+      "n_kept": 13,
+      "why": "Actual completion length; strongest univariate rank vs τ",
+      "best_iteration": 59,
+      "metrics": {
+        "train": {
+          "n": 607,
+          "mae": 4.021246842788042,
+          "rmse": 5.601025911044147,
+          "r2": 0.45399347273743196
+        },
+        "val": {
+          "n": 98,
+          "mae": 4.308459098365372,
+          "rmse": 5.785279471834431,
+          "r2": 0.10209700199419347
+        },
+        "test": {
+          "n": 102,
+          "mae": 5.520067703889394,
+          "rmse": 6.920048196211626,
+          "r2": 0.021993843363040333
+        }
+      },
+      "delta_mae": {
+        "train": 0.623280470231955,
+        "val": 0.763734882886649,
+        "test": 0.9209563688760598
+      },
+      "delta_rmse": {
+        "train": 0.7990955645234905,
+        "val": 0.9815106965655485,
+        "test": 0.6038428583291875
+      },
+      "delta_r2": {
+        "train": -0.14468321925827232,
+        "val": -0.2788256342584542,
+        "test": -0.16323465355201305
+      }
+    },
+    {
+      "group": "client_sampling",
+      "dropped": [
+        "client.max_tokens",
+        "client.temperature",
+        "client.top_p"
+      ],
+      "n_kept": 11,
+      "why": "Client generation knobs; temperature–max_tokens ρ≈0.62",
+      "best_iteration": 43,
+      "metrics": {
+        "train": {
+          "n": 607,
+          "mae": 3.8229595768074742,
+          "rmse": 5.3142561029206,
+          "r2": 0.5084727148942274
+        },
+        "val": {
+          "n": 98,
+          "mae": 4.0103774498328715,
+          "rmse": 5.0675319635250125,
+          "r2": 0.3110721712183009
+        },
+        "test": {
+          "n": 102,
+          "mae": 4.740864812201187,
+          "rmse": 6.357218577128811,
+          "r2": 0.17461297420817834
+        }
+      },
+      "delta_mae": {
+        "train": 0.42499320425138754,
+        "val": 0.4656532343541486,
+        "test": 0.14175347718785325
+      },
+      "delta_rmse": {
+        "train": 0.5123257563999442,
+        "val": 0.26376318825612977,
+        "test": 0.04101323924637246
+      },
+      "delta_r2": {
+        "train": -0.09020397710147687,
+        "val": -0.06985046503434678,
+        "test": -0.010615522706875047
+      }
+    },
+    {
+      "group": "resource_pool",
+      "dropped": [
+        "resource.available_size",
+        "resource.evictable_size",
+        "resource.protected_size"
+      ],
+      "n_kept": 11,
+      "why": "Pool snapshot; evictable vs protected ρ≈−0.89. Inventory: controller-only",
+      "best_iteration": 40,
+      "metrics": {
+        "train": {
+          "n": 607,
+          "mae": 3.8713287024674505,
+          "rmse": 5.421366559296304,
+          "r2": 0.48845927325260774
+        },
+        "val": {
+          "n": 98,
+          "mae": 3.6247954356243954,
+          "rmse": 4.779577017639142,
+          "r2": 0.3871422772340458
+        },
+        "test": {
+          "n": 102,
+          "mae": 4.675141830335821,
+          "rmse": 6.383887684588455,
+          "r2": 0.16767330180626794
+        }
+      },
+      "delta_mae": {
+        "train": 0.47336232991136384,
+        "val": 0.08007122014567258,
+        "test": 0.07603049532248729
+      },
+      "delta_rmse": {
+        "train": 0.6194362127756481,
+        "val": -0.02419175762974035,
+        "test": 0.06768234670601636
+      },
+      "delta_r2": {
+        "train": -0.11021741874309654,
+        "val": 0.006219640981398156,
+        "test": -0.01755519510878545
+      }
+    },
+    {
+      "group": "reasoning",
+      "dropped": [
+        "req.reasoning_tokens",
+        "req._is_reasoning_over"
+      ],
+      "n_kept": 12,
+      "why": "Reasoning state; tokens vs over ρ≈−0.34",
+      "best_iteration": 64,
+      "metrics": {
+        "train": {
+          "n": 607,
+          "mae": 3.427669994385463,
+          "rmse": 4.818945743845761,
+          "r2": 0.5958275152767267
+        },
+        "val": {
+          "n": 98,
+          "mae": 3.552084887375093,
+          "rmse": 4.807721132784841,
+          "r2": 0.3799035107455363
+        },
+        "test": {
+          "n": 102,
+          "mae": 4.631708628859445,
+          "rmse": 6.319178790634641,
+          "r2": 0.18446118341049889
+        }
+      },
+      "delta_mae": {
+        "train": 0.02970362182937647,
+        "val": 0.007360671896370352,
+        "test": 0.032597293846110986
+      },
+      "delta_rmse": {
+        "train": 0.01701539732510504,
+        "val": 0.003952357515958127,
+        "test": 0.002973452752202732
+      },
+      "delta_r2": {
+        "train": -0.002849176718977553,
+        "val": -0.0010191255071113625,
+        "test": -0.000767313504554501
+      }
+    },
+    {
+      "group": "seq_occupied",
+      "dropped": [
+        "req.fill_len",
+        "req.cache_protected_len",
+        "req.kv_committed_len"
+      ],
+      "n_kept": 11,
+      "why": "Spearman ρ=1.0; same occupied KV / fill snapshot",
+      "best_iteration": 60,
+      "metrics": {
+        "train": {
+          "n": 607,
+          "mae": 3.5114088360105598,
+          "rmse": 4.937161606803169,
+          "r2": 0.575754389852619
+        },
+        "val": {
+          "n": 98,
+          "mae": 3.523064076215857,
+          "rmse": 4.765616121152382,
+          "r2": 0.3907172995918574
+        },
+        "test": {
+          "n": 102,
+          "mae": 4.641383756242198,
+          "rmse": 6.247110486091685,
+          "r2": 0.2029570510303491
+        }
+      },
+      "delta_mae": {
+        "train": 0.11344246345447306,
+        "val": -0.02166013926286592,
+        "test": 0.04227242122886388
+      },
+      "delta_rmse": {
+        "train": 0.13523126028251298,
+        "val": -0.038152654116500706,
+        "test": -0.06909485179075325
+      },
+      "delta_r2": {
+        "train": -0.022922302143085327,
+        "val": 0.009794663339209753,
+        "test": 0.017728554115295725
+      }
+    },
+    {
+      "group": "this_turn_prefill",
+      "dropped": [
+        "req.extend_input_len"
+      ],
+      "n_kept": 13,
+      "why": "Tokens to prefill this turn; nearly independent of other scalars",
+      "best_iteration": 60,
+      "metrics": {
+        "train": {
+          "n": 607,
+          "mae": 3.5720699190894267,
+          "rmse": 5.014539317778298,
+          "r2": 0.562352196941655
+        },
+        "val": {
+          "n": 98,
+          "mae": 3.4883627807973676,
+          "rmse": 4.560003312208809,
+          "r2": 0.4421582032734305
+        },
+        "test": {
+          "n": 102,
+          "mae": 4.603257414320535,
+          "rmse": 6.26884719321311,
+          "r2": 0.19740080855645425
+        }
+      },
+      "delta_mae": {
+        "train": 0.17410354653334004,
+        "val": -0.05636143468135524,
+        "test": 0.004146079307201234
+      },
+      "delta_rmse": {
+        "train": 0.21260897125764178,
+        "val": -0.24376546306007363,
+        "test": -0.04735814466932897
+      },
+      "delta_r2": {
+        "train": -0.03632449505404933,
+        "val": 0.06123556702078281,
+        "test": 0.012172311641400868
+      }
+    },
+    {
+      "group": "cache_hit",
+      "dropped": [
+        "req.cached_tokens"
+      ],
+      "n_kept": 13,
+      "why": "Recorded cache-hit tokens; not collinear with seq_occupied",
+      "best_iteration": 130,
+      "metrics": {
+        "train": {
+          "n": 607,
+          "mae": 2.8287466871899456,
+          "rmse": 4.009767713312762,
+          "r2": 0.7201656006778515
+        },
+        "val": {
+          "n": 98,
+          "mae": 3.458912349754271,
+          "rmse": 4.766282184862847,
+          "r2": 0.39054697556846996
+        },
+        "test": {
+          "n": 102,
+          "mae": 4.653172780745439,
+          "rmse": 6.421743548194753,
+          "r2": 0.1577727933357419
+        }
+      },
+      "delta_mae": {
+        "train": -0.5692196853661411,
+        "val": -0.08581186572445176,
+        "test": 0.054061445732104474
+      },
+      "delta_rmse": {
+        "train": -0.7921626332078944,
+        "val": -0.037486590406035525,
+        "test": 0.10553821031231436
+      },
+      "delta_r2": {
+        "train": 0.12148890868214723,
+        "val": 0.009624339315822295,
+        "test": -0.027455703579311486
+      }
+    }
+  ],
+  "note": "Leave-one-group-out, retrain on δ=1. ΔMAE = MAE(without G) − MAE(all). Nested small val/test; val used for early stopping. Do not freeze features here."
+}

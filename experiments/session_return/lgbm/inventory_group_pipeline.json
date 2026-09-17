@@ -1,0 +1,1143 @@
+{
+  "n_slots": 169,
+  "n_groups": 16,
+  "n_repeats": 40,
+  "n_observed": {
+    "val": 98,
+    "test": 102
+  },
+  "full_no_leaky": {
+    "n_features": 168,
+    "best_iteration": 52,
+    "metrics": {
+      "val": {
+        "n": 98,
+        "mae": 3.352699528770589,
+        "rmse": 4.650279122365579,
+        "r2": 0.4198520296928234
+      },
+      "test": {
+        "n": 102,
+        "mae": 4.466910722995855,
+        "rmse": 6.390474047786237,
+        "r2": 0.16595496522426723
+      }
+    }
+  },
+  "full_with_leaky": {
+    "n_features": 169,
+    "best_iteration": 176,
+    "metrics": {
+      "val": {
+        "n": 98,
+        "mae": 2.71115123158847,
+        "rmse": 3.855697348593127,
+        "r2": 0.6011711113280245
+      },
+      "test": {
+        "n": 102,
+        "mae": 4.461081996426086,
+        "rmse": 6.365336065162491,
+        "r2": 0.17250376658552158
+      }
+    }
+  },
+  "mean_baseline": {
+    "val": {
+      "n": 98,
+      "mae": 5.012092165807003,
+      "rmse": 6.154018849359176,
+      "r2": -0.0160109276838043
+    },
+    "test": {
+      "n": 102,
+      "mae": 5.479822202558593,
+      "rmse": 7.095387552670563,
+      "r2": -0.028195251488164264
+    }
+  },
+  "groups": [
+    {
+      "group": "output_len",
+      "why": "This request's actual completion length / stop",
+      "features": [
+        "req.finished_len",
+        "req.output_ids",
+        "req.finished_reason",
+        "req.to_finish"
+      ],
+      "n_features": 4,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 1.8602864064162632,
+          "delta_mae_std": 0.2694069153164628,
+          "delta_mae_p05": 1.3922517794025233,
+          "delta_mae_p95": 2.2347978773923347,
+          "frac_positive": 1.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 1.538069019944397,
+          "delta_mae_std": 0.22744319772928542,
+          "delta_mae_p05": 1.1854398251912763,
+          "delta_mae_p95": 1.9178180890608727,
+          "frac_positive": 1.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 164,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 4.404192279740679,
+            "rmse": 5.822938674407342,
+            "r2": 0.0903691786558165
+          },
+          "test": {
+            "n": 102,
+            "mae": 5.175662792511972,
+            "rmse": 6.8310804320050895,
+            "r2": 0.04697970734944534
+          }
+        },
+        "delta_mae": {
+          "val": 1.0514927509700898,
+          "test": 0.7087520695161169
+        },
+        "delta_rmse": {
+          "val": 1.1726595520417629,
+          "test": 0.4406063842188521
+        },
+        "delta_r2": {
+          "val": -0.3294828510370069,
+          "test": -0.11897525787482188
+        }
+      }
+    },
+    {
+      "group": "leaky_replay_cap",
+      "why": "sampling.max_new_tokens = logged completion, not serving max_tokens",
+      "features": [
+        "sampling.max_new_tokens"
+      ],
+      "n_features": 1,
+      "official_model": "with_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 2.71115123158847,
+          "delta_mae_mean": 2.343512122555981,
+          "delta_mae_std": 0.2696569333390197,
+          "delta_mae_p05": 1.840323895654531,
+          "delta_mae_p95": 2.7569825777870354,
+          "frac_positive": 1.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.461081996426086,
+          "delta_mae_mean": 1.5856924895459776,
+          "delta_mae_std": 0.2998360618937454,
+          "delta_mae_p05": 1.1584320933338144,
+          "delta_mae_p95": 2.0302905634941073,
+          "frac_positive": 1.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 168,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.352699528770589,
+            "rmse": 4.650279122365579,
+            "r2": 0.4198520296928234
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.466910722995855,
+            "rmse": 6.390474047786237,
+            "r2": 0.16595496522426723
+          }
+        },
+        "delta_mae": {
+          "val": 0.6415482971821191,
+          "test": 0.0058287265697689605
+        },
+        "delta_rmse": {
+          "val": 0.7945817737724523,
+          "test": 0.02513798262374678
+        },
+        "delta_r2": {
+          "val": -0.18131908163520105,
+          "test": -0.006548801361254353
+        }
+      }
+    },
+    {
+      "group": "request_content",
+      "why": "Request body / tools / stream flags (sequences as length)",
+      "features": [
+        "client.messages",
+        "client.tools",
+        "client.model",
+        "client.tool_choice",
+        "client.parallel_tool_calls",
+        "client.response_format",
+        "client.reasoning_effort",
+        "client.task",
+        "client.stream",
+        "req.stream",
+        "tokenized.stream"
+      ],
+      "n_features": 11,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.05437895303993975,
+          "delta_mae_std": 0.0312703812686868,
+          "delta_mae_p05": -0.0019157359916316616,
+          "delta_mae_p95": 0.09764079724258311,
+          "frac_positive": 0.9,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": -0.05170394301694155,
+          "delta_mae_std": 0.03776875740264622,
+          "delta_mae_p05": -0.10854704797504423,
+          "delta_mae_p95": 0.004951354517877236,
+          "frac_positive": 0.1,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 157,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.634636175737535,
+            "rmse": 4.781052355550113,
+            "r2": 0.38676387061900075
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.444646101608782,
+            "rmse": 6.325098943547613,
+            "r2": 0.18293238472262863
+          }
+        },
+        "delta_mae": {
+          "val": 0.2819366469669462,
+          "test": -0.022264621387072303
+        },
+        "delta_rmse": {
+          "val": 0.1307732331845335,
+          "test": -0.06537510423862436
+        },
+        "delta_r2": {
+          "val": -0.033088159073822676,
+          "test": 0.0169774194983614
+        }
+      }
+    },
+    {
+      "group": "resource_pool",
+      "why": "Allocator / queue snapshot; inventory: controller-only",
+      "features": [
+        "resource.num_tokens",
+        "resource.swa_num_tokens",
+        "resource.size",
+        "resource.page_size",
+        "resource.available_size",
+        "resource.evictable_size",
+        "resource.protected_size",
+        "resource.full_available_size",
+        "resource.swa_available_size",
+        "resource.full_evictable_size_",
+        "resource.swa_evictable_size_",
+        "resource.full_protected_size_",
+        "resource.swa_protected_size_",
+        "resource.sliding_window_size",
+        "scheduler.waiting_queue",
+        "scheduler.running_batch",
+        "scheduler.cur_batch"
+      ],
+      "n_features": 17,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": -0.03794531552751697,
+          "delta_mae_std": 0.046957360704476404,
+          "delta_mae_p05": -0.12852783973975226,
+          "delta_mae_p95": 0.02563770067196803,
+          "frac_positive": 0.275,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.0504475074351652,
+          "delta_mae_std": 0.06385619565632282,
+          "delta_mae_p05": -0.05781128657507852,
+          "delta_mae_p95": 0.1486900832505284,
+          "frac_positive": 0.775,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 151,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.625659335092666,
+            "rmse": 4.749520984732748,
+            "r2": 0.3948258672895336
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.602859148343142,
+            "rmse": 6.27273100408917,
+            "r2": 0.19640601350958742
+          }
+        },
+        "delta_mae": {
+          "val": 0.27295980632207684,
+          "test": 0.13594842534728713
+        },
+        "delta_rmse": {
+          "val": 0.09924186236716892,
+          "test": -0.11774304369706723
+        },
+        "delta_r2": {
+          "val": -0.02502616240328981,
+          "test": 0.030451048285320192
+        }
+      }
+    },
+    {
+      "group": "client_sampling",
+      "why": "Generation knobs (client + req.sampling copies)",
+      "features": [
+        "client.max_tokens",
+        "client.max_completion_tokens",
+        "client.min_tokens",
+        "client.n",
+        "client.temperature",
+        "client.top_p",
+        "client.top_k",
+        "client.min_p",
+        "client.seed",
+        "sampling.temperature",
+        "sampling.top_p",
+        "sampling.top_k",
+        "sampling.min_p",
+        "sampling.n",
+        "sampling.min_new_tokens",
+        "sampling.seed"
+      ],
+      "n_features": 16,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.2799230661029992,
+          "delta_mae_std": 0.08587732898669935,
+          "delta_mae_p05": 0.14493136511847193,
+          "delta_mae_p95": 0.407908010893102,
+          "frac_positive": 1.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.25981878403080394,
+          "delta_mae_std": 0.11214730973519982,
+          "delta_mae_p05": 0.07444608890392108,
+          "delta_mae_p95": 0.40436950945953454,
+          "frac_positive": 0.975,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 152,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.597893442132543,
+            "rmse": 4.815403891716977,
+            "r2": 0.3779200935723971
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.5270840311478,
+            "rmse": 6.442154595019178,
+            "r2": 0.15241036844840805
+          }
+        },
+        "delta_mae": {
+          "val": 0.24519391336195406,
+          "test": 0.06017330815194555
+        },
+        "delta_rmse": {
+          "val": 0.1651247693513973,
+          "test": 0.05168054723294091
+        },
+        "delta_r2": {
+          "val": -0.04193193612042634,
+          "test": -0.013544596775859175
+        }
+      }
+    },
+    {
+      "group": "this_turn_prefill",
+      "why": "Tokens prefilled this turn",
+      "features": [
+        "req.extend_input_len"
+      ],
+      "n_features": 1,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": -0.04332519177908386,
+          "delta_mae_std": 0.03253184655077064,
+          "delta_mae_p05": -0.08940217835251338,
+          "delta_mae_p95": 0.010220745524503506,
+          "frac_positive": 0.1,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": -0.018139889442258104,
+          "delta_mae_std": 0.034561653141031906,
+          "delta_mae_p05": -0.06458040343072761,
+          "delta_mae_p95": 0.04459758500866719,
+          "frac_positive": 0.3,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 167,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.508182689609935,
+            "rmse": 4.686085293254771,
+            "r2": 0.41088359996642565
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.514760681954377,
+            "rmse": 6.268611002866365,
+            "r2": 0.1974612862182491
+          }
+        },
+        "delta_mae": {
+          "val": 0.1554831608393461,
+          "test": 0.04784995895852262
+        },
+        "delta_rmse": {
+          "val": 0.03580617088919169,
+          "test": -0.12186304491987254
+        },
+        "delta_r2": {
+          "val": -0.008968429726397775,
+          "test": 0.03150632099398187
+        }
+      }
+    },
+    {
+      "group": "reasoning",
+      "why": "Reasoning state of this request",
+      "features": [
+        "req.reasoning_tokens",
+        "req._is_reasoning_over",
+        "req.require_reasoning"
+      ],
+      "n_features": 3,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.011758364252964582,
+          "delta_mae_std": 0.0157271454745156,
+          "delta_mae_p05": -0.006625614073338792,
+          "delta_mae_p95": 0.034492464126517235,
+          "frac_positive": 0.775,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": -0.012218633249856059,
+          "delta_mae_std": 0.019484402185549546,
+          "delta_mae_p05": -0.040400583378030985,
+          "delta_mae_p95": 0.01973231373029853,
+          "frac_positive": 0.25,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 165,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.4631557833973847,
+            "rmse": 4.7108248154301124,
+            "r2": 0.40464686750432666
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.378091784219966,
+            "rmse": 6.288005941850002,
+            "r2": 0.19248753093225413
+          }
+        },
+        "delta_mae": {
+          "val": 0.11045625462679576,
+          "test": -0.08881893877588887
+        },
+        "delta_rmse": {
+          "val": 0.06054569306453317,
+          "test": -0.10246810593623579
+        },
+        "delta_r2": {
+          "val": -0.015205162188496768,
+          "test": 0.0265325657079869
+        }
+      }
+    },
+    {
+      "group": "cache_hit",
+      "why": "Prefix cache hit counters by layer",
+      "features": [
+        "req.cached_tokens",
+        "req.cached_tokens_device",
+        "req.cached_tokens_host",
+        "req.cached_tokens_storage",
+        "req.host_hit_length",
+        "req.swa_host_hit_length",
+        "req.mamba_host_hit_length",
+        "req.num_matched_prefix_tokens",
+        "req.storage_hit_length",
+        "req.swa_evicted_seqlen"
+      ],
+      "n_features": 10,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.05238931519094255,
+          "delta_mae_std": 0.029570962852611266,
+          "delta_mae_p05": -0.00047578951886697576,
+          "delta_mae_p95": 0.09348129996665554,
+          "frac_positive": 0.925,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": -0.0205295312396385,
+          "delta_mae_std": 0.034045726924351344,
+          "delta_mae_p05": -0.06593725985606547,
+          "delta_mae_p95": 0.030422819262257317,
+          "frac_positive": 0.35,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 158,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.4211128116472915,
+            "rmse": 4.6314488057916225,
+            "r2": 0.4245408888761394
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.634746401933577,
+            "rmse": 6.2912249150096455,
+            "r2": 0.19166055133839577
+          }
+        },
+        "delta_mae": {
+          "val": 0.06841328287670256,
+          "test": 0.16783567893772222
+        },
+        "delta_rmse": {
+          "val": -0.01883031657395673,
+          "test": -0.09924913277659186
+        },
+        "delta_r2": {
+          "val": 0.004688859183315963,
+          "test": 0.025705586114128542
+        }
+      }
+    },
+    {
+      "group": "identity",
+      "why": "IDs, extra_key, LoRA, routing, priority — not τ semantics",
+      "features": [
+        "client.user",
+        "client.extra_key",
+        "client.cache_salt",
+        "client.lora_path",
+        "client.priority",
+        "client.session_params",
+        "client.rid",
+        "tokenized.extra_key",
+        "tokenized.routing_key",
+        "tokenized.priority",
+        "tokenized.session_params",
+        "req.rid",
+        "req.extra_key",
+        "req.lora_id",
+        "req.routing_key",
+        "req.priority"
+      ],
+      "n_features": 16,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 152,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.4059520584536984,
+            "rmse": 4.671807107291132,
+            "r2": 0.4144681266367799
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.378058521686157,
+            "rmse": 6.292720387285048,
+            "r2": 0.1912762087255423
+          }
+        },
+        "delta_mae": {
+          "val": 0.05325252968310945,
+          "test": -0.08885220130969795
+        },
+        "delta_rmse": {
+          "val": 0.021527984925552524,
+          "test": -0.09775366050118972
+        },
+        "delta_r2": {
+          "val": -0.005383903056043526,
+          "test": 0.02532124350127507
+        }
+      }
+    },
+    {
+      "group": "radix_node",
+      "why": "last_node structure / lock / LRU pointers (not token length)",
+      "features": [
+        "req.last_node",
+        "req.last_host_node",
+        "req.best_match_node",
+        "last_node.children",
+        "last_node.parent",
+        "last_node.key",
+        "last_node.key.extra_key",
+        "last_node.key.is_bigram",
+        "last_node.host_value",
+        "last_node.hash_value",
+        "last_node.id",
+        "last_node.hit_count",
+        "last_node.lock_ref",
+        "last_node.host_ref_counter",
+        "last_node.write_through_pending_id",
+        "last_node.priority",
+        "last_node.swa_tombstone",
+        "last_node.full_lock_ref",
+        "last_node.swa_lock_ref",
+        "last_node.prev",
+        "last_node.next",
+        "last_node.swa_prev",
+        "last_node.swa_next",
+        "last_node.swa_uuid"
+      ],
+      "n_features": 24,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 144,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.3666437068951565,
+            "rmse": 4.685112927815629,
+            "r2": 0.4111280585962769
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.488062108274883,
+            "rmse": 6.425808250638674,
+            "r2": 0.15670626478411676
+          }
+        },
+        "delta_mae": {
+          "val": 0.013944178124567497,
+          "test": 0.021151385279027934
+        },
+        "delta_rmse": {
+          "val": 0.03483380545004966,
+          "test": 0.035334202852436825
+        },
+        "delta_r2": {
+          "val": -0.008723971096546546,
+          "test": -0.00924870044015047
+        }
+      }
+    },
+    {
+      "group": "sampling_stop_penalty",
+      "why": "Stop conditions and repetition penalties",
+      "features": [
+        "client.stop",
+        "client.stop_token_ids",
+        "client.stop_regex",
+        "client.frequency_penalty",
+        "client.presence_penalty",
+        "client.repetition_penalty",
+        "client.ignore_eos",
+        "client.no_stop_trim",
+        "client.continue_final_message",
+        "sampling.frequency_penalty",
+        "sampling.presence_penalty",
+        "sampling.repetition_penalty",
+        "sampling.ignore_eos",
+        "sampling.no_stop_trim",
+        "sampling.stop_strs",
+        "sampling.stop_token_ids",
+        "sampling.stop_regex_strs"
+      ],
+      "n_features": 17,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 151,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.352699528770589,
+            "rmse": 4.650279122365579,
+            "r2": 0.4198520296928234
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.466910722995855,
+            "rmse": 6.390474047786237,
+            "r2": 0.16595496522426723
+          }
+        },
+        "delta_mae": {
+          "val": 0.0,
+          "test": 0.0
+        },
+        "delta_rmse": {
+          "val": 0.0,
+          "test": 0.0
+        },
+        "delta_r2": {
+          "val": 0.0,
+          "test": 0.0
+        }
+      }
+    },
+    {
+      "group": "multimodal",
+      "why": "Image/audio/video and mm containers",
+      "features": [
+        "client.image_content",
+        "client.audio_content",
+        "client.video_content",
+        "client.max_dynamic_patch",
+        "client.min_dynamic_patch",
+        "client.use_audio_in_video",
+        "tokenized.mm_inputs",
+        "req.input_embeds",
+        "req.multimodal_inputs"
+      ],
+      "n_features": 9,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 159,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.352699528770589,
+            "rmse": 4.650279122365579,
+            "r2": 0.4198520296928234
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.466910722995855,
+            "rmse": 6.390474047786237,
+            "r2": 0.16595496522426723
+          }
+        },
+        "delta_mae": {
+          "val": 0.0,
+          "test": 0.0
+        },
+        "delta_rmse": {
+          "val": 0.0,
+          "test": 0.0
+        },
+        "delta_r2": {
+          "val": 0.0,
+          "test": 0.0
+        }
+      }
+    },
+    {
+      "group": "container_flags",
+      "why": "Object present/absent only",
+      "features": [
+        "tokenized.sampling_params",
+        "req.sampling_params"
+      ],
+      "n_features": 2,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 166,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.352699528770589,
+            "rmse": 4.650279122365579,
+            "r2": 0.4198520296928234
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.466910722995855,
+            "rmse": 6.390474047786237,
+            "r2": 0.16595496522426723
+          }
+        },
+        "delta_mae": {
+          "val": 0.0,
+          "test": 0.0
+        },
+        "delta_rmse": {
+          "val": 0.0,
+          "test": 0.0
+        },
+        "delta_r2": {
+          "val": 0.0,
+          "test": 0.0
+        }
+      }
+    },
+    {
+      "group": "native_session",
+      "why": "SGLang Session object; usually missing on Chat",
+      "features": [
+        "req.session",
+        "session.session_id",
+        "session.capacity_of_str_len",
+        "session.streaming",
+        "session.timeout",
+        "session.last_active_time",
+        "session.req_nodes",
+        "session.close_on_finish",
+        "session._inflight"
+      ],
+      "n_features": 9,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 159,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.352699528770589,
+            "rmse": 4.650279122365579,
+            "r2": 0.4198520296928234
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.466910722995855,
+            "rmse": 6.390474047786237,
+            "r2": 0.16595496522426723
+          }
+        },
+        "delta_mae": {
+          "val": 0.0,
+          "test": 0.0
+        },
+        "delta_rmse": {
+          "val": 0.0,
+          "test": 0.0
+        },
+        "delta_r2": {
+          "val": 0.0,
+          "test": 0.0
+        }
+      }
+    },
+    {
+      "group": "prompt_occupied",
+      "why": "Occupied KV / prompt length; fill_len ρ=1 with cache_protected/kv",
+      "features": [
+        "client.input_ids",
+        "tokenized.input_text",
+        "tokenized.input_ids",
+        "req.origin_input_ids",
+        "req.origin_input_ids_unpadded",
+        "req.full_untruncated_fill_ids",
+        "req.fill_len",
+        "req.prefix_indices",
+        "req.cache_protected_len",
+        "req.kv_committed_len",
+        "req.kv_allocated_len",
+        "last_node.key.token_ids",
+        "last_node.value"
+      ],
+      "n_features": 13,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.002063245087266896,
+          "delta_mae_std": 0.04937718280970633,
+          "delta_mae_p05": -0.08152522676227096,
+          "delta_mae_p95": 0.07666992245617296,
+          "frac_positive": 0.525,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.07481062659554696,
+          "delta_mae_std": 0.04659157339744925,
+          "delta_mae_p05": 0.002943154558795325,
+          "delta_mae_p95": 0.1421736778088894,
+          "frac_positive": 0.95,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 155,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.292990949099182,
+            "rmse": 4.560488316400709,
+            "r2": 0.4420395323078552
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.522037393566445,
+            "rmse": 6.278059553406645,
+            "r2": 0.19504016220352216
+          }
+        },
+        "delta_mae": {
+          "val": -0.05970857967140697,
+          "test": 0.05512667057059062
+        },
+        "delta_rmse": {
+          "val": -0.08979080596487066,
+          "test": -0.11241449437959261
+        },
+        "delta_r2": {
+          "val": 0.022187502615031773,
+          "test": 0.029085196979254935
+        }
+      }
+    },
+    {
+      "group": "replay_time",
+      "why": "Replay-clock timestamps; not original GLM start_time",
+      "features": [
+        "tokenized.time_stats",
+        "time.created_time",
+        "time.tokenize_finish_time",
+        "time.api_server_dispatch_time",
+        "time.api_server_dispatch_finish_time",
+        "time.first_token_time",
+        "time.last_time",
+        "time.finished_time",
+        "time.response_sent_to_client_time",
+        "time.scheduler_recv_time",
+        "time.wait_queue_entry_time",
+        "time.forward_entry_time",
+        "time.prefill_finished_time",
+        "time.completion_time",
+        "last_node.last_access_time",
+        "last_node.creation_time"
+      ],
+      "n_features": 16,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 152,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.252417780701963,
+            "rmse": 4.596814540127928,
+            "r2": 0.43311534728486556
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.5200624168752706,
+            "rmse": 6.497596133483514,
+            "r2": 0.13775878599051117
+          }
+        },
+        "delta_mae": {
+          "val": -0.100281748068626,
+          "test": 0.05315169387941587
+        },
+        "delta_rmse": {
+          "val": -0.05346458223765094,
+          "test": 0.10712208569727633
+        },
+        "delta_r2": {
+          "val": 0.013263317592042134,
+          "test": -0.028196179233756058
+        }
+      }
+    }
+  ],
+  "note": "Pipeline on all inventory slots: group → 40× grouped permutation → leave-one-group-out retrain. Official full model excludes sampling.max_new_tokens. Sequences ranked as length. Nested small val/test; do not freeze."
+}

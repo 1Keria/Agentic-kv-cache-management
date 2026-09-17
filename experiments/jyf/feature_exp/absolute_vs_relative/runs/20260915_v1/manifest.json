@@ -1,0 +1,20 @@
+{
+  "sha256": {
+    "/share/dai-sys/zhoulongsheng/agentkv/experiments/jyf/feature_exp/absolute_vs_relative/run_experiment.py": "0f66a9856f980833b1d913cd14adcb6b31aefda020059155c38b58c29fa9e102",
+    "/share/dai-sys/zhoulongsheng/agentkv/experiments/jyf/feature_exp/absolute_vs_relative/write_report.py": "e97c32ac9b15ddd3279642c905f215d5d779ed01b16b2f78d17359812e801da9",
+    "/share/dai-sys/zhoulongsheng/agentkv/experiments/jyf/feature_exp/frontier_time_feature_ablation.py": "ddee40af5f38199fa6752aed5de66c5cce91b7c235ca90cec0febda9445dc3c7",
+    "/share/dai-sys/zhoulongsheng/agentkv/experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/frontier_trace/frontier_pid3797866_140187773175760.jsonl": "619869c42a4d27e4e77a953db94e8d69a8d0e1fbef4949eeecbb521a306386f1"
+  },
+  "torch": "2.11.0+cu130",
+  "numpy": "2.3.5",
+  "checkpoints": 20,
+  "session_and_digest_disjoint": true,
+  "tail_support_audit": {
+    "0.25": {
+      "fraction_600s_beyond_relative_last_finite_edge_ID": 0.8454122340425532
+    },
+    "1.0": {
+      "fraction_600s_beyond_relative_last_finite_edge_ID": 0.8454122340425532
+    }
+  }
+}

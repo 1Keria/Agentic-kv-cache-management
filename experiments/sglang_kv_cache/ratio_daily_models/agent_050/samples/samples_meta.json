@@ -1,0 +1,32 @@
+{
+  "feature_names": [
+    "log_node_tokens",
+    "log_path_tokens",
+    "log_prefix_depth",
+    "log_reuse_count",
+    "n_children",
+    "is_leaf",
+    "is_evictable",
+    "session_alive",
+    "has_tools",
+    "stop_tool_use",
+    "stop_end_turn",
+    "log_hops",
+    "log_gap_ms",
+    "log_subtree_tokens",
+    "n_siblings",
+    "is_public_trunk"
+  ],
+  "n_features": 16,
+  "n_samples": {
+    "train": 602404,
+    "test": 0
+  },
+  "n_censored": 585419,
+  "n_skip_split": 0,
+  "t_end_s": 11055.342268999999,
+  "workload": "/share/dai-sys/zhoulongsheng/agentkv/workloads/ratio_train_v4flash/agent_050/workload.jsonl",
+  "replay": "/share/dai-sys/zhoulongsheng/agentkv/experiments/sglang_kv_cache/ratio_daily_models/agent_050/replay/run_mix_train_lru/replay.jsonl",
+  "split": "all-train",
+  "note": "Message-chunk radix (not tokenizer ids). T_s uses serving replay clock. Split by triggering session. Labels are next prefix match, not LRU eviction."
+}

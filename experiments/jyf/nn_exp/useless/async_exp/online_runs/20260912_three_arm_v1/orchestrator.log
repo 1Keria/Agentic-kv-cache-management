@@ -1,0 +1,13 @@
+lru START 2026-09-12T00:40:47+08:00
+lru REPLAY 2026-09-12T00:44:08+08:00
+run_online.sh: line 16: 4064939 Killed                  ASYNC_SERVING_MODE="$mode" ASYNC_SERVING_OUT="$arm/metrics" PYTHONPATH="$EXP" "$SGLANG" serve --trust-remote-code --model-path /share/dai-sys/models/deepseek-v4-flash --served-model-name deepseek-v4-flash --tp 8 --moe-runner-backend marlin --reasoning-parser deepseek-v4 --tool-call-parser deepseekv4 --port 30000 --host 127.0.0.1 --mem-fraction-static 0.45 --watchdog-timeout 900 --random-seed 42 --enable-metrics --enable-cache-report --radix-eviction-policy lru > "$arm/server.log" 2>&1
+lru COMPLETE 2026-09-12T01:03:08+08:00
+sync START 2026-09-12T01:03:11+08:00
+sync REPLAY 2026-09-12T01:06:42+08:00
+run_online.sh: line 16: 4072493 Killed                  ASYNC_SERVING_MODE="$mode" ASYNC_SERVING_OUT="$arm/metrics" PYTHONPATH="$EXP" "$SGLANG" serve --trust-remote-code --model-path /share/dai-sys/models/deepseek-v4-flash --served-model-name deepseek-v4-flash --tp 8 --moe-runner-backend marlin --reasoning-parser deepseek-v4 --tool-call-parser deepseekv4 --port 30000 --host 127.0.0.1 --mem-fraction-static 0.45 --watchdog-timeout 900 --random-seed 42 --enable-metrics --enable-cache-report --radix-eviction-policy lru > "$arm/server.log" 2>&1
+sync COMPLETE 2026-09-12T01:22:46+08:00
+async START 2026-09-12T01:22:50+08:00
+async REPLAY 2026-09-12T01:26:21+08:00
+run_online.sh: line 16: 4076939 Killed                  ASYNC_SERVING_MODE="$mode" ASYNC_SERVING_OUT="$arm/metrics" PYTHONPATH="$EXP" "$SGLANG" serve --trust-remote-code --model-path /share/dai-sys/models/deepseek-v4-flash --served-model-name deepseek-v4-flash --tp 8 --moe-runner-backend marlin --reasoning-parser deepseek-v4 --tool-call-parser deepseekv4 --port 30000 --host 127.0.0.1 --mem-fraction-static 0.45 --watchdog-timeout 900 --random-seed 42 --enable-metrics --enable-cache-report --radix-eviction-policy lru > "$arm/server.log" 2>&1
+async COMPLETE 2026-09-12T01:45:00+08:00
+COMPLETE 2026-09-12T01:45:03+08:00

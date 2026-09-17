@@ -49,6 +49,10 @@ class MatchPrefixParams:
     cow_mamba: bool = False
     req: Optional[Req] = None
 
+    # Reuse-value accounting. Internal rematches of a request's own newly
+    # inserted chunks must disable this to avoid self-hit inflation.
+    update_reuse_strength: bool = True
+
 
 @dataclasses.dataclass
 class InsertParams:
@@ -67,6 +71,8 @@ class InsertParams:
     # General
     chunked: bool = False
     priority: int = 0
+    is_terminal: bool = False
+    req: Optional["Req"] = None
 
 
 @dataclasses.dataclass

@@ -1,0 +1,443 @@
+{
+  "official_output": "restricted_mean_E[min(tau,60)]",
+  "unit": "seconds",
+  "evict_rule": "larger τ̂ first",
+  "features": [
+    "req.finished_len",
+    "client.temperature",
+    "client.max_tokens",
+    "req.cached_tokens",
+    "client.tools",
+    "req.finished_reason",
+    "req.fill_len",
+    "req.extend_input_len"
+  ],
+  "horizon_s": 60.0,
+  "edges_s": [
+    2.0,
+    4.0,
+    6.0,
+    8.0,
+    12.0,
+    16.0,
+    24.0,
+    36.0,
+    60.0
+  ],
+  "ckpt": "/share/dai-sys/zhoulongsheng/agentkv/experiments/session_return/k8_model/k8_hazard.pt",
+  "constant_baseline": 37.081889468503284,
+  "splits": {
+    "train": {
+      "n": 1540,
+      "n_identified_min_tau60": 1328,
+      "n_observed": 607,
+      "official_tau": {
+        "vs_identified_min_tau60": {
+          "n": 1328,
+          "mae": 19.26426558892359,
+          "rmse": 22.11524794392402,
+          "r2": 0.2477323369518818
+        },
+        "vs_observed_only": {
+          "n": 607,
+          "mae": 22.12464696472989,
+          "rmse": 24.00475756296806,
+          "r2": -9.02899279455088
+        },
+        "c_index": {
+          "c_index": 0.7513861224679969,
+          "n_pairs": 686808,
+          "tied_frac": 0.0
+        },
+        "auc_return_10s_using_-tau": 0.8038093308343043,
+        "auc_return_10s_using_p10": 0.8206575148168785,
+        "auc_return_20s_using_-tau": 0.7763831200419099,
+        "spearman_vs_p10": 0.948568880233213,
+        "spearman_vs_p20": 0.9964928971725651,
+        "mean": 38.880973939963624,
+        "p50": 39.04600878345302
+      },
+      "constant_identified_mean": {
+        "vs_identified_min_tau60": {
+          "n": 1328,
+          "mae": 24.947435029239298,
+          "rmse": 25.497970596813932,
+          "r2": 0.0
+        }
+      },
+      "lgbm_observed_only": {
+        "vs_identified_min_tau60": {
+          "n": 1328,
+          "mae": 27.637925932458288,
+          "rmse": 35.553119361401855,
+          "r2": -0.9442145539017275
+        },
+        "vs_observed_only": {
+          "n": 607,
+          "mae": 3.757430791540098,
+          "rmse": 5.287721747376448,
+          "r2": 0.5133689031479939
+        },
+        "c_index": {
+          "c_index": 0.7048825872732991,
+          "n_pairs": 686808,
+          "tied_frac": 0.00011648087966360321
+        },
+        "auc_return_10s_using_-pred": 0.8053087482903601
+      },
+      "quintiles_by_tau_hat": [
+        {
+          "quintile": 1,
+          "meaning": "smallest τ̂ / keep first",
+          "n": 308,
+          "mean_tau_hat": 21.190480047501723,
+          "p_return_10s": 0.5838926174496645,
+          "p_return_20s": 0.6928327645051194,
+          "n_observed": 214,
+          "mean_observed_tau": 6.755016635511523
+        },
+        {
+          "quintile": 2,
+          "meaning": "",
+          "n": 308,
+          "mean_tau_hat": 32.06125266437206,
+          "p_return_10s": 0.3951048951048951,
+          "p_return_20s": 0.5821428571428572,
+          "n_observed": 172,
+          "mean_observed_tau": 8.969032657700916
+        },
+        {
+          "quintile": 3,
+          "meaning": "",
+          "n": 308,
+          "mean_tau_hat": 38.92681941873413,
+          "p_return_10s": 0.19322033898305085,
+          "p_return_20s": 0.38235294117647056,
+          "n_observed": 123,
+          "mean_observed_tau": 12.055202040245863
+        },
+        {
+          "quintile": 4,
+          "meaning": "",
+          "n": 308,
+          "mean_tau_hat": 46.316670363536765,
+          "p_return_10s": 0.12406015037593984,
+          "p_return_20s": 0.275,
+          "n_observed": 80,
+          "mean_observed_tau": 13.828660231828689
+        },
+        {
+          "quintile": 5,
+          "meaning": "largest τ̂ / evict first",
+          "n": 308,
+          "mean_tau_hat": 55.909647205673465,
+          "p_return_10s": 0.010948905109489052,
+          "p_return_20s": 0.0326530612244898,
+          "n_observed": 18,
+          "mean_observed_tau": 22.634409308433533
+        }
+      ],
+      "evict_largest_20pct": {
+        "official_tau": {
+          "frac": 0.2,
+          "n_evicted": 308,
+          "return_within_t_among_evicted": 0.010948905109489052,
+          "n_identifiable_evicted": 274,
+          "random_return_within_t": 0.26811594202898553,
+          "horizon_s": 10.0
+        },
+        "lgbm": {
+          "frac": 0.2,
+          "n_evicted": 308,
+          "return_within_t_among_evicted": 0.0036900369003690036,
+          "n_identifiable_evicted": 271,
+          "random_return_within_t": 0.26811594202898553,
+          "horizon_s": 10.0
+        },
+        "minus_p10": {
+          "frac": 0.2,
+          "n_evicted": 308,
+          "return_within_t_among_evicted": 0.003676470588235294,
+          "n_identifiable_evicted": 272,
+          "random_return_within_t": 0.26811594202898553,
+          "horizon_s": 10.0
+        }
+      }
+    },
+    "val": {
+      "n": 330,
+      "n_identified_min_tau60": 318,
+      "n_observed": 98,
+      "official_tau": {
+        "vs_identified_min_tau60": {
+          "n": 318,
+          "mae": 18.875988336179613,
+          "rmse": 21.9174462760765,
+          "r2": 0.14848221894839042
+        },
+        "vs_observed_only": {
+          "n": 98,
+          "mae": 22.908455210216285,
+          "rmse": 24.34264519832458,
+          "r2": -14.897040221939431
+        },
+        "c_index": {
+          "c_index": 0.7522991563426313,
+          "n_pairs": 26314,
+          "tied_frac": 0.0
+        },
+        "auc_return_10s_using_-tau": 0.8324915824915825,
+        "auc_return_10s_using_p10": 0.8485449735449735,
+        "auc_return_20s_using_-tau": 0.7880869437220941,
+        "spearman_vs_p10": 0.9389118691297774,
+        "spearman_vs_p20": 0.9972638533286473,
+        "mean": 39.4338504280658,
+        "p50": 40.18533618523386
+      },
+      "constant_identified_mean": {
+        "vs_identified_min_tau60": {
+          "n": 318,
+          "mae": 24.482646489528182,
+          "rmse": 24.8270474690844,
+          "r2": -0.0926069758702035
+        }
+      },
+      "lgbm_observed_only": {
+        "vs_identified_min_tau60": {
+          "n": 318,
+          "mae": 34.13887544363953,
+          "rmse": 40.0229157639182,
+          "r2": -1.8394306726479792
+        },
+        "vs_observed_only": {
+          "n": 98,
+          "mae": 3.5152750517506695,
+          "rmse": 4.664271935787337,
+          "r2": 0.4163554155828145
+        },
+        "c_index": {
+          "c_index": 0.6797712244432621,
+          "n_pairs": 26314,
+          "tied_frac": 0.00011400775252717185
+        },
+        "auc_return_10s_using_-pred": 0.7806938431938432
+      },
+      "quintiles_by_tau_hat": [
+        {
+          "quintile": 1,
+          "meaning": "smallest τ̂ / keep first",
+          "n": 66,
+          "mean_tau_hat": 21.096724075735384,
+          "p_return_10s": 0.53125,
+          "p_return_20s": 0.609375,
+          "n_observed": 39,
+          "mean_observed_tau": 5.913090803684333
+        },
+        {
+          "quintile": 2,
+          "meaning": "",
+          "n": 66,
+          "mean_tau_hat": 33.19009140749847,
+          "p_return_10s": 0.3333333333333333,
+          "p_return_20s": 0.36666666666666664,
+          "n_observed": 24,
+          "mean_observed_tau": 7.819486528635025
+        },
+        {
+          "quintile": 3,
+          "meaning": "",
+          "n": 66,
+          "mean_tau_hat": 40.06335275992986,
+          "p_return_10s": 0.12307692307692308,
+          "p_return_20s": 0.27692307692307694,
+          "n_observed": 20,
+          "mean_observed_tau": 11.784733724594116
+        },
+        {
+          "quintile": 4,
+          "meaning": "",
+          "n": 66,
+          "mean_tau_hat": 46.28025520487664,
+          "p_return_10s": 0.0625,
+          "p_return_20s": 0.140625,
+          "n_observed": 12,
+          "mean_observed_tau": 14.25722966591517
+        },
+        {
+          "quintile": 5,
+          "meaning": "largest τ̂ / evict first",
+          "n": 66,
+          "mean_tau_hat": 56.538828692288654,
+          "p_return_10s": 0.0,
+          "p_return_20s": 0.015384615384615385,
+          "n_observed": 3,
+          "mean_observed_tau": 21.82275088628133
+        }
+      ],
+      "evict_largest_20pct": {
+        "official_tau": {
+          "frac": 0.2,
+          "n_evicted": 66,
+          "return_within_t_among_evicted": 0.0,
+          "n_identifiable_evicted": 65,
+          "random_return_within_t": 0.20967741935483872,
+          "horizon_s": 10.0
+        },
+        "lgbm": {
+          "frac": 0.2,
+          "n_evicted": 66,
+          "return_within_t_among_evicted": 0.015873015873015872,
+          "n_identifiable_evicted": 63,
+          "random_return_within_t": 0.20967741935483872,
+          "horizon_s": 10.0
+        },
+        "minus_p10": {
+          "frac": 0.2,
+          "n_evicted": 66,
+          "return_within_t_among_evicted": 0.0,
+          "n_identifiable_evicted": 64,
+          "random_return_within_t": 0.20967741935483872,
+          "horizon_s": 10.0
+        }
+      }
+    },
+    "test": {
+      "n": 330,
+      "n_identified_min_tau60": 102,
+      "n_observed": 102,
+      "official_tau": {
+        "vs_identified_min_tau60": {
+          "n": 102,
+          "mae": 22.956351689211647,
+          "rmse": 25.068336737989863,
+          "r2": -11.834365114409843
+        },
+        "vs_observed_only": {
+          "n": 102,
+          "mae": 22.956351689211647,
+          "rmse": 25.068336737989863,
+          "r2": -11.834365114409843
+        },
+        "c_index": {
+          "c_index": 0.7340323245272652,
+          "n_pairs": 21841,
+          "tied_frac": 0.0
+        },
+        "auc_return_10s_using_-tau": 0.7701479915433403,
+        "auc_return_10s_using_p10": 0.800676532769556,
+        "auc_return_20s_using_-tau": 0.7780681125337514,
+        "spearman_vs_p10": 0.9310653992147851,
+        "spearman_vs_p20": 0.9959572214120007,
+        "mean": 39.54031436100308,
+        "p50": 39.67133325232326
+      },
+      "constant_identified_mean": {
+        "vs_identified_min_tau60": {
+          "n": 102,
+          "mae": 26.04736683691419,
+          "rmse": 26.970897132410126,
+          "r2": -13.856418866818112
+        }
+      },
+      "lgbm_observed_only": {
+        "vs_identified_min_tau60": {
+          "n": 102,
+          "mae": 4.62285456013242,
+          "rmse": 6.2521502411717735,
+          "r2": 0.20167052935123453
+        },
+        "vs_observed_only": {
+          "n": 102,
+          "mae": 4.62285456013242,
+          "rmse": 6.2521502411717735,
+          "r2": 0.20167052935123453
+        },
+        "c_index": {
+          "c_index": 0.7274621125406345,
+          "n_pairs": 21841,
+          "tied_frac": 0.00022892724692092853
+        },
+        "auc_return_10s_using_-pred": 0.7876109936575053
+      },
+      "quintiles_by_tau_hat": [
+        {
+          "quintile": 1,
+          "meaning": "smallest τ̂ / keep first",
+          "n": 66,
+          "mean_tau_hat": 22.966916295649643,
+          "p_return_10s": 0.45454545454545453,
+          "p_return_20s": 0.7021276595744681,
+          "n_observed": 34,
+          "mean_observed_tau": 7.265086181023541
+        },
+        {
+          "quintile": 2,
+          "meaning": "",
+          "n": 66,
+          "mean_tau_hat": 33.45938563568124,
+          "p_return_10s": 0.2727272727272727,
+          "p_return_20s": 0.5777777777777777,
+          "n_observed": 31,
+          "mean_observed_tau": 12.577888450314921
+        },
+        {
+          "quintile": 3,
+          "meaning": "",
+          "n": 66,
+          "mean_tau_hat": 39.82049655508297,
+          "p_return_10s": 0.19607843137254902,
+          "p_return_20s": 0.4,
+          "n_observed": 17,
+          "mean_observed_tau": 10.67585807688096
+        },
+        {
+          "quintile": 4,
+          "meaning": "",
+          "n": 66,
+          "mean_tau_hat": 46.583062426674275,
+          "p_return_10s": 0.07272727272727272,
+          "p_return_20s": 0.22727272727272727,
+          "n_observed": 14,
+          "mean_observed_tau": 14.654049362455096
+        },
+        {
+          "quintile": 5,
+          "meaning": "largest τ̂ / evict first",
+          "n": 66,
+          "mean_tau_hat": 54.871710891927265,
+          "p_return_10s": 0.018518518518518517,
+          "p_return_20s": 0.09523809523809523,
+          "n_observed": 6,
+          "mean_observed_tau": 16.991259654362995
+        }
+      ],
+      "evict_largest_20pct": {
+        "official_tau": {
+          "frac": 0.2,
+          "n_evicted": 66,
+          "return_within_t_among_evicted": 0.018518518518518517,
+          "n_identifiable_evicted": 54,
+          "random_return_within_t": 0.2037037037037037,
+          "horizon_s": 10.0
+        },
+        "lgbm": {
+          "frac": 0.2,
+          "n_evicted": 66,
+          "return_within_t_among_evicted": 0.0,
+          "n_identifiable_evicted": 58,
+          "random_return_within_t": 0.2037037037037037,
+          "horizon_s": 10.0
+        },
+        "minus_p10": {
+          "frac": 0.2,
+          "n_evicted": 66,
+          "return_within_t_among_evicted": 0.0,
+          "n_identifiable_evicted": 56,
+          "random_return_within_t": 0.2037037037037037,
+          "horizon_s": 10.0
+        }
+      }
+    }
+  },
+  "note": "min(τ,60) is identified only if a return is observed by 60s or follow-up ≥ 60s. Nested val/test windows differ: val almost fully identified, test mostly only δ=1. Not an official freeze."
+}

@@ -1,0 +1,13 @@
+{
+  "previous_index": [
+    "/share/dai-sys/zhoulongsheng/agentkv/experiments/evict_position/online_runs/20260913_100114_formal_rep1",
+    "/share/dai-sys/zhoulongsheng/agentkv/experiments/evict_position/online_runs/20260913_103350_formal_rep2",
+    "/share/dai-sys/zhoulongsheng/agentkv/experiments/evict_position/online_runs/20260913_110634_formal_rep3"
+  ],
+  "current_index": [
+    "/share/dai-sys/zhoulongsheng/agentkv/experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1",
+    "/share/dai-sys/zhoulongsheng/agentkv/experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2",
+    "/share/dai-sys/zhoulongsheng/agentkv/experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3"
+  ],
+  "historical_logs_and_source_snapshots_unchanged": true
+}

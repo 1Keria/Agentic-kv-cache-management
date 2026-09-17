@@ -1,0 +1,25 @@
+[load] replay /share/dai-sys/zhoulongsheng/agentkv/experiments/sglang_kv_cache/ratio_daily_models/agent_050/replay/run_mix_train_lru/replay.jsonl
+[load] workload /share/dai-sys/zhoulongsheng/agentkv/workloads/ratio_train_v4flash/agent_050/workload.jsonl
+[load] workload 500
+[load] workload 1000
+[load] workload 1500
+[load] workload 2000
+[load] turns=2100 t_end=11055.3s unique_sessions=585
+[sim] 200/2100 staged=7092 leaves=63
+[sim] 400/2100 staged=19989 leaves=66
+[sim] 600/2100 staged=42308 leaves=131
+[sim] 800/2100 staged=77508 leaves=195
+[sim] 1000/2100 staged=124521 leaves=259
+[sim] 1200/2100 staged=184789 leaves=323
+[sim] 1400/2100 staged=258310 leaves=391
+[sim] 1600/2100 staged=345624 leaves=451
+[sim] 1800/2100 staged=439898 leaves=514
+[sim] 2000/2100 staged=544883 leaves=577
+[label] fill T_i on 602404 samples t_end=11055.3s
+[write] /share/dai-sys/zhoulongsheng/agentkv/experiments/sglang_kv_cache/ratio_daily_models/agent_050/samples/samples_train.jsonl.gz n=602404
+[write] /share/dai-sys/zhoulongsheng/agentkv/experiments/sglang_kv_cache/ratio_daily_models/agent_050/samples/samples_test.jsonl.gz n=0
+{
+  "train": 602404,
+  "test": 0,
+  "censored": 585419
+}

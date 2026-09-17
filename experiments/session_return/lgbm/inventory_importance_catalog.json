@@ -1,0 +1,6192 @@
+{
+  "n_features": 169,
+  "n_repeats": 40,
+  "feature_ranking": [
+    {
+      "feature": "sampling.max_new_tokens",
+      "group": "leaky_replay_cap",
+      "source": "Req.sampling_params",
+      "meaning": "重放 completion cap，不是线上 max_tokens",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.sampling_params.max_new_tokens",
+      "n_unique_train": 526,
+      "official_model": "with_leaky",
+      "val": {
+        "intact_mae": 2.71115123158847,
+        "delta_mae_mean": 2.3645274202396602,
+        "delta_mae_std": 0.29883363756968523,
+        "delta_mae_p05": 1.9037462048928837,
+        "delta_mae_p95": 2.789870767422469,
+        "frac_positive": 1.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.461081996426086,
+        "delta_mae_mean": 1.6321685708505889,
+        "delta_mae_std": 0.2692833947752567,
+        "delta_mae_p05": 1.1456160706417404,
+        "delta_mae_p95": 2.0014115408112922,
+        "frac_positive": 1.0,
+        "n_repeats": 40
+      },
+      "rank": 1
+    },
+    {
+      "feature": "req.output_ids",
+      "group": "output_len",
+      "source": "调度器 Req",
+      "meaning": "已生成输出 token 数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "req.output_ids",
+      "n_unique_train": 437,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 1.10819735109077,
+        "delta_mae_std": 0.2196911288445842,
+        "delta_mae_p05": 0.7202395535424084,
+        "delta_mae_p95": 1.4316683859676236,
+        "frac_positive": 1.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.9756303420566154,
+        "delta_mae_std": 0.22709355594346128,
+        "delta_mae_p05": 0.6454592498387196,
+        "delta_mae_p95": 1.3206624521953274,
+        "frac_positive": 1.0,
+        "n_repeats": 40
+      },
+      "rank": 2
+    },
+    {
+      "feature": "client.temperature",
+      "group": "client_sampling",
+      "source": "客户端请求",
+      "meaning": "采样温度",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "temperature",
+      "n_unique_train": 4,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.17924381592612357,
+        "delta_mae_std": 0.07200699203838731,
+        "delta_mae_p05": 0.037093527476353215,
+        "delta_mae_p95": 0.29264798874941655,
+        "frac_positive": 1.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.17048065101646798,
+        "delta_mae_std": 0.09738419360835043,
+        "delta_mae_p05": 0.037102511245202856,
+        "delta_mae_p95": 0.3517079205718256,
+        "frac_positive": 0.975,
+        "n_repeats": 40
+      },
+      "rank": 3
+    },
+    {
+      "feature": "req.finished_reason",
+      "group": "output_len",
+      "source": "调度器 Req",
+      "meaning": "原生结束原因类型",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "req.finished_reason.type",
+      "n_unique_train": 2,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.16507540617316954,
+        "delta_mae_std": 0.06924229350851377,
+        "delta_mae_p05": 0.05556419380738361,
+        "delta_mae_p95": 0.2694619519301805,
+        "frac_positive": 1.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.051967327967938994,
+        "delta_mae_std": 0.061074463194689725,
+        "delta_mae_p05": -0.04705726900817595,
+        "delta_mae_p95": 0.13750509897944466,
+        "frac_positive": 0.8,
+        "n_repeats": 40
+      },
+      "rank": 4
+    },
+    {
+      "feature": "req.finished_len",
+      "group": "output_len",
+      "source": "调度器 Req",
+      "meaning": "结束时的输出位置",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.finished_len",
+      "n_unique_train": 437,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.1570138327263528,
+        "delta_mae_std": 0.06660641014974004,
+        "delta_mae_p05": 0.0750667333690027,
+        "delta_mae_p95": 0.2655322527741538,
+        "frac_positive": 0.975,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.1627644149078576,
+        "delta_mae_std": 0.05241889694823045,
+        "delta_mae_p05": 0.09425815509446452,
+        "delta_mae_p95": 0.23502114888766829,
+        "frac_positive": 1.0,
+        "n_repeats": 40
+      },
+      "rank": 5
+    },
+    {
+      "feature": "client.tools",
+      "group": "request_content",
+      "source": "客户端请求",
+      "meaning": "请求携带的工具定义条数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "tools",
+      "n_unique_train": 50,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.09303306408819563,
+        "delta_mae_std": 0.024978679628236793,
+        "delta_mae_p05": 0.05205997544213883,
+        "delta_mae_p95": 0.13717681252128497,
+        "frac_positive": 1.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": -0.010815163279348106,
+        "delta_mae_std": 0.019635316290067827,
+        "delta_mae_p05": -0.041748303545565114,
+        "delta_mae_p95": 0.022828920858391034,
+        "frac_positive": 0.3,
+        "n_repeats": 40
+      },
+      "rank": 6
+    },
+    {
+      "feature": "sampling.temperature",
+      "group": "client_sampling",
+      "source": "Req.sampling_params",
+      "meaning": "采样温度（调度器副本）",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.sampling_params.temperature",
+      "n_unique_train": 4,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.038965654536468476,
+        "delta_mae_std": 0.0210796458355614,
+        "delta_mae_p05": 0.006285178730011533,
+        "delta_mae_p95": 0.07708555439848698,
+        "frac_positive": 0.95,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.010848405903454572,
+        "delta_mae_std": 0.018624545643014617,
+        "delta_mae_p05": -0.02086236133257344,
+        "delta_mae_p95": 0.03755594939236233,
+        "frac_positive": 0.7,
+        "n_repeats": 40
+      },
+      "rank": 7
+    },
+    {
+      "feature": "req.cached_tokens",
+      "group": "cache_hit",
+      "source": "调度器 Req",
+      "meaning": "请求累计缓存 token 数",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.cached_tokens",
+      "n_unique_train": 69,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.026366972652263888,
+        "delta_mae_std": 0.022195575028015856,
+        "delta_mae_p05": -0.004067226162319892,
+        "delta_mae_p95": 0.055426152169200854,
+        "frac_positive": 0.9,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": -0.017676363913089244,
+        "delta_mae_std": 0.021561068734863048,
+        "delta_mae_p05": -0.05143965183973487,
+        "delta_mae_p95": 0.016081078333603924,
+        "frac_positive": 0.25,
+        "n_repeats": 40
+      },
+      "rank": 8
+    },
+    {
+      "feature": "req.kv_committed_len",
+      "group": "prompt_occupied",
+      "source": "调度器 Req",
+      "meaning": "已提交 KV 长度",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.kv_committed_len",
+      "n_unique_train": 1495,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.017649827021933583,
+        "delta_mae_std": 0.016731032389201515,
+        "delta_mae_p05": -0.005246729061581301,
+        "delta_mae_p95": 0.043614278033948725,
+        "frac_positive": 0.8,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.02996631764928668,
+        "delta_mae_std": 0.02012166796403974,
+        "delta_mae_p05": 0.0021690121618106245,
+        "delta_mae_p95": 0.06439433688539363,
+        "frac_positive": 0.95,
+        "n_repeats": 40
+      },
+      "rank": 9
+    },
+    {
+      "feature": "client.max_tokens",
+      "group": "client_sampling",
+      "source": "客户端请求",
+      "meaning": "原始请求最大生成 token 数",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "max_tokens",
+      "n_unique_train": 7,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0166107928560436,
+        "delta_mae_std": 0.0072419674852159934,
+        "delta_mae_p05": 0.006548569609610167,
+        "delta_mae_p95": 0.026504662711748294,
+        "frac_positive": 1.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.010053955022458183,
+        "delta_mae_std": 0.008778440042733926,
+        "delta_mae_p05": -0.0034930840706368644,
+        "delta_mae_p95": 0.022119054831903105,
+        "frac_positive": 0.875,
+        "n_repeats": 40
+      },
+      "rank": 10
+    },
+    {
+      "feature": "req.cached_tokens_device",
+      "group": "cache_hit",
+      "source": "调度器 Req",
+      "meaning": "设备层缓存 token 数",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.cached_tokens_device",
+      "n_unique_train": 69,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.013988862055273544,
+        "delta_mae_std": 0.009293277158922237,
+        "delta_mae_p05": -0.0006664308096083313,
+        "delta_mae_p95": 0.027854380366763277,
+        "frac_positive": 0.925,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": -0.019921268728869235,
+        "delta_mae_std": 0.010655519194936578,
+        "delta_mae_p05": -0.03466618263975012,
+        "delta_mae_p95": -0.0059337169440979234,
+        "frac_positive": 0.025,
+        "n_repeats": 40
+      },
+      "rank": 11
+    },
+    {
+      "feature": "req.reasoning_tokens",
+      "group": "reasoning",
+      "source": "调度器 Req",
+      "meaning": "已生成 reasoning token 数",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.reasoning_tokens",
+      "n_unique_train": 247,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.013057273198536157,
+        "delta_mae_std": 0.01642361811708056,
+        "delta_mae_p05": -0.009833565863518245,
+        "delta_mae_p95": 0.03693870645611915,
+        "frac_positive": 0.8,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": -0.008447699869904946,
+        "delta_mae_std": 0.015541644341167983,
+        "delta_mae_p05": -0.027395606809663152,
+        "delta_mae_p95": 0.022448058441982915,
+        "frac_positive": 0.2,
+        "n_repeats": 40
+      },
+      "rank": 12
+    },
+    {
+      "feature": "last_node.key.token_ids",
+      "group": "prompt_occupied",
+      "source": "Radix last_node",
+      "meaning": "节点保存的 token 数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "req.last_node.key.token_ids",
+      "n_unique_train": 128,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.00795456382466202,
+        "delta_mae_std": 0.027256144915900463,
+        "delta_mae_p05": -0.040441172327639,
+        "delta_mae_p95": 0.05761704992590264,
+        "frac_positive": 0.675,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": -0.017343759800473403,
+        "delta_mae_std": 0.027969456508397744,
+        "delta_mae_p05": -0.05837900016419586,
+        "delta_mae_p95": 0.025523477201813,
+        "frac_positive": 0.225,
+        "n_repeats": 40
+      },
+      "rank": 13
+    },
+    {
+      "feature": "client.top_p",
+      "group": "client_sampling",
+      "source": "客户端请求",
+      "meaning": "nucleus 采样 top_p",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "top_p",
+      "n_unique_train": 2,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.003061259498415314,
+        "delta_mae_std": 0.0033050067866377433,
+        "delta_mae_p05": -0.0026351396848070196,
+        "delta_mae_p95": 0.007425885644127269,
+        "frac_positive": 0.775,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0025659201974853607,
+        "delta_mae_std": 0.0036792451499578008,
+        "delta_mae_p05": -0.0020023204028132733,
+        "delta_mae_p95": 0.0067383123313437075,
+        "frac_positive": 0.7,
+        "n_repeats": 40
+      },
+      "rank": 14
+    },
+    {
+      "feature": "req.cache_protected_len",
+      "group": "prompt_occupied",
+      "source": "调度器 Req",
+      "meaning": "已插入并受保护的前缀长度",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.cache_protected_len",
+      "n_unique_train": 432,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0009314730543806716,
+        "delta_mae_std": 0.0015441924696421232,
+        "delta_mae_p05": -0.0014169882473350492,
+        "delta_mae_p95": 0.0029059086284990636,
+        "frac_positive": 0.6,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0015361004045251869,
+        "delta_mae_std": 0.002585761766981033,
+        "delta_mae_p05": -0.0020592177217020335,
+        "delta_mae_p95": 0.0055643433285920306,
+        "frac_positive": 0.65,
+        "n_repeats": 40
+      },
+      "rank": 15
+    },
+    {
+      "feature": "client.audio_content",
+      "group": "multimodal",
+      "source": "客户端请求",
+      "meaning": "是否含音频",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "audio",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 16
+    },
+    {
+      "feature": "client.cache_salt",
+      "group": "identity",
+      "source": "客户端请求",
+      "meaning": "缓存隔离 salt",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "cache_salt",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 17
+    },
+    {
+      "feature": "client.continue_final_message",
+      "group": "sampling_stop_penalty",
+      "source": "客户端请求",
+      "meaning": "是否续写最后一条消息",
+      "kind": "bool",
+      "kind_zh": "布尔",
+      "path": "continue_final_message",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 18
+    },
+    {
+      "feature": "client.extra_key",
+      "group": "identity",
+      "source": "客户端请求",
+      "meaning": "Radix 额外键",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "extra_key",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 19
+    },
+    {
+      "feature": "client.frequency_penalty",
+      "group": "sampling_stop_penalty",
+      "source": "客户端请求",
+      "meaning": "频率惩罚",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "frequency_penalty",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 20
+    },
+    {
+      "feature": "client.ignore_eos",
+      "group": "sampling_stop_penalty",
+      "source": "客户端请求",
+      "meaning": "是否忽略 EOS",
+      "kind": "bool",
+      "kind_zh": "布尔",
+      "path": "ignore_eos",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 21
+    },
+    {
+      "feature": "client.image_content",
+      "group": "multimodal",
+      "source": "客户端请求",
+      "meaning": "是否含图像",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "image",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 22
+    },
+    {
+      "feature": "client.input_ids",
+      "group": "prompt_occupied",
+      "source": "客户端请求",
+      "meaning": "客户端直接提供的 prompt token 数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "input_ids",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 23
+    },
+    {
+      "feature": "client.lora_path",
+      "group": "identity",
+      "source": "客户端请求",
+      "meaning": "请求 LoRA 路径",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "lora_path",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 24
+    },
+    {
+      "feature": "client.max_completion_tokens",
+      "group": "client_sampling",
+      "source": "客户端请求",
+      "meaning": "原始请求 max_completion_tokens",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "max_completion_tokens",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 25
+    },
+    {
+      "feature": "client.max_dynamic_patch",
+      "group": "multimodal",
+      "source": "客户端请求",
+      "meaning": "多模态 max_dynamic_patch",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "max_dynamic_patch",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 26
+    },
+    {
+      "feature": "client.min_dynamic_patch",
+      "group": "multimodal",
+      "source": "客户端请求",
+      "meaning": "多模态 min_dynamic_patch",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "min_dynamic_patch",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 27
+    },
+    {
+      "feature": "client.min_p",
+      "group": "client_sampling",
+      "source": "客户端请求",
+      "meaning": "min_p 采样",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "min_p",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 28
+    },
+    {
+      "feature": "client.min_tokens",
+      "group": "client_sampling",
+      "source": "客户端请求",
+      "meaning": "最小生成 token 数",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "min_tokens",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 29
+    },
+    {
+      "feature": "client.model",
+      "group": "request_content",
+      "source": "客户端请求",
+      "meaning": "请求指定的模型名",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "model",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 30
+    },
+    {
+      "feature": "client.n",
+      "group": "client_sampling",
+      "source": "客户端请求",
+      "meaning": "并行生成条数",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "n",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 31
+    },
+    {
+      "feature": "client.no_stop_trim",
+      "group": "sampling_stop_penalty",
+      "source": "客户端请求",
+      "meaning": "是否不裁剪 stop",
+      "kind": "bool",
+      "kind_zh": "布尔",
+      "path": "no_stop_trim",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 32
+    },
+    {
+      "feature": "client.parallel_tool_calls",
+      "group": "request_content",
+      "source": "客户端请求",
+      "meaning": "是否允许并行工具调用",
+      "kind": "bool",
+      "kind_zh": "布尔",
+      "path": "parallel_tool_calls",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 33
+    },
+    {
+      "feature": "client.presence_penalty",
+      "group": "sampling_stop_penalty",
+      "source": "客户端请求",
+      "meaning": "存在惩罚",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "presence_penalty",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 34
+    },
+    {
+      "feature": "client.priority",
+      "group": "identity",
+      "source": "客户端请求",
+      "meaning": "客户端请求优先级",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "priority",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 35
+    },
+    {
+      "feature": "client.reasoning_effort",
+      "group": "request_content",
+      "source": "客户端请求",
+      "meaning": "请求指定的推理强度",
+      "kind": "effort",
+      "kind_zh": "推理强度序数",
+      "path": "reasoning_effort",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 36
+    },
+    {
+      "feature": "client.repetition_penalty",
+      "group": "sampling_stop_penalty",
+      "source": "客户端请求",
+      "meaning": "重复惩罚",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "repetition_penalty",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 37
+    },
+    {
+      "feature": "client.response_format",
+      "group": "request_content",
+      "source": "客户端请求",
+      "meaning": "是否带输出格式约束",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "response_format",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 38
+    },
+    {
+      "feature": "client.rid",
+      "group": "identity",
+      "source": "客户端请求",
+      "meaning": "客户端请求 ID",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "rid",
+      "n_unique_train": 1540,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 39
+    },
+    {
+      "feature": "client.seed",
+      "group": "client_sampling",
+      "source": "客户端请求",
+      "meaning": "请求随机种子",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "seed",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 40
+    },
+    {
+      "feature": "client.session_params",
+      "group": "identity",
+      "source": "客户端请求",
+      "meaning": "是否携带 SGLang Session 参数",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "session_params",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 41
+    },
+    {
+      "feature": "client.stop",
+      "group": "sampling_stop_penalty",
+      "source": "客户端请求",
+      "meaning": "停止字符串条数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "stop",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 42
+    },
+    {
+      "feature": "client.stop_regex",
+      "group": "sampling_stop_penalty",
+      "source": "客户端请求",
+      "meaning": "停止正则条数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "stop_regex",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 43
+    },
+    {
+      "feature": "client.stop_token_ids",
+      "group": "sampling_stop_penalty",
+      "source": "客户端请求",
+      "meaning": "停止 token id 个数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "stop_token_ids",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 44
+    },
+    {
+      "feature": "client.stream",
+      "group": "request_content",
+      "source": "客户端请求",
+      "meaning": "客户端是否流式",
+      "kind": "bool",
+      "kind_zh": "布尔",
+      "path": "stream",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 45
+    },
+    {
+      "feature": "client.task",
+      "group": "request_content",
+      "source": "客户端请求",
+      "meaning": "请求任务类型",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "task",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 46
+    },
+    {
+      "feature": "client.tool_choice",
+      "group": "request_content",
+      "source": "客户端请求",
+      "meaning": "工具选择方式",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "tool_choice",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 47
+    },
+    {
+      "feature": "client.top_k",
+      "group": "client_sampling",
+      "source": "客户端请求",
+      "meaning": "top_k 采样",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "top_k",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 48
+    },
+    {
+      "feature": "client.use_audio_in_video",
+      "group": "multimodal",
+      "source": "客户端请求",
+      "meaning": "视频中是否用音频",
+      "kind": "bool",
+      "kind_zh": "布尔",
+      "path": "use_audio_in_video",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 49
+    },
+    {
+      "feature": "client.user",
+      "group": "identity",
+      "source": "客户端请求",
+      "meaning": "客户端用户标识",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "user",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 50
+    },
+    {
+      "feature": "client.video_content",
+      "group": "multimodal",
+      "source": "客户端请求",
+      "meaning": "是否含视频",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "video",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 51
+    },
+    {
+      "feature": "last_node.children",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "命中节点的子节点数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "req.last_node.children",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 52
+    },
+    {
+      "feature": "last_node.creation_time",
+      "group": "replay_time",
+      "source": "Radix last_node",
+      "meaning": "节点创建时刻",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.last_node.creation_time",
+      "n_unique_train": 1540,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 53
+    },
+    {
+      "feature": "last_node.full_lock_ref",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "Full KV 锁引用计数",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.last_node.full_lock_ref",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 54
+    },
+    {
+      "feature": "last_node.hash_value",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "页 hash 个数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "req.last_node.hash_value",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 55
+    },
+    {
+      "feature": "last_node.hit_count",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "节点命中计数",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.last_node.hit_count",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 56
+    },
+    {
+      "feature": "last_node.host_ref_counter",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "Host KV 保护计数",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.last_node.host_ref_counter",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 57
+    },
+    {
+      "feature": "last_node.host_value",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "Host KV 索引个数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "req.last_node.host_value",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 58
+    },
+    {
+      "feature": "last_node.id",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "运行时节点 ID",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.last_node.id",
+      "n_unique_train": 1540,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 59
+    },
+    {
+      "feature": "last_node.key",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "是否有 RadixKey",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "req.last_node.key",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 60
+    },
+    {
+      "feature": "last_node.key.extra_key",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "节点 key.extra_key",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "req.last_node.key.extra_key",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 61
+    },
+    {
+      "feature": "last_node.key.is_bigram",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "key 是否 bigram",
+      "kind": "bool",
+      "kind_zh": "布尔",
+      "path": "req.last_node.key.is_bigram",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 62
+    },
+    {
+      "feature": "last_node.last_access_time",
+      "group": "replay_time",
+      "source": "Radix last_node",
+      "meaning": "节点最近访问值（重放时钟）",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.last_node.last_access_time",
+      "n_unique_train": 1540,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 63
+    },
+    {
+      "feature": "last_node.lock_ref",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "节点锁引用计数",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.last_node.lock_ref",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 64
+    },
+    {
+      "feature": "last_node.next",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "Full LRU 后继 id",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.last_node.next_id",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 65
+    },
+    {
+      "feature": "last_node.parent",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "父节点 id",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.last_node.parent_id",
+      "n_unique_train": 1359,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 66
+    },
+    {
+      "feature": "last_node.prev",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "Full LRU 前驱 id",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.last_node.prev_id",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 67
+    },
+    {
+      "feature": "last_node.priority",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "节点保存的请求优先级",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.last_node.priority",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 68
+    },
+    {
+      "feature": "last_node.swa_lock_ref",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "SWA 锁引用计数",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.last_node.swa_lock_ref",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 69
+    },
+    {
+      "feature": "last_node.swa_next",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "SWA LRU 后继 id",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.last_node.swa_next_id",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 70
+    },
+    {
+      "feature": "last_node.swa_prev",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "SWA LRU 前驱 id",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.last_node.swa_prev_id",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 71
+    },
+    {
+      "feature": "last_node.swa_tombstone",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "SWA KV 是否已释放",
+      "kind": "bool",
+      "kind_zh": "布尔",
+      "path": "req.last_node.swa_tombstone",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 72
+    },
+    {
+      "feature": "last_node.swa_uuid",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "SWA 锁窗口标识",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "req.last_node.swa_uuid",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 73
+    },
+    {
+      "feature": "last_node.write_through_pending_id",
+      "group": "radix_node",
+      "source": "Radix last_node",
+      "meaning": "等待写穿完成的 ID",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "req.last_node.write_through_pending_id",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 74
+    },
+    {
+      "feature": "req._is_reasoning_over",
+      "group": "reasoning",
+      "source": "调度器 Req",
+      "meaning": "reasoning 阶段是否结束",
+      "kind": "bool",
+      "kind_zh": "布尔",
+      "path": "req._is_reasoning_over",
+      "n_unique_train": 2,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 75
+    },
+    {
+      "feature": "req.best_match_node",
+      "group": "radix_node",
+      "source": "调度器 Req",
+      "meaning": "是否有最佳匹配节点",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "req.best_match_node",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 76
+    },
+    {
+      "feature": "req.cached_tokens_host",
+      "group": "cache_hit",
+      "source": "调度器 Req",
+      "meaning": "Host 层缓存 token 数",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.cached_tokens_host",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 77
+    },
+    {
+      "feature": "req.cached_tokens_storage",
+      "group": "cache_hit",
+      "source": "调度器 Req",
+      "meaning": "存储层缓存 token 数",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.cached_tokens_storage",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 78
+    },
+    {
+      "feature": "req.extra_key",
+      "group": "identity",
+      "source": "调度器 Req",
+      "meaning": "调度器 extra_key",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "req.extra_key",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 79
+    },
+    {
+      "feature": "req.fill_len",
+      "group": "prompt_occupied",
+      "source": "调度器 Req",
+      "meaning": "当前已填充序列位置",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.fill_len",
+      "n_unique_train": 1491,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 80
+    },
+    {
+      "feature": "req.full_untruncated_fill_ids",
+      "group": "prompt_occupied",
+      "source": "调度器 Req",
+      "meaning": "未截断填入序列 token 数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "req.full_untruncated_fill_ids",
+      "n_unique_train": 1491,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 81
+    },
+    {
+      "feature": "req.host_hit_length",
+      "group": "cache_hit",
+      "source": "调度器 Req",
+      "meaning": "Host cache 命中长度",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.host_hit_length",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 82
+    },
+    {
+      "feature": "req.input_embeds",
+      "group": "multimodal",
+      "source": "调度器 Req",
+      "meaning": "是否直接携带 input embedding",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "req.input_embeds",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 83
+    },
+    {
+      "feature": "req.last_host_node",
+      "group": "radix_node",
+      "source": "调度器 Req",
+      "meaning": "是否有 Host 最后命中节点",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "req.last_host_node",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 84
+    },
+    {
+      "feature": "req.last_node",
+      "group": "radix_node",
+      "source": "调度器 Req",
+      "meaning": "是否有设备 Radix 最后命中节点",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "req.last_node",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 85
+    },
+    {
+      "feature": "req.lora_id",
+      "group": "identity",
+      "source": "调度器 Req",
+      "meaning": "调度器 LoRA id",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "req.lora_id",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 86
+    },
+    {
+      "feature": "req.mamba_host_hit_length",
+      "group": "cache_hit",
+      "source": "调度器 Req",
+      "meaning": "Mamba Host cache 命中长度",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.mamba_host_hit_length",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 87
+    },
+    {
+      "feature": "req.multimodal_inputs",
+      "group": "multimodal",
+      "source": "调度器 Req",
+      "meaning": "调度器是否保存多模态输入",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "req.multimodal_inputs",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 88
+    },
+    {
+      "feature": "req.num_matched_prefix_tokens",
+      "group": "cache_hit",
+      "source": "调度器 Req",
+      "meaning": "调度器记录的前缀命中 token 数",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.num_matched_prefix_tokens",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 89
+    },
+    {
+      "feature": "req.prefix_indices",
+      "group": "prompt_occupied",
+      "source": "调度器 Req",
+      "meaning": "设备 KV 命中索引个数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "req.prefix_indices",
+      "n_unique_train": 1491,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 90
+    },
+    {
+      "feature": "req.priority",
+      "group": "identity",
+      "source": "调度器 Req",
+      "meaning": "调度优先级",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.priority",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 91
+    },
+    {
+      "feature": "req.require_reasoning",
+      "group": "reasoning",
+      "source": "调度器 Req",
+      "meaning": "是否启用 reasoning",
+      "kind": "bool",
+      "kind_zh": "布尔",
+      "path": "req.require_reasoning",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 92
+    },
+    {
+      "feature": "req.rid",
+      "group": "identity",
+      "source": "调度器 Req",
+      "meaning": "调度器请求 ID",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "req.rid",
+      "n_unique_train": 1540,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 93
+    },
+    {
+      "feature": "req.routing_key",
+      "group": "identity",
+      "source": "调度器 Req",
+      "meaning": "调度器 routing_key",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "req.routing_key",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 94
+    },
+    {
+      "feature": "req.sampling_params",
+      "group": "container_flags",
+      "source": "调度器 Req",
+      "meaning": "Req 是否带 sampling_params 对象",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "req.sampling_params",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 95
+    },
+    {
+      "feature": "req.session",
+      "group": "native_session",
+      "source": "调度器 Req",
+      "meaning": "是否关联原生 Session 对象",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "req.session",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 96
+    },
+    {
+      "feature": "req.storage_hit_length",
+      "group": "cache_hit",
+      "source": "调度器 Req",
+      "meaning": "存储层命中长度",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.storage_hit_length",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 97
+    },
+    {
+      "feature": "req.stream",
+      "group": "request_content",
+      "source": "调度器 Req",
+      "meaning": "调度器 stream 标记",
+      "kind": "bool",
+      "kind_zh": "布尔",
+      "path": "req.stream",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 98
+    },
+    {
+      "feature": "req.swa_evicted_seqlen",
+      "group": "cache_hit",
+      "source": "调度器 Req",
+      "meaning": "已提前释放的 SWA 序列位置",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.swa_evicted_seqlen",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 99
+    },
+    {
+      "feature": "req.swa_host_hit_length",
+      "group": "cache_hit",
+      "source": "调度器 Req",
+      "meaning": "SWA Host cache 命中长度",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.swa_host_hit_length",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 100
+    },
+    {
+      "feature": "req.to_finish",
+      "group": "output_len",
+      "source": "调度器 Req",
+      "meaning": "是否有待应用的终止原因",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "req.to_finish",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 101
+    },
+    {
+      "feature": "resource.full_available_size",
+      "group": "resource_pool",
+      "source": "KV 分配器 / 缓存",
+      "meaning": "Full 可用容量",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "resource.full_available_size",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 102
+    },
+    {
+      "feature": "resource.full_evictable_size_",
+      "group": "resource_pool",
+      "source": "KV 分配器 / 缓存",
+      "meaning": "Full 可驱逐数量",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "resource.full_evictable_size_",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 103
+    },
+    {
+      "feature": "resource.full_protected_size_",
+      "group": "resource_pool",
+      "source": "KV 分配器 / 缓存",
+      "meaning": "Full 受保护数量",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "resource.full_protected_size_",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 104
+    },
+    {
+      "feature": "resource.num_tokens",
+      "group": "resource_pool",
+      "source": "KV 分配器 / 缓存",
+      "meaning": "本次要释放的 Full token 数（驱逐时）",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "resource.num_tokens",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 105
+    },
+    {
+      "feature": "resource.page_size",
+      "group": "resource_pool",
+      "source": "KV 分配器 / 缓存",
+      "meaning": "KV 页大小",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "resource.page_size",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 106
+    },
+    {
+      "feature": "resource.size",
+      "group": "resource_pool",
+      "source": "KV 分配器 / 缓存",
+      "meaning": "KV 池容量",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "resource.size",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 107
+    },
+    {
+      "feature": "resource.sliding_window_size",
+      "group": "resource_pool",
+      "source": "KV 分配器 / 缓存",
+      "meaning": "SWA 窗口大小",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "resource.sliding_window_size",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 108
+    },
+    {
+      "feature": "resource.swa_available_size",
+      "group": "resource_pool",
+      "source": "KV 分配器 / 缓存",
+      "meaning": "SWA 可用容量",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "resource.swa_available_size",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 109
+    },
+    {
+      "feature": "resource.swa_evictable_size_",
+      "group": "resource_pool",
+      "source": "KV 分配器 / 缓存",
+      "meaning": "SWA 可驱逐数量",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "resource.swa_evictable_size_",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 110
+    },
+    {
+      "feature": "resource.swa_num_tokens",
+      "group": "resource_pool",
+      "source": "KV 分配器 / 缓存",
+      "meaning": "本次要释放的 SWA token 数",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "resource.swa_num_tokens",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 111
+    },
+    {
+      "feature": "resource.swa_protected_size_",
+      "group": "resource_pool",
+      "source": "KV 分配器 / 缓存",
+      "meaning": "SWA 受保护数量",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "resource.swa_protected_size_",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 112
+    },
+    {
+      "feature": "sampling.frequency_penalty",
+      "group": "sampling_stop_penalty",
+      "source": "Req.sampling_params",
+      "meaning": "频率惩罚（调度器副本）",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.sampling_params.frequency_penalty",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 113
+    },
+    {
+      "feature": "sampling.ignore_eos",
+      "group": "sampling_stop_penalty",
+      "source": "Req.sampling_params",
+      "meaning": "ignore_eos（调度器副本）",
+      "kind": "bool",
+      "kind_zh": "布尔",
+      "path": "req.sampling_params.ignore_eos",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 114
+    },
+    {
+      "feature": "sampling.min_new_tokens",
+      "group": "client_sampling",
+      "source": "Req.sampling_params",
+      "meaning": "最小生成 token 数（调度器副本）",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.sampling_params.min_new_tokens",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 115
+    },
+    {
+      "feature": "sampling.min_p",
+      "group": "client_sampling",
+      "source": "Req.sampling_params",
+      "meaning": "min_p（调度器副本）",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.sampling_params.min_p",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 116
+    },
+    {
+      "feature": "sampling.n",
+      "group": "client_sampling",
+      "source": "Req.sampling_params",
+      "meaning": "并行生成条数（调度器副本）",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.sampling_params.n",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 117
+    },
+    {
+      "feature": "sampling.no_stop_trim",
+      "group": "sampling_stop_penalty",
+      "source": "Req.sampling_params",
+      "meaning": "no_stop_trim（调度器副本）",
+      "kind": "bool",
+      "kind_zh": "布尔",
+      "path": "req.sampling_params.no_stop_trim",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 118
+    },
+    {
+      "feature": "sampling.presence_penalty",
+      "group": "sampling_stop_penalty",
+      "source": "Req.sampling_params",
+      "meaning": "存在惩罚（调度器副本）",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.sampling_params.presence_penalty",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 119
+    },
+    {
+      "feature": "sampling.repetition_penalty",
+      "group": "sampling_stop_penalty",
+      "source": "Req.sampling_params",
+      "meaning": "重复惩罚（调度器副本）",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.sampling_params.repetition_penalty",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 120
+    },
+    {
+      "feature": "sampling.seed",
+      "group": "client_sampling",
+      "source": "Req.sampling_params",
+      "meaning": "采样种子（调度器副本）",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.sampling_params.sampling_seed",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 121
+    },
+    {
+      "feature": "sampling.stop_regex_strs",
+      "group": "sampling_stop_penalty",
+      "source": "Req.sampling_params",
+      "meaning": "停止正则条数（调度器）",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "req.sampling_params.stop_regex_strs",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 122
+    },
+    {
+      "feature": "sampling.stop_strs",
+      "group": "sampling_stop_penalty",
+      "source": "Req.sampling_params",
+      "meaning": "停止字符串条数（调度器）",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "req.sampling_params.stop_strs",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 123
+    },
+    {
+      "feature": "sampling.stop_token_ids",
+      "group": "sampling_stop_penalty",
+      "source": "Req.sampling_params",
+      "meaning": "停止 token id 个数（调度器）",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "req.sampling_params.stop_token_ids",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 124
+    },
+    {
+      "feature": "sampling.top_k",
+      "group": "client_sampling",
+      "source": "Req.sampling_params",
+      "meaning": "top_k（调度器副本）",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.sampling_params.top_k",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 125
+    },
+    {
+      "feature": "sampling.top_p",
+      "group": "client_sampling",
+      "source": "Req.sampling_params",
+      "meaning": "top_p（调度器副本）",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.sampling_params.top_p",
+      "n_unique_train": 2,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 126
+    },
+    {
+      "feature": "scheduler.cur_batch",
+      "group": "resource_pool",
+      "source": "调度器队列",
+      "meaning": "当前 batch 请求数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "scheduler.cur_batch",
+      "n_unique_train": 2,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 127
+    },
+    {
+      "feature": "scheduler.running_batch",
+      "group": "resource_pool",
+      "source": "调度器队列",
+      "meaning": "running batch 请求数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "scheduler.running_batch",
+      "n_unique_train": 2,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 128
+    },
+    {
+      "feature": "scheduler.waiting_queue",
+      "group": "resource_pool",
+      "source": "调度器队列",
+      "meaning": "等待队列请求数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "scheduler.waiting_queue",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 129
+    },
+    {
+      "feature": "session._inflight",
+      "group": "native_session",
+      "source": "原生 SGLang Session",
+      "meaning": "Session 是否有在飞请求",
+      "kind": "bool",
+      "kind_zh": "布尔",
+      "path": "req.session._inflight",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 130
+    },
+    {
+      "feature": "session.capacity_of_str_len",
+      "group": "native_session",
+      "source": "原生 SGLang Session",
+      "meaning": "Session 字符串容量",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.session.capacity_of_str_len",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 131
+    },
+    {
+      "feature": "session.close_on_finish",
+      "group": "native_session",
+      "source": "原生 SGLang Session",
+      "meaning": "完成后是否关闭 Session",
+      "kind": "bool",
+      "kind_zh": "布尔",
+      "path": "req.session.close_on_finish",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 132
+    },
+    {
+      "feature": "session.last_active_time",
+      "group": "native_session",
+      "source": "原生 SGLang Session",
+      "meaning": "Session 最近活动时刻",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.session.last_active_time",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 133
+    },
+    {
+      "feature": "session.req_nodes",
+      "group": "native_session",
+      "source": "原生 SGLang Session",
+      "meaning": "Session 保存的请求节点数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "req.session.req_nodes",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 134
+    },
+    {
+      "feature": "session.session_id",
+      "group": "native_session",
+      "source": "原生 SGLang Session",
+      "meaning": "原生 Session ID",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "req.session.session_id",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 135
+    },
+    {
+      "feature": "session.streaming",
+      "group": "native_session",
+      "source": "原生 SGLang Session",
+      "meaning": "Session 是否流式",
+      "kind": "bool",
+      "kind_zh": "布尔",
+      "path": "req.session.streaming",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 136
+    },
+    {
+      "feature": "session.timeout",
+      "group": "native_session",
+      "source": "原生 SGLang Session",
+      "meaning": "Session 超时",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.session.timeout",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 137
+    },
+    {
+      "feature": "time.api_server_dispatch_finish_time",
+      "group": "replay_time",
+      "source": "Req.time_stats",
+      "meaning": "API 发送完成时刻",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.time_stats.api_server_dispatch_finish_time",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 138
+    },
+    {
+      "feature": "time.api_server_dispatch_time",
+      "group": "replay_time",
+      "source": "Req.time_stats",
+      "meaning": "API 开始发送时刻",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.time_stats.api_server_dispatch_time",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 139
+    },
+    {
+      "feature": "time.completion_time",
+      "group": "replay_time",
+      "source": "Req.time_stats",
+      "meaning": "调度器确认完成时刻",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.time_stats.completion_time",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 140
+    },
+    {
+      "feature": "time.created_time",
+      "group": "replay_time",
+      "source": "Req.time_stats",
+      "meaning": "API 创建请求时刻（重放时钟）",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.time_stats.created_time",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 141
+    },
+    {
+      "feature": "time.finished_time",
+      "group": "replay_time",
+      "source": "Req.time_stats",
+      "meaning": "请求完成时刻",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.time_stats.finished_time",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 142
+    },
+    {
+      "feature": "time.first_token_time",
+      "group": "replay_time",
+      "source": "Req.time_stats",
+      "meaning": "首 token 时刻",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.time_stats.first_token_time",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 143
+    },
+    {
+      "feature": "time.forward_entry_time",
+      "group": "replay_time",
+      "source": "Req.time_stats",
+      "meaning": "进入执行阶段时刻",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.time_stats.forward_entry_time",
+      "n_unique_train": 1540,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 144
+    },
+    {
+      "feature": "time.last_time",
+      "group": "replay_time",
+      "source": "Req.time_stats",
+      "meaning": "最近一次输出时刻",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.time_stats.last_time",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 145
+    },
+    {
+      "feature": "time.prefill_finished_time",
+      "group": "replay_time",
+      "source": "Req.time_stats",
+      "meaning": "prefill 完成时刻",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.time_stats.prefill_finished_time",
+      "n_unique_train": 1540,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 146
+    },
+    {
+      "feature": "time.response_sent_to_client_time",
+      "group": "replay_time",
+      "source": "Req.time_stats",
+      "meaning": "响应发给客户端时刻",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.time_stats.response_sent_to_client_time",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 147
+    },
+    {
+      "feature": "time.scheduler_recv_time",
+      "group": "replay_time",
+      "source": "Req.time_stats",
+      "meaning": "调度器收到请求时刻",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.time_stats.scheduler_recv_time",
+      "n_unique_train": 1540,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 148
+    },
+    {
+      "feature": "time.tokenize_finish_time",
+      "group": "replay_time",
+      "source": "Req.time_stats",
+      "meaning": "分词完成时刻",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.time_stats.tokenize_finish_time",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 149
+    },
+    {
+      "feature": "time.wait_queue_entry_time",
+      "group": "replay_time",
+      "source": "Req.time_stats",
+      "meaning": "进入等待队列时刻",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.time_stats.wait_queue_entry_time",
+      "n_unique_train": 1540,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 150
+    },
+    {
+      "feature": "tokenized.extra_key",
+      "group": "identity",
+      "source": "分词后 TokenizedGenerateReqInput",
+      "meaning": "分词后 extra_key",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "tokenized.extra_key",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 151
+    },
+    {
+      "feature": "tokenized.input_text",
+      "group": "prompt_occupied",
+      "source": "分词后 TokenizedGenerateReqInput",
+      "meaning": "送入分词的文本长度",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "tokenized.input_text",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 152
+    },
+    {
+      "feature": "tokenized.mm_inputs",
+      "group": "multimodal",
+      "source": "分词后 TokenizedGenerateReqInput",
+      "meaning": "是否有分词后多模态输入",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "tokenized.mm_inputs",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 153
+    },
+    {
+      "feature": "tokenized.priority",
+      "group": "identity",
+      "source": "分词后 TokenizedGenerateReqInput",
+      "meaning": "分词后优先级",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "tokenized.priority",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 154
+    },
+    {
+      "feature": "tokenized.routing_key",
+      "group": "identity",
+      "source": "分词后 TokenizedGenerateReqInput",
+      "meaning": "分词后 routing_key",
+      "kind": "cat",
+      "kind_zh": "类别",
+      "path": "tokenized.routing_key",
+      "n_unique_train": 0,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 155
+    },
+    {
+      "feature": "tokenized.sampling_params",
+      "group": "container_flags",
+      "source": "分词后 TokenizedGenerateReqInput",
+      "meaning": "分词对象是否带 sampling_params",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "tokenized.sampling_params",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 156
+    },
+    {
+      "feature": "tokenized.session_params",
+      "group": "identity",
+      "source": "分词后 TokenizedGenerateReqInput",
+      "meaning": "分词对象是否带 session_params",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "tokenized.session_params",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 157
+    },
+    {
+      "feature": "tokenized.stream",
+      "group": "request_content",
+      "source": "分词后 TokenizedGenerateReqInput",
+      "meaning": "分词后 stream 标记",
+      "kind": "bool",
+      "kind_zh": "布尔",
+      "path": "tokenized.stream",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 158
+    },
+    {
+      "feature": "tokenized.time_stats",
+      "group": "replay_time",
+      "source": "分词后 TokenizedGenerateReqInput",
+      "meaning": "分词对象是否带 time_stats",
+      "kind": "present",
+      "kind_zh": "是否存在",
+      "path": "tokenized.time_stats",
+      "n_unique_train": 1,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0,
+        "delta_mae_std": 0.0,
+        "delta_mae_p05": 0.0,
+        "delta_mae_p95": 0.0,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "rank": 159
+    },
+    {
+      "feature": "req.kv_allocated_len",
+      "group": "prompt_occupied",
+      "source": "调度器 Req",
+      "meaning": "已分配 KV 长度",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.kv_allocated_len",
+      "n_unique_train": 1495,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": -0.0002515589454014533,
+        "delta_mae_std": 0.003685230305336033,
+        "delta_mae_p05": -0.005598624936297835,
+        "delta_mae_p95": 0.005906252743396374,
+        "frac_positive": 0.4,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.0037934098852973495,
+        "delta_mae_std": 0.0036118517561939266,
+        "delta_mae_p05": -0.0014528929478049952,
+        "delta_mae_p95": 0.009239443613714825,
+        "frac_positive": 0.825,
+        "n_repeats": 40
+      },
+      "rank": 160
+    },
+    {
+      "feature": "last_node.value",
+      "group": "prompt_occupied",
+      "source": "Radix last_node",
+      "meaning": "节点设备 KV 索引个数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "req.last_node.value",
+      "n_unique_train": 128,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": -0.0014318818727082293,
+        "delta_mae_std": 0.006768152969272042,
+        "delta_mae_p05": -0.010326968343996268,
+        "delta_mae_p95": 0.007904228657824898,
+        "frac_positive": 0.325,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.002748397392890878,
+        "delta_mae_std": 0.008136523988354327,
+        "delta_mae_p05": -0.011734070394414297,
+        "delta_mae_p95": 0.014438217037470525,
+        "frac_positive": 0.675,
+        "n_repeats": 40
+      },
+      "rank": 161
+    },
+    {
+      "feature": "resource.available_size",
+      "group": "resource_pool",
+      "source": "KV 分配器 / 缓存",
+      "meaning": "当前可用容量",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "resource.available_size",
+      "n_unique_train": 222,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": -0.002022231638272176,
+        "delta_mae_std": 0.025133353103515468,
+        "delta_mae_p05": -0.03766764074667113,
+        "delta_mae_p95": 0.034370910638247903,
+        "frac_positive": 0.45,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": -0.006600966342933434,
+        "delta_mae_std": 0.018320979078864638,
+        "delta_mae_p05": -0.043672810201834625,
+        "delta_mae_p95": 0.022958471002588608,
+        "frac_positive": 0.4,
+        "n_repeats": 40
+      },
+      "rank": 162
+    },
+    {
+      "feature": "resource.evictable_size",
+      "group": "resource_pool",
+      "source": "KV 分配器 / 缓存",
+      "meaning": "当前可驱逐数量",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "resource.evictable_size",
+      "n_unique_train": 525,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": -0.00566260875884621,
+        "delta_mae_std": 0.011865571752618424,
+        "delta_mae_p05": -0.027640290978534043,
+        "delta_mae_p95": 0.011817018244719627,
+        "frac_positive": 0.325,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": -0.00920460235575582,
+        "delta_mae_std": 0.013898778466294542,
+        "delta_mae_p05": -0.03396010139770485,
+        "delta_mae_p95": 0.010311110680539887,
+        "frac_positive": 0.3,
+        "n_repeats": 40
+      },
+      "rank": 163
+    },
+    {
+      "feature": "req.origin_input_ids",
+      "group": "prompt_occupied",
+      "source": "调度器 Req",
+      "meaning": "进入调度器的完整输入 token 数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "req.origin_input_ids",
+      "n_unique_train": 1491,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": -0.01104907058772241,
+        "delta_mae_std": 0.0073915080142091675,
+        "delta_mae_p05": -0.021945577269646965,
+        "delta_mae_p95": 0.00010832822808468609,
+        "frac_positive": 0.075,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.007186054524264085,
+        "delta_mae_std": 0.004798618384167856,
+        "delta_mae_p05": 0.0004170258613999334,
+        "delta_mae_p95": 0.017011248201889016,
+        "frac_positive": 0.975,
+        "n_repeats": 40
+      },
+      "rank": 164
+    },
+    {
+      "feature": "req.origin_input_ids_unpadded",
+      "group": "prompt_occupied",
+      "source": "调度器 Req",
+      "meaning": "padding 前输入 token 数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "req.origin_input_ids_unpadded",
+      "n_unique_train": 1491,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": -0.012626700413997716,
+        "delta_mae_std": 0.0044792080712493295,
+        "delta_mae_p05": -0.01867481396627524,
+        "delta_mae_p95": -0.005114200469998202,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.004066939137613401,
+        "delta_mae_std": 0.003408413545838964,
+        "delta_mae_p05": -0.0032611665101626385,
+        "delta_mae_p95": 0.00887782648894131,
+        "frac_positive": 0.85,
+        "n_repeats": 40
+      },
+      "rank": 165
+    },
+    {
+      "feature": "tokenized.input_ids",
+      "group": "prompt_occupied",
+      "source": "分词后 TokenizedGenerateReqInput",
+      "meaning": "分词后 prompt token 数",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "tokenized.input_ids",
+      "n_unique_train": 1491,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": -0.014168804222180864,
+        "delta_mae_std": 0.025191511295308038,
+        "delta_mae_p05": -0.05382803444854549,
+        "delta_mae_p95": 0.021988058822624227,
+        "frac_positive": 0.275,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.05117757474278826,
+        "delta_mae_std": 0.02699740560585456,
+        "delta_mae_p05": 0.014056239531593519,
+        "delta_mae_p95": 0.09283423982466081,
+        "frac_positive": 0.975,
+        "n_repeats": 40
+      },
+      "rank": 166
+    },
+    {
+      "feature": "client.messages",
+      "group": "request_content",
+      "source": "客户端请求",
+      "meaning": "对话消息列表长度",
+      "kind": "len",
+      "kind_zh": "序列长度",
+      "path": "messages",
+      "n_unique_train": 103,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": -0.026946728102991944,
+        "delta_mae_std": 0.024288654117286833,
+        "delta_mae_p05": -0.0721987852652924,
+        "delta_mae_p95": 0.010672957081426992,
+        "frac_positive": 0.125,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": -0.02796224714344875,
+        "delta_mae_std": 0.032068932804646844,
+        "delta_mae_p05": -0.08306191004327687,
+        "delta_mae_p95": 0.013640585805807732,
+        "frac_positive": 0.25,
+        "n_repeats": 40
+      },
+      "rank": 167
+    },
+    {
+      "feature": "req.extend_input_len",
+      "group": "this_turn_prefill",
+      "source": "调度器 Req",
+      "meaning": "本次 prefill 要算的 token 数",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "req.extend_input_len",
+      "n_unique_train": 1388,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": -0.04199011411931906,
+        "delta_mae_std": 0.0377556101975419,
+        "delta_mae_p05": -0.10283473716640397,
+        "delta_mae_p95": 0.011843165921585061,
+        "frac_positive": 0.125,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": -0.01774178570336944,
+        "delta_mae_std": 0.02948593448413095,
+        "delta_mae_p05": -0.06702586620024173,
+        "delta_mae_p95": 0.021596503383478006,
+        "frac_positive": 0.275,
+        "n_repeats": 40
+      },
+      "rank": 168
+    },
+    {
+      "feature": "resource.protected_size",
+      "group": "resource_pool",
+      "source": "KV 分配器 / 缓存",
+      "meaning": "当前受保护数量",
+      "kind": "num",
+      "kind_zh": "标量",
+      "path": "resource.protected_size",
+      "n_unique_train": 338,
+      "official_model": "no_leaky",
+      "val": {
+        "intact_mae": 3.352699528770589,
+        "delta_mae_mean": -0.0651032040879914,
+        "delta_mae_std": 0.040808775557344926,
+        "delta_mae_p05": -0.1288964807669125,
+        "delta_mae_p95": -0.013843971862878803,
+        "frac_positive": 0.0,
+        "n_repeats": 40
+      },
+      "test": {
+        "intact_mae": 4.466910722995855,
+        "delta_mae_mean": 0.06960279034001723,
+        "delta_mae_std": 0.048966527794873614,
+        "delta_mae_p05": -0.017643612527849403,
+        "delta_mae_p95": 0.131823985245366,
+        "frac_positive": 0.875,
+        "n_repeats": 40
+      },
+      "rank": 169
+    }
+  ],
+  "groups": [
+    {
+      "group": "output_len",
+      "why": "This request's actual completion length / stop",
+      "features": [
+        "req.finished_len",
+        "req.output_ids",
+        "req.finished_reason",
+        "req.to_finish"
+      ],
+      "n_features": 4,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 1.8602864064162632,
+          "delta_mae_std": 0.2694069153164628,
+          "delta_mae_p05": 1.3922517794025233,
+          "delta_mae_p95": 2.2347978773923347,
+          "frac_positive": 1.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 1.538069019944397,
+          "delta_mae_std": 0.22744319772928542,
+          "delta_mae_p05": 1.1854398251912763,
+          "delta_mae_p95": 1.9178180890608727,
+          "frac_positive": 1.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 164,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 4.404192279740679,
+            "rmse": 5.822938674407342,
+            "r2": 0.0903691786558165
+          },
+          "test": {
+            "n": 102,
+            "mae": 5.175662792511972,
+            "rmse": 6.8310804320050895,
+            "r2": 0.04697970734944534
+          }
+        },
+        "delta_mae": {
+          "val": 1.0514927509700898,
+          "test": 0.7087520695161169
+        },
+        "delta_rmse": {
+          "val": 1.1726595520417629,
+          "test": 0.4406063842188521
+        },
+        "delta_r2": {
+          "val": -0.3294828510370069,
+          "test": -0.11897525787482188
+        }
+      }
+    },
+    {
+      "group": "leaky_replay_cap",
+      "why": "sampling.max_new_tokens = logged completion, not serving max_tokens",
+      "features": [
+        "sampling.max_new_tokens"
+      ],
+      "n_features": 1,
+      "official_model": "with_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 2.71115123158847,
+          "delta_mae_mean": 2.343512122555981,
+          "delta_mae_std": 0.2696569333390197,
+          "delta_mae_p05": 1.840323895654531,
+          "delta_mae_p95": 2.7569825777870354,
+          "frac_positive": 1.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.461081996426086,
+          "delta_mae_mean": 1.5856924895459776,
+          "delta_mae_std": 0.2998360618937454,
+          "delta_mae_p05": 1.1584320933338144,
+          "delta_mae_p95": 2.0302905634941073,
+          "frac_positive": 1.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 168,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.352699528770589,
+            "rmse": 4.650279122365579,
+            "r2": 0.4198520296928234
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.466910722995855,
+            "rmse": 6.390474047786237,
+            "r2": 0.16595496522426723
+          }
+        },
+        "delta_mae": {
+          "val": 0.6415482971821191,
+          "test": 0.0058287265697689605
+        },
+        "delta_rmse": {
+          "val": 0.7945817737724523,
+          "test": 0.02513798262374678
+        },
+        "delta_r2": {
+          "val": -0.18131908163520105,
+          "test": -0.006548801361254353
+        }
+      }
+    },
+    {
+      "group": "request_content",
+      "why": "Request body / tools / stream flags (sequences as length)",
+      "features": [
+        "client.messages",
+        "client.tools",
+        "client.model",
+        "client.tool_choice",
+        "client.parallel_tool_calls",
+        "client.response_format",
+        "client.reasoning_effort",
+        "client.task",
+        "client.stream",
+        "req.stream",
+        "tokenized.stream"
+      ],
+      "n_features": 11,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.05437895303993975,
+          "delta_mae_std": 0.0312703812686868,
+          "delta_mae_p05": -0.0019157359916316616,
+          "delta_mae_p95": 0.09764079724258311,
+          "frac_positive": 0.9,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": -0.05170394301694155,
+          "delta_mae_std": 0.03776875740264622,
+          "delta_mae_p05": -0.10854704797504423,
+          "delta_mae_p95": 0.004951354517877236,
+          "frac_positive": 0.1,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 157,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.634636175737535,
+            "rmse": 4.781052355550113,
+            "r2": 0.38676387061900075
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.444646101608782,
+            "rmse": 6.325098943547613,
+            "r2": 0.18293238472262863
+          }
+        },
+        "delta_mae": {
+          "val": 0.2819366469669462,
+          "test": -0.022264621387072303
+        },
+        "delta_rmse": {
+          "val": 0.1307732331845335,
+          "test": -0.06537510423862436
+        },
+        "delta_r2": {
+          "val": -0.033088159073822676,
+          "test": 0.0169774194983614
+        }
+      }
+    },
+    {
+      "group": "resource_pool",
+      "why": "Allocator / queue snapshot; inventory: controller-only",
+      "features": [
+        "resource.num_tokens",
+        "resource.swa_num_tokens",
+        "resource.size",
+        "resource.page_size",
+        "resource.available_size",
+        "resource.evictable_size",
+        "resource.protected_size",
+        "resource.full_available_size",
+        "resource.swa_available_size",
+        "resource.full_evictable_size_",
+        "resource.swa_evictable_size_",
+        "resource.full_protected_size_",
+        "resource.swa_protected_size_",
+        "resource.sliding_window_size",
+        "scheduler.waiting_queue",
+        "scheduler.running_batch",
+        "scheduler.cur_batch"
+      ],
+      "n_features": 17,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": -0.03794531552751697,
+          "delta_mae_std": 0.046957360704476404,
+          "delta_mae_p05": -0.12852783973975226,
+          "delta_mae_p95": 0.02563770067196803,
+          "frac_positive": 0.275,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.0504475074351652,
+          "delta_mae_std": 0.06385619565632282,
+          "delta_mae_p05": -0.05781128657507852,
+          "delta_mae_p95": 0.1486900832505284,
+          "frac_positive": 0.775,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 151,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.625659335092666,
+            "rmse": 4.749520984732748,
+            "r2": 0.3948258672895336
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.602859148343142,
+            "rmse": 6.27273100408917,
+            "r2": 0.19640601350958742
+          }
+        },
+        "delta_mae": {
+          "val": 0.27295980632207684,
+          "test": 0.13594842534728713
+        },
+        "delta_rmse": {
+          "val": 0.09924186236716892,
+          "test": -0.11774304369706723
+        },
+        "delta_r2": {
+          "val": -0.02502616240328981,
+          "test": 0.030451048285320192
+        }
+      }
+    },
+    {
+      "group": "client_sampling",
+      "why": "Generation knobs (client + req.sampling copies)",
+      "features": [
+        "client.max_tokens",
+        "client.max_completion_tokens",
+        "client.min_tokens",
+        "client.n",
+        "client.temperature",
+        "client.top_p",
+        "client.top_k",
+        "client.min_p",
+        "client.seed",
+        "sampling.temperature",
+        "sampling.top_p",
+        "sampling.top_k",
+        "sampling.min_p",
+        "sampling.n",
+        "sampling.min_new_tokens",
+        "sampling.seed"
+      ],
+      "n_features": 16,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.2799230661029992,
+          "delta_mae_std": 0.08587732898669935,
+          "delta_mae_p05": 0.14493136511847193,
+          "delta_mae_p95": 0.407908010893102,
+          "frac_positive": 1.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.25981878403080394,
+          "delta_mae_std": 0.11214730973519982,
+          "delta_mae_p05": 0.07444608890392108,
+          "delta_mae_p95": 0.40436950945953454,
+          "frac_positive": 0.975,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 152,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.597893442132543,
+            "rmse": 4.815403891716977,
+            "r2": 0.3779200935723971
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.5270840311478,
+            "rmse": 6.442154595019178,
+            "r2": 0.15241036844840805
+          }
+        },
+        "delta_mae": {
+          "val": 0.24519391336195406,
+          "test": 0.06017330815194555
+        },
+        "delta_rmse": {
+          "val": 0.1651247693513973,
+          "test": 0.05168054723294091
+        },
+        "delta_r2": {
+          "val": -0.04193193612042634,
+          "test": -0.013544596775859175
+        }
+      }
+    },
+    {
+      "group": "this_turn_prefill",
+      "why": "Tokens prefilled this turn",
+      "features": [
+        "req.extend_input_len"
+      ],
+      "n_features": 1,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": -0.04332519177908386,
+          "delta_mae_std": 0.03253184655077064,
+          "delta_mae_p05": -0.08940217835251338,
+          "delta_mae_p95": 0.010220745524503506,
+          "frac_positive": 0.1,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": -0.018139889442258104,
+          "delta_mae_std": 0.034561653141031906,
+          "delta_mae_p05": -0.06458040343072761,
+          "delta_mae_p95": 0.04459758500866719,
+          "frac_positive": 0.3,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 167,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.508182689609935,
+            "rmse": 4.686085293254771,
+            "r2": 0.41088359996642565
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.514760681954377,
+            "rmse": 6.268611002866365,
+            "r2": 0.1974612862182491
+          }
+        },
+        "delta_mae": {
+          "val": 0.1554831608393461,
+          "test": 0.04784995895852262
+        },
+        "delta_rmse": {
+          "val": 0.03580617088919169,
+          "test": -0.12186304491987254
+        },
+        "delta_r2": {
+          "val": -0.008968429726397775,
+          "test": 0.03150632099398187
+        }
+      }
+    },
+    {
+      "group": "reasoning",
+      "why": "Reasoning state of this request",
+      "features": [
+        "req.reasoning_tokens",
+        "req._is_reasoning_over",
+        "req.require_reasoning"
+      ],
+      "n_features": 3,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.011758364252964582,
+          "delta_mae_std": 0.0157271454745156,
+          "delta_mae_p05": -0.006625614073338792,
+          "delta_mae_p95": 0.034492464126517235,
+          "frac_positive": 0.775,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": -0.012218633249856059,
+          "delta_mae_std": 0.019484402185549546,
+          "delta_mae_p05": -0.040400583378030985,
+          "delta_mae_p95": 0.01973231373029853,
+          "frac_positive": 0.25,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 165,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.4631557833973847,
+            "rmse": 4.7108248154301124,
+            "r2": 0.40464686750432666
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.378091784219966,
+            "rmse": 6.288005941850002,
+            "r2": 0.19248753093225413
+          }
+        },
+        "delta_mae": {
+          "val": 0.11045625462679576,
+          "test": -0.08881893877588887
+        },
+        "delta_rmse": {
+          "val": 0.06054569306453317,
+          "test": -0.10246810593623579
+        },
+        "delta_r2": {
+          "val": -0.015205162188496768,
+          "test": 0.0265325657079869
+        }
+      }
+    },
+    {
+      "group": "cache_hit",
+      "why": "Prefix cache hit counters by layer",
+      "features": [
+        "req.cached_tokens",
+        "req.cached_tokens_device",
+        "req.cached_tokens_host",
+        "req.cached_tokens_storage",
+        "req.host_hit_length",
+        "req.swa_host_hit_length",
+        "req.mamba_host_hit_length",
+        "req.num_matched_prefix_tokens",
+        "req.storage_hit_length",
+        "req.swa_evicted_seqlen"
+      ],
+      "n_features": 10,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.05238931519094255,
+          "delta_mae_std": 0.029570962852611266,
+          "delta_mae_p05": -0.00047578951886697576,
+          "delta_mae_p95": 0.09348129996665554,
+          "frac_positive": 0.925,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": -0.0205295312396385,
+          "delta_mae_std": 0.034045726924351344,
+          "delta_mae_p05": -0.06593725985606547,
+          "delta_mae_p95": 0.030422819262257317,
+          "frac_positive": 0.35,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 158,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.4211128116472915,
+            "rmse": 4.6314488057916225,
+            "r2": 0.4245408888761394
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.634746401933577,
+            "rmse": 6.2912249150096455,
+            "r2": 0.19166055133839577
+          }
+        },
+        "delta_mae": {
+          "val": 0.06841328287670256,
+          "test": 0.16783567893772222
+        },
+        "delta_rmse": {
+          "val": -0.01883031657395673,
+          "test": -0.09924913277659186
+        },
+        "delta_r2": {
+          "val": 0.004688859183315963,
+          "test": 0.025705586114128542
+        }
+      }
+    },
+    {
+      "group": "identity",
+      "why": "IDs, extra_key, LoRA, routing, priority — not τ semantics",
+      "features": [
+        "client.user",
+        "client.extra_key",
+        "client.cache_salt",
+        "client.lora_path",
+        "client.priority",
+        "client.session_params",
+        "client.rid",
+        "tokenized.extra_key",
+        "tokenized.routing_key",
+        "tokenized.priority",
+        "tokenized.session_params",
+        "req.rid",
+        "req.extra_key",
+        "req.lora_id",
+        "req.routing_key",
+        "req.priority"
+      ],
+      "n_features": 16,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 152,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.4059520584536984,
+            "rmse": 4.671807107291132,
+            "r2": 0.4144681266367799
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.378058521686157,
+            "rmse": 6.292720387285048,
+            "r2": 0.1912762087255423
+          }
+        },
+        "delta_mae": {
+          "val": 0.05325252968310945,
+          "test": -0.08885220130969795
+        },
+        "delta_rmse": {
+          "val": 0.021527984925552524,
+          "test": -0.09775366050118972
+        },
+        "delta_r2": {
+          "val": -0.005383903056043526,
+          "test": 0.02532124350127507
+        }
+      }
+    },
+    {
+      "group": "radix_node",
+      "why": "last_node structure / lock / LRU pointers (not token length)",
+      "features": [
+        "req.last_node",
+        "req.last_host_node",
+        "req.best_match_node",
+        "last_node.children",
+        "last_node.parent",
+        "last_node.key",
+        "last_node.key.extra_key",
+        "last_node.key.is_bigram",
+        "last_node.host_value",
+        "last_node.hash_value",
+        "last_node.id",
+        "last_node.hit_count",
+        "last_node.lock_ref",
+        "last_node.host_ref_counter",
+        "last_node.write_through_pending_id",
+        "last_node.priority",
+        "last_node.swa_tombstone",
+        "last_node.full_lock_ref",
+        "last_node.swa_lock_ref",
+        "last_node.prev",
+        "last_node.next",
+        "last_node.swa_prev",
+        "last_node.swa_next",
+        "last_node.swa_uuid"
+      ],
+      "n_features": 24,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 144,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.3666437068951565,
+            "rmse": 4.685112927815629,
+            "r2": 0.4111280585962769
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.488062108274883,
+            "rmse": 6.425808250638674,
+            "r2": 0.15670626478411676
+          }
+        },
+        "delta_mae": {
+          "val": 0.013944178124567497,
+          "test": 0.021151385279027934
+        },
+        "delta_rmse": {
+          "val": 0.03483380545004966,
+          "test": 0.035334202852436825
+        },
+        "delta_r2": {
+          "val": -0.008723971096546546,
+          "test": -0.00924870044015047
+        }
+      }
+    },
+    {
+      "group": "sampling_stop_penalty",
+      "why": "Stop conditions and repetition penalties",
+      "features": [
+        "client.stop",
+        "client.stop_token_ids",
+        "client.stop_regex",
+        "client.frequency_penalty",
+        "client.presence_penalty",
+        "client.repetition_penalty",
+        "client.ignore_eos",
+        "client.no_stop_trim",
+        "client.continue_final_message",
+        "sampling.frequency_penalty",
+        "sampling.presence_penalty",
+        "sampling.repetition_penalty",
+        "sampling.ignore_eos",
+        "sampling.no_stop_trim",
+        "sampling.stop_strs",
+        "sampling.stop_token_ids",
+        "sampling.stop_regex_strs"
+      ],
+      "n_features": 17,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 151,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.352699528770589,
+            "rmse": 4.650279122365579,
+            "r2": 0.4198520296928234
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.466910722995855,
+            "rmse": 6.390474047786237,
+            "r2": 0.16595496522426723
+          }
+        },
+        "delta_mae": {
+          "val": 0.0,
+          "test": 0.0
+        },
+        "delta_rmse": {
+          "val": 0.0,
+          "test": 0.0
+        },
+        "delta_r2": {
+          "val": 0.0,
+          "test": 0.0
+        }
+      }
+    },
+    {
+      "group": "multimodal",
+      "why": "Image/audio/video and mm containers",
+      "features": [
+        "client.image_content",
+        "client.audio_content",
+        "client.video_content",
+        "client.max_dynamic_patch",
+        "client.min_dynamic_patch",
+        "client.use_audio_in_video",
+        "tokenized.mm_inputs",
+        "req.input_embeds",
+        "req.multimodal_inputs"
+      ],
+      "n_features": 9,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 159,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.352699528770589,
+            "rmse": 4.650279122365579,
+            "r2": 0.4198520296928234
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.466910722995855,
+            "rmse": 6.390474047786237,
+            "r2": 0.16595496522426723
+          }
+        },
+        "delta_mae": {
+          "val": 0.0,
+          "test": 0.0
+        },
+        "delta_rmse": {
+          "val": 0.0,
+          "test": 0.0
+        },
+        "delta_r2": {
+          "val": 0.0,
+          "test": 0.0
+        }
+      }
+    },
+    {
+      "group": "container_flags",
+      "why": "Object present/absent only",
+      "features": [
+        "tokenized.sampling_params",
+        "req.sampling_params"
+      ],
+      "n_features": 2,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 166,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.352699528770589,
+            "rmse": 4.650279122365579,
+            "r2": 0.4198520296928234
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.466910722995855,
+            "rmse": 6.390474047786237,
+            "r2": 0.16595496522426723
+          }
+        },
+        "delta_mae": {
+          "val": 0.0,
+          "test": 0.0
+        },
+        "delta_rmse": {
+          "val": 0.0,
+          "test": 0.0
+        },
+        "delta_r2": {
+          "val": 0.0,
+          "test": 0.0
+        }
+      }
+    },
+    {
+      "group": "native_session",
+      "why": "SGLang Session object; usually missing on Chat",
+      "features": [
+        "req.session",
+        "session.session_id",
+        "session.capacity_of_str_len",
+        "session.streaming",
+        "session.timeout",
+        "session.last_active_time",
+        "session.req_nodes",
+        "session.close_on_finish",
+        "session._inflight"
+      ],
+      "n_features": 9,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 159,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.352699528770589,
+            "rmse": 4.650279122365579,
+            "r2": 0.4198520296928234
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.466910722995855,
+            "rmse": 6.390474047786237,
+            "r2": 0.16595496522426723
+          }
+        },
+        "delta_mae": {
+          "val": 0.0,
+          "test": 0.0
+        },
+        "delta_rmse": {
+          "val": 0.0,
+          "test": 0.0
+        },
+        "delta_r2": {
+          "val": 0.0,
+          "test": 0.0
+        }
+      }
+    },
+    {
+      "group": "prompt_occupied",
+      "why": "Occupied KV / prompt length; fill_len ρ=1 with cache_protected/kv",
+      "features": [
+        "client.input_ids",
+        "tokenized.input_text",
+        "tokenized.input_ids",
+        "req.origin_input_ids",
+        "req.origin_input_ids_unpadded",
+        "req.full_untruncated_fill_ids",
+        "req.fill_len",
+        "req.prefix_indices",
+        "req.cache_protected_len",
+        "req.kv_committed_len",
+        "req.kv_allocated_len",
+        "last_node.key.token_ids",
+        "last_node.value"
+      ],
+      "n_features": 13,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.002063245087266896,
+          "delta_mae_std": 0.04937718280970633,
+          "delta_mae_p05": -0.08152522676227096,
+          "delta_mae_p95": 0.07666992245617296,
+          "frac_positive": 0.525,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.07481062659554696,
+          "delta_mae_std": 0.04659157339744925,
+          "delta_mae_p05": 0.002943154558795325,
+          "delta_mae_p95": 0.1421736778088894,
+          "frac_positive": 0.95,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 155,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.292990949099182,
+            "rmse": 4.560488316400709,
+            "r2": 0.4420395323078552
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.522037393566445,
+            "rmse": 6.278059553406645,
+            "r2": 0.19504016220352216
+          }
+        },
+        "delta_mae": {
+          "val": -0.05970857967140697,
+          "test": 0.05512667057059062
+        },
+        "delta_rmse": {
+          "val": -0.08979080596487066,
+          "test": -0.11241449437959261
+        },
+        "delta_r2": {
+          "val": 0.022187502615031773,
+          "test": 0.029085196979254935
+        }
+      }
+    },
+    {
+      "group": "replay_time",
+      "why": "Replay-clock timestamps; not original GLM start_time",
+      "features": [
+        "tokenized.time_stats",
+        "time.created_time",
+        "time.tokenize_finish_time",
+        "time.api_server_dispatch_time",
+        "time.api_server_dispatch_finish_time",
+        "time.first_token_time",
+        "time.last_time",
+        "time.finished_time",
+        "time.response_sent_to_client_time",
+        "time.scheduler_recv_time",
+        "time.wait_queue_entry_time",
+        "time.forward_entry_time",
+        "time.prefill_finished_time",
+        "time.completion_time",
+        "last_node.last_access_time",
+        "last_node.creation_time"
+      ],
+      "n_features": 16,
+      "official_model": "no_leaky",
+      "permutation": {
+        "val": {
+          "intact_mae": 3.352699528770589,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        },
+        "test": {
+          "intact_mae": 4.466910722995855,
+          "delta_mae_mean": 0.0,
+          "delta_mae_std": 0.0,
+          "delta_mae_p05": 0.0,
+          "delta_mae_p95": 0.0,
+          "frac_positive": 0.0,
+          "n_repeats": 40
+        }
+      },
+      "ablation": {
+        "n_kept": 152,
+        "metrics": {
+          "val": {
+            "n": 98,
+            "mae": 3.252417780701963,
+            "rmse": 4.596814540127928,
+            "r2": 0.43311534728486556
+          },
+          "test": {
+            "n": 102,
+            "mae": 4.5200624168752706,
+            "rmse": 6.497596133483514,
+            "r2": 0.13775878599051117
+          }
+        },
+        "delta_mae": {
+          "val": -0.100281748068626,
+          "test": 0.05315169387941587
+        },
+        "delta_rmse": {
+          "val": -0.05346458223765094,
+          "test": 0.10712208569727633
+        },
+        "delta_r2": {
+          "val": 0.013263317592042134,
+          "test": -0.028196179233756058
+        }
+      }
+    }
+  ],
+  "full_no_leaky": {
+    "n_features": 168,
+    "best_iteration": 52,
+    "metrics": {
+      "val": {
+        "n": 98,
+        "mae": 3.352699528770589,
+        "rmse": 4.650279122365579,
+        "r2": 0.4198520296928234
+      },
+      "test": {
+        "n": 102,
+        "mae": 4.466910722995855,
+        "rmse": 6.390474047786237,
+        "r2": 0.16595496522426723
+      }
+    }
+  },
+  "mean_baseline": {
+    "val": {
+      "n": 98,
+      "mae": 5.012092165807003,
+      "rmse": 6.154018849359176,
+      "r2": -0.0160109276838043
+    },
+    "test": {
+      "n": 102,
+      "mae": 5.479822202558593,
+      "rmse": 7.095387552670563,
+      "r2": -0.028195251488164264
+    }
+  },
+  "note": "Feature rank = 单列 permutation ΔMAE on official 168-col model (no leaky cap). leaky_replay_cap scored in the 169-col model. Group metrics copied from inventory_group_pipeline.json."
+}

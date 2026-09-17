@@ -1,0 +1,3 @@
+│   └── anthropic_samples.jsonl  --------------------- anthropic数据格式样例（单条）
+│   └── raw_samples.jsonl ---------------------------- 抓包数据数据格式样例（单条）
+│   └── claude_opus_4-8_sample_1000.jsonl  ----------- 1000条数据抽样

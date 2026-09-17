@@ -44,7 +44,17 @@ from sglang.srt.mem_cache.base_prefix_cache import (
 from sglang.srt.mem_cache.cache_init_params import CacheInitParams
 from sglang.srt.mem_cache.events import KVCacheEventMixin
 from sglang.srt.mem_cache.radix_cache import RadixKey
-from sglang.srt.mem_cache.utils import split_node_hash_value
+from sglang.srt.mem_cache.mlp_reuse import (
+    MlpReuseMixin,
+    copy_mlp_on_split,
+    init_mlp_fields,
+)
+from sglang.srt.mem_cache.reuse_value import (
+    ReuseValueMixin,
+    copy_reuse_value_on_split,
+    init_reuse_value_fields,
+)
+from sglang.srt.mem_cache.utils import get_eviction_strategy, split_node_hash_value
 
 if TYPE_CHECKING:
     from sglang.srt.managers.schedule_batch import Req
@@ -76,6 +86,8 @@ class TreeNode:
         self.last_access_time = get_last_access_time()
 
         self.hit_count = 0
+        init_reuse_value_fields(self)
+        init_mlp_fields(self)
         # store the host indices of KV cache
         self.host_value = None
         # store hash values of each page
@@ -340,7 +352,7 @@ class LRUList:
             raise Exception(msg)
 
 
-class SWARadixCache(KVCacheEventMixin, BasePrefixCache):
+class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefixCache):
     def __init__(self, params: CacheInitParams):
         assert isinstance(params.token_to_kv_pool_allocator, SWATokenToKVPoolAllocator)
         self.req_to_token_pool = params.req_to_token_pool
@@ -350,6 +362,18 @@ class SWARadixCache(KVCacheEventMixin, BasePrefixCache):
         self.is_eagle = params.is_eagle
         self.enable_kv_cache_events = params.enable_kv_cache_events
         self.kv_event_queue = []
+        self.eviction_policy = params.eviction_policy.lower()
+        self.eviction_strategy = get_eviction_strategy(self.eviction_policy)
+        self.init_reuse_value_from_params(
+            params,
+            self.eviction_policy,
+            bool(getattr(self.eviction_strategy, "uses_reuse_value", False)),
+        )
+        self.init_mlp_from_params(
+            params,
+            self.eviction_policy,
+            bool(getattr(self.eviction_strategy, "uses_mlp", False)),
+        )
 
         if self.token_to_kv_pool_allocator:
             self.device = self.token_to_kv_pool_allocator.device
@@ -377,6 +401,10 @@ class SWARadixCache(KVCacheEventMixin, BasePrefixCache):
         self.root_node.hash_value = []
         self.root_node.full_lock_ref = 1
         self.root_node.swa_lock_ref = 1
+        self.root_node.prefix_depth = 0
+        self.reset_reuse_value_counters()
+        if getattr(self, "mlp_sessions", None) is not None:
+            self.mlp_sessions.clear()
         self.full_evictable_size_ = 0
         self.swa_evictable_size_ = 0
         self.full_protected_size_ = 0
@@ -411,8 +439,12 @@ class SWARadixCache(KVCacheEventMixin, BasePrefixCache):
                 best_match_node=self.root_node,
             )
 
-        value, last_node, best_value_len = self._match_prefix_helper(key)
-        return self._match_post_processor(params, value, last_node, best_value_len)
+        value, last_node, best_value_len = self._match_prefix_helper(
+            key, params.update_reuse_strength
+        )
+        result = self._match_post_processor(params, value, last_node, best_value_len)
+        self._mlp_note_match(params.req, result.last_device_node)
+        return result
 
     def insert(self, params: InsertParams) -> InsertResult:
         if self.disable:
@@ -430,9 +462,18 @@ class SWARadixCache(KVCacheEventMixin, BasePrefixCache):
         else:
             value = torch.tensor(key.token_ids[: len(key)], dtype=torch.int64)
 
-        prefix_len = self._insert_helper(
-            self.root_node, key, value, prev_prefix_len, swa_evicted_seqlen
-        )
+        self._mlp_begin_insert(params.req)
+        try:
+            prefix_len = self._insert_helper(
+                self.root_node,
+                key,
+                value,
+                prev_prefix_len,
+                swa_evicted_seqlen,
+                params.is_terminal,
+            )
+        finally:
+            self._mlp_end_insert()
         return InsertResult(prefix_len=prefix_len)
 
     def cache_finished_req(self, req: Req, is_insert: bool = True) -> None:
@@ -466,12 +507,15 @@ class SWARadixCache(KVCacheEventMixin, BasePrefixCache):
                     value=values,
                     prev_prefix_len=old_prefix_len,
                     swa_evicted_seqlen=req.swa_evicted_seqlen,
+                    is_terminal=True,
+                    req=req,
                 )
             )
         else:
             self.token_to_kv_pool_allocator.free(
                 kv_indices[old_prefix_len:page_aligned_len]
             )
+        self._mlp_note_finished(req)
 
         # free the unaligned tail
         self.token_to_kv_pool_allocator.free(kv_indices[page_aligned_len:])
@@ -513,12 +557,15 @@ class SWARadixCache(KVCacheEventMixin, BasePrefixCache):
                 key=radix_key,
                 value=values,
                 prev_prefix_len=old_prefix_len,
+                req=req,
             )
         )
         new_prefix_len = result.prefix_len
 
         # The prefix indices could be updated, reuse it
-        match_result = self.match_prefix(MatchPrefixParams(key=radix_key))
+        match_result = self.match_prefix(
+            MatchPrefixParams(key=radix_key, update_reuse_strength=False)
+        )
         new_indices, new_last_node = (
             match_result.device_indices,
             match_result.last_device_node,
@@ -564,105 +611,37 @@ class SWARadixCache(KVCacheEventMixin, BasePrefixCache):
         if self.disable:
             return EvictResult()
         start_time = time.perf_counter()
+        self._mlp_on_evict_start()
         full_num_tokens = params.num_tokens
         swa_num_tokens = params.swa_num_tokens
         full_num_evicted = 0
         swa_num_evicted = 0
         if full_num_tokens > 0:
-            # get the least recently used leaf node that is not locked
-            x = self.full_lru_list.get_leaf_lru_no_lock()
-
-            while full_num_evicted < full_num_tokens and self.full_lru_list.in_list(x):
-                assert (
-                    x != self.root_node
-                ), f"root node should not exist in full lru list, {x.id=}"
-                assert x.full_lock_ref == 0, f"node is in use, {x.id=}"
-
-                # 1. free node kv indices, evict full and swa tokens
-                self._record_remove_event(x)
-                self.token_to_kv_pool_allocator.free(x.value)
-                full_num_evicted += len(x.value)
-                # Tombstoned leaves had their SWA freed earlier in `dec_swa_lock_only`
-                if not x.swa_tombstone:
-                    swa_num_evicted += len(x.value)
-
-                # 2. get the next leaf, update the lru lists
-                x_next = self.full_lru_list.get_prev_leaf_no_lock(x)
-                self.full_lru_list.remove_node(x)
-                if not x.swa_tombstone:
-                    self.swa_lru_list.remove_node(x)
-
-                # 3. delete the leaf node
-                self._delete_leaf(x)
-
-                # 4. Iteratively delete tombstone leaves to maintain invariant that leaf nodes are not tombstone
-                x, leaf_full_num_evicted = self._iteratively_delete_tombstone_leaf(x)
-                full_num_evicted += leaf_full_num_evicted
-
-                # 5. if parent has no more children, it is a leaf. It is possible that this node is lru, so
-                # we need to get the first leaf node in the lru list
-                if len(x.parent.children) == 0:
-                    x_next = self.full_lru_list.get_leaf_lru_no_lock()
-
-                x = x_next
+            # MLP: rescore remaining full leaves after each victim (same as the
+            # 0.246 long-window run). One-shot heap does not match that ranking.
+            x = self._select_full_leaf_victim()
+            while full_num_evicted < full_num_tokens and self.full_lru_list.in_list(
+                x
+            ):
+                d_full, d_swa, _ = self._evict_one_full_unlocked_leaf(x)
+                full_num_evicted += d_full
+                swa_num_evicted += d_swa
+                x = self._select_full_leaf_victim()
 
         if swa_num_evicted < swa_num_tokens:
-            # get the least recently used node that is not locked, doesn't have to be a leaf
-            x = self.swa_lru_list.get_lru_no_lock()
-
-            # evict lru leaf nodes until swa_num_tokens is reached
-            while swa_num_evicted < swa_num_tokens and (self.swa_lru_list.in_list(x)):
-                assert not x.swa_tombstone, f"duplicate swa tombstone node, {x.id=}"
-                assert x != self.root_node, f"root node is not evictable, {x.id=}"
-                assert x.swa_lock_ref == 0, f"node is in use by swa kv indices, {x.id=}"
-
-                if len(x.children) > 0:
-                    # 1. an internal node, free swa tokens.
-                    self.token_to_kv_pool_allocator.free_swa(x.value)
-                    swa_num_evicted += len(x.value)
-
-                    # 2. get the next node, update the lru lists
-                    x_next = self.swa_lru_list.get_prev_no_lock(x)
-                    self.swa_lru_list.remove_node(x)
-
-                    # 3. tombstone the node
-                    self._tombstone_internal_node(x)
-                elif x.full_lock_ref > 0:
-                    # Leaf still holds a full-side lock (can happen when the
-                    # SWA leaf-lock early-release optimization revived a
-                    # tombstoned leaf. Treat it like an internal tombstone.
-                    self.token_to_kv_pool_allocator.free_swa(x.value)
-                    swa_num_evicted += len(x.value)
-
-                    x_next = self.swa_lru_list.get_prev_no_lock(x)
-                    self.swa_lru_list.remove_node(x)
-
-                    self.swa_evictable_size_ -= len(x.value)
-                    x.swa_tombstone = True
-                else:
-                    assert (
-                        x.full_lock_ref == 0
-                    ), f"leaf node with full lock must also have swa lock, {x.id=}"
-                    # 1. a leaf node, free full and swa tokens
-                    self._record_remove_event(x)
-                    self.token_to_kv_pool_allocator.free(x.value)
-                    full_num_evicted += len(x.value)
-                    swa_num_evicted += len(x.value)
-
-                    # 2. get the next node, update the lru lists
-                    x_next = self.swa_lru_list.get_prev_no_lock(x)
-                    self.full_lru_list.remove_node(x)
-                    self.swa_lru_list.remove_node(x)
-
-                    # 3. delete the leaf node
-                    self._delete_leaf(x)
-
-                    # 4. Iteratively delete tombstone leaves to maintain invariant that leaf nodes are not tombstone
-                    self._iteratively_delete_tombstone_leaf(x)
-
-                x = x_next
+            x = self._select_swa_victim()
+            while swa_num_evicted < swa_num_tokens and self.swa_lru_list.in_list(x):
+                d_full, d_swa = self._evict_one_swa_unlocked_node(x)
+                full_num_evicted += d_full
+                swa_num_evicted += d_swa
+                x = self._select_swa_victim()
 
         self.update_eviction_metrics(full_num_evicted + swa_num_evicted, start_time)
+        self._mlp_on_evict_end(
+            time.perf_counter() - start_time,
+            full=full_num_evicted,
+            swa=swa_num_evicted,
+        )
         return EvictResult(
             num_tokens_evicted=full_num_evicted, swa_num_tokens_evicted=swa_num_evicted
         )
@@ -863,8 +842,93 @@ class SWARadixCache(KVCacheEventMixin, BasePrefixCache):
 
     ##### Internal Helper Functions #####
 
+    def _iter_full_unlocked_leaves(self):
+        node = self.full_lru_list.get_leaf_lru_no_lock()
+        while self.full_lru_list.in_list(node):
+            yield node
+            node = self.full_lru_list.get_prev_leaf_no_lock(node)
+
+    def _iter_swa_unlocked(self):
+        node = self.swa_lru_list.get_lru_no_lock()
+        while self.swa_lru_list.in_list(node):
+            yield node
+            node = self.swa_lru_list.get_prev_no_lock(node)
+
+    def _evict_one_swa_unlocked_node(self, x: TreeNode) -> Tuple[int, int]:
+        assert not x.swa_tombstone, f"duplicate swa tombstone node, {x.id=}"
+        assert x != self.root_node, f"root node is not evictable, {x.id=}"
+        assert x.swa_lock_ref == 0, f"node is in use by swa kv indices, {x.id=}"
+
+        full_num_evicted = 0
+        swa_num_evicted = 0
+        if len(x.children) > 0:
+            self.token_to_kv_pool_allocator.free_swa(x.value)
+            swa_num_evicted += len(x.value)
+            self.swa_lru_list.remove_node(x)
+            self._tombstone_internal_node(x)
+        elif x.full_lock_ref > 0:
+            # Leaf still holds a full-side lock (can happen when the
+            # SWA leaf-lock early-release optimization revived a
+            # tombstoned leaf. Treat it like an internal tombstone.
+            self.token_to_kv_pool_allocator.free_swa(x.value)
+            swa_num_evicted += len(x.value)
+            self.swa_lru_list.remove_node(x)
+            self.swa_evictable_size_ -= len(x.value)
+            x.swa_tombstone = True
+        else:
+            assert (
+                x.full_lock_ref == 0
+            ), f"leaf node with full lock must also have swa lock, {x.id=}"
+            self._record_remove_event(x)
+            self.token_to_kv_pool_allocator.free(x.value)
+            full_num_evicted += len(x.value)
+            swa_num_evicted += len(x.value)
+            self.full_lru_list.remove_node(x)
+            self.swa_lru_list.remove_node(x)
+            self._delete_leaf(x)
+            _, leaf_full_num_evicted = self._iteratively_delete_tombstone_leaf(x)
+            full_num_evicted += leaf_full_num_evicted
+        return full_num_evicted, swa_num_evicted
+
+    def _select_swa_victim(self):
+        fallback = self.swa_lru_list.get_lru_no_lock()
+        if getattr(self, "mlp_enabled", False):
+            return self._select_mlp_swa_victim(self._iter_swa_unlocked(), fallback)
+        return fallback
+
+    def _evict_one_full_unlocked_leaf(self, x: TreeNode) -> Tuple[int, int, TreeNode]:
+        assert x != self.root_node, f"root node should not exist in full lru list, {x.id=}"
+        assert x.full_lock_ref == 0, f"node is in use, {x.id=}"
+
+        full_num_evicted = 0
+        swa_num_evicted = 0
+        self._record_remove_event(x)
+        self.token_to_kv_pool_allocator.free(x.value)
+        full_num_evicted += len(x.value)
+        if not x.swa_tombstone:
+            swa_num_evicted += len(x.value)
+
+        self.full_lru_list.remove_node(x)
+        if not x.swa_tombstone:
+            self.swa_lru_list.remove_node(x)
+
+        self._delete_leaf(x)
+        walked, leaf_full_num_evicted = self._iteratively_delete_tombstone_leaf(x)
+        full_num_evicted += leaf_full_num_evicted
+        return full_num_evicted, swa_num_evicted, walked
+
+    def _select_full_leaf_victim(self):
+        fallback = self.full_lru_list.get_leaf_lru_no_lock()
+        if getattr(self, "mlp_enabled", False):
+            return self._select_mlp_victim(
+                self._iter_full_unlocked_leaves(), fallback
+            )
+        return self._select_reuse_value_victim(
+            self._iter_full_unlocked_leaves(), fallback
+        )
+
     def _match_prefix_helper(
-        self, key: RadixKey
+        self, key: RadixKey, update_reuse_strength: bool = True
     ) -> Tuple[List[torch.Tensor], TreeNode, int]:
         """
         SWA prefix matching helper. It factors in the sliding window size such that
@@ -902,12 +966,16 @@ class SWARadixCache(KVCacheEventMixin, BasePrefixCache):
                 if not new_node.swa_tombstone:
                     match_len_since_tombstone += len(new_node.value)
                 node = new_node
+                if update_reuse_strength:
+                    self._record_reuse(new_node)
                 break
             else:
                 value.append(child.value)
                 if not child.swa_tombstone:
                     match_len_since_tombstone += len(child.value)
                 node = child
+                if update_reuse_strength:
+                    self._record_reuse(child)
                 key = key[prefix_len:]
 
                 if len(key):
@@ -1061,6 +1129,8 @@ class SWARadixCache(KVCacheEventMixin, BasePrefixCache):
         new_node.key = child.key[:split_len]
         assert len(new_node.key) > 0, f"new_node.key should not be empty"
         new_node.value = child.value[:split_len].clone()
+        copy_reuse_value_on_split(new_node, child)
+        copy_mlp_on_split(new_node, child)
         # parent inherits the swa_uuid from child for swa lock ref
         new_node.swa_uuid = child.swa_uuid
         child.swa_uuid = None
@@ -1096,6 +1166,7 @@ class SWARadixCache(KVCacheEventMixin, BasePrefixCache):
         value,
         update_kv_after_len: int,
         swa_evicted_seqlen: int = 0,
+        is_terminal: bool = False,
     ) -> int:
         # Update the last access time from root to leaf, so that
         # swa will tombstone the node closer to root first
@@ -1105,6 +1176,8 @@ class SWARadixCache(KVCacheEventMixin, BasePrefixCache):
             if not node.swa_tombstone:
                 self.swa_lru_list.reset_node_mru(node)
         if len(key) == 0:
+            if is_terminal and self.reuse_value_enabled:
+                node.terminal_count += 1
             return 0
 
         child_key = key.child_key(self.page_size)
@@ -1192,6 +1265,8 @@ class SWARadixCache(KVCacheEventMixin, BasePrefixCache):
             #    against unexpected eviction states from other code paths.
             if swa_evicted_seqlen == total_prefix_length + len(key):
                 self.token_to_kv_pool_allocator.free(value)
+                if is_terminal and self.reuse_value_enabled:
+                    node.terminal_count += 1
                 return total_prefix_length
 
             if (
@@ -1214,7 +1289,10 @@ class SWARadixCache(KVCacheEventMixin, BasePrefixCache):
                 # Cap the leaf at one (page-aligned) sliding window so a future
                 # inc_lock_ref only protects `sliding_window_size` tokens of SWA pool.
                 self._maybe_split_leaf_for_swa_lock(new_leaf)
+            node = new_leaf
 
+        if is_terminal and self.reuse_value_enabled:
+            node.terminal_count += 1
         return total_prefix_length
 
     def _add_new_node(
@@ -1230,6 +1308,12 @@ class SWARadixCache(KVCacheEventMixin, BasePrefixCache):
         new_node.key = key
         new_node.value = value.clone()
         new_node.swa_tombstone = swa_tombstone
+        new_node.prefix_depth = parent.prefix_depth + len(key)
+        self._mlp_stamp_new_node(new_node)
+        if self.reuse_value_enabled:
+            self._initialize_reuse_value_node(new_node, parent)
+            self._record_reuse_value_insert(len(key))
+            new_node.last_turnover = self.reuse_value_global_turnover
         parent.children[key.child_key(self.page_size)] = new_node
         self.full_lru_list.insert_mru(new_node)
         self.full_evictable_size_ += len(value)

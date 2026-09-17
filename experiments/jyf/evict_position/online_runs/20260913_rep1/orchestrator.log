@@ -1,0 +1,4 @@
+precompute START 2026-09-13T00:23:47+08:00
+precompute REPLAY 2026-09-13T00:27:18+08:00
+Terminated
+run_online.sh: line 18: 159608 Killed                  EP_MODE="$mode" EP_OUT="$arm/metrics" EP_CHECKPOINT="$EXP/training/model.pt" PYTHONPATH="$EXP" "$SGLANG" serve --trust-remote-code --model-path /share/dai-sys/models/deepseek-v4-flash --served-model-name deepseek-v4-flash --tp 8 --moe-runner-backend marlin --reasoning-parser deepseek-v4 --tool-call-parser deepseekv4 --port 30000 --host 127.0.0.1 --mem-fraction-static 0.45 --watchdog-timeout 900 --random-seed 42 --enable-metrics --enable-cache-report --radix-eviction-policy lru > "$arm/server.log" 2>&1

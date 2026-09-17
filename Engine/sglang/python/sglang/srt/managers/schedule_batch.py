@@ -1109,11 +1109,12 @@ class Req(ReqDllmMixin):
         if tree_cache is not None:
             if cow_mamba is None:
                 cow_mamba = tree_cache.supports_mamba()
+            radix_key = RadixKey(
+                token_ids=token_ids_to_match, extra_key=self.extra_key
+            )
             match_result = tree_cache.match_prefix(
                 MatchPrefixParams(
-                    key=RadixKey(
-                        token_ids=token_ids_to_match, extra_key=self.extra_key
-                    ),
+                    key=radix_key,
                     req=self,
                     cow_mamba=cow_mamba,
                 )
@@ -1143,6 +1144,14 @@ class Req(ReqDllmMixin):
                 self.cache_protected_len = match_result.cache_protected_len
             else:
                 self.cache_protected_len = len(self.prefix_indices)
+
+            record_match = getattr(
+                tree_cache, "_record_match_diagnostic", None
+            )
+            if record_match is not None:
+                record_match(
+                    self, radix_key, len(self.prefix_indices) + self.host_hit_length
+                )
 
             if self.is_dllm():
                 self._update_block_offset_for_dllm()

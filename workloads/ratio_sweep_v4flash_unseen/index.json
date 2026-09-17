@@ -1,0 +1,98 @@
+{
+  "protocol": "v4flash-unseen-strict-segment-ratio-v1",
+  "target_calls": 2000,
+  "ratios": [
+    {
+      "name": "agent_000",
+      "target": 0.0,
+      "actual": 0.0,
+      "agent_calls": 0,
+      "request_calls": 2000
+    },
+    {
+      "name": "agent_010",
+      "target": 0.1,
+      "actual": 0.1,
+      "agent_calls": 200,
+      "request_calls": 1800
+    },
+    {
+      "name": "agent_020",
+      "target": 0.2,
+      "actual": 0.2,
+      "agent_calls": 400,
+      "request_calls": 1600
+    },
+    {
+      "name": "agent_030",
+      "target": 0.3,
+      "actual": 0.3,
+      "agent_calls": 600,
+      "request_calls": 1400
+    },
+    {
+      "name": "agent_040",
+      "target": 0.4,
+      "actual": 0.4,
+      "agent_calls": 800,
+      "request_calls": 1200
+    },
+    {
+      "name": "agent_050",
+      "target": 0.5,
+      "actual": 0.5,
+      "agent_calls": 1000,
+      "request_calls": 1000
+    },
+    {
+      "name": "agent_060",
+      "target": 0.6,
+      "actual": 0.6,
+      "agent_calls": 1200,
+      "request_calls": 800
+    },
+    {
+      "name": "agent_070",
+      "target": 0.7,
+      "actual": 0.7,
+      "agent_calls": 1400,
+      "request_calls": 600
+    },
+    {
+      "name": "agent_080",
+      "target": 0.8,
+      "actual": 0.8,
+      "agent_calls": 1600,
+      "request_calls": 400
+    },
+    {
+      "name": "agent_090",
+      "target": 0.9,
+      "actual": 0.9,
+      "agent_calls": 1800,
+      "request_calls": 200
+    },
+    {
+      "name": "agent_100",
+      "target": 1.0,
+      "actual": 1.0,
+      "agent_calls": 2000,
+      "request_calls": 0
+    }
+  ],
+  "openhands_pool": {
+    "all_unique_v4flash_trajectories": 108,
+    "used_content_hashes": 59,
+    "unseen_trajectories": 49,
+    "strict_segments": 64,
+    "strict_segment_calls": 2227,
+    "min_segment_turns": 12
+  },
+  "request_pool": {
+    "excluded_conversation_hashes": 1047,
+    "selected_pool_sessions": 1536,
+    "selected_pool_calls": 2995,
+    "request_max_turns": 8,
+    "request_gap_cap_s": 30.0
+  }
+}

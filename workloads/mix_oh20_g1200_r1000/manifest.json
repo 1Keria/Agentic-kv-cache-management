@@ -1,0 +1,56 @@
+{
+  "name": "mix_oh20_g1200_r1000",
+  "created_unix": 1787211248.0227368,
+  "workload_jsonl_sha256": "173b62a8d2b553facf86b1a8ea995c541ffca310cad68f95283e19fbd6ae88cb",
+  "sessions_jsonl_sha256": "a907ec6f03fa517a1ea3603e3294d574573768271c5ceb1fa035fa291b10d083",
+  "spec_json_sha256": "42d8e19fdede0b1441bc1000f59b3d0c7470c0a9d0333d09663c303bca406b69",
+  "n_turns": 6999,
+  "n_sessions_by_class": {
+    "glm": 1200,
+    "openhands": 20,
+    "request": 1000
+  },
+  "source_sha256": {
+    "openhands_jsonl": {
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__03-31-54-maxeffort/edit-pdf__60e5f5fd/trajectory/llm_trajectory.jsonl": "b311c69a5edc92ee4fa9aaf37ba26a248c7687cbf59c2b07e3d6ff94ac4f252e",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__03-31-54-maxeffort/pddl-airport-planning__8c3b314d/trajectory/llm_trajectory.jsonl": "4646ba2b37ae59684541a1c390c29885c0a03264e011e2da1bd97778bffc052e",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__04-28-23-maxeffort/dynamic-object-aware-egomotion__37e791e3/trajectory/llm_trajectory.jsonl": "15920310fc271899cf7d5e57101e130e4a453c151666ceafd4a9d25beabb92a7",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__04-28-23-maxeffort/quantum-numerical-simulation__67ea29bb/trajectory/llm_trajectory.jsonl": "b9c7b2905383edac597b5312867dc3bf88cc1e975ca7eb55c56ebb5d2b698542",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__04-34-57-maxeffort/earthquake-phase-association__54333442/trajectory/llm_trajectory.jsonl": "423ca754f6b7f43676804dd943383d3008aa5c49383a89bc12cb8644c8b00311",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__04-40-12-maxeffort/fix-visual-stability__d7b0e0bd/trajectory/llm_trajectory.jsonl": "4836da5692d4bd2bd66b5baed38a7962928c02f8021b6f1a41ca1c55f49c2e63",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__06-08-01-maxeffort/civ6-adjacency-optimizer__b2ead4ad/trajectory/llm_trajectory.jsonl": "b8aadf034c7e37a5d0fb39e55cd050b6c59d285dd7252152dd52a107a0d39776",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__06-14-08-maxeffort/edit-pdf__993b20f3/trajectory/llm_trajectory.jsonl": "8035809383cf1584e743df9880ed486fad98ec4fa67fd24c4ba60a9f52a25fd9",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__06-19-21-maxeffort/drone-planning-control__b8e5012d/trajectory/llm_trajectory.jsonl": "eb93634abc30eb8a8ec57b65cb8e09b977148deee8b970538fd4caeeadef880c",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__06-31-34-maxeffort/fix-visual-stability__016daa26/trajectory/llm_trajectory.jsonl": "c9f6d09c73e1b939d4e7d442a2bc0cf6619b133c222177adf78a806404a8958e",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__06-48-43-maxeffort/manufacturing-codebook-normalization__b8a680c8/trajectory/llm_trajectory.jsonl": "a006abd517b568817cc33e53883676972d33e222c548058ba9c64a1d78a03f5b",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__07-44-00-maxeffort/seismic-phase-picking__f95df21d/trajectory/llm_trajectory.jsonl": "4885ceb3f32c83317a5eb6c1310cb941986499ada6437e942e7b6292afea0186",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__09-43-36-maxeffort/civ6-adjacency-optimizer__f4f8c1e1/trajectory/llm_trajectory.jsonl": "361eefd3a631d635b6bc67520c82840fec2f1bbd2bc4594a4d82916aec68d2ea",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner05-20260610/2026-06-10__20-48-55-runner05/invoice-fraud-detection__5757cb87/trajectory/llm_trajectory.jsonl": "adff36a1ba95fd8e320c7baa0dabbefbb1d67b1cc1caee16240febc3d3f185ae",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner05-20260610/2026-06-10__20-52-02-runner05/jpg-ocr-stat__97666775/trajectory/llm_trajectory.jsonl": "c10f200eed78791ccac8f7b39006f1c4b84a17508f8125b9c4ed83530086efd0",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner05-20260610/2026-06-10__21-04-15-runner05/shock-analysis-demand__138398c3/trajectory/llm_trajectory.jsonl": "7fddbb091e4e2c29e02e5d44cdb85cc3717ff223ae37414fd9e8d2597cd02730",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner05-20260610/2026-06-10__21-05-30-runner05/flink-query__0cda8c61/trajectory/llm_trajectory.jsonl": "1fcdc54ee1a3a36698591be0518eb43b1519f2f0a00fafb33592909becb12095",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner05-20260610/2026-06-10__22-02-55-runner05/debug-trl-grpo__bca7e6e9/trajectory/llm_trajectory.jsonl": "6d8caef3b5db4a1935623c4e7e288bbe246ae2d32a5adb7708048ed16ef231a6",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner05-20260610/2026-06-10__22-13-29-runner05/setup-fuzzing-py__37f7b197/trajectory/llm_trajectory.jsonl": "4ff7946e1a911799d2ebfb5f87ec5e7fbaace9a657ed12e5d1f879bbd26b8df9",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner05-20260610/2026-06-10__22-32-17-runner05/shock-analysis-demand__49038a1c/trajectory/llm_trajectory.jsonl": "aa209d5e272341e4d3eeec105e55ed1929bbc0be05a71e4c4454b97c703772e3"
+    },
+    "wildchat_parquet": {
+      "train-00000-of-00014.parquet": "abec2a13129db8c0e6a2d3a51ff12644873c748205a6fdf6551fbcb34430e51c",
+      "train-00001-of-00014.parquet": "f10fa35bb52703baad5e3177d3382d63b855fce9e9d1b9ab1fe2f0e762464f2a",
+      "train-00002-of-00014.parquet": "9a4912ec14c1012970f57b6710518dda17dbf6cdfb9b6e694880f5456b0b031f",
+      "train-00003-of-00014.parquet": "3f2d50ee227e32848f6c4fdb0f8ea543b379b2219bec72be9446e232d3d2a670",
+      "train-00004-of-00014.parquet": "08c7e0c31edc120606d67cfa82486471d82945a7a414761501ea44b1ab0cd804",
+      "train-00005-of-00014.parquet": "1caab40d8d4f01d76d8e1fa03e80f31b2f4d8b8b4c47cb3aa0280f4467e04555",
+      "train-00006-of-00014.parquet": "0bd2fff31c74feb6b44b0397b4e7ab6285dd69ccbe4cc8b5f19c42cdbf691303",
+      "train-00007-of-00014.parquet": "f498ea6771be5bf00d259ec76bd9fba51ceaa99c76147a0bb95fd7fa1769b984",
+      "train-00008-of-00014.parquet": "a69578183dde5de1aa94134da2d7c2d13f00d88a577ef91140a492fbbbf10792",
+      "train-00009-of-00014.parquet": "d2eb8868323274c60c9fd5437eaf2159a08ac278598b1197bc20ac04c633648a",
+      "train-00010-of-00014.parquet": "328b0d702d91ffd47e51aff2de56d74d0f2b874a31f2530f1948474a582f0467",
+      "train-00011-of-00014.parquet": "a458b915aeab7a4a81bd18770f33c3ebb908c91e67d916db5525819c88dbe778",
+      "train-00012-of-00014.parquet": "5353f1a829ac86de165c2fb537a30d7d756259dbe37a8a0fa6ec791321a37d6e",
+      "train-00013-of-00014.parquet": "440be579bf012a6e98d179b8dd0bedd73634e5527f7000c067d19c88b5cefa6c"
+    },
+    "glm_jsonl": {
+      "third_party/glm-5dot1_onlinedata/glm-5dot1_onlinedata_lt32k.jsonl": "5fdf0dc631cfcec6a21687f170fb732907e8e7fc9b887f4503c2575a6c023fea"
+    }
+  }
+}

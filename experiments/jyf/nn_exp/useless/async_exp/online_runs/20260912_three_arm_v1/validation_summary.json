@@ -1,0 +1,104 @@
+{
+  "lru": {
+    "tp_consistent": true,
+    "evictions": 3610,
+    "finish_calls": 2002,
+    "choices": 0,
+    "mlp_choices": 0,
+    "changed_choices": 0,
+    "mlp_fraction": null,
+    "changed_fraction": null,
+    "submitted": 0,
+    "dropped": 0,
+    "full_evicted_tokens": 2287360,
+    "swa_evicted_tokens": 22301440,
+    "finish_total_us": {
+      "p50": 206.3555,
+      "p99": 2333.4370400000003
+    },
+    "finish_prediction_hook_us": {
+      "p50": 0.5275000000000001,
+      "p99": 1.9788300000000039
+    },
+    "finish_original_us": {
+      "p50": 205.3655,
+      "p99": 2332.31602
+    },
+    "evict_total_us": {
+      "p50": 154870.945,
+      "p99": 204563.14693999998
+    },
+    "evict_plan_and_tp_us": {
+      "p50": 0.0,
+      "p99": 0.0
+    }
+  },
+  "sync": {
+    "tp_consistent": true,
+    "evictions": 3182,
+    "finish_calls": 2001,
+    "choices": 5565,
+    "mlp_choices": 439,
+    "changed_choices": 318,
+    "mlp_fraction": 0.0788858939802336,
+    "changed_fraction": 0.05714285714285714,
+    "submitted": 8389,
+    "dropped": 0,
+    "full_evicted_tokens": 1731328,
+    "swa_evicted_tokens": 17810432,
+    "finish_total_us": {
+      "p50": 582.734,
+      "p99": 4600.917
+    },
+    "finish_prediction_hook_us": {
+      "p50": 244.016,
+      "p99": 3099.8
+    },
+    "finish_original_us": {
+      "p50": 257.591,
+      "p99": 2487.78
+    },
+    "evict_total_us": {
+      "p50": 111733.6965,
+      "p99": 201332.91721
+    },
+    "evict_plan_and_tp_us": {
+      "p50": 472.53049999999996,
+      "p99": 2909.966170000001
+    }
+  },
+  "async": {
+    "tp_consistent": true,
+    "evictions": 3843,
+    "finish_calls": 2007,
+    "choices": 6269,
+    "mlp_choices": 435,
+    "changed_choices": 314,
+    "mlp_fraction": 0.06938905726591163,
+    "changed_fraction": 0.05008773329079598,
+    "submitted": 8410,
+    "dropped": 0,
+    "full_evicted_tokens": 2329600,
+    "swa_evicted_tokens": 21628160,
+    "finish_total_us": {
+      "p50": 383.176,
+      "p99": 2569.1356800000003
+    },
+    "finish_prediction_hook_us": {
+      "p50": 74.674,
+      "p99": 396.7891400000001
+    },
+    "finish_original_us": {
+      "p50": 295.989,
+      "p99": 2360.0200600000003
+    },
+    "evict_total_us": {
+      "p50": 114568.909,
+      "p99": 202844.25426
+    },
+    "evict_plan_and_tp_us": {
+      "p50": 465.873,
+      "p99": 2686.6397999999995
+    }
+  }
+}

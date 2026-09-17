@@ -1,0 +1,36 @@
+{
+  "name": "mix_a8_r32",
+  "created_unix": 1787068912.6651187,
+  "workload_jsonl_sha256": "41a74b107380ab1f630faa7aa4f95d344784cb28521b69559f32c3e4de0292a0",
+  "sessions_jsonl_sha256": "90ad0bbc09a401f16e8302bdceb9f02252604bf53f34ac194fa25cd536f39399",
+  "spec_json_sha256": "ac14789d2fb58047b5908e300f60669540e8fcaaf47c0910e60a4f8e130d2afa",
+  "n_turns": 285,
+  "n_sessions_agent": 8,
+  "n_sessions_request": 32,
+  "source_sha256": {
+    "agent_jsonl": {
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__02-46-03-maxeffort/crystallographic-wyckoff-position-analysis__d1c71da0/trajectory/llm_trajectory.jsonl": "e2595406336e8598d06387129ee76b0e8efcd92b7901a5e602ceaf3279d90558",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__03-48-20-maxeffort/latex-formula-extraction__ec1169f2/trajectory/llm_trajectory.jsonl": "456bc7d12ba553f97ff52c5cb8fe2fcabc1ee97ee1436c3778af6df40ff611ea",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__04-21-32-maxeffort/civ6-adjacency-optimizer__6a85aaef/trajectory/llm_trajectory.jsonl": "b4241e5d9c2919deba8af64fa54b6f9f6ae9889feea47457d801345c3718e93f",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__06-01-07-maxeffort/crystallographic-wyckoff-position-analysis__4d91e6b3/trajectory/llm_trajectory.jsonl": "9133f4874781473b81942f3626c6177ac54557a7e941f257981295c0a6157139",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__06-01-07-maxeffort/dynamic-object-aware-egomotion__a161d68c/trajectory/llm_trajectory.jsonl": "627f8c6f457fb5e3a36f09d232d9a07509c46ff4d2e6f1de2319bee2ffc824d0",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__06-48-43-maxeffort/offer-letter-generator__3cd6d495/trajectory/llm_trajectory.jsonl": "e7f9832e9c0863997a471dd7cc526e8e128492a9f24f0b8a6bda3aa0aa9b6367",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__07-09-55-maxeffort/pptx-reference-formatting__ff28a9f1/trajectory/llm_trajectory.jsonl": "b8511afab13a957c1d1a1bf104e07a6fe9a4af1df37b290220b6a62fe18a9978",
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner03/2026-06-09__07-48-16-maxeffort/xlsx-recover-data__2239df2e/trajectory/llm_trajectory.jsonl": "6e56eeacba4dc4720a08df99c9dcf624a5e0bf19cfb50c10712fa4704dc16218"
+    },
+    "wildchat_parquet": {
+      "train-00000-of-00014.parquet": "abec2a13129db8c0e6a2d3a51ff12644873c748205a6fdf6551fbcb34430e51c",
+      "train-00001-of-00014.parquet": "f10fa35bb52703baad5e3177d3382d63b855fce9e9d1b9ab1fe2f0e762464f2a",
+      "train-00002-of-00014.parquet": "9a4912ec14c1012970f57b6710518dda17dbf6cdfb9b6e694880f5456b0b031f",
+      "train-00003-of-00014.parquet": "3f2d50ee227e32848f6c4fdb0f8ea543b379b2219bec72be9446e232d3d2a670",
+      "train-00004-of-00014.parquet": "08c7e0c31edc120606d67cfa82486471d82945a7a414761501ea44b1ab0cd804",
+      "train-00005-of-00014.parquet": "1caab40d8d4f01d76d8e1fa03e80f31b2f4d8b8b4c47cb3aa0280f4467e04555",
+      "train-00006-of-00014.parquet": "0bd2fff31c74feb6b44b0397b4e7ab6285dd69ccbe4cc8b5f19c42cdbf691303",
+      "train-00007-of-00014.parquet": "f498ea6771be5bf00d259ec76bd9fba51ceaa99c76147a0bb95fd7fa1769b984",
+      "train-00009-of-00014.parquet": "d2eb8868323274c60c9fd5437eaf2159a08ac278598b1197bc20ac04c633648a",
+      "train-00011-of-00014.parquet": "a458b915aeab7a4a81bd18770f33c3ebb908c91e67d916db5525819c88dbe778",
+      "train-00012-of-00014.parquet": "5353f1a829ac86de165c2fb537a30d7d756259dbe37a8a0fa6ec791321a37d6e",
+      "train-00013-of-00014.parquet": "440be579bf012a6e98d179b8dd0bedd73634e5527f7000c067d19c88b5cefa6c"
+    }
+  }
+}

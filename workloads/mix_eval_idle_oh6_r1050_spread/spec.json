@@ -1,0 +1,40 @@
+{
+  "name": "mix_eval_idle_oh6_r1050_spread",
+  "created_unix": 1788165886.2643123,
+  "parent_workload": "workloads/mix_eval_longgap_oh59_g150_r1050",
+  "parent_workload_sha256": "fd9293f559058a49805dc6c89a85dec4f18d9276095535acb536bd9a010eb7f7",
+  "recipe": {
+    "agent": "openhands only; GLM dropped",
+    "collapse": "keep last turn of each tool-loop burst (pre_gap < 10.0s); inter-round idle = sum of skipped pre_gaps",
+    "filter": "keep OH sessions with at least one inter-round idle >= 60.0s",
+    "idle_floor_s": 180.0,
+    "oh_start_window_s": 900.0,
+    "n_openhands_cap": 6,
+    "request_start_offset_s": 180.0,
+    "request": "WildChat from parent, same n, KV pressure only"
+  },
+  "burst_gap_s": 10.0,
+  "min_idle_s": 60.0,
+  "idle_floor_s": 180.0,
+  "oh_start_window_s": 900.0,
+  "request_start_offset_s": 180.0,
+  "n_openhands": 6,
+  "n_glm": 0,
+  "n_request": 1050,
+  "n_turns": 1969,
+  "n_turns_openhands": 47,
+  "oh_idle_n": 41,
+  "oh_idle_ge_60": 41,
+  "oh_idle_ge_180": 41,
+  "arrival": {
+    "type": "frozen",
+    "horizon_s": 10800.0,
+    "n_waves": 9,
+    "wave_width_s": 10.0,
+    "oh_start_window_s": 900.0,
+    "request_start_offset_s": 180.0,
+    "seed": 42,
+    "note": "OH packed into [0, oh_start_window]; Request uses waves shifted +180.0s. Replay MUST use --arrival frozen so starts are not overwritten."
+  },
+  "seed": 42
+}

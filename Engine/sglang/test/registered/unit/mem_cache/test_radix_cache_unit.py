@@ -24,6 +24,7 @@ from sglang.test.ci.ci_register import register_amd_ci, register_cuda_ci
 register_cuda_ci(est_time=15, stage="base-b", runner_config="1-gpu-small")
 register_amd_ci(est_time=5, suite="stage-b-test-1-gpu-small-amd")
 
+import math
 import random
 import time
 import unittest
@@ -409,6 +410,206 @@ class TestRadixCache(unittest.TestCase):
                 torch.testing.assert_close(
                     result.device_indices, torch.tensor([10, 20], dtype=torch.int64)
                 )
+
+    def test_reuse_value_terminal_inheritance(self):
+        allocator = unittest.mock.Mock()
+        allocator.device = torch.device("cpu")
+        allocator.size = 100
+        cache = RadixCache.create_simulated(
+            mock_allocator=allocator,
+            eviction_policy="reuse_value",
+            reuse_value_turnover_kappa=float("inf"),
+            reuse_value_base_cold_strength=0.5,
+        )
+
+        parent_key = RadixKey(array("q", [1, 2]))
+        cache.insert(
+            InsertParams(
+                key=parent_key,
+                value=torch.tensor([10, 20]),
+                is_terminal=True,
+            )
+        )
+        parent = cache.root_node.children[parent_key.child_key(1)]
+        self.assertEqual(parent.reuse_strength, 0.5)
+        self.assertEqual(parent.terminal_count, 1)
+
+        cache.match_prefix(MatchPrefixParams(key=parent_key))
+        self.assertEqual(parent.reuse_strength, 1.5)
+        self.assertEqual(parent.reuse_count, 1)
+
+        child_key = RadixKey(array("q", [1, 2, 3, 4]))
+        cache.insert(
+            InsertParams(
+                key=child_key,
+                value=torch.tensor([10, 20, 30, 40]),
+                is_terminal=True,
+            )
+        )
+        child = parent.children[RadixKey(array("q", [3, 4])).child_key(1)]
+        self.assertEqual(child.reuse_strength, parent.reuse_strength)
+        self.assertEqual(child.reuse_count, 0)
+        self.assertEqual(child.terminal_count, 1)
+
+    def test_reuse_value_ages_by_cache_turnover(self):
+        allocator = unittest.mock.Mock()
+        allocator.device = torch.device("cpu")
+        allocator.size = 10
+        cache = RadixCache.create_simulated(
+            mock_allocator=allocator,
+            eviction_policy="reuse_value",
+            reuse_value_turnover_kappa=1.0,
+            reuse_value_base_cold_strength=2.0,
+        )
+
+        key_a = RadixKey(array("q", [1, 2]))
+        cache.insert(InsertParams(key=key_a, value=torch.tensor([10, 20])))
+        node_a = cache.root_node.children[key_a.child_key(1)]
+
+        key_b = RadixKey(array("q", list(range(10, 18))))
+        cache.insert(InsertParams(key=key_b, value=torch.arange(8)))
+
+        expected = 2.0 * math.exp(-0.8)
+        self.assertAlmostEqual(
+            cache._materialize_reuse_strength(node_a), expected, places=6
+        )
+
+    def test_reuse_value_evicts_lower_value_leaf(self):
+        allocator = unittest.mock.Mock()
+        allocator.device = torch.device("cpu")
+        allocator.size = 100
+        cache = RadixCache.create_simulated(
+            mock_allocator=allocator,
+            eviction_policy="reuse_value",
+            reuse_value_turnover_kappa=float("inf"),
+            reuse_value_base_cold_strength=1.0,
+        )
+
+        hot_key = RadixKey(array("q", [1, 2]))
+        cold_key = RadixKey(array("q", [3, 4]))
+        cache.insert(InsertParams(key=hot_key, value=torch.tensor([10, 20])))
+        cache.insert(InsertParams(key=cold_key, value=torch.tensor([30, 40])))
+        cache.match_prefix(MatchPrefixParams(key=hot_key))
+        cache.match_prefix(MatchPrefixParams(key=hot_key))
+
+        result = cache.evict(EvictParams(num_tokens=2))
+        self.assertEqual(result.num_tokens_evicted, 2)
+        self.assertEqual(
+            len(
+                cache.match_prefix(
+                    MatchPrefixParams(key=cold_key, update_reuse_strength=False)
+                ).device_indices
+            ),
+            0,
+        )
+        self.assertEqual(
+            len(
+                cache.match_prefix(
+                    MatchPrefixParams(key=hot_key, update_reuse_strength=False)
+                ).device_indices
+            ),
+            2,
+        )
+
+    def test_reuse_value_shadow_preserves_lru_decision(self):
+        allocator = unittest.mock.Mock()
+        allocator.device = torch.device("cpu")
+        allocator.size = 100
+        cache = RadixCache.create_simulated(
+            mock_allocator=allocator,
+            eviction_policy="lru",
+            enable_reuse_value_estimator=True,
+            reuse_value_shadow_only=True,
+            reuse_value_turnover_kappa=float("inf"),
+        )
+
+        hot_key = RadixKey(array("q", [1, 2]))
+        cold_key = RadixKey(array("q", [3, 4]))
+        cache.insert(InsertParams(key=hot_key, value=torch.tensor([10, 20])))
+        cache.match_prefix(MatchPrefixParams(key=hot_key))
+        cache.match_prefix(MatchPrefixParams(key=hot_key))
+        # Insert cold KV last: LRU sees it as newer, while reuse_value sees it
+        # as less valuable than the older, repeatedly reused node.
+        cache.insert(InsertParams(key=cold_key, value=torch.tensor([30, 40])))
+
+        with self.assertLogs("sglang.srt.mem_cache.radix_cache", level="INFO") as logs:
+            cache.evict(EvictParams(num_tokens=2))
+        self.assertTrue(
+            any(
+                "KV_VALUE_SHADOW" in line and "agree=False" in line
+                for line in logs.output
+            )
+        )
+        self.assertEqual(
+            len(
+                cache.match_prefix(
+                    MatchPrefixParams(key=hot_key, update_reuse_strength=False)
+                ).device_indices
+            ),
+            0,
+        )
+        self.assertEqual(
+            len(
+                cache.match_prefix(
+                    MatchPrefixParams(key=cold_key, update_reuse_strength=False)
+                ).device_indices
+            ),
+            2,
+        )
+
+    def test_reuse_value_metadata_is_replica_deterministic(self):
+        def build_cache():
+            allocator = unittest.mock.Mock()
+            allocator.device = torch.device("cpu")
+            allocator.size = 100
+            return RadixCache.create_simulated(
+                mock_allocator=allocator,
+                eviction_policy="reuse_value",
+                reuse_value_turnover_kappa=2.0,
+                reuse_value_base_cold_strength=0.5,
+            )
+
+        caches = [build_cache(), build_cache()]
+        parent_key = RadixKey(array("q", [1, 2]))
+        child_key = RadixKey(array("q", [1, 2, 3, 4]))
+        for cache in caches:
+            cache.insert(
+                InsertParams(
+                    key=parent_key,
+                    value=torch.tensor([10, 20]),
+                    is_terminal=True,
+                )
+            )
+            cache.match_prefix(MatchPrefixParams(key=parent_key))
+            cache.insert(
+                InsertParams(
+                    key=child_key,
+                    value=torch.tensor([10, 20, 30, 40]),
+                    is_terminal=True,
+                )
+            )
+
+        self.assertEqual(
+            caches[0].reuse_value_inserted_tokens_total,
+            caches[1].reuse_value_inserted_tokens_total,
+        )
+        self.assertEqual(
+            caches[0].reuse_value_global_turnover,
+            caches[1].reuse_value_global_turnover,
+        )
+        for cache in caches:
+            parent = cache.root_node.children[parent_key.child_key(1)]
+            child = parent.children[RadixKey(array("q", [3, 4])).child_key(1)]
+            cache._refresh_reuse_value_density(parent)
+            cache._refresh_reuse_value_density(child)
+        parent_0 = caches[0].root_node.children[parent_key.child_key(1)]
+        parent_1 = caches[1].root_node.children[parent_key.child_key(1)]
+        child_0 = parent_0.children[RadixKey(array("q", [3, 4])).child_key(1)]
+        child_1 = parent_1.children[RadixKey(array("q", [3, 4])).child_key(1)]
+        self.assertEqual(parent_0.reuse_strength, parent_1.reuse_strength)
+        self.assertEqual(child_0.reuse_strength, child_1.reuse_strength)
+        self.assertEqual(parent_0.reuse_value_density, parent_1.reuse_value_density)
+        self.assertEqual(child_0.reuse_value_density, child_1.reuse_value_density)
 
     def test_insert_with_none_value(self):
         """Test insert with None value (should use token_ids as list)."""

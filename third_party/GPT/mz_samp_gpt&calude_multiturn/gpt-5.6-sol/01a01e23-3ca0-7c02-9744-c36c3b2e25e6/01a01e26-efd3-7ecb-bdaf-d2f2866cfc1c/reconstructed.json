@@ -1,0 +1,11 @@
+{
+  "id": "resp_ba13c31df4814b1da20f4b1bbe7d2b30",
+  "object": "response",
+  "model": "gpt-5.6-sol",
+  "status": "failed",
+  "output": [],
+  "error": {
+    "code": "rate_limit_exceeded",
+    "message": "Concurrency limit exceeded for user, please retry later"
+  }
+}

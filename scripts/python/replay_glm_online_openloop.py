@@ -252,6 +252,7 @@ async def measure_chat(
     client: AsyncOpenAI,
     *,
     model: str,
+    request_id: str | None,
     messages: list[dict[str, Any]],
     max_tokens: int,
     tools: list[dict[str, Any]] | None,
@@ -273,6 +274,8 @@ async def measure_chat(
         "stream_options": {"include_usage": True},
         "timeout": timeout_s,
     }
+    if request_id is not None:
+        kwargs["extra_body"] = {"rid": request_id}
     if tools:
         kwargs["tools"] = tools
 
@@ -492,6 +495,10 @@ async def run_replay(args: argparse.Namespace) -> int:
         scale_factor=args.scale_factor,
         start_epoch_s=start_epoch,
     )
+    if args.max_events is not None:
+        events = events[: max(0, int(args.max_events))]
+        if not events:
+            raise SystemExit("--max-events left an empty schedule")
     print(
         f"[schedule] n={len(events)} scale={args.scale_factor} "
         f"span_sched_s={events[-1].sched_ms / 1000.0:.1f} "
@@ -531,6 +538,7 @@ async def run_replay(args: argparse.Namespace) -> int:
         "dry_run": args.dry_run,
         "n_events_indexed": len(all_events),
         "n_events_scheduled": len(events),
+        "max_events": args.max_events,
         "first_start_time_orig": events[0].start_time_orig,
         "last_start_time_orig": events[-1].start_time_orig,
     }
@@ -634,6 +642,11 @@ async def run_replay(args: argparse.Namespace) -> int:
             metrics = await measure_chat(
                 client,
                 model=model,
+                request_id=(
+                    ev.trace_id
+                    if args.propagate_trace_id_as_request_id
+                    else None
+                ),
                 messages=messages,
                 max_tokens=max_tokens,
                 tools=tools,
@@ -779,6 +792,12 @@ def build_argparser() -> argparse.ArgumentParser:
         help="start at densest 1h window (override --start-time)",
     )
     p.add_argument("--dense-window-s", type=float, default=3600.0)
+    p.add_argument(
+        "--max-events",
+        type=int,
+        default=None,
+        help="keep only the first N events after time-sort (small-split prefix)",
+    )
     p.add_argument("--max-tokens-slack", type=int, default=0)
     p.add_argument("--max-tokens-cap", type=int, default=None)
     p.add_argument(
@@ -802,6 +821,11 @@ def build_argparser() -> argparse.ArgumentParser:
     p.add_argument("--early-stop-error-threshold", type=int, default=None)
     p.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     p.add_argument("--out-prefix", default=None)
+    p.add_argument(
+        "--propagate-trace-id-as-request-id",
+        action="store_true",
+        help="send trace_id as SGLang rid for KV diagnostic joins",
+    )
     p.add_argument("--update-latest", action="store_true", default=True)
     p.add_argument("--no-latest", action="store_true")
     p.add_argument("--dry-run", action="store_true")

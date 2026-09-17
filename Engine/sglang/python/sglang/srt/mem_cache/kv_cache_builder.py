@@ -31,7 +31,6 @@ from sglang.srt.mem_cache.registry import TreeCacheBuildContext, create_tree_cac
 from sglang.srt.model_loader.utils import get_resolved_model_impl
 
 if TYPE_CHECKING:
-
     from torch.distributed import ProcessGroup
 
     from sglang.srt.configs.model_config import ModelConfig
@@ -203,6 +202,16 @@ def build_kv_cache(
     if model_config.is_multimodal and uses_transformers_backend:
         effective_chunked_prefill_size = None
 
+    reuse_value_requested = (
+        server_args.radix_eviction_policy == "reuse_value"
+        or server_args.enable_kv_value_estimator
+        or server_args.kv_value_shadow_only
+    )
+    if reuse_value_requested and is_hybrid_ssm:
+        raise NotImplementedError(
+            "The reuse-value estimator does not yet support Mamba/SSM caches."
+        )
+
     params = CacheInitParams(
         disable=disable_radix_cache,
         req_to_token_pool=req_to_token_pool,
@@ -216,6 +225,17 @@ def build_kv_cache(
         attn_tp_cache_group=attn_tp_cpu_group,
         pp_cache_group=pp_group.cpu_group,
         eviction_policy=server_args.radix_eviction_policy,
+        enable_reuse_value_estimator=server_args.enable_kv_value_estimator,
+        reuse_value_shadow_only=server_args.kv_value_shadow_only,
+        reuse_value_turnover_kappa=server_args.radix_reuse_value_turnover_kappa,
+        reuse_value_base_cold_strength=server_args.radix_reuse_value_base_cold_strength,
+        mlp_checkpoint=server_args.radix_mlp_checkpoint,
+        mlp_hold_lambda=server_args.radix_mlp_hold_lambda,
+        mlp_delta_alpha=server_args.radix_mlp_delta_alpha,
+        mlp_horizon_index=server_args.radix_mlp_horizon_index,
+        mlp_occupancy_hi=server_args.radix_mlp_occupancy_hi,
+        mlp_occupancy_mid=server_args.radix_mlp_occupancy_mid,
+        mlp_shadow_only=server_args.radix_mlp_shadow_only,
         enable_metrics=enable_metrics,
         enable_kv_cache_events=enable_kv_cache_events,
         enable_mamba_extra_buffer=server_args.enable_mamba_extra_buffer(),

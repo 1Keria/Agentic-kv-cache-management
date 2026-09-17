@@ -1,0 +1,3443 @@
+{
+  "id": "resp_0b79335250e47e93016a86e2bc78bc81919b8c1b615ed4eae5",
+  "object": "response",
+  "created_at": 1787224764,
+  "status": "completed",
+  "background": false,
+  "completed_at": 1787224770,
+  "error": null,
+  "frequency_penalty": 0.0,
+  "incomplete_details": null,
+  "instructions": "You are Codex running on {model_name} via wodex. Be a helpful, direct coding collaborator.",
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "model": "gpt-5.6-terra",
+  "moderation": null,
+  "output": [
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "已在原线程完成协调并发布汇总（事件 `b1d540796dd71aa67f2ba8f18ee842e233be83b3df7e58191e0384dc0854a21e`）。\n\n关键结论：Developer 权限与共享 runner 在线证据可见；当前无 Sunor checkout 或 active write owner；但 GitLab HTTPS 私有 clone/fetch/push 的安全凭据链路尚未验证，且 main 基线 build/code_quality 失败。已明确维持零写入边界，等待绑定 canonical `task_id`、`git_change_id` 的正式 dispatch 与受控凭据方案。"
+        }
+      ]
+    }
+  ],
+  "parallel_tool_calls": true,
+  "presence_penalty": 0.0,
+  "previous_response_id": null,
+  "prompt_cache_key": "2b7b002fa7264288",
+  "prompt_cache_retention": "24h",
+  "reasoning": {
+    "context": "all_turns",
+    "effort": "high",
+    "mode": "standard",
+    "summary": "detailed"
+  },
+  "safety_identifier": "user-0eKSRRy44RRe17wawkHBQ7Lx",
+  "service_tier": "default",
+  "store": false,
+  "temperature": 1.0,
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "tool_choice": "auto",
+  "tool_usage": {
+    "image_gen": {
+      "input_tokens": 0,
+      "input_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "output_tokens": 0,
+      "output_tokens_details": {
+        "image_tokens": 0,
+        "text_tokens": 0
+      },
+      "total_tokens": 0
+    },
+    "web_search": {
+      "num_requests": 0
+    }
+  },
+  "tools": [
+    {
+      "type": "function",
+      "description": "Runs a command in a PTY, returning output or a session ID for ongoing interaction.",
+      "name": "exec_command",
+      "output_schema": null,
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "cmd": {
+            "description": "Shell command to execute.",
+            "type": "string"
+          },
+          "justification": {
+            "description": "User-facing approval question for `require_escalated`; omit otherwise.",
+            "type": "string"
+          },
+          "login": {
+            "description": "True runs the shell with -l/-i semantics; false disables them. Defaults to true.",
+            "type": "boolean"
+          },
+          "max_output_tokens": {
+            "description": "Output token budget. Defaults to 10000 tokens; larger requests may be capped by policy.",
+            "type": "number"
+          },
+          "prefix_rule": {
+            "description": "Reusable approval prefix for `cmd`, only with `sandbox_permissions: \"require_escalated\"`; for example [\"git\", \"pull\"].",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "sandbox_permissions": {
+            "description": "Per-command sandbox override. Defaults to `use_default`; use `require_escalated` for unsandboxed execution.",
+            "enum": [
+              "use_default",
+              "require_escalated"
+            ],
+            "type": "string"
+          },
+          "shell": {
+            "description": "Shell binary to launch. Defaults to the user's default shell.",
+            "type": "string"
+          },
+          "tty": {
+            "description": "True allocates a PTY for the command; false or omitted uses plain pipes.",
+            "type": "boolean"
+          },
+          "workdir": {
+            "description": "Working directory for the command. Defaults to the turn cwd.",
+            "type": "string"
+          },
+          "yield_time_ms": {
+            "description": "Wait before yielding output. Defaults to 10000 ms; effective range is 250-30000 ms.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "cmd"
+        ],
+        "type": "object"
+      },
+      "strict": false
+    },
+    {
+      "type": "function",
+      "description": "Writes characters to an existing unified exec session and returns recent output.",
+      "name": "write_stdin",
+      "output_schema": null,
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "chars": {
+            "description": "Bytes to write to stdin. Defaults to empty, which polls without writing.",
+            "type": "string"
+          },
+          "max_output_tokens": {
+            "description": "Output token budget. Defaults to 10000 tokens; larger requests may be capped by policy.",
+            "type": "number"
+          },
+          "session_id": {
+            "description": "Identifier of the running unified exec session.",
+            "type": "number"
+          },
+          "yield_time_ms": {
+            "description": "Wait before yielding output. Non-empty writes default to 250 ms and cap at 30000 ms; empty polls wait 5000-300000 ms by default.",
+            "type": "number"
+          }
+        },
+        "required": [
+          "session_id"
+        ],
+        "type": "object"
+      },
+      "strict": false
+    },
+    {
+      "type": "function",
+      "description": "Lists resources provided by MCP servers. Resources allow servers to share data that provides context to language models, such as files, database schemas, or application-specific information. Prefer resources over web search when possible.",
+      "name": "list_mcp_resources",
+      "output_schema": null,
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "cursor": {
+            "description": "Opaque cursor from a previous list_mcp_resources call; omit for the first page.",
+            "type": "string"
+          },
+          "server": {
+            "description": "MCP server name. Omit to list resources from every configured server.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "strict": false
+    },
+    {
+      "type": "function",
+      "description": "Lists resource templates provided by MCP servers. Parameterized resource templates allow servers to share data that takes parameters and provides context to language models, such as files, database schemas, or application-specific information. Prefer resource templates over web search when possible.",
+      "name": "list_mcp_resource_templates",
+      "output_schema": null,
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "cursor": {
+            "description": "Opaque cursor from a previous list_mcp_resource_templates call; omit for the first page.",
+            "type": "string"
+          },
+          "server": {
+            "description": "MCP server name. Omit to list resource templates from every configured server.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "strict": false
+    },
+    {
+      "type": "function",
+      "description": "Read a specific resource from an MCP server given the server name and resource URI.",
+      "name": "read_mcp_resource",
+      "output_schema": null,
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "server": {
+            "description": "MCP server name exactly as configured. Must match the 'server' field returned by list_mcp_resources.",
+            "type": "string"
+          },
+          "uri": {
+            "description": "Resource URI to read. Must be one of the URIs returned by list_mcp_resources.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "server",
+          "uri"
+        ],
+        "type": "object"
+      },
+      "strict": false
+    },
+    {
+      "type": "function",
+      "description": "Updates the task plan.\nProvide an optional explanation and a list of plan items, each with a step and status.\nAt most one step can be in_progress at a time.\n",
+      "name": "update_plan",
+      "output_schema": null,
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "explanation": {
+            "description": "Optional explanation for this plan update.",
+            "type": "string"
+          },
+          "plan": {
+            "description": "The list of steps",
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "status": {
+                  "description": "Step status.",
+                  "enum": [
+                    "pending",
+                    "in_progress",
+                    "completed"
+                  ],
+                  "type": "string"
+                },
+                "step": {
+                  "description": "Task step text.",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "step",
+                "status"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "plan"
+        ],
+        "type": "object"
+      },
+      "strict": false
+    },
+    {
+      "type": "function",
+      "description": "Request user input for one to three short questions and wait for the response. Set autoResolutionMs, from 60000 to 240000 milliseconds, only when the question is useful but non-blocking and continuing with best judgment is acceptable if the user does not answer; omit it when explicit user input is required. This tool is only available in Plan mode.",
+      "name": "request_user_input",
+      "output_schema": null,
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "autoResolutionMs": {
+            "description": "Optional auto-resolution window in milliseconds, from 60000 to 240000. Include this only when the question is useful but non-blocking and continuing with best judgment is acceptable if the user does not answer; omit it when explicit user input is required before continuing. Use 60000 for lightly helpful context and up to 240000 when the answer would materially unblock better work.",
+            "type": "number"
+          },
+          "questions": {
+            "description": "Questions to show the user. Prefer 1 and do not exceed 3",
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "header": {
+                  "description": "Short header label shown in the UI (12 or fewer chars).",
+                  "type": "string"
+                },
+                "id": {
+                  "description": "Stable identifier for mapping answers (snake_case).",
+                  "type": "string"
+                },
+                "options": {
+                  "description": "Provide 2-3 mutually exclusive choices. Put the recommended option first and suffix its label with \"(Recommended)\". Do not include an \"Other\" option in this list; the client will add a free-form \"Other\" option automatically.",
+                  "items": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "description": {
+                        "description": "One short sentence explaining impact/tradeoff if selected.",
+                        "type": "string"
+                      },
+                      "label": {
+                        "description": "User-facing label (1-5 words).",
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "label",
+                      "description"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "question": {
+                  "description": "Single-sentence prompt shown to the user.",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "header",
+                "question",
+                "options"
+              ],
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "required": [
+          "questions"
+        ],
+        "type": "object"
+      },
+      "strict": false
+    },
+    {
+      "type": "function",
+      "description": "View a local image file from the filesystem when visual inspection is needed. Use this for images already available on disk.",
+      "name": "view_image",
+      "output_schema": null,
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "detail": {
+            "description": "Image detail level. Defaults to `high`; use `original` to preserve exact resolution.",
+            "enum": [
+              "high",
+              "original"
+            ],
+            "type": "string"
+          },
+          "path": {
+            "description": "Local filesystem path to an image file.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "type": "object"
+      },
+      "strict": false
+    },
+    {
+      "type": "function",
+      "description": "Get the current goal for this thread, including status, budgets, token and elapsed-time usage, and remaining token budget.",
+      "name": "get_goal",
+      "output_schema": null,
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {},
+        "required": [],
+        "type": "object"
+      },
+      "strict": false
+    },
+    {
+      "type": "function",
+      "description": "Create a goal only when explicitly requested by the user or system/developer instructions; do not infer goals from ordinary tasks.\nSet token_budget only when an explicit token budget is requested. Fails if an unfinished goal exists; use update_goal only for status.",
+      "name": "create_goal",
+      "output_schema": null,
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "objective": {
+            "description": "Required. The concrete objective to start pursuing. This starts a new active goal when no goal exists or replaces the current goal when it is complete.",
+            "type": "string"
+          },
+          "token_budget": {
+            "description": "Positive token budget for the new goal. Omit unless explicitly requested.",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "objective"
+        ],
+        "type": "object"
+      },
+      "strict": false
+    },
+    {
+      "type": "function",
+      "description": "Update the existing goal.\nUse this tool only to mark the goal achieved or genuinely blocked.\nSet status to `complete` only when the objective has actually been achieved and no required work remains.\nSet status to `blocked` only when the same blocking condition has repeated for at least three consecutive goal turns, counting the original/user-triggered turn and any automatic continuations, and the agent cannot make meaningful progress without user input or an external-state change.\nIf the user resumes a goal that was previously marked `blocked`, treat the resumed run as a fresh blocked audit. If the same blocking condition then repeats for at least three consecutive resumed goal turns, set status to `blocked` again.\nOnce the blocked threshold is satisfied, do not keep reporting that you are still blocked while leaving the goal active; set status to `blocked`.\nDo not use `blocked` merely because the work is hard, slow, uncertain, incomplete, or would benefit from clarification.\nDo not mark a goal complete merely because its budget is nearly exhausted or because you are stopping work.\nYou cannot use this tool to pause, resume, budget-limit, or usage-limit a goal; those status changes are controlled by the user or system.\nWhen marking a budgeted goal achieved with status `complete`, report the final token usage from the tool result to the user.",
+      "name": "update_goal",
+      "output_schema": null,
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "status": {
+            "description": "Required. Set to `complete` only when the objective is achieved and no required work remains. Set to `blocked` only after the same blocking condition has recurred for at least three consecutive goal turns and the agent is at an impasse. After a previously blocked goal is resumed, the resumed run starts a fresh blocked audit.",
+            "enum": [
+              "complete",
+              "blocked"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "type": "object"
+      },
+      "strict": false
+    },
+    {
+      "type": "web_search",
+      "return_token_budget": "default",
+      "search_content_types": [
+        "text",
+        "image"
+      ],
+      "search_context_size": "medium",
+      "user_location": {
+        "type": "approximate",
+        "city": null,
+        "country": "US",
+        "region": null,
+        "timezone": null
+      }
+    },
+    {
+      "type": "custom",
+      "description": "The `apply_patch` tool can be used to edit files. This is a FREEFORM tool, so do not wrap the patch in JSON.",
+      "format": {
+        "type": "grammar",
+        "definition": "start: begin_patch hunk+ end_patch\nbegin_patch: \"*** Begin Patch\" LF\nend_patch: \"*** End Patch\" LF?\n\nhunk: add_hunk | delete_hunk | update_hunk\nadd_hunk: \"*** Add File: \" filename LF add_line+\ndelete_hunk: \"*** Delete File: \" filename LF\nupdate_hunk: \"*** Update File: \" filename LF change_move? change?\n\nfilename: /(.+)/\nadd_line: \"+\" /(.*)/ LF -> line\n\nchange_move: \"*** Move to: \" filename LF\nchange: (change_context | change_line)+ eof_line?\nchange_context: (\"@@\" | \"@@ \" /(.+)/) LF\nchange_line: (\"+\" | \"-\" | \" \") /(.*)/ LF\neof_line: \"*** End of File\" LF\n\n%import common.LF\n",
+        "syntax": "lark"
+      },
+      "name": "apply_patch"
+    },
+    {
+      "type": "namespace",
+      "description": "Tools for spawning and managing sub-agents.",
+      "name": "multi_agent_v1",
+      "tools": [
+        {
+          "type": "function",
+          "description": "Close an agent and any open descendants when they are no longer needed, and return the target agent's previous status before shutdown was requested. Completed agents remain open and count toward the concurrency limit until closed. Don't keep agents open for too long if they are not needed anymore.",
+          "name": "close_agent",
+          "output_schema": null,
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "target": {
+                "description": "Agent id to close (from spawn_agent).",
+                "type": "string"
+              }
+            },
+            "required": [
+              "target"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Resume a previously closed agent by id so it can receive send_input and wait_agent calls.",
+          "name": "resume_agent",
+          "output_schema": null,
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "description": "Agent id to resume.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Send a message to an existing agent. Use interrupt=true to redirect work immediately. You should reuse the agent by send_input if you believe your assigned task is highly dependent on the context of a previous task.",
+          "name": "send_input",
+          "output_schema": null,
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "interrupt": {
+                "description": "True interrupts the current task and handles this message immediately; false or omitted queues it.",
+                "type": "boolean"
+              },
+              "items": {
+                "description": "Structured input items. Use this to pass explicit mentions (for example app:// connector paths).",
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "audio_url": {
+                      "description": "Audio data URL when type is audio.",
+                      "type": "string"
+                    },
+                    "image_url": {
+                      "description": "Image URL when type is image.",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Display name when type is skill or mention.",
+                      "type": "string"
+                    },
+                    "path": {
+                      "description": "Path when type is local_image/local_audio/skill, or structured mention target such as app://<connector-id> or plugin://<plugin-name>@<marketplace-name> when type is mention.",
+                      "type": "string"
+                    },
+                    "text": {
+                      "description": "Text content when type is text.",
+                      "type": "string"
+                    },
+                    "type": {
+                      "description": "Input item type: text, image, local_image, audio, local_audio, skill, or mention.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "message": {
+                "description": "Legacy plain-text message to send to the agent. Use either message or items.",
+                "type": "string"
+              },
+              "target": {
+                "description": "Agent id to message (from spawn_agent).",
+                "type": "string"
+              }
+            },
+            "required": [
+              "target"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "\n        \n        Available model overrides (optional; inherited parent model is preferred):\n- `gpt-5.6-terra`: gpt-5.6-terra via wodex gateway. Reasoning efforts: low, medium (default), high, xhigh.\n- `gpt-5.6-sol`: gpt-5.6-sol via wodex gateway. Reasoning efforts: low, medium (default), high, xhigh.\n- `gpt-5.6-luna`: gpt-5.6-luna via wodex gateway. Reasoning efforts: low, medium (default), high, xhigh.\n        Spawn a sub-agent for a well-scoped task. Returns the spawned agent id plus the user-facing nickname when available. Spawned agents inherit your current model by default. Omit `model` to use that preferred default; set `model` only when an explicit override is needed.\nThis spawn_agent tool provides you access to sub-agents that inherit your current model by default. Do not set the `model` field unless the user explicitly asks for a different model or there is a clear task-specific reason. You should follow the rules and guidelines below to use this tool.\n\nDo not spawn sub-agents unless the user or applicable AGENTS.md/skill instructions explicitly ask for sub-agents, delegation, or parallel agent work.\nRequests for depth, thoroughness, research, investigation, or detailed codebase analysis do not count as permission to spawn.\nAgent-role guidance below only helps choose which agent to use after spawning is already authorized; it never authorizes spawning by itself.\n\n### When to delegate vs. do the subtask yourself\n- First, quickly analyze the overall user task and form a succinct high-level plan. Identify which tasks are immediate blockers on the critical path, and which tasks are sidecar tasks that are needed but can run in parallel without blocking the next local step. As part of that plan, explicitly decide what immediate task you should do locally right now. Do this planning step before delegating to agents so you do not hand off the immediate blocking task to a submodel and then waste time waiting on it.\n- Use a subagent when a subtask is easy enough for it to handle and can run in parallel with your local work. Prefer delegating concrete, bounded sidecar tasks that materially advance the main task without blocking your immediate next local step.\n- Do not delegate urgent blocking work when your immediate next step depends on that result. If the very next action is blocked on that task, the main rollout should usually do it locally to keep the critical path moving.\n- Keep work local when the subtask is too difficult to delegate well and when it is tightly coupled, urgent, or likely to block your immediate next step.\n\n### Designing delegated subtasks\n- Subtasks must be concrete, well-defined, and self-contained.\n- Delegated subtasks must materially advance the main task.\n- Do not duplicate work between the main rollout and delegated subtasks.\n- Avoid issuing multiple delegate calls on the same unresolved thread unless the new delegated task is genuinely different and necessary.\n- Narrow the delegated ask to the concrete output you need next.\n- For coding tasks, prefer delegating concrete code-change worker subtasks over read-only explorer analysis when the subagent can make a bounded patch in a clear write scope.\n- When delegating coding work, instruct the submodel to edit files directly in its forked workspace and list the file paths it changed in the final answer.\n- For code-edit subtasks, decompose work so each delegated task has a disjoint write set.\n\n### After you delegate\n- Call wait_agent very sparingly. Only call wait_agent when you need the result immediately for the next critical-path step and you are blocked until it returns.\n- Do not redo delegated subagent tasks yourself; focus on integrating results or tackling non-overlapping work.\n- While the subagent is running in the background, do meaningful non-overlapping work immediately.\n- Do not repeatedly wait by reflex.\n- When a delegated coding task returns, quickly review the uploaded changes, then integrate or refine them.\n\n### Parallel delegation patterns\n- Run multiple independent information-seeking subtasks in parallel when you have distinct questions that can be answered independently.\n- Split implementation into disjoint codebase slices and spawn multiple agents for them in parallel when the write scopes do not overlap.\n- Delegate verification only when it can run in parallel with ongoing implementation and is likely to catch a concrete risk before final integration.\n- The key is to find opportunities to spawn multiple independent subtasks in parallel within the same round, while ensuring each subtask is well-defined, self-contained, and materially advances the main task.",
+          "name": "spawn_agent",
+          "output_schema": null,
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "fork_context": {
+                "description": "True forks the current thread history into the new agent; false or omitted starts with only the initial prompt.",
+                "type": "boolean"
+              },
+              "items": {
+                "description": "Structured input items. Use this to pass explicit mentions (for example app:// connector paths).",
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "audio_url": {
+                      "description": "Audio data URL when type is audio.",
+                      "type": "string"
+                    },
+                    "image_url": {
+                      "description": "Image URL when type is image.",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Display name when type is skill or mention.",
+                      "type": "string"
+                    },
+                    "path": {
+                      "description": "Path when type is local_image/local_audio/skill, or structured mention target such as app://<connector-id> or plugin://<plugin-name>@<marketplace-name> when type is mention.",
+                      "type": "string"
+                    },
+                    "text": {
+                      "description": "Text content when type is text.",
+                      "type": "string"
+                    },
+                    "type": {
+                      "description": "Input item type: text, image, local_image, audio, local_audio, skill, or mention.",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "message": {
+                "description": "Initial plain-text task for the new agent. Use either message or items.",
+                "type": "string"
+              },
+              "model": {
+                "description": "Model override for the new agent. Omit unless an explicit override is needed.",
+                "type": "string"
+              },
+              "reasoning_effort": {
+                "description": "Reasoning effort override for the new agent. Omit to inherit the parent effort.",
+                "type": "string"
+              },
+              "service_tier": {
+                "description": "Service tier override for the new agent. Omit unless explicitly requested.",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Wait for agents to reach a final status. Completed statuses may include the agent's final message. Returns empty status when timed out. Once the agent reaches a final status, a notification message will be received containing the same completed status.",
+          "name": "wait_agent",
+          "output_schema": null,
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "targets": {
+                "description": "Agent ids to wait on. Pass multiple ids to wait for whichever finishes first.",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "timeout_ms": {
+                "description": "Timeout in milliseconds. Defaults to 30000, min 10000, max 3600000. Prefer longer waits (minutes) to avoid busy polling.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "targets"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        }
+      ]
+    },
+    {
+      "type": "namespace",
+      "description": "Working directory: /Users/Apple/.buzz\nDetected stack: unknown\nShell: bash (set BUZZ_SHELL to override) — write command strings in that shell's syntax.\nPass `workdir` per call rather than `cd`.\n\nBuzz relay configured. Run `buzz --help` to see available commands.",
+      "name": "mcp__buzz_dev_mcp",
+      "tools": [
+        {
+          "type": "function",
+          "description": "Internal hook. Agent invokes after handoff; returns todo state for re-injection.",
+          "name": "_PostCompact",
+          "output_schema": null,
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {},
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Returns open todo items if any exist. Used by the agent's _Stop lifecycle hook to advise against ending with incomplete work.",
+          "name": "_Stop",
+          "output_schema": null,
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {},
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Read a text file and return its contents with line numbers. Returns lines in `{number}:{content}` format. Use `offset` (0-based) and `limit` (default 2000) to window into large files. Path resolved relative to workdir (defaults to server cwd). Prefer over cat/head/tail.",
+          "name": "read_file",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "limit": {
+                "description": "Maximum number of lines to return. Defaults to 2000.",
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "offset": {
+                "description": "0-based line offset to start reading from. Defaults to 0.",
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "path": {
+                "description": "File path (absolute or relative to workdir).",
+                "type": "string"
+              },
+              "workdir": {
+                "description": "Workspace root for relative path resolution. Defaults to server cwd.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "path"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Run a shell command (bash by default; set `BUZZ_SHELL` to use cmd, PowerShell, or another shell). Ephemeral process per call. Output tail-truncated to ~8KB for the LLM; full output (first 10MB) saved to artifact file. timeout_ms defaults to 120000 (2 min) if omitted; capped at 600000 (10 min). For long-running commands (git push with hooks, cargo build, test suites), use 300000+. On PATH: rg (prefer over grep; flags: -n -i -l -g <glob> -C <n> --files), tree (flags: -d <depth>; shows line counts), and buzz (Buzz relay CLI — run buzz --help for commands).",
+          "name": "shell",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "command": {
+                "type": "string"
+              },
+              "timeout_ms": {
+                "description": "Defaults to 120000 ms (2 min) if omitted; capped at 600000 ms (10 min).\nFor long-running commands (git push with hooks, cargo build, test suites), use 300000+.",
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "workdir": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "command"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Atomic find-and-replace in a file. old_str must occur exactly once unless replace_all is true, in which case all occurrences are replaced. Returns a unified diff. Path resolved relative to workdir (defaults to server cwd). Prefer over sed/awk.",
+          "name": "str_replace",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "new_str": {
+                "type": "string"
+              },
+              "old_str": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "replace_all": {
+                "description": "When true, replace ALL occurrences of old_str instead of requiring\nexactly one match.",
+                "type": "boolean"
+              },
+              "workdir": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "path",
+              "old_str",
+              "new_str"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Session task list. Omit `todos` to read current state. Provide a full replacement array to update. Items are {text, done}. Open items removed without being marked done will trigger a warning. If the operator enables hooks for this server, the agent's _Stop hook will advise against ending the turn while items are open.",
+          "name": "todo",
+          "output_schema": null,
+          "parameters": {
+            "$defs": {
+              "Item": {
+                "additionalProperties": false,
+                "properties": {
+                  "done": {
+                    "type": "boolean"
+                  },
+                  "text": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "text"
+                ],
+                "type": "object"
+              }
+            },
+            "additionalProperties": false,
+            "properties": {
+              "todos": {
+                "description": "Full replacement list (max 50 items). Omit to read.",
+                "items": {
+                  "$ref": "#/$defs/Item"
+                },
+                "type": [
+                  "array",
+                  "null"
+                ]
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Load an image from a file path, http(s) URL, or data: URL and return it as an MCP image content block that multimodal LLMs (Anthropic, OpenAI-compatible, etc.) can see. Resizes to a longest-edge of 1568px by default (override with `max_dim`, range 64..=2048). Pass-through for already-small PNG/JPEG; transcodes oversize input to PNG (if alpha) or JPEG q85. Animated GIF/WebP rejected — provide a still frame. Hard cap 20 MiB source, ~4 MiB on the wire. Relative paths resolve under `workdir` (defaults to server cwd) and may not escape it.",
+          "name": "view_image",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "max_dim": {
+                "description": "Optional longest-edge cap in pixels. Clamped to [64, 2048].\nDefaults to 1568, which fits Anthropic's recommended budget and\nOpenAI's high-detail tile size.",
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "source": {
+                "description": "Image source: an absolute or workspace-relative file path,\nan `http://` / `https://` URL, or a `data:image/<type>;base64,...` URL.",
+                "type": "string"
+              },
+              "workdir": {
+                "description": "Workspace root for relative path resolution. Ignored for URL sources.\nDefaults to the server's cwd.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "source"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        }
+      ]
+    },
+    {
+      "type": "namespace",
+      "description": "Tools in the mcp__codex_security namespace.",
+      "name": "mcp__codex_security",
+      "tools": [
+        {
+          "type": "function",
+          "description": "Wait for the user to press Start scan in an open Codex Security workspace. Call this immediately after open_codex_security_workspace and keep the current turn active. The result supplies the durable scan ID and, when needed, a handoff claim token for get_codex_security_scan_context. This tool is part of plugin `Codex Security`.",
+          "name": "await_codex_security_scan_start",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "sessionId": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "sessionId"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Validate and index finalized scan artifacts, then mark the Codex Security scan complete. This tool is part of plugin `Codex Security`.",
+          "name": "complete_codex_security_scan",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "scanId": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "scanId"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Permanently mark a launched Codex Security scan as failed after an unrecoverable blocker or explicit cancellation. This terminal action cannot be resumed; incomplete or otherwise resumable work must remain running. This tool is part of plugin `Codex Security`.",
+          "name": "fail_codex_security_scan",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "message": {
+                "type": "string"
+              },
+              "scanId": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "message",
+              "scanId"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Load the authoritative target, mode, optional user context, artifact directory, live progress, and optional selected finding for a launched scan. Validated legacy finding details may be migrated. This tool is part of plugin `Codex Security`.",
+          "name": "get_codex_security_scan_context",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "handoffClaimToken": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "description": "Opaque delivery token returned by await_codex_security_scan_start or the explicit recovery action. Pass it once so Codex can acknowledge that this continuation received the scan."
+              },
+              "occurrenceId": {
+                "description": "Optional finding occurrence to include even when it is outside the bounded findings prefix.",
+                "type": "string"
+              },
+              "scanId": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "scanId"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Render an existing triage-finding/v0 result in the Codex Security app as a dense table with one row per supplied finding. This does not create a scan, queue, or durable scanId. This tool is part of plugin `Codex Security`.",
+          "name": "open_codex_security_triage_results",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "result": {
+                "additionalProperties": false,
+                "description": "A complete triage-finding/v0 JSON result to render as a dense findings table.",
+                "properties": {
+                  "findings": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "affected_locations": {
+                          "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                              "detail": {
+                                "type": "string"
+                              },
+                              "label": {
+                                "type": "string"
+                              },
+                              "lines": {
+                                "type": "string"
+                              },
+                              "path": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "detail",
+                              "label",
+                              "lines",
+                              "path"
+                            ],
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "boundary_assessment": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "boundary_crossed": {
+                              "anyOf": [
+                                {
+                                  "type": "boolean"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "policy_basis": {
+                              "type": "string"
+                            },
+                            "product_surface": {
+                              "type": "string"
+                            },
+                            "source_trust": {
+                              "enum": [
+                                "untrusted",
+                                "trusted_operator",
+                                "trusted_developer_config",
+                                "local_only",
+                                "unknown"
+                              ],
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "boundary_crossed",
+                            "policy_basis",
+                            "product_surface",
+                            "source_trust"
+                          ],
+                          "type": "object"
+                        },
+                        "confidence": {
+                          "enum": [
+                            "high",
+                            "medium",
+                            "low"
+                          ],
+                          "type": "string"
+                        },
+                        "counterevidence": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "evidence": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "exploitability_stack_rank": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "drivers": {
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "rank": {
+                              "anyOf": [
+                                {
+                                  "type": "integer"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "rank_queue": {
+                              "anyOf": [
+                                {
+                                  "enum": [
+                                    "confirmed",
+                                    "needs_review"
+                                  ],
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "null"
+                                }
+                              ]
+                            },
+                            "rationale": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "drivers",
+                            "rank",
+                            "rank_queue",
+                            "rationale"
+                          ],
+                          "type": "object"
+                        },
+                        "fix_finding_handoff": {
+                          "anyOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "null"
+                            }
+                          ]
+                        },
+                        "input_id": {
+                          "type": "string"
+                        },
+                        "normalized_input": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "affected_version_or_path": {
+                              "type": "string"
+                            },
+                            "claimed_control": {
+                              "type": "string"
+                            },
+                            "claimed_sink": {
+                              "type": "string"
+                            },
+                            "claimed_source": {
+                              "type": "string"
+                            },
+                            "impact": {
+                              "type": "string"
+                            },
+                            "preconditions": {
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "references": {
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "vulnerable_component": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "affected_version_or_path",
+                            "claimed_control",
+                            "claimed_sink",
+                            "claimed_source",
+                            "impact",
+                            "preconditions",
+                            "references",
+                            "vulnerable_component"
+                          ],
+                          "type": "object"
+                        },
+                        "proof_gaps": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "reachable_path": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "recommended_next_step": {
+                          "type": "string"
+                        },
+                        "source_type": {
+                          "enum": [
+                            "sarif",
+                            "cve",
+                            "advisory",
+                            "scanner_ticket",
+                            "bug_bounty",
+                            "codex_security_finding",
+                            "freeform",
+                            "unknown"
+                          ],
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "triage_item_id": {
+                          "type": "string"
+                        },
+                        "verdict": {
+                          "enum": [
+                            "confirmed",
+                            "not_actionable",
+                            "needs_review"
+                          ],
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "affected_locations",
+                        "boundary_assessment",
+                        "confidence",
+                        "counterevidence",
+                        "evidence",
+                        "exploitability_stack_rank",
+                        "fix_finding_handoff",
+                        "input_id",
+                        "normalized_input",
+                        "proof_gaps",
+                        "reachable_path",
+                        "recommended_next_step",
+                        "source_type",
+                        "title",
+                        "triage_item_id",
+                        "verdict"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "repository": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "path": {
+                        "type": "string"
+                      },
+                      "revision": {
+                        "anyOf": [
+                          {
+                            "type": "string"
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ]
+                      }
+                    },
+                    "required": [
+                      "path"
+                    ],
+                    "type": "object"
+                  },
+                  "schema_version": {
+                    "enum": [
+                      "triage-finding/v0"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "findings",
+                  "repository",
+                  "schema_version"
+                ],
+                "type": "object"
+              }
+            },
+            "required": [
+              "result"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Create a native Codex Security workspace with the target and requested standard, diff, or deep mode, or reopen one owned by this thread by passing only sessionId. Scope is inside targetPath; use '.' or omit scope for the whole target. The existing Codex Security skills remain authoritative for scan execution. This tool is part of plugin `Codex Security`.",
+          "name": "open_codex_security_workspace",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "capabilityPreflight": {
+                "additionalProperties": false,
+                "description": "Optional capability preflight retained only for non-app legacy callers. Do not include it when opening the setup workspace; the scan workflow performs its authoritative preflight after setup is submitted.",
+                "properties": {
+                  "issues": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "capability": {
+                          "type": "string"
+                        },
+                        "reason": {
+                          "type": "string"
+                        },
+                        "severity": {
+                          "enum": [
+                            "block",
+                            "warn",
+                            "suggest"
+                          ],
+                          "type": "string"
+                        },
+                        "status": {
+                          "enum": [
+                            "fail",
+                            "unknown"
+                          ],
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "capability",
+                        "reason",
+                        "severity",
+                        "status"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "profile": {
+                    "type": "string"
+                  },
+                  "remediation": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "note": {
+                        "type": "string"
+                      },
+                      "patches": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "kind": {
+                              "enum": [
+                                "config",
+                                "host_setting"
+                              ],
+                              "type": "string"
+                            },
+                            "path": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "boolean"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "path",
+                            "value"
+                          ],
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "summary": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "status": {
+                    "enum": [
+                      "ready",
+                      "blocked",
+                      "incomplete"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "issues",
+                  "profile",
+                  "status"
+                ],
+                "type": "object"
+              },
+              "diffTarget": {
+                "description": "Exact local Git revisions for Review changes mode.",
+                "oneOf": [
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "baseRevision": {
+                        "type": "string"
+                      },
+                      "contentDigest": {
+                        "type": "string"
+                      },
+                      "headRevision": {
+                        "type": "string"
+                      },
+                      "kind": {
+                        "enum": [
+                          "working_tree"
+                        ],
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "kind"
+                    ],
+                    "type": "object"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "baseRevision": {
+                        "type": "string"
+                      },
+                      "headRevision": {
+                        "type": "string"
+                      },
+                      "kind": {
+                        "enum": [
+                          "commit"
+                        ],
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "headRevision"
+                    ],
+                    "type": "object"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "baseRevision": {
+                        "type": "string"
+                      },
+                      "headRevision": {
+                        "type": "string"
+                      },
+                      "kind": {
+                        "enum": [
+                          "range"
+                        ],
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "baseRevision",
+                      "headRevision"
+                    ],
+                    "type": "object"
+                  }
+                ]
+              },
+              "mode": {
+                "description": "Initial scan mode inferred from the user's request.",
+                "enum": [
+                  "diff",
+                  "standard",
+                  "deep"
+                ],
+                "type": "string"
+              },
+              "scope": {
+                "description": "Optional directory inside targetPath. Use '.' or omit it for the whole target. Target-relative paths are preferred; absolute paths inside targetPath are normalized.",
+                "type": "string"
+              },
+              "sessionId": {
+                "description": "Existing workspace ID to reopen without changing its setup. When provided, omit all other fields.",
+                "type": "string"
+              },
+              "targetPath": {
+                "description": "Optional resolved local target path.",
+                "type": "string"
+              },
+              "targetSummary": {
+                "description": "Optional bounded target/security context.",
+                "type": "string"
+              },
+              "targetTitle": {
+                "description": "Optional human-readable target name.",
+                "type": "string"
+              },
+              "userContext": {
+                "description": "Optional security focus supplied by the user.",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Fallback for interactive Codex Security workflows when the host-native request_user_input tool is unavailable. Presents one to three non-sensitive multiple-choice questions through standard MCP form elicitation and waits for the user's response. Never call this tool in headless, automation, or other non-interactive sessions. This tool is part of plugin `Codex Security`.",
+          "name": "request_codex_security_user_input",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "questions": {
+                "description": "One to three non-sensitive multiple-choice questions for an interactive Codex Security workflow.",
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "header": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "options": {
+                      "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                          "description": {
+                            "type": "string"
+                          },
+                          "label": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "description",
+                          "label"
+                        ],
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "question": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "header",
+                    "id",
+                    "options",
+                    "question"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "questions"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Model-only legacy setup compatibility for non-app callers. Do not call this tool for a setup app workspace with setup.submitted=false; wait for the user to press Start scan and receive the app-generated scanId. Do not call this tool after an app-generated scanId either. Continue after a ready result. For a blocked or incomplete result, follow the documented remediation handling and wait for the user's answer when remediation is actionable. Do not fail automatically for declined or unavailable remediation, helper errors, or a non-ready rerun; preserve the running scan and retry or hand off while recovery may still be possible. Call fail_codex_security_scan only after documented recovery is exhausted and the blocker is confirmed unrecoverable, or when the user explicitly cancels. This tool is part of plugin `Codex Security`.",
+          "name": "set_codex_security_capability_preflight",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "capabilityPreflight": {
+                "additionalProperties": false,
+                "description": "Fresh compact capability preflight for non-app legacy callers, including a ready result with an empty issues list after a clean check.",
+                "properties": {
+                  "issues": {
+                    "items": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "capability": {
+                          "type": "string"
+                        },
+                        "reason": {
+                          "type": "string"
+                        },
+                        "severity": {
+                          "enum": [
+                            "block",
+                            "warn",
+                            "suggest"
+                          ],
+                          "type": "string"
+                        },
+                        "status": {
+                          "enum": [
+                            "fail",
+                            "unknown"
+                          ],
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "capability",
+                        "reason",
+                        "severity",
+                        "status"
+                      ],
+                      "type": "object"
+                    },
+                    "type": "array"
+                  },
+                  "profile": {
+                    "type": "string"
+                  },
+                  "remediation": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "note": {
+                        "type": "string"
+                      },
+                      "patches": {
+                        "items": {
+                          "additionalProperties": false,
+                          "properties": {
+                            "kind": {
+                              "enum": [
+                                "config",
+                                "host_setting"
+                              ],
+                              "type": "string"
+                            },
+                            "path": {
+                              "type": "string"
+                            },
+                            "value": {
+                              "anyOf": [
+                                {
+                                  "type": "string"
+                                },
+                                {
+                                  "type": "number"
+                                },
+                                {
+                                  "type": "boolean"
+                                }
+                              ]
+                            }
+                          },
+                          "required": [
+                            "path",
+                            "value"
+                          ],
+                          "type": "object"
+                        },
+                        "type": "array"
+                      },
+                      "summary": {
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "status": {
+                    "enum": [
+                      "ready",
+                      "blocked",
+                      "incomplete"
+                    ],
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "issues",
+                  "profile",
+                  "status"
+                ],
+                "type": "object"
+              },
+              "mode": {
+                "description": "Scan mode that was checked.",
+                "enum": [
+                  "diff",
+                  "standard",
+                  "deep"
+                ],
+                "type": "string"
+              },
+              "sessionId": {
+                "type": "string"
+              },
+              "targetPath": {
+                "description": "Absolute local target path that was checked.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "capabilityPreflight",
+              "mode",
+              "sessionId",
+              "targetPath"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Persist the bounded local remediation workflow state for a completed finding. The UI may mark a request as queued; Codex records generated, applied, verifying, verified, or failed states after performing the corresponding work. This tool is part of plugin `Codex Security`.",
+          "name": "set_codex_security_finding_remediation",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "actionToken": {
+                "type": "string"
+              },
+              "baseRevision": {
+                "type": "string"
+              },
+              "expectedVersion": {
+                "type": "integer"
+              },
+              "occurrenceId": {
+                "type": "string"
+              },
+              "patchDigest": {
+                "type": "string"
+              },
+              "patchPath": {
+                "type": "string"
+              },
+              "requestId": {
+                "type": "string"
+              },
+              "state": {
+                "enum": [
+                  "generated",
+                  "applied",
+                  "verifying",
+                  "verified",
+                  "failed"
+                ],
+                "type": "string"
+              },
+              "summary": {
+                "type": "string"
+              },
+              "verificationSummary": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "actionToken",
+              "expectedVersion",
+              "occurrenceId",
+              "requestId",
+              "state"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Record exact local Git revisions after resolving a user's free-form change request. Do not change the selected checkout. Resolve refs to commits before calling this tool; use a concise human-readable target summary. This tool is part of plugin `Codex Security`.",
+          "name": "set_codex_security_resolved_diff",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "diffTarget": {
+                "oneOf": [
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "baseRevision": {
+                        "type": "string"
+                      },
+                      "contentDigest": {
+                        "type": "string"
+                      },
+                      "headRevision": {
+                        "type": "string"
+                      },
+                      "kind": {
+                        "enum": [
+                          "working_tree"
+                        ],
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "kind"
+                    ],
+                    "type": "object"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "baseRevision": {
+                        "type": "string"
+                      },
+                      "headRevision": {
+                        "type": "string"
+                      },
+                      "kind": {
+                        "enum": [
+                          "commit"
+                        ],
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "headRevision"
+                    ],
+                    "type": "object"
+                  },
+                  {
+                    "additionalProperties": false,
+                    "properties": {
+                      "baseRevision": {
+                        "type": "string"
+                      },
+                      "headRevision": {
+                        "type": "string"
+                      },
+                      "kind": {
+                        "enum": [
+                          "range"
+                        ],
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "kind",
+                      "baseRevision",
+                      "headRevision"
+                    ],
+                    "type": "object"
+                  }
+                ]
+              },
+              "requestId": {
+                "type": "string"
+              },
+              "sessionId": {
+                "type": "string"
+              },
+              "targetSummary": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "diffTarget",
+              "requestId",
+              "sessionId",
+              "targetSummary"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Record a meaningful live scan phase or coverage milestone in the Codex Security workbench. This tool is part of plugin `Codex Security`.",
+          "name": "update_codex_security_scan_progress",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "deepReviewPass": {
+                "description": "Current Deep Scan discovery pass. Send it when starting each pass together with that pass's total and zero completed items.",
+                "type": "integer"
+              },
+              "phase": {
+                "description": "Current workflow phase. Send it immediately when the scan enters a new phase so the live workspace advances.",
+                "enum": [
+                  "preflight",
+                  "threat_model",
+                  "discovery",
+                  "validation",
+                  "attack_path",
+                  "reporting"
+                ],
+                "type": "string"
+              },
+              "reportableFindingsCount": {
+                "type": "integer"
+              },
+              "reviewItemsCompleted": {
+                "description": "Cumulative completed review receipts in the current discovery pass. Increment only after a review and its coverage receipt are complete.",
+                "type": "integer"
+              },
+              "reviewItemsTotal": {
+                "description": "Expected review receipts in the current discovery pass, fixed after the worklist and worker assignments are known.",
+                "type": "integer"
+              },
+              "scanId": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "scanId"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        }
+      ]
+    },
+    {
+      "type": "namespace",
+      "description": "Use `js` for persistent `node_repl` execution, `js_reset` to clear bindings, and `js_add_node_module_dir` to add package directories.\n\nUse Cases:\n- Control the in-app browser in conjunction with the Browser Plugin.\n- Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative.\n- Control desktop apps on macOS through Computer Use.",
+      "name": "mcp__node_repl",
+      "tools": [
+        {
+          "type": "function",
+          "description": "Execute JavaScript in a persistent `node_repl` with top-level await. Bindings persist until `js_reset`; reuse existing names or use `var` for redeclarable state. Use dynamic imports such as `await import(\"playwright\")`; top-level static imports and `node:process` are unavailable. Use `nodeRepl.write(value)` for output and `await nodeRepl.emitImage(image)` for images. Execution context is available through `nodeRepl.cwd`, `nodeRepl.homeDir`, `nodeRepl.tmpDir`, and `nodeRepl.requestMeta`. The default timeout is 30000 ms (30 seconds); increase `timeout_ms` for longer operations. Use `js_add_node_module_dir` when an additional package directory is required.",
+          "name": "js",
+          "output_schema": null,
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "description": "JavaScript code to execute with top-level await.",
+                "type": "string"
+              },
+              "timeout_ms": {
+                "description": "Optional execution timeout in milliseconds. Defaults to 30000 (30 seconds) when omitted.",
+                "type": "integer"
+              },
+              "title": {
+                "description": "Short user-facing description of what the code does.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "code"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Add an absolute `node_modules` directory for package imports. The directory remains available after `js_reset`.",
+          "name": "js_add_node_module_dir",
+          "output_schema": null,
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "description": "Absolute path to a node_modules directory to add to Node package resolution.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "path"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Reset the JavaScript kernel and clear all bindings.",
+          "name": "js_reset",
+          "output_schema": null,
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {},
+            "type": "object"
+          },
+          "strict": false
+        }
+      ]
+    },
+    {
+      "type": "namespace",
+      "description": "Use confirm_openai_api_key_local_destination after the OpenAI Platform picker returns a key name and target ids. It asks the developer to confirm or edit the local env-file destination before a secret is created or written.",
+      "name": "mcp__openai_api_key_local_confirmation",
+      "tools": [
+        {
+          "type": "function",
+          "description": "Ask the developer to confirm or edit the local env-file destination for a new OpenAI API key. Call this after the Platform picker returns the confirmed key name and target ids, and proceed only when it returns approved. This tool is part of plugin `OpenAI Developers`.",
+          "name": "confirm_ope_8781ece2af3d",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "envName": {
+                "description": "Environment variable name to create or update. Defaults to OPENAI_API_KEY.",
+                "type": "string"
+              },
+              "targetPath": {
+                "description": "Recommended env-file path inside the workspace, such as .env.local.",
+                "type": "string"
+              },
+              "workspacePath": {
+                "description": "Absolute workspace root used to confine the local env-file write.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "workspacePath",
+              "targetPath"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        }
+      ]
+    },
+    {
+      "type": "namespace",
+      "description": "Tools in the mcp__wodex_automation namespace.",
+      "name": "mcp__wodex_automation",
+      "tools": [
+        {
+          "type": "function",
+          "description": "创建一个 Codex 定时任务（Scheduled/automation）。用户要求「每天/每周某时做某事」「提醒我…」时调用；无需用户手动进 Scheduled 页面。",
+          "name": "create_automation",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "cwds": {
+                "description": "工作目录数组，可选（缺省用 project_id）",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "model": {
+                "description": "执行用模型 slug，可选",
+                "type": "string"
+              },
+              "name": {
+                "description": "任务名，简短易识别",
+                "type": "string"
+              },
+              "project_id": {
+                "description": "目标项目绝对路径（当前会话的项目目录）。Codex 只加载项目绑定的任务——没有项目路径时先问用户，别猜",
+                "type": "string"
+              },
+              "prompt": {
+                "description": "到点要让 agent 执行的指令/提示",
+                "type": "string"
+              },
+              "reasoning_effort": {
+                "description": "推理强度 low/medium/high，可选",
+                "type": "string"
+              },
+              "rrule": {
+                "description": "iCalendar RRULE，如 FREQ=DAILY;BYHOUR=9;BYMINUTE=0（每天9点）。支持 DAILY/WEEKLY(BYDAY)/HOURLY/MINUTELY，时间按本地时区",
+                "type": "string"
+              },
+              "target_type": {
+                "description": "目标类型，默认 project",
+                "type": "string"
+              }
+            },
+            "required": [
+              "name",
+              "prompt",
+              "rrule",
+              "project_id"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "删除一个 Codex 定时任务（按 id）。",
+          "name": "delete_automation",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "id": {
+                "description": "要删除的任务 id",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "列出当前所有 Codex 定时任务（含下次触发时间）。",
+          "name": "list_automations",
+          "output_schema": null,
+          "parameters": {
+            "properties": {},
+            "required": [],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "更新一个已存在的 Codex 定时任务（按 id，只改传入的字段）。",
+          "name": "update_automation",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "cwds": {
+                "description": "新工作目录数组",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "id": {
+                "description": "要更新的任务 id",
+                "type": "string"
+              },
+              "model": {
+                "description": "新模型",
+                "type": "string"
+              },
+              "name": {
+                "description": "新任务名",
+                "type": "string"
+              },
+              "project_id": {
+                "description": "新目标项目",
+                "type": "string"
+              },
+              "prompt": {
+                "description": "新指令",
+                "type": "string"
+              },
+              "reasoning_effort": {
+                "description": "新推理强度",
+                "type": "string"
+              },
+              "rrule": {
+                "description": "新 RRULE（会重算下次触发时间）",
+                "type": "string"
+              }
+            },
+            "required": [
+              "id"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        }
+      ]
+    },
+    {
+      "type": "namespace",
+      "description": "XcodeBuildMCP provides comprehensive tooling for Apple platform development (iOS, macOS, watchOS, tvOS, visionOS).\n\nPrefer XcodeBuildMCP tools over shell commands for Apple platform tasks when available.\n\nCapabilities:\n- Session defaults: Configure project, scheme, simulator, and device defaults to avoid repetitive parameters\n- Project discovery: Find Xcode projects/workspaces, list schemes, inspect build settings\n- Simulator workflows: Build, run, test, install, and launch apps on iOS simulators; manage simulator state (boot, erase, location, appearance)\n- Device workflows: Build, test, install, and launch apps on physical devices with code signing\n- macOS workflows: Build, run, and test macOS applications\n- Log capture: Stream and capture logs from simulators and devices\n- LLDB debugging: Attach debugger, set breakpoints, inspect stack traces and variables, execute LLDB commands\n- UI automation: Capture screenshots, inspect runtime UI snapshots, perform taps/swipes/gestures, type text, press hardware buttons, and batch multiple same-screen elementRef taps\n- SwiftPM: Build, run, test, and manage Swift Package Manager projects\n- Project scaffolding: Generate new iOS/macOS project templates\n\nOnly simulator workflow tools are enabled by default. If capabilities like device, macOS, debugging, or UI automation are not available, the user must configure XcodeBuildMCP to enable them. See https://xcodebuildmcp.com/docs/configuration for workflow configuration.\n\nSimulator run flow:\n- Before your first build, run, or test call in a session, you MUST call session_show_defaults to verify the active project/workspace, scheme, and simulator. Do not assume defaults are configured. Only skip this if you have already called session_show_defaults earlier in the current session.\n- If session_show_defaults confirms project/workspace + scheme + simulator are set, call build_run_sim immediately (often with empty arguments).\n- Use discover_projs only when session_show_defaults shows project/workspace is missing or wrong.\n- Never call discover_projs speculatively or in parallel with session_show_defaults.\n- Do not call boot_sim or open_sim as prerequisites for build_run_sim; build_run_sim boots and opens the simulator frontend as needed.",
+      "name": "mcp__xcodebuildmcp",
+      "tools": [
+        {
+          "type": "function",
+          "description": "UI automation batch for multiple same-screen elementRef taps, especially visible settings switches that can be toggled without intermediate assertions. The input key is steps, never commands, and each step is an object such as {\"action\":\"tap\",\"elementRef\":\"e1\"}; do not pass raw command strings. Use refs from the latest snapshot_ui or wait_for_ui output, for example {\"steps\":[{\"action\":\"tap\",\"elementRef\":\"e1\"},{\"action\":\"tap\",\"elementRef\":\"e2\"}]}. Omit preDelay/postDelay for switch elementRefs; switches execute as touch down/up steps and reject delays. This tool is part of plugin `Build iOS Apps`.",
+          "name": "batch",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "axCache": {
+                "enum": [
+                  "perBatch",
+                  "perStep",
+                  "none"
+                ],
+                "type": "string"
+              },
+              "pollInterval": {
+                "type": "number"
+              },
+              "steps": {
+                "description": "Required array of step objects, for example [{\"action\":\"tap\",\"elementRef\":\"e1\"}]. Do not use commands or raw command strings.",
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "action": {
+                      "enum": [
+                        "tap"
+                      ],
+                      "type": "string"
+                    },
+                    "elementRef": {
+                      "description": "Runtime elementRef from the latest snapshot_ui or wait_for_ui output",
+                      "type": "string"
+                    },
+                    "postDelay": {
+                      "description": "Seconds after this step. Omit for switch elementRefs.",
+                      "type": "number"
+                    },
+                    "preDelay": {
+                      "description": "Seconds before this step. Omit for switch elementRefs.",
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "action",
+                    "elementRef"
+                  ],
+                  "type": "object"
+                },
+                "type": "array"
+              },
+              "waitTimeout": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "steps"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Boot iOS simulator for manual/non-build flows. Not required before simulator build-and-run (build_run_sim). This tool is part of plugin `Build iOS Apps`.",
+          "name": "boot_sim",
+          "output_schema": null,
+          "parameters": {
+            "properties": {},
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Build, install, and launch on iOS Simulator, booting it when needed. Runtime logs are captured automatically and the log file path is included in the response. Preferred single-step run tool when defaults are set. This tool is part of plugin `Build iOS Apps`.",
+          "name": "build_run_sim",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "extraArgs": {
+                "description": "Additional xcodebuild/build-settings arguments (not app launch arguments)",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "launchArgs": {
+                "description": "Arguments passed to the launched app process on simulator runtime",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Build for iOS sim (compile-only, no launch). This tool is part of plugin `Build iOS Apps`.",
+          "name": "build_sim",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "buildForTesting": {
+                "description": "Build reusable test products without running tests (default: false)",
+                "type": "boolean"
+              },
+              "extraArgs": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "testProductsPath": {
+                "description": "Output path for the .xctestproducts bundle when buildForTesting is true",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Press simulator hardware button. This tool is part of plugin `Build iOS Apps`.",
+          "name": "button",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "buttonType": {
+                "description": "apple-pay|home|lock|side-button|siri",
+                "enum": [
+                  "apple-pay",
+                  "home",
+                  "lock",
+                  "side-button",
+                  "siri"
+                ],
+                "type": "string"
+              },
+              "duration": {
+                "description": "seconds",
+                "type": "number"
+              }
+            },
+            "required": [
+              "buttonType"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Clean build products. This tool is part of plugin `Build iOS Apps`.",
+          "name": "clean",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "extraArgs": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "platform": {
+                "enum": [
+                  "macOS",
+                  "iOS",
+                  "iOS Simulator",
+                  "watchOS",
+                  "watchOS Simulator",
+                  "tvOS",
+                  "tvOS Simulator",
+                  "visionOS",
+                  "visionOS Simulator"
+                ],
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Attach LLDB to sim app. This tool is part of plugin `Build iOS Apps`.",
+          "name": "debug_attach_sim",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "bundleId": {
+                "description": "Attach by bundle identifier. Provide bundleId without pid; waitFor may be used with this mode.",
+                "type": "string"
+              },
+              "continueOnAttach": {
+                "description": "default: true",
+                "type": "boolean"
+              },
+              "makeCurrent": {
+                "description": "Set debug session as current (default: true)",
+                "type": "boolean"
+              },
+              "pid": {
+                "description": "Attach to an already-running process by PID. Provide pid without bundleId and without waitFor.",
+                "type": "integer"
+              },
+              "waitFor": {
+                "description": "Only valid when attaching by bundleId. For PID attach, omit waitFor or set it to false.",
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Add breakpoint. This tool is part of plugin `Build iOS Apps`.",
+          "name": "debug_breakpoint_add",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "condition": {
+                "description": "Expression for breakpoint condition",
+                "type": "string"
+              },
+              "debugSessionId": {
+                "description": "default: current session",
+                "type": "string"
+              },
+              "file": {
+                "type": "string"
+              },
+              "function": {
+                "type": "string"
+              },
+              "line": {
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Remove breakpoint. This tool is part of plugin `Build iOS Apps`.",
+          "name": "debug_breakpoint_remove",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "breakpointId": {
+                "type": "integer"
+              },
+              "debugSessionId": {
+                "description": "default: current session",
+                "type": "string"
+              }
+            },
+            "required": [
+              "breakpointId"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Continue debug session. This tool is part of plugin `Build iOS Apps`.",
+          "name": "debug_continue",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "debugSessionId": {
+                "description": "default: current session",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Detach debugger. This tool is part of plugin `Build iOS Apps`.",
+          "name": "debug_detach",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "debugSessionId": {
+                "description": "default: current session",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Run LLDB command. This tool is part of plugin `Build iOS Apps`.",
+          "name": "debug_lldb_command",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "command": {
+                "type": "string"
+              },
+              "debugSessionId": {
+                "description": "default: current session",
+                "type": "string"
+              },
+              "timeoutMs": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "command"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Get backtrace. This tool is part of plugin `Build iOS Apps`.",
+          "name": "debug_stack",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "debugSessionId": {
+                "description": "default: current session",
+                "type": "string"
+              },
+              "maxFrames": {
+                "type": "integer"
+              },
+              "threadIndex": {
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Get frame variables. This tool is part of plugin `Build iOS Apps`.",
+          "name": "debug_variables",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "debugSessionId": {
+                "description": "default: current session",
+                "type": "string"
+              },
+              "frameIndex": {
+                "type": "integer"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Scans a directory (defaults to workspace root) to find Xcode project (.xcodeproj) and workspace (.xcworkspace) files. Use when project/workspace path is unknown. This tool is part of plugin `Build iOS Apps`.",
+          "name": "discover_projs",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "maxDepth": {
+                "type": "integer"
+              },
+              "scanPath": {
+                "type": "string"
+              },
+              "workspaceRoot": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "workspaceRoot"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Drag from a visible runtime elementRef in a direction, then return a refreshed runtime UI snapshot. Use this for exposed sheet grabbers or real scroll/list content refs when nextSteps suggests dragging; do not use raw screen coordinates. This tool is part of plugin `Build iOS Apps`.",
+          "name": "drag",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "direction": {
+                "description": "Drag direction: up, down, left, or right",
+                "enum": [
+                  "up",
+                  "down",
+                  "left",
+                  "right"
+                ],
+                "type": "string"
+              },
+              "distance": {
+                "description": "Normalized drag distance greater than 0 and up to 1 within the resolved element or viewport",
+                "type": "number"
+              },
+              "duration": {
+                "description": "seconds",
+                "type": "number"
+              },
+              "elementRef": {
+                "description": "Runtime elementRef from the latest snapshot_ui or wait_for_ui output",
+                "type": "string"
+              },
+              "postDelay": {
+                "description": "seconds",
+                "type": "number"
+              },
+              "preDelay": {
+                "description": "seconds",
+                "type": "number"
+              },
+              "steps": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "elementRef",
+              "direction"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Simulator gesture preset. This tool is part of plugin `Build iOS Apps`.",
+          "name": "gesture",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "delta": {
+                "description": "Distance to move in pixels.",
+                "type": "number"
+              },
+              "duration": {
+                "description": "Duration of the gesture in seconds.",
+                "type": "number"
+              },
+              "postDelay": {
+                "description": "Delay after completing the gesture in seconds.",
+                "type": "number"
+              },
+              "preDelay": {
+                "description": "Delay before starting the gesture in seconds.",
+                "type": "number"
+              },
+              "preset": {
+                "description": "scroll-up|scroll-down|scroll-left|scroll-right|swipe-from-left-edge|swipe-from-right-edge|swipe-from-top-edge|swipe-from-bottom-edge",
+                "enum": [
+                  "scroll-up",
+                  "scroll-down",
+                  "scroll-left",
+                  "scroll-right",
+                  "swipe-from-left-edge",
+                  "swipe-from-right-edge",
+                  "swipe-from-top-edge",
+                  "swipe-from-bottom-edge"
+                ],
+                "type": "string"
+              },
+              "screenHeight": {
+                "description": "Screen height in pixels. Used for gesture calculations. Auto-detected if not provided.",
+                "type": "integer"
+              },
+              "screenWidth": {
+                "description": "Screen width in pixels. Used for gesture calculations. Auto-detected if not provided.",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "preset"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Extract bundle id from .app. This tool is part of plugin `Build iOS Apps`.",
+          "name": "get_app_bundle_id",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "appPath": {
+                "description": "Path to the .app bundle",
+                "type": "string"
+              }
+            },
+            "required": [
+              "appPath"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Show per-target code coverage from an xcresult bundle. This tool is part of plugin `Build iOS Apps`.",
+          "name": "get_coverage_report",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "showFiles": {
+                "description": "When true, include per-file coverage breakdown under each target",
+                "type": "boolean"
+              },
+              "target": {
+                "description": "Filter results to a specific target name",
+                "type": "string"
+              },
+              "xcresultPath": {
+                "description": "Path to the .xcresult bundle",
+                "type": "string"
+              }
+            },
+            "required": [
+              "xcresultPath"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Show function-level coverage and uncovered line ranges for a specific file. This tool is part of plugin `Build iOS Apps`.",
+          "name": "get_file_coverage",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "file": {
+                "description": "Source file name or path to inspect",
+                "type": "string"
+              },
+              "showLines": {
+                "description": "When true, include uncovered line ranges from the archive",
+                "type": "boolean"
+              },
+              "xcresultPath": {
+                "description": "Path to the .xcresult bundle",
+                "type": "string"
+              }
+            },
+            "required": [
+              "xcresultPath",
+              "file"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Get sim built app path. This tool is part of plugin `Build iOS Apps`.",
+          "name": "get_sim_app_path",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "platform": {
+                "enum": [
+                  "iOS Simulator",
+                  "watchOS Simulator",
+                  "tvOS Simulator",
+                  "visionOS Simulator"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "platform"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Install app on sim. This tool is part of plugin `Build iOS Apps`.",
+          "name": "install_app_sim",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "appPath": {
+                "description": "Path to the .app bundle to install",
+                "type": "string"
+              }
+            },
+            "required": [
+              "appPath"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Press one hardware key using an AXe HID key code. Prefer type_text for text entry. Common values include 40 Return/Enter, 42 Backspace, 43 Tab, and 44 Space. This tool is part of plugin `Build iOS Apps`.",
+          "name": "key_press",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "duration": {
+                "description": "seconds",
+                "type": "number"
+              },
+              "keyCode": {
+                "description": "HID keycode. Common values: 40 Return/Enter, 42 Backspace, 43 Tab, 44 Space.",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "keyCode"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Press hardware keys using AXe HID key codes. Prefer type_text for text entry. Common values include 40 Return/Enter, 42 Backspace, 43 Tab, and 44 Space. This tool is part of plugin `Build iOS Apps`.",
+          "name": "key_sequence",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "delay": {
+                "type": "number"
+              },
+              "keyCodes": {
+                "description": "HID keycodes. Common values: 40 Return/Enter, 42 Backspace, 43 Tab, 44 Space.",
+                "items": {
+                  "type": "integer"
+                },
+                "type": "array"
+              }
+            },
+            "required": [
+              "keyCodes"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Launch app on simulator. Runtime logs are captured automatically and the log file path is included in the response. This tool is part of plugin `Build iOS Apps`.",
+          "name": "launch_app_sim",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "env": {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "description": "Environment variables to pass to the launched app (SIMCTL_CHILD_ prefix added automatically)",
+                "properties": {},
+                "type": "object"
+              },
+              "launchArgs": {
+                "description": "Arguments passed to the launched app process on simulator runtime",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "List Xcode schemes. This tool is part of plugin `Build iOS Apps`.",
+          "name": "list_schemes",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "projectPath": {
+                "description": "Path to the .xcodeproj file",
+                "type": "string"
+              },
+              "workspacePath": {
+                "description": "Path to the .xcworkspace file",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "List iOS simulators. This tool is part of plugin `Build iOS Apps`.",
+          "name": "list_sims",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "enabled": {
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Long press a UI element by elementRef from a current rs/1 runtime snapshot. This tool is part of plugin `Build iOS Apps`.",
+          "name": "long_press",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "duration": {
+                "description": "milliseconds",
+                "type": "integer"
+              },
+              "elementRef": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "elementRef",
+              "duration"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Open the simulator frontend for visibility and manual workflows. Not required before simulator build-and-run (build_run_sim). This tool is part of plugin `Build iOS Apps`.",
+          "name": "open_sim",
+          "output_schema": null,
+          "parameters": {
+            "properties": {},
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Record sim video. This tool is part of plugin `Build iOS Apps`.",
+          "name": "record_sim_video",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "fps": {
+                "description": "default: 30",
+                "type": "integer"
+              },
+              "outputFile": {
+                "description": "Path to write MP4 file",
+                "type": "string"
+              },
+              "start": {
+                "type": "boolean"
+              },
+              "stop": {
+                "type": "boolean"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Capture screenshot. This tool is part of plugin `Build iOS Apps`.",
+          "name": "screenshot",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "returnFormat": {
+                "description": "Return image path or base64 data (path|base64)",
+                "enum": [
+                  "path",
+                  "base64"
+                ],
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Clear session defaults for the active profile or a specified profile. This tool is part of plugin `Build iOS Apps`.",
+          "name": "session_clear_defaults",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "all": {
+                "description": "Clear all defaults across global and named profiles. Cannot be combined with keys/profile.",
+                "type": "boolean"
+              },
+              "keys": {
+                "items": {
+                  "enum": [
+                    "projectPath",
+                    "workspacePath",
+                    "scheme",
+                    "configuration",
+                    "simulatorName",
+                    "simulatorId",
+                    "simulatorPlatform",
+                    "deviceId",
+                    "useLatestOS",
+                    "arch",
+                    "suppressWarnings",
+                    "derivedDataPath",
+                    "preferXcodebuild",
+                    "platform",
+                    "bundleId",
+                    "env",
+                    "extraArgs"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "profile": {
+                "description": "Clear defaults for this named profile instead of the active profile.",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Set session defaults for the active profile, or for a specified profile and make it active. This tool is part of plugin `Build iOS Apps`.",
+          "name": "session_set_defaults",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "arch": {
+                "enum": [
+                  "arm64",
+                  "x86_64"
+                ],
+                "type": "string"
+              },
+              "bundleId": {
+                "description": "Default bundle ID for launch/stop/log tools when working on a single app.",
+                "type": "string"
+              },
+              "configuration": {
+                "description": "Build configuration for Xcode and SwiftPM tools (e.g. 'Debug' or 'Release').",
+                "type": "string"
+              },
+              "createIfNotExists": {
+                "description": "Create the named profile if it does not exist. Defaults to false.",
+                "type": "boolean"
+              },
+              "derivedDataPath": {
+                "description": "Default DerivedData path for Xcode build/test/clean tools.",
+                "type": "string"
+              },
+              "deviceId": {
+                "type": "string"
+              },
+              "env": {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "description": "Default environment variables to pass to launched apps.",
+                "properties": {},
+                "type": "object"
+              },
+              "extraArgs": {
+                "description": "Default extra xcodebuild arguments for tools that accept extraArgs.",
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "persist": {
+                "description": "Persist provided defaults to .xcodebuildmcp/config.yaml",
+                "type": "boolean"
+              },
+              "platform": {
+                "description": "Default device platform for device tools (e.g. iOS, watchOS).",
+                "type": "string"
+              },
+              "preferXcodebuild": {
+                "description": "Prefer xcodebuild over incremental builds for Xcode build/test/clean tools.",
+                "type": "boolean"
+              },
+              "profile": {
+                "description": "Set defaults for this named profile and make it active for the current session.",
+                "type": "string"
+              },
+              "projectPath": {
+                "description": "xcodeproj path (xor workspacePath)",
+                "type": "string"
+              },
+              "scheme": {
+                "type": "string"
+              },
+              "simulatorId": {
+                "description": "Machine-local simulator UDID, materialized from simulatorName when one is set; UDIDs are not portable across machines.",
+                "type": "string"
+              },
+              "simulatorName": {
+                "description": "Canonical, machine-portable simulator selector (safe to share via SCM); the background refresh re-resolves it to this machine’s UDID.",
+                "type": "string"
+              },
+              "simulatorPlatform": {
+                "description": "Cached platform derived from the selected simulator’s runtime; must be cleared/recomputed whenever the simulator selector changes.",
+                "enum": [
+                  "iOS Simulator",
+                  "watchOS Simulator",
+                  "tvOS Simulator",
+                  "visionOS Simulator"
+                ],
+                "type": "string"
+              },
+              "suppressWarnings": {
+                "type": "boolean"
+              },
+              "useLatestOS": {
+                "type": "boolean"
+              },
+              "workspacePath": {
+                "description": "xcworkspace path (xor projectPath)",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Show current active defaults. Required before your first build/run/test call in a session — do not assume defaults are configured. This tool is part of plugin `Build iOS Apps`.",
+          "name": "session_show_defaults",
+          "output_schema": null,
+          "parameters": {
+            "properties": {},
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Switch the active session defaults profile. This tool is part of plugin `Build iOS Apps`.",
+          "name": "session_use_defaults_profile",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "global": {
+                "description": "Activate the global unnamed defaults profile.",
+                "type": "boolean"
+              },
+              "persist": {
+                "description": "Persist activeSessionDefaultsProfile to .xcodebuildmcp/config.yaml.",
+                "type": "boolean"
+              },
+              "profile": {
+                "description": "Activate a named session defaults profile (example: ios or watch).",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Show build settings. This tool is part of plugin `Build iOS Apps`.",
+          "name": "show_build_settings",
+          "output_schema": null,
+          "parameters": {
+            "properties": {},
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Capture a semantic rs/1 runtime UI snapshot with elementRef targets. Observe once, use tap for one target or batch for multiple same-screen targets, and refresh after navigation, scrolling, sheet changes, or obvious layout changes. This tool is part of plugin `Build iOS Apps`.",
+          "name": "snapshot_ui",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "sinceScreenHash": {
+                "description": "Return an unchanged response when the current screen hash matches this value",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Stop sim app. This tool is part of plugin `Build iOS Apps`.",
+          "name": "stop_app_sim",
+          "output_schema": null,
+          "parameters": {
+            "properties": {},
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Swipe within a scrollable UI element using withinElementRef from a current rs/1 runtime snapshot. withinElementRef is required; do not use elementRef. Optional distance is a normalized stroke fraction greater than 0 and up to 1. Example input: {\"withinElementRef\":\"e7\",\"direction\":\"up\",\"distance\":0.7}. This tool is part of plugin `Build iOS Apps`.",
+          "name": "swipe",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "direction": {
+                "description": "up|down|left|right",
+                "enum": [
+                  "up",
+                  "down",
+                  "left",
+                  "right"
+                ],
+                "type": "string"
+              },
+              "distance": {
+                "description": "Normalized stroke fraction greater than 0 and up to 1",
+                "type": "number"
+              },
+              "duration": {
+                "description": "seconds",
+                "type": "number"
+              },
+              "postDelay": {
+                "description": "seconds",
+                "type": "number"
+              },
+              "preDelay": {
+                "description": "seconds",
+                "type": "number"
+              },
+              "withinElementRef": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "withinElementRef",
+              "direction"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Tap one elementRef from the latest snapshot_ui or wait_for_ui output. The elementRef must list the tap action in the snapshot targets; do not use refs from text-only rows. For multiple same-screen taps or visible switch toggles with no intermediate assertion, use batch instead of repeated tap calls. Other same-screen refs may remain usable after success; refresh after navigation, scrolling, sheet changes, or obvious layout changes. This tool is part of plugin `Build iOS Apps`.",
+          "name": "tap",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "elementRef": {
+                "type": "string"
+              },
+              "postDelay": {
+                "description": "seconds",
+                "type": "number"
+              },
+              "preDelay": {
+                "description": "seconds",
+                "type": "number"
+              }
+            },
+            "required": [
+              "elementRef"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Test on iOS sim. This tool is part of plugin `Build iOS Apps`.",
+          "name": "test_sim",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "extraArgs": {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "progress": {
+                "description": "Show detailed test progress output (MCP defaults to true, CLI defaults to false)",
+                "type": "boolean"
+              },
+              "testProductsPath": {
+                "description": "Path to a prepared .xctestproducts package. Cannot be combined with source inputs",
+                "type": "string"
+              },
+              "testRunnerEnv": {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "description": "Environment variables to pass to the test runner (TEST_RUNNER_ prefix added automatically)",
+                "properties": {},
+                "type": "object"
+              },
+              "xctestrunPath": {
+                "description": "Path to a prepared .xctestrun file. Cannot be combined with source inputs",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Send touch down/up events to a UI element by elementRef from a current rs/1 runtime snapshot. This tool is part of plugin `Build iOS Apps`.",
+          "name": "touch",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "delay": {
+                "description": "seconds",
+                "type": "number"
+              },
+              "down": {
+                "type": "boolean"
+              },
+              "elementRef": {
+                "type": "string"
+              },
+              "up": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "elementRef"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Type text into a UI element by elementRef from a current rs/1 runtime snapshot, optionally replacing existing field contents. elementRef is required; do not call with only text. Example input: {\"elementRef\":\"e8\",\"text\":\"London\",\"replaceExisting\":true}. This tool is part of plugin `Build iOS Apps`.",
+          "name": "type_text",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "elementRef": {
+                "description": "Required runtime text-field elementRef from the latest snapshot_ui or wait_for_ui output",
+                "type": "string"
+              },
+              "replaceExisting": {
+                "description": "Select and replace existing field contents before typing",
+                "type": "boolean"
+              },
+              "text": {
+                "description": "Text to type",
+                "type": "string"
+              }
+            },
+            "required": [
+              "elementRef",
+              "text"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        },
+        {
+          "type": "function",
+          "description": "Poll rs/1 runtime UI snapshots until a selector-based UI predicate, selector-free textContains/gone text predicate, or selector-free settled predicate is satisfied, then record the latest snapshot. Prefer this after navigation or layout changes. Select with elementRef, identifier, label, role, or value when a selector is needed. This tool is part of plugin `Build iOS Apps`.",
+          "name": "wait_for_ui",
+          "output_schema": null,
+          "parameters": {
+            "properties": {
+              "elementRef": {
+                "type": "string"
+              },
+              "identifier": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "pollIntervalMs": {
+                "description": "milliseconds",
+                "type": "integer"
+              },
+              "predicate": {
+                "enum": [
+                  "exists",
+                  "gone",
+                  "enabled",
+                  "focused",
+                  "textContains",
+                  "settled"
+                ],
+                "type": "string"
+              },
+              "role": {
+                "enum": [
+                  "application",
+                  "button",
+                  "cell",
+                  "image",
+                  "keyboard-key",
+                  "list",
+                  "menu",
+                  "other",
+                  "scroll-view",
+                  "slider",
+                  "switch",
+                  "tab",
+                  "text",
+                  "text-field",
+                  "window"
+                ],
+                "type": "string"
+              },
+              "settledDurationMs": {
+                "description": "milliseconds",
+                "type": "integer"
+              },
+              "text": {
+                "type": "string"
+              },
+              "timeoutMs": {
+                "description": "milliseconds",
+                "type": "integer"
+              },
+              "value": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "predicate"
+            ],
+            "type": "object"
+          },
+          "strict": false
+        }
+      ]
+    }
+  ],
+  "top_logprobs": 0,
+  "top_p": 0.98,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 49495,
+    "input_tokens_details": {
+      "cache_write_tokens": 0,
+      "cached_tokens": 48512
+    },
+    "output_tokens": 146,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 49641
+  },
+  "user": null,
+  "metadata": {}
+}

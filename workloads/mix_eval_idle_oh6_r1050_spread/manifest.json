@@ -1,0 +1,12 @@
+{
+  "name": "mix_eval_idle_oh6_r1050_spread",
+  "created_unix": 1788165886.2643123,
+  "workload_jsonl_sha256": "bef88b391c4e29a36c999786d7056d002e027abc39c516aacad503679324a170",
+  "sessions_jsonl_sha256": "8e13e7e000b3a0bc33e0ae077b6dd65a2cf262be7075815d91e81edabdd03f91",
+  "spec_json_sha256": "ce51b7a6830b2485086af32b7d77d1472c1b5001db92abff1edecc43c77e8549",
+  "n_turns": 1969,
+  "n_sessions_by_class": {
+    "openhands": 6,
+    "request": 1050
+  }
+}

@@ -1,0 +1,439 @@
+{
+  "trace": "/share/dai-sys/zhoulongsheng/agentkv/experiments/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/frontier_trace/frontier_pid3797866_140187773175760.jsonl",
+  "max_req_seq": 2057,
+  "frontier_summary": {
+    "events": 692,
+    "victims": 1877,
+    "frontier": {
+      "full": {
+        "events_nonempty": 626,
+        "candidate_exposures": 4515,
+        "token_exposures": 3504128,
+        "cold_candidate_exposures": 4436,
+        "cold_token_exposures": 3422208,
+        "unique_candidates": 754,
+        "unique_cold_candidates": 742,
+        "unique_cold_fraction": 0.9840848806366048,
+        "aggregate_cold_node_fraction": 0.9825027685492802,
+        "aggregate_cold_token_fraction": 0.9766218585622443,
+        "event_cold_node_fraction_mean": 0.9693687652873081,
+        "event_cold_node_fraction_p50": 1.0,
+        "event_cold_node_fraction_p90": 1.0,
+        "event_cold_token_fraction_mean": 0.9660144967571371
+      },
+      "swa": {
+        "events_nonempty": 692,
+        "candidate_exposures": 25370,
+        "token_exposures": 42612736,
+        "cold_candidate_exposures": 5880,
+        "cold_token_exposures": 10106368,
+        "unique_candidates": 1836,
+        "unique_cold_candidates": 998,
+        "unique_cold_fraction": 0.5435729847494554,
+        "aggregate_cold_node_fraction": 0.2317698068584943,
+        "aggregate_cold_token_fraction": 0.23716778007401354,
+        "event_cold_node_fraction_mean": 0.28543646080577495,
+        "event_cold_node_fraction_p50": 0.25,
+        "event_cold_node_fraction_p90": 0.6144522144522143,
+        "event_cold_token_fraction_mean": 0.25591859443911846
+      }
+    },
+    "victim_cold_node_fraction": 0.3771976558337773,
+    "victim_cold_token_fraction": 0.3082063217959306
+  },
+  "predictors": {
+    "5": {
+      "counts": {
+        "all": 29885,
+        "cold": 10316,
+        "cold_train": 7064,
+        "cold_val": 1408,
+        "cold_test": 1844
+      },
+      "feature_names": [
+        "log_node_tokens",
+        "log_path_tokens",
+        "log_depth",
+        "log_age_requests",
+        "lru_frac",
+        "log_parent_hits",
+        "log_siblings",
+        "warm_sibling_fraction",
+        "log_owner_turn",
+        "cold",
+        "log_hits",
+        "gap_present",
+        "log_recent_gap_req",
+        "is_openhands",
+        "is_request",
+        "is_swa"
+      ],
+      "cold_static_features": [
+        "log_node_tokens",
+        "log_path_tokens",
+        "log_depth",
+        "log_age_requests",
+        "lru_frac",
+        "log_parent_hits",
+        "log_siblings",
+        "warm_sibling_fraction",
+        "log_owner_turn",
+        "is_openhands",
+        "is_request",
+        "is_swa"
+      ],
+      "strategies_on_cold_test": {
+        "pessimistic_zero": {
+          "n": 1844,
+          "positive_rate": 0.0992407809110629,
+          "auc": 0.5,
+          "ap": 0.0992407809110629,
+          "brier": 0.09924058243050109,
+          "token_brier": 0.2530294504926533,
+          "nll": 1.3710629572170783,
+          "top10_positive_recall": null,
+          "top10_token_positive_recall": null
+        },
+        "cold_global_prior": {
+          "n": 1844,
+          "positive_rate": 0.0992407809110629,
+          "auc": 0.5,
+          "ap": 0.0992407809110629,
+          "brier": 0.0899048369264141,
+          "token_brier": 0.20620463537935435,
+          "nll": 0.3259485741218528,
+          "top10_positive_recall": null,
+          "top10_token_positive_recall": null
+        },
+        "lru_recency_calibrated": {
+          "n": 1844,
+          "positive_rate": 0.0992407809110629,
+          "auc": 0.5985218595684343,
+          "ap": 0.14230177286475987,
+          "brier": 0.08908155977306617,
+          "token_brier": 0.1972128049098132,
+          "nll": 0.3213098030632592,
+          "top10_positive_recall": 0.17486338797814208,
+          "top10_token_positive_recall": 0.27248079530049707
+        },
+        "parent_sibling_calibrated": {
+          "n": 1844,
+          "positive_rate": 0.0992407809110629,
+          "auc": 0.67398663653142,
+          "ap": 0.17915745095565225,
+          "brier": 0.08648162155971176,
+          "token_brier": 0.19312010996422466,
+          "nll": 0.3096332324480078,
+          "top10_positive_recall": 0.15300546448087432,
+          "top10_token_positive_recall": 0.21554450971531858
+        },
+        "unified_logistic": {
+          "n": 1844,
+          "positive_rate": 0.0992407809110629,
+          "auc": 0.7155443261186394,
+          "ap": 0.34033835437843396,
+          "brier": 0.08277831404893171,
+          "token_brier": 0.14326439394424917,
+          "nll": 0.3001377094593901,
+          "top10_positive_recall": 0.33879781420765026,
+          "top10_token_positive_recall": 0.6624491640307275
+        },
+        "unified_mlp_3seed_ensemble": {
+          "n": 1844,
+          "positive_rate": 0.0992407809110629,
+          "auc": 0.7764958235048345,
+          "ap": 0.4534692813651838,
+          "brier": 0.07424439604262151,
+          "token_brier": 0.11560502532954241,
+          "nll": 0.26772026597963255,
+          "top10_positive_recall": 0.41530054644808745,
+          "top10_token_positive_recall": 0.7844554902846814
+        },
+        "cold_only_logistic": {
+          "n": 1844,
+          "positive_rate": 0.0992407809110629,
+          "auc": 0.7487161266338337,
+          "ap": 0.4194098797990252,
+          "brier": 0.0768630188403563,
+          "token_brier": 0.10768315859878598,
+          "nll": 0.2808107321316222,
+          "top10_positive_recall": 0.4262295081967213,
+          "top10_token_positive_recall": 0.7817442385901491
+        },
+        "cold_only_mlp_3seed_ensemble": {
+          "n": 1844,
+          "positive_rate": 0.0992407809110629,
+          "auc": 0.7693567967153897,
+          "ap": 0.29026064710511695,
+          "brier": 0.1013865745695525,
+          "token_brier": 0.17723780597600938,
+          "nll": 0.3613246326508573,
+          "top10_positive_recall": 0.32786885245901637,
+          "top10_token_positive_recall": 0.5015815634884772
+        }
+      }
+    },
+    "20": {
+      "counts": {
+        "all": 29853,
+        "cold": 10305,
+        "cold_train": 7058,
+        "cold_val": 1407,
+        "cold_test": 1840
+      },
+      "feature_names": [
+        "log_node_tokens",
+        "log_path_tokens",
+        "log_depth",
+        "log_age_requests",
+        "lru_frac",
+        "log_parent_hits",
+        "log_siblings",
+        "warm_sibling_fraction",
+        "log_owner_turn",
+        "cold",
+        "log_hits",
+        "gap_present",
+        "log_recent_gap_req",
+        "is_openhands",
+        "is_request",
+        "is_swa"
+      ],
+      "cold_static_features": [
+        "log_node_tokens",
+        "log_path_tokens",
+        "log_depth",
+        "log_age_requests",
+        "lru_frac",
+        "log_parent_hits",
+        "log_siblings",
+        "warm_sibling_fraction",
+        "log_owner_turn",
+        "is_openhands",
+        "is_request",
+        "is_swa"
+      ],
+      "strategies_on_cold_test": {
+        "pessimistic_zero": {
+          "n": 1840,
+          "positive_rate": 0.2141304347826087,
+          "auc": 0.5,
+          "ap": 0.2141304347826087,
+          "brier": 0.21413000652273914,
+          "token_brier": 0.4237008226960354,
+          "nll": 2.958322068390569,
+          "top10_positive_recall": null,
+          "top10_token_positive_recall": null
+        },
+        "cold_global_prior": {
+          "n": 1840,
+          "positive_rate": 0.2141304347826087,
+          "auc": 0.5,
+          "ap": 0.2141304347826087,
+          "brier": 0.17016646083237538,
+          "token_brier": 0.2717749571841116,
+          "nll": 0.5245153867112142,
+          "top10_positive_recall": null,
+          "top10_token_positive_recall": null
+        },
+        "lru_recency_calibrated": {
+          "n": 1840,
+          "positive_rate": 0.2141304347826087,
+          "auc": 0.5683462518693262,
+          "ap": 0.2593514406790654,
+          "brier": 0.16964483682980627,
+          "token_brier": 0.2609500432749323,
+          "nll": 0.5219857127868758,
+          "top10_positive_recall": 0.14213197969543148,
+          "top10_token_positive_recall": 0.21787257019438444
+        },
+        "parent_sibling_calibrated": {
+          "n": 1840,
+          "positive_rate": 0.2141304347826087,
+          "auc": 0.5900980123709024,
+          "ap": 0.2796066868889524,
+          "brier": 0.16745109803508695,
+          "token_brier": 0.26924959938899024,
+          "nll": 0.5148506676733894,
+          "top10_positive_recall": 0.10913705583756345,
+          "top10_token_positive_recall": 0.083963282937365
+        },
+        "unified_logistic": {
+          "n": 1840,
+          "positive_rate": 0.2141304347826087,
+          "auc": 0.6686869431514207,
+          "ap": 0.36884807177999573,
+          "brier": 0.17045773580310977,
+          "token_brier": 0.22748945708198695,
+          "nll": 0.5253458197014479,
+          "top10_positive_recall": 0.20812182741116753,
+          "top10_token_positive_recall": 0.5116090712742981
+        },
+        "unified_mlp_3seed_ensemble": {
+          "n": 1840,
+          "positive_rate": 0.2141304347826087,
+          "auc": 0.7218618137905372,
+          "ap": 0.4452470303767259,
+          "brier": 0.15358862616179497,
+          "token_brier": 0.19923013310116214,
+          "nll": 0.47410726724383706,
+          "top10_positive_recall": 0.233502538071066,
+          "top10_token_positive_recall": 0.6158207343412527
+        },
+        "cold_only_logistic": {
+          "n": 1840,
+          "positive_rate": 0.2141304347826087,
+          "auc": 0.7309785088920249,
+          "ap": 0.4701557016434537,
+          "brier": 0.15217970658814675,
+          "token_brier": 0.17589769649291281,
+          "nll": 0.46576719120949256,
+          "top10_positive_recall": 0.2436548223350254,
+          "top10_token_positive_recall": 0.6363390928725702
+        },
+        "cold_only_mlp_3seed_ensemble": {
+          "n": 1840,
+          "positive_rate": 0.2141304347826087,
+          "auc": 0.7058663493200217,
+          "ap": 0.4397530855187519,
+          "brier": 0.1570316386897427,
+          "token_brier": 0.20550528606895802,
+          "nll": 0.48974489504307117,
+          "top10_positive_recall": 0.2436548223350254,
+          "top10_token_positive_recall": 0.6104211663066955
+        }
+      }
+    },
+    "100": {
+      "counts": {
+        "all": 29425,
+        "cold": 10044,
+        "cold_train": 6883,
+        "cold_val": 1391,
+        "cold_test": 1770
+      },
+      "feature_names": [
+        "log_node_tokens",
+        "log_path_tokens",
+        "log_depth",
+        "log_age_requests",
+        "lru_frac",
+        "log_parent_hits",
+        "log_siblings",
+        "warm_sibling_fraction",
+        "log_owner_turn",
+        "cold",
+        "log_hits",
+        "gap_present",
+        "log_recent_gap_req",
+        "is_openhands",
+        "is_request",
+        "is_swa"
+      ],
+      "cold_static_features": [
+        "log_node_tokens",
+        "log_path_tokens",
+        "log_depth",
+        "log_age_requests",
+        "lru_frac",
+        "log_parent_hits",
+        "log_siblings",
+        "warm_sibling_fraction",
+        "log_owner_turn",
+        "is_openhands",
+        "is_request",
+        "is_swa"
+      ],
+      "strategies_on_cold_test": {
+        "pessimistic_zero": {
+          "n": 1770,
+          "positive_rate": 0.38022598870056495,
+          "auc": 0.5,
+          "ap": 0.38022598870056495,
+          "brier": 0.38022522824958754,
+          "token_brier": 0.6584641681446566,
+          "nll": 5.253016781079381,
+          "top10_positive_recall": null,
+          "top10_token_positive_recall": null
+        },
+        "cold_global_prior": {
+          "n": 1770,
+          "positive_rate": 0.38022598870056495,
+          "auc": 0.5,
+          "ap": 0.38022598870056495,
+          "brier": 0.23744044920172303,
+          "token_brier": 0.28057302840136333,
+          "nll": 0.6678729817600846,
+          "top10_positive_recall": null,
+          "top10_token_positive_recall": null
+        },
+        "lru_recency_calibrated": {
+          "n": 1770,
+          "positive_rate": 0.38022598870056495,
+          "auc": 0.5909423376735958,
+          "ap": 0.45706657311807963,
+          "brier": 0.2311372099905356,
+          "token_brier": 0.260480944158989,
+          "nll": 0.6545054341017618,
+          "top10_positive_recall": 0.1411589895988113,
+          "top10_token_positive_recall": 0.21409598016646006
+        },
+        "parent_sibling_calibrated": {
+          "n": 1770,
+          "positive_rate": 0.38022598870056495,
+          "auc": 0.6285249112465308,
+          "ap": 0.5079649869971637,
+          "brier": 0.21939842266382312,
+          "token_brier": 0.28225952239489066,
+          "nll": 0.6235399763847551,
+          "top10_positive_recall": 0.16939078751857356,
+          "top10_token_positive_recall": 0.15689746768195503
+        },
+        "unified_logistic": {
+          "n": 1770,
+          "positive_rate": 0.38022598870056495,
+          "auc": 0.7578550714429871,
+          "ap": 0.6584395658792535,
+          "brier": 0.20155127537176673,
+          "token_brier": 0.13495802996985715,
+          "nll": 0.5905572029188808,
+          "top10_positive_recall": 0.20356612184249628,
+          "top10_token_positive_recall": 0.5813706392774924
+        },
+        "unified_mlp_3seed_ensemble": {
+          "n": 1770,
+          "positive_rate": 0.38022598870056495,
+          "auc": 0.7798155444878034,
+          "ap": 0.6919257275780463,
+          "brier": 0.18419099564530467,
+          "token_brier": 0.13441472490796064,
+          "nll": 0.5386927700809007,
+          "top10_positive_recall": 0.21099554234769688,
+          "top10_token_positive_recall": 0.6585797768726758
+        },
+        "cold_only_logistic": {
+          "n": 1770,
+          "positive_rate": 0.38022598870056495,
+          "auc": 0.7938914857621963,
+          "ap": 0.7072782909590077,
+          "brier": 0.18271217385828456,
+          "token_brier": 0.14017809936212544,
+          "nll": 0.5374110057062637,
+          "top10_positive_recall": 0.2139673105497771,
+          "top10_token_positive_recall": 0.6881530015937666
+        },
+        "cold_only_mlp_3seed_ensemble": {
+          "n": 1770,
+          "positive_rate": 0.38022598870056495,
+          "auc": 0.7683659744731343,
+          "ap": 0.6854597849015797,
+          "brier": 0.19258594011794147,
+          "token_brier": 0.1525369528187778,
+          "nll": 0.5686730250165775,
+          "top10_positive_recall": 0.21842496285289748,
+          "top10_token_positive_recall": 0.6847883832123252
+        }
+      }
+    }
+  }
+}

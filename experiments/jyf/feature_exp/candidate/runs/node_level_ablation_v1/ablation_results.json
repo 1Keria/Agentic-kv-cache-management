@@ -1,0 +1,1376 @@
+{
+  "full18": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 3,
+    "test_mean": {
+      "ibs_0_8": 0.23004951426019293,
+      "auc@1tau": 0.7047010644427808,
+      "brier@1tau": 0.19725097855856574,
+      "auc@2tau": 0.7711498360354284,
+      "brier@2tau": 0.2911448132527854,
+      "auc@4tau": 0.7875001722112337,
+      "brier@4tau": 0.3663080690168358
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.894184410572052,
+        "epochs": 19,
+        "test": {
+          "ibs_0_8": 0.26538714817209813,
+          "auc@1tau": 0.6960937274303636,
+          "brier@1tau": 0.20742432637758737,
+          "auc@2tau": 0.6823202258598119,
+          "brier@2tau": 0.3695913371271681,
+          "auc@4tau": 0.69325546007012,
+          "brier@4tau": 0.41747154991288604
+        }
+      },
+      {
+        "seed": 42,
+        "val_nll": 0.8955382704734802,
+        "epochs": 20,
+        "test": {
+          "ibs_0_8": 0.20414397790915995,
+          "auc@1tau": 0.7110923421788325,
+          "brier@1tau": 0.18911497156433968,
+          "auc@2tau": 0.8112534869960533,
+          "brier@2tau": 0.24794490690964832,
+          "auc@4tau": 0.8481499790401027,
+          "brier@4tau": 0.32440702196856447
+        }
+      },
+      {
+        "seed": 43,
+        "val_nll": 0.9025256037712097,
+        "epochs": 24,
+        "test": {
+          "ibs_0_8": 0.22061741669932072,
+          "auc@1tau": 0.7069171237191462,
+          "brier@1tau": 0.19521363773377012,
+          "auc@2tau": 0.8198757952504203,
+          "brier@2tau": 0.25589819572153977,
+          "auc@4tau": 0.8210950775234782,
+          "brier@4tau": 0.35704563516905696
+        }
+      }
+    ]
+  },
+  "old10": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent"
+    ],
+    "n_seeds": 3,
+    "test_mean": {
+      "ibs_0_8": 0.27730079562944776,
+      "auc@1tau": 0.5651017515460652,
+      "brier@1tau": 0.2664919719387755,
+      "auc@2tau": 0.6781914189624062,
+      "brier@2tau": 0.38414634973568385,
+      "auc@4tau": 0.7224285265377338,
+      "brier@4tau": 0.42704891720424604
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8933624625205994,
+        "epochs": 19,
+        "test": {
+          "ibs_0_8": 0.28177485194240515,
+          "auc@1tau": 0.5578076591454614,
+          "brier@1tau": 0.27188077129400107,
+          "auc@2tau": 0.6707270898137834,
+          "brier@2tau": 0.39072096366370546,
+          "auc@4tau": 0.7183189016567324,
+          "brier@4tau": 0.4336925017626521
+        }
+      },
+      {
+        "seed": 42,
+        "val_nll": 0.8922097086906433,
+        "epochs": 19,
+        "test": {
+          "ibs_0_8": 0.2809469870469785,
+          "auc@1tau": 0.5621758327418237,
+          "brier@1tau": 0.2694406403395259,
+          "auc@2tau": 0.6769304122645161,
+          "brier@2tau": 0.39207011807088676,
+          "auc@4tau": 0.7230861948289614,
+          "brier@4tau": 0.4318129388023904
+        }
+      },
+      {
+        "seed": 43,
+        "val_nll": 0.892352283000946,
+        "epochs": 17,
+        "test": {
+          "ibs_0_8": 0.26918054789895957,
+          "auc@1tau": 0.5753217627509105,
+          "brier@1tau": 0.2581545041827995,
+          "auc@2tau": 0.6869167548089193,
+          "brier@2tau": 0.3696479674724592,
+          "auc@4tau": 0.7258804831275079,
+          "brier@4tau": 0.4156413110476956
+        }
+      }
+    ]
+  },
+  "candidate8": {
+    "features": [
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 3,
+    "test_mean": {
+      "ibs_0_8": 0.3354678955144487,
+      "auc@1tau": 0.5275212983935355,
+      "brier@1tau": 0.3062760833283169,
+      "auc@2tau": 0.5153242076561565,
+      "brier@2tau": 0.4774305616087642,
+      "auc@4tau": 0.5077569896279402,
+      "brier@4tau": 0.5166953837129603
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.938692033290863,
+        "epochs": 35,
+        "test": {
+          "ibs_0_8": 0.3613304137756964,
+          "auc@1tau": 0.4956181469352458,
+          "brier@1tau": 0.3356781614590247,
+          "auc@2tau": 0.4272289345087392,
+          "brier@2tau": 0.5248073088879855,
+          "auc@4tau": 0.4453392843969887,
+          "brier@4tau": 0.5529921436035904
+        }
+      },
+      {
+        "seed": 42,
+        "val_nll": 0.9784589409828186,
+        "epochs": 11,
+        "test": {
+          "ibs_0_8": 0.27424429873284134,
+          "auc@1tau": 0.7014174219856929,
+          "brier@1tau": 0.2020822926685113,
+          "auc@2tau": 0.6893589289406675,
+          "brier@2tau": 0.37718562410477474,
+          "auc@4tau": 0.6814074651679602,
+          "brier@4tau": 0.4362198839211369
+        }
+      },
+      {
+        "seed": 43,
+        "val_nll": 0.946220874786377,
+        "epochs": 35,
+        "test": {
+          "ibs_0_8": 0.3708289740348083,
+          "auc@1tau": 0.38552832625966765,
+          "brier@1tau": 0.3810677958574147,
+          "auc@2tau": 0.4293847595190629,
+          "brier@2tau": 0.5302987518335323,
+          "auc@4tau": 0.3965242193188716,
+          "brier@4tau": 0.5608741236141535
+        }
+      }
+    ]
+  },
+  "without_old_structure": {
+    "features": [
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.26134818187045955,
+      "auc@1tau": 0.6798866396864512,
+      "brier@1tau": 0.2118286790301965,
+      "auc@2tau": 0.638823773830151,
+      "brier@2tau": 0.3753794722272106,
+      "auc@4tau": 0.6454146223950311,
+      "brier@4tau": 0.4076105708177725
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8995283246040344,
+        "epochs": 22,
+        "test": {
+          "ibs_0_8": 0.26134818187045955,
+          "auc@1tau": 0.6798866396864512,
+          "brier@1tau": 0.2118286790301965,
+          "auc@2tau": 0.638823773830151,
+          "brier@2tau": 0.3753794722272106,
+          "auc@4tau": 0.6454146223950311,
+          "brier@4tau": 0.4076105708177725
+        }
+      }
+    ]
+  },
+  "without_old_node_time": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.26312219397839454,
+      "auc@1tau": 0.6919633885167542,
+      "brier@1tau": 0.2158533313653703,
+      "auc@2tau": 0.808551404732404,
+      "brier@2tau": 0.34228882551834844,
+      "auc@4tau": 0.7945891210065974,
+      "brier@4tau": 0.4188558809821305
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8969885110855103,
+        "epochs": 19,
+        "test": {
+          "ibs_0_8": 0.26312219397839454,
+          "auc@1tau": 0.6919633885167542,
+          "brier@1tau": 0.2158533313653703,
+          "auc@2tau": 0.808551404732404,
+          "brier@2tau": 0.34228882551834844,
+          "auc@4tau": 0.7945891210065974,
+          "brier@4tau": 0.4188558809821305
+        }
+      }
+    ]
+  },
+  "without_old_history": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.23006583178327644,
+      "auc@1tau": 0.7106752459093711,
+      "brier@1tau": 0.19265845472060739,
+      "auc@2tau": 0.8168009410014412,
+      "brier@2tau": 0.2875808307398864,
+      "auc@4tau": 0.8197470903790319,
+      "brier@4tau": 0.36732575350025554
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.9004850387573242,
+        "epochs": 20,
+        "test": {
+          "ibs_0_8": 0.23006583178327644,
+          "auc@1tau": 0.7106752459093711,
+          "brier@1tau": 0.19265845472060739,
+          "auc@2tau": 0.8168009410014412,
+          "brier@2tau": 0.2875808307398864,
+          "auc@4tau": 0.8197470903790319,
+          "brier@4tau": 0.36732575350025554
+        }
+      }
+    ]
+  },
+  "without_old_workload": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.26538714817209813,
+      "auc@1tau": 0.6960937274303636,
+      "brier@1tau": 0.20742432637758737,
+      "auc@2tau": 0.6823202258598119,
+      "brier@2tau": 0.3695913371271681,
+      "auc@4tau": 0.69325546007012,
+      "brier@4tau": 0.41747154991288604
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.894184410572052,
+        "epochs": 19,
+        "test": {
+          "ibs_0_8": 0.26538714817209813,
+          "auc@1tau": 0.6960937274303636,
+          "brier@1tau": 0.20742432637758737,
+          "auc@2tau": 0.6823202258598119,
+          "brier@2tau": 0.3695913371271681,
+          "auc@4tau": 0.69325546007012,
+          "brier@4tau": 0.41747154991288604
+        }
+      }
+    ]
+  },
+  "without_candidate_context": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.27687643931342076,
+      "auc@1tau": 0.6707691464867883,
+      "brier@1tau": 0.20448368540076675,
+      "auc@2tau": 0.6378176709454878,
+      "brier@2tau": 0.3969724379259726,
+      "auc@4tau": 0.6633862580275919,
+      "brier@4tau": 0.43430373100814085
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8838282823562622,
+        "epochs": 22,
+        "test": {
+          "ibs_0_8": 0.27687643931342076,
+          "auc@1tau": 0.6707691464867883,
+          "brier@1tau": 0.20448368540076675,
+          "auc@2tau": 0.6378176709454878,
+          "brier@2tau": 0.3969724379259726,
+          "auc@4tau": 0.6633862580275919,
+          "brier@4tau": 0.43430373100814085
+        }
+      }
+    ]
+  },
+  "without_candidate_history": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.2757271430789469,
+      "auc@1tau": 0.5791111037942549,
+      "brier@1tau": 0.27207644993704827,
+      "auc@2tau": 0.7496738863433815,
+      "brier@2tau": 0.35922992615795984,
+      "auc@4tau": 0.7803541318351271,
+      "brier@4tau": 0.4291061680968117
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8996564149856567,
+        "epochs": 19,
+        "test": {
+          "ibs_0_8": 0.2757271430789469,
+          "auc@1tau": 0.5791111037942549,
+          "brier@1tau": 0.27207644993704827,
+          "auc@2tau": 0.7496738863433815,
+          "brier@2tau": 0.35922992615795984,
+          "auc@4tau": 0.7803541318351271,
+          "brier@4tau": 0.4291061680968117
+        }
+      }
+    ]
+  },
+  "without_candidate_position": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.2639885120681609,
+      "auc@1tau": 0.6926333617209552,
+      "brier@1tau": 0.20611527254371723,
+      "auc@2tau": 0.6834749493895752,
+      "brier@2tau": 0.3687895261720285,
+      "auc@4tau": 0.6902421617638793,
+      "brier@4tau": 0.4149415539721834
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8988913893699646,
+        "epochs": 18,
+        "test": {
+          "ibs_0_8": 0.2639885120681609,
+          "auc@1tau": 0.6926333617209552,
+          "brier@1tau": 0.20611527254371723,
+          "auc@2tau": 0.6834749493895752,
+          "brier@2tau": 0.3687895261720285,
+          "auc@4tau": 0.6902421617638793,
+          "brier@4tau": 0.4149415539721834
+        }
+      }
+    ]
+  },
+  "without_node_tokens": {
+    "features": [
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.255598273352666,
+      "auc@1tau": 0.7039604919554274,
+      "brier@1tau": 0.2008663179589029,
+      "auc@2tau": 0.6890072667778502,
+      "brier@2tau": 0.35656962332091907,
+      "auc@4tau": 0.6871450248066725,
+      "brier@4tau": 0.4007987885862321
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8993027806282043,
+        "epochs": 18,
+        "test": {
+          "ibs_0_8": 0.255598273352666,
+          "auc@1tau": 0.7039604919554274,
+          "brier@1tau": 0.2008663179589029,
+          "auc@2tau": 0.6890072667778502,
+          "brier@2tau": 0.35656962332091907,
+          "auc@4tau": 0.6871450248066725,
+          "brier@4tau": 0.4007987885862321
+        }
+      }
+    ]
+  },
+  "without_path_tokens": {
+    "features": [
+      "node_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.2434866355953401,
+      "auc@1tau": 0.731746133337025,
+      "brier@1tau": 0.18631949597640846,
+      "auc@2tau": 0.6887036975373039,
+      "brier@2tau": 0.34371818404394866,
+      "auc@4tau": 0.6890193627275693,
+      "brier@4tau": 0.3812926316420502
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8974651098251343,
+        "epochs": 18,
+        "test": {
+          "ibs_0_8": 0.2434866355953401,
+          "auc@1tau": 0.731746133337025,
+          "brier@1tau": 0.18631949597640846,
+          "auc@2tau": 0.6887036975373039,
+          "brier@2tau": 0.34371818404394866,
+          "auc@4tau": 0.6890193627275693,
+          "brier@4tau": 0.3812926316420502
+        }
+      }
+    ]
+  },
+  "without_age_seconds": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.24609154196435923,
+      "auc@1tau": 0.7321487600052411,
+      "brier@1tau": 0.1922977306587061,
+      "auc@2tau": 0.7469104057237688,
+      "brier@2tau": 0.3363886780130791,
+      "auc@4tau": 0.7423066065813777,
+      "brier@4tau": 0.3876749908338887
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8979272246360779,
+        "epochs": 18,
+        "test": {
+          "ibs_0_8": 0.24609154196435923,
+          "auc@1tau": 0.7321487600052411,
+          "brier@1tau": 0.1922977306587061,
+          "auc@2tau": 0.7469104057237688,
+          "brier@2tau": 0.3363886780130791,
+          "auc@4tau": 0.7423066065813777,
+          "brier@4tau": 0.3876749908338887
+        }
+      }
+    ]
+  },
+  "without_idle_seconds": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.24697744400770372,
+      "auc@1tau": 0.712113622531262,
+      "brier@1tau": 0.20071200536051198,
+      "auc@2tau": 0.7716306774046363,
+      "brier@2tau": 0.32065937760285157,
+      "auc@4tau": 0.7811042696635242,
+      "brier@4tau": 0.39099131593393205
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8943020701408386,
+        "epochs": 19,
+        "test": {
+          "ibs_0_8": 0.24697744400770372,
+          "auc@1tau": 0.712113622531262,
+          "brier@1tau": 0.20071200536051198,
+          "auc@2tau": 0.7716306774046363,
+          "brier@2tau": 0.32065937760285157,
+          "auc@4tau": 0.7811042696635242,
+          "brier@4tau": 0.39099131593393205
+        }
+      }
+    ]
+  },
+  "without_hits": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.26955704368247013,
+      "auc@1tau": 0.6517498476185765,
+      "brier@1tau": 0.22199361359791434,
+      "auc@2tau": 0.6580643565341,
+      "brier@2tau": 0.37949802483909445,
+      "auc@4tau": 0.6754963735925706,
+      "brier@4tau": 0.420476447604504
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8935678005218506,
+        "epochs": 22,
+        "test": {
+          "ibs_0_8": 0.26955704368247013,
+          "auc@1tau": 0.6517498476185765,
+          "brier@1tau": 0.22199361359791434,
+          "auc@2tau": 0.6580643565341,
+          "brier@2tau": 0.37949802483909445,
+          "auc@4tau": 0.6754963735925706,
+          "brier@4tau": 0.420476447604504
+        }
+      }
+    ]
+  },
+  "without_gap_present": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.2394771972700509,
+      "auc@1tau": 0.7584732345171387,
+      "brier@1tau": 0.17901044724217297,
+      "auc@2tau": 0.7654150612927694,
+      "brier@2tau": 0.3158635241921499,
+      "auc@4tau": 0.7601664120066667,
+      "brier@4tau": 0.38300566150256987
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.894701361656189,
+        "epochs": 19,
+        "test": {
+          "ibs_0_8": 0.2394771972700509,
+          "auc@1tau": 0.7584732345171387,
+          "brier@1tau": 0.17901044724217297,
+          "auc@2tau": 0.7654150612927694,
+          "brier@2tau": 0.3158635241921499,
+          "auc@4tau": 0.7601664120066667,
+          "brier@4tau": 0.38300566150256987
+        }
+      }
+    ]
+  },
+  "without_recent_gap_seconds": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.2671836531162723,
+      "auc@1tau": 0.6561882507263465,
+      "brier@1tau": 0.22489174067818168,
+      "auc@2tau": 0.6988460129407309,
+      "brier@2tau": 0.36506257142515275,
+      "auc@4tau": 0.6970094957227326,
+      "brier@4tau": 0.417142611956569
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8916133642196655,
+        "epochs": 22,
+        "test": {
+          "ibs_0_8": 0.2671836531162723,
+          "auc@1tau": 0.6561882507263465,
+          "brier@1tau": 0.22489174067818168,
+          "auc@2tau": 0.6988460129407309,
+          "brier@2tau": 0.36506257142515275,
+          "auc@4tau": 0.6970094957227326,
+          "brier@4tau": 0.417142611956569
+        }
+      }
+    ]
+  },
+  "without_gap_ewma_seconds": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.26969582347219856,
+      "auc@1tau": 0.6564120632890345,
+      "brier@1tau": 0.22448826106601916,
+      "auc@2tau": 0.6509837298453751,
+      "brier@2tau": 0.37992800529154797,
+      "auc@4tau": 0.6563012740773349,
+      "brier@4tau": 0.4226960887105122
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.893711507320404,
+        "epochs": 19,
+        "test": {
+          "ibs_0_8": 0.26969582347219856,
+          "auc@1tau": 0.6564120632890345,
+          "brier@1tau": 0.22448826106601916,
+          "auc@2tau": 0.6509837298453751,
+          "brier@2tau": 0.37992800529154797,
+          "auc@4tau": 0.6563012740773349,
+          "brier@4tau": 0.4226960887105122
+        }
+      }
+    ]
+  },
+  "without_gap_std_seconds": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.2367354207612131,
+      "auc@1tau": 0.7508750744821472,
+      "brier@1tau": 0.18287580038811832,
+      "auc@2tau": 0.7878668439661923,
+      "brier@2tau": 0.31094741054409847,
+      "auc@4tau": 0.7668828928402928,
+      "brier@4tau": 0.376156971148008
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8980114459991455,
+        "epochs": 18,
+        "test": {
+          "ibs_0_8": 0.2367354207612131,
+          "auc@1tau": 0.7508750744821472,
+          "brier@1tau": 0.18287580038811832,
+          "auc@2tau": 0.7878668439661923,
+          "brier@2tau": 0.31094741054409847,
+          "auc@4tau": 0.7668828928402928,
+          "brier@4tau": 0.376156971148008
+        }
+      }
+    ]
+  },
+  "without_is_agent": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.26538714817209813,
+      "auc@1tau": 0.6960937274303636,
+      "brier@1tau": 0.20742432637758737,
+      "auc@2tau": 0.6823202258598119,
+      "brier@2tau": 0.3695913371271681,
+      "auc@4tau": 0.69325546007012,
+      "brier@4tau": 0.41747154991288604
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.894184410572052,
+        "epochs": 19,
+        "test": {
+          "ibs_0_8": 0.26538714817209813,
+          "auc@1tau": 0.6960937274303636,
+          "brier@1tau": 0.20742432637758737,
+          "auc@2tau": 0.6823202258598119,
+          "brier@2tau": 0.3695913371271681,
+          "auc@4tau": 0.69325546007012,
+          "brier@4tau": 0.41747154991288604
+        }
+      }
+    ]
+  },
+  "without_creation_turn_fraction": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.2639885120681609,
+      "auc@1tau": 0.6926333617209552,
+      "brier@1tau": 0.20611527254371723,
+      "auc@2tau": 0.6834749493895752,
+      "brier@2tau": 0.3687895261720285,
+      "auc@4tau": 0.6902421617638793,
+      "brier@4tau": 0.4149415539721834
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8988913893699646,
+        "epochs": 18,
+        "test": {
+          "ibs_0_8": 0.2639885120681609,
+          "auc@1tau": 0.6926333617209552,
+          "brier@1tau": 0.20611527254371723,
+          "auc@2tau": 0.6834749493895752,
+          "brier@2tau": 0.3687895261720285,
+          "auc@4tau": 0.6902421617638793,
+          "brier@4tau": 0.4149415539721834
+        }
+      }
+    ]
+  },
+  "without_endpoint_is_tool": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.2645541241096636,
+      "auc@1tau": 0.6901190651040432,
+      "brier@1tau": 0.2091135691290915,
+      "auc@2tau": 0.6698175512515451,
+      "brier@2tau": 0.36945864216823654,
+      "auc@4tau": 0.6836986687951256,
+      "brier@4tau": 0.4157952228608835
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8959136605262756,
+        "epochs": 19,
+        "test": {
+          "ibs_0_8": 0.2645541241096636,
+          "auc@1tau": 0.6901190651040432,
+          "brier@1tau": 0.2091135691290915,
+          "auc@2tau": 0.6698175512515451,
+          "brier@2tau": 0.36945864216823654,
+          "auc@4tau": 0.6836986687951256,
+          "brier@4tau": 0.4157952228608835
+        }
+      }
+    ]
+  },
+  "without_tool_schema_count": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.23686086523370026,
+      "auc@1tau": 0.7264497930246208,
+      "brier@1tau": 0.18706731126917991,
+      "auc@2tau": 0.7528511269788526,
+      "brier@2tau": 0.3164875103014795,
+      "auc@4tau": 0.7640469572521658,
+      "brier@4tau": 0.37209166742910116
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.9004552960395813,
+        "epochs": 22,
+        "test": {
+          "ibs_0_8": 0.23686086523370026,
+          "auc@1tau": 0.7264497930246208,
+          "brier@1tau": 0.18706731126917991,
+          "auc@2tau": 0.7528511269788526,
+          "brier@2tau": 0.3164875103014795,
+          "auc@4tau": 0.7640469572521658,
+          "brier@4tau": 0.37209166742910116
+        }
+      }
+    ]
+  },
+  "without_last_message_is_tool": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.25969503189863197,
+      "auc@1tau": 0.6880796805767934,
+      "brier@1tau": 0.2095371879701803,
+      "auc@2tau": 0.6714013875089123,
+      "brier@2tau": 0.36485932530049253,
+      "auc@4tau": 0.6866475403226624,
+      "brier@4tau": 0.4063586436047108
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8973068594932556,
+        "epochs": 19,
+        "test": {
+          "ibs_0_8": 0.25969503189863197,
+          "auc@1tau": 0.6880796805767934,
+          "brier@1tau": 0.2095371879701803,
+          "auc@2tau": 0.6714013875089123,
+          "brier@2tau": 0.36485932530049253,
+          "auc@4tau": 0.6866475403226624,
+          "brier@4tau": 0.4063586436047108
+        }
+      }
+    ]
+  },
+  "without_last_message_is_user": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.2530258537944039,
+      "auc@1tau": 0.7099554145398064,
+      "brier@1tau": 0.19925781685409732,
+      "auc@2tau": 0.7322531614526117,
+      "brier@2tau": 0.3468825096193964,
+      "auc@4tau": 0.7446746650412552,
+      "brier@4tau": 0.3986363095723748
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8903219103813171,
+        "epochs": 18,
+        "test": {
+          "ibs_0_8": 0.2530258537944039,
+          "auc@1tau": 0.7099554145398064,
+          "brier@1tau": 0.19925781685409732,
+          "auc@2tau": 0.7322531614526117,
+          "brier@2tau": 0.3468825096193964,
+          "auc@4tau": 0.7446746650412552,
+          "brier@4tau": 0.3986363095723748
+        }
+      }
+    ]
+  },
+  "without_prefix_gap_ewma_rel": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_reuse_rate8",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.2692711718292232,
+      "auc@1tau": 0.6716523272626264,
+      "brier@1tau": 0.22178434606201464,
+      "auc@2tau": 0.6850643716307458,
+      "brier@2tau": 0.3759155747793531,
+      "auc@4tau": 0.7034867807811626,
+      "brier@4tau": 0.4208766997390347
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8966402411460876,
+        "epochs": 19,
+        "test": {
+          "ibs_0_8": 0.2692711718292232,
+          "auc@1tau": 0.6716523272626264,
+          "brier@1tau": 0.22178434606201464,
+          "auc@2tau": 0.6850643716307458,
+          "brier@2tau": 0.3759155747793531,
+          "auc@4tau": 0.7034867807811626,
+          "brier@4tau": 0.4208766997390347
+        }
+      }
+    ]
+  },
+  "without_prefix_reuse_rate8": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_turn_gap_last"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.2704949233300873,
+      "auc@1tau": 0.660207977298948,
+      "brier@1tau": 0.2235702362212984,
+      "auc@2tau": 0.645373118748515,
+      "brier@2tau": 0.38207748112120343,
+      "auc@4tau": 0.6587334696914857,
+      "brier@4tau": 0.422056925127312
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8940792083740234,
+        "epochs": 19,
+        "test": {
+          "ibs_0_8": 0.2704949233300873,
+          "auc@1tau": 0.660207977298948,
+          "brier@1tau": 0.2235702362212984,
+          "auc@2tau": 0.645373118748515,
+          "brier@2tau": 0.38207748112120343,
+          "auc@4tau": 0.6587334696914857,
+          "brier@4tau": 0.422056925127312
+        }
+      }
+    ]
+  },
+  "without_prefix_turn_gap_last": {
+    "features": [
+      "node_tokens",
+      "path_tokens",
+      "age_seconds",
+      "idle_seconds",
+      "hits",
+      "gap_present",
+      "recent_gap_seconds",
+      "gap_ewma_seconds",
+      "gap_std_seconds",
+      "is_agent",
+      "creation_turn_fraction",
+      "endpoint_is_tool",
+      "tool_schema_count",
+      "last_message_is_tool",
+      "last_message_is_user",
+      "prefix_gap_ewma_rel",
+      "prefix_reuse_rate8"
+    ],
+    "n_seeds": 1,
+    "test_mean": {
+      "ibs_0_8": 0.25581279309009974,
+      "auc@1tau": 0.5995698400963866,
+      "brier@1tau": 0.2538339048047655,
+      "auc@2tau": 0.7527233388556379,
+      "brier@2tau": 0.3418590432858326,
+      "auc@4tau": 0.7838677686572165,
+      "brier@4tau": 0.3947403231017463
+    },
+    "runs": [
+      {
+        "seed": 41,
+        "val_nll": 0.8971141576766968,
+        "epochs": 18,
+        "test": {
+          "ibs_0_8": 0.25581279309009974,
+          "auc@1tau": 0.5995698400963866,
+          "brier@1tau": 0.2538339048047655,
+          "auc@2tau": 0.7527233388556379,
+          "brier@2tau": 0.3418590432858326,
+          "auc@4tau": 0.7838677686572165,
+          "brier@4tau": 0.3947403231017463
+        }
+      }
+    ]
+  }
+}

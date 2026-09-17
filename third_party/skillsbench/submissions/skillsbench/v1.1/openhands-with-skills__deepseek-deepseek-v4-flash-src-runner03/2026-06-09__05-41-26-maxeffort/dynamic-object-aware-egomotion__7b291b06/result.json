@@ -1,0 +1,111 @@
+{
+  "task_name": "dynamic-object-aware-egomotion",
+  "rollout_name": "dynamic-object-aware-egomotion__7b291b06",
+  "rewards": {
+    "reward": 0.0
+  },
+  "agent": "openhands",
+  "agent_name": "OpenHands CLI ACP Agent",
+  "model": "deepseek/deepseek-v4-flash",
+  "skill_mode": "with-skill",
+  "skill_source": "task_bundled",
+  "requested_skills_dir": "/home/benchflow/skillsbench/tasks/dynamic-object-aware-egomotion/environment/skills",
+  "effective_skills_dir": "/tmp/benchflow-task-dzkxa0hv/dynamic-object-aware-egomotion/environment/skills",
+  "skills_sandbox_dir": "/skills",
+  "include_task_skills": true,
+  "n_tool_calls": 21,
+  "n_skill_invocations": 4,
+  "n_prompts": 1,
+  "agent_result": {
+    "n_tool_calls": 21,
+    "n_skill_invocations": 4,
+    "n_prompts": 1,
+    "n_input_tokens": 334459,
+    "n_output_tokens": 8949,
+    "n_cache_read_tokens": 315648,
+    "n_cache_creation_tokens": 0,
+    "total_tokens": 343408,
+    "cost_usd": null,
+    "usage_source": "provider_response",
+    "price_source": null
+  },
+  "final_metrics": {
+    "total_prompt_tokens": 334459,
+    "total_completion_tokens": 8949,
+    "total_cached_tokens": 315648,
+    "total_cost_usd": null
+  },
+  "trajectory_summary": {
+    "steps": 40,
+    "tool_call_steps": 21,
+    "user_message_steps": 1,
+    "agent_message_steps": 1,
+    "agent_thought_steps": 17,
+    "other_steps": 0,
+    "event_type_counts": {
+      "user_message": 1,
+      "agent_thought": 17,
+      "tool_call": 21,
+      "agent_message": 1
+    },
+    "tool_call_status_counts": {
+      "pending": 3,
+      "completed": 18
+    },
+    "partial_trajectory": false,
+    "trajectory_source": "acp"
+  },
+  "usage_tracking": {
+    "requested": "required",
+    "status": "enabled",
+    "environment": "docker",
+    "endpoint_kind": "host",
+    "usage_source": "provider_response"
+  },
+  "error": null,
+  "error_category": null,
+  "verifier_error": null,
+  "verifier_error_category": null,
+  "export_error": null,
+  "idle_timeout_info": null,
+  "sandbox_startup_info": null,
+  "transport_error_info": null,
+  "verifier_timeout_info": null,
+  "partial_trajectory": false,
+  "trajectory_source": "acp",
+  "started_at": "2026-06-09 03:12:48.123757",
+  "finished_at": "2026-06-09 03:16:37.741806",
+  "timing": {
+    "environment_setup": 6.0,
+    "agent_setup": 19.8,
+    "agent_execution": 110.1,
+    "verifier": 15.1,
+    "total": 229.6
+  },
+  "scenes": [
+    {
+      "name": "default",
+      "skills_dir": null,
+      "roles": [
+        {
+          "name": "agent",
+          "agent": "openhands",
+          "model": "deepseek/deepseek-v4-flash",
+          "reasoning_effort": null,
+          "timeout_sec": null,
+          "idle_timeout_sec": null,
+          "skills_dir": null,
+          "capabilities": null,
+          "env_keys": []
+        }
+      ],
+      "turns": [
+        {
+          "role": "agent",
+          "has_prompt": false
+        }
+      ]
+    }
+  ],
+  "sandbox_id": null
+}

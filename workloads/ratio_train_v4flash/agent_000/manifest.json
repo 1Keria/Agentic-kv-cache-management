@@ -1,0 +1,6 @@
+{
+  "name": "agent_000",
+  "workload_jsonl_sha256": "629eca95bd4b0c45aa661b6e6663f05cbaa32ab3dc37913b6b0079dd7f49f69f",
+  "sessions_jsonl_sha256": "35dd2ff3d07a218db70f83548ec2444ab2f3e034f8bda1dd43fb2940b671ab7c",
+  "spec_json_sha256": "03c50863d470324c16ae29531b2c97a53371083c041e24834a35f1bf0368b288"
+}

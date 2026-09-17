@@ -1,0 +1,26 @@
+{
+  "source_sha256": {
+    "predictor.py": "57c61251ce1644d380c7cebcdc90a82e279ac92e856f7f783ff551811620067d",
+    "sitecustomize.py": "dc659930ad27a81a24f70fe96f884beb6b4f05bef6563264917ff8c5e336517f",
+    "serving_patch.py": "576e29028bfe09a3deef67c8bbfe38d10ba5e22578fe45c41d41fa33abdcf675",
+    "run_online.sh": "9ed63e73936ea6cdc670b60f72d2cda4733272c43dd4908e9603afd0af6850ae",
+    "test_serving_cache.py": "ff606eb14a48df87316c9beafa86110d0ffd1ec3adc741f39390f29b701d1dec",
+    "report_online.py": "e7b8a0400659cf8ffb8572107913ae0bc864eca9be80817d7e6b5db2e0b91b39"
+  },
+  "workload": "/share/dai-sys/zhoulongsheng/agentkv/experiments/nn_exp/cold_predictor_exp/workloads/agent050_decode32/workload.jsonl",
+  "workload_sha256": "114c816ff58afaa44ac45d120f88fbf3e3a85fe8657f26d8732289ce8826858e",
+  "checkpoint": "/share/dai-sys/zhoulongsheng/agentkv/experiments/nn_exp/uniform_mlp_exp/k10/checkpoints/seed_42.pt",
+  "checkpoint_sha256": "cfba9dd0e9558e7e703a78d23be9d1237a422afdf44fd6e3ca94812d8c13b544",
+  "modes": [
+    "sync_fill"
+  ],
+  "seed": 42,
+  "arrival": "waves",
+  "horizon_s": 300,
+  "waves": 9,
+  "wave_width_s": 20,
+  "gap_scale": 0.02,
+  "max_tokens": 32,
+  "mem_fraction_static": 0.45,
+  "tp": 8
+}

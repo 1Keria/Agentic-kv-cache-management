@@ -1,0 +1,2605 @@
+{
+  "args": {
+    "dataset": "third_party/glm-5dot1_onlinedata/glm-5dot1_onlinedata_lt32k.jsonl",
+    "output_dir": "experiments/feature_exp/runs/20260912_v1",
+    "rebuild": false,
+    "seeds": [
+      41,
+      42,
+      43
+    ],
+    "epochs": 25,
+    "patience": 4,
+    "batch_size": 4096,
+    "learning_rate": 0.001,
+    "min_history": 1,
+    "device": "cuda"
+  },
+  "feature_names": [
+    "log_recent_gap_1",
+    "log_recent_gap_2",
+    "log_recent_gap_3",
+    "log_recent_gap_4",
+    "log_recent_gap_5",
+    "log_recent_gap_6",
+    "log_recent_gap_7",
+    "log_recent_gap_8",
+    "recent_gap_mask_1",
+    "recent_gap_mask_2",
+    "recent_gap_mask_3",
+    "recent_gap_mask_4",
+    "recent_gap_mask_5",
+    "recent_gap_mask_6",
+    "recent_gap_mask_7",
+    "recent_gap_mask_8",
+    "log_gap_mean",
+    "log_gap_std",
+    "log_gap_min",
+    "log_gap_max",
+    "log_gap_ewma",
+    "log_reuse_count",
+    "log_accesses_prev_5s",
+    "log_accesses_prev_20s",
+    "log_accesses_prev_60s",
+    "log_accesses_prev_300s",
+    "log_prefix_tokens",
+    "log_node_tokens",
+    "log_child_count",
+    "is_leaf",
+    "log_tool_count",
+    "log_tool_schema_bytes",
+    "tool_name_hash_0",
+    "tool_name_hash_1",
+    "tool_name_hash_2",
+    "tool_name_hash_3",
+    "tool_name_hash_4",
+    "tool_name_hash_5",
+    "tool_name_hash_6",
+    "tool_name_hash_7",
+    "tool_name_hash_8",
+    "tool_name_hash_9",
+    "tool_name_hash_10",
+    "tool_name_hash_11",
+    "tool_name_hash_12",
+    "tool_name_hash_13",
+    "tool_name_hash_14",
+    "tool_name_hash_15",
+    "tool_name_hash_16",
+    "tool_name_hash_17",
+    "tool_name_hash_18",
+    "tool_name_hash_19",
+    "tool_name_hash_20",
+    "tool_name_hash_21",
+    "tool_name_hash_22",
+    "tool_name_hash_23",
+    "tool_name_hash_24",
+    "tool_name_hash_25",
+    "tool_name_hash_26",
+    "tool_name_hash_27",
+    "tool_name_hash_28",
+    "tool_name_hash_29",
+    "tool_name_hash_30",
+    "tool_name_hash_31"
+  ],
+  "groups": {
+    "constant": [],
+    "history_recent": [
+      "log_recent_gap_1",
+      "log_recent_gap_2",
+      "log_recent_gap_3",
+      "log_recent_gap_4",
+      "log_recent_gap_5",
+      "log_recent_gap_6",
+      "log_recent_gap_7",
+      "log_recent_gap_8",
+      "recent_gap_mask_1",
+      "recent_gap_mask_2",
+      "recent_gap_mask_3",
+      "recent_gap_mask_4",
+      "recent_gap_mask_5",
+      "recent_gap_mask_6",
+      "recent_gap_mask_7",
+      "recent_gap_mask_8"
+    ],
+    "history_summary": [
+      "log_gap_mean",
+      "log_gap_std",
+      "log_gap_min",
+      "log_gap_max",
+      "log_gap_ewma",
+      "log_reuse_count",
+      "log_accesses_prev_5s",
+      "log_accesses_prev_20s",
+      "log_accesses_prev_60s",
+      "log_accesses_prev_300s"
+    ],
+    "history": [
+      "log_recent_gap_1",
+      "log_recent_gap_2",
+      "log_recent_gap_3",
+      "log_recent_gap_4",
+      "log_recent_gap_5",
+      "log_recent_gap_6",
+      "log_recent_gap_7",
+      "log_recent_gap_8",
+      "recent_gap_mask_1",
+      "recent_gap_mask_2",
+      "recent_gap_mask_3",
+      "recent_gap_mask_4",
+      "recent_gap_mask_5",
+      "recent_gap_mask_6",
+      "recent_gap_mask_7",
+      "recent_gap_mask_8",
+      "log_gap_mean",
+      "log_gap_std",
+      "log_gap_min",
+      "log_gap_max",
+      "log_gap_ewma",
+      "log_reuse_count",
+      "log_accesses_prev_5s",
+      "log_accesses_prev_20s",
+      "log_accesses_prev_60s",
+      "log_accesses_prev_300s"
+    ],
+    "radix_tokens": [
+      "log_prefix_tokens",
+      "log_node_tokens"
+    ],
+    "radix_shape": [
+      "log_child_count",
+      "is_leaf"
+    ],
+    "radix": [
+      "log_prefix_tokens",
+      "log_node_tokens",
+      "log_child_count",
+      "is_leaf"
+    ],
+    "tools_size": [
+      "log_tool_count",
+      "log_tool_schema_bytes"
+    ],
+    "tools_identity": [
+      "tool_name_hash_0",
+      "tool_name_hash_1",
+      "tool_name_hash_2",
+      "tool_name_hash_3",
+      "tool_name_hash_4",
+      "tool_name_hash_5",
+      "tool_name_hash_6",
+      "tool_name_hash_7",
+      "tool_name_hash_8",
+      "tool_name_hash_9",
+      "tool_name_hash_10",
+      "tool_name_hash_11",
+      "tool_name_hash_12",
+      "tool_name_hash_13",
+      "tool_name_hash_14",
+      "tool_name_hash_15",
+      "tool_name_hash_16",
+      "tool_name_hash_17",
+      "tool_name_hash_18",
+      "tool_name_hash_19",
+      "tool_name_hash_20",
+      "tool_name_hash_21",
+      "tool_name_hash_22",
+      "tool_name_hash_23",
+      "tool_name_hash_24",
+      "tool_name_hash_25",
+      "tool_name_hash_26",
+      "tool_name_hash_27",
+      "tool_name_hash_28",
+      "tool_name_hash_29",
+      "tool_name_hash_30",
+      "tool_name_hash_31"
+    ],
+    "tools": [
+      "log_tool_count",
+      "log_tool_schema_bytes",
+      "tool_name_hash_0",
+      "tool_name_hash_1",
+      "tool_name_hash_2",
+      "tool_name_hash_3",
+      "tool_name_hash_4",
+      "tool_name_hash_5",
+      "tool_name_hash_6",
+      "tool_name_hash_7",
+      "tool_name_hash_8",
+      "tool_name_hash_9",
+      "tool_name_hash_10",
+      "tool_name_hash_11",
+      "tool_name_hash_12",
+      "tool_name_hash_13",
+      "tool_name_hash_14",
+      "tool_name_hash_15",
+      "tool_name_hash_16",
+      "tool_name_hash_17",
+      "tool_name_hash_18",
+      "tool_name_hash_19",
+      "tool_name_hash_20",
+      "tool_name_hash_21",
+      "tool_name_hash_22",
+      "tool_name_hash_23",
+      "tool_name_hash_24",
+      "tool_name_hash_25",
+      "tool_name_hash_26",
+      "tool_name_hash_27",
+      "tool_name_hash_28",
+      "tool_name_hash_29",
+      "tool_name_hash_30",
+      "tool_name_hash_31"
+    ],
+    "history_recent+tools_size": [
+      "log_recent_gap_1",
+      "log_recent_gap_2",
+      "log_recent_gap_3",
+      "log_recent_gap_4",
+      "log_recent_gap_5",
+      "log_recent_gap_6",
+      "log_recent_gap_7",
+      "log_recent_gap_8",
+      "recent_gap_mask_1",
+      "recent_gap_mask_2",
+      "recent_gap_mask_3",
+      "recent_gap_mask_4",
+      "recent_gap_mask_5",
+      "recent_gap_mask_6",
+      "recent_gap_mask_7",
+      "recent_gap_mask_8",
+      "log_tool_count",
+      "log_tool_schema_bytes"
+    ],
+    "history_recent+tools_identity": [
+      "log_recent_gap_1",
+      "log_recent_gap_2",
+      "log_recent_gap_3",
+      "log_recent_gap_4",
+      "log_recent_gap_5",
+      "log_recent_gap_6",
+      "log_recent_gap_7",
+      "log_recent_gap_8",
+      "recent_gap_mask_1",
+      "recent_gap_mask_2",
+      "recent_gap_mask_3",
+      "recent_gap_mask_4",
+      "recent_gap_mask_5",
+      "recent_gap_mask_6",
+      "recent_gap_mask_7",
+      "recent_gap_mask_8",
+      "tool_name_hash_0",
+      "tool_name_hash_1",
+      "tool_name_hash_2",
+      "tool_name_hash_3",
+      "tool_name_hash_4",
+      "tool_name_hash_5",
+      "tool_name_hash_6",
+      "tool_name_hash_7",
+      "tool_name_hash_8",
+      "tool_name_hash_9",
+      "tool_name_hash_10",
+      "tool_name_hash_11",
+      "tool_name_hash_12",
+      "tool_name_hash_13",
+      "tool_name_hash_14",
+      "tool_name_hash_15",
+      "tool_name_hash_16",
+      "tool_name_hash_17",
+      "tool_name_hash_18",
+      "tool_name_hash_19",
+      "tool_name_hash_20",
+      "tool_name_hash_21",
+      "tool_name_hash_22",
+      "tool_name_hash_23",
+      "tool_name_hash_24",
+      "tool_name_hash_25",
+      "tool_name_hash_26",
+      "tool_name_hash_27",
+      "tool_name_hash_28",
+      "tool_name_hash_29",
+      "tool_name_hash_30",
+      "tool_name_hash_31"
+    ],
+    "history_summary+tools_size": [
+      "log_gap_mean",
+      "log_gap_std",
+      "log_gap_min",
+      "log_gap_max",
+      "log_gap_ewma",
+      "log_reuse_count",
+      "log_accesses_prev_5s",
+      "log_accesses_prev_20s",
+      "log_accesses_prev_60s",
+      "log_accesses_prev_300s",
+      "log_tool_count",
+      "log_tool_schema_bytes"
+    ],
+    "history_summary+tools_identity": [
+      "log_gap_mean",
+      "log_gap_std",
+      "log_gap_min",
+      "log_gap_max",
+      "log_gap_ewma",
+      "log_reuse_count",
+      "log_accesses_prev_5s",
+      "log_accesses_prev_20s",
+      "log_accesses_prev_60s",
+      "log_accesses_prev_300s",
+      "tool_name_hash_0",
+      "tool_name_hash_1",
+      "tool_name_hash_2",
+      "tool_name_hash_3",
+      "tool_name_hash_4",
+      "tool_name_hash_5",
+      "tool_name_hash_6",
+      "tool_name_hash_7",
+      "tool_name_hash_8",
+      "tool_name_hash_9",
+      "tool_name_hash_10",
+      "tool_name_hash_11",
+      "tool_name_hash_12",
+      "tool_name_hash_13",
+      "tool_name_hash_14",
+      "tool_name_hash_15",
+      "tool_name_hash_16",
+      "tool_name_hash_17",
+      "tool_name_hash_18",
+      "tool_name_hash_19",
+      "tool_name_hash_20",
+      "tool_name_hash_21",
+      "tool_name_hash_22",
+      "tool_name_hash_23",
+      "tool_name_hash_24",
+      "tool_name_hash_25",
+      "tool_name_hash_26",
+      "tool_name_hash_27",
+      "tool_name_hash_28",
+      "tool_name_hash_29",
+      "tool_name_hash_30",
+      "tool_name_hash_31"
+    ],
+    "history_summary+tools": [
+      "log_gap_mean",
+      "log_gap_std",
+      "log_gap_min",
+      "log_gap_max",
+      "log_gap_ewma",
+      "log_reuse_count",
+      "log_accesses_prev_5s",
+      "log_accesses_prev_20s",
+      "log_accesses_prev_60s",
+      "log_accesses_prev_300s",
+      "log_tool_count",
+      "log_tool_schema_bytes",
+      "tool_name_hash_0",
+      "tool_name_hash_1",
+      "tool_name_hash_2",
+      "tool_name_hash_3",
+      "tool_name_hash_4",
+      "tool_name_hash_5",
+      "tool_name_hash_6",
+      "tool_name_hash_7",
+      "tool_name_hash_8",
+      "tool_name_hash_9",
+      "tool_name_hash_10",
+      "tool_name_hash_11",
+      "tool_name_hash_12",
+      "tool_name_hash_13",
+      "tool_name_hash_14",
+      "tool_name_hash_15",
+      "tool_name_hash_16",
+      "tool_name_hash_17",
+      "tool_name_hash_18",
+      "tool_name_hash_19",
+      "tool_name_hash_20",
+      "tool_name_hash_21",
+      "tool_name_hash_22",
+      "tool_name_hash_23",
+      "tool_name_hash_24",
+      "tool_name_hash_25",
+      "tool_name_hash_26",
+      "tool_name_hash_27",
+      "tool_name_hash_28",
+      "tool_name_hash_29",
+      "tool_name_hash_30",
+      "tool_name_hash_31"
+    ],
+    "history+radix": [
+      "log_recent_gap_1",
+      "log_recent_gap_2",
+      "log_recent_gap_3",
+      "log_recent_gap_4",
+      "log_recent_gap_5",
+      "log_recent_gap_6",
+      "log_recent_gap_7",
+      "log_recent_gap_8",
+      "recent_gap_mask_1",
+      "recent_gap_mask_2",
+      "recent_gap_mask_3",
+      "recent_gap_mask_4",
+      "recent_gap_mask_5",
+      "recent_gap_mask_6",
+      "recent_gap_mask_7",
+      "recent_gap_mask_8",
+      "log_gap_mean",
+      "log_gap_std",
+      "log_gap_min",
+      "log_gap_max",
+      "log_gap_ewma",
+      "log_reuse_count",
+      "log_accesses_prev_5s",
+      "log_accesses_prev_20s",
+      "log_accesses_prev_60s",
+      "log_accesses_prev_300s",
+      "log_prefix_tokens",
+      "log_node_tokens",
+      "log_child_count",
+      "is_leaf"
+    ],
+    "history+tools": [
+      "log_recent_gap_1",
+      "log_recent_gap_2",
+      "log_recent_gap_3",
+      "log_recent_gap_4",
+      "log_recent_gap_5",
+      "log_recent_gap_6",
+      "log_recent_gap_7",
+      "log_recent_gap_8",
+      "recent_gap_mask_1",
+      "recent_gap_mask_2",
+      "recent_gap_mask_3",
+      "recent_gap_mask_4",
+      "recent_gap_mask_5",
+      "recent_gap_mask_6",
+      "recent_gap_mask_7",
+      "recent_gap_mask_8",
+      "log_gap_mean",
+      "log_gap_std",
+      "log_gap_min",
+      "log_gap_max",
+      "log_gap_ewma",
+      "log_reuse_count",
+      "log_accesses_prev_5s",
+      "log_accesses_prev_20s",
+      "log_accesses_prev_60s",
+      "log_accesses_prev_300s",
+      "log_tool_count",
+      "log_tool_schema_bytes",
+      "tool_name_hash_0",
+      "tool_name_hash_1",
+      "tool_name_hash_2",
+      "tool_name_hash_3",
+      "tool_name_hash_4",
+      "tool_name_hash_5",
+      "tool_name_hash_6",
+      "tool_name_hash_7",
+      "tool_name_hash_8",
+      "tool_name_hash_9",
+      "tool_name_hash_10",
+      "tool_name_hash_11",
+      "tool_name_hash_12",
+      "tool_name_hash_13",
+      "tool_name_hash_14",
+      "tool_name_hash_15",
+      "tool_name_hash_16",
+      "tool_name_hash_17",
+      "tool_name_hash_18",
+      "tool_name_hash_19",
+      "tool_name_hash_20",
+      "tool_name_hash_21",
+      "tool_name_hash_22",
+      "tool_name_hash_23",
+      "tool_name_hash_24",
+      "tool_name_hash_25",
+      "tool_name_hash_26",
+      "tool_name_hash_27",
+      "tool_name_hash_28",
+      "tool_name_hash_29",
+      "tool_name_hash_30",
+      "tool_name_hash_31"
+    ],
+    "all": [
+      "log_recent_gap_1",
+      "log_recent_gap_2",
+      "log_recent_gap_3",
+      "log_recent_gap_4",
+      "log_recent_gap_5",
+      "log_recent_gap_6",
+      "log_recent_gap_7",
+      "log_recent_gap_8",
+      "recent_gap_mask_1",
+      "recent_gap_mask_2",
+      "recent_gap_mask_3",
+      "recent_gap_mask_4",
+      "recent_gap_mask_5",
+      "recent_gap_mask_6",
+      "recent_gap_mask_7",
+      "recent_gap_mask_8",
+      "log_gap_mean",
+      "log_gap_std",
+      "log_gap_min",
+      "log_gap_max",
+      "log_gap_ewma",
+      "log_reuse_count",
+      "log_accesses_prev_5s",
+      "log_accesses_prev_20s",
+      "log_accesses_prev_60s",
+      "log_accesses_prev_300s",
+      "log_prefix_tokens",
+      "log_node_tokens",
+      "log_child_count",
+      "is_leaf",
+      "log_tool_count",
+      "log_tool_schema_bytes",
+      "tool_name_hash_0",
+      "tool_name_hash_1",
+      "tool_name_hash_2",
+      "tool_name_hash_3",
+      "tool_name_hash_4",
+      "tool_name_hash_5",
+      "tool_name_hash_6",
+      "tool_name_hash_7",
+      "tool_name_hash_8",
+      "tool_name_hash_9",
+      "tool_name_hash_10",
+      "tool_name_hash_11",
+      "tool_name_hash_12",
+      "tool_name_hash_13",
+      "tool_name_hash_14",
+      "tool_name_hash_15",
+      "tool_name_hash_16",
+      "tool_name_hash_17",
+      "tool_name_hash_18",
+      "tool_name_hash_19",
+      "tool_name_hash_20",
+      "tool_name_hash_21",
+      "tool_name_hash_22",
+      "tool_name_hash_23",
+      "tool_name_hash_24",
+      "tool_name_hash_25",
+      "tool_name_hash_26",
+      "tool_name_hash_27",
+      "tool_name_hash_28",
+      "tool_name_hash_29",
+      "tool_name_hash_30",
+      "tool_name_hash_31"
+    ]
+  },
+  "runs": {
+    "constant": [
+      {
+        "nll": 1.5331969261169434,
+        "brier@5s": 0.13843309879302979,
+        "auc@5s": 0.5,
+        "known@5s": 22281,
+        "brier@20s": 0.24636243283748627,
+        "auc@20s": 0.5,
+        "known@20s": 22139,
+        "brier@60s": 0.24973851442337036,
+        "auc@60s": 0.5,
+        "known@60s": 22079,
+        "brier@180s": 0.24973976612091064,
+        "auc@180s": 0.5,
+        "known@180s": 22079,
+        "mean_brier": 0.22106845304369926,
+        "seed": 41,
+        "epochs_run": 0,
+        "best_val_nll": 1.648801565170288,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.5331969261169434,
+        "brier@5s": 0.13843309879302979,
+        "auc@5s": 0.5,
+        "known@5s": 22281,
+        "brier@20s": 0.24636243283748627,
+        "auc@20s": 0.5,
+        "known@20s": 22139,
+        "brier@60s": 0.24973851442337036,
+        "auc@60s": 0.5,
+        "known@60s": 22079,
+        "brier@180s": 0.24973976612091064,
+        "auc@180s": 0.5,
+        "known@180s": 22079,
+        "mean_brier": 0.22106845304369926,
+        "seed": 42,
+        "epochs_run": 0,
+        "best_val_nll": 1.648801565170288,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.5331969261169434,
+        "brier@5s": 0.13843309879302979,
+        "auc@5s": 0.5,
+        "known@5s": 22281,
+        "brier@20s": 0.24636243283748627,
+        "auc@20s": 0.5,
+        "known@20s": 22139,
+        "brier@60s": 0.24973851442337036,
+        "auc@60s": 0.5,
+        "known@60s": 22079,
+        "brier@180s": 0.24973976612091064,
+        "auc@180s": 0.5,
+        "known@180s": 22079,
+        "mean_brier": 0.22106845304369926,
+        "seed": 43,
+        "epochs_run": 0,
+        "best_val_nll": 1.648801565170288,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ],
+    "history_recent": [
+      {
+        "nll": 1.4580336809158325,
+        "brier@5s": 0.12745243310928345,
+        "auc@5s": 0.6911119137477642,
+        "known@5s": 22281,
+        "brier@20s": 0.23337744176387787,
+        "auc@20s": 0.629792386353762,
+        "known@20s": 22139,
+        "brier@60s": 0.23815776407718658,
+        "auc@60s": 0.6173902038441255,
+        "known@60s": 22079,
+        "brier@180s": 0.23817779123783112,
+        "auc@180s": 0.617441241822371,
+        "known@180s": 22079,
+        "mean_brier": 0.20929135754704475,
+        "seed": 41,
+        "epochs_run": 25,
+        "best_val_nll": 1.5598431825637817,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4529385566711426,
+        "brier@5s": 0.1268904060125351,
+        "auc@5s": 0.695052390814299,
+        "known@5s": 22281,
+        "brier@20s": 0.23369836807250977,
+        "auc@20s": 0.6256280114390332,
+        "known@20s": 22139,
+        "brier@60s": 0.23878410458564758,
+        "auc@60s": 0.6107103014832954,
+        "known@60s": 22079,
+        "brier@180s": 0.23878715932369232,
+        "auc@180s": 0.6107021380615474,
+        "known@180s": 22079,
+        "mean_brier": 0.2095400094985962,
+        "seed": 42,
+        "epochs_run": 25,
+        "best_val_nll": 1.5685522556304932,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4648158550262451,
+        "brier@5s": 0.12870071828365326,
+        "auc@5s": 0.6875416490829167,
+        "known@5s": 22281,
+        "brier@20s": 0.2354646623134613,
+        "auc@20s": 0.6186677772625985,
+        "known@20s": 22139,
+        "brier@60s": 0.2406323105096817,
+        "auc@60s": 0.6073740337980593,
+        "known@60s": 22079,
+        "brier@180s": 0.24066893756389618,
+        "auc@180s": 0.6072521549069009,
+        "known@180s": 22079,
+        "mean_brier": 0.2113666571676731,
+        "seed": 43,
+        "epochs_run": 21,
+        "best_val_nll": 1.5724127292633057,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ],
+    "history_summary": [
+      {
+        "nll": 1.4496773481369019,
+        "brier@5s": 0.12604646384716034,
+        "auc@5s": 0.7013346178857149,
+        "known@5s": 22281,
+        "brier@20s": 0.2326117753982544,
+        "auc@20s": 0.629782763003974,
+        "known@20s": 22139,
+        "brier@60s": 0.23842619359493256,
+        "auc@60s": 0.6148104796101534,
+        "known@60s": 22079,
+        "brier@180s": 0.23844963312149048,
+        "auc@180s": 0.6148181825950041,
+        "known@180s": 22079,
+        "mean_brier": 0.20888351649045944,
+        "seed": 41,
+        "epochs_run": 24,
+        "best_val_nll": 1.5494046211242676,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4495532512664795,
+        "brier@5s": 0.12707552313804626,
+        "auc@5s": 0.6975187013505821,
+        "known@5s": 22281,
+        "brier@20s": 0.23170830309391022,
+        "auc@20s": 0.6341555964113709,
+        "known@20s": 22139,
+        "brier@60s": 0.2375393956899643,
+        "auc@60s": 0.6178640639288839,
+        "known@60s": 22079,
+        "brier@180s": 0.23754552006721497,
+        "auc@180s": 0.617846890877036,
+        "known@180s": 22079,
+        "mean_brier": 0.20846718549728394,
+        "seed": 42,
+        "epochs_run": 25,
+        "best_val_nll": 1.550633192062378,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4533189535140991,
+        "brier@5s": 0.12693147361278534,
+        "auc@5s": 0.6977133966398392,
+        "known@5s": 22281,
+        "brier@20s": 0.2344529926776886,
+        "auc@20s": 0.6226374508907908,
+        "known@20s": 22139,
+        "brier@60s": 0.2402060180902481,
+        "auc@60s": 0.6086743075962382,
+        "known@60s": 22079,
+        "brier@180s": 0.24024735391139984,
+        "auc@180s": 0.6085600279879264,
+        "known@180s": 22079,
+        "mean_brier": 0.21045945957303047,
+        "seed": 43,
+        "epochs_run": 25,
+        "best_val_nll": 1.5544323921203613,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ],
+    "history": [
+      {
+        "nll": 1.4573825597763062,
+        "brier@5s": 0.12712796032428741,
+        "auc@5s": 0.6861193852771074,
+        "known@5s": 22281,
+        "brier@20s": 0.23423367738723755,
+        "auc@20s": 0.6140160424420855,
+        "known@20s": 22139,
+        "brier@60s": 0.24052532017230988,
+        "auc@60s": 0.5942744049599756,
+        "known@60s": 22079,
+        "brier@180s": 0.24055570363998413,
+        "auc@180s": 0.5940715887288034,
+        "known@180s": 22079,
+        "mean_brier": 0.21061066538095474,
+        "seed": 41,
+        "epochs_run": 22,
+        "best_val_nll": 1.5542662143707275,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4616973400115967,
+        "brier@5s": 0.1268775463104248,
+        "auc@5s": 0.6872805285187149,
+        "known@5s": 22281,
+        "brier@20s": 0.23596742749214172,
+        "auc@20s": 0.6097245388925925,
+        "known@20s": 22139,
+        "brier@60s": 0.24105681478977203,
+        "auc@60s": 0.6010652352803509,
+        "known@60s": 22079,
+        "brier@180s": 0.24113187193870544,
+        "auc@180s": 0.6011217404282428,
+        "known@180s": 22079,
+        "mean_brier": 0.211258415132761,
+        "seed": 42,
+        "epochs_run": 14,
+        "best_val_nll": 1.5720829963684082,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4602607488632202,
+        "brier@5s": 0.12769223749637604,
+        "auc@5s": 0.6822332438752232,
+        "known@5s": 22281,
+        "brier@20s": 0.23494471609592438,
+        "auc@20s": 0.6184402394329594,
+        "known@20s": 22139,
+        "brier@60s": 0.24038438498973846,
+        "auc@60s": 0.6031959215412208,
+        "known@60s": 22079,
+        "brier@180s": 0.2404295653104782,
+        "auc@180s": 0.6032284093050065,
+        "known@180s": 22079,
+        "mean_brier": 0.21086272597312927,
+        "seed": 43,
+        "epochs_run": 17,
+        "best_val_nll": 1.561914324760437,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ],
+    "radix_tokens": [
+      {
+        "nll": 1.5330746173858643,
+        "brier@5s": 0.138211190700531,
+        "auc@5s": 0.5489572448303776,
+        "known@5s": 22281,
+        "brier@20s": 0.24318496882915497,
+        "auc@20s": 0.5557163877646957,
+        "known@20s": 22139,
+        "brier@60s": 0.2457294464111328,
+        "auc@60s": 0.5627208634909131,
+        "known@60s": 22079,
+        "brier@180s": 0.24575583636760712,
+        "auc@180s": 0.5627079505173859,
+        "known@180s": 22079,
+        "mean_brier": 0.21822036057710648,
+        "seed": 41,
+        "epochs_run": 25,
+        "best_val_nll": 1.6254210472106934,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.5286787748336792,
+        "brier@5s": 0.13687099516391754,
+        "auc@5s": 0.5472731470982682,
+        "known@5s": 22281,
+        "brier@20s": 0.24161918461322784,
+        "auc@20s": 0.5579020136800854,
+        "known@20s": 22139,
+        "brier@60s": 0.24428948760032654,
+        "auc@60s": 0.564109955981403,
+        "known@60s": 22079,
+        "brier@180s": 0.2443256825208664,
+        "auc@180s": 0.56407515773697,
+        "known@180s": 22079,
+        "mean_brier": 0.21677633747458458,
+        "seed": 42,
+        "epochs_run": 25,
+        "best_val_nll": 1.6242902278900146,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.5288091897964478,
+        "brier@5s": 0.13718999922275543,
+        "auc@5s": 0.5431362701825155,
+        "known@5s": 22281,
+        "brier@20s": 0.24196258187294006,
+        "auc@20s": 0.5593839886271085,
+        "known@20s": 22139,
+        "brier@60s": 0.24480660259723663,
+        "auc@60s": 0.5639105868048409,
+        "known@60s": 22079,
+        "brier@180s": 0.24486759305000305,
+        "auc@180s": 0.5638555832619656,
+        "known@180s": 22079,
+        "mean_brier": 0.2172066941857338,
+        "seed": 43,
+        "epochs_run": 19,
+        "best_val_nll": 1.627038836479187,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ],
+    "radix_shape": [
+      {
+        "nll": 1.5352944135665894,
+        "brier@5s": 0.13859494030475616,
+        "auc@5s": 0.5013124060427026,
+        "known@5s": 22281,
+        "brier@20s": 0.2464294284582138,
+        "auc@20s": 0.5011858812103075,
+        "known@20s": 22139,
+        "brier@60s": 0.24975894391536713,
+        "auc@60s": 0.5012403381879975,
+        "known@60s": 22079,
+        "brier@180s": 0.2498522251844406,
+        "auc@180s": 0.5012403381879975,
+        "known@180s": 22079,
+        "mean_brier": 0.22115888446569443,
+        "seed": 41,
+        "epochs_run": 17,
+        "best_val_nll": 1.6503299474716187,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.534895658493042,
+        "brier@5s": 0.13838088512420654,
+        "auc@5s": 0.5013124060427026,
+        "known@5s": 22281,
+        "brier@20s": 0.24645860493183136,
+        "auc@20s": 0.5011858812103075,
+        "known@20s": 22139,
+        "brier@60s": 0.24977222084999084,
+        "auc@60s": 0.5012403381879975,
+        "known@60s": 22079,
+        "brier@180s": 0.24987414479255676,
+        "auc@180s": 0.5012403381879975,
+        "known@180s": 22079,
+        "mean_brier": 0.22112146392464638,
+        "seed": 42,
+        "epochs_run": 25,
+        "best_val_nll": 1.6496433019638062,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.5331825017929077,
+        "brier@5s": 0.1385379582643509,
+        "auc@5s": 0.5013124060427026,
+        "known@5s": 22281,
+        "brier@20s": 0.24664348363876343,
+        "auc@20s": 0.5011858812103075,
+        "known@20s": 22139,
+        "brier@60s": 0.2499612271785736,
+        "auc@60s": 0.5012403381879975,
+        "known@60s": 22079,
+        "brier@180s": 0.2500041723251343,
+        "auc@180s": 0.5012403381879975,
+        "known@180s": 22079,
+        "mean_brier": 0.22128671035170555,
+        "seed": 43,
+        "epochs_run": 25,
+        "best_val_nll": 1.647562861442566,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ],
+    "radix": [
+      {
+        "nll": 1.5343830585479736,
+        "brier@5s": 0.13813462853431702,
+        "auc@5s": 0.5510928632252077,
+        "known@5s": 22281,
+        "brier@20s": 0.24274101853370667,
+        "auc@20s": 0.5613541895813967,
+        "known@20s": 22139,
+        "brier@60s": 0.2453276813030243,
+        "auc@60s": 0.5661507823818426,
+        "known@60s": 22079,
+        "brier@180s": 0.24534951150417328,
+        "auc@180s": 0.5661562454034087,
+        "known@180s": 22079,
+        "mean_brier": 0.2178882099688053,
+        "seed": 41,
+        "epochs_run": 25,
+        "best_val_nll": 1.627915620803833,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.5317262411117554,
+        "brier@5s": 0.13749805092811584,
+        "auc@5s": 0.550866682385663,
+        "known@5s": 22281,
+        "brier@20s": 0.2419280707836151,
+        "auc@20s": 0.5582497848051625,
+        "known@20s": 22139,
+        "brier@60s": 0.24448959529399872,
+        "auc@60s": 0.5650661921594814,
+        "known@60s": 22079,
+        "brier@180s": 0.24452900886535645,
+        "auc@180s": 0.5650666401521383,
+        "known@180s": 22079,
+        "mean_brier": 0.21711118146777153,
+        "seed": 42,
+        "epochs_run": 25,
+        "best_val_nll": 1.6283761262893677,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.5303363800048828,
+        "brier@5s": 0.13699230551719666,
+        "auc@5s": 0.5503980034872143,
+        "known@5s": 22281,
+        "brier@20s": 0.2419809252023697,
+        "auc@20s": 0.558253680169794,
+        "known@20s": 22139,
+        "brier@60s": 0.2446627914905548,
+        "auc@60s": 0.5654375656278132,
+        "known@60s": 22079,
+        "brier@180s": 0.24473357200622559,
+        "auc@180s": 0.565413946459402,
+        "known@180s": 22079,
+        "mean_brier": 0.21709239855408669,
+        "seed": 43,
+        "epochs_run": 19,
+        "best_val_nll": 1.6290688514709473,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ],
+    "tools_size": [
+      {
+        "nll": 1.509421944618225,
+        "brier@5s": 0.13172286748886108,
+        "auc@5s": 0.6712333204677853,
+        "known@5s": 22281,
+        "brier@20s": 0.24051736295223236,
+        "auc@20s": 0.5988653501567116,
+        "known@20s": 22139,
+        "brier@60s": 0.2430025339126587,
+        "auc@60s": 0.5997049180219067,
+        "known@60s": 22079,
+        "brier@180s": 0.24302862584590912,
+        "auc@180s": 0.5997049180219067,
+        "known@180s": 22079,
+        "mean_brier": 0.2145678475499153,
+        "seed": 41,
+        "epochs_run": 25,
+        "best_val_nll": 1.5872211456298828,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.5085833072662354,
+        "brier@5s": 0.13050177693367004,
+        "auc@5s": 0.6757181153423912,
+        "known@5s": 22281,
+        "brier@20s": 0.2391718029975891,
+        "auc@20s": 0.6022752126074117,
+        "known@20s": 22139,
+        "brier@60s": 0.2416618913412094,
+        "auc@60s": 0.6043533561992104,
+        "known@60s": 22079,
+        "brier@180s": 0.24169999361038208,
+        "auc@180s": 0.604611101307815,
+        "known@180s": 22079,
+        "mean_brier": 0.21325886622071266,
+        "seed": 42,
+        "epochs_run": 25,
+        "best_val_nll": 1.586279034614563,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.5096529722213745,
+        "brier@5s": 0.13154073059558868,
+        "auc@5s": 0.6731690998571774,
+        "known@5s": 22281,
+        "brier@20s": 0.23941771686077118,
+        "auc@20s": 0.6005429510686638,
+        "known@20s": 22139,
+        "brier@60s": 0.24185572564601898,
+        "auc@60s": 0.6007694315363103,
+        "known@60s": 22079,
+        "brier@180s": 0.24188683927059174,
+        "auc@180s": 0.600776126537683,
+        "known@180s": 22079,
+        "mean_brier": 0.21367525309324265,
+        "seed": 43,
+        "epochs_run": 25,
+        "best_val_nll": 1.5883119106292725,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ],
+    "tools_identity": [
+      {
+        "nll": 1.511120319366455,
+        "brier@5s": 0.12929373979568481,
+        "auc@5s": 0.6924142876666451,
+        "known@5s": 22281,
+        "brier@20s": 0.23318979144096375,
+        "auc@20s": 0.6170197786114072,
+        "known@20s": 22139,
+        "brier@60s": 0.2368558794260025,
+        "auc@60s": 0.6162107013997032,
+        "known@60s": 22079,
+        "brier@180s": 0.23687994480133057,
+        "auc@180s": 0.616424053754473,
+        "known@180s": 22079,
+        "mean_brier": 0.2090548388659954,
+        "seed": 41,
+        "epochs_run": 11,
+        "best_val_nll": 1.5850393772125244,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.5089526176452637,
+        "brier@5s": 0.12982387840747833,
+        "auc@5s": 0.6880711439774968,
+        "known@5s": 22281,
+        "brier@20s": 0.23230744898319244,
+        "auc@20s": 0.6214020429015963,
+        "known@20s": 22139,
+        "brier@60s": 0.2348932921886444,
+        "auc@60s": 0.6263757294502658,
+        "known@60s": 22079,
+        "brier@180s": 0.2349165976047516,
+        "auc@180s": 0.626580959864089,
+        "known@180s": 22079,
+        "mean_brier": 0.2079853042960167,
+        "seed": 42,
+        "epochs_run": 12,
+        "best_val_nll": 1.5863765478134155,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.5038678646087646,
+        "brier@5s": 0.12961621582508087,
+        "auc@5s": 0.6830703405065021,
+        "known@5s": 22281,
+        "brier@20s": 0.23077437281608582,
+        "auc@20s": 0.6281469818229483,
+        "known@20s": 22139,
+        "brier@60s": 0.23389634490013123,
+        "auc@60s": 0.6325197330395165,
+        "known@60s": 22079,
+        "brier@180s": 0.2339116483926773,
+        "auc@180s": 0.631763098330489,
+        "known@180s": 22079,
+        "mean_brier": 0.2070496454834938,
+        "seed": 43,
+        "epochs_run": 13,
+        "best_val_nll": 1.5755752325057983,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ],
+    "tools": [
+      {
+        "nll": 1.5060994625091553,
+        "brier@5s": 0.1301845759153366,
+        "auc@5s": 0.6858351367627779,
+        "known@5s": 22281,
+        "brier@20s": 0.23239430785179138,
+        "auc@20s": 0.6284917529733306,
+        "known@20s": 22139,
+        "brier@60s": 0.2351837456226349,
+        "auc@60s": 0.6306744678780554,
+        "known@60s": 22079,
+        "brier@180s": 0.2351832389831543,
+        "auc@180s": 0.6307412353762545,
+        "known@180s": 22079,
+        "mean_brier": 0.2082364670932293,
+        "seed": 41,
+        "epochs_run": 12,
+        "best_val_nll": 1.5866060256958008,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.5055209398269653,
+        "brier@5s": 0.13014821708202362,
+        "auc@5s": 0.6842033547542204,
+        "known@5s": 22281,
+        "brier@20s": 0.23286636173725128,
+        "auc@20s": 0.6187986715559755,
+        "known@20s": 22139,
+        "brier@60s": 0.23648545145988464,
+        "auc@60s": 0.622658203421685,
+        "known@60s": 22079,
+        "brier@180s": 0.23652391135692596,
+        "auc@180s": 0.6225196824329386,
+        "known@180s": 22079,
+        "mean_brier": 0.20900598540902138,
+        "seed": 42,
+        "epochs_run": 12,
+        "best_val_nll": 1.5803675651550293,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.5015181303024292,
+        "brier@5s": 0.12902893126010895,
+        "auc@5s": 0.7002880180698374,
+        "known@5s": 22281,
+        "brier@20s": 0.2317260354757309,
+        "auc@20s": 0.627334909174992,
+        "known@20s": 22139,
+        "brier@60s": 0.23471544682979584,
+        "auc@60s": 0.622669759973001,
+        "known@60s": 22079,
+        "brier@180s": 0.23473574221134186,
+        "auc@180s": 0.6230503214388794,
+        "known@180s": 22079,
+        "mean_brier": 0.20755153894424438,
+        "seed": 43,
+        "epochs_run": 12,
+        "best_val_nll": 1.5803029537200928,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ],
+    "history_recent+tools_size": [
+      {
+        "nll": 1.4348100423812866,
+        "brier@5s": 0.12293895334005356,
+        "auc@5s": 0.7347173359004356,
+        "known@5s": 22281,
+        "brier@20s": 0.22764618694782257,
+        "auc@20s": 0.6536993144024358,
+        "known@20s": 22139,
+        "brier@60s": 0.2315828949213028,
+        "auc@60s": 0.6494032862252462,
+        "known@60s": 22079,
+        "brier@180s": 0.23159927129745483,
+        "auc@180s": 0.6493706159459336,
+        "known@180s": 22079,
+        "mean_brier": 0.20344182662665844,
+        "seed": 41,
+        "epochs_run": 25,
+        "best_val_nll": 1.5440205335617065,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4216763973236084,
+        "brier@5s": 0.12149884551763535,
+        "auc@5s": 0.7430368650514146,
+        "known@5s": 22281,
+        "brier@20s": 0.2267768383026123,
+        "auc@20s": 0.65296193986916,
+        "known@20s": 22139,
+        "brier@60s": 0.23029311001300812,
+        "auc@60s": 0.6501670971129445,
+        "known@60s": 22079,
+        "brier@180s": 0.23029844462871552,
+        "auc@180s": 0.6500890468367198,
+        "known@180s": 22079,
+        "mean_brier": 0.20221680961549282,
+        "seed": 42,
+        "epochs_run": 25,
+        "best_val_nll": 1.533974289894104,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4327361583709717,
+        "brier@5s": 0.12219318747520447,
+        "auc@5s": 0.7348583112691688,
+        "known@5s": 22281,
+        "brier@20s": 0.22934216260910034,
+        "auc@20s": 0.6450497388273077,
+        "known@20s": 22139,
+        "brier@60s": 0.23285643756389618,
+        "auc@60s": 0.6432465812145562,
+        "known@60s": 22079,
+        "brier@180s": 0.23286987841129303,
+        "auc@180s": 0.6432427981654535,
+        "known@180s": 22079,
+        "mean_brier": 0.2043154165148735,
+        "seed": 43,
+        "epochs_run": 25,
+        "best_val_nll": 1.537603497505188,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ],
+    "history_recent+tools_identity": [
+      {
+        "nll": 1.4778510332107544,
+        "brier@5s": 0.1302960216999054,
+        "auc@5s": 0.6801506170206695,
+        "known@5s": 22281,
+        "brier@20s": 0.2313600480556488,
+        "auc@20s": 0.6374896854426534,
+        "known@20s": 22139,
+        "brier@60s": 0.23375971615314484,
+        "auc@60s": 0.6416502008624854,
+        "known@60s": 22079,
+        "brier@180s": 0.23373208940029144,
+        "auc@180s": 0.6418484210208442,
+        "known@180s": 22079,
+        "mean_brier": 0.20728696882724762,
+        "seed": 41,
+        "epochs_run": 13,
+        "best_val_nll": 1.5588939189910889,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4691401720046997,
+        "brier@5s": 0.13025987148284912,
+        "auc@5s": 0.6937172623115034,
+        "known@5s": 22281,
+        "brier@20s": 0.2292129397392273,
+        "auc@20s": 0.6535709221800037,
+        "known@20s": 22139,
+        "brier@60s": 0.23131883144378662,
+        "auc@60s": 0.6575266955920592,
+        "known@60s": 22079,
+        "brier@180s": 0.23130439221858978,
+        "auc@180s": 0.6579683997594445,
+        "known@180s": 22079,
+        "mean_brier": 0.2055240087211132,
+        "seed": 42,
+        "epochs_run": 15,
+        "best_val_nll": 1.5545092821121216,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4427448511123657,
+        "brier@5s": 0.12193722277879715,
+        "auc@5s": 0.7510722958695584,
+        "known@5s": 22281,
+        "brier@20s": 0.22291943430900574,
+        "auc@20s": 0.6812958263916904,
+        "known@20s": 22139,
+        "brier@60s": 0.2255508154630661,
+        "auc@60s": 0.6811506011107398,
+        "known@60s": 22079,
+        "brier@180s": 0.2255520522594452,
+        "auc@180s": 0.6811268823884048,
+        "known@180s": 22079,
+        "mean_brier": 0.19898988120257854,
+        "seed": 43,
+        "epochs_run": 25,
+        "best_val_nll": 1.5482211112976074,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ],
+    "history_summary+tools_size": [
+      {
+        "nll": 1.4327970743179321,
+        "brier@5s": 0.1218949630856514,
+        "auc@5s": 0.7458972968832834,
+        "known@5s": 22281,
+        "brier@20s": 0.22852854430675507,
+        "auc@20s": 0.6631474020704495,
+        "known@20s": 22139,
+        "brier@60s": 0.23317305743694305,
+        "auc@60s": 0.65764625155833,
+        "known@60s": 22079,
+        "brier@180s": 0.2332204133272171,
+        "auc@180s": 0.6575538074439621,
+        "known@180s": 22079,
+        "mean_brier": 0.20420424453914165,
+        "seed": 41,
+        "epochs_run": 24,
+        "best_val_nll": 1.5323612689971924,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.416768193244934,
+        "brier@5s": 0.12120091170072556,
+        "auc@5s": 0.7483504365025133,
+        "known@5s": 22281,
+        "brier@20s": 0.22617940604686737,
+        "auc@20s": 0.6626349796145653,
+        "known@20s": 22139,
+        "brier@60s": 0.23027324676513672,
+        "auc@60s": 0.657573178978293,
+        "known@60s": 22079,
+        "brier@180s": 0.23030328750610352,
+        "auc@180s": 0.6575991044792712,
+        "known@180s": 22079,
+        "mean_brier": 0.2019892130047083,
+        "seed": 42,
+        "epochs_run": 25,
+        "best_val_nll": 1.522876501083374,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.425714373588562,
+        "brier@5s": 0.12327545881271362,
+        "auc@5s": 0.7467339429700793,
+        "known@5s": 22281,
+        "brier@20s": 0.22589699923992157,
+        "auc@20s": 0.6680031100658164,
+        "known@20s": 22139,
+        "brier@60s": 0.2303590178489685,
+        "auc@60s": 0.6625858185933379,
+        "known@60s": 22079,
+        "brier@180s": 0.23038150370121002,
+        "auc@180s": 0.6625212329853011,
+        "known@180s": 22079,
+        "mean_brier": 0.20247824490070343,
+        "seed": 43,
+        "epochs_run": 25,
+        "best_val_nll": 1.521889328956604,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ],
+    "history_summary+tools_identity": [
+      {
+        "nll": 1.4287892580032349,
+        "brier@5s": 0.11991802603006363,
+        "auc@5s": 0.7543930039452679,
+        "known@5s": 22281,
+        "brier@20s": 0.22032000124454498,
+        "auc@20s": 0.6788149686570008,
+        "known@20s": 22139,
+        "brier@60s": 0.22319263219833374,
+        "auc@60s": 0.6786049077263717,
+        "known@60s": 22079,
+        "brier@180s": 0.223206028342247,
+        "auc@180s": 0.6787982829271076,
+        "known@180s": 22079,
+        "mean_brier": 0.19665917195379734,
+        "seed": 41,
+        "epochs_run": 15,
+        "best_val_nll": 1.5142477750778198,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4337199926376343,
+        "brier@5s": 0.12111854553222656,
+        "auc@5s": 0.7441204695874964,
+        "known@5s": 22281,
+        "brier@20s": 0.22015470266342163,
+        "auc@20s": 0.6797279693239073,
+        "known@20s": 22139,
+        "brier@60s": 0.223471000790596,
+        "auc@60s": 0.6780968674611235,
+        "known@60s": 22079,
+        "brier@180s": 0.22347283363342285,
+        "auc@180s": 0.6781324579888663,
+        "known@180s": 22079,
+        "mean_brier": 0.19705427065491676,
+        "seed": 42,
+        "epochs_run": 15,
+        "best_val_nll": 1.5096276998519897,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4226592779159546,
+        "brier@5s": 0.12075308710336685,
+        "auc@5s": 0.7510815620677589,
+        "known@5s": 22281,
+        "brier@20s": 0.2157135158777237,
+        "auc@20s": 0.6974318576459204,
+        "known@20s": 22139,
+        "brier@60s": 0.21941183507442474,
+        "auc@60s": 0.6937379005686934,
+        "known@60s": 22079,
+        "brier@180s": 0.21941561996936798,
+        "auc@180s": 0.6937240045001692,
+        "known@180s": 22079,
+        "mean_brier": 0.19382351450622082,
+        "seed": 43,
+        "epochs_run": 17,
+        "best_val_nll": 1.5144377946853638,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ],
+    "history_summary+tools": [
+      {
+        "nll": 1.4257051944732666,
+        "brier@5s": 0.12068460136651993,
+        "auc@5s": 0.7446840556812908,
+        "known@5s": 22281,
+        "brier@20s": 0.21720796823501587,
+        "auc@20s": 0.6886694378343654,
+        "known@20s": 22139,
+        "brier@60s": 0.22100777924060822,
+        "auc@60s": 0.6852987144518864,
+        "known@60s": 22079,
+        "brier@180s": 0.22095873951911926,
+        "auc@180s": 0.6853426011399422,
+        "known@180s": 22079,
+        "mean_brier": 0.19496477209031582,
+        "seed": 41,
+        "epochs_run": 13,
+        "best_val_nll": 1.5130442380905151,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4300564527511597,
+        "brier@5s": 0.12071885168552399,
+        "auc@5s": 0.7484155852347562,
+        "known@5s": 22281,
+        "brier@20s": 0.2195117026567459,
+        "auc@20s": 0.6803682442578225,
+        "known@20s": 22139,
+        "brier@60s": 0.22254149615764618,
+        "auc@60s": 0.6795392876701055,
+        "known@60s": 22079,
+        "brier@180s": 0.22254067659378052,
+        "auc@180s": 0.6796176532004222,
+        "known@180s": 22079,
+        "mean_brier": 0.19632818177342415,
+        "seed": 42,
+        "epochs_run": 15,
+        "best_val_nll": 1.5235685110092163,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4310520887374878,
+        "brier@5s": 0.12083354592323303,
+        "auc@5s": 0.7424822598109816,
+        "known@5s": 22281,
+        "brier@20s": 0.21932828426361084,
+        "auc@20s": 0.6780647825163115,
+        "known@20s": 22139,
+        "brier@60s": 0.22296898066997528,
+        "auc@60s": 0.6750302664668619,
+        "known@60s": 22079,
+        "brier@180s": 0.22295427322387695,
+        "auc@180s": 0.6750522678840121,
+        "known@180s": 22079,
+        "mean_brier": 0.19652127102017403,
+        "seed": 43,
+        "epochs_run": 14,
+        "best_val_nll": 1.5122959613800049,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ],
+    "history+radix": [
+      {
+        "nll": 1.453818440437317,
+        "brier@5s": 0.12688478827476501,
+        "auc@5s": 0.685302187693828,
+        "known@5s": 22281,
+        "brier@20s": 0.23326906561851501,
+        "auc@20s": 0.6262321444183969,
+        "known@20s": 22139,
+        "brier@60s": 0.2380811721086502,
+        "auc@60s": 0.6184247267389976,
+        "known@60s": 22079,
+        "brier@180s": 0.23813560605049133,
+        "auc@180s": 0.6183994898193254,
+        "known@180s": 22079,
+        "mean_brier": 0.2090926580131054,
+        "seed": 41,
+        "epochs_run": 14,
+        "best_val_nll": 1.5574415922164917,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4555468559265137,
+        "brier@5s": 0.12711673974990845,
+        "auc@5s": 0.6831788541452345,
+        "known@5s": 22281,
+        "brier@20s": 0.2331802248954773,
+        "auc@20s": 0.6236496766621417,
+        "known@20s": 22139,
+        "brier@60s": 0.2379125952720642,
+        "auc@60s": 0.6182196871368615,
+        "known@60s": 22079,
+        "brier@180s": 0.2379201501607895,
+        "auc@180s": 0.6183811594531138,
+        "known@180s": 22079,
+        "mean_brier": 0.20903242751955986,
+        "seed": 42,
+        "epochs_run": 15,
+        "best_val_nll": 1.5595570802688599,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.44159996509552,
+        "brier@5s": 0.1251550316810608,
+        "auc@5s": 0.6967726597593191,
+        "known@5s": 22281,
+        "brier@20s": 0.2294241189956665,
+        "auc@20s": 0.6433924641037337,
+        "known@20s": 22139,
+        "brier@60s": 0.2347056269645691,
+        "auc@60s": 0.6339034952470053,
+        "known@60s": 22079,
+        "brier@180s": 0.23472043871879578,
+        "auc@180s": 0.6338778476673976,
+        "known@180s": 22079,
+        "mean_brier": 0.20600130409002304,
+        "seed": 43,
+        "epochs_run": 22,
+        "best_val_nll": 1.5532375574111938,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ],
+    "history+tools": [
+      {
+        "nll": 1.4177850484848022,
+        "brier@5s": 0.12202458828687668,
+        "auc@5s": 0.7373162566962174,
+        "known@5s": 22281,
+        "brier@20s": 0.21855764091014862,
+        "auc@20s": 0.6826199658499952,
+        "known@20s": 22139,
+        "brier@60s": 0.22069379687309265,
+        "auc@60s": 0.685083039172229,
+        "known@60s": 22079,
+        "brier@180s": 0.22067439556121826,
+        "auc@180s": 0.685161039671492,
+        "known@180s": 22079,
+        "mean_brier": 0.19548760540783405,
+        "seed": 41,
+        "epochs_run": 15,
+        "best_val_nll": 1.5157403945922852,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4367696046829224,
+        "brier@5s": 0.12256736308336258,
+        "auc@5s": 0.7307983648238897,
+        "known@5s": 22281,
+        "brier@20s": 0.2245643585920334,
+        "auc@20s": 0.6607768781331117,
+        "known@20s": 22139,
+        "brier@60s": 0.22667630016803741,
+        "auc@60s": 0.6646256370102994,
+        "known@60s": 22079,
+        "brier@180s": 0.22669103741645813,
+        "auc@180s": 0.6648202483389221,
+        "known@180s": 22079,
+        "mean_brier": 0.20012476481497288,
+        "seed": 42,
+        "epochs_run": 12,
+        "best_val_nll": 1.5261799097061157,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4361933469772339,
+        "brier@5s": 0.12214035540819168,
+        "auc@5s": 0.7290405955597339,
+        "known@5s": 22281,
+        "brier@20s": 0.22337333858013153,
+        "auc@20s": 0.6653362204275298,
+        "known@20s": 22139,
+        "brier@60s": 0.22550776600837708,
+        "auc@60s": 0.6683687981742474,
+        "known@60s": 22079,
+        "brier@180s": 0.22549612820148468,
+        "auc@180s": 0.6686115106403648,
+        "known@180s": 22079,
+        "mean_brier": 0.19912939704954624,
+        "seed": 43,
+        "epochs_run": 13,
+        "best_val_nll": 1.5223369598388672,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ],
+    "all": [
+      {
+        "nll": 1.4191725254058838,
+        "brier@5s": 0.11983364075422287,
+        "auc@5s": 0.7415659874958888,
+        "known@5s": 22281,
+        "brier@20s": 0.22062553465366364,
+        "auc@20s": 0.6724499679534084,
+        "known@20s": 22139,
+        "brier@60s": 0.22238440811634064,
+        "auc@60s": 0.6776396868066743,
+        "known@60s": 22079,
+        "brier@180s": 0.22237002849578857,
+        "auc@180s": 0.6776336306096459,
+        "known@180s": 22079,
+        "mean_brier": 0.19630340300500393,
+        "seed": 41,
+        "epochs_run": 13,
+        "best_val_nll": 1.5233571529388428,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4286279678344727,
+        "brier@5s": 0.12181036919355392,
+        "auc@5s": 0.7376236181425252,
+        "known@5s": 22281,
+        "brier@20s": 0.2228040248155594,
+        "auc@20s": 0.6698696717269531,
+        "known@20s": 22139,
+        "brier@60s": 0.22493605315685272,
+        "auc@60s": 0.6718409279288495,
+        "known@60s": 22079,
+        "brier@180s": 0.2249329686164856,
+        "auc@180s": 0.6718789036026823,
+        "known@180s": 22079,
+        "mean_brier": 0.1986208539456129,
+        "seed": 42,
+        "epochs_run": 15,
+        "best_val_nll": 1.5191175937652588,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      },
+      {
+        "nll": 1.4206585884094238,
+        "brier@5s": 0.12098506093025208,
+        "auc@5s": 0.7435381708795079,
+        "known@5s": 22281,
+        "brier@20s": 0.22004199028015137,
+        "auc@20s": 0.6802309232404131,
+        "known@20s": 22139,
+        "brier@60s": 0.22277489304542542,
+        "auc@60s": 0.6799642626302197,
+        "known@60s": 22079,
+        "brier@180s": 0.22276534140110016,
+        "auc@180s": 0.6801330480117879,
+        "known@180s": 22079,
+        "mean_brier": 0.19664182141423225,
+        "seed": 43,
+        "epochs_run": 14,
+        "best_val_nll": 1.5242606401443481,
+        "train_samples": 116930,
+        "val_samples": 23268,
+        "test_samples": 22311,
+        "test_observed": 9886
+      }
+    ]
+  },
+  "summary": {
+    "constant": {
+      "nll": {
+        "mean": 1.5331969261169434,
+        "std": 0.0
+      },
+      "brier@5s": {
+        "mean": 0.13843309879302979,
+        "std": 0.0
+      },
+      "auc@5s": {
+        "mean": 0.5,
+        "std": 0.0
+      },
+      "brier@20s": {
+        "mean": 0.24636243283748627,
+        "std": 0.0
+      },
+      "auc@20s": {
+        "mean": 0.5,
+        "std": 0.0
+      },
+      "brier@60s": {
+        "mean": 0.24973851442337036,
+        "std": 0.0
+      },
+      "auc@60s": {
+        "mean": 0.5,
+        "std": 0.0
+      },
+      "brier@180s": {
+        "mean": 0.24973976612091064,
+        "std": 0.0
+      },
+      "auc@180s": {
+        "mean": 0.5,
+        "std": 0.0
+      },
+      "mean_brier": {
+        "mean": 0.22106845304369926,
+        "std": 0.0
+      }
+    },
+    "history_recent": {
+      "nll": {
+        "mean": 1.4585960308710735,
+        "std": 0.004865164071104553
+      },
+      "brier@5s": {
+        "mean": 0.12768118580182394,
+        "std": 0.0007565507145365485
+      },
+      "auc@5s": {
+        "mean": 0.6912353178816599,
+        "std": 0.0030674888507353964
+      },
+      "brier@20s": {
+        "mean": 0.234180157383283,
+        "std": 0.0009176829919721154
+      },
+      "auc@20s": {
+        "mean": 0.6246960583517979,
+        "std": 0.004589163632980426
+      },
+      "brier@60s": {
+        "mean": 0.23919139305750528,
+        "std": 0.0010504786008052765
+      },
+      "auc@60s": {
+        "mean": 0.61182484637516,
+        "std": 0.004164338549711054
+      },
+      "brier@180s": {
+        "mean": 0.23921129604180655,
+        "std": 0.001060305450080743
+      },
+      "auc@180s": {
+        "mean": 0.6117985115969398,
+        "std": 0.004231303915625606
+      },
+      "mean_brier": {
+        "mean": 0.21006600807110468,
+        "std": 0.0009252830206863845
+      }
+    },
+    "history_summary": {
+      "nll": {
+        "mean": 1.4508498509724934,
+        "std": 0.001746654044935573
+      },
+      "brier@5s": {
+        "mean": 0.12668448686599731,
+        "std": 0.0004549671020021556
+      },
+      "auc@5s": {
+        "mean": 0.6988555719587121,
+        "std": 0.0017547512824816988
+      },
+      "brier@20s": {
+        "mean": 0.23292435705661774,
+        "std": 0.0011421064450345742
+      },
+      "auc@20s": {
+        "mean": 0.6288586034353786,
+        "std": 0.004747453509653673
+      },
+      "brier@60s": {
+        "mean": 0.2387238691250483,
+        "std": 0.0011088062040910268
+      },
+      "auc@60s": {
+        "mean": 0.6137829503784252,
+        "std": 0.0038214105253507862
+      },
+      "brier@180s": {
+        "mean": 0.23874750236670175,
+        "std": 0.0011229488251408314
+      },
+      "auc@180s": {
+        "mean": 0.6137417004866556,
+        "std": 0.00386700279092015
+      },
+      "mean_brier": {
+        "mean": 0.2092700538535913,
+        "std": 0.0008580393728517032
+      }
+    },
+    "history": {
+      "nll": {
+        "mean": 1.459780216217041,
+        "std": 0.0017939743286432375
+      },
+      "brier@5s": {
+        "mean": 0.12723258137702942,
+        "std": 0.00034072433199904245
+      },
+      "auc@5s": {
+        "mean": 0.6852110525570151,
+        "std": 0.002158328337070047
+      },
+      "brier@20s": {
+        "mean": 0.23504860699176788,
+        "std": 0.0007116025788051379
+      },
+      "auc@20s": {
+        "mean": 0.6140602735892124,
+        "std": 0.003558307301055787
+      },
+      "brier@60s": {
+        "mean": 0.24065550665060678,
+        "std": 0.0002895419927423441
+      },
+      "auc@60s": {
+        "mean": 0.5995118539271825,
+        "std": 0.0038042178126071963
+      },
+      "brier@180s": {
+        "mean": 0.2407057136297226,
+        "std": 0.0003057078101488164
+      },
+      "auc@180s": {
+        "mean": 0.5994739128206842,
+        "std": 0.003915638954616776
+      },
+      "mean_brier": {
+        "mean": 0.21091060216228166,
+        "std": 0.00026660086566136635
+      }
+    },
+    "radix_tokens": {
+      "nll": {
+        "mean": 1.5301875273386638,
+        "std": 0.0020421751020438493
+      },
+      "brier@5s": {
+        "mean": 0.13742406169573465,
+        "std": 0.0005716175586482782
+      },
+      "auc@5s": {
+        "mean": 0.5464555540370538,
+        "std": 0.0024457146567104706
+      },
+      "brier@20s": {
+        "mean": 0.24225557843844095,
+        "std": 0.0006719649262960679
+      },
+      "auc@20s": {
+        "mean": 0.5576674633572966,
+        "std": 0.0015064493379982522
+      },
+      "brier@60s": {
+        "mean": 0.244941845536232,
+        "std": 0.0005955884113578953
+      },
+      "auc@60s": {
+        "mean": 0.5635804687590523,
+        "std": 0.0006132579282815628
+      },
+      "brier@180s": {
+        "mean": 0.24498303731282553,
+        "std": 0.0005895368462902547
+      },
+      "auc@180s": {
+        "mean": 0.5635462305054405,
+        "std": 0.0005994932533943576
+      },
+      "mean_brier": {
+        "mean": 0.21740113074580827,
+        "std": 0.0006053400488289982
+      }
+    },
+    "radix_shape": {
+      "nll": {
+        "mean": 1.534457524617513,
+        "std": 0.0009161563929876857
+      },
+      "brier@5s": {
+        "mean": 0.13850459456443787,
+        "std": 9.051614012225501e-05
+      },
+      "auc@5s": {
+        "mean": 0.5013124060427026,
+        "std": 0.0
+      },
+      "brier@20s": {
+        "mean": 0.24651050567626953,
+        "std": 9.478104780654571e-05
+      },
+      "auc@20s": {
+        "mean": 0.5011858812103075,
+        "std": 0.0
+      },
+      "brier@60s": {
+        "mean": 0.24983079731464386,
+        "std": 9.238698069100488e-05
+      },
+      "auc@60s": {
+        "mean": 0.5012403381879975,
+        "std": 0.0
+      },
+      "brier@180s": {
+        "mean": 0.24991018076737723,
+        "std": 6.706179738216793e-05
+      },
+      "auc@180s": {
+        "mean": 0.5012403381879975,
+        "std": 0.0
+      },
+      "mean_brier": {
+        "mean": 0.22118901958068213,
+        "std": 7.074691644845365e-05
+      }
+    },
+    "radix": {
+      "nll": {
+        "mean": 1.5321485598882039,
+        "std": 0.0016788223391182428
+      },
+      "brier@5s": {
+        "mean": 0.1375416616598765,
+        "std": 0.0004673698683799706
+      },
+      "auc@5s": {
+        "mean": 0.5507858496993617,
+        "std": 0.0002893762904962543
+      },
+      "brier@20s": {
+        "mean": 0.2422166715065638,
+        "std": 0.0003713966891349677
+      },
+      "auc@20s": {
+        "mean": 0.5592858848521177,
+        "std": 0.0014625131642335555
+      },
+      "brier@60s": {
+        "mean": 0.24482668936252594,
+        "std": 0.0003612422307894453
+      },
+      "auc@60s": {
+        "mean": 0.5655515133897123,
+        "std": 0.0004500533723472827
+      },
+      "brier@180s": {
+        "mean": 0.2448706974585851,
+        "std": 0.0003487202196030016
+      },
+      "auc@180s": {
+        "mean": 0.5655456106716495,
+        "std": 0.0004544678202682962
+      },
+      "mean_brier": {
+        "mean": 0.21736392999688783,
+        "std": 0.0003708012191430522
+      }
+    },
+    "tools_size": {
+      "nll": {
+        "mean": 1.5092194080352783,
+        "std": 0.00045957341062992537
+      },
+      "brier@5s": {
+        "mean": 0.13125512500603995,
+        "std": 0.0005378620954484561
+      },
+      "auc@5s": {
+        "mean": 0.673373511889118,
+        "std": 0.0018366063769762089
+      },
+      "brier@20s": {
+        "mean": 0.23970229427019754,
+        "std": 0.0005850191588610607
+      },
+      "auc@20s": {
+        "mean": 0.6005611712775957,
+        "std": 0.0013921301340472734
+      },
+      "brier@60s": {
+        "mean": 0.24217338363329569,
+        "std": 0.000591613935916576
+      },
+      "auc@60s": {
+        "mean": 0.6016092352524759,
+        "std": 0.001988457875392807
+      },
+      "brier@180s": {
+        "mean": 0.24220515290896097,
+        "std": 0.000587258366535714
+      },
+      "auc@180s": {
+        "mean": 0.6016973819558016,
+        "std": 0.0021062118076127685
+      },
+      "mean_brier": {
+        "mean": 0.21383398895462355,
+        "std": 0.0005460499582251527
+      }
+    },
+    "tools_identity": {
+      "nll": {
+        "mean": 1.5079802672068279,
+        "std": 0.0030395859404894238
+      },
+      "brier@5s": {
+        "mean": 0.12957794467608133,
+        "std": 0.00021811349883779608
+      },
+      "auc@5s": {
+        "mean": 0.6878519240502147,
+        "std": 0.003817798682074501
+      },
+      "brier@20s": {
+        "mean": 0.23209053774674734,
+        "std": 0.0009979477764305127
+      },
+      "auc@20s": {
+        "mean": 0.622189601111984,
+        "std": 0.004576669005495447
+      },
+      "brier@60s": {
+        "mean": 0.2352151721715927,
+        "std": 0.0012294758219184659
+      },
+      "auc@60s": {
+        "mean": 0.6250353879631618,
+        "std": 0.006725251654951719
+      },
+      "brier@180s": {
+        "mean": 0.2352360635995865,
+        "std": 0.0012326772445366897
+      },
+      "auc@180s": {
+        "mean": 0.624922703983017,
+        "std": 0.00637097227282119
+      },
+      "mean_brier": {
+        "mean": 0.20802992954850197,
+        "std": 0.0008192247087649741
+      }
+    },
+    "tools": {
+      "nll": {
+        "mean": 1.5043795108795166,
+        "std": 0.002037039719568871
+      },
+      "brier@5s": {
+        "mean": 0.1297872414191564,
+        "std": 0.0005364116666490958
+      },
+      "auc@5s": {
+        "mean": 0.6901088365289452,
+        "std": 0.007228530545124324
+      },
+      "brier@20s": {
+        "mean": 0.23232890168825784,
+        "std": 0.0004678279387049587
+      },
+      "auc@20s": {
+        "mean": 0.624875111234766,
+        "std": 0.0043225695499262105
+      },
+      "brier@60s": {
+        "mean": 0.2354615479707718,
+        "std": 0.0007488256165965189
+      },
+      "auc@60s": {
+        "mean": 0.6253341437575805,
+        "std": 0.003776182346609179
+      },
+      "brier@180s": {
+        "mean": 0.23548096418380737,
+        "std": 0.0007597663871799384
+      },
+      "auc@180s": {
+        "mean": 0.6254370797493575,
+        "std": 0.0037568554780484146
+      },
+      "mean_brier": {
+        "mean": 0.20826466381549835,
+        "std": 0.0005941099343194613
+      }
+    },
+    "history_recent+tools_size": {
+      "nll": {
+        "mean": 1.4297408660252888,
+        "std": 0.005764951014671809
+      },
+      "brier@5s": {
+        "mean": 0.12221032877763112,
+        "std": 0.0005880464852567317
+      },
+      "auc@5s": {
+        "mean": 0.737537504073673,
+        "std": 0.003889061316588516
+      },
+      "brier@20s": {
+        "mean": 0.22792172928651175,
+        "std": 0.0010652589308621336
+      },
+      "auc@20s": {
+        "mean": 0.6505703310329678,
+        "std": 0.003915238096333999
+      },
+      "brier@60s": {
+        "mean": 0.2315774808327357,
+        "std": 0.0010464810931726403
+      },
+      "auc@60s": {
+        "mean": 0.6476056548509156,
+        "std": 0.00309806326527229
+      },
+      "brier@180s": {
+        "mean": 0.2315891981124878,
+        "std": 0.0010498076097827836
+      },
+      "auc@180s": {
+        "mean": 0.6475674869827023,
+        "std": 0.003072049886827632
+      },
+      "mean_brier": {
+        "mean": 0.2033246842523416,
+        "std": 0.0008607475361287203
+      }
+    },
+    "history_recent+tools_identity": {
+      "nll": {
+        "mean": 1.4632453521092732,
+        "std": 0.014925876447318883
+      },
+      "brier@5s": {
+        "mean": 0.1274977053205172,
+        "std": 0.0039318826094826885
+      },
+      "auc@5s": {
+        "mean": 0.7083133917339105,
+        "std": 0.03073821051257403
+      },
+      "brier@20s": {
+        "mean": 0.2278308073679606,
+        "std": 0.0035817786572020726
+      },
+      "auc@20s": {
+        "mean": 0.6574521446714491,
+        "std": 0.018093137045719868
+      },
+      "brier@60s": {
+        "mean": 0.23020978768666586,
+        "std": 0.003441801483361119
+      },
+      "auc@60s": {
+        "mean": 0.6601091658550947,
+        "std": 0.01622903302598302
+      },
+      "brier@180s": {
+        "mean": 0.23019617795944214,
+        "std": 0.0034301949448527123
+      },
+      "auc@180s": {
+        "mean": 0.6603145677228978,
+        "std": 0.016120954478261913
+      },
+      "mean_brier": {
+        "mean": 0.20393361958364645,
+        "std": 0.0035690726124385447
+      }
+    },
+    "history_summary+tools_size": {
+      "nll": {
+        "mean": 1.4250932137171428,
+        "std": 0.006558487468030768
+      },
+      "brier@5s": {
+        "mean": 0.12212377786636353,
+        "std": 0.0008622465165170814
+      },
+      "auc@5s": {
+        "mean": 0.7469938921186253,
+        "std": 0.0010182185972672036
+      },
+      "brier@20s": {
+        "mean": 0.22686831653118134,
+        "std": 0.0011796060362799675
+      },
+      "auc@20s": {
+        "mean": 0.6645951639169437,
+        "std": 0.002418845028594633
+      },
+      "brier@60s": {
+        "mean": 0.23126844068368277,
+        "std": 0.0013472225508567022
+      },
+      "auc@60s": {
+        "mean": 0.6592684163766537,
+        "std": 0.002345947285701366
+      },
+      "brier@180s": {
+        "mean": 0.23130173484484354,
+        "std": 0.0013570862862119224
+      },
+      "auc@180s": {
+        "mean": 0.6592247149695115,
+        "std": 0.002331063595110063
+      },
+      "mean_brier": {
+        "mean": 0.2028905674815178,
+        "std": 0.0009501223105897536
+      }
+    },
+    "history_summary+tools_identity": {
+      "nll": {
+        "mean": 1.4283895095189412,
+        "std": 0.0045243564313330225
+      },
+      "brier@5s": {
+        "mean": 0.12059655288855235,
+        "std": 0.0005024533073325184
+      },
+      "auc@5s": {
+        "mean": 0.7498650118668411,
+        "std": 0.004281061887461527
+      },
+      "brier@20s": {
+        "mean": 0.2187294065952301,
+        "std": 0.002133624228113023
+      },
+      "auc@20s": {
+        "mean": 0.6853249318756095,
+        "std": 0.008568999601676846
+      },
+      "brier@60s": {
+        "mean": 0.22202515602111816,
+        "std": 0.0018513881361669259
+      },
+      "auc@60s": {
+        "mean": 0.6834798919187296,
+        "std": 0.007256472160530383
+      },
+      "brier@180s": {
+        "mean": 0.2220314939816793,
+        "std": 0.0018529065279651983
+      },
+      "auc@180s": {
+        "mean": 0.6835515818053811,
+        "std": 0.0071981232888939884
+      },
+      "mean_brier": {
+        "mean": 0.19584565237164497,
+        "std": 0.0014389363909946785
+      }
+    },
+    "history_summary+tools": {
+      "nll": {
+        "mean": 1.4289379119873047,
+        "std": 0.0023217334972665477
+      },
+      "brier@5s": {
+        "mean": 0.12074566632509232,
+        "std": 6.369400241257844e-05
+      },
+      "auc@5s": {
+        "mean": 0.7451939669090094,
+        "std": 0.002448958246713296
+      },
+      "brier@20s": {
+        "mean": 0.21868265171845755,
+        "std": 0.0010454438001750925
+      },
+      "auc@20s": {
+        "mean": 0.6823674882028331,
+        "std": 0.0045542954718542665
+      },
+      "brier@60s": {
+        "mean": 0.22217275202274323,
+        "std": 0.0008420439178597322
+      },
+      "auc@60s": {
+        "mean": 0.6799560895296178,
+        "std": 0.004202423812345919
+      },
+      "brier@180s": {
+        "mean": 0.22215122977892557,
+        "std": 0.0008599574826336791
+      },
+      "auc@180s": {
+        "mean": 0.6800041740747922,
+        "std": 0.004209892193336071
+      },
+      "mean_brier": {
+        "mean": 0.19593807496130466,
+        "std": 0.0006927287700627407
+      }
+    },
+    "history+radix": {
+      "nll": {
+        "mean": 1.4503217538197835,
+        "std": 0.0062074715163175954
+      },
+      "brier@5s": {
+        "mean": 0.1263855199019114,
+        "std": 0.0008752242828534139
+      },
+      "auc@5s": {
+        "mean": 0.6884179005327938,
+        "std": 0.005970965172652982
+      },
+      "brier@20s": {
+        "mean": 0.23195780316988626,
+        "std": 0.0017919523411698657
+      },
+      "auc@20s": {
+        "mean": 0.6310914283947574,
+        "std": 0.008761807064875643
+      },
+      "brier@60s": {
+        "mean": 0.2368997981150945,
+        "std": 0.0015530389168351706
+      },
+      "auc@60s": {
+        "mean": 0.6235159697076215,
+        "std": 0.0073455667098427215
+      },
+      "brier@180s": {
+        "mean": 0.23692539831002554,
+        "std": 0.0015616210400987973
+      },
+      "auc@180s": {
+        "mean": 0.623552832313279,
+        "std": 0.007300892207927817
+      },
+      "mean_brier": {
+        "mean": 0.20804212987422943,
+        "std": 0.001443291224758978
+      }
+    },
+    "history+tools": {
+      "nll": {
+        "mean": 1.4302493333816528,
+        "std": 0.008816719598892193
+      },
+      "brier@5s": {
+        "mean": 0.12224410225947697,
+        "std": 0.00023341476215639286
+      },
+      "auc@5s": {
+        "mean": 0.7323850723599469,
+        "std": 0.0035599506003324895
+      },
+      "brier@20s": {
+        "mean": 0.22216511269410452,
+        "std": 0.0025967956755992058
+      },
+      "auc@20s": {
+        "mean": 0.6695776881368789,
+        "std": 0.00940824661308559
+      },
+      "brier@60s": {
+        "mean": 0.22429262101650238,
+        "std": 0.002589082132335042
+      },
+      "auc@60s": {
+        "mean": 0.6726924914522586,
+        "std": 0.008893708205822427
+      },
+      "brier@180s": {
+        "mean": 0.22428718705972037,
+        "std": 0.0026007881903689477
+      },
+      "auc@180s": {
+        "mean": 0.6728642662169263,
+        "std": 0.008831813536085292
+      },
+      "mean_brier": {
+        "mean": 0.19824725575745106,
+        "std": 0.001993228835536041
+      }
+    },
+    "all": {
+      "nll": {
+        "mean": 1.42281969388326,
+        "std": 0.004151636667779221
+      },
+      "brier@5s": {
+        "mean": 0.12087635695934296,
+        "std": 0.0008106484012540433
+      },
+      "auc@5s": {
+        "mean": 0.7409092588393072,
+        "std": 0.0024588551422588126
+      },
+      "brier@20s": {
+        "mean": 0.22115718324979147,
+        "std": 0.0011886116175382007
+      },
+      "auc@20s": {
+        "mean": 0.6741835209735916,
+        "std": 0.004403997259054092
+      },
+      "brier@60s": {
+        "mean": 0.22336511810620627,
+        "std": 0.0011221994237427357
+      },
+      "auc@60s": {
+        "mean": 0.6764816257885812,
+        "std": 0.0034159401496358555
+      },
+      "brier@180s": {
+        "mean": 0.22335611283779144,
+        "std": 0.0011266243631241452
+      },
+      "auc@180s": {
+        "mean": 0.6765485274080386,
+        "std": 0.0034559910976154355
+      },
+      "mean_brier": {
+        "mean": 0.19718869278828302,
+        "std": 0.0010220717327563975
+      }
+    }
+  }
+}

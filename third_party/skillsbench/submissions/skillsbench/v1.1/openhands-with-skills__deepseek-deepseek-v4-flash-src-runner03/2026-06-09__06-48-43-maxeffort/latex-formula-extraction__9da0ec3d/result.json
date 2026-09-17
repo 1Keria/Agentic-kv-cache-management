@@ -1,0 +1,110 @@
+{
+  "task_name": "latex-formula-extraction",
+  "rollout_name": "latex-formula-extraction__9da0ec3d",
+  "rewards": {
+    "reward": 0.0
+  },
+  "agent": "openhands",
+  "agent_name": "OpenHands CLI ACP Agent",
+  "model": "deepseek/deepseek-v4-flash",
+  "skill_mode": "with-skill",
+  "skill_source": "task_bundled",
+  "requested_skills_dir": "/home/benchflow/skillsbench/tasks/latex-formula-extraction/environment/skills",
+  "effective_skills_dir": "/tmp/benchflow-task-_eidnxcr/latex-formula-extraction/environment/skills",
+  "skills_sandbox_dir": "/skills",
+  "include_task_skills": true,
+  "n_tool_calls": 17,
+  "n_skill_invocations": 1,
+  "n_prompts": 1,
+  "agent_result": {
+    "n_tool_calls": 17,
+    "n_skill_invocations": 1,
+    "n_prompts": 1,
+    "n_input_tokens": 380172,
+    "n_output_tokens": 5808,
+    "n_cache_read_tokens": 357632,
+    "n_cache_creation_tokens": 0,
+    "total_tokens": 385980,
+    "cost_usd": null,
+    "usage_source": "provider_response",
+    "price_source": null
+  },
+  "final_metrics": {
+    "total_prompt_tokens": 380172,
+    "total_completion_tokens": 5808,
+    "total_cached_tokens": 357632,
+    "total_cost_usd": null
+  },
+  "trajectory_summary": {
+    "steps": 36,
+    "tool_call_steps": 17,
+    "user_message_steps": 1,
+    "agent_message_steps": 1,
+    "agent_thought_steps": 17,
+    "other_steps": 0,
+    "event_type_counts": {
+      "user_message": 1,
+      "agent_thought": 17,
+      "tool_call": 17,
+      "agent_message": 1
+    },
+    "tool_call_status_counts": {
+      "completed": 17
+    },
+    "partial_trajectory": false,
+    "trajectory_source": "acp"
+  },
+  "usage_tracking": {
+    "requested": "required",
+    "status": "enabled",
+    "environment": "docker",
+    "endpoint_kind": "host",
+    "usage_source": "provider_response"
+  },
+  "error": null,
+  "error_category": null,
+  "verifier_error": null,
+  "verifier_error_category": null,
+  "export_error": null,
+  "idle_timeout_info": null,
+  "sandbox_startup_info": null,
+  "transport_error_info": null,
+  "verifier_timeout_info": null,
+  "partial_trajectory": false,
+  "trajectory_source": "acp",
+  "started_at": "2026-06-09 06:23:58.405092",
+  "finished_at": "2026-06-09 06:43:09.277077",
+  "timing": {
+    "environment_setup": 607.0,
+    "agent_setup": 18.6,
+    "agent_execution": 428.9,
+    "verifier": 21.3,
+    "total": 1150.9
+  },
+  "scenes": [
+    {
+      "name": "default",
+      "skills_dir": null,
+      "roles": [
+        {
+          "name": "agent",
+          "agent": "openhands",
+          "model": "deepseek/deepseek-v4-flash",
+          "reasoning_effort": null,
+          "timeout_sec": null,
+          "idle_timeout_sec": null,
+          "skills_dir": null,
+          "capabilities": null,
+          "env_keys": []
+        }
+      ],
+      "turns": [
+        {
+          "role": "agent",
+          "has_prompt": false
+        }
+      ]
+    }
+  ],
+  "sandbox_id": null
+}

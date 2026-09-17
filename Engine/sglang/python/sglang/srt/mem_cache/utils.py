@@ -18,13 +18,16 @@ from typing import Any, Callable, List, Optional, Tuple
 
 from sglang.srt.environ import envs
 from sglang.srt.mem_cache.evict_policy import (
+    AgenticStrategy,
     EvictionStrategy,
     FIFOStrategy,
     FILOStrategy,
     LFUStrategy,
     LRUStrategy,
+    MlpReuseStrategy,
     MRUStrategy,
     PriorityStrategy,
+    ReuseValueStrategy,
     SLRUStrategy,
 )
 from sglang.srt.mem_cache.triton_ops.mla_buffer import (
@@ -59,6 +62,9 @@ _EVICTION_POLICY_FACTORIES: dict[str, Callable[[], EvictionStrategy]] = {
     "mru": MRUStrategy,
     "filo": FILOStrategy,
     "priority": PriorityStrategy,
+    "agentic": AgenticStrategy,
+    "reuse_value": ReuseValueStrategy,
+    "mlp": MlpReuseStrategy,
     "slru": SLRUStrategy,
 }
 

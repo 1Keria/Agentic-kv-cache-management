@@ -1,0 +1,12 @@
+{
+  "name": "cold_frontier_agent050_decode32",
+  "source": "/share/dai-sys/zhoulongsheng/agentkv/workloads/ratio_sweep_v4flash_unseen/agent_050",
+  "source_protocol": "v4flash-unseen-strict-segment-ratio-v1",
+  "decode_cap": 32,
+  "counts": {
+    "rows": 2000,
+    "openhands": 1000,
+    "request": 1000
+  },
+  "note": "Prompt bodies/session ordering unchanged; only max_tokens is capped for collection speed."
+}

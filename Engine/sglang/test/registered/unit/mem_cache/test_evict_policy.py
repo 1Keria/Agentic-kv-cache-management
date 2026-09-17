@@ -15,6 +15,7 @@ from sglang.srt.mem_cache.evict_policy import (
     LRUStrategy,
     MRUStrategy,
     PriorityStrategy,
+    ReuseValueStrategy,
     SLRUStrategy,
 )
 
@@ -25,6 +26,7 @@ def _make_node(**kwargs):
     node.hit_count = kwargs.get("hit_count", 0)
     node.creation_time = kwargs.get("creation_time", 0.0)
     node.priority = kwargs.get("priority", 0)
+    node.reuse_value_density = kwargs.get("reuse_value_density", 0.0)
     return node
 
 
@@ -135,6 +137,25 @@ class TestPriorityStrategy(unittest.TestCase):
     def test_same_priority_older_access_evicted_first(self):
         old = _make_node(priority=3, last_access_time=1.0)
         new = _make_node(priority=3, last_access_time=10.0)
+        self.assertLess(
+            self.strategy.get_priority(old), self.strategy.get_priority(new)
+        )
+
+
+class TestReuseValueStrategy(unittest.TestCase):
+    def setUp(self):
+        self.strategy = ReuseValueStrategy()
+
+    def test_lower_reuse_value_is_evicted_first(self):
+        low = _make_node(reuse_value_density=1.0, last_access_time=10.0)
+        high = _make_node(reuse_value_density=5.0, last_access_time=1.0)
+        self.assertLess(
+            self.strategy.get_priority(low), self.strategy.get_priority(high)
+        )
+
+    def test_lru_breaks_equal_value_ties(self):
+        old = _make_node(reuse_value_density=2.0, last_access_time=1.0)
+        new = _make_node(reuse_value_density=2.0, last_access_time=10.0)
         self.assertLess(
             self.strategy.get_priority(old), self.strategy.get_priority(new)
         )

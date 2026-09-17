@@ -1,0 +1,37 @@
+{
+  "name": "mix_sysdiv_6h",
+  "created_unix": 1787153731.8252447,
+  "workload_jsonl_sha256": "2371e39fc5dc088ae617245bf4d2e49221838152a5620672aa9681a0f8ac239e",
+  "sessions_jsonl_sha256": "1647f5bf30f9861ef36360af9703a9190d041c8e8a9d52e8c73b95911399f23c",
+  "spec_json_sha256": "92f33acb0b9ca556841ce1c7a012add032e7800c725022c38ed7acf6a01b3513",
+  "n_turns": 1586,
+  "n_sessions_by_class": {
+    "glm": 102,
+    "openhands": 1,
+    "request": 412
+  },
+  "source_sha256": {
+    "openhands_jsonl": {
+      "third_party/skillsbench/submissions/skillsbench/v1.1/openhands-with-skills__deepseek-deepseek-v4-flash-src-runner05-20260610/2026-06-10__22-32-17-runner05/shock-analysis-demand__49038a1c/trajectory/llm_trajectory.jsonl": "aa209d5e272341e4d3eeec105e55ed1929bbc0be05a71e4c4454b97c703772e3"
+    },
+    "wildchat_parquet": {
+      "train-00000-of-00014.parquet": "abec2a13129db8c0e6a2d3a51ff12644873c748205a6fdf6551fbcb34430e51c",
+      "train-00001-of-00014.parquet": "f10fa35bb52703baad5e3177d3382d63b855fce9e9d1b9ab1fe2f0e762464f2a",
+      "train-00002-of-00014.parquet": "9a4912ec14c1012970f57b6710518dda17dbf6cdfb9b6e694880f5456b0b031f",
+      "train-00003-of-00014.parquet": "3f2d50ee227e32848f6c4fdb0f8ea543b379b2219bec72be9446e232d3d2a670",
+      "train-00004-of-00014.parquet": "08c7e0c31edc120606d67cfa82486471d82945a7a414761501ea44b1ab0cd804",
+      "train-00005-of-00014.parquet": "1caab40d8d4f01d76d8e1fa03e80f31b2f4d8b8b4c47cb3aa0280f4467e04555",
+      "train-00006-of-00014.parquet": "0bd2fff31c74feb6b44b0397b4e7ab6285dd69ccbe4cc8b5f19c42cdbf691303",
+      "train-00007-of-00014.parquet": "f498ea6771be5bf00d259ec76bd9fba51ceaa99c76147a0bb95fd7fa1769b984",
+      "train-00008-of-00014.parquet": "a69578183dde5de1aa94134da2d7c2d13f00d88a577ef91140a492fbbbf10792",
+      "train-00009-of-00014.parquet": "d2eb8868323274c60c9fd5437eaf2159a08ac278598b1197bc20ac04c633648a",
+      "train-00010-of-00014.parquet": "328b0d702d91ffd47e51aff2de56d74d0f2b874a31f2530f1948474a582f0467",
+      "train-00011-of-00014.parquet": "a458b915aeab7a4a81bd18770f33c3ebb908c91e67d916db5525819c88dbe778",
+      "train-00012-of-00014.parquet": "5353f1a829ac86de165c2fb537a30d7d756259dbe37a8a0fa6ec791321a37d6e",
+      "train-00013-of-00014.parquet": "440be579bf012a6e98d179b8dd0bedd73634e5527f7000c067d19c88b5cefa6c"
+    },
+    "glm_jsonl": {
+      "third_party/glm-5dot1_onlinedata/glm-5dot1_onlinedata_lt32k.jsonl": "5fdf0dc631cfcec6a21687f170fb732907e8e7fc9b887f4503c2575a6c023fea"
+    }
+  }
+}

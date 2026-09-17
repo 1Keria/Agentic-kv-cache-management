@@ -1,0 +1,22 @@
+{
+  "raw": 29885,
+  "no_past_owner_demand": 5697,
+  "unknown_or_shared_prefix": 8807,
+  "gap_not_reconstructible": 1039,
+  "used": 14342,
+  "sessions": 100,
+  "splits": {
+    "0": {
+      "rows": 8248,
+      "sessions": 70
+    },
+    "1": {
+      "rows": 3086,
+      "sessions": 15
+    },
+    "2": {
+      "rows": 3008,
+      "sessions": 15
+    }
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "dataset": "third_party/glm-5dot1_onlinedata/glm-5dot1_onlinedata_lt32k.jsonl",
+  "n_valid": 16559,
+  "bad_lines": 1,
+  "sort": "start_s, line_no",
+  "train_frac": 0.7,
+  "val_frac": 0.15,
+  "label": {
+    "tau_unit": "seconds",
+    "tau_definition": "next same-hash strict message-prefix arrival start_time minus this start_time; right-censored at the split window cut",
+    "delta_full": "1 if next continuation occurs before this row's full split ends",
+    "delta_small": "1 if next continuation occurs before this row's small split ends"
+  },
+  "full": {
+    "n_train": 11591,
+    "n_val": 2484,
+    "n_test": 2484,
+    "cut_time_idx": [
+      11591,
+      14075
+    ],
+    "window_end_s": {
+      "test": 1778344424.758733,
+      "train": 1778311983.376282,
+      "val": 1778326406.146527
+    },
+    "summary": {
+      "n": 16559,
+      "by_split": {
+        "train": 11591,
+        "val": 2484,
+        "test": 2484
+      },
+      "train": {
+        "n": 11591,
+        "n_observed": 4908,
+        "n_censored": 6683,
+        "n_hash": 5871,
+        "start": "2026-05-08T14:33:00.042937995+08:00",
+        "end": "2026-05-09T15:33:03.343656998+08:00",
+        "span_h": 25.000916866395208
+      },
+      "val": {
+        "n": 2484,
+        "n_observed": 1045,
+        "n_censored": 1439,
+        "n_hash": 1249,
+        "start": "2026-05-09T15:33:03.376282644+08:00",
+        "end": "2026-05-09T19:33:25.804458472+08:00",
+        "span_h": 4.0062300488683915
+      },
+      "test": {
+        "n": 2484,
+        "n_observed": 1031,
+        "n_censored": 1453,
+        "n_hash": 1251,
+        "start": "2026-05-09T19:33:26.146527727+08:00",
+        "end": "2026-05-10T00:33:44.758733847+08:00",
+        "span_h": 5.00517005721728
+      }
+    },
+    "n_crossing_hashes": 100,
+    "n_obs_censored_at_cut": 89,
+    "mega_hash": "ba9f8860cf9826fc268cf25b98d4861440c4a0bfe30bbc0483b42a8cf7d5e55c",
+    "mega_by_split": {
+      "train": 780,
+      "val": 234,
+      "test": 213
+    }
+  },
+  "small": {
+    "n": 2200,
+    "n_train": 1540,
+    "n_val": 330,
+    "n_test": 330,
+    "cut_time_idx": [
+      1540,
+      1870
+    ],
+    "window_end_s": {
+      "test": 1778232825.624279,
+      "train": 1778229200.226919,
+      "val": 1778232781.86135
+    },
+    "summary": {
+      "n": 2200,
+      "by_split": {
+        "train": 1540,
+        "val": 330,
+        "test": 330
+      },
+      "train": {
+        "n": 1540,
+        "n_observed": 607,
+        "n_censored": 933,
+        "n_hash": 807,
+        "start": "2026-05-08T14:33:00.042937995+08:00",
+        "end": "2026-05-08T16:33:19.835719658+08:00",
+        "span_h": 2.005497995018959
+      },
+      "val": {
+        "n": 330,
+        "n_observed": 98,
+        "n_censored": 232,
+        "n_hash": 205,
+        "start": "2026-05-08T16:33:20.226919507+08:00",
+        "end": "2026-05-08T17:33:01.628922525+08:00",
+        "span_h": 0.9948338897360696
+      },
+      "test": {
+        "n": 330,
+        "n_observed": 102,
+        "n_censored": 228,
+        "n_hash": 199,
+        "start": "2026-05-08T17:33:01.86135037+08:00",
+        "end": "2026-05-08T17:33:45.624279366+08:00",
+        "span_h": 0.012156369156307644
+      }
+    },
+    "note": "Timeline prefix of the full train window. small val/test are not the official val/test.",
+    "replay_until": "all small split rows"
+  },
+  "files": {
+    "full_dir": "full",
+    "small_dir": "small",
+    "full": {
+      "train": "full/train.jsonl",
+      "val": "full/val.jsonl",
+      "test": "full/test.jsonl"
+    },
+            "small": {
+                "train": "small/train.jsonl",
+                "val": "small/val.jsonl",
+                "test": "small/test.jsonl"
+            }
+  }
+}

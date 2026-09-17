@@ -1,0 +1,7 @@
+test_inflight_stale_queue_full_and_nonblocking (test_predictor.Tests.test_inflight_stale_queue_full_and_nonblocking) ... ok
+test_interpolation_and_open_tail (test_predictor.Tests.test_interpolation_and_open_tail) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.003s
+
+OK

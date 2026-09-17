@@ -270,8 +270,18 @@ class UnifiedRadixCache(KVCacheEventMixin, BasePrefixCache):
         self.is_eagle = params.is_eagle
         self.enable_kv_cache_events = params.enable_kv_cache_events
         self.kv_event_queue = []
+        self._init_kv_diagnostics()
         self.eviction_policy = params.eviction_policy.lower()
         self.eviction_strategy = get_eviction_strategy(self.eviction_policy)
+        if (
+            bool(getattr(self.eviction_strategy, "uses_reuse_value", False))
+            or params.enable_reuse_value_estimator
+            or params.reuse_value_shadow_only
+        ):
+            raise NotImplementedError(
+                "reuse_value eviction currently supports the classic RadixCache "
+                "path only; disable the unified radix tree for this experiment"
+            )
 
         if self.token_to_kv_pool_allocator:
             self.device = self.token_to_kv_pool_allocator.device
@@ -579,6 +589,7 @@ class UnifiedRadixCache(KVCacheEventMixin, BasePrefixCache):
         if self.disable:
             return EvictResult()
         start_time = time.perf_counter()
+        self._record_evict_start_diagnostic(params.num_tokens)
         tracker = {ct: 0 for ct in self.tree_components}
 
         for component in self._components_tuple:
@@ -591,6 +602,7 @@ class UnifiedRadixCache(KVCacheEventMixin, BasePrefixCache):
             self.writing_check(write_back=True)
 
         self.update_eviction_metrics(sum(tracker.values()), start_time)
+        self._record_evict_end_diagnostic(tracker.get(BASE_COMPONENT_TYPE, 0))
         return EvictResult(
             num_tokens_evicted=tracker[BASE_COMPONENT_TYPE],
             swa_num_tokens_evicted=tracker.get(ComponentType.SWA, 0),
@@ -1049,6 +1061,7 @@ class UnifiedRadixCache(KVCacheEventMixin, BasePrefixCache):
 
         child_key = key.child_key(self.page_size)
         total_prefix_length = 0
+        matched_nodes: list[UnifiedTreeNode] = []
         while len(key) > 0 and child_key in node.children:
             node = node.children[child_key]
             self._touch_node(node)
@@ -1092,6 +1105,7 @@ class UnifiedRadixCache(KVCacheEventMixin, BasePrefixCache):
                     )
 
             self._inc_hit_count(node, params.chunked)
+            matched_nodes.append(node)
             total_prefix_length += prefix_len
             key = key[prefix_len:]
             value = value[prefix_len:]
@@ -1099,6 +1113,15 @@ class UnifiedRadixCache(KVCacheEventMixin, BasePrefixCache):
                 child_key = key.child_key(self.page_size)
 
         is_new_leaf = False
+        write_back = (
+            self.cache_controller is not None
+            and self.cache_controller.write_policy == "write_back"
+        )
+        demote_on_miss = (
+            bool(getattr(self.eviction_strategy, "demote_on_miss", False))
+            and not params.chunked
+            and not write_back
+        )
         # Create new leaf for remaining suffix
         if len(key):
             if any(
@@ -1114,6 +1137,12 @@ class UnifiedRadixCache(KVCacheEventMixin, BasePrefixCache):
                 # cleanup_after_caching_req can free them properly.
                 self.token_to_kv_pool_allocator.free(value)
                 return InsertResult(prefix_len=total_prefix_length)
+            # agentic: demote matched path by 1 when inserting a miss suffix.
+            if demote_on_miss:
+                for matched in matched_nodes:
+                    if matched.evicted:
+                        continue
+                    matched.hit_count -= 1
             target_node = self._add_new_node(node, key, value, priority=priority)
             is_new_leaf = True
         else:
@@ -1139,7 +1168,11 @@ class UnifiedRadixCache(KVCacheEventMixin, BasePrefixCache):
                 )
 
         if is_new_leaf:
-            self._inc_hit_count(target_node, params.chunked)
+            if demote_on_miss:
+                # Cold miss leaf starts at -1 instead of LFU's free +1.
+                target_node.hit_count = -1
+            else:
+                self._inc_hit_count(target_node, params.chunked)
         return result
 
     def _insert_helper_host(

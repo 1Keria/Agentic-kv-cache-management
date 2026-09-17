@@ -1,0 +1,14 @@
+{
+  "mode": "session_return_compressed_native_dump",
+  "base_url": "http://127.0.0.1:30000",
+  "model": "deepseek-v4-flash",
+  "dataset": "third_party/glm-5dot1_onlinedata/glm-5dot1_onlinedata_lt32k.jsonl",
+  "split_dir": "experiments/session_return/splits/small",
+  "n": 2200,
+  "max_inflight": 2,
+  "time_in_secs": 0.0,
+  "first_start_time": "2026-05-08T14:33:00.042937995+08:00",
+  "last_start_time": "2026-05-08T17:33:45.624279366+08:00",
+  "dump_join": "client.trace_id == server.rid",
+  "label_note": "tau/delta come from split jsonl original start_time, not replay clock"
+}

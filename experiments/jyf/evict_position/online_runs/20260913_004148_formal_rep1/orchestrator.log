@@ -1,0 +1,82 @@
+precompute START 2026-09-13T00:41:48+08:00
+run_online.sh: line 57: 171723 Killed                  EP_MODE="$mode" EP_OUT="$arm/metrics" EP_CHECKPOINT="$EXP/training/model.pt" PYTHONPATH="$EXP" "$SGLANG" serve --trust-remote-code --model-path /share/dai-sys/models/deepseek-v4-flash --served-model-name deepseek-v4-flash --tp 8 --moe-runner-backend marlin --reasoning-parser deepseek-v4 --tool-call-parser deepseekv4 --port 30000 --host 127.0.0.1 --mem-fraction-static 0.45 --watchdog-timeout 900 --random-seed 42 --enable-metrics --enable-cache-report --radix-eviction-policy lru > "$arm/server.log" 2>&1
+    raise RuntimeError(msg)
+RuntimeError: The memory capacity is unbalanced. Some GPUs may be occupied by other processes. pre_model_load_memory=62.20281982421875, local_gpu_memory=77.688720703125, local_gpu_memory * 0.9=69.9198486328125
+
+[2026-09-13 00:42:39 TP5] Scheduler hit an exception: Traceback (most recent call last):
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/scheduler.py", line 4046, in run_scheduler_process
+    scheduler = Scheduler(
+                ^^^^^^^^^^
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/scheduler.py", line 427, in __init__
+    self.init_model_worker()
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/scheduler.py", line 817, in init_model_worker
+    self.init_tp_model_worker()
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/scheduler.py", line 772, in init_tp_model_worker
+    self.tp_worker = TpModelWorker(**worker_kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/tp_worker.py", line 262, in __init__
+    self._init_model_runner()
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/tp_worker.py", line 347, in _init_model_runner
+    self._model_runner = ModelRunner(
+                         ^^^^^^^^^^^^
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/model_executor/model_runner.py", line 542, in __init__
+    pre_model_load_memory = self.init_torch_distributed()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/model_executor/model_runner.py", line 1221, in init_torch_distributed
+    raise RuntimeError(msg)
+RuntimeError: The memory capacity is unbalanced. Some GPUs may be occupied by other processes. pre_model_load_memory=62.20281982421875, local_gpu_memory=77.688720703125, local_gpu_memory * 0.9=69.9198486328125
+
+[2026-09-13 00:42:39 TP1] Scheduler hit an exception: Traceback (most recent call last):
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/scheduler.py", line 4046, in run_scheduler_process
+    scheduler = Scheduler(
+                ^^^^^^^^^^
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/scheduler.py", line 427, in __init__
+    self.init_model_worker()
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/scheduler.py", line 817, in init_model_worker
+    self.init_tp_model_worker()
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/scheduler.py", line 772, in init_tp_model_worker
+    self.tp_worker = TpModelWorker(**worker_kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/tp_worker.py", line 262, in __init__
+    self._init_model_runner()
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/tp_worker.py", line 347, in _init_model_runner
+    self._model_runner = ModelRunner(
+                         ^^^^^^^^^^^^
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/model_executor/model_runner.py", line 542, in __init__
+    pre_model_load_memory = self.init_torch_distributed()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/model_executor/model_runner.py", line 1221, in init_torch_distributed
+    raise RuntimeError(msg)
+RuntimeError: The memory capacity is unbalanced. Some GPUs may be occupied by other processes. pre_model_load_memory=62.20281982421875, local_gpu_memory=77.688720703125, local_gpu_memory * 0.9=69.9198486328125
+
+[2026-09-13 00:42:39] Received sigquit from a child process. It usually means the child failed.
+--- Logging error ---
+[2026-09-13 00:42:39] Received sigquit from a child process. It usually means the child failed.
+[2026-09-13 00:42:39] kill_process_tree called: parent_pid=171723, include_parent=True, pid=171723
+[2026-09-13 00:42:39] Received sigquit from a child process. It usually means the child failed.
+[2026-09-13 00:42:39] kill_process_tree called: parent_pid=171723, include_parent=True, pid=171723
+[2026-09-13 00:42:39 TP4] Scheduler hit an exception: Traceback (most recent call last):
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/scheduler.py", line 4046, in run_scheduler_process
+    scheduler = Scheduler(
+                ^^^^^^^^^^
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/scheduler.py", line 427, in __init__
+    self.init_model_worker()
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/scheduler.py", line 817, in init_model_worker
+    self.init_tp_model_worker()
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/scheduler.py", line 772, in init_tp_model_worker
+    self.tp_worker = TpModelWorker(**worker_kwargs)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/tp_worker.py", line 262, in __init__
+    self._init_model_runner()
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/managers/tp_worker.py", line 347, in _init_model_runner
+    self._model_runner = ModelRunner(
+                         ^^^^^^^^^^^^
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/model_executor/model_runner.py", line 542, in __init__
+    pre_model_load_memory = self.init_torch_distributed()
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/share/dai-sys/apps/anaconda3/envs/agentkv_jyf/lib/python3.11/site-packages/sglang/srt/model_executor/model_runner.py", line 1221, in init_torch_distributed
+    raise RuntimeError(msg)
+RuntimeError: The memory capacity is unbalanced. Some GPUs may be occupied by other processes. pre_model_load_memory=62.20281982421875, local_gpu_memory=77.688720703125, local_gpu_memory * 0.9=69.9198486328125
+
+[2026-09-13 00:42:39] Received sigquit from a child process. It usually means the child failed.
+[2026-09-13 00:42:39] kill_process_tree called: parent_pid=171723, include_parent=True, pid=171723

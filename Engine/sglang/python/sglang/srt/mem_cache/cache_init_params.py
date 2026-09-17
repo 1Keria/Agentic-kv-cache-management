@@ -27,7 +27,19 @@ class CacheInitParams:
     attn_tp_cache_group: Optional[torch.distributed.ProcessGroup] = None
     pp_cache_group: Optional[torch.distributed.ProcessGroup] = None
     eviction_policy: str = "lru"
+    enable_reuse_value_estimator: bool = False
+    reuse_value_shadow_only: bool = False
+    reuse_value_turnover_kappa: float = 1.0
+    reuse_value_base_cold_strength: float = 1.0
     disable_finished_insert: bool = False
+
+    mlp_checkpoint: Optional[str] = None
+    mlp_hold_lambda: float = 0.05
+    mlp_delta_alpha: str = "1.0,0.7,0.5"
+    mlp_horizon_index: int = -1
+    mlp_occupancy_hi: float = 0.90
+    mlp_occupancy_mid: float = 0.75
+    mlp_shadow_only: bool = False
 
     enable_metrics: bool = False
     enable_kv_cache_events: bool = False

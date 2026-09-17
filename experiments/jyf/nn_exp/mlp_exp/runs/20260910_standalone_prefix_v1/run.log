@@ -1,0 +1,350 @@
+[parse] lines=1000 requests=1000 malformed=0 elapsed=2.3s
+[parse] lines=2000 requests=2000 malformed=0 elapsed=4.6s
+[parse] lines=3000 requests=3000 malformed=0 elapsed=6.8s
+[parse] lines=4000 requests=4000 malformed=0 elapsed=9.2s
+[parse] lines=5000 requests=5000 malformed=0 elapsed=11.5s
+[parse] lines=6000 requests=6000 malformed=0 elapsed=13.7s
+[parse] lines=7000 requests=7000 malformed=0 elapsed=15.7s
+[parse] lines=8000 requests=8000 malformed=0 elapsed=17.9s
+[parse] lines=9000 requests=9000 malformed=0 elapsed=20.1s
+[parse] lines=10000 requests=10000 malformed=0 elapsed=22.4s
+[parse] lines=11000 requests=11000 malformed=0 elapsed=24.7s
+[parse] lines=12000 requests=12000 malformed=0 elapsed=27.0s
+[parse] lines=13000 requests=13000 malformed=0 elapsed=29.3s
+[parse] lines=14000 requests=14000 malformed=0 elapsed=31.7s
+[parse] lines=15000 requests=15000 malformed=0 elapsed=34.0s
+[parse] lines=16000 requests=16000 malformed=0 elapsed=36.3s
+[build] requests=2000/16559 samples=42556 prefixes=23864
+[build] requests=4000/16559 samples=91438 prefixes=50422
+[build] requests=6000/16559 samples=137420 prefixes=76530
+[build] requests=8000/16559 samples=181099 prefixes=99745
+[build] requests=10000/16559 samples=220843 prefixes=123532
+[build] requests=12000/16559 samples=262381 prefixes=149318
+[build] requests=14000/16559 samples=307345 prefixes=173096
+[build] requests=16000/16559 samples=359309 prefixes=203403
+{
+  "requests": 16559,
+  "malformed": 1,
+  "samples": 373228,
+  "unique_prefixes": 210719,
+  "eligible_history_ge_1": 162509,
+  "eligible_observed": 83223,
+  "split_eligible": {
+    "0": 114580,
+    "1": 24143,
+    "2": 23786
+  },
+  "gap_quantiles_s": {
+    "0.1": 2.5531129837036133,
+    "0.25": 3.4939651489257812,
+    "0.5": 5.979262351989746,
+    "0.75": 11.425886154174805,
+    "0.9": 19.99691390991211,
+    "0.95": 48.03455352783203,
+    "0.99": 7199.94677734375
+  },
+  "negative_gap": 0,
+  "feature_names": [
+    "log_recent_gap_1",
+    "log_recent_gap_2",
+    "log_recent_gap_3",
+    "log_recent_gap_4",
+    "log_recent_gap_5",
+    "log_recent_gap_6",
+    "log_recent_gap_7",
+    "log_recent_gap_8",
+    "recent_gap_mask_1",
+    "recent_gap_mask_2",
+    "recent_gap_mask_3",
+    "recent_gap_mask_4",
+    "recent_gap_mask_5",
+    "recent_gap_mask_6",
+    "recent_gap_mask_7",
+    "recent_gap_mask_8",
+    "log_gap_mean",
+    "log_gap_std",
+    "log_gap_min",
+    "log_gap_max",
+    "log_gap_ewma",
+    "log_reuse_count",
+    "log_trajectory_requests",
+    "log_consecutive_growth",
+    "log_last_growth",
+    "log_growth_mean4",
+    "log_growth_std4",
+    "log_growth_ewma",
+    "log_prefix_tokens",
+    "log_increment_tokens"
+  ],
+  "label": "request-start to next request-start",
+  "dataset": "/share/dai-sys/zhoulongsheng/agentkv/third_party/glm-5dot1_onlinedata/glm-5dot1_onlinedata_lt32k.jsonl",
+  "output": "/share/dai-sys/zhoulongsheng/agentkv/experiments/mlp_exp/data/prefix_reuse_samples.npz"
+}
+[train] kind=initial seed=41 epoch=1 train=1.66288 val=1.37189
+[train] kind=initial seed=41 epoch=2 train=1.20015 val=1.10265
+[train] kind=initial seed=41 epoch=3 train=1.06457 val=1.05355
+[train] kind=initial seed=41 epoch=4 train=1.02833 val=1.03789
+[train] kind=initial seed=41 epoch=5 train=1.00867 val=1.02929
+[train] kind=initial seed=41 epoch=6 train=0.99665 val=1.02374
+[train] kind=initial seed=41 epoch=7 train=0.98759 val=1.02013
+[train] kind=initial seed=41 epoch=8 train=0.98074 val=1.01627
+[train] kind=initial seed=41 epoch=9 train=0.97497 val=1.01348
+[train] kind=initial seed=41 epoch=10 train=0.96983 val=1.01057
+[train] kind=initial seed=41 epoch=11 train=0.96522 val=1.00752
+[train] kind=initial seed=41 epoch=12 train=0.96092 val=1.00651
+[train] kind=initial seed=41 epoch=13 train=0.95719 val=1.00494
+[train] kind=initial seed=41 epoch=14 train=0.95346 val=1.00520
+[train] kind=initial seed=41 epoch=15 train=0.94959 val=1.00227
+[train] kind=landmark seed=41 epoch=1 train=0.95819 val=0.55072
+[train] kind=landmark seed=41 epoch=2 train=0.50323 val=0.46687
+[train] kind=landmark seed=41 epoch=3 train=0.44469 val=0.44213
+[train] kind=landmark seed=41 epoch=4 train=0.42676 val=0.43093
+[train] kind=landmark seed=41 epoch=5 train=0.41797 val=0.42652
+[train] kind=landmark seed=41 epoch=6 train=0.41229 val=0.42271
+[train] kind=landmark seed=41 epoch=7 train=0.40804 val=0.42218
+[train] kind=landmark seed=41 epoch=8 train=0.40416 val=0.42128
+[train] kind=landmark seed=41 epoch=9 train=0.40117 val=0.42078
+[train] kind=landmark seed=41 epoch=10 train=0.39825 val=0.41859
+[train] kind=landmark seed=41 epoch=11 train=0.39588 val=0.42043
+[train] kind=landmark seed=41 epoch=12 train=0.39383 val=0.42233
+[train] kind=landmark seed=41 epoch=13 train=0.39167 val=0.42031
+[train] kind=initial seed=42 epoch=1 train=1.73934 val=1.45461
+[train] kind=initial seed=42 epoch=2 train=1.25176 val=1.11572
+[train] kind=initial seed=42 epoch=3 train=1.06980 val=1.04955
+[train] kind=initial seed=42 epoch=4 train=1.02968 val=1.03617
+[train] kind=initial seed=42 epoch=5 train=1.01122 val=1.02903
+[train] kind=initial seed=42 epoch=6 train=0.99838 val=1.02264
+[train] kind=initial seed=42 epoch=7 train=0.98889 val=1.01711
+[train] kind=initial seed=42 epoch=8 train=0.98137 val=1.01211
+[train] kind=initial seed=42 epoch=9 train=0.97465 val=1.00751
+[train] kind=initial seed=42 epoch=10 train=0.96898 val=1.00507
+[train] kind=initial seed=42 epoch=11 train=0.96405 val=1.00483
+[train] kind=initial seed=42 epoch=12 train=0.95958 val=1.00192
+[train] kind=initial seed=42 epoch=13 train=0.95494 val=1.00212
+[train] kind=initial seed=42 epoch=14 train=0.95126 val=1.00182
+[train] kind=initial seed=42 epoch=15 train=0.94787 val=1.00238
+[train] kind=landmark seed=42 epoch=1 train=1.00904 val=0.54432
+[train] kind=landmark seed=42 epoch=2 train=0.49882 val=0.47146
+[train] kind=landmark seed=42 epoch=3 train=0.44921 val=0.44619
+[train] kind=landmark seed=42 epoch=4 train=0.43156 val=0.43736
+[train] kind=landmark seed=42 epoch=5 train=0.42248 val=0.43061
+[train] kind=landmark seed=42 epoch=6 train=0.41477 val=0.42345
+[train] kind=landmark seed=42 epoch=7 train=0.40809 val=0.42135
+[train] kind=landmark seed=42 epoch=8 train=0.40330 val=0.42080
+[train] kind=landmark seed=42 epoch=9 train=0.39974 val=0.41990
+[train] kind=landmark seed=42 epoch=10 train=0.39707 val=0.42179
+[train] kind=landmark seed=42 epoch=11 train=0.39489 val=0.42620
+[train] kind=landmark seed=42 epoch=12 train=0.39273 val=0.42154
+[train] kind=initial seed=43 epoch=1 train=1.64916 val=1.33546
+[train] kind=initial seed=43 epoch=2 train=1.17792 val=1.09367
+[train] kind=initial seed=43 epoch=3 train=1.06577 val=1.04891
+[train] kind=initial seed=43 epoch=4 train=1.03168 val=1.03418
+[train] kind=initial seed=43 epoch=5 train=1.01212 val=1.02606
+[train] kind=initial seed=43 epoch=6 train=0.99899 val=1.01912
+[train] kind=initial seed=43 epoch=7 train=0.98899 val=1.01535
+[train] kind=initial seed=43 epoch=8 train=0.98186 val=1.01252
+[train] kind=initial seed=43 epoch=9 train=0.97553 val=1.00910
+[train] kind=initial seed=43 epoch=10 train=0.97008 val=1.00799
+[train] kind=initial seed=43 epoch=11 train=0.96516 val=1.00627
+[train] kind=initial seed=43 epoch=12 train=0.96047 val=1.00302
+[train] kind=initial seed=43 epoch=13 train=0.95604 val=1.00412
+[train] kind=initial seed=43 epoch=14 train=0.95206 val=1.00242
+[train] kind=initial seed=43 epoch=15 train=0.94817 val=1.00218
+[train] kind=landmark seed=43 epoch=1 train=1.00276 val=0.54909
+[train] kind=landmark seed=43 epoch=2 train=0.49787 val=0.46528
+[train] kind=landmark seed=43 epoch=3 train=0.44553 val=0.44498
+[train] kind=landmark seed=43 epoch=4 train=0.42992 val=0.43797
+[train] kind=landmark seed=43 epoch=5 train=0.42082 val=0.42936
+[train] kind=landmark seed=43 epoch=6 train=0.41374 val=0.42470
+[train] kind=landmark seed=43 epoch=7 train=0.40813 val=0.42199
+[train] kind=landmark seed=43 epoch=8 train=0.40359 val=0.41981
+[train] kind=landmark seed=43 epoch=9 train=0.40021 val=0.41832
+[train] kind=landmark seed=43 epoch=10 train=0.39734 val=0.41701
+[train] kind=landmark seed=43 epoch=11 train=0.39503 val=0.41768
+[train] kind=landmark seed=43 epoch=12 train=0.39275 val=0.42123
+[train] kind=landmark seed=43 epoch=13 train=0.39083 val=0.41862
+[train] kind=initial seed=41 epoch=1 train=3.45881 val=2.64577
+[train] kind=initial seed=41 epoch=2 train=1.96543 val=1.56203
+[train] kind=initial seed=41 epoch=3 train=1.46720 val=1.36857
+[train] kind=initial seed=41 epoch=4 train=1.34561 val=1.32183
+[train] kind=initial seed=41 epoch=5 train=1.30000 val=1.30769
+[train] kind=initial seed=41 epoch=6 train=1.27410 val=1.28691
+[train] kind=initial seed=41 epoch=7 train=1.25743 val=1.27455
+[train] kind=initial seed=41 epoch=8 train=1.24514 val=1.26768
+[train] kind=initial seed=41 epoch=9 train=1.23538 val=1.26160
+[train] kind=initial seed=41 epoch=10 train=1.22745 val=1.25881
+[train] kind=initial seed=41 epoch=11 train=1.22079 val=1.25597
+[train] kind=initial seed=41 epoch=12 train=1.21496 val=1.25232
+[train] kind=initial seed=41 epoch=13 train=1.20992 val=1.25241
+[train] kind=initial seed=41 epoch=14 train=1.20522 val=1.25311
+[train] kind=initial seed=41 epoch=15 train=1.20055 val=1.25491
+[train] kind=landmark seed=41 epoch=1 train=1.93316 val=0.77191
+[train] kind=landmark seed=41 epoch=2 train=0.72200 val=0.66351
+[train] kind=landmark seed=41 epoch=3 train=0.63316 val=0.60574
+[train] kind=landmark seed=41 epoch=4 train=0.59249 val=0.59641
+[train] kind=landmark seed=41 epoch=5 train=0.57576 val=0.59167
+[train] kind=landmark seed=41 epoch=6 train=0.56507 val=0.58635
+[train] kind=landmark seed=41 epoch=7 train=0.55677 val=0.58474
+[train] kind=landmark seed=41 epoch=8 train=0.54925 val=0.58075
+[train] kind=landmark seed=41 epoch=9 train=0.54200 val=0.57662
+[train] kind=landmark seed=41 epoch=10 train=0.53510 val=0.57121
+[train] kind=landmark seed=41 epoch=11 train=0.52953 val=0.56899
+[train] kind=landmark seed=41 epoch=12 train=0.52527 val=0.56982
+[train] kind=landmark seed=41 epoch=13 train=0.52164 val=0.56759
+[train] kind=landmark seed=41 epoch=14 train=0.51910 val=0.56854
+[train] kind=landmark seed=41 epoch=15 train=0.51644 val=0.57032
+[train] kind=initial seed=42 epoch=1 train=3.69610 val=2.90203
+[train] kind=initial seed=42 epoch=2 train=2.14646 val=1.60082
+[train] kind=initial seed=42 epoch=3 train=1.49963 val=1.36994
+[train] kind=initial seed=42 epoch=4 train=1.35104 val=1.32662
+[train] kind=initial seed=42 epoch=5 train=1.30626 val=1.31098
+[train] kind=initial seed=42 epoch=6 train=1.27907 val=1.29226
+[train] kind=initial seed=42 epoch=7 train=1.26115 val=1.28031
+[train] kind=initial seed=42 epoch=8 train=1.24875 val=1.27112
+[train] kind=initial seed=42 epoch=9 train=1.23902 val=1.26452
+[train] kind=initial seed=42 epoch=10 train=1.23107 val=1.26180
+[train] kind=initial seed=42 epoch=11 train=1.22413 val=1.25803
+[train] kind=initial seed=42 epoch=12 train=1.21822 val=1.25488
+[train] kind=initial seed=42 epoch=13 train=1.21277 val=1.25336
+[train] kind=initial seed=42 epoch=14 train=1.20778 val=1.25283
+[train] kind=initial seed=42 epoch=15 train=1.20283 val=1.24955
+[train] kind=landmark seed=42 epoch=1 train=1.97183 val=0.74628
+[train] kind=landmark seed=42 epoch=2 train=0.69843 val=0.64867
+[train] kind=landmark seed=42 epoch=3 train=0.63064 val=0.60695
+[train] kind=landmark seed=42 epoch=4 train=0.59958 val=0.59463
+[train] kind=landmark seed=42 epoch=5 train=0.58346 val=0.58756
+[train] kind=landmark seed=42 epoch=6 train=0.57149 val=0.58279
+[train] kind=landmark seed=42 epoch=7 train=0.56130 val=0.58087
+[train] kind=landmark seed=42 epoch=8 train=0.55309 val=0.57409
+[train] kind=landmark seed=42 epoch=9 train=0.54630 val=0.57218
+[train] kind=landmark seed=42 epoch=10 train=0.54002 val=0.56821
+[train] kind=landmark seed=42 epoch=11 train=0.53454 val=0.56561
+[train] kind=landmark seed=42 epoch=12 train=0.52930 val=0.56236
+[train] kind=landmark seed=42 epoch=13 train=0.52474 val=0.56081
+[train] kind=landmark seed=42 epoch=14 train=0.52094 val=0.56222
+[train] kind=landmark seed=42 epoch=15 train=0.51769 val=0.56159
+[train] kind=initial seed=43 epoch=1 train=3.44839 val=2.65573
+[train] kind=initial seed=43 epoch=2 train=1.98376 val=1.55923
+[train] kind=initial seed=43 epoch=3 train=1.45418 val=1.36711
+[train] kind=initial seed=43 epoch=4 train=1.34411 val=1.32372
+[train] kind=initial seed=43 epoch=5 train=1.30051 val=1.30843
+[train] kind=initial seed=43 epoch=6 train=1.27538 val=1.28862
+[train] kind=initial seed=43 epoch=7 train=1.25841 val=1.27635
+[train] kind=initial seed=43 epoch=8 train=1.24590 val=1.26820
+[train] kind=initial seed=43 epoch=9 train=1.23544 val=1.26152
+[train] kind=initial seed=43 epoch=10 train=1.22700 val=1.25845
+[train] kind=initial seed=43 epoch=11 train=1.21960 val=1.25656
+[train] kind=initial seed=43 epoch=12 train=1.21288 val=1.25356
+[train] kind=initial seed=43 epoch=13 train=1.20678 val=1.25255
+[train] kind=initial seed=43 epoch=14 train=1.20118 val=1.24969
+[train] kind=initial seed=43 epoch=15 train=1.19602 val=1.24967
+[train] kind=landmark seed=43 epoch=1 train=1.97725 val=0.76255
+[train] kind=landmark seed=43 epoch=2 train=0.71181 val=0.66079
+[train] kind=landmark seed=43 epoch=3 train=0.64167 val=0.61272
+[train] kind=landmark seed=43 epoch=4 train=0.60111 val=0.59933
+[train] kind=landmark seed=43 epoch=5 train=0.58213 val=0.59463
+[train] kind=landmark seed=43 epoch=6 train=0.57029 val=0.59031
+[train] kind=landmark seed=43 epoch=7 train=0.56157 val=0.58980
+[train] kind=landmark seed=43 epoch=8 train=0.55430 val=0.58711
+[train] kind=landmark seed=43 epoch=9 train=0.54754 val=0.58801
+[train] kind=landmark seed=43 epoch=10 train=0.54120 val=0.58445
+[train] kind=landmark seed=43 epoch=11 train=0.53495 val=0.58304
+[train] kind=landmark seed=43 epoch=12 train=0.52910 val=0.58174
+[train] kind=landmark seed=43 epoch=13 train=0.52395 val=0.57835
+[train] kind=landmark seed=43 epoch=14 train=0.51982 val=0.57912
+[train] kind=landmark seed=43 epoch=15 train=0.51611 val=0.58085
+[train] kind=initial seed=41 epoch=1 train=7.31530 val=5.59113
+[train] kind=initial seed=41 epoch=2 train=3.62397 val=2.29104
+[train] kind=initial seed=41 epoch=3 train=2.02595 val=1.73121
+[train] kind=initial seed=41 epoch=4 train=1.68739 val=1.63984
+[train] kind=initial seed=41 epoch=5 train=1.60642 val=1.57423
+[train] kind=initial seed=41 epoch=6 train=1.56279 val=1.55244
+[train] kind=initial seed=41 epoch=7 train=1.53415 val=1.53453
+[train] kind=initial seed=41 epoch=8 train=1.51309 val=1.51908
+[train] kind=initial seed=41 epoch=9 train=1.49614 val=1.50858
+[train] kind=initial seed=41 epoch=10 train=1.48269 val=1.50013
+[train] kind=initial seed=41 epoch=11 train=1.47221 val=1.49243
+[train] kind=initial seed=41 epoch=12 train=1.46396 val=1.48509
+[train] kind=initial seed=41 epoch=13 train=1.45747 val=1.48230
+[train] kind=initial seed=41 epoch=14 train=1.45179 val=1.47915
+[train] kind=initial seed=41 epoch=15 train=1.44686 val=1.47827
+[train] kind=landmark seed=41 epoch=1 train=3.79929 val=0.90852
+[train] kind=landmark seed=41 epoch=2 train=0.85649 val=0.80011
+[train] kind=landmark seed=41 epoch=3 train=0.76854 val=0.73234
+[train] kind=landmark seed=41 epoch=4 train=0.71541 val=0.70746
+[train] kind=landmark seed=41 epoch=5 train=0.69142 val=0.70012
+[train] kind=landmark seed=41 epoch=6 train=0.67760 val=0.69314
+[train] kind=landmark seed=41 epoch=7 train=0.66697 val=0.68851
+[train] kind=landmark seed=41 epoch=8 train=0.65825 val=0.68388
+[train] kind=landmark seed=41 epoch=9 train=0.65118 val=0.68129
+[train] kind=landmark seed=41 epoch=10 train=0.64509 val=0.67656
+[train] kind=landmark seed=41 epoch=11 train=0.63948 val=0.67371
+[train] kind=landmark seed=41 epoch=12 train=0.63425 val=0.67215
+[train] kind=landmark seed=41 epoch=13 train=0.62907 val=0.66648
+[train] kind=landmark seed=41 epoch=14 train=0.62439 val=0.66366
+[train] kind=landmark seed=41 epoch=15 train=0.61971 val=0.66081
+[train] kind=initial seed=42 epoch=1 train=7.54882 val=6.06124
+[train] kind=initial seed=42 epoch=2 train=4.13315 val=2.38284
+[train] kind=initial seed=42 epoch=3 train=2.06132 val=1.77365
+[train] kind=initial seed=42 epoch=4 train=1.70454 val=1.61730
+[train] kind=initial seed=42 epoch=5 train=1.60838 val=1.57211
+[train] kind=initial seed=42 epoch=6 train=1.56466 val=1.55170
+[train] kind=initial seed=42 epoch=7 train=1.53875 val=1.53340
+[train] kind=initial seed=42 epoch=8 train=1.51844 val=1.51783
+[train] kind=initial seed=42 epoch=9 train=1.50091 val=1.50577
+[train] kind=initial seed=42 epoch=10 train=1.48585 val=1.49489
+[train] kind=initial seed=42 epoch=11 train=1.47388 val=1.48697
+[train] kind=initial seed=42 epoch=12 train=1.46471 val=1.48207
+[train] kind=initial seed=42 epoch=13 train=1.45727 val=1.47651
+[train] kind=initial seed=42 epoch=14 train=1.45091 val=1.47670
+[train] kind=initial seed=42 epoch=15 train=1.44536 val=1.47553
+[train] kind=landmark seed=42 epoch=1 train=3.95859 val=0.90394
+[train] kind=landmark seed=42 epoch=2 train=0.84869 val=0.79400
+[train] kind=landmark seed=42 epoch=3 train=0.77048 val=0.73550
+[train] kind=landmark seed=42 epoch=4 train=0.72644 val=0.70670
+[train] kind=landmark seed=42 epoch=5 train=0.70288 val=0.69681
+[train] kind=landmark seed=42 epoch=6 train=0.68829 val=0.69130
+[train] kind=landmark seed=42 epoch=7 train=0.67666 val=0.68588
+[train] kind=landmark seed=42 epoch=8 train=0.66669 val=0.67836
+[train] kind=landmark seed=42 epoch=9 train=0.65816 val=0.67510
+[train] kind=landmark seed=42 epoch=10 train=0.65025 val=0.66885
+[train] kind=landmark seed=42 epoch=11 train=0.64320 val=0.66369
+[train] kind=landmark seed=42 epoch=12 train=0.63643 val=0.65853
+[train] kind=landmark seed=42 epoch=13 train=0.63032 val=0.65430
+[train] kind=landmark seed=42 epoch=14 train=0.62501 val=0.65114
+[train] kind=landmark seed=42 epoch=15 train=0.62067 val=0.65133
+[train] kind=initial seed=43 epoch=1 train=7.36484 val=5.72854
+[train] kind=initial seed=43 epoch=2 train=3.79176 val=2.28854
+[train] kind=initial seed=43 epoch=3 train=2.02255 val=1.73392
+[train] kind=initial seed=43 epoch=4 train=1.66998 val=1.62163
+[train] kind=initial seed=43 epoch=5 train=1.58509 val=1.56306
+[train] kind=initial seed=43 epoch=6 train=1.54641 val=1.54232
+[train] kind=initial seed=43 epoch=7 train=1.52040 val=1.52151
+[train] kind=initial seed=43 epoch=8 train=1.50139 val=1.50844
+[train] kind=initial seed=43 epoch=9 train=1.48584 val=1.49677
+[train] kind=initial seed=43 epoch=10 train=1.47398 val=1.49084
+[train] kind=initial seed=43 epoch=11 train=1.46418 val=1.48536
+[train] kind=initial seed=43 epoch=12 train=1.45570 val=1.48081
+[train] kind=initial seed=43 epoch=13 train=1.44839 val=1.47961
+[train] kind=initial seed=43 epoch=14 train=1.44174 val=1.47478
+[train] kind=initial seed=43 epoch=15 train=1.43595 val=1.47536
+[train] kind=landmark seed=43 epoch=1 train=3.79349 val=0.90753
+[train] kind=landmark seed=43 epoch=2 train=0.84754 val=0.79008
+[train] kind=landmark seed=43 epoch=3 train=0.76251 val=0.72876
+[train] kind=landmark seed=43 epoch=4 train=0.71517 val=0.70532
+[train] kind=landmark seed=43 epoch=5 train=0.69019 val=0.69700
+[train] kind=landmark seed=43 epoch=6 train=0.67429 val=0.69215
+[train] kind=landmark seed=43 epoch=7 train=0.66289 val=0.68920
+[train] kind=landmark seed=43 epoch=8 train=0.65355 val=0.68288
+[train] kind=landmark seed=43 epoch=9 train=0.64582 val=0.68082
+[train] kind=landmark seed=43 epoch=10 train=0.63944 val=0.67686
+[train] kind=landmark seed=43 epoch=11 train=0.63369 val=0.67476
+[train] kind=landmark seed=43 epoch=12 train=0.62860 val=0.67381
+[train] kind=landmark seed=43 epoch=13 train=0.62389 val=0.66886
+[train] kind=landmark seed=43 epoch=14 train=0.61994 val=0.66978
+[train] kind=landmark seed=43 epoch=15 train=0.61631 val=0.66984
+{
+  "runs": 9,
+  "report": "/share/dai-sys/zhoulongsheng/agentkv/experiments/mlp_exp/runs/20260910_standalone_prefix_v1/report.md"
+}
+DONE 2026-09-10 18:19:30

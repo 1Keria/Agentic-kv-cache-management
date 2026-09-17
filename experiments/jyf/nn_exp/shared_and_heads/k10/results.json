@@ -1,0 +1,261 @@
+{
+  "trace": "/share/dai-sys/zhoulongsheng/agentkv/experiments/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/frontier_trace/frontier_pid3797866_140187773175760.jsonl",
+  "bucket_upper_edges": [
+    1,
+    2,
+    5,
+    10,
+    20,
+    50,
+    100,
+    200,
+    500
+  ],
+  "bucket_count": 10,
+  "rows": 29885,
+  "exact_rows": 17808,
+  "censored_rows": 12077,
+  "models": {
+    "unified": {
+      "runs": [
+        {
+          "seed": 41,
+          "parameters": 3498,
+          "best_val_loss": 1.2083841562271118
+        },
+        {
+          "seed": 42,
+          "parameters": 3498,
+          "best_val_loss": 1.2103723287582397
+        },
+        {
+          "seed": 43,
+          "parameters": 3498,
+          "best_val_loss": 1.2067537307739258
+        }
+      ],
+      "ensemble_test": {
+        "overall": {
+          "exact_n": 3289,
+          "censored_n": 2139,
+          "bucket_accuracy": 0.3551231377318334,
+          "multiclass_brier": 0.8131402477479862,
+          "token_multiclass_brier": 0.7958164325622911,
+          "exact_nll": 1.7890644073486328,
+          "censor_aware_nll": 1.2803360223770142,
+          "within_5": {
+            "n": 5428,
+            "positive_rate": 0.37324981577008104,
+            "auc": 0.8738961112823129,
+            "ap": 0.7768358544904768,
+            "brier": 0.13878493010997772,
+            "token_brier": 0.1516932249069214
+          },
+          "within_20": {
+            "n": 5422,
+            "positive_rate": 0.5169679085208411,
+            "auc": 0.8738945903839188,
+            "ap": 0.86722296025529,
+            "brier": 0.1430300623178482,
+            "token_brier": 0.14694024622440338
+          },
+          "within_100": {
+            "n": 5327,
+            "positive_rate": 0.6131030598836118,
+            "auc": 0.8924882331985288,
+            "ap": 0.9289683579351025,
+            "brier": 0.13026244938373566,
+            "token_brier": 0.10397874563932419
+          }
+        },
+        "cold": {
+          "exact_n": 679,
+          "censored_n": 1165,
+          "bucket_accuracy": 0.1325478645066274,
+          "multiclass_brier": 1.0177513072640418,
+          "token_multiclass_brier": 0.8074509167210103,
+          "exact_nll": 2.188577890396118,
+          "censor_aware_nll": 1.0818511247634888,
+          "within_5": {
+            "n": 1844,
+            "positive_rate": 0.0992407809110629,
+            "auc": 0.8214157644186957,
+            "ap": 0.48151767927128314,
+            "brier": 0.07271181792020798,
+            "token_brier": 0.08772055804729462
+          },
+          "within_20": {
+            "n": 1840,
+            "positive_rate": 0.2141304347826087,
+            "auc": 0.7809079484101074,
+            "ap": 0.51485935496368,
+            "brier": 0.1426558494567871,
+            "token_brier": 0.14591965079307556
+          },
+          "within_100": {
+            "n": 1770,
+            "positive_rate": 0.38022598870056495,
+            "auc": 0.7969865132652744,
+            "ap": 0.707981516897931,
+            "brier": 0.18070784211158752,
+            "token_brier": 0.12985067069530487
+          }
+        },
+        "warm": {
+          "exact_n": 2610,
+          "censored_n": 974,
+          "bucket_accuracy": 0.41302681992337165,
+          "multiclass_brier": 0.7599100142570278,
+          "token_multiclass_brier": 0.7912922208649796,
+          "exact_nll": 1.6851296424865723,
+          "censor_aware_nll": 1.3824583292007446,
+          "within_5": {
+            "n": 3584,
+            "positive_rate": 0.5142299107142857,
+            "auc": 0.8184041141123265,
+            "ap": 0.7939182149104176,
+            "brier": 0.1727801412343979,
+            "token_brier": 0.1799982190132141
+          },
+          "within_20": {
+            "n": 3582,
+            "positive_rate": 0.6725293132328308,
+            "auc": 0.8403942731098251,
+            "ap": 0.8975676827939858,
+            "brier": 0.14322228729724884,
+            "token_brier": 0.1473916918039322
+          },
+          "within_100": {
+            "n": 3557,
+            "positive_rate": 0.7289850998032049,
+            "auc": 0.9127170502133897,
+            "ap": 0.9641131380399208,
+            "brier": 0.10516031086444855,
+            "token_brier": 0.09271591901779175
+          }
+        }
+      }
+    },
+    "shared_and_heads": {
+      "runs": [
+        {
+          "seed": 41,
+          "parameters": 3128,
+          "best_val_loss": 1.2319313287734985
+        },
+        {
+          "seed": 42,
+          "parameters": 3128,
+          "best_val_loss": 1.2263026237487793
+        },
+        {
+          "seed": 43,
+          "parameters": 3128,
+          "best_val_loss": 1.2398971319198608
+        }
+      ],
+      "ensemble_test": {
+        "overall": {
+          "exact_n": 3289,
+          "censored_n": 2139,
+          "bucket_accuracy": 0.3177257525083612,
+          "multiclass_brier": 0.8414751879321822,
+          "token_multiclass_brier": 0.8131059633041866,
+          "exact_nll": 1.878933310508728,
+          "censor_aware_nll": 1.3440481424331665,
+          "within_5": {
+            "n": 5428,
+            "positive_rate": 0.37324981577008104,
+            "auc": 0.8451685989253171,
+            "ap": 0.7488899032758726,
+            "brier": 0.15483124554157257,
+            "token_brier": 0.16554249823093414
+          },
+          "within_20": {
+            "n": 5422,
+            "positive_rate": 0.5169679085208411,
+            "auc": 0.8612891849225527,
+            "ap": 0.8594026941745162,
+            "brier": 0.1499258428812027,
+            "token_brier": 0.15378741919994354
+          },
+          "within_100": {
+            "n": 5327,
+            "positive_rate": 0.6131030598836118,
+            "auc": 0.8856443090753453,
+            "ap": 0.9249656035058994,
+            "brier": 0.133871391415596,
+            "token_brier": 0.1104310154914856
+          }
+        },
+        "cold": {
+          "exact_n": 679,
+          "censored_n": 1165,
+          "bucket_accuracy": 0.13402061855670103,
+          "multiclass_brier": 1.0387362156175377,
+          "token_multiclass_brier": 0.8238370931333509,
+          "exact_nll": 2.307048797607422,
+          "censor_aware_nll": 1.124309778213501,
+          "within_5": {
+            "n": 1844,
+            "positive_rate": 0.0992407809110629,
+            "auc": 0.790507397281906,
+            "ap": 0.4690677325735392,
+            "brier": 0.0740896463394165,
+            "token_brier": 0.09655118733644485
+          },
+          "within_20": {
+            "n": 1840,
+            "positive_rate": 0.2141304347826087,
+            "auc": 0.7554043712394072,
+            "ap": 0.5045252701746474,
+            "brier": 0.1461489498615265,
+            "token_brier": 0.15646116435527802
+          },
+          "within_100": {
+            "n": 1770,
+            "positive_rate": 0.38022598870056495,
+            "auc": 0.7932480993009436,
+            "ap": 0.7076783552361576,
+            "brier": 0.18080581724643707,
+            "token_brier": 0.13527560234069824
+          }
+        },
+        "warm": {
+          "exact_n": 2610,
+          "censored_n": 974,
+          "bucket_accuracy": 0.36551724137931035,
+          "multiclass_brier": 0.7901570891588656,
+          "token_multiclass_brier": 0.8089330320047712,
+          "exact_nll": 1.7675577402114868,
+          "censor_aware_nll": 1.4571055173873901,
+          "within_5": {
+            "n": 3584,
+            "positive_rate": 0.5142299107142857,
+            "auc": 0.7692777334360137,
+            "ap": 0.7673707927631066,
+            "brier": 0.19637353718280792,
+            "token_brier": 0.19606803357601166
+          },
+          "within_20": {
+            "n": 3582,
+            "positive_rate": 0.6725293132328308,
+            "auc": 0.820818633732483,
+            "ap": 0.8898348692944785,
+            "brier": 0.15186595916748047,
+            "token_brier": 0.15260478854179382
+          },
+          "within_100": {
+            "n": 3557,
+            "positive_rate": 0.7289850998032049,
+            "auc": 0.9008537988487998,
+            "ap": 0.9585782050529158,
+            "brier": 0.11051633954048157,
+            "token_brier": 0.09961540997028351
+          }
+        }
+      }
+    }
+  },
+  "selected_model": "shared_and_heads"
+}

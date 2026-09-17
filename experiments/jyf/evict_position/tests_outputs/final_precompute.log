@@ -1,0 +1,4 @@
+/share/dai-sys/zhoulongsheng/agentkv/Engine/vllm/vllm/__init__.py:7: RuntimeWarning: Failed to read commit hash:
+cannot import name '__version_tuple__' from 'vllm._version' (/share/dai-sys/zhoulongsheng/agentkv/Engine/vllm/vllm/_version.py)
+  from .version import __version__, __version_tuple__  # isort:skip
+PASS precompute full frontier >16, split, locks, new parents, native freeing
