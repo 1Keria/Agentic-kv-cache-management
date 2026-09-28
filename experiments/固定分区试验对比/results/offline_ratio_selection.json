@@ -1,0 +1,5150 @@
+{
+  "method": "deepseek_v4_page_radix_full_swa_lru_approximation",
+  "selection_objective": [
+    "maximize_total_cached_prompt_tokens",
+    "maximize_minimum_region_hit_ratio",
+    "minimize_full_evicted_tokens",
+    "minimize_swa_evicted_tokens",
+    "prefer_ratio_near_0.5"
+  ],
+  "configuration": {
+    "model_path": "/inspire/hdd/global_public/public_models/deepseek-ai/deepSeek-V4-Flash",
+    "workload_path": "/inspire/hdd/project/inference-chip/czxs25240022/Agentic-kv-cache-management/experiments/固定分区试验对比/data/token_balanced_openhands_wildchat/workload.jsonl",
+    "workload_sha256": "90fce6bfac8779e89834c5149bb426fa3f4b191c25835b6e2e2eb54fece1fac8",
+    "completion_replay": "/inspire/hdd/project/inference-chip/czxs25240022/Agentic-kv-cache-management/experiments/sglang_kv_cache/ratio_daily_models/agent_050/replay/run_mix_train_lru/replay.jsonl",
+    "completion_replay_sha256": "b4cedd33ee6d0e97bdf53cd3f048197ca920fe28aefd89989d4b3a156cc9047d",
+    "classifier_checkpoint": "/inspire/hdd/project/inference-chip/czxs25240022/Agentic-kv-cache-management/models/request_classifier/checkpoints/final_system_free/budget_4/request_classifier.pt",
+    "classifier_checkpoint_sha256": "b94233b5077a121f9863f891c49296c3ec5974253854480030bbb0f61ede8414",
+    "classifier_threshold": 0.5,
+    "full_cache_capacity_tokens": 695552,
+    "swa_cache_capacity_tokens": 69376,
+    "page_size": 256,
+    "sliding_window_tokens": 128,
+    "ratio_start": 0.05,
+    "ratio_stop": 0.95,
+    "ratio_step": 0.01
+  },
+  "trace": {
+    "requests": 1261,
+    "agent_requests": 211,
+    "request_requests": 1050,
+    "prompt_token_calibration": {
+      "n_compared": 1261,
+      "exact_prompt_token_matches": 1050,
+      "min_delta_tokens": -35,
+      "max_delta_tokens": 0,
+      "mean_delta_tokens": -5.618556701030927,
+      "classification_confusion": {
+        "agent_as_agent": 211,
+        "agent_as_request": 0,
+        "request_as_agent": 0,
+        "request_as_request": 1050
+      },
+      "uses_historical_service_time": true
+    }
+  },
+  "selected": {
+    "agent_cache_capacity_ratio": 0.61,
+    "overall": {
+      "requests": 1261,
+      "prompt_tokens": 8910325,
+      "page_aligned_prompt_tokens": 8775424,
+      "cached_prompt_tokens": 8062976,
+      "recomputed_prompt_tokens": 712448,
+      "page_aligned_hit_ratio": 0.918813267598238
+    },
+    "regions": {
+      "agent": {
+        "requests": 211,
+        "prompt_tokens": 8148747,
+        "page_aligned_prompt_tokens": 8122368,
+        "cached_prompt_tokens": 7744000,
+        "recomputed_prompt_tokens": 378368,
+        "page_aligned_hit_ratio": 0.953416540595058,
+        "full_capacity_tokens": 424286,
+        "swa_capacity_tokens": 42319,
+        "final_full_used_tokens": 135680,
+        "final_swa_used_tokens": 42240,
+        "peak_full_used_tokens": 139264,
+        "peak_swa_used_tokens": 59392,
+        "full_evicted_tokens": 266240,
+        "swa_evicted_tokens": 370944,
+        "eviction_operations": 1449
+      },
+      "request": {
+        "requests": 1050,
+        "prompt_tokens": 761578,
+        "page_aligned_prompt_tokens": 653056,
+        "cached_prompt_tokens": 318976,
+        "recomputed_prompt_tokens": 334080,
+        "page_aligned_hit_ratio": 0.4884359074872599,
+        "full_capacity_tokens": 271266,
+        "swa_capacity_tokens": 27057,
+        "final_full_used_tokens": 28672,
+        "final_swa_used_tokens": 26880,
+        "peak_full_used_tokens": 41472,
+        "peak_swa_used_tokens": 39168,
+        "full_evicted_tokens": 445696,
+        "swa_evicted_tokens": 447488,
+        "eviction_operations": 1748
+      }
+    },
+    "minimum_region_hit_ratio": 0.4884359074872599,
+    "total_full_evicted_tokens": 711936,
+    "total_swa_evicted_tokens": 818432
+  },
+  "top_candidates": [
+    {
+      "agent_cache_capacity_ratio": 0.61,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8062976,
+        "recomputed_prompt_tokens": 712448,
+        "page_aligned_hit_ratio": 0.918813267598238
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 424286,
+          "swa_capacity_tokens": 42319,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 42240,
+          "peak_full_used_tokens": 139264,
+          "peak_swa_used_tokens": 59392,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 370944,
+          "eviction_operations": 1449
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 318976,
+          "recomputed_prompt_tokens": 334080,
+          "page_aligned_hit_ratio": 0.4884359074872599,
+          "full_capacity_tokens": 271266,
+          "swa_capacity_tokens": 27057,
+          "final_full_used_tokens": 28672,
+          "final_swa_used_tokens": 26880,
+          "peak_full_used_tokens": 41472,
+          "peak_swa_used_tokens": 39168,
+          "full_evicted_tokens": 445696,
+          "swa_evicted_tokens": 447488,
+          "eviction_operations": 1748
+        }
+      },
+      "minimum_region_hit_ratio": 0.4884359074872599,
+      "total_full_evicted_tokens": 711936,
+      "total_swa_evicted_tokens": 818432
+    },
+    {
+      "agent_cache_capacity_ratio": 0.62,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8062208,
+        "recomputed_prompt_tokens": 713216,
+        "page_aligned_hit_ratio": 0.918725750459465
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 431242,
+          "swa_capacity_tokens": 43013,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 43008,
+          "peak_full_used_tokens": 139264,
+          "peak_swa_used_tokens": 60160,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 370176,
+          "eviction_operations": 1446
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 318208,
+          "recomputed_prompt_tokens": 334848,
+          "page_aligned_hit_ratio": 0.48725989807918463,
+          "full_capacity_tokens": 264310,
+          "swa_capacity_tokens": 26363,
+          "final_full_used_tokens": 26112,
+          "final_swa_used_tokens": 26112,
+          "peak_full_used_tokens": 40448,
+          "peak_swa_used_tokens": 38400,
+          "full_evicted_tokens": 448512,
+          "swa_evicted_tokens": 449024,
+          "eviction_operations": 1754
+        }
+      },
+      "minimum_region_hit_ratio": 0.48725989807918463,
+      "total_full_evicted_tokens": 714752,
+      "total_swa_evicted_tokens": 819200
+    },
+    {
+      "agent_cache_capacity_ratio": 0.63,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8062208,
+        "recomputed_prompt_tokens": 713216,
+        "page_aligned_hit_ratio": 0.918725750459465
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 438197,
+          "swa_capacity_tokens": 43706,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 43520,
+          "peak_full_used_tokens": 139264,
+          "peak_swa_used_tokens": 60672,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 369664,
+          "eviction_operations": 1444
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 318208,
+          "recomputed_prompt_tokens": 334848,
+          "page_aligned_hit_ratio": 0.48725989807918463,
+          "full_capacity_tokens": 257355,
+          "swa_capacity_tokens": 25670,
+          "final_full_used_tokens": 25600,
+          "final_swa_used_tokens": 25600,
+          "peak_full_used_tokens": 39680,
+          "peak_swa_used_tokens": 37888,
+          "full_evicted_tokens": 449536,
+          "swa_evicted_tokens": 449536,
+          "eviction_operations": 1756
+        }
+      },
+      "minimum_region_hit_ratio": 0.48725989807918463,
+      "total_full_evicted_tokens": 715776,
+      "total_swa_evicted_tokens": 819200
+    },
+    {
+      "agent_cache_capacity_ratio": 0.64,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8043776,
+        "recomputed_prompt_tokens": 731648,
+        "page_aligned_hit_ratio": 0.9166253391289128
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 445153,
+          "swa_capacity_tokens": 44400,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 44288,
+          "peak_full_used_tokens": 140800,
+          "peak_swa_used_tokens": 61440,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 368896,
+          "eviction_operations": 1441
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 299776,
+          "recomputed_prompt_tokens": 353280,
+          "page_aligned_hit_ratio": 0.4590356722853783,
+          "full_capacity_tokens": 250399,
+          "swa_capacity_tokens": 24976,
+          "final_full_used_tokens": 24832,
+          "final_swa_used_tokens": 24832,
+          "peak_full_used_tokens": 39424,
+          "peak_swa_used_tokens": 37120,
+          "full_evicted_tokens": 465408,
+          "swa_evicted_tokens": 468736,
+          "eviction_operations": 1831
+        }
+      },
+      "minimum_region_hit_ratio": 0.4590356722853783,
+      "total_full_evicted_tokens": 731648,
+      "total_swa_evicted_tokens": 837632
+    },
+    {
+      "agent_cache_capacity_ratio": 0.65,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8028672,
+        "recomputed_prompt_tokens": 746752,
+        "page_aligned_hit_ratio": 0.9149041687330436
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 452108,
+          "swa_capacity_tokens": 45094,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 45056,
+          "peak_full_used_tokens": 140800,
+          "peak_swa_used_tokens": 62208,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 368128,
+          "eviction_operations": 1438
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 284672,
+          "recomputed_prompt_tokens": 368384,
+          "page_aligned_hit_ratio": 0.4359074872598981,
+          "full_capacity_tokens": 243444,
+          "swa_capacity_tokens": 24282,
+          "final_full_used_tokens": 24064,
+          "final_swa_used_tokens": 24064,
+          "peak_full_used_tokens": 38912,
+          "peak_swa_used_tokens": 36352,
+          "full_evicted_tokens": 482048,
+          "swa_evicted_tokens": 484608,
+          "eviction_operations": 1893
+        }
+      },
+      "minimum_region_hit_ratio": 0.4359074872598981,
+      "total_full_evicted_tokens": 748288,
+      "total_swa_evicted_tokens": 852736
+    },
+    {
+      "agent_cache_capacity_ratio": 0.66,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8027392,
+        "recomputed_prompt_tokens": 748032,
+        "page_aligned_hit_ratio": 0.9147583068350885
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 459064,
+          "swa_capacity_tokens": 45788,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 45568,
+          "peak_full_used_tokens": 142336,
+          "peak_swa_used_tokens": 62720,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 367616,
+          "eviction_operations": 1436
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 283392,
+          "recomputed_prompt_tokens": 369664,
+          "page_aligned_hit_ratio": 0.43394747157977265,
+          "full_capacity_tokens": 236488,
+          "swa_capacity_tokens": 23588,
+          "final_full_used_tokens": 23552,
+          "final_swa_used_tokens": 23552,
+          "peak_full_used_tokens": 38144,
+          "peak_swa_used_tokens": 35840,
+          "full_evicted_tokens": 486144,
+          "swa_evicted_tokens": 486400,
+          "eviction_operations": 1900
+        }
+      },
+      "minimum_region_hit_ratio": 0.43394747157977265,
+      "total_full_evicted_tokens": 752384,
+      "total_swa_evicted_tokens": 854016
+    },
+    {
+      "agent_cache_capacity_ratio": 0.67,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8025856,
+        "recomputed_prompt_tokens": 749568,
+        "page_aligned_hit_ratio": 0.9145832725575426
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 466019,
+          "swa_capacity_tokens": 46481,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 46336,
+          "peak_full_used_tokens": 142336,
+          "peak_swa_used_tokens": 63488,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 366848,
+          "eviction_operations": 1433
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 281856,
+          "recomputed_prompt_tokens": 371200,
+          "page_aligned_hit_ratio": 0.4315954527636221,
+          "full_capacity_tokens": 229533,
+          "swa_capacity_tokens": 22895,
+          "final_full_used_tokens": 23552,
+          "final_swa_used_tokens": 22784,
+          "peak_full_used_tokens": 37120,
+          "peak_swa_used_tokens": 35072,
+          "full_evicted_tokens": 487168,
+          "swa_evicted_tokens": 488704,
+          "eviction_operations": 1909
+        }
+      },
+      "minimum_region_hit_ratio": 0.4315954527636221,
+      "total_full_evicted_tokens": 753408,
+      "total_swa_evicted_tokens": 855552
+    },
+    {
+      "agent_cache_capacity_ratio": 0.68,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8023552,
+        "recomputed_prompt_tokens": 751872,
+        "page_aligned_hit_ratio": 0.9143207211412235
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 472975,
+          "swa_capacity_tokens": 47175,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 47104,
+          "peak_full_used_tokens": 142848,
+          "peak_swa_used_tokens": 64256,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 366080,
+          "eviction_operations": 1430
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 279552,
+          "recomputed_prompt_tokens": 373504,
+          "page_aligned_hit_ratio": 0.42806742453939634,
+          "full_capacity_tokens": 222577,
+          "swa_capacity_tokens": 22201,
+          "final_full_used_tokens": 23552,
+          "final_swa_used_tokens": 22016,
+          "peak_full_used_tokens": 36352,
+          "peak_swa_used_tokens": 34304,
+          "full_evicted_tokens": 489216,
+          "swa_evicted_tokens": 491776,
+          "eviction_operations": 1921
+        }
+      },
+      "minimum_region_hit_ratio": 0.42806742453939634,
+      "total_full_evicted_tokens": 755456,
+      "total_swa_evicted_tokens": 857856
+    },
+    {
+      "agent_cache_capacity_ratio": 0.69,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8020736,
+        "recomputed_prompt_tokens": 754688,
+        "page_aligned_hit_ratio": 0.9139998249657224
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 479930,
+          "swa_capacity_tokens": 47869,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 47616,
+          "peak_full_used_tokens": 144384,
+          "peak_swa_used_tokens": 64768,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 365568,
+          "eviction_operations": 1428
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 276736,
+          "recomputed_prompt_tokens": 376320,
+          "page_aligned_hit_ratio": 0.42375539004312035,
+          "full_capacity_tokens": 215622,
+          "swa_capacity_tokens": 21507,
+          "final_full_used_tokens": 23552,
+          "final_swa_used_tokens": 21504,
+          "peak_full_used_tokens": 36096,
+          "peak_swa_used_tokens": 33792,
+          "full_evicted_tokens": 492544,
+          "swa_evicted_tokens": 495104,
+          "eviction_operations": 1934
+        }
+      },
+      "minimum_region_hit_ratio": 0.42375539004312035,
+      "total_full_evicted_tokens": 758784,
+      "total_swa_evicted_tokens": 860672
+    },
+    {
+      "agent_cache_capacity_ratio": 0.7,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8020736,
+        "recomputed_prompt_tokens": 754688,
+        "page_aligned_hit_ratio": 0.9139998249657224
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7746816,
+          "recomputed_prompt_tokens": 375552,
+          "page_aligned_hit_ratio": 0.9537632375189108,
+          "full_capacity_tokens": 486886,
+          "swa_capacity_tokens": 48563,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 48384,
+          "peak_full_used_tokens": 144384,
+          "peak_swa_used_tokens": 65536,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 361984,
+          "eviction_operations": 1414
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 273920,
+          "recomputed_prompt_tokens": 379136,
+          "page_aligned_hit_ratio": 0.41944335554684437,
+          "full_capacity_tokens": 208666,
+          "swa_capacity_tokens": 20813,
+          "final_full_used_tokens": 23552,
+          "final_swa_used_tokens": 20736,
+          "peak_full_used_tokens": 35584,
+          "peak_swa_used_tokens": 33024,
+          "full_evicted_tokens": 494848,
+          "swa_evicted_tokens": 498688,
+          "eviction_operations": 1948
+        }
+      },
+      "minimum_region_hit_ratio": 0.41944335554684437,
+      "total_full_evicted_tokens": 761088,
+      "total_swa_evicted_tokens": 860672
+    }
+  ],
+  "all_candidates": [
+    {
+      "agent_cache_capacity_ratio": 0.05,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 5311744,
+        "recomputed_prompt_tokens": 3463680,
+        "page_aligned_hit_ratio": 0.6052977041337262
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 4985088,
+          "recomputed_prompt_tokens": 3137280,
+          "page_aligned_hit_ratio": 0.6137481089258698,
+          "full_capacity_tokens": 34777,
+          "swa_capacity_tokens": 3468,
+          "final_full_used_tokens": 34560,
+          "final_swa_used_tokens": 3328,
+          "peak_full_used_tokens": 118272,
+          "peak_swa_used_tokens": 89856,
+          "full_evicted_tokens": 3038976,
+          "swa_evicted_tokens": 3168768,
+          "eviction_operations": 12378
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 660775,
+          "swa_capacity_tokens": 65908,
+          "final_full_used_tokens": 66304,
+          "final_swa_used_tokens": 65792,
+          "peak_full_used_tokens": 80896,
+          "peak_swa_used_tokens": 78080,
+          "full_evicted_tokens": 400384,
+          "swa_evicted_tokens": 400896,
+          "eviction_operations": 1566
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 3439360,
+      "total_swa_evicted_tokens": 3569664
+    },
+    {
+      "agent_cache_capacity_ratio": 0.06,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 5890048,
+        "recomputed_prompt_tokens": 2885376,
+        "page_aligned_hit_ratio": 0.6711981096298025
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 5563392,
+          "recomputed_prompt_tokens": 2558976,
+          "page_aligned_hit_ratio": 0.6849470499243571,
+          "full_capacity_tokens": 41733,
+          "swa_capacity_tokens": 4162,
+          "final_full_used_tokens": 41728,
+          "final_swa_used_tokens": 4096,
+          "peak_full_used_tokens": 125440,
+          "peak_swa_used_tokens": 90624,
+          "full_evicted_tokens": 2459136,
+          "swa_evicted_tokens": 2589696,
+          "eviction_operations": 10116
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 653819,
+          "swa_capacity_tokens": 65214,
+          "final_full_used_tokens": 65536,
+          "final_swa_used_tokens": 65024,
+          "peak_full_used_tokens": 80896,
+          "peak_swa_used_tokens": 77312,
+          "full_evicted_tokens": 401152,
+          "swa_evicted_tokens": 401664,
+          "eviction_operations": 1569
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 2860288,
+      "total_swa_evicted_tokens": 2991360
+    },
+    {
+      "agent_cache_capacity_ratio": 0.07,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 6271232,
+        "recomputed_prompt_tokens": 2504192,
+        "page_aligned_hit_ratio": 0.7146357828408063
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 5944576,
+          "recomputed_prompt_tokens": 2177792,
+          "page_aligned_hit_ratio": 0.7318772062531518,
+          "full_capacity_tokens": 48688,
+          "swa_capacity_tokens": 4856,
+          "final_full_used_tokens": 48640,
+          "final_swa_used_tokens": 4608,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 91136,
+          "full_evicted_tokens": 2071040,
+          "swa_evicted_tokens": 2208000,
+          "eviction_operations": 8625
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 646864,
+          "swa_capacity_tokens": 64520,
+          "final_full_used_tokens": 64512,
+          "final_swa_used_tokens": 64512,
+          "peak_full_used_tokens": 80896,
+          "peak_swa_used_tokens": 76800,
+          "full_evicted_tokens": 402176,
+          "swa_evicted_tokens": 402176,
+          "eviction_operations": 1571
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 2473216,
+      "total_swa_evicted_tokens": 2610176
+    },
+    {
+      "agent_cache_capacity_ratio": 0.08,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 6566144,
+        "recomputed_prompt_tokens": 2209280,
+        "page_aligned_hit_ratio": 0.7482423641296421
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 6239488,
+          "recomputed_prompt_tokens": 1882880,
+          "page_aligned_hit_ratio": 0.7681858295511851,
+          "full_capacity_tokens": 55644,
+          "swa_capacity_tokens": 5550,
+          "final_full_used_tokens": 55552,
+          "final_swa_used_tokens": 5376,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 91904,
+          "full_evicted_tokens": 1772032,
+          "swa_evicted_tokens": 1912320,
+          "eviction_operations": 7470
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 639908,
+          "swa_capacity_tokens": 63826,
+          "final_full_used_tokens": 63744,
+          "final_swa_used_tokens": 63744,
+          "peak_full_used_tokens": 80896,
+          "peak_swa_used_tokens": 76032,
+          "full_evicted_tokens": 402944,
+          "swa_evicted_tokens": 402944,
+          "eviction_operations": 1574
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 2174976,
+      "total_swa_evicted_tokens": 2315264
+    },
+    {
+      "agent_cache_capacity_ratio": 0.09,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 6867200,
+        "recomputed_prompt_tokens": 1908224,
+        "page_aligned_hit_ratio": 0.7825490825286618
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 6540544,
+          "recomputed_prompt_tokens": 1581824,
+          "page_aligned_hit_ratio": 0.8052508825012608,
+          "full_capacity_tokens": 62599,
+          "swa_capacity_tokens": 6243,
+          "final_full_used_tokens": 62464,
+          "final_swa_used_tokens": 6144,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 92672,
+          "full_evicted_tokens": 1469184,
+          "swa_evicted_tokens": 1610496,
+          "eviction_operations": 6291
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 632953,
+          "swa_capacity_tokens": 63133,
+          "final_full_used_tokens": 63488,
+          "final_swa_used_tokens": 62976,
+          "peak_full_used_tokens": 80896,
+          "peak_swa_used_tokens": 75264,
+          "full_evicted_tokens": 403200,
+          "swa_evicted_tokens": 403712,
+          "eviction_operations": 1577
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1872384,
+      "total_swa_evicted_tokens": 2014208
+    },
+    {
+      "agent_cache_capacity_ratio": 0.1,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7058432,
+        "recomputed_prompt_tokens": 1716992,
+        "page_aligned_hit_ratio": 0.8043408500831413
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 6731776,
+          "recomputed_prompt_tokens": 1390592,
+          "page_aligned_hit_ratio": 0.8287947554210792,
+          "full_capacity_tokens": 69555,
+          "swa_capacity_tokens": 6937,
+          "final_full_used_tokens": 69376,
+          "final_swa_used_tokens": 6912,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 93440,
+          "full_evicted_tokens": 1276416,
+          "swa_evicted_tokens": 1418496,
+          "eviction_operations": 5541
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 625997,
+          "swa_capacity_tokens": 62439,
+          "final_full_used_tokens": 62464,
+          "final_swa_used_tokens": 62208,
+          "peak_full_used_tokens": 80896,
+          "peak_swa_used_tokens": 74496,
+          "full_evicted_tokens": 404224,
+          "swa_evicted_tokens": 404480,
+          "eviction_operations": 1580
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1680640,
+      "total_swa_evicted_tokens": 1822976
+    },
+    {
+      "agent_cache_capacity_ratio": 0.11,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7180032,
+        "recomputed_prompt_tokens": 1595392,
+        "page_aligned_hit_ratio": 0.8181977303888678
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 6853376,
+          "recomputed_prompt_tokens": 1268992,
+          "page_aligned_hit_ratio": 0.8437657589510842,
+          "full_capacity_tokens": 76510,
+          "swa_capacity_tokens": 7631,
+          "final_full_used_tokens": 76288,
+          "final_swa_used_tokens": 7424,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 93952,
+          "full_evicted_tokens": 1165568,
+          "swa_evicted_tokens": 1296384,
+          "eviction_operations": 5064
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 619042,
+          "swa_capacity_tokens": 61745,
+          "final_full_used_tokens": 62464,
+          "final_swa_used_tokens": 61696,
+          "peak_full_used_tokens": 76032,
+          "peak_swa_used_tokens": 73984,
+          "full_evicted_tokens": 404224,
+          "swa_evicted_tokens": 404992,
+          "eviction_operations": 1582
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1569792,
+      "total_swa_evicted_tokens": 1701376
+    },
+    {
+      "agent_cache_capacity_ratio": 0.12,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7297536,
+        "recomputed_prompt_tokens": 1477888,
+        "page_aligned_hit_ratio": 0.8315878526211383
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 6970880,
+          "recomputed_prompt_tokens": 1151488,
+          "page_aligned_hit_ratio": 0.8582324760463943,
+          "full_capacity_tokens": 83466,
+          "swa_capacity_tokens": 8325,
+          "final_full_used_tokens": 83456,
+          "final_swa_used_tokens": 8192,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 94720,
+          "full_evicted_tokens": 1049344,
+          "swa_evicted_tokens": 1178112,
+          "eviction_operations": 4602
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 612086,
+          "swa_capacity_tokens": 61051,
+          "final_full_used_tokens": 61440,
+          "final_swa_used_tokens": 60928,
+          "peak_full_used_tokens": 75008,
+          "peak_swa_used_tokens": 73216,
+          "full_evicted_tokens": 405248,
+          "swa_evicted_tokens": 405760,
+          "eviction_operations": 1585
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1454592,
+      "total_swa_evicted_tokens": 1583872
+    },
+    {
+      "agent_cache_capacity_ratio": 0.13,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7351808,
+        "recomputed_prompt_tokens": 1423616,
+        "page_aligned_hit_ratio": 0.837772397094431
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7025152,
+          "recomputed_prompt_tokens": 1097216,
+          "page_aligned_hit_ratio": 0.8649142713061019,
+          "full_capacity_tokens": 90421,
+          "swa_capacity_tokens": 9018,
+          "final_full_used_tokens": 90368,
+          "final_swa_used_tokens": 8960,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 95488,
+          "full_evicted_tokens": 988160,
+          "swa_evicted_tokens": 1123072,
+          "eviction_operations": 4387
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 605131,
+          "swa_capacity_tokens": 60358,
+          "final_full_used_tokens": 60416,
+          "final_swa_used_tokens": 60160,
+          "peak_full_used_tokens": 74496,
+          "peak_swa_used_tokens": 72448,
+          "full_evicted_tokens": 406272,
+          "swa_evicted_tokens": 406528,
+          "eviction_operations": 1588
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1394432,
+      "total_swa_evicted_tokens": 1529600
+    },
+    {
+      "agent_cache_capacity_ratio": 0.14,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7357696,
+        "recomputed_prompt_tokens": 1417728,
+        "page_aligned_hit_ratio": 0.8384433618250241
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7031040,
+          "recomputed_prompt_tokens": 1091328,
+          "page_aligned_hit_ratio": 0.8656391830559758,
+          "full_capacity_tokens": 97377,
+          "swa_capacity_tokens": 9712,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 9472,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 96000,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1116672,
+          "eviction_operations": 4362
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 598175,
+          "swa_capacity_tokens": 59664,
+          "final_full_used_tokens": 59648,
+          "final_swa_used_tokens": 59648,
+          "peak_full_used_tokens": 73728,
+          "peak_swa_used_tokens": 71936,
+          "full_evicted_tokens": 407040,
+          "swa_evicted_tokens": 407040,
+          "eviction_operations": 1590
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1385472,
+      "total_swa_evicted_tokens": 1523712
+    },
+    {
+      "agent_cache_capacity_ratio": 0.15,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7360512,
+        "recomputed_prompt_tokens": 1414912,
+        "page_aligned_hit_ratio": 0.8387642580005251
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7033856,
+          "recomputed_prompt_tokens": 1088512,
+          "page_aligned_hit_ratio": 0.8659858799798286,
+          "full_capacity_tokens": 104332,
+          "swa_capacity_tokens": 10406,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 10240,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 96768,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1113088,
+          "eviction_operations": 4348
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 591220,
+          "swa_capacity_tokens": 58970,
+          "final_full_used_tokens": 58880,
+          "final_swa_used_tokens": 58880,
+          "peak_full_used_tokens": 73472,
+          "peak_swa_used_tokens": 71168,
+          "full_evicted_tokens": 407808,
+          "swa_evicted_tokens": 407808,
+          "eviction_operations": 1593
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1386240,
+      "total_swa_evicted_tokens": 1520896
+    },
+    {
+      "agent_cache_capacity_ratio": 0.16,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7360512,
+        "recomputed_prompt_tokens": 1414912,
+        "page_aligned_hit_ratio": 0.8387642580005251
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7033856,
+          "recomputed_prompt_tokens": 1088512,
+          "page_aligned_hit_ratio": 0.8659858799798286,
+          "full_capacity_tokens": 111288,
+          "swa_capacity_tokens": 11100,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 11008,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 97536,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1112320,
+          "eviction_operations": 4345
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 584264,
+          "swa_capacity_tokens": 58276,
+          "final_full_used_tokens": 58112,
+          "final_swa_used_tokens": 58112,
+          "peak_full_used_tokens": 72448,
+          "peak_swa_used_tokens": 70400,
+          "full_evicted_tokens": 408576,
+          "swa_evicted_tokens": 408576,
+          "eviction_operations": 1596
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1387008,
+      "total_swa_evicted_tokens": 1520896
+    },
+    {
+      "agent_cache_capacity_ratio": 0.17,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7360512,
+        "recomputed_prompt_tokens": 1414912,
+        "page_aligned_hit_ratio": 0.8387642580005251
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7033856,
+          "recomputed_prompt_tokens": 1088512,
+          "page_aligned_hit_ratio": 0.8659858799798286,
+          "full_capacity_tokens": 118243,
+          "swa_capacity_tokens": 11793,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 11776,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 98304,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1111552,
+          "eviction_operations": 4342
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 577309,
+          "swa_capacity_tokens": 57583,
+          "final_full_used_tokens": 58112,
+          "final_swa_used_tokens": 57344,
+          "peak_full_used_tokens": 71680,
+          "peak_swa_used_tokens": 69632,
+          "full_evicted_tokens": 408576,
+          "swa_evicted_tokens": 409344,
+          "eviction_operations": 1599
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1387008,
+      "total_swa_evicted_tokens": 1520896
+    },
+    {
+      "agent_cache_capacity_ratio": 0.18,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7360512,
+        "recomputed_prompt_tokens": 1414912,
+        "page_aligned_hit_ratio": 0.8387642580005251
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7033856,
+          "recomputed_prompt_tokens": 1088512,
+          "page_aligned_hit_ratio": 0.8659858799798286,
+          "full_capacity_tokens": 125199,
+          "swa_capacity_tokens": 12487,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 12288,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 98816,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1111040,
+          "eviction_operations": 4340
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 570353,
+          "swa_capacity_tokens": 56889,
+          "final_full_used_tokens": 56832,
+          "final_swa_used_tokens": 56832,
+          "peak_full_used_tokens": 71680,
+          "peak_swa_used_tokens": 69120,
+          "full_evicted_tokens": 409856,
+          "swa_evicted_tokens": 409856,
+          "eviction_operations": 1601
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1388288,
+      "total_swa_evicted_tokens": 1520896
+    },
+    {
+      "agent_cache_capacity_ratio": 0.19,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7360512,
+        "recomputed_prompt_tokens": 1414912,
+        "page_aligned_hit_ratio": 0.8387642580005251
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7033856,
+          "recomputed_prompt_tokens": 1088512,
+          "page_aligned_hit_ratio": 0.8659858799798286,
+          "full_capacity_tokens": 132154,
+          "swa_capacity_tokens": 13181,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 13056,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 99584,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1110272,
+          "eviction_operations": 4337
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 563398,
+          "swa_capacity_tokens": 56195,
+          "final_full_used_tokens": 56064,
+          "final_swa_used_tokens": 56064,
+          "peak_full_used_tokens": 70400,
+          "peak_swa_used_tokens": 68352,
+          "full_evicted_tokens": 410624,
+          "swa_evicted_tokens": 410624,
+          "eviction_operations": 1604
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1389056,
+      "total_swa_evicted_tokens": 1520896
+    },
+    {
+      "agent_cache_capacity_ratio": 0.2,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7360512,
+        "recomputed_prompt_tokens": 1414912,
+        "page_aligned_hit_ratio": 0.8387642580005251
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7033856,
+          "recomputed_prompt_tokens": 1088512,
+          "page_aligned_hit_ratio": 0.8659858799798286,
+          "full_capacity_tokens": 139110,
+          "swa_capacity_tokens": 13875,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 13824,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 100352,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1109504,
+          "eviction_operations": 4334
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 556442,
+          "swa_capacity_tokens": 55501,
+          "final_full_used_tokens": 55296,
+          "final_swa_used_tokens": 55296,
+          "peak_full_used_tokens": 69632,
+          "peak_swa_used_tokens": 67584,
+          "full_evicted_tokens": 411392,
+          "swa_evicted_tokens": 411392,
+          "eviction_operations": 1607
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1389824,
+      "total_swa_evicted_tokens": 1520896
+    },
+    {
+      "agent_cache_capacity_ratio": 0.21,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7360512,
+        "recomputed_prompt_tokens": 1414912,
+        "page_aligned_hit_ratio": 0.8387642580005251
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7033856,
+          "recomputed_prompt_tokens": 1088512,
+          "page_aligned_hit_ratio": 0.8659858799798286,
+          "full_capacity_tokens": 146065,
+          "swa_capacity_tokens": 14568,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 14336,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 100864,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1108992,
+          "eviction_operations": 4332
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 549487,
+          "swa_capacity_tokens": 54808,
+          "final_full_used_tokens": 54784,
+          "final_swa_used_tokens": 54784,
+          "peak_full_used_tokens": 69120,
+          "peak_swa_used_tokens": 67072,
+          "full_evicted_tokens": 411904,
+          "swa_evicted_tokens": 411904,
+          "eviction_operations": 1609
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1390336,
+      "total_swa_evicted_tokens": 1520896
+    },
+    {
+      "agent_cache_capacity_ratio": 0.22,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7360512,
+        "recomputed_prompt_tokens": 1414912,
+        "page_aligned_hit_ratio": 0.8387642580005251
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7033856,
+          "recomputed_prompt_tokens": 1088512,
+          "page_aligned_hit_ratio": 0.8659858799798286,
+          "full_capacity_tokens": 153021,
+          "swa_capacity_tokens": 15262,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 15104,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 101632,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1108224,
+          "eviction_operations": 4329
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 542531,
+          "swa_capacity_tokens": 54114,
+          "final_full_used_tokens": 54784,
+          "final_swa_used_tokens": 54016,
+          "peak_full_used_tokens": 68352,
+          "peak_swa_used_tokens": 66304,
+          "full_evicted_tokens": 411904,
+          "swa_evicted_tokens": 412672,
+          "eviction_operations": 1612
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1390336,
+      "total_swa_evicted_tokens": 1520896
+    },
+    {
+      "agent_cache_capacity_ratio": 0.23,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7360512,
+        "recomputed_prompt_tokens": 1414912,
+        "page_aligned_hit_ratio": 0.8387642580005251
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7033856,
+          "recomputed_prompt_tokens": 1088512,
+          "page_aligned_hit_ratio": 0.8659858799798286,
+          "full_capacity_tokens": 159976,
+          "swa_capacity_tokens": 15956,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 15872,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 102400,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1107456,
+          "eviction_operations": 4326
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 535576,
+          "swa_capacity_tokens": 53420,
+          "final_full_used_tokens": 54784,
+          "final_swa_used_tokens": 53248,
+          "peak_full_used_tokens": 67328,
+          "peak_swa_used_tokens": 65536,
+          "full_evicted_tokens": 411904,
+          "swa_evicted_tokens": 413440,
+          "eviction_operations": 1615
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1390336,
+      "total_swa_evicted_tokens": 1520896
+    },
+    {
+      "agent_cache_capacity_ratio": 0.24,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7360512,
+        "recomputed_prompt_tokens": 1414912,
+        "page_aligned_hit_ratio": 0.8387642580005251
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7033856,
+          "recomputed_prompt_tokens": 1088512,
+          "page_aligned_hit_ratio": 0.8659858799798286,
+          "full_capacity_tokens": 166932,
+          "swa_capacity_tokens": 16650,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 16640,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 103168,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1106688,
+          "eviction_operations": 4323
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 528620,
+          "swa_capacity_tokens": 52726,
+          "final_full_used_tokens": 52992,
+          "final_swa_used_tokens": 52480,
+          "peak_full_used_tokens": 66816,
+          "peak_swa_used_tokens": 64768,
+          "full_evicted_tokens": 413696,
+          "swa_evicted_tokens": 414208,
+          "eviction_operations": 1618
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1392128,
+      "total_swa_evicted_tokens": 1520896
+    },
+    {
+      "agent_cache_capacity_ratio": 0.25,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7360512,
+        "recomputed_prompt_tokens": 1414912,
+        "page_aligned_hit_ratio": 0.8387642580005251
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7033856,
+          "recomputed_prompt_tokens": 1088512,
+          "page_aligned_hit_ratio": 0.8659858799798286,
+          "full_capacity_tokens": 173888,
+          "swa_capacity_tokens": 17344,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 17152,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 103680,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1106176,
+          "eviction_operations": 4321
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 521664,
+          "swa_capacity_tokens": 52032,
+          "final_full_used_tokens": 51968,
+          "final_swa_used_tokens": 51968,
+          "peak_full_used_tokens": 66048,
+          "peak_swa_used_tokens": 64256,
+          "full_evicted_tokens": 414720,
+          "swa_evicted_tokens": 414720,
+          "eviction_operations": 1620
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1393152,
+      "total_swa_evicted_tokens": 1520896
+    },
+    {
+      "agent_cache_capacity_ratio": 0.26,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7360512,
+        "recomputed_prompt_tokens": 1414912,
+        "page_aligned_hit_ratio": 0.8387642580005251
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7033856,
+          "recomputed_prompt_tokens": 1088512,
+          "page_aligned_hit_ratio": 0.8659858799798286,
+          "full_capacity_tokens": 180843,
+          "swa_capacity_tokens": 18037,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 17920,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 104448,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1105408,
+          "eviction_operations": 4318
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 514709,
+          "swa_capacity_tokens": 51339,
+          "final_full_used_tokens": 51968,
+          "final_swa_used_tokens": 51200,
+          "peak_full_used_tokens": 65536,
+          "peak_swa_used_tokens": 63488,
+          "full_evicted_tokens": 414720,
+          "swa_evicted_tokens": 415488,
+          "eviction_operations": 1623
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1393152,
+      "total_swa_evicted_tokens": 1520896
+    },
+    {
+      "agent_cache_capacity_ratio": 0.27,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7360512,
+        "recomputed_prompt_tokens": 1414912,
+        "page_aligned_hit_ratio": 0.8387642580005251
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7033856,
+          "recomputed_prompt_tokens": 1088512,
+          "page_aligned_hit_ratio": 0.8659858799798286,
+          "full_capacity_tokens": 187799,
+          "swa_capacity_tokens": 18731,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 18688,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 105216,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1104640,
+          "eviction_operations": 4315
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 507753,
+          "swa_capacity_tokens": 50645,
+          "final_full_used_tokens": 51968,
+          "final_swa_used_tokens": 50432,
+          "peak_full_used_tokens": 65024,
+          "peak_swa_used_tokens": 62720,
+          "full_evicted_tokens": 414720,
+          "swa_evicted_tokens": 416256,
+          "eviction_operations": 1626
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1393152,
+      "total_swa_evicted_tokens": 1520896
+    },
+    {
+      "agent_cache_capacity_ratio": 0.28,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7360512,
+        "recomputed_prompt_tokens": 1414912,
+        "page_aligned_hit_ratio": 0.8387642580005251
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7033856,
+          "recomputed_prompt_tokens": 1088512,
+          "page_aligned_hit_ratio": 0.8659858799798286,
+          "full_capacity_tokens": 194754,
+          "swa_capacity_tokens": 19425,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 19200,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 105728,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1104128,
+          "eviction_operations": 4313
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 500798,
+          "swa_capacity_tokens": 49951,
+          "final_full_used_tokens": 51968,
+          "final_swa_used_tokens": 49920,
+          "peak_full_used_tokens": 64256,
+          "peak_swa_used_tokens": 62208,
+          "full_evicted_tokens": 414720,
+          "swa_evicted_tokens": 416768,
+          "eviction_operations": 1628
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1393152,
+      "total_swa_evicted_tokens": 1520896
+    },
+    {
+      "agent_cache_capacity_ratio": 0.29,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7360512,
+        "recomputed_prompt_tokens": 1414912,
+        "page_aligned_hit_ratio": 0.8387642580005251
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7033856,
+          "recomputed_prompt_tokens": 1088512,
+          "page_aligned_hit_ratio": 0.8659858799798286,
+          "full_capacity_tokens": 201710,
+          "swa_capacity_tokens": 20119,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 19968,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 106496,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1103360,
+          "eviction_operations": 4310
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 493842,
+          "swa_capacity_tokens": 49257,
+          "final_full_used_tokens": 49152,
+          "final_swa_used_tokens": 49152,
+          "peak_full_used_tokens": 63744,
+          "peak_swa_used_tokens": 61440,
+          "full_evicted_tokens": 417536,
+          "swa_evicted_tokens": 417536,
+          "eviction_operations": 1631
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1395968,
+      "total_swa_evicted_tokens": 1520896
+    },
+    {
+      "agent_cache_capacity_ratio": 0.3,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7360512,
+        "recomputed_prompt_tokens": 1414912,
+        "page_aligned_hit_ratio": 0.8387642580005251
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7033856,
+          "recomputed_prompt_tokens": 1088512,
+          "page_aligned_hit_ratio": 0.8659858799798286,
+          "full_capacity_tokens": 208665,
+          "swa_capacity_tokens": 20812,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 20736,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 107264,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1102592,
+          "eviction_operations": 4307
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 486887,
+          "swa_capacity_tokens": 48564,
+          "final_full_used_tokens": 48384,
+          "final_swa_used_tokens": 48384,
+          "peak_full_used_tokens": 62976,
+          "peak_swa_used_tokens": 60672,
+          "full_evicted_tokens": 418304,
+          "swa_evicted_tokens": 418304,
+          "eviction_operations": 1634
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1396736,
+      "total_swa_evicted_tokens": 1520896
+    },
+    {
+      "agent_cache_capacity_ratio": 0.31,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7363328,
+        "recomputed_prompt_tokens": 1412096,
+        "page_aligned_hit_ratio": 0.8390851541760261
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7036672,
+          "recomputed_prompt_tokens": 1085696,
+          "page_aligned_hit_ratio": 0.8663325769036813,
+          "full_capacity_tokens": 215621,
+          "swa_capacity_tokens": 21506,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 21504,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 108032,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1099008,
+          "eviction_operations": 4293
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 479931,
+          "swa_capacity_tokens": 47870,
+          "final_full_used_tokens": 47616,
+          "final_swa_used_tokens": 47616,
+          "peak_full_used_tokens": 61952,
+          "peak_swa_used_tokens": 59904,
+          "full_evicted_tokens": 419072,
+          "swa_evicted_tokens": 419072,
+          "eviction_operations": 1637
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1397504,
+      "total_swa_evicted_tokens": 1518080
+    },
+    {
+      "agent_cache_capacity_ratio": 0.32,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7363328,
+        "recomputed_prompt_tokens": 1412096,
+        "page_aligned_hit_ratio": 0.8390851541760261
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7036672,
+          "recomputed_prompt_tokens": 1085696,
+          "page_aligned_hit_ratio": 0.8663325769036813,
+          "full_capacity_tokens": 222576,
+          "swa_capacity_tokens": 22200,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 22016,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 108544,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1098496,
+          "eviction_operations": 4291
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 472976,
+          "swa_capacity_tokens": 47176,
+          "final_full_used_tokens": 47616,
+          "final_swa_used_tokens": 47104,
+          "peak_full_used_tokens": 61952,
+          "peak_swa_used_tokens": 59392,
+          "full_evicted_tokens": 419072,
+          "swa_evicted_tokens": 419584,
+          "eviction_operations": 1639
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1397504,
+      "total_swa_evicted_tokens": 1518080
+    },
+    {
+      "agent_cache_capacity_ratio": 0.33,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7366144,
+        "recomputed_prompt_tokens": 1409280,
+        "page_aligned_hit_ratio": 0.8394060503515272
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7039488,
+          "recomputed_prompt_tokens": 1082880,
+          "page_aligned_hit_ratio": 0.8666792738275341,
+          "full_capacity_tokens": 229532,
+          "swa_capacity_tokens": 22894,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 22784,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 109312,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1094912,
+          "eviction_operations": 4277
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 466020,
+          "swa_capacity_tokens": 46482,
+          "final_full_used_tokens": 47616,
+          "final_swa_used_tokens": 46336,
+          "peak_full_used_tokens": 61440,
+          "peak_swa_used_tokens": 58624,
+          "full_evicted_tokens": 419072,
+          "swa_evicted_tokens": 420352,
+          "eviction_operations": 1642
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1397504,
+      "total_swa_evicted_tokens": 1515264
+    },
+    {
+      "agent_cache_capacity_ratio": 0.34,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7366144,
+        "recomputed_prompt_tokens": 1409280,
+        "page_aligned_hit_ratio": 0.8394060503515272
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7039488,
+          "recomputed_prompt_tokens": 1082880,
+          "page_aligned_hit_ratio": 0.8666792738275341,
+          "full_capacity_tokens": 236487,
+          "swa_capacity_tokens": 23587,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 23552,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 110080,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1094144,
+          "eviction_operations": 4274
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 459065,
+          "swa_capacity_tokens": 45789,
+          "final_full_used_tokens": 45824,
+          "final_swa_used_tokens": 45568,
+          "peak_full_used_tokens": 59904,
+          "peak_swa_used_tokens": 57856,
+          "full_evicted_tokens": 420864,
+          "swa_evicted_tokens": 421120,
+          "eviction_operations": 1645
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1399296,
+      "total_swa_evicted_tokens": 1515264
+    },
+    {
+      "agent_cache_capacity_ratio": 0.35,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7368960,
+        "recomputed_prompt_tokens": 1406464,
+        "page_aligned_hit_ratio": 0.8397269465270282
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7042304,
+          "recomputed_prompt_tokens": 1080064,
+          "page_aligned_hit_ratio": 0.8670259707513868,
+          "full_capacity_tokens": 243443,
+          "swa_capacity_tokens": 24281,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 24064,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 110592,
+          "full_evicted_tokens": 978432,
+          "swa_evicted_tokens": 1090816,
+          "eviction_operations": 4261
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 452109,
+          "swa_capacity_tokens": 45095,
+          "final_full_used_tokens": 45824,
+          "final_swa_used_tokens": 45056,
+          "peak_full_used_tokens": 59392,
+          "peak_swa_used_tokens": 57344,
+          "full_evicted_tokens": 420864,
+          "swa_evicted_tokens": 421632,
+          "eviction_operations": 1647
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1399296,
+      "total_swa_evicted_tokens": 1512448
+    },
+    {
+      "agent_cache_capacity_ratio": 0.36,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7371776,
+        "recomputed_prompt_tokens": 1403648,
+        "page_aligned_hit_ratio": 0.8400478427025292
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7045120,
+          "recomputed_prompt_tokens": 1077248,
+          "page_aligned_hit_ratio": 0.8673726676752396,
+          "full_capacity_tokens": 250398,
+          "swa_capacity_tokens": 24975,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 24832,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 111360,
+          "full_evicted_tokens": 918784,
+          "swa_evicted_tokens": 1087232,
+          "eviction_operations": 4247
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 445154,
+          "swa_capacity_tokens": 44401,
+          "final_full_used_tokens": 44288,
+          "final_swa_used_tokens": 44288,
+          "peak_full_used_tokens": 58368,
+          "peak_swa_used_tokens": 56576,
+          "full_evicted_tokens": 422400,
+          "swa_evicted_tokens": 422400,
+          "eviction_operations": 1650
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1341184,
+      "total_swa_evicted_tokens": 1509632
+    },
+    {
+      "agent_cache_capacity_ratio": 0.37,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7748864,
+        "recomputed_prompt_tokens": 1026560,
+        "page_aligned_hit_ratio": 0.883018757840077
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7422208,
+          "recomputed_prompt_tokens": 700160,
+          "page_aligned_hit_ratio": 0.9137985375693394,
+          "full_capacity_tokens": 257354,
+          "swa_capacity_tokens": 25669,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 25600,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 112128,
+          "full_evicted_tokens": 612608,
+          "swa_evicted_tokens": 709376,
+          "eviction_operations": 2771
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 438198,
+          "swa_capacity_tokens": 43707,
+          "final_full_used_tokens": 43776,
+          "final_swa_used_tokens": 43520,
+          "peak_full_used_tokens": 57600,
+          "peak_swa_used_tokens": 55808,
+          "full_evicted_tokens": 422912,
+          "swa_evicted_tokens": 423168,
+          "eviction_operations": 1653
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1035520,
+      "total_swa_evicted_tokens": 1132544
+    },
+    {
+      "agent_cache_capacity_ratio": 0.38,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7748864,
+        "recomputed_prompt_tokens": 1026560,
+        "page_aligned_hit_ratio": 0.883018757840077
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7422208,
+          "recomputed_prompt_tokens": 700160,
+          "page_aligned_hit_ratio": 0.9137985375693394,
+          "full_capacity_tokens": 264309,
+          "swa_capacity_tokens": 26362,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 26112,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 112640,
+          "full_evicted_tokens": 612608,
+          "swa_evicted_tokens": 708864,
+          "eviction_operations": 2769
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 431243,
+          "swa_capacity_tokens": 43014,
+          "final_full_used_tokens": 43776,
+          "final_swa_used_tokens": 43008,
+          "peak_full_used_tokens": 57600,
+          "peak_swa_used_tokens": 55296,
+          "full_evicted_tokens": 422912,
+          "swa_evicted_tokens": 423680,
+          "eviction_operations": 1655
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1035520,
+      "total_swa_evicted_tokens": 1132544
+    },
+    {
+      "agent_cache_capacity_ratio": 0.39,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7751680,
+        "recomputed_prompt_tokens": 1023744,
+        "page_aligned_hit_ratio": 0.883339654015578
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7425024,
+          "recomputed_prompt_tokens": 697344,
+          "page_aligned_hit_ratio": 0.9141452344931922,
+          "full_capacity_tokens": 271265,
+          "swa_capacity_tokens": 27056,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 26880,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 113408,
+          "full_evicted_tokens": 612608,
+          "swa_evicted_tokens": 705280,
+          "eviction_operations": 2755
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 424287,
+          "swa_capacity_tokens": 42320,
+          "final_full_used_tokens": 42496,
+          "final_swa_used_tokens": 42240,
+          "peak_full_used_tokens": 56320,
+          "peak_swa_used_tokens": 54528,
+          "full_evicted_tokens": 424192,
+          "swa_evicted_tokens": 424448,
+          "eviction_operations": 1658
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1036800,
+      "total_swa_evicted_tokens": 1129728
+    },
+    {
+      "agent_cache_capacity_ratio": 0.4,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7751680,
+        "recomputed_prompt_tokens": 1023744,
+        "page_aligned_hit_ratio": 0.883339654015578
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7425024,
+          "recomputed_prompt_tokens": 697344,
+          "page_aligned_hit_ratio": 0.9141452344931922,
+          "full_capacity_tokens": 278220,
+          "swa_capacity_tokens": 27750,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 27648,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 114176,
+          "full_evicted_tokens": 612608,
+          "swa_evicted_tokens": 704512,
+          "eviction_operations": 2752
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 417332,
+          "swa_capacity_tokens": 41626,
+          "final_full_used_tokens": 42496,
+          "final_swa_used_tokens": 41472,
+          "peak_full_used_tokens": 56320,
+          "peak_swa_used_tokens": 53760,
+          "full_evicted_tokens": 424192,
+          "swa_evicted_tokens": 425216,
+          "eviction_operations": 1661
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1036800,
+      "total_swa_evicted_tokens": 1129728
+    },
+    {
+      "agent_cache_capacity_ratio": 0.41,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7751680,
+        "recomputed_prompt_tokens": 1023744,
+        "page_aligned_hit_ratio": 0.883339654015578
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7425024,
+          "recomputed_prompt_tokens": 697344,
+          "page_aligned_hit_ratio": 0.9141452344931922,
+          "full_capacity_tokens": 285176,
+          "swa_capacity_tokens": 28444,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 28416,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 114944,
+          "full_evicted_tokens": 612608,
+          "swa_evicted_tokens": 703744,
+          "eviction_operations": 2749
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 410376,
+          "swa_capacity_tokens": 40932,
+          "final_full_used_tokens": 42496,
+          "final_swa_used_tokens": 40704,
+          "peak_full_used_tokens": 54784,
+          "peak_swa_used_tokens": 52992,
+          "full_evicted_tokens": 424192,
+          "swa_evicted_tokens": 425984,
+          "eviction_operations": 1664
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1036800,
+      "total_swa_evicted_tokens": 1129728
+    },
+    {
+      "agent_cache_capacity_ratio": 0.42,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7751680,
+        "recomputed_prompt_tokens": 1023744,
+        "page_aligned_hit_ratio": 0.883339654015578
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7425024,
+          "recomputed_prompt_tokens": 697344,
+          "page_aligned_hit_ratio": 0.9141452344931922,
+          "full_capacity_tokens": 292131,
+          "swa_capacity_tokens": 29137,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 28928,
+          "peak_full_used_tokens": 126464,
+          "peak_swa_used_tokens": 115456,
+          "full_evicted_tokens": 612608,
+          "swa_evicted_tokens": 703232,
+          "eviction_operations": 2747
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 403421,
+          "swa_capacity_tokens": 40239,
+          "final_full_used_tokens": 42496,
+          "final_swa_used_tokens": 40192,
+          "peak_full_used_tokens": 54784,
+          "peak_swa_used_tokens": 52480,
+          "full_evicted_tokens": 424192,
+          "swa_evicted_tokens": 426496,
+          "eviction_operations": 1666
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1036800,
+      "total_swa_evicted_tokens": 1129728
+    },
+    {
+      "agent_cache_capacity_ratio": 0.43,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7751680,
+        "recomputed_prompt_tokens": 1023744,
+        "page_aligned_hit_ratio": 0.883339654015578
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7425024,
+          "recomputed_prompt_tokens": 697344,
+          "page_aligned_hit_ratio": 0.9141452344931922,
+          "full_capacity_tokens": 299087,
+          "swa_capacity_tokens": 29831,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 29696,
+          "peak_full_used_tokens": 129024,
+          "peak_swa_used_tokens": 116224,
+          "full_evicted_tokens": 612608,
+          "swa_evicted_tokens": 702464,
+          "eviction_operations": 2744
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326656,
+          "recomputed_prompt_tokens": 326400,
+          "page_aligned_hit_ratio": 0.5001960015680126,
+          "full_capacity_tokens": 396465,
+          "swa_capacity_tokens": 39545,
+          "final_full_used_tokens": 42496,
+          "final_swa_used_tokens": 39424,
+          "peak_full_used_tokens": 54016,
+          "peak_swa_used_tokens": 51712,
+          "full_evicted_tokens": 424192,
+          "swa_evicted_tokens": 427264,
+          "eviction_operations": 1669
+        }
+      },
+      "minimum_region_hit_ratio": 0.5001960015680126,
+      "total_full_evicted_tokens": 1036800,
+      "total_swa_evicted_tokens": 1129728
+    },
+    {
+      "agent_cache_capacity_ratio": 0.44,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7751424,
+        "recomputed_prompt_tokens": 1024000,
+        "page_aligned_hit_ratio": 0.883310481635987
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7425024,
+          "recomputed_prompt_tokens": 697344,
+          "page_aligned_hit_ratio": 0.9141452344931922,
+          "full_capacity_tokens": 306042,
+          "swa_capacity_tokens": 30525,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 30464,
+          "peak_full_used_tokens": 129024,
+          "peak_swa_used_tokens": 116992,
+          "full_evicted_tokens": 612608,
+          "swa_evicted_tokens": 701696,
+          "eviction_operations": 2741
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326400,
+          "recomputed_prompt_tokens": 326656,
+          "page_aligned_hit_ratio": 0.4998039984319875,
+          "full_capacity_tokens": 389510,
+          "swa_capacity_tokens": 38851,
+          "final_full_used_tokens": 38912,
+          "final_swa_used_tokens": 38656,
+          "peak_full_used_tokens": 53248,
+          "peak_swa_used_tokens": 50944,
+          "full_evicted_tokens": 428032,
+          "swa_evicted_tokens": 428288,
+          "eviction_operations": 1673
+        }
+      },
+      "minimum_region_hit_ratio": 0.4998039984319875,
+      "total_full_evicted_tokens": 1040640,
+      "total_swa_evicted_tokens": 1129984
+    },
+    {
+      "agent_cache_capacity_ratio": 0.45,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7754240,
+        "recomputed_prompt_tokens": 1021184,
+        "page_aligned_hit_ratio": 0.883631377811488
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7427840,
+          "recomputed_prompt_tokens": 694528,
+          "page_aligned_hit_ratio": 0.9144919314170449,
+          "full_capacity_tokens": 312998,
+          "swa_capacity_tokens": 31219,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 30976,
+          "peak_full_used_tokens": 129024,
+          "peak_swa_used_tokens": 117504,
+          "full_evicted_tokens": 612608,
+          "swa_evicted_tokens": 698368,
+          "eviction_operations": 2728
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326400,
+          "recomputed_prompt_tokens": 326656,
+          "page_aligned_hit_ratio": 0.4998039984319875,
+          "full_capacity_tokens": 382554,
+          "swa_capacity_tokens": 38157,
+          "final_full_used_tokens": 38400,
+          "final_swa_used_tokens": 38144,
+          "peak_full_used_tokens": 52224,
+          "peak_swa_used_tokens": 50432,
+          "full_evicted_tokens": 428544,
+          "swa_evicted_tokens": 428800,
+          "eviction_operations": 1675
+        }
+      },
+      "minimum_region_hit_ratio": 0.4998039984319875,
+      "total_full_evicted_tokens": 1041152,
+      "total_swa_evicted_tokens": 1127168
+    },
+    {
+      "agent_cache_capacity_ratio": 0.46,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7754240,
+        "recomputed_prompt_tokens": 1021184,
+        "page_aligned_hit_ratio": 0.883631377811488
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7427840,
+          "recomputed_prompt_tokens": 694528,
+          "page_aligned_hit_ratio": 0.9144919314170449,
+          "full_capacity_tokens": 319953,
+          "swa_capacity_tokens": 31912,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 31744,
+          "peak_full_used_tokens": 129024,
+          "peak_swa_used_tokens": 118272,
+          "full_evicted_tokens": 612608,
+          "swa_evicted_tokens": 697600,
+          "eviction_operations": 2725
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 326400,
+          "recomputed_prompt_tokens": 326656,
+          "page_aligned_hit_ratio": 0.4998039984319875,
+          "full_capacity_tokens": 375599,
+          "swa_capacity_tokens": 37464,
+          "final_full_used_tokens": 38400,
+          "final_swa_used_tokens": 37376,
+          "peak_full_used_tokens": 51456,
+          "peak_swa_used_tokens": 49664,
+          "full_evicted_tokens": 428544,
+          "swa_evicted_tokens": 429568,
+          "eviction_operations": 1678
+        }
+      },
+      "minimum_region_hit_ratio": 0.4998039984319875,
+      "total_full_evicted_tokens": 1041152,
+      "total_swa_evicted_tokens": 1127168
+    },
+    {
+      "agent_cache_capacity_ratio": 0.47,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7753472,
+        "recomputed_prompt_tokens": 1021952,
+        "page_aligned_hit_ratio": 0.8835438606727151
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7427840,
+          "recomputed_prompt_tokens": 694528,
+          "page_aligned_hit_ratio": 0.9144919314170449,
+          "full_capacity_tokens": 326909,
+          "swa_capacity_tokens": 32606,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 32512,
+          "peak_full_used_tokens": 129024,
+          "peak_swa_used_tokens": 119040,
+          "full_evicted_tokens": 612608,
+          "swa_evicted_tokens": 696832,
+          "eviction_operations": 2722
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 325632,
+          "recomputed_prompt_tokens": 327424,
+          "page_aligned_hit_ratio": 0.4986279890239122,
+          "full_capacity_tokens": 368643,
+          "swa_capacity_tokens": 36770,
+          "final_full_used_tokens": 36608,
+          "final_swa_used_tokens": 36608,
+          "peak_full_used_tokens": 50688,
+          "peak_swa_used_tokens": 48896,
+          "full_evicted_tokens": 431104,
+          "swa_evicted_tokens": 431104,
+          "eviction_operations": 1684
+        }
+      },
+      "minimum_region_hit_ratio": 0.4986279890239122,
+      "total_full_evicted_tokens": 1043712,
+      "total_swa_evicted_tokens": 1127936
+    },
+    {
+      "agent_cache_capacity_ratio": 0.48,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7752960,
+        "recomputed_prompt_tokens": 1022464,
+        "page_aligned_hit_ratio": 0.8834855159135331
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7427840,
+          "recomputed_prompt_tokens": 694528,
+          "page_aligned_hit_ratio": 0.9144919314170449,
+          "full_capacity_tokens": 333864,
+          "swa_capacity_tokens": 33300,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 33280,
+          "peak_full_used_tokens": 129024,
+          "peak_swa_used_tokens": 119808,
+          "full_evicted_tokens": 612608,
+          "swa_evicted_tokens": 696064,
+          "eviction_operations": 2719
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 325120,
+          "recomputed_prompt_tokens": 327936,
+          "page_aligned_hit_ratio": 0.49784398275186204,
+          "full_capacity_tokens": 361688,
+          "swa_capacity_tokens": 36076,
+          "final_full_used_tokens": 36352,
+          "final_swa_used_tokens": 35840,
+          "peak_full_used_tokens": 49920,
+          "peak_swa_used_tokens": 48128,
+          "full_evicted_tokens": 431360,
+          "swa_evicted_tokens": 432384,
+          "eviction_operations": 1689
+        }
+      },
+      "minimum_region_hit_ratio": 0.49784398275186204,
+      "total_full_evicted_tokens": 1043968,
+      "total_swa_evicted_tokens": 1128448
+    },
+    {
+      "agent_cache_capacity_ratio": 0.49,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7752192,
+        "recomputed_prompt_tokens": 1023232,
+        "page_aligned_hit_ratio": 0.8833979987747601
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7427840,
+          "recomputed_prompt_tokens": 694528,
+          "page_aligned_hit_ratio": 0.9144919314170449,
+          "full_capacity_tokens": 340820,
+          "swa_capacity_tokens": 33994,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 33792,
+          "peak_full_used_tokens": 132608,
+          "peak_swa_used_tokens": 120320,
+          "full_evicted_tokens": 612608,
+          "swa_evicted_tokens": 695552,
+          "eviction_operations": 2717
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 324352,
+          "recomputed_prompt_tokens": 328704,
+          "page_aligned_hit_ratio": 0.49666797334378676,
+          "full_capacity_tokens": 354732,
+          "swa_capacity_tokens": 35382,
+          "final_full_used_tokens": 36352,
+          "final_swa_used_tokens": 35328,
+          "peak_full_used_tokens": 49408,
+          "peak_swa_used_tokens": 47616,
+          "full_evicted_tokens": 432640,
+          "swa_evicted_tokens": 433664,
+          "eviction_operations": 1694
+        }
+      },
+      "minimum_region_hit_ratio": 0.49666797334378676,
+      "total_full_evicted_tokens": 1045248,
+      "total_swa_evicted_tokens": 1129216
+    },
+    {
+      "agent_cache_capacity_ratio": 0.5,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7752192,
+        "recomputed_prompt_tokens": 1023232,
+        "page_aligned_hit_ratio": 0.8833979987747601
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7427840,
+          "recomputed_prompt_tokens": 694528,
+          "page_aligned_hit_ratio": 0.9144919314170449,
+          "full_capacity_tokens": 347776,
+          "swa_capacity_tokens": 34688,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 34560,
+          "peak_full_used_tokens": 132608,
+          "peak_swa_used_tokens": 121088,
+          "full_evicted_tokens": 612608,
+          "swa_evicted_tokens": 694784,
+          "eviction_operations": 2714
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 324352,
+          "recomputed_prompt_tokens": 328704,
+          "page_aligned_hit_ratio": 0.49666797334378676,
+          "full_capacity_tokens": 347776,
+          "swa_capacity_tokens": 34688,
+          "final_full_used_tokens": 34560,
+          "final_swa_used_tokens": 34560,
+          "peak_full_used_tokens": 48640,
+          "peak_swa_used_tokens": 46848,
+          "full_evicted_tokens": 434432,
+          "swa_evicted_tokens": 434432,
+          "eviction_operations": 1697
+        }
+      },
+      "minimum_region_hit_ratio": 0.49666797334378676,
+      "total_full_evicted_tokens": 1047040,
+      "total_swa_evicted_tokens": 1129216
+    },
+    {
+      "agent_cache_capacity_ratio": 0.51,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7861248,
+        "recomputed_prompt_tokens": 914176,
+        "page_aligned_hit_ratio": 0.8958254324805275
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7536896,
+          "recomputed_prompt_tokens": 585472,
+          "page_aligned_hit_ratio": 0.9279185577407968,
+          "full_capacity_tokens": 354731,
+          "swa_capacity_tokens": 35381,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 35328,
+          "peak_full_used_tokens": 132608,
+          "peak_swa_used_tokens": 121856,
+          "full_evicted_tokens": 506368,
+          "swa_evicted_tokens": 584960,
+          "eviction_operations": 2285
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 324352,
+          "recomputed_prompt_tokens": 328704,
+          "page_aligned_hit_ratio": 0.49666797334378676,
+          "full_capacity_tokens": 340821,
+          "swa_capacity_tokens": 33995,
+          "final_full_used_tokens": 33792,
+          "final_swa_used_tokens": 33792,
+          "peak_full_used_tokens": 47872,
+          "peak_swa_used_tokens": 46080,
+          "full_evicted_tokens": 435200,
+          "swa_evicted_tokens": 435200,
+          "eviction_operations": 1700
+        }
+      },
+      "minimum_region_hit_ratio": 0.49666797334378676,
+      "total_full_evicted_tokens": 941568,
+      "total_swa_evicted_tokens": 1020160
+    },
+    {
+      "agent_cache_capacity_ratio": 0.52,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7861248,
+        "recomputed_prompt_tokens": 914176,
+        "page_aligned_hit_ratio": 0.8958254324805275
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7536896,
+          "recomputed_prompt_tokens": 585472,
+          "page_aligned_hit_ratio": 0.9279185577407968,
+          "full_capacity_tokens": 361687,
+          "swa_capacity_tokens": 36075,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 35840,
+          "peak_full_used_tokens": 132608,
+          "peak_swa_used_tokens": 122368,
+          "full_evicted_tokens": 506368,
+          "swa_evicted_tokens": 584448,
+          "eviction_operations": 2283
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 324352,
+          "recomputed_prompt_tokens": 328704,
+          "page_aligned_hit_ratio": 0.49666797334378676,
+          "full_capacity_tokens": 333865,
+          "swa_capacity_tokens": 33301,
+          "final_full_used_tokens": 33536,
+          "final_swa_used_tokens": 33280,
+          "peak_full_used_tokens": 47872,
+          "peak_swa_used_tokens": 45568,
+          "full_evicted_tokens": 435456,
+          "swa_evicted_tokens": 435712,
+          "eviction_operations": 1702
+        }
+      },
+      "minimum_region_hit_ratio": 0.49666797334378676,
+      "total_full_evicted_tokens": 941824,
+      "total_swa_evicted_tokens": 1020160
+    },
+    {
+      "agent_cache_capacity_ratio": 0.53,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7860992,
+        "recomputed_prompt_tokens": 914432,
+        "page_aligned_hit_ratio": 0.8957962601009364
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7536896,
+          "recomputed_prompt_tokens": 585472,
+          "page_aligned_hit_ratio": 0.9279185577407968,
+          "full_capacity_tokens": 368642,
+          "swa_capacity_tokens": 36769,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 36608,
+          "peak_full_used_tokens": 132608,
+          "peak_swa_used_tokens": 123136,
+          "full_evicted_tokens": 506368,
+          "swa_evicted_tokens": 583680,
+          "eviction_operations": 2280
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 324096,
+          "recomputed_prompt_tokens": 328960,
+          "page_aligned_hit_ratio": 0.49627597020776165,
+          "full_capacity_tokens": 326910,
+          "swa_capacity_tokens": 32607,
+          "final_full_used_tokens": 32512,
+          "final_swa_used_tokens": 32512,
+          "peak_full_used_tokens": 46848,
+          "peak_swa_used_tokens": 44800,
+          "full_evicted_tokens": 436480,
+          "swa_evicted_tokens": 436736,
+          "eviction_operations": 1706
+        }
+      },
+      "minimum_region_hit_ratio": 0.49627597020776165,
+      "total_full_evicted_tokens": 942848,
+      "total_swa_evicted_tokens": 1020416
+    },
+    {
+      "agent_cache_capacity_ratio": 0.54,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7859968,
+        "recomputed_prompt_tokens": 915456,
+        "page_aligned_hit_ratio": 0.8956795705825724
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7536896,
+          "recomputed_prompt_tokens": 585472,
+          "page_aligned_hit_ratio": 0.9279185577407968,
+          "full_capacity_tokens": 375598,
+          "swa_capacity_tokens": 37463,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 37376,
+          "peak_full_used_tokens": 134144,
+          "peak_swa_used_tokens": 123904,
+          "full_evicted_tokens": 506368,
+          "swa_evicted_tokens": 582912,
+          "eviction_operations": 2277
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 323072,
+          "recomputed_prompt_tokens": 329984,
+          "page_aligned_hit_ratio": 0.4947079576636613,
+          "full_capacity_tokens": 319954,
+          "swa_capacity_tokens": 31913,
+          "final_full_used_tokens": 31744,
+          "final_swa_used_tokens": 31744,
+          "peak_full_used_tokens": 46848,
+          "peak_swa_used_tokens": 44032,
+          "full_evicted_tokens": 438528,
+          "swa_evicted_tokens": 438528,
+          "eviction_operations": 1713
+        }
+      },
+      "minimum_region_hit_ratio": 0.4947079576636613,
+      "total_full_evicted_tokens": 944896,
+      "total_swa_evicted_tokens": 1021440
+    },
+    {
+      "agent_cache_capacity_ratio": 0.55,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7862784,
+        "recomputed_prompt_tokens": 912640,
+        "page_aligned_hit_ratio": 0.8960004667580734
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7539712,
+          "recomputed_prompt_tokens": 582656,
+          "page_aligned_hit_ratio": 0.9282652546646495,
+          "full_capacity_tokens": 382553,
+          "swa_capacity_tokens": 38156,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 38144,
+          "peak_full_used_tokens": 134144,
+          "peak_swa_used_tokens": 124672,
+          "full_evicted_tokens": 506368,
+          "swa_evicted_tokens": 579328,
+          "eviction_operations": 2263
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 323072,
+          "recomputed_prompt_tokens": 329984,
+          "page_aligned_hit_ratio": 0.4947079576636613,
+          "full_capacity_tokens": 312999,
+          "swa_capacity_tokens": 31220,
+          "final_full_used_tokens": 31744,
+          "final_swa_used_tokens": 30976,
+          "peak_full_used_tokens": 46848,
+          "peak_swa_used_tokens": 43264,
+          "full_evicted_tokens": 438528,
+          "swa_evicted_tokens": 439296,
+          "eviction_operations": 1716
+        }
+      },
+      "minimum_region_hit_ratio": 0.4947079576636613,
+      "total_full_evicted_tokens": 944896,
+      "total_swa_evicted_tokens": 1018624
+    },
+    {
+      "agent_cache_capacity_ratio": 0.56,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7862528,
+        "recomputed_prompt_tokens": 912896,
+        "page_aligned_hit_ratio": 0.8959712943784824
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7539712,
+          "recomputed_prompt_tokens": 582656,
+          "page_aligned_hit_ratio": 0.9282652546646495,
+          "full_capacity_tokens": 389509,
+          "swa_capacity_tokens": 38850,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 38656,
+          "peak_full_used_tokens": 134912,
+          "peak_swa_used_tokens": 125184,
+          "full_evicted_tokens": 506368,
+          "swa_evicted_tokens": 578816,
+          "eviction_operations": 2261
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 322816,
+          "recomputed_prompt_tokens": 330240,
+          "page_aligned_hit_ratio": 0.4943159545276362,
+          "full_capacity_tokens": 306043,
+          "swa_capacity_tokens": 30526,
+          "final_full_used_tokens": 31744,
+          "final_swa_used_tokens": 30464,
+          "peak_full_used_tokens": 46848,
+          "peak_swa_used_tokens": 42752,
+          "full_evicted_tokens": 438784,
+          "swa_evicted_tokens": 440064,
+          "eviction_operations": 1719
+        }
+      },
+      "minimum_region_hit_ratio": 0.4943159545276362,
+      "total_full_evicted_tokens": 945152,
+      "total_swa_evicted_tokens": 1018880
+    },
+    {
+      "agent_cache_capacity_ratio": 0.57,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7860480,
+        "recomputed_prompt_tokens": 914944,
+        "page_aligned_hit_ratio": 0.8957379153417544
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7539712,
+          "recomputed_prompt_tokens": 582656,
+          "page_aligned_hit_ratio": 0.9282652546646495,
+          "full_capacity_tokens": 396464,
+          "swa_capacity_tokens": 39544,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 39424,
+          "peak_full_used_tokens": 136448,
+          "peak_swa_used_tokens": 125952,
+          "full_evicted_tokens": 506368,
+          "swa_evicted_tokens": 578048,
+          "eviction_operations": 2258
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 320768,
+          "recomputed_prompt_tokens": 332288,
+          "page_aligned_hit_ratio": 0.4911799294394355,
+          "full_capacity_tokens": 299088,
+          "swa_capacity_tokens": 29832,
+          "final_full_used_tokens": 31744,
+          "final_swa_used_tokens": 29696,
+          "peak_full_used_tokens": 44544,
+          "peak_swa_used_tokens": 41984,
+          "full_evicted_tokens": 440832,
+          "swa_evicted_tokens": 442880,
+          "eviction_operations": 1730
+        }
+      },
+      "minimum_region_hit_ratio": 0.4911799294394355,
+      "total_full_evicted_tokens": 947200,
+      "total_swa_evicted_tokens": 1020928
+    },
+    {
+      "agent_cache_capacity_ratio": 0.58,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7862528,
+        "recomputed_prompt_tokens": 912896,
+        "page_aligned_hit_ratio": 0.8959712943784824
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7542528,
+          "recomputed_prompt_tokens": 579840,
+          "page_aligned_hit_ratio": 0.9286119515885023,
+          "full_capacity_tokens": 403420,
+          "swa_capacity_tokens": 40238,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 40192,
+          "peak_full_used_tokens": 136448,
+          "peak_swa_used_tokens": 123904,
+          "full_evicted_tokens": 506368,
+          "swa_evicted_tokens": 574464,
+          "eviction_operations": 2244
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 320000,
+          "recomputed_prompt_tokens": 333056,
+          "page_aligned_hit_ratio": 0.49000392003136023,
+          "full_capacity_tokens": 292132,
+          "swa_capacity_tokens": 29138,
+          "final_full_used_tokens": 28928,
+          "final_swa_used_tokens": 28928,
+          "peak_full_used_tokens": 43264,
+          "peak_swa_used_tokens": 41216,
+          "full_evicted_tokens": 444416,
+          "swa_evicted_tokens": 444416,
+          "eviction_operations": 1736
+        }
+      },
+      "minimum_region_hit_ratio": 0.49000392003136023,
+      "total_full_evicted_tokens": 950784,
+      "total_swa_evicted_tokens": 1018880
+    },
+    {
+      "agent_cache_capacity_ratio": 0.59,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7862528,
+        "recomputed_prompt_tokens": 912896,
+        "page_aligned_hit_ratio": 0.8959712943784824
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7542528,
+          "recomputed_prompt_tokens": 579840,
+          "page_aligned_hit_ratio": 0.9286119515885023,
+          "full_capacity_tokens": 410375,
+          "swa_capacity_tokens": 40931,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 40704,
+          "peak_full_used_tokens": 136448,
+          "peak_swa_used_tokens": 124416,
+          "full_evicted_tokens": 506368,
+          "swa_evicted_tokens": 573952,
+          "eviction_operations": 2242
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 320000,
+          "recomputed_prompt_tokens": 333056,
+          "page_aligned_hit_ratio": 0.49000392003136023,
+          "full_capacity_tokens": 285177,
+          "swa_capacity_tokens": 28445,
+          "final_full_used_tokens": 28672,
+          "final_swa_used_tokens": 28416,
+          "peak_full_used_tokens": 43264,
+          "peak_swa_used_tokens": 40704,
+          "full_evicted_tokens": 444672,
+          "swa_evicted_tokens": 444928,
+          "eviction_operations": 1738
+        }
+      },
+      "minimum_region_hit_ratio": 0.49000392003136023,
+      "total_full_evicted_tokens": 951040,
+      "total_swa_evicted_tokens": 1018880
+    },
+    {
+      "agent_cache_capacity_ratio": 0.6,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7861504,
+        "recomputed_prompt_tokens": 913920,
+        "page_aligned_hit_ratio": 0.8958546048601185
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7542528,
+          "recomputed_prompt_tokens": 579840,
+          "page_aligned_hit_ratio": 0.9286119515885023,
+          "full_capacity_tokens": 417331,
+          "swa_capacity_tokens": 41625,
+          "final_full_used_tokens": 94208,
+          "final_swa_used_tokens": 41472,
+          "peak_full_used_tokens": 139264,
+          "peak_swa_used_tokens": 125184,
+          "full_evicted_tokens": 506368,
+          "swa_evicted_tokens": 573184,
+          "eviction_operations": 2239
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 318976,
+          "recomputed_prompt_tokens": 334080,
+          "page_aligned_hit_ratio": 0.4884359074872599,
+          "full_capacity_tokens": 278221,
+          "swa_capacity_tokens": 27751,
+          "final_full_used_tokens": 28672,
+          "final_swa_used_tokens": 27648,
+          "peak_full_used_tokens": 41984,
+          "peak_swa_used_tokens": 39936,
+          "full_evicted_tokens": 445184,
+          "swa_evicted_tokens": 446720,
+          "eviction_operations": 1745
+        }
+      },
+      "minimum_region_hit_ratio": 0.4884359074872599,
+      "total_full_evicted_tokens": 951552,
+      "total_swa_evicted_tokens": 1019904
+    },
+    {
+      "agent_cache_capacity_ratio": 0.61,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8062976,
+        "recomputed_prompt_tokens": 712448,
+        "page_aligned_hit_ratio": 0.918813267598238
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 424286,
+          "swa_capacity_tokens": 42319,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 42240,
+          "peak_full_used_tokens": 139264,
+          "peak_swa_used_tokens": 59392,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 370944,
+          "eviction_operations": 1449
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 318976,
+          "recomputed_prompt_tokens": 334080,
+          "page_aligned_hit_ratio": 0.4884359074872599,
+          "full_capacity_tokens": 271266,
+          "swa_capacity_tokens": 27057,
+          "final_full_used_tokens": 28672,
+          "final_swa_used_tokens": 26880,
+          "peak_full_used_tokens": 41472,
+          "peak_swa_used_tokens": 39168,
+          "full_evicted_tokens": 445696,
+          "swa_evicted_tokens": 447488,
+          "eviction_operations": 1748
+        }
+      },
+      "minimum_region_hit_ratio": 0.4884359074872599,
+      "total_full_evicted_tokens": 711936,
+      "total_swa_evicted_tokens": 818432
+    },
+    {
+      "agent_cache_capacity_ratio": 0.62,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8062208,
+        "recomputed_prompt_tokens": 713216,
+        "page_aligned_hit_ratio": 0.918725750459465
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 431242,
+          "swa_capacity_tokens": 43013,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 43008,
+          "peak_full_used_tokens": 139264,
+          "peak_swa_used_tokens": 60160,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 370176,
+          "eviction_operations": 1446
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 318208,
+          "recomputed_prompt_tokens": 334848,
+          "page_aligned_hit_ratio": 0.48725989807918463,
+          "full_capacity_tokens": 264310,
+          "swa_capacity_tokens": 26363,
+          "final_full_used_tokens": 26112,
+          "final_swa_used_tokens": 26112,
+          "peak_full_used_tokens": 40448,
+          "peak_swa_used_tokens": 38400,
+          "full_evicted_tokens": 448512,
+          "swa_evicted_tokens": 449024,
+          "eviction_operations": 1754
+        }
+      },
+      "minimum_region_hit_ratio": 0.48725989807918463,
+      "total_full_evicted_tokens": 714752,
+      "total_swa_evicted_tokens": 819200
+    },
+    {
+      "agent_cache_capacity_ratio": 0.63,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8062208,
+        "recomputed_prompt_tokens": 713216,
+        "page_aligned_hit_ratio": 0.918725750459465
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 438197,
+          "swa_capacity_tokens": 43706,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 43520,
+          "peak_full_used_tokens": 139264,
+          "peak_swa_used_tokens": 60672,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 369664,
+          "eviction_operations": 1444
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 318208,
+          "recomputed_prompt_tokens": 334848,
+          "page_aligned_hit_ratio": 0.48725989807918463,
+          "full_capacity_tokens": 257355,
+          "swa_capacity_tokens": 25670,
+          "final_full_used_tokens": 25600,
+          "final_swa_used_tokens": 25600,
+          "peak_full_used_tokens": 39680,
+          "peak_swa_used_tokens": 37888,
+          "full_evicted_tokens": 449536,
+          "swa_evicted_tokens": 449536,
+          "eviction_operations": 1756
+        }
+      },
+      "minimum_region_hit_ratio": 0.48725989807918463,
+      "total_full_evicted_tokens": 715776,
+      "total_swa_evicted_tokens": 819200
+    },
+    {
+      "agent_cache_capacity_ratio": 0.64,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8043776,
+        "recomputed_prompt_tokens": 731648,
+        "page_aligned_hit_ratio": 0.9166253391289128
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 445153,
+          "swa_capacity_tokens": 44400,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 44288,
+          "peak_full_used_tokens": 140800,
+          "peak_swa_used_tokens": 61440,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 368896,
+          "eviction_operations": 1441
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 299776,
+          "recomputed_prompt_tokens": 353280,
+          "page_aligned_hit_ratio": 0.4590356722853783,
+          "full_capacity_tokens": 250399,
+          "swa_capacity_tokens": 24976,
+          "final_full_used_tokens": 24832,
+          "final_swa_used_tokens": 24832,
+          "peak_full_used_tokens": 39424,
+          "peak_swa_used_tokens": 37120,
+          "full_evicted_tokens": 465408,
+          "swa_evicted_tokens": 468736,
+          "eviction_operations": 1831
+        }
+      },
+      "minimum_region_hit_ratio": 0.4590356722853783,
+      "total_full_evicted_tokens": 731648,
+      "total_swa_evicted_tokens": 837632
+    },
+    {
+      "agent_cache_capacity_ratio": 0.65,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8028672,
+        "recomputed_prompt_tokens": 746752,
+        "page_aligned_hit_ratio": 0.9149041687330436
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 452108,
+          "swa_capacity_tokens": 45094,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 45056,
+          "peak_full_used_tokens": 140800,
+          "peak_swa_used_tokens": 62208,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 368128,
+          "eviction_operations": 1438
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 284672,
+          "recomputed_prompt_tokens": 368384,
+          "page_aligned_hit_ratio": 0.4359074872598981,
+          "full_capacity_tokens": 243444,
+          "swa_capacity_tokens": 24282,
+          "final_full_used_tokens": 24064,
+          "final_swa_used_tokens": 24064,
+          "peak_full_used_tokens": 38912,
+          "peak_swa_used_tokens": 36352,
+          "full_evicted_tokens": 482048,
+          "swa_evicted_tokens": 484608,
+          "eviction_operations": 1893
+        }
+      },
+      "minimum_region_hit_ratio": 0.4359074872598981,
+      "total_full_evicted_tokens": 748288,
+      "total_swa_evicted_tokens": 852736
+    },
+    {
+      "agent_cache_capacity_ratio": 0.66,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8027392,
+        "recomputed_prompt_tokens": 748032,
+        "page_aligned_hit_ratio": 0.9147583068350885
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 459064,
+          "swa_capacity_tokens": 45788,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 45568,
+          "peak_full_used_tokens": 142336,
+          "peak_swa_used_tokens": 62720,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 367616,
+          "eviction_operations": 1436
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 283392,
+          "recomputed_prompt_tokens": 369664,
+          "page_aligned_hit_ratio": 0.43394747157977265,
+          "full_capacity_tokens": 236488,
+          "swa_capacity_tokens": 23588,
+          "final_full_used_tokens": 23552,
+          "final_swa_used_tokens": 23552,
+          "peak_full_used_tokens": 38144,
+          "peak_swa_used_tokens": 35840,
+          "full_evicted_tokens": 486144,
+          "swa_evicted_tokens": 486400,
+          "eviction_operations": 1900
+        }
+      },
+      "minimum_region_hit_ratio": 0.43394747157977265,
+      "total_full_evicted_tokens": 752384,
+      "total_swa_evicted_tokens": 854016
+    },
+    {
+      "agent_cache_capacity_ratio": 0.67,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8025856,
+        "recomputed_prompt_tokens": 749568,
+        "page_aligned_hit_ratio": 0.9145832725575426
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 466019,
+          "swa_capacity_tokens": 46481,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 46336,
+          "peak_full_used_tokens": 142336,
+          "peak_swa_used_tokens": 63488,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 366848,
+          "eviction_operations": 1433
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 281856,
+          "recomputed_prompt_tokens": 371200,
+          "page_aligned_hit_ratio": 0.4315954527636221,
+          "full_capacity_tokens": 229533,
+          "swa_capacity_tokens": 22895,
+          "final_full_used_tokens": 23552,
+          "final_swa_used_tokens": 22784,
+          "peak_full_used_tokens": 37120,
+          "peak_swa_used_tokens": 35072,
+          "full_evicted_tokens": 487168,
+          "swa_evicted_tokens": 488704,
+          "eviction_operations": 1909
+        }
+      },
+      "minimum_region_hit_ratio": 0.4315954527636221,
+      "total_full_evicted_tokens": 753408,
+      "total_swa_evicted_tokens": 855552
+    },
+    {
+      "agent_cache_capacity_ratio": 0.68,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8023552,
+        "recomputed_prompt_tokens": 751872,
+        "page_aligned_hit_ratio": 0.9143207211412235
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 472975,
+          "swa_capacity_tokens": 47175,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 47104,
+          "peak_full_used_tokens": 142848,
+          "peak_swa_used_tokens": 64256,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 366080,
+          "eviction_operations": 1430
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 279552,
+          "recomputed_prompt_tokens": 373504,
+          "page_aligned_hit_ratio": 0.42806742453939634,
+          "full_capacity_tokens": 222577,
+          "swa_capacity_tokens": 22201,
+          "final_full_used_tokens": 23552,
+          "final_swa_used_tokens": 22016,
+          "peak_full_used_tokens": 36352,
+          "peak_swa_used_tokens": 34304,
+          "full_evicted_tokens": 489216,
+          "swa_evicted_tokens": 491776,
+          "eviction_operations": 1921
+        }
+      },
+      "minimum_region_hit_ratio": 0.42806742453939634,
+      "total_full_evicted_tokens": 755456,
+      "total_swa_evicted_tokens": 857856
+    },
+    {
+      "agent_cache_capacity_ratio": 0.69,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8020736,
+        "recomputed_prompt_tokens": 754688,
+        "page_aligned_hit_ratio": 0.9139998249657224
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7744000,
+          "recomputed_prompt_tokens": 378368,
+          "page_aligned_hit_ratio": 0.953416540595058,
+          "full_capacity_tokens": 479930,
+          "swa_capacity_tokens": 47869,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 47616,
+          "peak_full_used_tokens": 144384,
+          "peak_swa_used_tokens": 64768,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 365568,
+          "eviction_operations": 1428
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 276736,
+          "recomputed_prompt_tokens": 376320,
+          "page_aligned_hit_ratio": 0.42375539004312035,
+          "full_capacity_tokens": 215622,
+          "swa_capacity_tokens": 21507,
+          "final_full_used_tokens": 23552,
+          "final_swa_used_tokens": 21504,
+          "peak_full_used_tokens": 36096,
+          "peak_swa_used_tokens": 33792,
+          "full_evicted_tokens": 492544,
+          "swa_evicted_tokens": 495104,
+          "eviction_operations": 1934
+        }
+      },
+      "minimum_region_hit_ratio": 0.42375539004312035,
+      "total_full_evicted_tokens": 758784,
+      "total_swa_evicted_tokens": 860672
+    },
+    {
+      "agent_cache_capacity_ratio": 0.7,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8020736,
+        "recomputed_prompt_tokens": 754688,
+        "page_aligned_hit_ratio": 0.9139998249657224
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7746816,
+          "recomputed_prompt_tokens": 375552,
+          "page_aligned_hit_ratio": 0.9537632375189108,
+          "full_capacity_tokens": 486886,
+          "swa_capacity_tokens": 48563,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 48384,
+          "peak_full_used_tokens": 144384,
+          "peak_swa_used_tokens": 65536,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 361984,
+          "eviction_operations": 1414
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 273920,
+          "recomputed_prompt_tokens": 379136,
+          "page_aligned_hit_ratio": 0.41944335554684437,
+          "full_capacity_tokens": 208666,
+          "swa_capacity_tokens": 20813,
+          "final_full_used_tokens": 23552,
+          "final_swa_used_tokens": 20736,
+          "peak_full_used_tokens": 35584,
+          "peak_swa_used_tokens": 33024,
+          "full_evicted_tokens": 494848,
+          "swa_evicted_tokens": 498688,
+          "eviction_operations": 1948
+        }
+      },
+      "minimum_region_hit_ratio": 0.41944335554684437,
+      "total_full_evicted_tokens": 761088,
+      "total_swa_evicted_tokens": 860672
+    },
+    {
+      "agent_cache_capacity_ratio": 0.71,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 8011776,
+        "recomputed_prompt_tokens": 763648,
+        "page_aligned_hit_ratio": 0.9129787916800374
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7746816,
+          "recomputed_prompt_tokens": 375552,
+          "page_aligned_hit_ratio": 0.9537632375189108,
+          "full_capacity_tokens": 493841,
+          "swa_capacity_tokens": 49256,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 49152,
+          "peak_full_used_tokens": 150528,
+          "peak_swa_used_tokens": 66304,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 361216,
+          "eviction_operations": 1411
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 264960,
+          "recomputed_prompt_tokens": 388096,
+          "page_aligned_hit_ratio": 0.4057232457859663,
+          "full_capacity_tokens": 201711,
+          "swa_capacity_tokens": 20120,
+          "final_full_used_tokens": 19968,
+          "final_swa_used_tokens": 19968,
+          "peak_full_used_tokens": 35584,
+          "peak_swa_used_tokens": 32256,
+          "full_evicted_tokens": 506624,
+          "swa_evicted_tokens": 508416,
+          "eviction_operations": 1986
+        }
+      },
+      "minimum_region_hit_ratio": 0.4057232457859663,
+      "total_full_evicted_tokens": 772864,
+      "total_swa_evicted_tokens": 869632
+    },
+    {
+      "agent_cache_capacity_ratio": 0.72,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7969792,
+        "recomputed_prompt_tokens": 805632,
+        "page_aligned_hit_ratio": 0.9081945214271128
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7746816,
+          "recomputed_prompt_tokens": 375552,
+          "page_aligned_hit_ratio": 0.9537632375189108,
+          "full_capacity_tokens": 500797,
+          "swa_capacity_tokens": 49950,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 49920,
+          "peak_full_used_tokens": 150528,
+          "peak_swa_used_tokens": 67072,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 360448,
+          "eviction_operations": 1408
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 222976,
+          "recomputed_prompt_tokens": 430080,
+          "page_aligned_hit_ratio": 0.3414347314778518,
+          "full_capacity_tokens": 194755,
+          "swa_capacity_tokens": 19426,
+          "final_full_used_tokens": 19200,
+          "final_swa_used_tokens": 19200,
+          "peak_full_used_tokens": 33280,
+          "peak_swa_used_tokens": 31744,
+          "full_evicted_tokens": 544768,
+          "swa_evicted_tokens": 551168,
+          "eviction_operations": 2153
+        }
+      },
+      "minimum_region_hit_ratio": 0.3414347314778518,
+      "total_full_evicted_tokens": 811008,
+      "total_swa_evicted_tokens": 911616
+    },
+    {
+      "agent_cache_capacity_ratio": 0.73,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7955968,
+        "recomputed_prompt_tokens": 819456,
+        "page_aligned_hit_ratio": 0.9066192129291987
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7746816,
+          "recomputed_prompt_tokens": 375552,
+          "page_aligned_hit_ratio": 0.9537632375189108,
+          "full_capacity_tokens": 507752,
+          "swa_capacity_tokens": 50644,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 50432,
+          "peak_full_used_tokens": 150528,
+          "peak_swa_used_tokens": 67584,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 359936,
+          "eviction_operations": 1406
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 209152,
+          "recomputed_prompt_tokens": 443904,
+          "page_aligned_hit_ratio": 0.32026656213249705,
+          "full_capacity_tokens": 187800,
+          "swa_capacity_tokens": 18732,
+          "final_full_used_tokens": 19200,
+          "final_swa_used_tokens": 18688,
+          "peak_full_used_tokens": 33024,
+          "peak_swa_used_tokens": 31232,
+          "full_evicted_tokens": 560384,
+          "swa_evicted_tokens": 565504,
+          "eviction_operations": 2209
+        }
+      },
+      "minimum_region_hit_ratio": 0.32026656213249705,
+      "total_full_evicted_tokens": 826624,
+      "total_swa_evicted_tokens": 925440
+    },
+    {
+      "agent_cache_capacity_ratio": 0.74,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7937792,
+        "recomputed_prompt_tokens": 837632,
+        "page_aligned_hit_ratio": 0.9045479739782374
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7749632,
+          "recomputed_prompt_tokens": 372736,
+          "page_aligned_hit_ratio": 0.9541099344427635,
+          "full_capacity_tokens": 514708,
+          "swa_capacity_tokens": 51338,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 51200,
+          "peak_full_used_tokens": 150528,
+          "peak_swa_used_tokens": 68352,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 356352,
+          "eviction_operations": 1392
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 188160,
+          "recomputed_prompt_tokens": 464896,
+          "page_aligned_hit_ratio": 0.2881223049784398,
+          "full_capacity_tokens": 180844,
+          "swa_capacity_tokens": 18038,
+          "final_full_used_tokens": 17920,
+          "final_swa_used_tokens": 17920,
+          "peak_full_used_tokens": 32000,
+          "peak_swa_used_tokens": 32000,
+          "full_evicted_tokens": 570880,
+          "swa_evicted_tokens": 587264,
+          "eviction_operations": 2294
+        }
+      },
+      "minimum_region_hit_ratio": 0.2881223049784398,
+      "total_full_evicted_tokens": 837120,
+      "total_swa_evicted_tokens": 943616
+    },
+    {
+      "agent_cache_capacity_ratio": 0.75,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7929088,
+        "recomputed_prompt_tokens": 846336,
+        "page_aligned_hit_ratio": 0.9035561130721433
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7749632,
+          "recomputed_prompt_tokens": 372736,
+          "page_aligned_hit_ratio": 0.9541099344427635,
+          "full_capacity_tokens": 521664,
+          "swa_capacity_tokens": 52032,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 51968,
+          "peak_full_used_tokens": 150528,
+          "peak_swa_used_tokens": 69120,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 355584,
+          "eviction_operations": 1389
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 179456,
+          "recomputed_prompt_tokens": 473600,
+          "page_aligned_hit_ratio": 0.2747941983535868,
+          "full_capacity_tokens": 173888,
+          "swa_capacity_tokens": 17344,
+          "final_full_used_tokens": 17408,
+          "final_swa_used_tokens": 17152,
+          "peak_full_used_tokens": 32000,
+          "peak_swa_used_tokens": 31232,
+          "full_evicted_tokens": 593408,
+          "swa_evicted_tokens": 596736,
+          "eviction_operations": 2331
+        }
+      },
+      "minimum_region_hit_ratio": 0.2747941983535868,
+      "total_full_evicted_tokens": 859648,
+      "total_swa_evicted_tokens": 952320
+    },
+    {
+      "agent_cache_capacity_ratio": 0.76,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7928064,
+        "recomputed_prompt_tokens": 847360,
+        "page_aligned_hit_ratio": 0.9034394235537793
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7749632,
+          "recomputed_prompt_tokens": 372736,
+          "page_aligned_hit_ratio": 0.9541099344427635,
+          "full_capacity_tokens": 528619,
+          "swa_capacity_tokens": 52725,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 52480,
+          "peak_full_used_tokens": 150528,
+          "peak_swa_used_tokens": 69632,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 355072,
+          "eviction_operations": 1387
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 178432,
+          "recomputed_prompt_tokens": 474624,
+          "page_aligned_hit_ratio": 0.2732261858094865,
+          "full_capacity_tokens": 166933,
+          "swa_capacity_tokens": 16651,
+          "final_full_used_tokens": 16640,
+          "final_swa_used_tokens": 16640,
+          "peak_full_used_tokens": 32000,
+          "peak_swa_used_tokens": 30720,
+          "full_evicted_tokens": 595712,
+          "swa_evicted_tokens": 598272,
+          "eviction_operations": 2337
+        }
+      },
+      "minimum_region_hit_ratio": 0.2732261858094865,
+      "total_full_evicted_tokens": 861952,
+      "total_swa_evicted_tokens": 953344
+    },
+    {
+      "agent_cache_capacity_ratio": 0.77,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7908864,
+        "recomputed_prompt_tokens": 866560,
+        "page_aligned_hit_ratio": 0.901251495084454
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7749632,
+          "recomputed_prompt_tokens": 372736,
+          "page_aligned_hit_ratio": 0.9541099344427635,
+          "full_capacity_tokens": 535575,
+          "swa_capacity_tokens": 53419,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 53248,
+          "peak_full_used_tokens": 150528,
+          "peak_swa_used_tokens": 70400,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 354304,
+          "eviction_operations": 1384
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 159232,
+          "recomputed_prompt_tokens": 493824,
+          "page_aligned_hit_ratio": 0.24382595060760487,
+          "full_capacity_tokens": 159977,
+          "swa_capacity_tokens": 15957,
+          "final_full_used_tokens": 16128,
+          "final_swa_used_tokens": 15872,
+          "peak_full_used_tokens": 32000,
+          "peak_swa_used_tokens": 29952,
+          "full_evicted_tokens": 613632,
+          "swa_evicted_tokens": 618240,
+          "eviction_operations": 2415
+        }
+      },
+      "minimum_region_hit_ratio": 0.24382595060760487,
+      "total_full_evicted_tokens": 879872,
+      "total_swa_evicted_tokens": 972544
+    },
+    {
+      "agent_cache_capacity_ratio": 0.78,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7880960,
+        "recomputed_prompt_tokens": 894464,
+        "page_aligned_hit_ratio": 0.8980717057090347
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7749632,
+          "recomputed_prompt_tokens": 372736,
+          "page_aligned_hit_ratio": 0.9541099344427635,
+          "full_capacity_tokens": 542530,
+          "swa_capacity_tokens": 54113,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 54016,
+          "peak_full_used_tokens": 150528,
+          "peak_swa_used_tokens": 71168,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 353536,
+          "eviction_operations": 1381
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 131328,
+          "recomputed_prompt_tokens": 521728,
+          "page_aligned_hit_ratio": 0.20109760878087024,
+          "full_capacity_tokens": 153022,
+          "swa_capacity_tokens": 15263,
+          "final_full_used_tokens": 15360,
+          "final_swa_used_tokens": 15104,
+          "peak_full_used_tokens": 32000,
+          "peak_swa_used_tokens": 29184,
+          "full_evicted_tokens": 646656,
+          "swa_evicted_tokens": 646912,
+          "eviction_operations": 2527
+        }
+      },
+      "minimum_region_hit_ratio": 0.20109760878087024,
+      "total_full_evicted_tokens": 912896,
+      "total_swa_evicted_tokens": 1000448
+    },
+    {
+      "agent_cache_capacity_ratio": 0.79,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7875840,
+        "recomputed_prompt_tokens": 899584,
+        "page_aligned_hit_ratio": 0.8974882581172147
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7749632,
+          "recomputed_prompt_tokens": 372736,
+          "page_aligned_hit_ratio": 0.9541099344427635,
+          "full_capacity_tokens": 549486,
+          "swa_capacity_tokens": 54807,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 54784,
+          "peak_full_used_tokens": 150528,
+          "peak_swa_used_tokens": 71936,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 352768,
+          "eviction_operations": 1378
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 126208,
+          "recomputed_prompt_tokens": 526848,
+          "page_aligned_hit_ratio": 0.1932575460603685,
+          "full_capacity_tokens": 146066,
+          "swa_capacity_tokens": 14569,
+          "final_full_used_tokens": 15360,
+          "final_swa_used_tokens": 14336,
+          "peak_full_used_tokens": 32000,
+          "peak_swa_used_tokens": 28416,
+          "full_evicted_tokens": 651776,
+          "swa_evicted_tokens": 652800,
+          "eviction_operations": 2550
+        }
+      },
+      "minimum_region_hit_ratio": 0.1932575460603685,
+      "total_full_evicted_tokens": 918016,
+      "total_swa_evicted_tokens": 1005568
+    },
+    {
+      "agent_cache_capacity_ratio": 0.8,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7874560,
+        "recomputed_prompt_tokens": 900864,
+        "page_aligned_hit_ratio": 0.8973423962192596
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7749632,
+          "recomputed_prompt_tokens": 372736,
+          "page_aligned_hit_ratio": 0.9541099344427635,
+          "full_capacity_tokens": 556441,
+          "swa_capacity_tokens": 55500,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 55296,
+          "peak_full_used_tokens": 151040,
+          "peak_swa_used_tokens": 72448,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 352256,
+          "eviction_operations": 1376
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 124928,
+          "recomputed_prompt_tokens": 528128,
+          "page_aligned_hit_ratio": 0.19129753038024305,
+          "full_capacity_tokens": 139111,
+          "swa_capacity_tokens": 13876,
+          "final_full_used_tokens": 13824,
+          "final_swa_used_tokens": 13824,
+          "peak_full_used_tokens": 32000,
+          "peak_swa_used_tokens": 27904,
+          "full_evicted_tokens": 654592,
+          "swa_evicted_tokens": 654592,
+          "eviction_operations": 2557
+        }
+      },
+      "minimum_region_hit_ratio": 0.19129753038024305,
+      "total_full_evicted_tokens": 920832,
+      "total_swa_evicted_tokens": 1006848
+    },
+    {
+      "agent_cache_capacity_ratio": 0.81,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7874560,
+        "recomputed_prompt_tokens": 900864,
+        "page_aligned_hit_ratio": 0.8973423962192596
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7749632,
+          "recomputed_prompt_tokens": 372736,
+          "page_aligned_hit_ratio": 0.9541099344427635,
+          "full_capacity_tokens": 563397,
+          "swa_capacity_tokens": 56194,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 56064,
+          "peak_full_used_tokens": 152320,
+          "peak_swa_used_tokens": 73216,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 351488,
+          "eviction_operations": 1373
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 124928,
+          "recomputed_prompt_tokens": 528128,
+          "page_aligned_hit_ratio": 0.19129753038024305,
+          "full_capacity_tokens": 132155,
+          "swa_capacity_tokens": 13182,
+          "final_full_used_tokens": 13568,
+          "final_swa_used_tokens": 13056,
+          "peak_full_used_tokens": 32000,
+          "peak_swa_used_tokens": 27136,
+          "full_evicted_tokens": 654848,
+          "swa_evicted_tokens": 655360,
+          "eviction_operations": 2560
+        }
+      },
+      "minimum_region_hit_ratio": 0.19129753038024305,
+      "total_full_evicted_tokens": 921088,
+      "total_swa_evicted_tokens": 1006848
+    },
+    {
+      "agent_cache_capacity_ratio": 0.82,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7873536,
+        "recomputed_prompt_tokens": 901888,
+        "page_aligned_hit_ratio": 0.8972257067008956
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7749632,
+          "recomputed_prompt_tokens": 372736,
+          "page_aligned_hit_ratio": 0.9541099344427635,
+          "full_capacity_tokens": 570352,
+          "swa_capacity_tokens": 56888,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 56832,
+          "peak_full_used_tokens": 153600,
+          "peak_swa_used_tokens": 73984,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 350720,
+          "eviction_operations": 1370
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 123904,
+          "recomputed_prompt_tokens": 529152,
+          "page_aligned_hit_ratio": 0.1897295178361427,
+          "full_capacity_tokens": 125200,
+          "swa_capacity_tokens": 12488,
+          "final_full_used_tokens": 13568,
+          "final_swa_used_tokens": 12288,
+          "peak_full_used_tokens": 32000,
+          "peak_swa_used_tokens": 26368,
+          "full_evicted_tokens": 655616,
+          "swa_evicted_tokens": 657152,
+          "eviction_operations": 2567
+        }
+      },
+      "minimum_region_hit_ratio": 0.1897295178361427,
+      "total_full_evicted_tokens": 921856,
+      "total_swa_evicted_tokens": 1007872
+    },
+    {
+      "agent_cache_capacity_ratio": 0.83,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7866112,
+        "recomputed_prompt_tokens": 909312,
+        "page_aligned_hit_ratio": 0.8963797076927565
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7749632,
+          "recomputed_prompt_tokens": 372736,
+          "page_aligned_hit_ratio": 0.9541099344427635,
+          "full_capacity_tokens": 577308,
+          "swa_capacity_tokens": 57582,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 57344,
+          "peak_full_used_tokens": 153600,
+          "peak_swa_used_tokens": 74496,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 350208,
+          "eviction_operations": 1368
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 116480,
+          "recomputed_prompt_tokens": 536576,
+          "page_aligned_hit_ratio": 0.17836142689141513,
+          "full_capacity_tokens": 118244,
+          "swa_capacity_tokens": 11794,
+          "final_full_used_tokens": 13568,
+          "final_swa_used_tokens": 11776,
+          "peak_full_used_tokens": 32000,
+          "peak_swa_used_tokens": 25856,
+          "full_evicted_tokens": 663296,
+          "swa_evicted_tokens": 665088,
+          "eviction_operations": 2598
+        }
+      },
+      "minimum_region_hit_ratio": 0.17836142689141513,
+      "total_full_evicted_tokens": 929536,
+      "total_swa_evicted_tokens": 1015296
+    },
+    {
+      "agent_cache_capacity_ratio": 0.84,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7856640,
+        "recomputed_prompt_tokens": 918784,
+        "page_aligned_hit_ratio": 0.8953003296478894
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7749632,
+          "recomputed_prompt_tokens": 372736,
+          "page_aligned_hit_ratio": 0.9541099344427635,
+          "full_capacity_tokens": 584263,
+          "swa_capacity_tokens": 58275,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 58112,
+          "peak_full_used_tokens": 153856,
+          "peak_swa_used_tokens": 75264,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 349440,
+          "eviction_operations": 1365
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 107008,
+          "recomputed_prompt_tokens": 546048,
+          "page_aligned_hit_ratio": 0.16385731085848687,
+          "full_capacity_tokens": 111289,
+          "swa_capacity_tokens": 11101,
+          "final_full_used_tokens": 11264,
+          "final_swa_used_tokens": 11008,
+          "peak_full_used_tokens": 25600,
+          "peak_swa_used_tokens": 25088,
+          "full_evicted_tokens": 674048,
+          "swa_evicted_tokens": 675328,
+          "eviction_operations": 2638
+        }
+      },
+      "minimum_region_hit_ratio": 0.16385731085848687,
+      "total_full_evicted_tokens": 940288,
+      "total_swa_evicted_tokens": 1024768
+    },
+    {
+      "agent_cache_capacity_ratio": 0.85,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7854592,
+        "recomputed_prompt_tokens": 920832,
+        "page_aligned_hit_ratio": 0.8950669506111614
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7749632,
+          "recomputed_prompt_tokens": 372736,
+          "page_aligned_hit_ratio": 0.9541099344427635,
+          "full_capacity_tokens": 591219,
+          "swa_capacity_tokens": 58969,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 58880,
+          "peak_full_used_tokens": 155648,
+          "peak_swa_used_tokens": 76032,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 348672,
+          "eviction_operations": 1362
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 104960,
+          "recomputed_prompt_tokens": 548096,
+          "page_aligned_hit_ratio": 0.16072128577028616,
+          "full_capacity_tokens": 104333,
+          "swa_capacity_tokens": 10407,
+          "final_full_used_tokens": 11264,
+          "final_swa_used_tokens": 10240,
+          "peak_full_used_tokens": 25600,
+          "peak_swa_used_tokens": 24320,
+          "full_evicted_tokens": 676352,
+          "swa_evicted_tokens": 678144,
+          "eviction_operations": 2649
+        }
+      },
+      "minimum_region_hit_ratio": 0.16072128577028616,
+      "total_full_evicted_tokens": 942592,
+      "total_swa_evicted_tokens": 1026816
+    },
+    {
+      "agent_cache_capacity_ratio": 0.86,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7850752,
+        "recomputed_prompt_tokens": 924672,
+        "page_aligned_hit_ratio": 0.8946293649172963
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7749632,
+          "recomputed_prompt_tokens": 372736,
+          "page_aligned_hit_ratio": 0.9541099344427635,
+          "full_capacity_tokens": 598174,
+          "swa_capacity_tokens": 59663,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 59648,
+          "peak_full_used_tokens": 155648,
+          "peak_swa_used_tokens": 76800,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 347904,
+          "eviction_operations": 1359
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 101120,
+          "recomputed_prompt_tokens": 551936,
+          "page_aligned_hit_ratio": 0.15484123872990985,
+          "full_capacity_tokens": 97378,
+          "swa_capacity_tokens": 9713,
+          "final_full_used_tokens": 11264,
+          "final_swa_used_tokens": 9472,
+          "peak_full_used_tokens": 23552,
+          "peak_swa_used_tokens": 23552,
+          "full_evicted_tokens": 680192,
+          "swa_evicted_tokens": 682752,
+          "eviction_operations": 2667
+        }
+      },
+      "minimum_region_hit_ratio": 0.15484123872990985,
+      "total_full_evicted_tokens": 946432,
+      "total_swa_evicted_tokens": 1030656
+    },
+    {
+      "agent_cache_capacity_ratio": 0.87,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7851776,
+        "recomputed_prompt_tokens": 923648,
+        "page_aligned_hit_ratio": 0.8947460544356604
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7752448,
+          "recomputed_prompt_tokens": 369920,
+          "page_aligned_hit_ratio": 0.9544566313666163,
+          "full_capacity_tokens": 605130,
+          "swa_capacity_tokens": 60357,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 60160,
+          "peak_full_used_tokens": 165632,
+          "peak_swa_used_tokens": 77312,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 344576,
+          "eviction_operations": 1346
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 99328,
+          "recomputed_prompt_tokens": 553728,
+          "page_aligned_hit_ratio": 0.15209721677773422,
+          "full_capacity_tokens": 90422,
+          "swa_capacity_tokens": 9019,
+          "final_full_used_tokens": 11264,
+          "final_swa_used_tokens": 8960,
+          "peak_full_used_tokens": 23552,
+          "peak_swa_used_tokens": 23040,
+          "full_evicted_tokens": 682496,
+          "swa_evicted_tokens": 685056,
+          "eviction_operations": 2676
+        }
+      },
+      "minimum_region_hit_ratio": 0.15209721677773422,
+      "total_full_evicted_tokens": 948736,
+      "total_swa_evicted_tokens": 1029632
+    },
+    {
+      "agent_cache_capacity_ratio": 0.88,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7846912,
+        "recomputed_prompt_tokens": 928512,
+        "page_aligned_hit_ratio": 0.8941917792234313
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7752448,
+          "recomputed_prompt_tokens": 369920,
+          "page_aligned_hit_ratio": 0.9544566313666163,
+          "full_capacity_tokens": 612085,
+          "swa_capacity_tokens": 61050,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 60928,
+          "peak_full_used_tokens": 165632,
+          "peak_swa_used_tokens": 78080,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 343808,
+          "eviction_operations": 1343
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 94464,
+          "recomputed_prompt_tokens": 558592,
+          "page_aligned_hit_ratio": 0.14464915719325755,
+          "full_capacity_tokens": 83467,
+          "swa_capacity_tokens": 8326,
+          "final_full_used_tokens": 11264,
+          "final_swa_used_tokens": 8192,
+          "peak_full_used_tokens": 23552,
+          "peak_swa_used_tokens": 22272,
+          "full_evicted_tokens": 685568,
+          "swa_evicted_tokens": 690688,
+          "eviction_operations": 2698
+        }
+      },
+      "minimum_region_hit_ratio": 0.14464915719325755,
+      "total_full_evicted_tokens": 951808,
+      "total_swa_evicted_tokens": 1034496
+    },
+    {
+      "agent_cache_capacity_ratio": 0.89,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7835648,
+        "recomputed_prompt_tokens": 939776,
+        "page_aligned_hit_ratio": 0.8929081945214271
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7752448,
+          "recomputed_prompt_tokens": 369920,
+          "page_aligned_hit_ratio": 0.9544566313666163,
+          "full_capacity_tokens": 619041,
+          "swa_capacity_tokens": 61744,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 61696,
+          "peak_full_used_tokens": 165632,
+          "peak_swa_used_tokens": 78848,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 343040,
+          "eviction_operations": 1340
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 83200,
+          "recomputed_prompt_tokens": 569856,
+          "page_aligned_hit_ratio": 0.12740101920815367,
+          "full_capacity_tokens": 76511,
+          "swa_capacity_tokens": 7632,
+          "final_full_used_tokens": 11264,
+          "final_swa_used_tokens": 7424,
+          "peak_full_used_tokens": 22528,
+          "peak_swa_used_tokens": 21504,
+          "full_evicted_tokens": 698880,
+          "swa_evicted_tokens": 702720,
+          "eviction_operations": 2745
+        }
+      },
+      "minimum_region_hit_ratio": 0.12740101920815367,
+      "total_full_evicted_tokens": 965120,
+      "total_swa_evicted_tokens": 1045760
+    },
+    {
+      "agent_cache_capacity_ratio": 0.9,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7835648,
+        "recomputed_prompt_tokens": 939776,
+        "page_aligned_hit_ratio": 0.8929081945214271
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7752448,
+          "recomputed_prompt_tokens": 369920,
+          "page_aligned_hit_ratio": 0.9544566313666163,
+          "full_capacity_tokens": 625996,
+          "swa_capacity_tokens": 62438,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 62208,
+          "peak_full_used_tokens": 165632,
+          "peak_swa_used_tokens": 79360,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 342528,
+          "eviction_operations": 1338
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 83200,
+          "recomputed_prompt_tokens": 569856,
+          "page_aligned_hit_ratio": 0.12740101920815367,
+          "full_capacity_tokens": 69556,
+          "swa_capacity_tokens": 6938,
+          "final_full_used_tokens": 11264,
+          "final_swa_used_tokens": 6912,
+          "peak_full_used_tokens": 22528,
+          "peak_swa_used_tokens": 20992,
+          "full_evicted_tokens": 698880,
+          "swa_evicted_tokens": 703232,
+          "eviction_operations": 2747
+        }
+      },
+      "minimum_region_hit_ratio": 0.12740101920815367,
+      "total_full_evicted_tokens": 965120,
+      "total_swa_evicted_tokens": 1045760
+    },
+    {
+      "agent_cache_capacity_ratio": 0.91,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7829760,
+        "recomputed_prompt_tokens": 945664,
+        "page_aligned_hit_ratio": 0.8922372297908341
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7752448,
+          "recomputed_prompt_tokens": 369920,
+          "page_aligned_hit_ratio": 0.9544566313666163,
+          "full_capacity_tokens": 632952,
+          "swa_capacity_tokens": 63132,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 62976,
+          "peak_full_used_tokens": 165632,
+          "peak_swa_used_tokens": 80128,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 341760,
+          "eviction_operations": 1335
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 77312,
+          "recomputed_prompt_tokens": 575744,
+          "page_aligned_hit_ratio": 0.11838494707957664,
+          "full_capacity_tokens": 62600,
+          "swa_capacity_tokens": 6244,
+          "final_full_used_tokens": 9984,
+          "final_swa_used_tokens": 6144,
+          "peak_full_used_tokens": 20736,
+          "peak_swa_used_tokens": 20224,
+          "full_evicted_tokens": 703488,
+          "swa_evicted_tokens": 709888,
+          "eviction_operations": 2773
+        }
+      },
+      "minimum_region_hit_ratio": 0.11838494707957664,
+      "total_full_evicted_tokens": 969728,
+      "total_swa_evicted_tokens": 1051648
+    },
+    {
+      "agent_cache_capacity_ratio": 0.92,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7805952,
+        "recomputed_prompt_tokens": 969472,
+        "page_aligned_hit_ratio": 0.8895241984888708
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7752448,
+          "recomputed_prompt_tokens": 369920,
+          "page_aligned_hit_ratio": 0.9544566313666163,
+          "full_capacity_tokens": 639907,
+          "swa_capacity_tokens": 63825,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 63744,
+          "peak_full_used_tokens": 165632,
+          "peak_swa_used_tokens": 80896,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 340992,
+          "eviction_operations": 1332
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 53504,
+          "recomputed_prompt_tokens": 599552,
+          "page_aligned_hit_ratio": 0.08192865542924344,
+          "full_capacity_tokens": 55645,
+          "swa_capacity_tokens": 5551,
+          "final_full_used_tokens": 9984,
+          "final_swa_used_tokens": 5376,
+          "peak_full_used_tokens": 20736,
+          "peak_swa_used_tokens": 19456,
+          "full_evicted_tokens": 729856,
+          "swa_evicted_tokens": 734464,
+          "eviction_operations": 2869
+        }
+      },
+      "minimum_region_hit_ratio": 0.08192865542924344,
+      "total_full_evicted_tokens": 996096,
+      "total_swa_evicted_tokens": 1075456
+    },
+    {
+      "agent_cache_capacity_ratio": 0.93,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7802624,
+        "recomputed_prompt_tokens": 972800,
+        "page_aligned_hit_ratio": 0.8891449575541877
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7752448,
+          "recomputed_prompt_tokens": 369920,
+          "page_aligned_hit_ratio": 0.9544566313666163,
+          "full_capacity_tokens": 646863,
+          "swa_capacity_tokens": 64519,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 64512,
+          "peak_full_used_tokens": 165632,
+          "peak_swa_used_tokens": 81664,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 340224,
+          "eviction_operations": 1329
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 50176,
+          "recomputed_prompt_tokens": 602880,
+          "page_aligned_hit_ratio": 0.07683261466091729,
+          "full_capacity_tokens": 48689,
+          "swa_capacity_tokens": 4857,
+          "final_full_used_tokens": 4608,
+          "final_swa_used_tokens": 4608,
+          "peak_full_used_tokens": 20736,
+          "peak_swa_used_tokens": 18688,
+          "full_evicted_tokens": 738560,
+          "swa_evicted_tokens": 738560,
+          "eviction_operations": 2885
+        }
+      },
+      "minimum_region_hit_ratio": 0.07683261466091729,
+      "total_full_evicted_tokens": 1004800,
+      "total_swa_evicted_tokens": 1078784
+    },
+    {
+      "agent_cache_capacity_ratio": 0.94,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7792896,
+        "recomputed_prompt_tokens": 982528,
+        "page_aligned_hit_ratio": 0.8880364071297295
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7752448,
+          "recomputed_prompt_tokens": 369920,
+          "page_aligned_hit_ratio": 0.9544566313666163,
+          "full_capacity_tokens": 653818,
+          "swa_capacity_tokens": 65213,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 65024,
+          "peak_full_used_tokens": 165632,
+          "peak_swa_used_tokens": 82176,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 339712,
+          "eviction_operations": 1327
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 40448,
+          "recomputed_prompt_tokens": 612608,
+          "page_aligned_hit_ratio": 0.061936495491963936,
+          "full_capacity_tokens": 41734,
+          "swa_capacity_tokens": 4163,
+          "final_full_used_tokens": 4352,
+          "final_swa_used_tokens": 4096,
+          "peak_full_used_tokens": 18688,
+          "peak_swa_used_tokens": 18176,
+          "full_evicted_tokens": 746752,
+          "swa_evicted_tokens": 748800,
+          "eviction_operations": 2925
+        }
+      },
+      "minimum_region_hit_ratio": 0.061936495491963936,
+      "total_full_evicted_tokens": 1012992,
+      "total_swa_evicted_tokens": 1088512
+    },
+    {
+      "agent_cache_capacity_ratio": 0.95,
+      "overall": {
+        "requests": 1261,
+        "prompt_tokens": 8910325,
+        "page_aligned_prompt_tokens": 8775424,
+        "cached_prompt_tokens": 7792896,
+        "recomputed_prompt_tokens": 982528,
+        "page_aligned_hit_ratio": 0.8880364071297295
+      },
+      "regions": {
+        "agent": {
+          "requests": 211,
+          "prompt_tokens": 8148747,
+          "page_aligned_prompt_tokens": 8122368,
+          "cached_prompt_tokens": 7752448,
+          "recomputed_prompt_tokens": 369920,
+          "page_aligned_hit_ratio": 0.9544566313666163,
+          "full_capacity_tokens": 660774,
+          "swa_capacity_tokens": 65907,
+          "final_full_used_tokens": 135680,
+          "final_swa_used_tokens": 65792,
+          "peak_full_used_tokens": 165632,
+          "peak_swa_used_tokens": 82944,
+          "full_evicted_tokens": 266240,
+          "swa_evicted_tokens": 338944,
+          "eviction_operations": 1324
+        },
+        "request": {
+          "requests": 1050,
+          "prompt_tokens": 761578,
+          "page_aligned_prompt_tokens": 653056,
+          "cached_prompt_tokens": 40448,
+          "recomputed_prompt_tokens": 612608,
+          "page_aligned_hit_ratio": 0.061936495491963936,
+          "full_capacity_tokens": 34778,
+          "swa_capacity_tokens": 3469,
+          "final_full_used_tokens": 4352,
+          "final_swa_used_tokens": 3328,
+          "peak_full_used_tokens": 17664,
+          "peak_swa_used_tokens": 17408,
+          "full_evicted_tokens": 748544,
+          "swa_evicted_tokens": 749568,
+          "eviction_operations": 2928
+        }
+      },
+      "minimum_region_hit_ratio": 0.061936495491963936,
+      "total_full_evicted_tokens": 1014784,
+      "total_swa_evicted_tokens": 1088512
+    }
+  ]
+}

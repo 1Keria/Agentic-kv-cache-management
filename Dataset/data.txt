@@ -1,0 +1,6 @@
+Continuum／Continnum	根据工具时延历史、重算／加载成本及排队成本设置 KV TTL，并结合程序级调度	直接比较“按时间保留 KV”与我们拟采用的保留机制。https://arxiv.org/html/2511.02230v7
+PBKV	预测未来 Agent 调用，结合工作流生命周期、跨工作流价值聚合及预取	比较利用较丰富工作流信息的预测方案；它并不是预测工具几秒后返回。(arxiv.org)https://arxiv.org/html/2605.06472v1
+KVFlow	根据给定的 Agent Step Graph 和执行状态计算距离下一次执行的步数，并预取	在工作流信息可见的场景下比较；它支持多个并发工作流。https://arxiv.org/html/2507.07400v1
+CacheScout	从前缀指纹识别 Agent，在线学习执行转移，指导驱逐和预取；不要求预定义工作流或离线训练	很重要的对照，不能用“我们不要求事先知道工作流”将其排除。(arxiv.org)https://arxiv.org/html/2608.14624v1
+UniCache	根据不同复用模式组织队列，采用队列内不同排序，再按命中效率调整跨队列权重	与你后续的异构流量分类管理、动态资源分配非常接近。(jxing.me)https://jxing.me/pdf/unicache-sigmetrics26.pdf
+SAECache	区分不同类型的前缀块，使用多队列、续接预测及在线参数调整	需要重点检查它与你的分类、区内策略及动态调整之间的区别。(arxiv.org)https://arxiv.org/html/2605.18825v1

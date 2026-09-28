@@ -382,6 +382,12 @@ class StreamingSession(BasePrefixCache):
     def evict(self, params: EvictParams) -> EvictResult:
         return self.inner.evict(params)
 
+    def ensure_region_capacity(self, region: Optional[str], num_tokens: int) -> None:
+        self.inner.ensure_region_capacity(region, num_tokens)
+
+    def region_stats(self):
+        return self.inner.region_stats()
+
     def inc_lock_ref(self, node: Any) -> IncLockRefResult:
         result = self.try_inc_lock_ref(node)
         if result is not None:

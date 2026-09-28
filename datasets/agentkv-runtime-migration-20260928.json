@@ -1,0 +1,66 @@
+{
+  "date_utc": "2026-09-28",
+  "repo_id": "1Keria/agentkv-runtime",
+  "repo_type": "dataset",
+  "private": true,
+  "revision": "b4f3af2b3e26b1cb4b4d3dc0e4ae7f9576dea5d4",
+  "verified_revision_after_readme_update": "89d8e9c06c27a3228bb38f1a0c5d824de2fdffad",
+  "upload": {
+    "tool": "hf upload-large-folder",
+    "status": "completed",
+    "files": 1479,
+    "bytes": 4839609584
+  },
+  "roots": [
+    {
+      "path": "experiments/evicition_policy/data",
+      "files": 272,
+      "bytes": 594167159,
+      "excludes": ["raw/**", "**/__pycache__/**", "**/.ipynb_checkpoints/**", "**/*.pid"]
+    },
+    {
+      "path": "experiments/evicition_policy/results",
+      "files": 747,
+      "bytes": 4155366480
+    },
+    {
+      "path": "experiments/固定分区试验对比/data",
+      "files": 5,
+      "bytes": 33638399
+    },
+    {
+      "path": "experiments/固定分区试验对比/results",
+      "files": 323,
+      "bytes": 51857502,
+      "excludes": ["**/*.pid"]
+    },
+    {
+      "path": "models/request_classifier/cache",
+      "files": 1,
+      "bytes": 2051125
+    },
+    {
+      "path": "models/request_classifier/checkpoints",
+      "files": 131,
+      "bytes": 2528919
+    }
+  ],
+  "not_uploaded": [
+    "experiments/evicition_policy/data/raw/skillsbench",
+    "experiments/evicition_policy/runtime",
+    "**/__pycache__",
+    "**/.ipynb_checkpoints",
+    "**/*.pid"
+  ],
+  "verification": {
+    "secret_pattern_scan": "passed",
+    "remote_size_check": "passed",
+    "remote_verified_files": 1479,
+    "remote_verified_bytes": 4839609584,
+    "remote_missing_files": 0,
+    "remote_size_mismatches": 0,
+    "existing_workloads_same_size": 162,
+    "existing_models_same_size": 42,
+    "third_party_raw_uploaded": false
+  }
+}

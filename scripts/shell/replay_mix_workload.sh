@@ -16,9 +16,12 @@
 #   bash scripts/shell/replay_mix_workload.sh --workload-dir workloads/mix_a140_r560 --arrival staggered --delta-agent-s 10 --delta-request-s 3 --request-gap-cap-s 30
 #   bash scripts/shell/replay_mix_workload.sh --workload-dir workloads/mix_oh20_glm_r8400 --arrival staggered --delta-agent-s 2 --delta-request-s 3 --request-gap-cap-s 30
 set -euo pipefail
-cd /share/dai-sys/zhoulongsheng/agentkv
 
-PYTHON=/share/dai-sys/apps/anaconda3/envs/agentkv_zls/bin/python
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
+cd "${MIX_REPLAY_REPO_ROOT:-$REPO_ROOT}"
+
+PYTHON="${MIX_REPLAY_PYTHON:-${PYTHON:-python}}"
 
 RUN_ID="${MIX_REPLAY_RUN_ID:-$(date +%Y%m%d_%H%M%S)}"
 OUT_PREFIX="run_mix_$RUN_ID"

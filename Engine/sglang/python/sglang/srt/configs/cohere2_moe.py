@@ -1,15 +1,26 @@
 # SPDX-License-Identifier: Apache-2.0
 """Cohere2Moe text config used by the Cohere Command-A Plus checkpoints."""
 
-from transformers.configuration_utils import PreTrainedConfig
+try:
+    from transformers.configuration_utils import PreTrainedConfig
+except ImportError:
+    from transformers.configuration_utils import PretrainedConfig as PreTrainedConfig
 from transformers.models.auto.configuration_auto import CONFIG_MAPPING
 
 try:
-    from huggingface_hub.dataclasses import strict
+    from huggingface_hub.dataclasses import strict as _strict
 except ImportError:  # older huggingface_hub
 
     def strict(cls):  # type: ignore[misc]
         return cls
+
+else:
+
+    def strict(cls):  # type: ignore[misc]
+        try:
+            return _strict(cls)
+        except Exception:
+            return cls
 
 
 @strict

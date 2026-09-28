@@ -232,6 +232,7 @@ class TreeNode:
         self.hash_value: Optional[List[str]] = None
         # priority for priority-aware eviction
         self.priority = priority
+        self.cache_region: Optional[str] = None
 
         self.id = TreeNode.counter if id is None else id
         TreeNode.counter += 1
@@ -280,6 +281,10 @@ class RadixCache(MlpReuseMixin, KVCacheEventMixin, BasePrefixCache):
         self.enable_kv_cache_events = params.enable_kv_cache_events
         self.is_eagle = params.is_eagle
         self.disable_finished_insert = params.disable_finished_insert
+        self.request_regions_enabled = params.enable_request_cache_regions
+        self.request_agent_cache_ratio = float(params.request_agent_cache_ratio)
+        if self.request_regions_enabled and not 0.0 < self.request_agent_cache_ratio < 1.0:
+            raise ValueError("request_agent_cache_ratio must be between 0 and 1")
         self.eviction_policy = params.eviction_policy.lower()
         self.reuse_value_shadow_only = params.reuse_value_shadow_only
         self.reuse_value_turnover_kappa = float(params.reuse_value_turnover_kappa)
@@ -326,6 +331,9 @@ class RadixCache(MlpReuseMixin, KVCacheEventMixin, BasePrefixCache):
         )
 
         self.evictable_leaves = set()
+        self.region_used_tokens: dict[str, int] = {"agent": 0, "request": 0}
+        self.region_eviction_count: dict[str, int] = {"agent": 0, "request": 0}
+        self.region_evicted_tokens: dict[str, int] = {"agent": 0, "request": 0}
         self.reset()
 
     @classmethod
@@ -340,6 +348,8 @@ class RadixCache(MlpReuseMixin, KVCacheEventMixin, BasePrefixCache):
         reuse_value_shadow_only: bool = False,
         reuse_value_turnover_kappa: float = 1.0,
         reuse_value_base_cold_strength: float = 1.0,
+        enable_request_cache_regions: bool = False,
+        request_agent_cache_ratio: float = 0.5,
     ) -> RadixCache:
         """Init a radix cache without memory pools for simulation purpose."""
         params = CacheInitParams(
@@ -353,6 +363,8 @@ class RadixCache(MlpReuseMixin, KVCacheEventMixin, BasePrefixCache):
             reuse_value_shadow_only=reuse_value_shadow_only,
             reuse_value_turnover_kappa=reuse_value_turnover_kappa,
             reuse_value_base_cold_strength=reuse_value_base_cold_strength,
+            enable_request_cache_regions=enable_request_cache_regions,
+            request_agent_cache_ratio=request_agent_cache_ratio,
         )
         return RadixCache(params)
 
@@ -375,6 +387,9 @@ class RadixCache(MlpReuseMixin, KVCacheEventMixin, BasePrefixCache):
         self.evictable_size_ = 0
         self.protected_size_ = 0
         self.evictable_leaves.clear()
+        self.region_used_tokens = {"agent": 0, "request": 0}
+        self.region_eviction_count = {"agent": 0, "request": 0}
+        self.region_evicted_tokens = {"agent": 0, "request": 0}
         if getattr(self, "mlp_sessions", None) is not None:
             self.mlp_sessions.clear()
         self._empty_match_result = MatchResult(
@@ -557,6 +572,7 @@ class RadixCache(MlpReuseMixin, KVCacheEventMixin, BasePrefixCache):
         priority = params.priority
         chunked = params.chunked
         is_terminal = params.is_terminal
+        region = getattr(params.req, "cache_region", None)
 
         key, value = key.maybe_to_bigram_view(self.is_eagle, value)
         key = key.page_aligned(self.page_size)
@@ -569,7 +585,7 @@ class RadixCache(MlpReuseMixin, KVCacheEventMixin, BasePrefixCache):
         self._mlp_begin_insert(params.req)
         try:
             prefix_len = self._insert_helper(
-                self.root_node, key, value, priority, chunked, is_terminal
+                self.root_node, key, value, priority, chunked, is_terminal, region
             )
         finally:
             self._mlp_end_insert()
@@ -628,6 +644,9 @@ class RadixCache(MlpReuseMixin, KVCacheEventMixin, BasePrefixCache):
         # Remove req slot release the cache lock
         if req.last_node is not None:
             self.dec_lock_ref(req.last_node)
+
+        if self.request_regions_enabled:
+            self.ensure_region_capacity(getattr(req, "cache_region", None), 0)
 
     def cache_unfinished_req(self, req: Req, chunked=False):
         """Cache request when it is unfinished."""
@@ -714,6 +733,8 @@ class RadixCache(MlpReuseMixin, KVCacheEventMixin, BasePrefixCache):
         num_tokens = params.num_tokens
         self._record_evict_start_diagnostic(num_tokens)
         leaves = list(self.evictable_leaves)
+        if params.region is not None:
+            leaves = [leaf for leaf in leaves if leaf.cache_region == params.region]
         self._log_reuse_value_shadow(leaves)
         if getattr(self, "mlp_enabled", False) and leaves:
             self._mlp_net_values(leaves)
@@ -721,11 +742,14 @@ class RadixCache(MlpReuseMixin, KVCacheEventMixin, BasePrefixCache):
         heapq.heapify(eviction_heap)
 
         num_evicted = 0
+        evicted_by_region: dict[str, int] = defaultdict(int)
         while num_evicted < num_tokens and len(eviction_heap):
             _priority, x = heapq.heappop(eviction_heap)
 
             self.token_to_kv_pool_allocator.free(x.value)
             num_evicted += len(x.value)
+            if x.cache_region in self.region_evicted_tokens:
+                evicted_by_region[x.cache_region] += len(x.value)
             self._delete_leaf(x)
 
             if len(x.parent.children) == 0 and x.parent.lock_ref == 0:
@@ -738,10 +762,52 @@ class RadixCache(MlpReuseMixin, KVCacheEventMixin, BasePrefixCache):
 
             self._record_remove_event(x)
 
+        for region, region_tokens in evicted_by_region.items():
+            self.region_eviction_count[region] += 1
+            self.region_evicted_tokens[region] += region_tokens
+
         self.update_eviction_metrics(num_evicted, start_time)
         self._mlp_on_evict_end(time.perf_counter() - start_time, full=num_evicted)
         self._record_evict_end_diagnostic(num_evicted)
         return EvictResult(num_tokens_evicted=num_evicted)
+
+    def ensure_region_capacity(self, region: Optional[str], num_tokens: int) -> None:
+        if not self.request_regions_enabled or region not in self.region_used_tokens:
+            return
+        if num_tokens < 0:
+            return
+        total_capacity = int(getattr(self.token_to_kv_pool_allocator, "size", 0))
+        if total_capacity <= 0:
+            return
+        quota = (
+            int(total_capacity * self.request_agent_cache_ratio)
+            if region == "agent"
+            else total_capacity - int(total_capacity * self.request_agent_cache_ratio)
+        )
+        overage = self.region_used_tokens[region] + num_tokens - quota
+        if overage > 0:
+            self.evict(EvictParams(num_tokens=overage, region=region))
+
+    def region_stats(self) -> dict[str, dict[str, int]]:
+        """Return token usage and evictable usage for observability/tests."""
+        total_capacity = int(getattr(self.token_to_kv_pool_allocator, "size", 0))
+        agent_capacity = int(total_capacity * self.request_agent_cache_ratio)
+        stats = {
+            region: {
+                "capacity_tokens": (
+                    agent_capacity if region == "agent" else total_capacity - agent_capacity
+                ),
+                "used_tokens": used,
+                "evictable_tokens": 0,
+                "eviction_count": self.region_eviction_count[region],
+                "evicted_tokens": self.region_evicted_tokens[region],
+            }
+            for region, used in self.region_used_tokens.items()
+        }
+        for node in self.evictable_leaves:
+            if node.cache_region in stats:
+                stats[node.cache_region]["evictable_tokens"] += len(node.key)
+        return stats
 
     def inc_lock_ref(self, node: TreeNode) -> IncLockRefResult:
         if self.disable:
@@ -849,6 +915,7 @@ class RadixCache(MlpReuseMixin, KVCacheEventMixin, BasePrefixCache):
         # The original request endpoint remains at the end of ``child``.
         # A structural split must not copy terminal evidence to the prefix.
         new_node.terminal_count = 0
+        new_node.cache_region = child.cache_region
         child.parent = new_node
         child.key = child.key[split_len:]
         child.value = child.value[split_len:].clone()
@@ -885,6 +952,7 @@ class RadixCache(MlpReuseMixin, KVCacheEventMixin, BasePrefixCache):
         priority: int = 0,
         chunked: bool = False,
         is_terminal: bool = False,
+        region: Optional[str] = None,
     ):
         # Convert None priority to 0
         if priority is None:
@@ -931,6 +999,7 @@ class RadixCache(MlpReuseMixin, KVCacheEventMixin, BasePrefixCache):
             new_node.key = key
             new_node.value = value.clone()
             new_node.prefix_depth = node.prefix_depth + len(key)
+            new_node.cache_region = region
             self._mlp_stamp_new_node(new_node)
             if self.reuse_value_enabled:
                 self._initialize_reuse_value_node(new_node, node)
@@ -944,6 +1013,8 @@ class RadixCache(MlpReuseMixin, KVCacheEventMixin, BasePrefixCache):
             node.children[child_key] = new_node
             node = new_node
             self.evictable_size_ += len(key)
+            if self.request_regions_enabled and region in self.region_used_tokens:
+                self.region_used_tokens[region] += len(key)
             self._update_leaf_status(new_node.parent)
             self._update_leaf_status(new_node)
             # Hash will be computed lazily during event emission
@@ -976,6 +1047,8 @@ class RadixCache(MlpReuseMixin, KVCacheEventMixin, BasePrefixCache):
         assert v == node, f"parent does not have child key, {key}"
 
         self.evictable_size_ -= len(node.key)
+        if self.request_regions_enabled and node.cache_region in self.region_used_tokens:
+            self.region_used_tokens[node.cache_region] -= len(node.key)
         if node in self.evictable_leaves:
             self.evictable_leaves.remove(node)
         self._update_leaf_status(node.parent)

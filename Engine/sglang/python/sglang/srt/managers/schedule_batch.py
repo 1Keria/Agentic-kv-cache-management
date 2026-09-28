@@ -677,6 +677,7 @@ class Req(ReqDllmMixin):
         priority: Optional[int] = None,
         metrics_collector: Optional[SchedulerMetricsCollector] = None,
         extra_key: Optional[str] = None,
+        cache_region: Optional[str] = None,
         routing_key: Optional[str] = None,
         dimensions: Optional[int] = None,
         http_worker_ipc: Optional[str] = None,
@@ -753,7 +754,12 @@ class Req(ReqDllmMixin):
                 extra_key or ""
             ) + lora_id  # lora_id is concatenated to the extra key
 
-        self.extra_key = extra_key
+        self.cache_region = cache_region
+        self.extra_key = (
+            ("__request_cache_region__", cache_region, extra_key)
+            if cache_region is not None
+            else extra_key
+        )
         self.lora_id = lora_id
         self.routing_key = routing_key
 

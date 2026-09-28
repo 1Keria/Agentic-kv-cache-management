@@ -4,6 +4,8 @@ __pycache__/
 .env
 .env.*
 .DS_Store
+.ipynb_checkpoints/
+*.pid
 node_modules/
 model.txt
 keys.yaml
@@ -35,6 +37,14 @@ workloads/**/workload.jsonl
 # Local model weights / training tensors (GitHub 100MB limit)
 models/
 *.npz
+
+# Keep request-classifier source on GitHub; checkpoints/cache stay on Hugging Face.
+!models/
+models/*
+!models/request_classifier/
+models/request_classifier/*
+!models/request_classifier/*.py
+!models/request_classifier/README.md
 # Runtime dumps too large to push
 experiments/session_return/**/server_dump*/
 experiments/session_return/**/client/*.jsonl

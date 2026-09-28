@@ -76,6 +76,36 @@ if TYPE_CHECKING:
 logger = logging.getLogger(__name__)
 
 
+def _classifier_content_length(value: Any) -> int:
+    if value is None:
+        return 0
+    if isinstance(value, str):
+        return len(value)
+    if isinstance(value, dict):
+        return sum(_classifier_content_length(item) for item in value.values())
+    if isinstance(value, list):
+        return sum(_classifier_content_length(item) for item in value)
+    return len(str(value))
+
+
+def _classifier_body(request_dump: Dict[str, Any]) -> Dict[str, Any]:
+    messages = []
+    for message in request_dump.get("messages", []):
+        item = {
+            "role": message.get("role"),
+            "content": {"__cache_char_count__": _classifier_content_length(message.get("content"))},
+        }
+        if message.get("tool_calls"):
+            item["tool_calls"] = [{} for _ in message["tool_calls"]]
+        if message.get("function_call"):
+            item["function_call"] = True
+        messages.append(item)
+    return {
+        "messages": messages,
+        "tools": [{} for _ in request_dump.get("tools", [])],
+    }
+
+
 def normalize_tool_content(role: str, content):
     """Normalize tool message content from OpenAI array format to plain string.
 
@@ -458,6 +488,8 @@ class OpenAIServingChat(OpenAIServingBase):
         request: ChatCompletionRequest,
         raw_request: Request = None,
     ) -> tuple[GenerateReqInput, ChatCompletionRequest]:
+        request_dump = request.model_dump(mode="json", exclude_none=True)
+        cache_classifier_body = _classifier_body(request_dump)
         reasoning_effort = (
             request.chat_template_kwargs.pop("reasoning_effort", None)
             if request.chat_template_kwargs
@@ -547,6 +579,7 @@ class OpenAIServingChat(OpenAIServingBase):
             routing_key=self.extract_routing_key(raw_request),
             custom_labels=custom_labels,
             custom_logit_processor=request.custom_logit_processor,
+            cache_classifier_body=cache_classifier_body,
             image_max_dynamic_patch=img_max_dynamic_patch,
             video_max_dynamic_patch=vid_max_dynamic_patch,
             max_dynamic_patch=getattr(request, "max_dynamic_patch", None),

@@ -267,6 +267,51 @@ def evict_from_tree_cache(tree_cache: BasePrefixCache | None, num_tokens: int):
             tree_cache.evict(EvictParams(num_tokens=num_tokens))
 
 
+def ensure_region_capacity_for_reqs(
+    tree_cache: BasePrefixCache | None,
+    reqs: list[Req],
+    token_counts: list[int],
+) -> None:
+    if tree_cache is None or len(reqs) != len(token_counts):
+        return
+    region_tokens: dict[str, int] = {}
+    for req, count in zip(reqs, token_counts):
+        region = getattr(req, "cache_region", None)
+        if region is not None:
+            count = max(int(count), 0)
+            page_size = max(int(getattr(tree_cache, "page_size", 1)), 1)
+            count = ((count + page_size - 1) // page_size) * page_size
+            region_tokens[region] = region_tokens.get(region, 0) + count
+    for region, count in region_tokens.items():
+        tree_cache.ensure_region_capacity(region, count)
+
+
+def region_allocation_token_counts(
+    prefix_lens_cpu: torch.Tensor,
+    seq_lens_cpu: torch.Tensor,
+    page_size: int,
+    *,
+    decode: bool = False,
+) -> list[int]:
+    """Return each request's actual allocator growth in token slots."""
+    if page_size <= 1:
+        return [
+            max(int(seq_len) - int(prefix_len), 0)
+            for prefix_len, seq_len in zip(prefix_lens_cpu, seq_lens_cpu)
+        ]
+    if decode:
+        return [
+            page_size if int(seq_len) % page_size == 1 else 0
+            for seq_len in seq_lens_cpu
+        ]
+    pages_after = (seq_lens_cpu + page_size - 1) // page_size
+    pages_before = (prefix_lens_cpu + page_size - 1) // page_size
+    return [
+        max(int(page_count), 0) * page_size
+        for page_count in (pages_after - pages_before)
+    ]
+
+
 def alloc_paged_token_slots_extend(
     tree_cache: BasePrefixCache,
     prefix_lens: torch.Tensor,
@@ -365,6 +410,16 @@ def alloc_for_extend(
     prefix_lens_device = prefix_lens_cpu.to(batch.device, non_blocking=True)
     extend_lens_device = extend_lens_cpu.to(batch.device, non_blocking=True)
 
+    ensure_region_capacity_for_reqs(
+        batch.tree_cache,
+        batch.reqs,
+        region_allocation_token_counts(
+            prefix_lens_cpu,
+            batch.seq_lens_cpu,
+            batch.tree_cache.page_size,
+        ),
+    )
+
     # Allocate req slots
     req_pool_indices = alloc_req_slots(
         batch.req_to_token_pool, batch.reqs, batch.tree_cache
@@ -451,6 +506,18 @@ def alloc_for_decode(batch: ScheduleBatch, token_per_req: int) -> torch.Tensor:
     seq_lens_gpu = batch.seq_lens
     bs = seq_lens_gpu.shape[0]
 
+    seq_lens_next_cpu = batch.seq_lens_cpu + token_per_req
+    ensure_region_capacity_for_reqs(
+        batch.tree_cache,
+        batch.reqs,
+        region_allocation_token_counts(
+            batch.seq_lens_cpu,
+            seq_lens_next_cpu,
+            batch.tree_cache.page_size,
+            decode=True,
+        ),
+    )
+
     if batch.tree_cache.page_size == 1:
         # Non-paged allocation
         out_cache_loc = alloc_token_slots(batch.tree_cache, bs * token_per_req)
@@ -463,7 +530,7 @@ def alloc_for_decode(batch: ScheduleBatch, token_per_req: int) -> torch.Tensor:
         out_cache_loc = alloc_paged_token_slots_decode(
             tree_cache=batch.tree_cache,
             seq_lens=seq_lens_next,
-            seq_lens_cpu=batch.seq_lens_cpu + token_per_req,
+            seq_lens_cpu=seq_lens_next_cpu,
             last_loc=last_loc,
             token_per_req=token_per_req,
         )

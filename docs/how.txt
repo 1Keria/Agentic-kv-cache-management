@@ -1,0 +1,102 @@
+仅凭这个现象还不能完全确认，但它**高度像数据协议或采集流程造成的强混杂**，而不是模型真正理解了 Agent 行为。
+
+常见情况是：
+
+- Agent 框架自动注入 `system`，其中包含角色设定、工具说明或工作流约束；
+- 普通请求由另一套接口生成，只保留 `user`；
+- 数据预处理又把空的 `system` 字段删除了。
+
+这样一来，模型学到的其实是：
+
+> “这个请求来自 Agent 数据源。”
+
+而不是：
+
+> “这个请求未来会表现出 Agent 式的 KV cache 复用行为。”
+
+如果线上协议明确保证“Agent 请求必带 system，普通请求绝不带 system”，这个规则可以作为合法的协议标记。但这时不需要训练小模型，直接使用：
+
+```text
+system_present → Agent
+otherwise      → ordinary
+```
+
+而且论文中应称为“request protocol classification”或“gateway metadata”，不能称为通用的 Agent 识别。
+
+你可以先做下面四项检查。
+
+第一，统计字段和标签的联合分布。注意区分字段不存在、空字符串和只有空白字符。
+
+```python
+df["system_present"] = (
+    df["system"].notna()
+    & df["system"].astype(str).str.strip().ne("")
+)
+
+print(pd.crosstab(
+    df["label"],
+    df["system_present"],
+    normalize="index"
+))
+```
+
+同时计算：
+
+\[
+P(\text{system}|\text{Agent}),\quad
+P(\text{system}|\text{Normal})
+\]
+
+如果 Agent 几乎全部有 `system`，普通请求几乎全部没有，那么这是一个近似确定性的协议特征。还要按以下字段分别统计：
+
+- 数据来源；
+- Agent 框架；
+- 模型或 endpoint；
+- system prompt 模板；
+- session；
+- 时间段。
+
+如果每个来源内部都成立，说明它可能是线上协议；如果只在某个数据源成立，基本就是采集偏差。
+
+第二，做四组分类消融：
+
+1. 只使用 `system_present`；
+2. 只使用 `system_len`；
+3. 使用所有特征，但删除 `system`；
+4. 使用所有特征。
+
+每种设置都要做两种划分：
+
+- 随机划分；
+- 按数据源、模板、session、时间做 group holdout。
+
+如果随机划分接近 100%，但换数据源或模板后准确率明显下降，说明模型主要利用了数据泄漏。尤其要注意：如果保留字段存在性、遮掉 system 内容后准确率仍然很高，那么模型学到的是序列化协议，而不是 system 语义。
+
+第三，做反事实测试。它比普通准确率更能说明问题：
+
+- 给普通请求添加一个中性的 system prompt，长度从 Agent 样本中匹配；
+- 删除 Agent 请求的 system，保留原有 user、tool、role 和 session 信息；
+- 将 Agent 和普通请求的 system prompt 互换，但保持真实标签不变。
+
+如果只是添加或删除 system，模型预测就翻转，那么它没有学到 Agent 的行为特征。
+
+第四，检查 system 内容本身是否包含工具信息。很多 Agent 框架会把完整 tool schema 放入 system prompt。此时“system 长度”可能只是 `tool 数量` 或 `工具描述 token 数` 的代理变量。你可以进一步拆出：
+
+- tool schema 数量；
+- tool 名称数量；
+- 是否出现 tool role；
+- 是否有 tool call/tool result；
+- session ID 或 parent request ID；
+- 对话轮数；
+- 前缀重复率和请求间隔。
+
+然后比较“删除 system 后，仅使用这些结构化特征”的结果。
+
+根据结果可以这样处理：
+
+- **如果 system 标记在所有目标线上协议中都可靠**：直接用规则，不训练分类器；论文把重点放在缓存隔离和管理策略。
+- **如果它只在当前数据集可靠**：从主分类器中删除，或者只作为弱先验。
+- **如果它有帮助但不稳定**：使用概率 \(p_A\)，不要硬分类。`system_present` 只初始化 \(p_A\)，之后用 tool call、session 行为和真实 cache hit 反馈修正。
+- **如果相同请求内容既可能来自 Agent，也可能来自普通请求**：仅凭请求本身无法判断来源，必须依赖 gateway metadata、session 信息或前序事件。此时论文目标应改成预测“未来一段时间内的缓存复用行为”，而不是严格识别 Agent 身份。
+
+对你当前的缓存系统，我建议把 `system_present` 保留为一个 baseline 和初始先验，同时加入一个 `unknown` 状态。新请求先按概率记账，后续根据真实回访、tool call 和跨轮复用更新类别权重。这样即使数据中的 system 规律失效，也不会把整类请求永久放入错误分区。

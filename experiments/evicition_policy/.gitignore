@@ -1,0 +1,8 @@
+data/
+runtime/
+results/
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+*.part
+*.log

@@ -1,0 +1,38 @@
+{
+  "engine_release": "0.5.13.post1",
+  "cache_backend": "UnifiedRadixCache",
+  "policies": ["lru", "lfu", "slru"],
+  "slru_protected_hit_count_threshold": 2,
+  "slru_segment_capacity_quota": null,
+  "comparison_scope": "Full-component eviction scoring; SWA-driven eviction remains LRU with coupled removal",
+  "tlru": {"available_in_pinned_release": false, "run": false},
+  "comparison_stage": "single_pass_exploratory",
+  "repeats_per_policy": 1,
+  "planned_runs": 3,
+  "automatic_additional_repeats": false,
+  "workload_timing": {
+    "mode": "uniform_accelerated_replay_v1",
+    "inter_request_gap_scale": 0.3,
+    "raw_start_spacing_seconds": 90,
+    "effective_start_spacing_seconds": 27.0,
+    "validation_complete_sessions": 20,
+    "evaluation_complete_sessions": 20,
+    "candidate_evaluation_sessions": 83,
+    "complete_session_selection": "sha256_order_prefix_v1",
+    "requests_or_outputs_truncated": false,
+    "max_total_tokens": 524288,
+    "target_seconds_per_policy": 3600,
+    "safety_timeout_seconds": 7200,
+    "selected_sessions_are_complete": true
+  },
+  "previous_attempt": {
+    "status": "failed_before_first_policy_completed",
+    "lru_completed_requests": 1739,
+    "lfu_started": false,
+    "slru_started": false,
+    "usable_comparison": false
+  },
+  "formal_order_candidate_not_started": [
+    ["lru", "lfu", "slru"]
+  ]
+}

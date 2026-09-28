@@ -33,6 +33,10 @@ class CacheInitParams:
     reuse_value_base_cold_strength: float = 1.0
     disable_finished_insert: bool = False
 
+    # Optional fixed KV-token quotas for request identity regions.
+    enable_request_cache_regions: bool = False
+    request_agent_cache_ratio: float = 0.5
+
     mlp_checkpoint: Optional[str] = None
     mlp_hold_lambda: float = 0.05
     mlp_delta_alpha: str = "1.0,0.7,0.5"

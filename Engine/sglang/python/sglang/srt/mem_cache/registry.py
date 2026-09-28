@@ -189,6 +189,24 @@ def create_tree_cache(ctx: TreeCacheBuildContext) -> BasePrefixCache:
         cache = default_radix_cache_factory(ctx)
         source = "default"
 
+    from sglang.srt.mem_cache.radix_cache import RadixCache
+    from sglang.srt.mem_cache.swa_radix_cache import SWARadixCache
+
+    if ctx.server_args.enable_request_cache_regions and type(cache) not in (
+        RadixCache,
+        SWARadixCache,
+    ):
+        raise NotImplementedError(
+            "request cache regions currently support only RadixCache and SWARadixCache"
+        )
+    if (
+        ctx.server_args.enable_request_cache_regions
+        and ctx.server_args.speculative_algorithm is not None
+    ):
+        raise NotImplementedError(
+            "request cache regions currently do not support speculative decoding"
+        )
+
     streaming_wrapped = False
     if (
         ctx.server_args.enable_streaming_session

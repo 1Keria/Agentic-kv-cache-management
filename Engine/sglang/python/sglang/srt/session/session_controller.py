@@ -94,6 +94,7 @@ class Session:
         self.req_nodes: Dict[str, SessionReqNode] = {}
         self.close_on_finish: bool = False
         self._inflight: bool = False
+        self.cache_region: Optional[str] = None
 
     def is_timed_out(self) -> bool:
         if self.timeout is None:
@@ -215,6 +216,20 @@ class Session:
             input_ids = req.input_ids
             input_ids_unpadded = req.input_ids
 
+        cache_region = self.cache_region
+        if not abort:
+            if cache_region is None:
+                cache_region = req.cache_region
+                if cache_region is not None:
+                    self.cache_region = cache_region
+            elif req.cache_region is not None and req.cache_region != cache_region:
+                logger.debug(
+                    "Session %s classified as %s but keeps sticky cache region %s",
+                    self.session_id,
+                    req.cache_region,
+                    cache_region,
+                )
+
         new_req = Req(
             rid=req.rid,
             origin_input_text=None,
@@ -235,6 +250,7 @@ class Session:
             return_routed_experts=req.return_routed_experts,
             routed_experts_start_len=req.routed_experts_start_len,
             priority=req.priority,
+            cache_region=cache_region,
             routing_key=req.routing_key,
             extra_key=req.extra_key,
             http_worker_ipc=req.http_worker_ipc,

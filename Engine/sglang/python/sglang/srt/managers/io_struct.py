@@ -241,6 +241,11 @@ class GenerateReqInput(BaseReq):
     # Priority for the request
     priority: Optional[int] = None
 
+    # Internal request-classifier input/output. These fields are not part of
+    # the public OpenAI API and are carried from the API adapter to the scheduler.
+    cache_classifier_body: Optional[Union[Dict[str, Any], List[Dict[str, Any]]]] = None
+    cache_region: Optional[str] = None
+
     # Extra key for classifying the request (e.g. cache_salt)
     extra_key: Optional[Union[List[str], str]] = None
 
@@ -429,6 +434,14 @@ class GenerateReqInput(BaseReq):
         self._normalize_logprob_params(num)
         self._normalize_custom_logit_processor(num)
         self._normalize_bootstrap_params(num)
+        if isinstance(self.cache_classifier_body, list):
+            if len(self.cache_classifier_body) != self.batch_size:
+                raise ValueError(
+                    "The length of cache_classifier_body should be equal to the batch size."
+                )
+            self.cache_classifier_body = (
+                self.cache_classifier_body * self.parallel_sample_num
+            )
 
     def _expand_inputs(self, num):
         """Expand the main inputs (text, input_ids, input_embeds) for parallel sampling."""
@@ -713,6 +726,12 @@ class GenerateReqInput(BaseReq):
             disagg_prefill_dp_rank=self.disagg_prefill_dp_rank,
             conversation_id=self.conversation_id,
             priority=self.priority,
+            cache_classifier_body=(
+                self.cache_classifier_body[i]
+                if isinstance(self.cache_classifier_body, list)
+                else self.cache_classifier_body
+            ),
+            cache_region=self.cache_region,
             extra_key=self.extra_key,
             no_logs=self.no_logs,
             custom_labels=self.custom_labels,
@@ -828,6 +847,9 @@ class TokenizedGenerateReqInput(BaseReq):
 
     # For observability
     time_stats: Optional[Union[APIServerReqTimeStats, DPControllerReqTimeStats]] = None
+
+    # Internal request cache region selected by the tokenizer process.
+    cache_region: Optional[str] = None
 
 
 @dataclass

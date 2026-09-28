@@ -104,6 +104,7 @@ class TreeNode:
         self.id = TreeNode.counter if id is None else id
         TreeNode.counter += 1
         self.swa_uuid = None
+        self.cache_region: Optional[str] = None
 
     @property
     def evicted(self):
@@ -384,6 +385,10 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
             self.init_metrics_collector()
 
         self.sliding_window_size = params.sliding_window_size
+        self.request_regions_enabled = params.enable_request_cache_regions
+        self.request_agent_cache_ratio = float(params.request_agent_cache_ratio)
+        if self.request_regions_enabled and not 0.0 < self.request_agent_cache_ratio < 1.0:
+            raise ValueError("request_agent_cache_ratio must be between 0 and 1")
         self.reset()
 
     ##### Public API #####
@@ -409,6 +414,11 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
         self.swa_evictable_size_ = 0
         self.full_protected_size_ = 0
         self.swa_protected_size_ = 0
+        self.region_full_used_tokens = {"agent": 0, "request": 0}
+        self.region_swa_used_tokens = {"agent": 0, "request": 0}
+        self.region_eviction_count = {"agent": 0, "request": 0}
+        self.region_full_evicted_tokens = {"agent": 0, "request": 0}
+        self.region_swa_evicted_tokens = {"agent": 0, "request": 0}
         # LRU lists are used to maintain the order of eviction of the nodes in the tree
         self.full_lru_list = LRUList(is_swa_list=False)
         self.swa_lru_list = LRUList(is_swa_list=True)
@@ -454,6 +464,7 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
         value = params.value
         prev_prefix_len = params.prev_prefix_len
         swa_evicted_seqlen = params.swa_evicted_seqlen
+        region = getattr(params.req, "cache_region", None)
 
         key, value = key.maybe_to_bigram_view(self.is_eagle, value)
         key = key.page_aligned(self.page_size)
@@ -471,6 +482,7 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
                 prev_prefix_len,
                 swa_evicted_seqlen,
                 params.is_terminal,
+                region,
             )
         finally:
             self._mlp_end_insert()
@@ -527,6 +539,8 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
             skip_swa=req.swa_prefix_lock_released,
         )
         req.swa_prefix_lock_released = False
+        if self.request_regions_enabled:
+            self.ensure_region_capacity(getattr(req, "cache_region", None), 0)
 
     def cache_unfinished_req(self, req: Req, chunked=False) -> None:
         """Cache request when it is unfinished."""
@@ -616,25 +630,40 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
         swa_num_tokens = params.swa_num_tokens
         full_num_evicted = 0
         swa_num_evicted = 0
+        evicted_by_region = defaultdict(lambda: [0, 0])
         if full_num_tokens > 0:
             # MLP: rescore remaining full leaves after each victim (same as the
             # 0.246 long-window run). One-shot heap does not match that ranking.
-            x = self._select_full_leaf_victim()
+            x = self._select_full_leaf_victim(params.region)
             while full_num_evicted < full_num_tokens and self.full_lru_list.in_list(
                 x
             ):
+                region = x.cache_region
                 d_full, d_swa, _ = self._evict_one_full_unlocked_leaf(x)
                 full_num_evicted += d_full
                 swa_num_evicted += d_swa
-                x = self._select_full_leaf_victim()
+                if region in self.region_full_used_tokens:
+                    evicted_by_region[region][0] += d_full
+                    evicted_by_region[region][1] += d_swa
+                x = self._select_full_leaf_victim(params.region)
 
         if swa_num_evicted < swa_num_tokens:
-            x = self._select_swa_victim()
+            x = self._select_swa_victim(params.region)
             while swa_num_evicted < swa_num_tokens and self.swa_lru_list.in_list(x):
+                region = x.cache_region
                 d_full, d_swa = self._evict_one_swa_unlocked_node(x)
                 full_num_evicted += d_full
                 swa_num_evicted += d_swa
-                x = self._select_swa_victim()
+                if region in self.region_full_used_tokens:
+                    evicted_by_region[region][0] += d_full
+                    evicted_by_region[region][1] += d_swa
+                x = self._select_swa_victim(params.region)
+
+        for region, (full_evicted, swa_evicted) in evicted_by_region.items():
+            if full_evicted or swa_evicted:
+                self.region_eviction_count[region] += 1
+                self.region_full_evicted_tokens[region] += full_evicted
+                self.region_swa_evicted_tokens[region] += swa_evicted
 
         self.update_eviction_metrics(full_num_evicted + swa_num_evicted, start_time)
         self._mlp_on_evict_end(
@@ -645,6 +674,71 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
         return EvictResult(
             num_tokens_evicted=full_num_evicted, swa_num_tokens_evicted=swa_num_evicted
         )
+
+    def ensure_region_capacity(self, region: Optional[str], num_tokens: int) -> None:
+        if not self.request_regions_enabled or region not in self.region_full_used_tokens:
+            return
+        if num_tokens < 0:
+            return
+        full_capacity = int(self.token_to_kv_pool_allocator.size_full)
+        swa_capacity = int(self.token_to_kv_pool_allocator.size_swa)
+        agent_full_capacity = int(full_capacity * self.request_agent_cache_ratio)
+        agent_swa_capacity = int(swa_capacity * self.request_agent_cache_ratio)
+        full_quota = (
+            agent_full_capacity
+            if region == "agent"
+            else full_capacity - agent_full_capacity
+        )
+        swa_quota = (
+            agent_swa_capacity
+            if region == "agent"
+            else swa_capacity - agent_swa_capacity
+        )
+        full_overage = self.region_full_used_tokens[region] + num_tokens - full_quota
+        swa_overage = self.region_swa_used_tokens[region] + num_tokens - swa_quota
+        if full_overage > 0 or swa_overage > 0:
+            self.evict(
+                EvictParams(
+                    num_tokens=max(full_overage, 0),
+                    swa_num_tokens=max(swa_overage, 0),
+                    region=region,
+                )
+            )
+
+    def region_stats(self) -> dict[str, dict[str, int]]:
+        full_capacity = int(self.token_to_kv_pool_allocator.size_full)
+        swa_capacity = int(self.token_to_kv_pool_allocator.size_swa)
+        agent_full_capacity = int(full_capacity * self.request_agent_cache_ratio)
+        agent_swa_capacity = int(swa_capacity * self.request_agent_cache_ratio)
+        stats = {}
+        for region in self.region_full_used_tokens:
+            stats[region] = {
+                "full_capacity_tokens": (
+                    agent_full_capacity
+                    if region == "agent"
+                    else full_capacity - agent_full_capacity
+                ),
+                "swa_capacity_tokens": (
+                    agent_swa_capacity
+                    if region == "agent"
+                    else swa_capacity - agent_swa_capacity
+                ),
+                "full_used_tokens": self.region_full_used_tokens[region],
+                "swa_used_tokens": self.region_swa_used_tokens[region],
+                "full_evictable_tokens": 0,
+                "swa_evictable_tokens": 0,
+                "eviction_count": self.region_eviction_count[region],
+                "full_evicted_tokens": self.region_full_evicted_tokens[region],
+                "swa_evicted_tokens": self.region_swa_evicted_tokens[region],
+            }
+        for node in self._collect_all_nodes():
+            if node.cache_region not in stats:
+                continue
+            if node.full_lock_ref == 0:
+                stats[node.cache_region]["full_evictable_tokens"] += len(node.key)
+            if not node.swa_tombstone and node.swa_lock_ref == 0:
+                stats[node.cache_region]["swa_evictable_tokens"] += len(node.key)
+        return stats
 
     def inc_lock_ref(self, node: TreeNode) -> IncLockRefResult:
         """
@@ -782,6 +876,10 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
                     self.token_to_kv_pool_allocator.free_swa(node.value)
                     self.swa_lru_list.remove_node(node)
                     node.swa_tombstone = True
+                    if node.cache_region in self.region_swa_used_tokens:
+                        self.region_swa_used_tokens[node.cache_region] -= len(
+                            node.value
+                        )
                 else:
                     # Internal: standard protected -> evictable.
                     self.swa_evictable_size_ += len(node.value)
@@ -842,16 +940,18 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
 
     ##### Internal Helper Functions #####
 
-    def _iter_full_unlocked_leaves(self):
+    def _iter_full_unlocked_leaves(self, region: Optional[str] = None):
         node = self.full_lru_list.get_leaf_lru_no_lock()
         while self.full_lru_list.in_list(node):
-            yield node
+            if region is None or node.cache_region == region:
+                yield node
             node = self.full_lru_list.get_prev_leaf_no_lock(node)
 
-    def _iter_swa_unlocked(self):
+    def _iter_swa_unlocked(self, region: Optional[str] = None):
         node = self.swa_lru_list.get_lru_no_lock()
         while self.swa_lru_list.in_list(node):
-            yield node
+            if region is None or node.cache_region == region:
+                yield node
             node = self.swa_lru_list.get_prev_no_lock(node)
 
     def _evict_one_swa_unlocked_node(self, x: TreeNode) -> Tuple[int, int]:
@@ -875,6 +975,8 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
             self.swa_lru_list.remove_node(x)
             self.swa_evictable_size_ -= len(x.value)
             x.swa_tombstone = True
+            if x.cache_region in self.region_swa_used_tokens:
+                self.region_swa_used_tokens[x.cache_region] -= len(x.value)
         else:
             assert (
                 x.full_lock_ref == 0
@@ -890,10 +992,12 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
             full_num_evicted += leaf_full_num_evicted
         return full_num_evicted, swa_num_evicted
 
-    def _select_swa_victim(self):
-        fallback = self.swa_lru_list.get_lru_no_lock()
+    def _select_swa_victim(self, region: Optional[str] = None):
+        fallback = next(self._iter_swa_unlocked(region), None)
         if getattr(self, "mlp_enabled", False):
-            return self._select_mlp_swa_victim(self._iter_swa_unlocked(), fallback)
+            return self._select_mlp_swa_victim(
+                self._iter_swa_unlocked(region), fallback
+            )
         return fallback
 
     def _evict_one_full_unlocked_leaf(self, x: TreeNode) -> Tuple[int, int, TreeNode]:
@@ -917,14 +1021,14 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
         full_num_evicted += leaf_full_num_evicted
         return full_num_evicted, swa_num_evicted, walked
 
-    def _select_full_leaf_victim(self):
-        fallback = self.full_lru_list.get_leaf_lru_no_lock()
+    def _select_full_leaf_victim(self, region: Optional[str] = None):
+        fallback = next(self._iter_full_unlocked_leaves(region), None)
         if getattr(self, "mlp_enabled", False):
             return self._select_mlp_victim(
-                self._iter_full_unlocked_leaves(), fallback
+                self._iter_full_unlocked_leaves(region), fallback
             )
         return self._select_reuse_value_victim(
-            self._iter_full_unlocked_leaves(), fallback
+            self._iter_full_unlocked_leaves(region), fallback
         )
 
     def _match_prefix_helper(
@@ -1052,6 +1156,7 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
                 child.swa_tombstone != node.swa_tombstone
                 or child.full_lock_ref != node.full_lock_ref
                 or child.swa_lock_ref != node.swa_lock_ref
+                or child.cache_region != node.cache_region
             ):
                 break
 
@@ -1124,6 +1229,7 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
         new_node.children = {key[split_len:].child_key(self.page_size): child}
         new_node.parent = child.parent
         new_node.swa_tombstone = child.swa_tombstone
+        new_node.cache_region = child.cache_region
         new_node.full_lock_ref = child.full_lock_ref
         new_node.swa_lock_ref = child.swa_lock_ref
         new_node.key = child.key[:split_len]
@@ -1167,6 +1273,7 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
         update_kv_after_len: int,
         swa_evicted_seqlen: int = 0,
         is_terminal: bool = False,
+        region: Optional[str] = None,
     ) -> int:
         # Update the last access time from root to leaf, so that
         # swa will tombstone the node closer to root first
@@ -1218,6 +1325,10 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
                         node.swa_tombstone = False
                         self.swa_lru_list.insert_mru(node)
                         self.swa_evictable_size_ += len(node.value)
+                        if node.cache_region in self.region_swa_used_tokens:
+                            self.region_swa_used_tokens[node.cache_region] += len(
+                                node.value
+                            )
                     elif swa_evicted_seqlen < total_prefix_length + prefix_len:
                         # Branch 2: part of swa tokens of value[:prefix_len] are evicted, so we need to split the node and insert the value to new node.
                         start_update_idx = swa_evicted_seqlen - total_prefix_length
@@ -1232,6 +1343,10 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
                         node.swa_tombstone = False
                         self.swa_lru_list.insert_mru(node)
                         self.swa_evictable_size_ += len(node.value)
+                        if node.cache_region in self.region_swa_used_tokens:
+                            self.region_swa_used_tokens[node.cache_region] += len(
+                                node.value
+                            )
                     else:
                         # Branch 3: all swa tokens of value[:prefix_len] are evicted, so we don't need to update the node.
                         self.token_to_kv_pool_allocator.free(value[:prefix_len])
@@ -1279,11 +1394,14 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
                     key[:swa_tombstone_len],
                     value[:swa_tombstone_len],
                     swa_tombstone=True,
+                    region=region,
                 )
                 key = key[swa_tombstone_len:]
                 value = value[swa_tombstone_len:]
 
-            new_leaf = self._add_new_node(node, key, value, swa_tombstone=False)
+            new_leaf = self._add_new_node(
+                node, key, value, swa_tombstone=False, region=region
+            )
 
             if envs.SGLANG_OPT_SWA_SPLIT_LEAF_ON_INSERT.get():
                 # Cap the leaf at one (page-aligned) sliding window so a future
@@ -1301,6 +1419,7 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
         key: RadixKey,
         value: torch.Tensor,
         swa_tombstone: bool = False,
+        region: Optional[str] = None,
     ) -> TreeNode:
         assert len(key) > 0, f"key should not be empty"
         new_node = TreeNode()
@@ -1308,6 +1427,7 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
         new_node.key = key
         new_node.value = value.clone()
         new_node.swa_tombstone = swa_tombstone
+        new_node.cache_region = region
         new_node.prefix_depth = parent.prefix_depth + len(key)
         self._mlp_stamp_new_node(new_node)
         if self.reuse_value_enabled:
@@ -1317,9 +1437,13 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
         parent.children[key.child_key(self.page_size)] = new_node
         self.full_lru_list.insert_mru(new_node)
         self.full_evictable_size_ += len(value)
+        if region in self.region_full_used_tokens:
+            self.region_full_used_tokens[region] += len(value)
         if not swa_tombstone:
             self.swa_lru_list.insert_mru(new_node)
             self.swa_evictable_size_ += len(value)
+            if region in self.region_swa_used_tokens:
+                self.region_swa_used_tokens[region] += len(value)
         self._record_store_event(new_node)
         return new_node
 
@@ -1353,15 +1477,21 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
         v = node.parent.children.pop(key, None)
         assert v == node, f"parent does not have child key, {key}"
         self.full_evictable_size_ -= len(node.key)
+        if node.cache_region in self.region_full_used_tokens:
+            self.region_full_used_tokens[node.cache_region] -= len(node.key)
         # Tombstoned leaves were never (re-)added to swa_lru_list and were
         # already removed from swa_evictable_size_ when they were tombstoned.
         if not node.swa_tombstone:
             self.swa_evictable_size_ -= len(node.key)
+            if node.cache_region in self.region_swa_used_tokens:
+                self.region_swa_used_tokens[node.cache_region] -= len(node.key)
 
     def _tombstone_internal_node(self, node: TreeNode) -> None:
         assert len(node.children) != 0, f"Cannot tombstone a leaf node, {node.id=}"
         node.swa_tombstone = True
         self.swa_evictable_size_ -= len(node.key)
+        if node.cache_region in self.region_swa_used_tokens:
+            self.region_swa_used_tokens[node.cache_region] -= len(node.key)
 
     def _delete_tombstone_leaf(self, node: TreeNode) -> None:
         assert (
@@ -1373,6 +1503,8 @@ class SWARadixCache(MlpReuseMixin, ReuseValueMixin, KVCacheEventMixin, BasePrefi
         assert v == node, f"parent does not have child key, {key}"
 
         self.full_evictable_size_ -= len(node.key)
+        if node.cache_region in self.region_full_used_tokens:
+            self.region_full_used_tokens[node.cache_region] -= len(node.key)
 
     def _collect_nontombstone_nodes(self) -> List[TreeNode]:
         ret_list = []

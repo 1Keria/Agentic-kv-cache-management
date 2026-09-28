@@ -1,0 +1,3922 @@
+[
+  {
+    "path": "experiments/jyf/MLP_EXPERIMENT_HANDOFF_20260914.md",
+    "size": 28159
+  },
+  {
+    "path": "models/MLP/progress.md",
+    "size": 11902
+  },
+  {
+    "path": "experiments/jyf/evict_position/ORGANIZATION.md",
+    "size": 1320
+  },
+  {
+    "path": "experiments/jyf/evict_position/README.md",
+    "size": 5655
+  },
+  {
+    "path": "experiments/jyf/evict_position/benchmark_predictor.py",
+    "size": 1442
+  },
+  {
+    "path": "experiments/jyf/evict_position/evaluate_shift.py",
+    "size": 2387
+  },
+  {
+    "path": "experiments/jyf/evict_position/migrate_paths.py",
+    "size": 963
+  },
+  {
+    "path": "experiments/jyf/evict_position/monitor_gpu.py",
+    "size": 1293
+  },
+  {
+    "path": "experiments/jyf/evict_position/predictor.py",
+    "size": 2663
+  },
+  {
+    "path": "experiments/jyf/evict_position/prepare_workload.py",
+    "size": 2129
+  },
+  {
+    "path": "experiments/jyf/evict_position/report.py",
+    "size": 11520
+  },
+  {
+    "path": "experiments/jyf/evict_position/run_online.sh",
+    "size": 3830
+  },
+  {
+    "path": "experiments/jyf/evict_position/run_suite.py",
+    "size": 2386
+  },
+  {
+    "path": "experiments/jyf/evict_position/serving_patch.py",
+    "size": 12348
+  },
+  {
+    "path": "experiments/jyf/evict_position/sitecustomize.py",
+    "size": 980
+  },
+  {
+    "path": "experiments/jyf/evict_position/status.py",
+    "size": 1370
+  },
+  {
+    "path": "experiments/jyf/evict_position/test_cache.py",
+    "size": 2813
+  },
+  {
+    "path": "experiments/jyf/evict_position/test_math.py",
+    "size": 1560
+  },
+  {
+    "path": "experiments/jyf/evict_position/train.py",
+    "size": 1696
+  },
+  {
+    "path": "experiments/jyf/evict_position/training_base.py",
+    "size": 26023
+  },
+  {
+    "path": "experiments/jyf/feature_exp/README.md",
+    "size": 4632
+  },
+  {
+    "path": "experiments/jyf/feature_exp/conclusion_zh.md",
+    "size": 4677
+  },
+  {
+    "path": "experiments/jyf/feature_exp/frontier_ablation_conclusion_zh.md",
+    "size": 8431
+  },
+  {
+    "path": "experiments/jyf/feature_exp/frontier_feature_ablation.py",
+    "size": 19432
+  },
+  {
+    "path": "experiments/jyf/feature_exp/frontier_time_feature_ablation.py",
+    "size": 25736
+  },
+  {
+    "path": "experiments/jyf/feature_exp/run_feature_ablation.py",
+    "size": 25616
+  },
+  {
+    "path": "experiments/jyf/feature_exp/time_hazard_conclusion_zh.md",
+    "size": 8668
+  },
+  {
+    "path": "workloads/mix_a140_r560/README.md",
+    "size": 2118
+  },
+  {
+    "path": "workloads/mix_a140_r560/manifest.json",
+    "size": 42749
+  },
+  {
+    "path": "workloads/mix_a140_r560/sessions.jsonl",
+    "size": 270352
+  },
+  {
+    "path": "workloads/mix_a140_r560/spec.json",
+    "size": 356357
+  },
+  {
+    "path": "workloads/mix_a140_r560/workload.jsonl",
+    "size": 794907085
+  },
+  {
+    "path": "workloads/mix_a8_r32/README.md",
+    "size": 2150
+  },
+  {
+    "path": "workloads/mix_a8_r32/manifest.json",
+    "size": 4134
+  },
+  {
+    "path": "workloads/mix_a8_r32/sessions.jsonl",
+    "size": 15202
+  },
+  {
+    "path": "workloads/mix_a8_r32/spec.json",
+    "size": 21326
+  },
+  {
+    "path": "workloads/mix_a8_r32/workload.jsonl",
+    "size": 24969181
+  },
+  {
+    "path": "workloads/mix_eval_3h_oh59_g150_r1050/README.md",
+    "size": 2028
+  },
+  {
+    "path": "workloads/mix_eval_3h_oh59_g150_r1050/manifest.json",
+    "size": 19356
+  },
+  {
+    "path": "workloads/mix_eval_3h_oh59_g150_r1050/sessions.jsonl",
+    "size": 513892
+  },
+  {
+    "path": "workloads/mix_eval_3h_oh59_g150_r1050/spec.json",
+    "size": 909289
+  },
+  {
+    "path": "workloads/mix_eval_3h_oh59_g150_r1050/workload.jsonl",
+    "size": 166796525
+  },
+  {
+    "path": "workloads/mix_eval_idle_oh20_r1050/README.md",
+    "size": 2112
+  },
+  {
+    "path": "workloads/mix_eval_idle_oh20_r1050/manifest.json",
+    "size": 451
+  },
+  {
+    "path": "workloads/mix_eval_idle_oh20_r1050/sessions.jsonl",
+    "size": 396194
+  },
+  {
+    "path": "workloads/mix_eval_idle_oh20_r1050/spec.json",
+    "size": 1040
+  },
+  {
+    "path": "workloads/mix_eval_idle_oh20_r1050/workload.jsonl",
+    "size": 31826522
+  },
+  {
+    "path": "workloads/mix_eval_idle_oh20_r1050_overlap/README.md",
+    "size": 2036
+  },
+  {
+    "path": "workloads/mix_eval_idle_oh20_r1050_overlap/manifest.json",
+    "size": 459
+  },
+  {
+    "path": "workloads/mix_eval_idle_oh20_r1050_overlap/sessions.jsonl",
+    "size": 396164
+  },
+  {
+    "path": "workloads/mix_eval_idle_oh20_r1050_overlap/spec.json",
+    "size": 1215
+  },
+  {
+    "path": "workloads/mix_eval_idle_oh20_r1050_overlap/workload.jsonl",
+    "size": 31826195
+  },
+  {
+    "path": "workloads/mix_eval_idle_oh6_r1050_spread/README.md",
+    "size": 1171
+  },
+  {
+    "path": "workloads/mix_eval_idle_oh6_r1050_spread/manifest.json",
+    "size": 456
+  },
+  {
+    "path": "workloads/mix_eval_idle_oh6_r1050_spread/sessions.jsonl",
+    "size": 385397
+  },
+  {
+    "path": "workloads/mix_eval_idle_oh6_r1050_spread/spec.json",
+    "size": 1359
+  },
+  {
+    "path": "workloads/mix_eval_idle_oh6_r1050_spread/workload.jsonl",
+    "size": 16094791
+  },
+  {
+    "path": "workloads/mix_eval_longgap_oh59_g150_r1050/README.md",
+    "size": 4054
+  },
+  {
+    "path": "workloads/mix_eval_longgap_oh59_g150_r1050/manifest.json",
+    "size": 19361
+  },
+  {
+    "path": "workloads/mix_eval_longgap_oh59_g150_r1050/sessions.jsonl",
+    "size": 513984
+  },
+  {
+    "path": "workloads/mix_eval_longgap_oh59_g150_r1050/spec.json",
+    "size": 909484
+  },
+  {
+    "path": "workloads/mix_eval_longgap_oh59_g150_r1050/workload.jsonl",
+    "size": 429488685
+  },
+  {
+    "path": "workloads/mix_lru_pressure_oh59_g100_r700/README.md",
+    "size": 1456
+  },
+  {
+    "path": "workloads/mix_lru_pressure_oh59_g100_r700/manifest.json",
+    "size": 19359
+  },
+  {
+    "path": "workloads/mix_lru_pressure_oh59_g100_r700/sessions.jsonl",
+    "size": 356340
+  },
+  {
+    "path": "workloads/mix_lru_pressure_oh59_g100_r700/spec.json",
+    "size": 640400
+  },
+  {
+    "path": "workloads/mix_lru_pressure_oh59_g100_r700/workload.jsonl",
+    "size": 131719354
+  },
+  {
+    "path": "workloads/mix_oh100_g100_r2000/README.md",
+    "size": 1883
+  },
+  {
+    "path": "workloads/mix_oh100_g100_r2000/manifest.json",
+    "size": 31305
+  },
+  {
+    "path": "workloads/mix_oh100_g100_r2000/sessions.jsonl",
+    "size": 834568
+  },
+  {
+    "path": "workloads/mix_oh100_g100_r2000/spec.json",
+    "size": 1315583
+  },
+  {
+    "path": "workloads/mix_oh100_g100_r2000/workload.jsonl",
+    "size": 139420653
+  },
+  {
+    "path": "workloads/mix_oh100_g100_r5000/README.md",
+    "size": 1078
+  },
+  {
+    "path": "workloads/mix_oh100_g100_r5000/manifest.json",
+    "size": 31305
+  },
+  {
+    "path": "workloads/mix_oh100_g100_r5000/sessions.jsonl",
+    "size": 1870106
+  },
+  {
+    "path": "workloads/mix_oh100_g100_r5000/spec.json",
+    "size": 2720120
+  },
+  {
+    "path": "workloads/mix_oh100_g100_r5000/workload.jsonl",
+    "size": 132966730
+  },
+  {
+    "path": "workloads/mix_oh108_g208_r1450/README.md",
+    "size": 1323
+  },
+  {
+    "path": "workloads/mix_oh108_g208_r1450/manifest.json",
+    "size": 33615
+  },
+  {
+    "path": "workloads/mix_oh108_g208_r1450/sessions.jsonl",
+    "size": 728725
+  },
+  {
+    "path": "workloads/mix_oh108_g208_r1450/spec.json",
+    "size": 1299522
+  },
+  {
+    "path": "workloads/mix_oh108_g208_r1450/workload.jsonl",
+    "size": 244257063
+  },
+  {
+    "path": "workloads/mix_oh20_g1200_r1000/README.md",
+    "size": 2144
+  },
+  {
+    "path": "workloads/mix_oh20_g1200_r1000/manifest.json",
+    "size": 8008
+  },
+  {
+    "path": "workloads/mix_oh20_g1200_r1000/sessions.jsonl",
+    "size": 1040193
+  },
+  {
+    "path": "workloads/mix_oh20_g1200_r1000/spec.json",
+    "size": 2409477
+  },
+  {
+    "path": "workloads/mix_oh20_g1200_r1000/workload.jsonl",
+    "size": 512239617
+  },
+  {
+    "path": "workloads/mix_oh20_glm_r8400/README.md",
+    "size": 1902
+  },
+  {
+    "path": "workloads/mix_oh20_glm_r8400/manifest.json",
+    "size": 8008
+  },
+  {
+    "path": "workloads/mix_oh20_glm_r8400/sessions.jsonl",
+    "size": 8070865
+  },
+  {
+    "path": "workloads/mix_oh20_glm_r8400/spec.json",
+    "size": 18238602
+  },
+  {
+    "path": "workloads/mix_oh20_glm_r8400/workload.jsonl",
+    "size": 1884762341
+  },
+  {
+    "path": "workloads/mix_sysdiv_6h/README.md",
+    "size": 2409
+  },
+  {
+    "path": "workloads/mix_sysdiv_6h/manifest.json",
+    "size": 2490
+  },
+  {
+    "path": "workloads/mix_sysdiv_6h/sessions.jsonl",
+    "size": 205770
+  },
+  {
+    "path": "workloads/mix_sysdiv_6h/spec.json",
+    "size": 373628
+  },
+  {
+    "path": "workloads/mix_sysdiv_6h/workload.jsonl",
+    "size": 80133560
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/README.md",
+    "size": 1513
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/index.json",
+    "size": 2010
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/README.md",
+    "size": 2084
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/index.json",
+    "size": 61373
+  },
+  {
+    "path": "models/MLP/checkpoints/horizons.json",
+    "size": 591
+  },
+  {
+    "path": "models/MLP/checkpoints/horizons_h_short.json",
+    "size": 589
+  },
+  {
+    "path": "models/MLP/checkpoints/leaf_gbm.pkl",
+    "size": 793508
+  },
+  {
+    "path": "models/MLP/checkpoints/leaf_gbm_h_short.pkl",
+    "size": 1111169
+  },
+  {
+    "path": "models/MLP/checkpoints/leaf_mlp.pt",
+    "size": 147355
+  },
+  {
+    "path": "models/MLP/checkpoints/leaf_mlp_h_short.pt",
+    "size": 147355
+  },
+  {
+    "path": "models/MLP/checkpoints/metrics_gbm.json",
+    "size": 3460
+  },
+  {
+    "path": "models/MLP/checkpoints/metrics_gbm_h_short.json",
+    "size": 3435
+  },
+  {
+    "path": "models/MLP/checkpoints/metrics_mlp.json",
+    "size": 10045
+  },
+  {
+    "path": "models/MLP/checkpoints/metrics_mlp_h_short.json",
+    "size": 9534
+  },
+  {
+    "path": "models/MLP/data/samples_meta.json",
+    "size": 1015
+  },
+  {
+    "path": "models/MLP/data/samples_test.jsonl.gz",
+    "size": 26692705
+  },
+  {
+    "path": "models/MLP/data/samples_test.npz",
+    "size": 58554244
+  },
+  {
+    "path": "models/MLP/data/samples_train.jsonl.gz",
+    "size": 113181259
+  },
+  {
+    "path": "models/MLP/data/samples_train.npz",
+    "size": 248389400
+  },
+  {
+    "path": "models/MLP/data/session_split.json",
+    "size": 105393
+  },
+  {
+    "path": "models/MLP/data/sessions_test.jsonl",
+    "size": 109175
+  },
+  {
+    "path": "models/MLP/data/sessions_train.jsonl",
+    "size": 435013
+  },
+  {
+    "path": "models/MLP/data/split.json",
+    "size": 97401
+  },
+  {
+    "path": "models/MLP/data/test_session_ids.txt",
+    "size": 17626
+  },
+  {
+    "path": "models/MLP/data/train_session_ids.txt",
+    "size": 70390
+  },
+  {
+    "path": "models/MLP/src/build_samples.py",
+    "size": 10904
+  },
+  {
+    "path": "models/MLP/src/dataset.py",
+    "size": 5115
+  },
+  {
+    "path": "models/MLP/src/metrics.py",
+    "size": 2583
+  },
+  {
+    "path": "models/MLP/src/model.py",
+    "size": 2514
+  },
+  {
+    "path": "models/MLP/src/oracle_bound.py",
+    "size": 18279
+  },
+  {
+    "path": "models/MLP/src/radix_sim.py",
+    "size": 2832
+  },
+  {
+    "path": "models/MLP/src/split_sessions.py",
+    "size": 3476
+  },
+  {
+    "path": "models/MLP/src/train_gbm.py",
+    "size": 4227
+  },
+  {
+    "path": "models/MLP/src/train_mlp.py",
+    "size": 8812
+  },
+  {
+    "path": "experiments/jyf/evict_position/docs/conclusion_zh.md",
+    "size": 5332
+  },
+  {
+    "path": "experiments/jyf/evict_position/docs/report_zh.md",
+    "size": 6592
+  },
+  {
+    "path": "experiments/jyf/evict_position/docs/shift_report_zh.md",
+    "size": 1604
+  },
+  {
+    "path": "experiments/jyf/evict_position/docs/training_report_zh.md",
+    "size": 3024
+  },
+  {
+    "path": "experiments/jyf/evict_position/logs/suite.log",
+    "size": 23781
+  },
+  {
+    "path": "experiments/jyf/evict_position/logs/train.log",
+    "size": 6073
+  },
+  {
+    "path": "experiments/jyf/evict_position/results/completed_runs.json",
+    "size": 341
+  },
+  {
+    "path": "experiments/jyf/evict_position/results/migration.json",
+    "size": 789
+  },
+  {
+    "path": "experiments/jyf/evict_position/results/predictor_benchmark.json",
+    "size": 1023
+  },
+  {
+    "path": "experiments/jyf/evict_position/results/shift_results.json",
+    "size": 20996
+  },
+  {
+    "path": "experiments/jyf/evict_position/tests_outputs/final_on_demand.log",
+    "size": 385
+  },
+  {
+    "path": "experiments/jyf/evict_position/tests_outputs/final_precompute.log",
+    "size": 386
+  },
+  {
+    "path": "experiments/jyf/evict_position/tests_outputs/math.log",
+    "size": 101
+  },
+  {
+    "path": "experiments/jyf/evict_position/training/model.pt",
+    "size": 87253
+  },
+  {
+    "path": "experiments/jyf/evict_position/training/results.json",
+    "size": 10550
+  },
+  {
+    "path": "experiments/jyf/evict_position/training/samples.npz",
+    "size": 822396
+  },
+  {
+    "path": "experiments/jyf/evict_position/workload/spec.json",
+    "size": 950
+  },
+  {
+    "path": "experiments/jyf/evict_position/workload/workload.jsonl",
+    "size": 150186203
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/README.md",
+    "size": 1790
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/conclusion_zh.md",
+    "size": 8361
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/run_experiment.py",
+    "size": 13578
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/support_check.py",
+    "size": 2376
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/write_report.py",
+    "size": 7633
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/DESIGN.md",
+    "size": 2106
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/README.md",
+    "size": 1792
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/run_node_ablation.py",
+    "size": 6855
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/run_node_experiment.py",
+    "size": 6009
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/final_report.md",
+    "size": 5997
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/frozen_launcher.log",
+    "size": 134156
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/frozen_launcher.pid",
+    "size": 8
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/final_report.md",
+    "size": 3996
+  },
+  {
+    "path": "experiments/jyf/nn_exp/shared_and_heads/comparison.json",
+    "size": 7328
+  },
+  {
+    "path": "experiments/jyf/nn_exp/shared_and_heads/report.md",
+    "size": 2914
+  },
+  {
+    "path": "experiments/jyf/nn_exp/shared_and_heads/results.json",
+    "size": 10443
+  },
+  {
+    "path": "experiments/jyf/nn_exp/unified_mlp/comparison.json",
+    "size": 7328
+  },
+  {
+    "path": "experiments/jyf/nn_exp/unified_mlp/report.md",
+    "size": 2914
+  },
+  {
+    "path": "experiments/jyf/nn_exp/unified_mlp/results.json",
+    "size": 7135
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_000/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_000/sessions.jsonl",
+    "size": 364148
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_000/spec.json",
+    "size": 1348
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_000/workload.jsonl",
+    "size": 8619471
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_010/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_010/sessions.jsonl",
+    "size": 326854
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_010/spec.json",
+    "size": 1558
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_010/workload.jsonl",
+    "size": 40958448
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_020/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_020/sessions.jsonl",
+    "size": 295671
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_020/spec.json",
+    "size": 1561
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_020/workload.jsonl",
+    "size": 65553201
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_030/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_030/sessions.jsonl",
+    "size": 265999
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_030/spec.json",
+    "size": 1561
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_030/workload.jsonl",
+    "size": 104989667
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_040/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_040/sessions.jsonl",
+    "size": 234975
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_040/spec.json",
+    "size": 1561
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_040/workload.jsonl",
+    "size": 138030602
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_050/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_050/sessions.jsonl",
+    "size": 203823
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_050/spec.json",
+    "size": 1564
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_050/workload.jsonl",
+    "size": 172328419
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_060/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_060/sessions.jsonl",
+    "size": 173391
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_060/spec.json",
+    "size": 1561
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_060/workload.jsonl",
+    "size": 204089340
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_070/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_070/sessions.jsonl",
+    "size": 138792
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_070/spec.json",
+    "size": 1561
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_070/workload.jsonl",
+    "size": 241533570
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_080/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_080/sessions.jsonl",
+    "size": 107597
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_080/spec.json",
+    "size": 1559
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_080/workload.jsonl",
+    "size": 276702337
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_090/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_090/sessions.jsonl",
+    "size": 76953
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_090/spec.json",
+    "size": 1558
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_090/workload.jsonl",
+    "size": 301993705
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_100/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_100/sessions.jsonl",
+    "size": 51049
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_100/spec.json",
+    "size": 1356
+  },
+  {
+    "path": "workloads/ratio_sweep_v4flash_unseen/agent_100/workload.jsonl",
+    "size": 339374268
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_000/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_000/sessions.jsonl",
+    "size": 402659
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_000/spec.json",
+    "size": 63409
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_000/workload.jsonl",
+    "size": 8473549
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_010/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_010/sessions.jsonl",
+    "size": 368405
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_010/spec.json",
+    "size": 63622
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_010/workload.jsonl",
+    "size": 44720893
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_020/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_020/sessions.jsonl",
+    "size": 332431
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_020/spec.json",
+    "size": 63622
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_020/workload.jsonl",
+    "size": 69328601
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_030/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_030/sessions.jsonl",
+    "size": 297522
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_030/spec.json",
+    "size": 63622
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_030/workload.jsonl",
+    "size": 95710492
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_040/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_040/sessions.jsonl",
+    "size": 261093
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_040/spec.json",
+    "size": 63620
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_040/workload.jsonl",
+    "size": 130488817
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_050/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_050/sessions.jsonl",
+    "size": 223058
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_050/spec.json",
+    "size": 63625
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_050/workload.jsonl",
+    "size": 163567572
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_060/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_060/sessions.jsonl",
+    "size": 190701
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_060/spec.json",
+    "size": 63622
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_060/workload.jsonl",
+    "size": 202487062
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_070/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_070/sessions.jsonl",
+    "size": 155522
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_070/spec.json",
+    "size": 63622
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_070/workload.jsonl",
+    "size": 247137772
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_080/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_080/sessions.jsonl",
+    "size": 121561
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_080/spec.json",
+    "size": 63621
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_080/workload.jsonl",
+    "size": 278187953
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_090/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_090/sessions.jsonl",
+    "size": 87277
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_090/spec.json",
+    "size": 63621
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_090/workload.jsonl",
+    "size": 313855012
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_100/manifest.json",
+    "size": 306
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_100/sessions.jsonl",
+    "size": 53514
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_100/spec.json",
+    "size": 63417
+  },
+  {
+    "path": "workloads/ratio_train_v4flash/agent_100/workload.jsonl",
+    "size": 349249727
+  },
+  {
+    "path": "models/MLP/src/__pycache__/build_samples.cpython-311.pyc",
+    "size": 17376
+  },
+  {
+    "path": "models/MLP/src/__pycache__/build_samples.cpython-313.pyc",
+    "size": 14580
+  },
+  {
+    "path": "models/MLP/src/__pycache__/dataset.cpython-311.pyc",
+    "size": 11114
+  },
+  {
+    "path": "models/MLP/src/__pycache__/dataset.cpython-313.pyc",
+    "size": 9787
+  },
+  {
+    "path": "models/MLP/src/__pycache__/metrics.cpython-311.pyc",
+    "size": 6587
+  },
+  {
+    "path": "models/MLP/src/__pycache__/metrics.cpython-313.pyc",
+    "size": 5620
+  },
+  {
+    "path": "models/MLP/src/__pycache__/model.cpython-311.pyc",
+    "size": 6058
+  },
+  {
+    "path": "models/MLP/src/__pycache__/oracle_bound.cpython-311.pyc",
+    "size": 33039
+  },
+  {
+    "path": "models/MLP/src/__pycache__/radix_sim.cpython-311.pyc",
+    "size": 5867
+  },
+  {
+    "path": "models/MLP/src/__pycache__/radix_sim.cpython-313.pyc",
+    "size": 5503
+  },
+  {
+    "path": "models/MLP/src/__pycache__/train_mlp.cpython-311.pyc",
+    "size": 15887
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/input_sha256.txt",
+    "size": 302
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/orchestrator.log",
+    "size": 7472
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/status",
+    "size": 43
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/comparison.json",
+    "size": 58622
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/input_sha256.txt",
+    "size": 302
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/orchestrator.log",
+    "size": 2213
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/report_zh.md",
+    "size": 4432
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/status",
+    "size": 35
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/comparison.json",
+    "size": 58899
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/input_sha256.txt",
+    "size": 302
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/orchestrator.log",
+    "size": 2213
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/report_zh.md",
+    "size": 4431
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/status",
+    "size": 35
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/comparison.json",
+    "size": 58696
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/input_sha256.txt",
+    "size": 302
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/orchestrator.log",
+    "size": 2213
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/report_zh.md",
+    "size": 4430
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/status",
+    "size": 35
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_formal_rep1/input_sha256.txt",
+    "size": 302
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_formal_rep1/orchestrator.log",
+    "size": 21
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/PILOT_ONLY.txt",
+    "size": 93
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/input_sha256.txt",
+    "size": 302
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/orchestrator.log",
+    "size": 660
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/status",
+    "size": 44
+  },
+  {
+    "path": "experiments/jyf/evict_position/tests_outputs/final_on_demand/rank0_pid165831.jsonl",
+    "size": 1618
+  },
+  {
+    "path": "experiments/jyf/evict_position/tests_outputs/final_precompute/rank0_pid165052.jsonl",
+    "size": 8251
+  },
+  {
+    "path": "experiments/jyf/evict_position/tests_outputs/on_demand/rank0_pid158763.jsonl",
+    "size": 1451
+  },
+  {
+    "path": "experiments/jyf/evict_position/tests_outputs/precompute/rank0_pid158011.jsonl",
+    "size": 5060
+  },
+  {
+    "path": "experiments/jyf/evict_position/tests_outputs/precompute_refresh/rank0_pid164335.jsonl",
+    "size": 5323
+  },
+  {
+    "path": "experiments/jyf/evict_position/tests_outputs/precompute_wait/rank0_pid159038.jsonl",
+    "size": 5059
+  },
+  {
+    "path": "experiments/jyf/evict_position/training/checkpoints/seed_41.pt",
+    "size": 87253
+  },
+  {
+    "path": "experiments/jyf/evict_position/training/checkpoints/seed_42.pt",
+    "size": 87253
+  },
+  {
+    "path": "experiments/jyf/evict_position/training/checkpoints/seed_43.pt",
+    "size": 87253
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/archive_session_level/README.md",
+    "size": 4496
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/archive_session_level/conclusion_zh.md",
+    "size": 7474
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/archive_session_level/confirm_groups.py",
+    "size": 1417
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/archive_session_level/dedup_final.py",
+    "size": 1546
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/archive_session_level/feature_catalog.md",
+    "size": 4055
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/archive_session_level/final_report.py",
+    "size": 9479
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/archive_session_level/make_report.py",
+    "size": 7666
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/archive_session_level/refine.py",
+    "size": 2619
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/archive_session_level/run_candidate.py",
+    "size": 18975
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/archive_session_level/screening_report.md",
+    "size": 8696
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_frontier_ablation_v1/report.md",
+    "size": 5383
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_frontier_ablation_v1/results.json",
+    "size": 284567
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_frontier_ablation_v2_10seed/report.md",
+    "size": 5383
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_frontier_ablation_v2_10seed/results.json",
+    "size": 780853
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_frontier_ablation_v3_fixedwidth_10seed/report.md",
+    "size": 5414
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_frontier_ablation_v3_fixedwidth_10seed/results.json",
+    "size": 780764
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_frontier_ablation_v4_final/report.md",
+    "size": 7667
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_frontier_ablation_v4_final/results.json",
+    "size": 1132142
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_frontier_time_hazard_event_detail_v1/report.md",
+    "size": 3836
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_frontier_time_hazard_event_detail_v1/results.json",
+    "size": 406820
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_frontier_time_hazard_event_detail_v1/run.log",
+    "size": 6989
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_frontier_time_hazard_individual_v1/report.md",
+    "size": 4685
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_frontier_time_hazard_individual_v1/results.json",
+    "size": 529104
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_frontier_time_hazard_individual_v1/run.log",
+    "size": 8917
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_frontier_time_hazard_v1/report.md",
+    "size": 6551
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_frontier_time_hazard_v1/results.json",
+    "size": 850225
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_frontier_time_hazard_v1/run.log",
+    "size": 12726
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_v1/feature_samples.meta.json",
+    "size": 8337
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_v1/feature_samples.npz",
+    "size": 4018447
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_v1/report.md",
+    "size": 3163
+  },
+  {
+    "path": "experiments/jyf/feature_exp/runs/20260912_v1/results.json",
+    "size": 73318
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/data/prefix_reuse_samples.meta.json",
+    "size": 1511
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/data/prefix_reuse_samples.npz",
+    "size": 3812453
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/conclusion_zh.md",
+    "size": 5150
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/k10_edges.json",
+    "size": 59
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/k10_empirical_km_points.csv",
+    "size": 17199
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/k20_edges.json",
+    "size": 121
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/k20_empirical_km_points.csv",
+    "size": 34402
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/k5_edges.json",
+    "size": 25
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/k5_empirical_km_points.csv",
+    "size": 8078
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/model_absolute_points.csv",
+    "size": 197275
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/plot_hazard_curves.py",
+    "size": 9048
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/report.md",
+    "size": 8483
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/results.json",
+    "size": 991042
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/run_hazard_curve_exp.py",
+    "size": 15476
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/shift_points.csv",
+    "size": 58191
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/age_horizon_calibration_tables_zh.md",
+    "size": 4456
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/analyze_gap_origin.py",
+    "size": 3933
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/conclusion_zh.md",
+    "size": 4361
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/conditional_calibration.csv",
+    "size": 7725
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/dense_window_calibration.csv",
+    "size": 262804
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/dense_window_report.md",
+    "size": 1563
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/dense_window_results.json",
+    "size": 21068
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/dense_window_summary.csv",
+    "size": 7756
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/gap_distribution_analysis_zh.md",
+    "size": 4366
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/gap_origin_analysis.json",
+    "size": 5165
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/long_window_conditional_calibration.csv",
+    "size": 205490
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/long_window_reliability_bins.csv",
+    "size": 1450376
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/long_window_report.md",
+    "size": 2916
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/long_window_results.json",
+    "size": 11559
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/make_age_horizon_tables.py",
+    "size": 5353
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/matrix_actual_km_risk.csv",
+    "size": 4922
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/matrix_linear_survival_ece10.csv",
+    "size": 8216
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/matrix_log_bias.csv",
+    "size": 8441
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/matrix_log_predicted_risk.csv",
+    "size": 8101
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/matrix_log_survival_ece10.csv",
+    "size": 8229
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/matrix_right_step_ece10.csv",
+    "size": 5896
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/next_request_bucket_metrics.csv",
+    "size": 152
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/next_request_time_metrics.csv",
+    "size": 1978
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/next_request_time_predictions.csv",
+    "size": 2328311
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/next_request_time_results.json",
+    "size": 5338
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/node_level_metrics.csv",
+    "size": 128334
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/node_level_results.json",
+    "size": 37896
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/node_level_summary.csv",
+    "size": 7277
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/node_selection_overlap.csv",
+    "size": 84617
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/node_selection_overlap_summary.csv",
+    "size": 4706
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/oracle_comparison.csv",
+    "size": 740842
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/oracle_results.json",
+    "size": 156843
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/oracle_summary.csv",
+    "size": 48380
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/point_calibration.csv",
+    "size": 28047
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/reliability_bins.csv",
+    "size": 424669
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/report.md",
+    "size": 991
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/results.json",
+    "size": 107102
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/run_dense_window_calibration.py",
+    "size": 5956
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/run_insection_calibration.py",
+    "size": 7018
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/run_long_window_calibration.py",
+    "size": 6919
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/run_next_request_time_oracle.py",
+    "size": 6703
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/run_node_level_validation.py",
+    "size": 9157
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/insection_calibration/run_oracle_comparison.py",
+    "size": 5777
+  },
+  {
+    "path": "experiments/jyf/nn_exp/shared_and_heads/checkpoints/seed_41.pt",
+    "size": 14989
+  },
+  {
+    "path": "experiments/jyf/nn_exp/shared_and_heads/checkpoints/seed_42.pt",
+    "size": 14989
+  },
+  {
+    "path": "experiments/jyf/nn_exp/shared_and_heads/checkpoints/seed_43.pt",
+    "size": 14989
+  },
+  {
+    "path": "experiments/jyf/nn_exp/shared_and_heads/k10/report.md",
+    "size": 2195
+  },
+  {
+    "path": "experiments/jyf/nn_exp/shared_and_heads/k10/results.json",
+    "size": 8280
+  },
+  {
+    "path": "experiments/jyf/nn_exp/unified_mlp/checkpoints/seed_41.pt",
+    "size": 16533
+  },
+  {
+    "path": "experiments/jyf/nn_exp/unified_mlp/checkpoints/seed_42.pt",
+    "size": 16533
+  },
+  {
+    "path": "experiments/jyf/nn_exp/unified_mlp/checkpoints/seed_43.pt",
+    "size": 16533
+  },
+  {
+    "path": "experiments/jyf/nn_exp/unified_mlp/k10/report.md",
+    "size": 2195
+  },
+  {
+    "path": "experiments/jyf/nn_exp/unified_mlp/k10/results.json",
+    "size": 8271
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/additional_experiment.py",
+    "size": 3916
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/build_report.py",
+    "size": 13494
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_launch.log",
+    "size": 2018
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_report_zh.md",
+    "size": 6115
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_status.py",
+    "size": 1783
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/predictor.py",
+    "size": 8834
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/report_online.py",
+    "size": 12962
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/report_sync_fill.py",
+    "size": 12213
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/report_zh.md",
+    "size": 10117
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/run_all.sh",
+    "size": 612
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/run_experiment.py",
+    "size": 11792
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/run_online.sh",
+    "size": 3201
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/save_online_manifest.py",
+    "size": 1374
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/serving_patch.py",
+    "size": 16750
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/sitecustomize.py",
+    "size": 989
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/sync_fill_launch.log",
+    "size": 711
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/sync_fill_report_zh.md",
+    "size": 5609
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/test_predictor.py",
+    "size": 2595
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/test_serving_cache.py",
+    "size": 3254
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/compare_lru_091603_vs_agentic_121535/compare_eviction_miss_timeline.png",
+    "size": 94831
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/compare_lru_091603_vs_agentic_121535/compare_inserted_token_distance_cdf.png",
+    "size": 62572
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/compare_lru_091603_vs_agentic_121535/compare_rates.png",
+    "size": 75011
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/compare_lru_091603_vs_agentic_121535/compare_request_distance_cdf.png",
+    "size": 62393
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/compare_lru_091603_vs_agentic_121535/compare_ttft.png",
+    "size": 36176
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_081143/kv_trace.jsonl",
+    "size": 72001045
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_081143/run_glm_kv_diag_20260801_081143.jsonl",
+    "size": 69541
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_081143/run_glm_kv_diag_20260801_081143.meta.json",
+    "size": 769
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_081143/run_glm_kv_diag_20260801_081143.regret.requests.jsonl",
+    "size": 522968
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_081143/run_glm_kv_diag_20260801_081143.regret.summary.json",
+    "size": 1535
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_081143/run_glm_kv_diag_20260801_081143.summary.json",
+    "size": 1294
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_081143/run_glm_kv_diag_20260801_081143_report.md",
+    "size": 966
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_091603/kv_trace.jsonl",
+    "size": 316355544
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_091603/latest.jsonl",
+    "size": 284474
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_091603/latest.meta.json",
+    "size": 771
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_091603/latest.summary.json",
+    "size": 1278
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_091603/latest_report.md",
+    "size": 3122
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_091603/run_glm_kv_diag_20260801_091603.inserted_token_distance_cdf.png",
+    "size": 40408
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_091603/run_glm_kv_diag_20260801_091603.jsonl",
+    "size": 284474
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_091603/run_glm_kv_diag_20260801_091603.meta.json",
+    "size": 771
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_091603/run_glm_kv_diag_20260801_091603.miss_timeline.png",
+    "size": 79356
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_091603/run_glm_kv_diag_20260801_091603.regret.requests.jsonl",
+    "size": 274744
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_091603/run_glm_kv_diag_20260801_091603.regret.summary.json",
+    "size": 12572
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_091603/run_glm_kv_diag_20260801_091603.request_distance_cdf.png",
+    "size": 35611
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_091603/run_glm_kv_diag_20260801_091603.reuse_time_cdf.png",
+    "size": 36493
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_091603/run_glm_kv_diag_20260801_091603.summary.json",
+    "size": 1278
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_091603/run_glm_kv_diag_20260801_091603.ttft_vs_miss.png",
+    "size": 97642
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_091603/run_glm_kv_diag_20260801_091603_report.md",
+    "size": 3122
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_121535/kv_trace.jsonl",
+    "size": 304864323
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_121535/latest.jsonl",
+    "size": 284666
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_121535/latest.meta.json",
+    "size": 770
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_121535/latest.summary.json",
+    "size": 1274
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_121535/latest_report.md",
+    "size": 3164
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_121535/run_glm_kv_diag_20260801_121535.inserted_token_distance_cdf.png",
+    "size": 40677
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_121535/run_glm_kv_diag_20260801_121535.jsonl",
+    "size": 284666
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_121535/run_glm_kv_diag_20260801_121535.meta.json",
+    "size": 770
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_121535/run_glm_kv_diag_20260801_121535.miss_timeline.png",
+    "size": 80145
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_121535/run_glm_kv_diag_20260801_121535.regret.requests.jsonl",
+    "size": 274394
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_121535/run_glm_kv_diag_20260801_121535.regret.summary.json",
+    "size": 12692
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_121535/run_glm_kv_diag_20260801_121535.request_distance_cdf.png",
+    "size": 35672
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_121535/run_glm_kv_diag_20260801_121535.reuse_time_cdf.png",
+    "size": 36607
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_121535/run_glm_kv_diag_20260801_121535.summary.json",
+    "size": 1274
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_121535/run_glm_kv_diag_20260801_121535.ttft_vs_miss.png",
+    "size": 95362
+  },
+  {
+    "path": "experiments/sglang_kv_cache/glm_online_replay/v4flash_vanilla/kv_diag_runs/run_glm_kv_diag_20260801_121535/run_glm_kv_diag_20260801_121535_report.md",
+    "size": 3164
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/precompute/server.log",
+    "size": 41046
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/precompute/server.pid",
+    "size": 7
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/source/benchmark_predictor.py",
+    "size": 1442
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/source/evaluate_shift.py",
+    "size": 2387
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/source/predictor.py",
+    "size": 2663
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/source/prepare_workload.py",
+    "size": 2137
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/source/report.py",
+    "size": 10169
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/source/run_online.sh",
+    "size": 3293
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/source/run_suite.py",
+    "size": 1661
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/source/serving_patch.py",
+    "size": 12266
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/source/sitecustomize.py",
+    "size": 980
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/source/status.py",
+    "size": 1370
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/source/test_cache.py",
+    "size": 2813
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/source/test_math.py",
+    "size": 1560
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/source/train.py",
+    "size": 1696
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_004148_formal_rep1/source/training_base.py",
+    "size": 26023
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/gpu_monitor.log",
+    "size": 0
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/gpu_ownership.jsonl",
+    "size": 17828
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/prometheus.txt",
+    "size": 250844
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/replay.log",
+    "size": 129997
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/server.log",
+    "size": 690458
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/server.pid",
+    "size": 7
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/server_info.json",
+    "size": 26071
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/gpu_monitor.log",
+    "size": 0
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/gpu_ownership.jsonl",
+    "size": 16171
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/prometheus.txt",
+    "size": 250545
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/replay.log",
+    "size": 129654
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/server.log",
+    "size": 675176
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/server.pid",
+    "size": 7
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/server_info.json",
+    "size": 26071
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/gpu_monitor.log",
+    "size": 0
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/gpu_ownership.jsonl",
+    "size": 17675
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/prometheus.txt",
+    "size": 250690
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/replay.log",
+    "size": 129744
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/server.log",
+    "size": 663374
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/server.pid",
+    "size": 7
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/server_info.json",
+    "size": 26071
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/source/benchmark_predictor.py",
+    "size": 1442
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/source/evaluate_shift.py",
+    "size": 2387
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/source/monitor_gpu.py",
+    "size": 1293
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/source/predictor.py",
+    "size": 2663
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/source/prepare_workload.py",
+    "size": 2137
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/source/report.py",
+    "size": 10862
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/source/run_online.sh",
+    "size": 3811
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/source/run_suite.py",
+    "size": 2386
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/source/serving_patch.py",
+    "size": 12348
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/source/sitecustomize.py",
+    "size": 980
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/source/status.py",
+    "size": 1370
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/source/test_cache.py",
+    "size": 2813
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/source/test_math.py",
+    "size": 1560
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/source/train.py",
+    "size": 1696
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/source/training_base.py",
+    "size": 26023
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/gpu_monitor.log",
+    "size": 0
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/gpu_ownership.jsonl",
+    "size": 18138
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/prometheus.txt",
+    "size": 250824
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/replay.log",
+    "size": 129979
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/server.log",
+    "size": 687733
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/server.pid",
+    "size": 7
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/server_info.json",
+    "size": 26071
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/gpu_monitor.log",
+    "size": 0
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/gpu_ownership.jsonl",
+    "size": 16481
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/prometheus.txt",
+    "size": 250676
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/replay.log",
+    "size": 129480
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/server.log",
+    "size": 677282
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/server.pid",
+    "size": 7
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/server_info.json",
+    "size": 26071
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/gpu_monitor.log",
+    "size": 0
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/gpu_ownership.jsonl",
+    "size": 17076
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/prometheus.txt",
+    "size": 250645
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/replay.log",
+    "size": 129751
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/server.log",
+    "size": 672100
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/server.pid",
+    "size": 7
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/server_info.json",
+    "size": 26071
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/source/benchmark_predictor.py",
+    "size": 1442
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/source/evaluate_shift.py",
+    "size": 2387
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/source/monitor_gpu.py",
+    "size": 1293
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/source/predictor.py",
+    "size": 2663
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/source/prepare_workload.py",
+    "size": 2137
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/source/report.py",
+    "size": 10862
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/source/run_online.sh",
+    "size": 3811
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/source/run_suite.py",
+    "size": 2386
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/source/serving_patch.py",
+    "size": 12348
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/source/sitecustomize.py",
+    "size": 980
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/source/status.py",
+    "size": 1370
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/source/test_cache.py",
+    "size": 2813
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/source/test_math.py",
+    "size": 1560
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/source/train.py",
+    "size": 1696
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/source/training_base.py",
+    "size": 26023
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/gpu_monitor.log",
+    "size": 0
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/gpu_ownership.jsonl",
+    "size": 17527
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/prometheus.txt",
+    "size": 250736
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/replay.log",
+    "size": 129985
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/server.log",
+    "size": 691841
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/server.pid",
+    "size": 7
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/server_info.json",
+    "size": 26071
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/gpu_monitor.log",
+    "size": 0
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/gpu_ownership.jsonl",
+    "size": 17673
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/prometheus.txt",
+    "size": 250684
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/replay.log",
+    "size": 129467
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/server.log",
+    "size": 671336
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/server.pid",
+    "size": 7
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/server_info.json",
+    "size": 26071
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/gpu_monitor.log",
+    "size": 0
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/gpu_ownership.jsonl",
+    "size": 16783
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/prometheus.txt",
+    "size": 250653
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/replay.log",
+    "size": 129680
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/server.log",
+    "size": 674388
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/server.pid",
+    "size": 7
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/server_info.json",
+    "size": 26071
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/source/benchmark_predictor.py",
+    "size": 1442
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/source/evaluate_shift.py",
+    "size": 2387
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/source/monitor_gpu.py",
+    "size": 1293
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/source/predictor.py",
+    "size": 2663
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/source/prepare_workload.py",
+    "size": 2137
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/source/report.py",
+    "size": 10862
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/source/run_online.sh",
+    "size": 3811
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/source/run_suite.py",
+    "size": 2386
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/source/serving_patch.py",
+    "size": 12348
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/source/sitecustomize.py",
+    "size": 980
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/source/status.py",
+    "size": 1370
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/source/test_cache.py",
+    "size": 2813
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/source/test_math.py",
+    "size": 1560
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/source/train.py",
+    "size": 1696
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/source/training_base.py",
+    "size": 26023
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_formal_rep1/source/predictor.py",
+    "size": 2663
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_formal_rep1/source/prepare_workload.py",
+    "size": 2137
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_formal_rep1/source/report.py",
+    "size": 9855
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_formal_rep1/source/run_online.sh",
+    "size": 3293
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_formal_rep1/source/serving_patch.py",
+    "size": 12266
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_formal_rep1/source/sitecustomize.py",
+    "size": 980
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_formal_rep1/source/test_cache.py",
+    "size": 2813
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_formal_rep1/source/train.py",
+    "size": 1696
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_formal_rep1/source/training_base.py",
+    "size": 26023
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/precompute/replay.log",
+    "size": 23109
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/precompute/server.log",
+    "size": 173082
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/precompute/server.pid",
+    "size": 7
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/precompute/server_info.json",
+    "size": 26071
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/source/predictor.py",
+    "size": 2510
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/source/prepare_workload.py",
+    "size": 2137
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/source/run_online.sh",
+    "size": 3293
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/source/serving_patch.py",
+    "size": 11437
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/source/serving_patch_after_on_demand_retention_fix.py",
+    "size": 11444
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/source/sitecustomize.py",
+    "size": 980
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/source/test_cache.py",
+    "size": 2813
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/source/train.py",
+    "size": 1696
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/source/training_base.py",
+    "size": 26023
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_absolute_41.pt",
+    "size": 83585
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_absolute_42.pt",
+    "size": 83585
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_absolute_43.pt",
+    "size": 83585
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_absolute_44.pt",
+    "size": 83585
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_absolute_45.pt",
+    "size": 83585
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_absolute_ID_predictions.npz",
+    "size": 140061
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_absolute_mixed_predictions.npz",
+    "size": 135501
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_absolute_x10_predictions.npz",
+    "size": 133886
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_absolute_x5_predictions.npz",
+    "size": 136017
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_relative_41.pt",
+    "size": 83585
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_relative_42.pt",
+    "size": 83585
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_relative_43.pt",
+    "size": 83585
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_relative_44.pt",
+    "size": 83585
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_relative_45.pt",
+    "size": 83585
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_relative_ID_predictions.npz",
+    "size": 139255
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_relative_mixed_predictions.npz",
+    "size": 139049
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_relative_x10_predictions.npz",
+    "size": 139017
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/0.25_relative_x5_predictions.npz",
+    "size": 139045
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_absolute_41.pt",
+    "size": 83509
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_absolute_42.pt",
+    "size": 83509
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_absolute_43.pt",
+    "size": 83509
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_absolute_44.pt",
+    "size": 83509
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_absolute_45.pt",
+    "size": 83509
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_absolute_ID_predictions.npz",
+    "size": 140693
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_absolute_mixed_predictions.npz",
+    "size": 141942
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_absolute_x10_predictions.npz",
+    "size": 142053
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_absolute_x5_predictions.npz",
+    "size": 141489
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_relative_41.pt",
+    "size": 83573
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_relative_42.pt",
+    "size": 83573
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_relative_43.pt",
+    "size": 83573
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_relative_44.pt",
+    "size": 83573
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_relative_45.pt",
+    "size": 83573
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_relative_ID_predictions.npz",
+    "size": 140513
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_relative_mixed_predictions.npz",
+    "size": 140309
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_relative_x10_predictions.npz",
+    "size": 140257
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/1.0_relative_x5_predictions.npz",
+    "size": 140272
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/audit.json",
+    "size": 352
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/common_support.json",
+    "size": 1523
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/manifest.json",
+    "size": 1142
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/results.json",
+    "size": 27424
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/run.log",
+    "size": 1902
+  },
+  {
+    "path": "experiments/jyf/feature_exp/absolute_vs_relative/runs/20260915_v1/samples.npz",
+    "size": 633388
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/runs/node_level_ablation_v1/RESULTS_ZH.md",
+    "size": 2759
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/runs/node_level_ablation_v1/ablation_results.json",
+    "size": 36670
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/runs/node_level_ablation_v1/correlations.json",
+    "size": 12170
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/runs/node_level_ablation_v1/report.md",
+    "size": 1781
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/runs/node_level_v1/node_dataset_meta.json",
+    "size": 1684
+  },
+  {
+    "path": "experiments/jyf/feature_exp/candidate/runs/node_level_v1/node_samples.npz",
+    "size": 2773145
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/orchestrator.log",
+    "size": 134015
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/replay.log",
+    "size": 131033
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/server.log",
+    "size": 886138
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/server.pid",
+    "size": 8
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v1/orchestrator.log",
+    "size": 10287
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v1/server.log",
+    "size": 39169
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v1/server.pid",
+    "size": 8
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/orchestrator.log",
+    "size": 143270
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/replay.log",
+    "size": 136371
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/server.log",
+    "size": 1424856
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/server.pid",
+    "size": 8
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/workloads/agent050_decode32/spec.json",
+    "size": 413
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/workloads/agent050_decode32/workload.jsonl",
+    "size": 172326476
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/graph/K10_object_survival_curves.pdf",
+    "size": 29769
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/graph/K10_object_survival_curves.png",
+    "size": 397630
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/graph/K10_token_survival_curves.pdf",
+    "size": 29746
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/graph/K10_token_survival_curves.png",
+    "size": 396976
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/graph/K20_object_survival_curves.pdf",
+    "size": 37392
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/graph/K20_object_survival_curves.png",
+    "size": 767416
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/graph/K20_token_survival_curves.pdf",
+    "size": 37268
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/graph/K20_token_survival_curves.png",
+    "size": 766301
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/graph/K5_object_survival_curves.pdf",
+    "size": 25438
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/graph/K5_object_survival_curves.png",
+    "size": 212636
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/graph/K5_token_survival_curves.pdf",
+    "size": 25286
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/graph/K5_token_survival_curves.png",
+    "size": 213742
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/graph/README.md",
+    "size": 495
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/graph/focused_short_gap_survival_comparison.pdf",
+    "size": 27207
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/hazard_curve_exp/graph/focused_short_gap_survival_comparison.png",
+    "size": 262591
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/all_results.json",
+    "size": 121795
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/long_horizon_results.json",
+    "size": 23661
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/report.md",
+    "size": 5765
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/run.log",
+    "size": 19891
+  },
+  {
+    "path": "experiments/jyf/nn_exp/shared_and_heads/k10/checkpoints/seed_41.pt",
+    "size": 16461
+  },
+  {
+    "path": "experiments/jyf/nn_exp/shared_and_heads/k10/checkpoints/seed_42.pt",
+    "size": 16461
+  },
+  {
+    "path": "experiments/jyf/nn_exp/shared_and_heads/k10/checkpoints/seed_43.pt",
+    "size": 16461
+  },
+  {
+    "path": "experiments/jyf/nn_exp/unified_mlp/k10/checkpoints/seed_41.pt",
+    "size": 17429
+  },
+  {
+    "path": "experiments/jyf/nn_exp/unified_mlp/k10/checkpoints/seed_42.pt",
+    "size": 17429
+  },
+  {
+    "path": "experiments/jyf/nn_exp/unified_mlp/k10/checkpoints/seed_43.pt",
+    "size": 17429
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_tests/sync_fill_test.log",
+    "size": 382
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/runs/20260912_v1.log",
+    "size": 21268
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/metrics/rank0_pid245200.jsonl",
+    "size": 450612
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/metrics/rank1_pid245201.jsonl",
+    "size": 238779
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/metrics/rank2_pid245202.jsonl",
+    "size": 238800
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/metrics/rank3_pid245203.jsonl",
+    "size": 238809
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/metrics/rank4_pid245204.jsonl",
+    "size": 238834
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/metrics/rank5_pid245205.jsonl",
+    "size": 238806
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/metrics/rank6_pid245206.jsonl",
+    "size": 238813
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/metrics/rank7_pid245207.jsonl",
+    "size": 238799
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/replay/meta.json",
+    "size": 1399
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/replay/replay.jsonl",
+    "size": 1216005
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/replay/report.md",
+    "size": 2185
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/lru/replay/summary.json",
+    "size": 14418
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/metrics/rank0_pid240432.jsonl",
+    "size": 460561
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/metrics/rank1_pid240433.jsonl",
+    "size": 240761
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/metrics/rank2_pid240434.jsonl",
+    "size": 240765
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/metrics/rank3_pid240435.jsonl",
+    "size": 240754
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/metrics/rank4_pid240436.jsonl",
+    "size": 240784
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/metrics/rank5_pid240437.jsonl",
+    "size": 240759
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/metrics/rank6_pid240438.jsonl",
+    "size": 240756
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/metrics/rank7_pid240439.jsonl",
+    "size": 240777
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/replay/meta.json",
+    "size": 1398
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/replay/replay.jsonl",
+    "size": 1215290
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/replay/report.md",
+    "size": 2183
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/on_demand/replay/summary.json",
+    "size": 14441
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/metrics/rank0_pid234668.jsonl",
+    "size": 2175523
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/metrics/rank1_pid234669.jsonl",
+    "size": 230919
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/metrics/rank2_pid234670.jsonl",
+    "size": 230969
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/metrics/rank3_pid234671.jsonl",
+    "size": 230922
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/metrics/rank4_pid234672.jsonl",
+    "size": 230939
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/metrics/rank5_pid234673.jsonl",
+    "size": 230938
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/metrics/rank6_pid234674.jsonl",
+    "size": 230942
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/metrics/rank7_pid234675.jsonl",
+    "size": 230962
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/replay/meta.json",
+    "size": 1396
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/replay/replay.jsonl",
+    "size": 1215389
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/replay/report.md",
+    "size": 2180
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_100114_formal_rep1/precompute/replay/summary.json",
+    "size": 14522
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/metrics/rank0_pid257149.jsonl",
+    "size": 445057
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/metrics/rank1_pid257150.jsonl",
+    "size": 233221
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/metrics/rank2_pid257151.jsonl",
+    "size": 233221
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/metrics/rank3_pid257152.jsonl",
+    "size": 233228
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/metrics/rank4_pid257153.jsonl",
+    "size": 233206
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/metrics/rank5_pid257154.jsonl",
+    "size": 233204
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/metrics/rank6_pid257155.jsonl",
+    "size": 233230
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/metrics/rank7_pid257156.jsonl",
+    "size": 233215
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/replay/meta.json",
+    "size": 1398
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/replay/replay.jsonl",
+    "size": 1215895
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/replay/report.md",
+    "size": 2184
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/lru/replay/summary.json",
+    "size": 14545
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/metrics/rank0_pid250564.jsonl",
+    "size": 462266
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/metrics/rank1_pid250565.jsonl",
+    "size": 242423
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/metrics/rank2_pid250566.jsonl",
+    "size": 242411
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/metrics/rank3_pid250567.jsonl",
+    "size": 242445
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/metrics/rank4_pid250568.jsonl",
+    "size": 242418
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/metrics/rank5_pid250569.jsonl",
+    "size": 242397
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/metrics/rank6_pid250570.jsonl",
+    "size": 242430
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/metrics/rank7_pid250571.jsonl",
+    "size": 242440
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/replay/meta.json",
+    "size": 1397
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/replay/replay.jsonl",
+    "size": 1215126
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/replay/report.md",
+    "size": 2181
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/on_demand/replay/summary.json",
+    "size": 14661
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/metrics/rank0_pid262703.jsonl",
+    "size": 2186521
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/metrics/rank1_pid262704.jsonl",
+    "size": 234354
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/metrics/rank2_pid262705.jsonl",
+    "size": 234348
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/metrics/rank3_pid262706.jsonl",
+    "size": 234377
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/metrics/rank4_pid262707.jsonl",
+    "size": 234367
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/metrics/rank5_pid262708.jsonl",
+    "size": 234340
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/metrics/rank6_pid262709.jsonl",
+    "size": 234376
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/metrics/rank7_pid262710.jsonl",
+    "size": 234375
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/replay/meta.json",
+    "size": 1399
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/replay/replay.jsonl",
+    "size": 1215392
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/replay/report.md",
+    "size": 2182
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_103350_formal_rep2/precompute/replay/summary.json",
+    "size": 14452
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/metrics/rank0_pid267786.jsonl",
+    "size": 456967
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/metrics/rank1_pid267787.jsonl",
+    "size": 245143
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/metrics/rank2_pid267788.jsonl",
+    "size": 245129
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/metrics/rank3_pid267789.jsonl",
+    "size": 245153
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/metrics/rank4_pid267790.jsonl",
+    "size": 245097
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/metrics/rank5_pid267791.jsonl",
+    "size": 245148
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/metrics/rank6_pid267792.jsonl",
+    "size": 245147
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/metrics/rank7_pid267793.jsonl",
+    "size": 245127
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/replay/meta.json",
+    "size": 1399
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/replay/replay.jsonl",
+    "size": 1215878
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/replay/report.md",
+    "size": 2183
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/lru/replay/summary.json",
+    "size": 14449
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/metrics/rank0_pid277332.jsonl",
+    "size": 470276
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/metrics/rank1_pid277333.jsonl",
+    "size": 250203
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/metrics/rank2_pid277334.jsonl",
+    "size": 250174
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/metrics/rank3_pid277335.jsonl",
+    "size": 250171
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/metrics/rank4_pid277336.jsonl",
+    "size": 250169
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/metrics/rank5_pid277337.jsonl",
+    "size": 250183
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/metrics/rank6_pid277338.jsonl",
+    "size": 250136
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/metrics/rank7_pid277339.jsonl",
+    "size": 250179
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/replay/meta.json",
+    "size": 1398
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/replay/replay.jsonl",
+    "size": 1215065
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/replay/report.md",
+    "size": 2180
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/on_demand/replay/summary.json",
+    "size": 14517
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/metrics/rank0_pid272593.jsonl",
+    "size": 2199767
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/metrics/rank1_pid272594.jsonl",
+    "size": 240378
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/metrics/rank2_pid272595.jsonl",
+    "size": 240349
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/metrics/rank3_pid272596.jsonl",
+    "size": 240353
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/metrics/rank4_pid272597.jsonl",
+    "size": 240367
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/metrics/rank5_pid272598.jsonl",
+    "size": 240356
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/metrics/rank6_pid272599.jsonl",
+    "size": 240361
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/metrics/rank7_pid272600.jsonl",
+    "size": 240367
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/replay/meta.json",
+    "size": 1399
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/replay/replay.jsonl",
+    "size": 1215378
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/replay/report.md",
+    "size": 2183
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_110634_formal_rep3/precompute/replay/summary.json",
+    "size": 14490
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/precompute/metrics/rank0_pid159810.jsonl",
+    "size": 128158
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/precompute/metrics/rank1_pid159811.jsonl",
+    "size": 25864
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/precompute/metrics/rank2_pid159812.jsonl",
+    "size": 25863
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/precompute/metrics/rank3_pid159813.jsonl",
+    "size": 25864
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/precompute/metrics/rank4_pid159814.jsonl",
+    "size": 25859
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/precompute/metrics/rank5_pid159815.jsonl",
+    "size": 25852
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/precompute/metrics/rank6_pid159816.jsonl",
+    "size": 25861
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/precompute/metrics/rank7_pid159817.jsonl",
+    "size": 25858
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/precompute/replay/meta.json",
+    "size": 1352
+  },
+  {
+    "path": "experiments/jyf/evict_position/online_runs/20260913_rep1/precompute/replay/replay.jsonl",
+    "size": 211994
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/analysis/report.md",
+    "size": 3339
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/analysis/results.json",
+    "size": 14670
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/frontier_trace/frontier_pid3797861_139912150795984.jsonl",
+    "size": 14890233
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/frontier_trace/frontier_pid3797862_140386855464464.jsonl",
+    "size": 14890502
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/frontier_trace/frontier_pid3797863_140428000865744.jsonl",
+    "size": 14890201
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/frontier_trace/frontier_pid3797864_139689807904080.jsonl",
+    "size": 14890393
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/frontier_trace/frontier_pid3797865_139554264457744.jsonl",
+    "size": 14890443
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/frontier_trace/frontier_pid3797866_140187773175760.jsonl",
+    "size": 14890539
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/frontier_trace/frontier_pid3797867_140401572970448.jsonl",
+    "size": 14890392
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/frontier_trace/frontier_pid3797868_140431240849616.jsonl",
+    "size": 14890225
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/replay/meta.json",
+    "size": 654
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/replay/replay.jsonl",
+    "size": 1239354
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/replay/report.md",
+    "size": 2209
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_frozen_v1/replay/summary.json",
+    "size": 14418
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/analysis/report.md",
+    "size": 3332
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/analysis/results.json",
+    "size": 14682
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/frontier_trace/frontier_pid2619176_140097326278928.jsonl",
+    "size": 82099804
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/frontier_trace/frontier_pid2619177_140174458452816.jsonl",
+    "size": 82100491
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/frontier_trace/frontier_pid2619178_139766595803600.jsonl",
+    "size": 82099889
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/frontier_trace/frontier_pid2619179_139632434279120.jsonl",
+    "size": 82100978
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/frontier_trace/frontier_pid2619180_139847963295376.jsonl",
+    "size": 82099952
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/frontier_trace/frontier_pid2619181_140471443005200.jsonl",
+    "size": 82100807
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/frontier_trace/frontier_pid2619182_139651944872720.jsonl",
+    "size": 82099702
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/frontier_trace/frontier_pid2619183_140546947532240.jsonl",
+    "size": 82100306
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/replay/meta.json",
+    "size": 1429
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/replay/replay.jsonl",
+    "size": 1238677
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/replay/report.md",
+    "size": 2247
+  },
+  {
+    "path": "experiments/jyf/nn_exp/cold_predictor_exp/runs/20260911_cold_frontier_agent050_v2/replay/summary.json",
+    "size": 14461
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/comparison.json",
+    "size": 77474
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/manifest.json",
+    "size": 1220
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/orchestrator.log",
+    "size": 711
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/report_zh.md",
+    "size": 5609
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/status",
+    "size": 35
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/test_serving_cache.log",
+    "size": 382
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/validation_summary.json",
+    "size": 1018
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/comparison.json",
+    "size": 57795
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/manifest.json",
+    "size": 1239
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/orchestrator.log",
+    "size": 2018
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/report_zh.md",
+    "size": 6115
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/status",
+    "size": 35
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/validation_summary.json",
+    "size": 2354
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_tests/async/rank0_pid4064890.jsonl",
+    "size": 997
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_tests/lru/rank0_pid4064899.jsonl",
+    "size": 885
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_tests/sync/rank0_pid4064796.jsonl",
+    "size": 219
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_tests/sync/rank0_pid4064880.jsonl",
+    "size": 995
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_tests/sync_fill/rank0_pid4099415.jsonl",
+    "size": 1419
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/runs/20260912_v1/additional.log",
+    "size": 5279
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/runs/20260912_v1/additional_results.json",
+    "size": 5279
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/runs/20260912_v1/equal_minimum_tokens_decisions.jsonl",
+    "size": 167931
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/runs/20260912_v1/report_zh.md",
+    "size": 10117
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/runs/20260912_v1/results.json",
+    "size": 127626
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/runs/20260912_v1/results.partial.json",
+    "size": 119045
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/runs/20260912_v1/shadow.log",
+    "size": 33
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/runs/20260912_v1/shadow_decisions.jsonl",
+    "size": 1050929
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/runs/20260912_v1/source_sha256.json",
+    "size": 458
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/runs/20260912_v1/tests.log",
+    "size": 318
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/runs/smoke/results.json",
+    "size": 18898
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/runs/smoke/results.partial.json",
+    "size": 10302
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/runs/smoke/shadow_decisions.jsonl",
+    "size": 1050905
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k10/seed_41/initial.pt",
+    "size": 91157
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k10/seed_41/landmark.pt",
+    "size": 92001
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k10/seed_41/metrics.json",
+    "size": 11865
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k10/seed_42/initial.pt",
+    "size": 91157
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k10/seed_42/landmark.pt",
+    "size": 92001
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k10/seed_42/metrics.json",
+    "size": 11868
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k10/seed_43/initial.pt",
+    "size": 91157
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k10/seed_43/landmark.pt",
+    "size": 92001
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k10/seed_43/metrics.json",
+    "size": 11856
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k20/seed_41/initial.pt",
+    "size": 96469
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k20/seed_41/landmark.pt",
+    "size": 97313
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k20/seed_41/metrics.json",
+    "size": 11971
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k20/seed_42/initial.pt",
+    "size": 96469
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k20/seed_42/landmark.pt",
+    "size": 97313
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k20/seed_42/metrics.json",
+    "size": 11953
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k20/seed_43/initial.pt",
+    "size": 96469
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k20/seed_43/landmark.pt",
+    "size": 97313
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k20/seed_43/metrics.json",
+    "size": 11972
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k5/seed_41/initial.pt",
+    "size": 88533
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k5/seed_41/landmark.pt",
+    "size": 89313
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k5/seed_41/metrics.json",
+    "size": 11223
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k5/seed_42/initial.pt",
+    "size": 88533
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k5/seed_42/landmark.pt",
+    "size": 89313
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k5/seed_42/metrics.json",
+    "size": 11096
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k5/seed_43/initial.pt",
+    "size": 88533
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k5/seed_43/landmark.pt",
+    "size": 89313
+  },
+  {
+    "path": "experiments/jyf/nn_exp/mlp_exp/runs/20260910_standalone_prefix_v1/k5/seed_43/metrics.json",
+    "size": 11216
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/source_snapshot/predictor.py",
+    "size": 8834
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/source_snapshot/report_online.py",
+    "size": 12962
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/source_snapshot/run_online.sh",
+    "size": 3201
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/source_snapshot/serving_patch.py",
+    "size": 16714
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/source_snapshot/sitecustomize.py",
+    "size": 989
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/source_snapshot/test_serving_cache.py",
+    "size": 3254
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/sync_fill/prometheus.txt",
+    "size": 254623
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/sync_fill/replay.log",
+    "size": 133943
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/sync_fill/server.log",
+    "size": 818996
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/sync_fill/server.pid",
+    "size": 8
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/sync_fill/server_info.json",
+    "size": 26071
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/async/prometheus.txt",
+    "size": 254580
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/async/replay.log",
+    "size": 134390
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/async/server.log",
+    "size": 1220166
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/async/server.pid",
+    "size": 8
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/async/server_info.json",
+    "size": 26071
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/lru/prometheus.txt",
+    "size": 254539
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/lru/replay.log",
+    "size": 134898
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/lru/server.log",
+    "size": 1175096
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/lru/server.pid",
+    "size": 8
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/lru/server_info.json",
+    "size": 26071
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/source_snapshot/predictor.py",
+    "size": 8834
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/source_snapshot/report_online.py",
+    "size": 9047
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/source_snapshot/run_online.sh",
+    "size": 3073
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/source_snapshot/serving_patch.py",
+    "size": 13154
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/source_snapshot/sitecustomize.py",
+    "size": 989
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/source_snapshot/test_serving_cache.py",
+    "size": 2500
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/sync/prometheus.txt",
+    "size": 254608
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/sync/replay.log",
+    "size": 134090
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/sync/server.log",
+    "size": 1100166
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/sync/server.pid",
+    "size": 8
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/sync/server_info.json",
+    "size": 26071
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/sync_fill/metrics/rank0_pid4099515.jsonl",
+    "size": 1111058
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/sync_fill/metrics/rank1_pid4099516.jsonl",
+    "size": 738386
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/sync_fill/metrics/rank2_pid4099517.jsonl",
+    "size": 738542
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/sync_fill/metrics/rank3_pid4099518.jsonl",
+    "size": 738398
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/sync_fill/metrics/rank4_pid4099519.jsonl",
+    "size": 738512
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/sync_fill/metrics/rank5_pid4099520.jsonl",
+    "size": 738537
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/sync_fill/metrics/rank6_pid4099521.jsonl",
+    "size": 738365
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/sync_fill/metrics/rank7_pid4099522.jsonl",
+    "size": 738454
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/sync_fill/replay/meta.json",
+    "size": 1428
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/sync_fill/replay/replay.jsonl",
+    "size": 1234752
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/sync_fill/replay/report.md",
+    "size": 2233
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_sync_fill_v1/sync_fill/replay/summary.json",
+    "size": 14450
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/async/metrics/rank0_pid4076966.jsonl",
+    "size": 1414916
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/async/metrics/rank1_pid4076967.jsonl",
+    "size": 1038428
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/async/metrics/rank2_pid4076968.jsonl",
+    "size": 1038123
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/async/metrics/rank3_pid4076969.jsonl",
+    "size": 1038434
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/async/metrics/rank4_pid4076970.jsonl",
+    "size": 1038468
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/async/metrics/rank5_pid4076971.jsonl",
+    "size": 1038288
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/async/metrics/rank6_pid4076972.jsonl",
+    "size": 1038120
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/async/metrics/rank7_pid4076973.jsonl",
+    "size": 1038443
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/async/replay/meta.json",
+    "size": 1428
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/async/replay/replay.jsonl",
+    "size": 1235314
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/async/replay/report.md",
+    "size": 2243
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/async/replay/summary.json",
+    "size": 14424
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/lru/metrics/rank0_pid4064957.jsonl",
+    "size": 1328141
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/lru/metrics/rank1_pid4064958.jsonl",
+    "size": 960532
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/lru/metrics/rank2_pid4064959.jsonl",
+    "size": 960556
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/lru/metrics/rank3_pid4064960.jsonl",
+    "size": 960543
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/lru/metrics/rank4_pid4064961.jsonl",
+    "size": 960594
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/lru/metrics/rank5_pid4064962.jsonl",
+    "size": 960593
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/lru/metrics/rank6_pid4064963.jsonl",
+    "size": 960507
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/lru/metrics/rank7_pid4064964.jsonl",
+    "size": 960517
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/lru/replay/meta.json",
+    "size": 1430
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/lru/replay/replay.jsonl",
+    "size": 1236040
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/lru/replay/report.md",
+    "size": 2239
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/lru/replay/summary.json",
+    "size": 14367
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/sync/metrics/rank0_pid4072522.jsonl",
+    "size": 1232157
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/sync/metrics/rank1_pid4072523.jsonl",
+    "size": 859667
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/sync/metrics/rank2_pid4072524.jsonl",
+    "size": 859750
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/sync/metrics/rank3_pid4072525.jsonl",
+    "size": 859765
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/sync/metrics/rank4_pid4072526.jsonl",
+    "size": 860067
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/sync/metrics/rank5_pid4072527.jsonl",
+    "size": 859612
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/sync/metrics/rank6_pid4072528.jsonl",
+    "size": 859777
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/sync/metrics/rank7_pid4072529.jsonl",
+    "size": 859786
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/sync/replay/meta.json",
+    "size": 1429
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/sync/replay/replay.jsonl",
+    "size": 1234634
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/sync/replay/report.md",
+    "size": 2232
+  },
+  {
+    "path": "experiments/jyf/nn_exp/useless/async_exp/online_runs/20260912_three_arm_v1/sync/replay/summary.json",
+    "size": 14407
+  }
+]

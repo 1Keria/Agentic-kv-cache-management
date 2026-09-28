@@ -236,6 +236,8 @@ def build_kv_cache(
         mlp_occupancy_hi=server_args.radix_mlp_occupancy_hi,
         mlp_occupancy_mid=server_args.radix_mlp_occupancy_mid,
         mlp_shadow_only=server_args.radix_mlp_shadow_only,
+        enable_request_cache_regions=server_args.enable_request_cache_regions,
+        request_agent_cache_ratio=server_args.request_agent_cache_ratio,
         enable_metrics=enable_metrics,
         enable_kv_cache_events=enable_kv_cache_events,
         enable_mamba_extra_buffer=server_args.enable_mamba_extra_buffer(),

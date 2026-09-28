@@ -82,6 +82,7 @@ from sglang.srt.managers.schedule_batch import MultimodalDataItem
 from sglang.srt.managers.scheduler_input_blocker import input_blocker_guard_region
 from sglang.srt.managers.tokenizer_control_mixin import TokenizerControlMixin
 from sglang.srt.managers.tokenizer_manager_score_mixin import TokenizerManagerScoreMixin
+from sglang.srt.mem_cache.request_region import RequestRegionClassifier
 from sglang.srt.managers.utils import is_health_check_generate_req
 from sglang.srt.observability.cpu_monitor import start_cpu_monitor_thread
 from sglang.srt.observability.metrics_collector import (
@@ -254,6 +255,18 @@ class TokenizerManager(TokenizerControlMixin, TokenizerManagerScoreMixin):
     ):
         # Parse args
         self.server_args = server_args
+        self.request_region_classifier = None
+        self.request_region_classifier_failures = 0
+        if server_args.enable_request_cache_regions:
+            if not server_args.request_classifier_checkpoint:
+                raise ValueError(
+                    "--request-classifier-checkpoint is required when "
+                    "--enable-request-cache-regions is enabled"
+                )
+            self.request_region_classifier = RequestRegionClassifier.load(
+                server_args.request_classifier_checkpoint,
+                threshold=server_args.request_classifier_threshold,
+            )
         self.enable_metrics = server_args.enable_metrics
         self.preferred_sampling_params = server_args.preferred_sampling_params
         self.crash_dump_folder = server_args.crash_dump_folder
@@ -582,6 +595,7 @@ class TokenizerManager(TokenizerControlMixin, TokenizerManagerScoreMixin):
         # Normalize the request
         obj.normalize_batch_and_arguments()
         self._set_default_priority(obj)
+        self._classify_cache_region(obj)
 
         if isinstance(obj, GenerateReqInput) and obj.routed_dp_rank is not None:
             dp_size = self.server_args.dp_size
@@ -621,6 +635,36 @@ class TokenizerManager(TokenizerControlMixin, TokenizerManagerScoreMixin):
             else:
                 async for response in self._handle_batch_request(obj, request):
                     yield response
+
+    def _classify_cache_region(self, obj: GenerateReqInput) -> None:
+        if self.request_region_classifier is None or not isinstance(obj, GenerateReqInput):
+            return
+
+        def classify_one(item: GenerateReqInput) -> None:
+            params = item.sampling_params if isinstance(item.sampling_params, dict) else {}
+            max_tokens = params.get("max_new_tokens", params.get("max_tokens", 0)) or 0
+            body = item.cache_classifier_body
+            if body is None:
+                text = item.text if isinstance(item.text, str) else ""
+                body = {"messages": [{"role": "user", "content": text}]}
+            try:
+                item.cache_region = self.request_region_classifier.classify(
+                    body, max_tokens
+                )
+            except Exception:
+                self.request_region_classifier_failures += 1
+                logger.warning(
+                    "Request classifier failed for rid=%s; falling back to request region",
+                    item.rid,
+                    exc_info=True,
+                )
+                item.cache_region = "request"
+
+        if obj.is_single:
+            classify_one(obj)
+        else:
+            for index in range(obj.batch_size):
+                classify_one(obj[index])
 
     def _detect_input_format(
         self, texts: Union[str, List[str]], is_cross_encoder: bool
@@ -1139,6 +1183,7 @@ class TokenizerManager(TokenizerControlMixin, TokenizerManagerScoreMixin):
                 multi_item_delimiter_indices=obj.multi_item_delimiter_indices,
                 mm_data_mooncake=obj.mm_data_mooncake,
                 encoder_urls=obj.encoder_urls,
+                cache_region=obj.cache_region,
             )
         elif isinstance(obj, EmbeddingReqInput):
             # Resolve unresolved embed overrides now that input_ids are available

@@ -470,6 +470,10 @@ class ServerArgs:
     radix_mlp_occupancy_hi: float = 0.90
     radix_mlp_occupancy_mid: float = 0.75
     radix_mlp_shadow_only: bool = False
+    enable_request_cache_regions: bool = False
+    request_classifier_checkpoint: Optional[str] = None
+    request_classifier_threshold: float = 0.5
+    request_agent_cache_ratio: float = 0.5
     enable_prefill_delayer: bool = False
     prefill_delayer_max_delay_passes: int = 30
     prefill_delayer_token_usage_low_watermark: Optional[float] = None
@@ -947,6 +951,15 @@ class ServerArgs:
         """
         Orchestrates the handling of various server arguments, ensuring proper configuration and validation.
         """
+
+        if not 0.0 < self.request_agent_cache_ratio < 1.0:
+            raise ValueError(
+                "--request-agent-cache-ratio must be strictly between 0 and 1"
+            )
+        if not 0.0 <= self.request_classifier_threshold <= 1.0:
+            raise ValueError(
+                "--request-classifier-threshold must be between 0 and 1"
+            )
 
         self._maybe_download_model_for_runai()
 
@@ -5323,6 +5336,33 @@ class ServerArgs:
                 "larger prefill. Unset (default) keeps the original slot-only behavior. "
                 "Typical: 0.1 ~ 0.5."
             ),
+        )
+        parser.add_argument(
+            "--enable-request-cache-regions",
+            action="store_true",
+            default=ServerArgs.enable_request_cache_regions,
+            help=(
+                "Classify requests into agent/request KV-cache regions; supported by "
+                "the classic and sliding-window RadixCache backends."
+            ),
+        )
+        parser.add_argument(
+            "--request-classifier-checkpoint",
+            type=str,
+            default=ServerArgs.request_classifier_checkpoint,
+            help="Path to the request identity classifier checkpoint.",
+        )
+        parser.add_argument(
+            "--request-classifier-threshold",
+            type=float,
+            default=ServerArgs.request_classifier_threshold,
+            help="Agent probability threshold for request cache-region assignment.",
+        )
+        parser.add_argument(
+            "--request-agent-cache-ratio",
+            type=float,
+            default=ServerArgs.request_agent_cache_ratio,
+            help="Fraction of committed KV-token cache capacity reserved for the agent region.",
         )
         parser.add_argument(
             "--prefill-delayer-max-delay-ms",

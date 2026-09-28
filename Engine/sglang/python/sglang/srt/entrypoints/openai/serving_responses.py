@@ -283,6 +283,17 @@ class OpenAIServingResponses(OpenAIServingChat):
                         rid=request.request_id,
                         extra_key=self._compute_extra_key(request),
                         background=request.background,
+                        cache_classifier_body={
+                            "messages": [
+                                {
+                                    "role": "user",
+                                    "content": {
+                                        "__cache_char_count__": prompt_length
+                                    },
+                                }
+                            ],
+                            "tools": [{} for _ in request.tools],
+                        },
                     )
 
                     generator = self._generate_with_builtin_tools(
@@ -1299,6 +1310,7 @@ class OpenAIServingResponses(OpenAIServingChat):
                 stream=adapted_request.stream,
                 rid=request_id,
                 extra_key=adapted_request.extra_key,
+                cache_classifier_body=adapted_request.cache_classifier_body,
                 return_logprob=adapted_request.return_logprob,
                 logprob_start_len=adapted_request.logprob_start_len,
                 top_logprobs_num=adapted_request.top_logprobs_num,

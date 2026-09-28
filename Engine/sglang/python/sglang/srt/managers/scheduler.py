@@ -1971,6 +1971,7 @@ class Scheduler(
                     if self.metrics_reporter.enable_metrics
                     else None
                 ),
+                cache_region=recv_req.cache_region,
                 routing_key=recv_req.routing_key,
                 extra_key=recv_req.extra_key,
                 http_worker_ipc=recv_req.http_worker_ipc,
@@ -2031,6 +2032,7 @@ class Scheduler(
                 recv_req.input_text,
                 recv_req.input_ids,
                 recv_req.sampling_params,
+                cache_region=recv_req.cache_region,
                 vocab_size=self.model_config.vocab_size,
                 http_worker_ipc=recv_req.http_worker_ipc,
             )
@@ -3550,6 +3552,8 @@ class Scheduler(
             "token_capacity": int(self.max_total_num_tokens),
             "graph": round(self.tp_worker.model_runner.graph_mem_usage, 2),
         }
+        if self.server_args.enable_request_cache_regions:
+            ret["request_cache_regions"] = self.tree_cache.region_stats()
         ret["effective_max_running_requests_per_dp"] = self.max_running_requests
 
         if (

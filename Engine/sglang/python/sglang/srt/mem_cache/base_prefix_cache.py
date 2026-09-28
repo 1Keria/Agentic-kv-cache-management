@@ -92,6 +92,7 @@ class EvictParams:
     num_tokens: int = 0
     swa_num_tokens: int = 0
     mamba_num: int = 0
+    region: Optional[str] = None
 
 
 @dataclasses.dataclass
@@ -263,6 +264,10 @@ class BasePrefixCache(ABC, PrefixCacheTrait):
     @abstractmethod
     def evict(self, params: EvictParams) -> EvictResult:
         pass
+
+    def ensure_region_capacity(self, region: Optional[str], num_tokens: int) -> None:
+        """Evict cached tokens until a request region fits its fixed quota."""
+        return None
 
     @abstractmethod
     def inc_lock_ref(self, node: Any) -> IncLockRefResult:

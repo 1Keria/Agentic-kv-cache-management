@@ -1,0 +1,11 @@
+{
+  "name": "token_balanced_openhands_wildchat",
+  "workload_jsonl_sha256": "90fce6bfac8779e89834c5149bb426fa3f4b191c25835b6e2e2eb54fece1fac8",
+  "sessions_jsonl_sha256": "ffe6447b11aaf37ade48b271318b964d4780643aa92f8584c6766922b5716f1e",
+  "spec_json_sha256": "032466688a6170707c9a24c118bfe968dc6cfcc483fb5cc4330358d210eee780",
+  "n_turns": 1261,
+  "n_sessions_by_class": {
+    "openhands": 7,
+    "request": 548
+  }
+}

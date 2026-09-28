@@ -363,6 +363,7 @@ async def measure_chat(
     messages: list[dict[str, Any]],
     max_tokens: int,
     tools: list[dict[str, Any]] | None,
+    fixed_output_tokens: bool,
     custom_params: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     started = time.perf_counter()
@@ -381,8 +382,13 @@ async def measure_chat(
     }
     if tools:
         kwargs["tools"] = tools
+    extra_body: dict[str, Any] = {}
+    if fixed_output_tokens:
+        extra_body["ignore_eos"] = True
     if custom_params:
-        kwargs["extra_body"] = {"custom_params": custom_params}
+        extra_body["custom_params"] = custom_params
+    if extra_body:
+        kwargs["extra_body"] = extra_body
     stream = await client.chat.completions.create(**kwargs)
     async for chunk in stream:
         if chunk.choices:
@@ -437,6 +443,7 @@ async def run_session(
     gap_scale: float,
     ablate_zero_gap: bool,
     request_gap_cap_s: float | None,
+    fixed_output_tokens: bool,
     dry_run: bool,
     write_result: Any,
 ) -> None:
@@ -493,6 +500,7 @@ async def run_session(
                 api_messages(turn.messages),
                 turn.max_tokens,
                 turn.tools,
+                fixed_output_tokens,
                 custom_params={
                     "session_id": turn.session_id,
                     "turn_idx": turn.turn_idx,
@@ -759,6 +767,11 @@ async def async_main(args: argparse.Namespace) -> int:
         raise SystemExit(f"Missing {workload_path}; run scripts/shell/build_mix.sh first")
     verify_manifest(workload_dir, workload_path)
     sessions = load_sessions(workload_path)
+    if args.max_output_tokens_override is not None:
+        override = max(1, int(args.max_output_tokens_override))
+        for _, turns in sessions:
+            for turn in turns:
+                turn.max_tokens = override
     spec_arrival = load_spec_arrival(workload_dir)
     delta_agent = (
         args.delta_agent_s
@@ -828,6 +841,8 @@ async def async_main(args: argparse.Namespace) -> int:
         "request_gap_cap_s": args.request_gap_cap_s,
         "ablate_zero_gap": bool(args.ablate_zero_gap),
         "flush_cache_before_run": bool(args.flush_cache),
+        "fixed_output_tokens": bool(args.fixed_output_tokens),
+        "max_output_tokens_override": args.max_output_tokens_override,
         "dry_run": bool(args.dry_run),
         "n_sessions": len(sessions),
         "n_turns": n_turns,
@@ -868,6 +883,7 @@ async def async_main(args: argparse.Namespace) -> int:
                     gap_scale=float(args.gap_scale),
                     ablate_zero_gap=bool(args.ablate_zero_gap),
                     request_gap_cap_s=args.request_gap_cap_s,
+                    fixed_output_tokens=bool(args.fixed_output_tokens),
                     dry_run=bool(args.dry_run),
                     write_result=write_result,
                 )
@@ -973,6 +989,17 @@ def parse_args() -> argparse.Namespace:
         "--flush-cache",
         action=argparse.BooleanOptionalAction,
         default=True,
+    )
+    p.add_argument(
+        "--fixed-output-tokens",
+        action="store_true",
+        help="ignore EOS/stop and generate exactly each row's max_tokens",
+    )
+    p.add_argument(
+        "--max-output-tokens-override",
+        type=int,
+        default=None,
+        help="override every request's max_tokens; useful for untimed JIT warmup",
     )
     p.add_argument("--dry-run", action="store_true")
     return p.parse_args()

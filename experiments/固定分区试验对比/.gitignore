@@ -1,0 +1,6 @@
+data/**/workload.jsonl
+results/**
+!results/README.md
+!results/offline_ratio_selection.json
+!results/offline_ratio_selection.md
+!results/selected_ratio.env
