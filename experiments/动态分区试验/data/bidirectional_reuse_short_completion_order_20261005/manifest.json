@@ -1,0 +1,22 @@
+{
+  "name": "completion_order_frozen_one_turn",
+  "protocol": "dynamic-partition-controlled-v2-completion-order",
+  "source_workload": "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/动态分区试验/data/bidirectional_reuse_short_phased_20261001/workload.jsonl",
+  "source_workload_sha256": "fa75dbef275ac6804f53fb405540c7d38b01e8273f9a6367159b297d8ccdefba",
+  "source_replay_jsonl": "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/动态分区试验/results/short_elastic_historygate_recheck_20261005/elastic/run_mix_replay/replay.jsonl",
+  "source_replay_jsonl_sha256": "eaba2851131878d47e51c9e525fd95879b242777b3d980572eb4c533b53f3295",
+  "workload_jsonl_sha256": "0304f4bbeded60f15e2301bb6d17feaf3116b7f6a67ea205b36b8c72ab5e396d",
+  "n_turns": 227,
+  "n_sessions": 227,
+  "n_sessions_by_class": {
+    "openhands": 211,
+    "request": 16
+  },
+  "transformation": {
+    "type": "freeze_recorded_completion_order",
+    "one_turn_sessions": true,
+    "prompt_bodies_unchanged": true,
+    "original_session_ids_preserved_as_metadata_only": false,
+    "source_completion_order_is_observational": true
+  }
+}

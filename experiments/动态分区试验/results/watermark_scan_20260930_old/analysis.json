@@ -1,0 +1,112 @@
+{
+  "scan_mixed_256_old": {
+    "config": {
+      "created_at_utc": "2026-09-30T11:46:09.872813+00:00",
+      "scenario": "scan_mixed_256_old",
+      "workload_dir": "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/动态分区试验/data/scan_mixed_256",
+      "expected_requests": 256,
+      "modes": [
+        "borrow"
+      ],
+      "gap_scale": 0.1,
+      "max_output_tokens": 16,
+      "agent_ratio": 0.61,
+      "window_requests": 64,
+      "alpha": 0.2,
+      "min_ratio": 0.2,
+      "max_ratio": 0.8,
+      "borrow_high_watermark_tokens": 0,
+      "borrow_low_watermark_tokens": 0,
+      "disable_cuda_graph": "1",
+      "random_seed": 42
+    },
+    "modes": {
+      "borrow": {
+        "summary": {
+          "requests_ok": 256,
+          "wall_clock_s": 72.956,
+          "request_per_s": 3.509,
+          "output_token_per_s": 56.1436,
+          "overall_hit": 0.808814,
+          "cached_tokens": 755456,
+          "prompt_tokens": 934029,
+          "agent_hit": 0.878074,
+          "request_hit": 0.437556,
+          "ttft_p50_ms": 3170.039,
+          "ttft_p90_ms": 4678.0895
+        },
+        "regions_after": {
+          "agent": {
+            "base_full_capacity_tokens": 430220,
+            "base_swa_capacity_tokens": 42944,
+            "full_capacity_tokens": 695552,
+            "swa_capacity_tokens": 65536,
+            "full_borrowed_tokens": 265332,
+            "swa_borrowed_tokens": 22592,
+            "full_cached_borrowed_tokens": 0,
+            "swa_cached_borrowed_tokens": 36352,
+            "borrowed_eviction_count": 0,
+            "borrowed_full_evicted_tokens": 0,
+            "borrowed_swa_evicted_tokens": 0,
+            "borrow_reclaim_reasons": {},
+            "full_used_tokens": 76544,
+            "swa_used_tokens": 64256,
+            "full_evictable_tokens": 76544,
+            "swa_evictable_tokens": 64256,
+            "eviction_count": 4,
+            "full_evicted_tokens": 13824,
+            "swa_evicted_tokens": 26112,
+            "full_over_quota_tokens": 0,
+            "swa_over_quota_tokens": 0
+          },
+          "request": {
+            "base_full_capacity_tokens": 275060,
+            "base_swa_capacity_tokens": 27456,
+            "full_capacity_tokens": 628736,
+            "swa_capacity_tokens": 27456,
+            "full_borrowed_tokens": 353676,
+            "swa_borrowed_tokens": 0,
+            "full_cached_borrowed_tokens": 0,
+            "swa_cached_borrowed_tokens": 0,
+            "borrowed_eviction_count": 3,
+            "borrowed_full_evicted_tokens": 13312,
+            "borrowed_swa_evicted_tokens": 18176,
+            "borrow_reclaim_reasons": {
+              "high_watermark": 3
+            },
+            "full_used_tokens": 9728,
+            "swa_used_tokens": 4864,
+            "full_evictable_tokens": 9728,
+            "swa_evictable_tokens": 4864,
+            "eviction_count": 24,
+            "full_evicted_tokens": 52992,
+            "swa_evicted_tokens": 57856,
+            "full_over_quota_tokens": 0,
+            "swa_over_quota_tokens": 0
+          }
+        },
+        "region_totals_after": {
+          "full_evicted_tokens": 66816,
+          "swa_evicted_tokens": 83968,
+          "max_full_effective_capacity_tokens": 695552,
+          "max_swa_effective_capacity_tokens": 65536
+        },
+        "controller_after": {
+          "policy": "borrow",
+          "current_agent_ratio": 0.61
+        },
+        "trajectory": {
+          "sample_count": 32,
+          "ratio_initial": 0.61,
+          "ratio_final": 0.61,
+          "ratio_min": 0.61,
+          "ratio_max": 0.61,
+          "update_count": 0,
+          "updates_observed_by_sampler": []
+        },
+        "phases": null
+      }
+    },
+    "comparisons": {}
+  }
+}

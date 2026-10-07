@@ -1,0 +1,378 @@
+{
+  "schema": "agentkv_exact_diagnostics_analysis_v1",
+  "suite": "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/evicition_policy/results/pilot/exact_diagnostics_20260929T052620Z",
+  "input_traces_identical": false,
+  "output_traces_identical": false,
+  "diagnostics_overhead": {
+    "mean_ttft_ratio_on_over_off": 0.2960460447997546,
+    "mean_latency_ratio_on_over_off": 0.40472941502391124,
+    "cached_tokens_equal": true
+  },
+  "clients": {
+    "01_control_lru_off": {
+      "requests": 27,
+      "cached_tokens": 109568,
+      "mean_ttft_seconds": 1.2493201873334732,
+      "p95_ttft_seconds": 8.14516865610057,
+      "mean_latency_seconds": 1.50754803803661
+    },
+    "02_control_lru_on": {
+      "requests": 27,
+      "cached_tokens": 109568,
+      "mean_ttft_seconds": 0.3698563001485632,
+      "p95_ttft_seconds": 1.9247310254999301,
+      "mean_latency_seconds": 0.6101490355550022
+    },
+    "03_pressure_lru": {
+      "requests": 27,
+      "cached_tokens": 13312,
+      "mean_ttft_seconds": 2.0554016432592848,
+      "p95_ttft_seconds": 11.076775068902498,
+      "mean_latency_seconds": 2.3219265542965903
+    },
+    "04_pressure_slru": {
+      "requests": 27,
+      "cached_tokens": 13312,
+      "mean_ttft_seconds": 0.7448797921843598,
+      "p95_ttft_seconds": 2.4572816333973604,
+      "mean_latency_seconds": 0.9854194550732953
+    }
+  },
+  "runtime": {
+    "02_control_lru_on": {
+      "event_count": 298,
+      "event_types": {
+        "commit": 57,
+        "demand": 27,
+        "eviction_begin": 3,
+        "eviction_end": 3,
+        "eviction_step": 3,
+        "flush": 1,
+        "lock": 86,
+        "split": 5,
+        "store": 27,
+        "unlock": 86
+      },
+      "pool_metrics": {
+        "full": {
+          "decisions": 0,
+          "steps": 0,
+          "requested_tokens": 0,
+          "released_tokens": 0,
+          "overshoot_tokens": 0,
+          "initial_candidate_count": 0,
+          "initial_candidate_tokens": 0,
+          "new_tail_count": 0,
+          "new_tail_tokens": 0,
+          "new_tail_no_future_count": 0,
+          "new_tail_no_future_tokens": 0,
+          "new_tail_no_future_ratio_count": null,
+          "new_tail_no_future_ratio_tokens": null,
+          "parent_exposures": 0,
+          "parent_exposed_tokens": 0,
+          "initial_stage_released_tokens": 0,
+          "exposed_stage_released_tokens": 0,
+          "future_demand_initial_stage_tokens": 0,
+          "future_demand_exposed_stage_tokens": 0,
+          "deep_chain_victim_steps": 0,
+          "max_exposure_chain_depth": 0,
+          "locked_candidates": 0,
+          "incomplete_decisions": 0,
+          "candidate_coverage_complete": true
+        },
+        "swa": {
+          "decisions": 3,
+          "steps": 3,
+          "requested_tokens": 768,
+          "released_tokens": 7168,
+          "overshoot_tokens": 6400,
+          "initial_candidate_count": 53,
+          "initial_candidate_tokens": 47616,
+          "new_tail_count": 10,
+          "new_tail_tokens": 2560,
+          "new_tail_no_future_count": 2,
+          "new_tail_no_future_tokens": 512,
+          "new_tail_no_future_ratio_count": 0.2,
+          "new_tail_no_future_ratio_tokens": 0.2,
+          "parent_exposures": 0,
+          "parent_exposed_tokens": 0,
+          "initial_stage_released_tokens": 7168,
+          "exposed_stage_released_tokens": 0,
+          "future_demand_initial_stage_tokens": 3840,
+          "future_demand_exposed_stage_tokens": 0,
+          "deep_chain_victim_steps": 0,
+          "max_exposure_chain_depth": 0,
+          "locked_candidates": 0,
+          "incomplete_decisions": 0,
+          "candidate_coverage_complete": true
+        }
+      },
+      "same_external_input_trace_as_control": true,
+      "cache_loss": {
+        "total_extra_recompute_tokens_vs_control": 0,
+        "requests_with_extra_recompute": 0,
+        "per_request": [
+          {
+            "request_seq": 1,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 2,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 3,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 4,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 5,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 6,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 7,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 8,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 9,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 10,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 11,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 12,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 13,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 14,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 15,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 16,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 17,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 18,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 19,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 20,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 21,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 22,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 23,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 24,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 25,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 26,
+            "extra_recompute_tokens_vs_control": 0
+          },
+          {
+            "request_seq": 27,
+            "extra_recompute_tokens_vs_control": 0
+          }
+        ]
+      },
+      "mean_ttft_seconds": 0.3698563001485632,
+      "p95_ttft_seconds": 1.9247310254999301,
+      "mean_latency_seconds": 0.6101490355550022
+    },
+    "03_pressure_lru": {
+      "event_count": 585,
+      "event_types": {
+        "commit": 71,
+        "demand": 27,
+        "eviction_begin": 49,
+        "eviction_end": 49,
+        "eviction_step": 110,
+        "flush": 1,
+        "lock": 100,
+        "split": 37,
+        "store": 41,
+        "unlock": 100
+      },
+      "pool_metrics": {
+        "full": {
+          "decisions": 22,
+          "steps": 40,
+          "requested_tokens": 46592,
+          "released_tokens": 91648,
+          "overshoot_tokens": 45056,
+          "initial_candidate_count": 72,
+          "initial_candidate_tokens": 76544,
+          "new_tail_count": 72,
+          "new_tail_tokens": 76544,
+          "new_tail_no_future_count": 12,
+          "new_tail_no_future_tokens": 4096,
+          "new_tail_no_future_ratio_count": 0.16666666666666666,
+          "new_tail_no_future_ratio_tokens": 0.05351170568561873,
+          "parent_exposures": 17,
+          "parent_exposed_tokens": 43776,
+          "initial_stage_released_tokens": 47872,
+          "exposed_stage_released_tokens": 43776,
+          "future_demand_initial_stage_tokens": 45568,
+          "future_demand_exposed_stage_tokens": 27904,
+          "deep_chain_victim_steps": 17,
+          "max_exposure_chain_depth": 2,
+          "locked_candidates": 0,
+          "incomplete_decisions": 0,
+          "candidate_coverage_complete": true
+        },
+        "swa": {
+          "decisions": 27,
+          "steps": 70,
+          "requested_tokens": 45568,
+          "released_tokens": 109568,
+          "overshoot_tokens": 64000,
+          "initial_candidate_count": 127,
+          "initial_candidate_tokens": 145664,
+          "new_tail_count": 125,
+          "new_tail_tokens": 144640,
+          "new_tail_no_future_count": 20,
+          "new_tail_no_future_tokens": 16640,
+          "new_tail_no_future_ratio_count": 0.16,
+          "new_tail_no_future_ratio_tokens": 0.11504424778761062,
+          "parent_exposures": 0,
+          "parent_exposed_tokens": 0,
+          "initial_stage_released_tokens": 109568,
+          "exposed_stage_released_tokens": 0,
+          "future_demand_initial_stage_tokens": 96256,
+          "future_demand_exposed_stage_tokens": 0,
+          "deep_chain_victim_steps": 0,
+          "max_exposure_chain_depth": 0,
+          "locked_candidates": 0,
+          "incomplete_decisions": 0,
+          "candidate_coverage_complete": true
+        }
+      },
+      "same_external_input_trace_as_control": false,
+      "cache_loss": null,
+      "mean_ttft_seconds": 2.0554016432592848,
+      "p95_ttft_seconds": 11.076775068902498,
+      "mean_latency_seconds": 2.3219265542965903
+    },
+    "04_pressure_slru": {
+      "event_count": 585,
+      "event_types": {
+        "commit": 71,
+        "demand": 27,
+        "eviction_begin": 49,
+        "eviction_end": 49,
+        "eviction_step": 110,
+        "flush": 1,
+        "lock": 100,
+        "split": 37,
+        "store": 41,
+        "unlock": 100
+      },
+      "pool_metrics": {
+        "full": {
+          "decisions": 22,
+          "steps": 40,
+          "requested_tokens": 46592,
+          "released_tokens": 91648,
+          "overshoot_tokens": 45056,
+          "initial_candidate_count": 72,
+          "initial_candidate_tokens": 76544,
+          "new_tail_count": 72,
+          "new_tail_tokens": 76544,
+          "new_tail_no_future_count": 12,
+          "new_tail_no_future_tokens": 4096,
+          "new_tail_no_future_ratio_count": 0.16666666666666666,
+          "new_tail_no_future_ratio_tokens": 0.05351170568561873,
+          "parent_exposures": 17,
+          "parent_exposed_tokens": 43776,
+          "initial_stage_released_tokens": 47872,
+          "exposed_stage_released_tokens": 43776,
+          "future_demand_initial_stage_tokens": 45568,
+          "future_demand_exposed_stage_tokens": 27904,
+          "deep_chain_victim_steps": 17,
+          "max_exposure_chain_depth": 2,
+          "locked_candidates": 0,
+          "incomplete_decisions": 0,
+          "candidate_coverage_complete": true
+        },
+        "swa": {
+          "decisions": 27,
+          "steps": 70,
+          "requested_tokens": 45568,
+          "released_tokens": 109568,
+          "overshoot_tokens": 64000,
+          "initial_candidate_count": 127,
+          "initial_candidate_tokens": 145664,
+          "new_tail_count": 125,
+          "new_tail_tokens": 144640,
+          "new_tail_no_future_count": 20,
+          "new_tail_no_future_tokens": 16640,
+          "new_tail_no_future_ratio_count": 0.16,
+          "new_tail_no_future_ratio_tokens": 0.11504424778761062,
+          "parent_exposures": 0,
+          "parent_exposed_tokens": 0,
+          "initial_stage_released_tokens": 109568,
+          "exposed_stage_released_tokens": 0,
+          "future_demand_initial_stage_tokens": 96256,
+          "future_demand_exposed_stage_tokens": 0,
+          "deep_chain_victim_steps": 0,
+          "max_exposure_chain_depth": 0,
+          "locked_candidates": 0,
+          "incomplete_decisions": 0,
+          "candidate_coverage_complete": true
+        }
+      },
+      "same_external_input_trace_as_control": false,
+      "cache_loss": null,
+      "mean_ttft_seconds": 0.7448797921843598,
+      "p95_ttft_seconds": 2.4572816333973604,
+      "mean_latency_seconds": 0.9854194550732953
+    }
+  }
+}

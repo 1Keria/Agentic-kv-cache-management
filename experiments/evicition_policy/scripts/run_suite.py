@@ -186,9 +186,24 @@ async def monitor(client, base_url, output, stopped):
                 pass
 
 
-async def run_once(config, config_path, workload, warmup, policy, output, expected_signature, ready_timeout, shapes=None):
+async def run_once(
+    config,
+    config_path,
+    workload,
+    warmup,
+    policy,
+    output,
+    expected_signature,
+    ready_timeout,
+    shapes=None,
+    *,
+    strategy=None,
+    exposure_barrier=False,
+):
+    strategy = strategy or policy
     output.mkdir(parents=True, exist_ok=False)
-    state = {"status": "starting", "policy": policy, "purpose": workload["purpose"],
+    state = {"status": "starting", "policy": policy, "strategy": strategy,
+             "exposure_barrier": bool(exposure_barrier), "purpose": workload["purpose"],
              "started_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()}
     save_json(output / "state.json", state)
     save_json(output / "config.resolved.json", config)
@@ -206,13 +221,22 @@ async def run_once(config, config_path, workload, warmup, policy, output, expect
         save_json(output / "state.json", state)
         raise RuntimeError(f"GPUs already have compute processes; refusing interference: {occupied}")
     command = ["bash", str(ROOT / "scripts/run_server.sh"), "--config", str(config_path), "--policy", policy]
+    patch_lock = ROOT / "configs/environment.diagnostics.lock.json"
     save_json(output / "command.json", {"wrapper": command, "resolved": build_command(config, policy),
+                                        "strategy": strategy, "exposure_barrier": bool(exposure_barrier),
                                         "environment_lock_sha256": digest_file(ROOT / "configs/environment.lock.json"),
+                                        "diagnostics_patch_lock_sha256": digest_file(patch_lock) if patch_lock.exists() else None,
                                         "workload_sha256": canonical_digest(workload)})
     scripts = sorted((ROOT / "scripts").glob("*.py")) + sorted((ROOT / "scripts").glob("*.sh"))
     save_json(output / "script_fingerprints.json", {path.name: digest_file(path) for path in scripts})
     log_file = (output / "server.log").open("x")
-    process = subprocess.Popen(command, cwd=ROOT, stdout=log_file, stderr=subprocess.STDOUT, start_new_session=True)
+    env = os.environ.copy()
+    if exposure_barrier:
+        env["AGENTKV_EXPOSURE_BARRIER"] = "1"
+    else:
+        env.pop("AGENTKV_EXPOSURE_BARRIER", None)
+    process = subprocess.Popen(command, cwd=ROOT, env=env, stdout=log_file,
+                               stderr=subprocess.STDOUT, start_new_session=True)
     save_json(output / "process.json", {"pid": process.pid, "pgid": process.pid,
                                        "proc_start_ticks": Path(f"/proc/{process.pid}/stat").read_text().split(")", 1)[1].split()[19]})
     signature = None
@@ -238,7 +262,7 @@ async def run_once(config, config_path, workload, warmup, policy, output, expect
             save_json(output / "protocol.json", protocol)
             if protocol["status"] != "passed":
                 raise ValueError("Online encoding/generation protocol verification failed")
-            await replay(base_url, warmup, output / "warmup", context={"run_id": output.name, "policy": policy, "phase": "warmup"})
+            await replay(base_url, warmup, output / "warmup", context={"run_id": output.name, "policy": strategy, "phase": "warmup"})
             if shapes is not None:
                 state["status"] = "shape_warmup"
                 save_json(output / "state.json", state)
@@ -259,7 +283,7 @@ async def run_once(config, config_path, workload, warmup, policy, output, expect
             save_json(output / "state.json", state)
             monitor_task = asyncio.create_task(monitor(client, base_url, output, stopped))
             summary = await asyncio.wait_for(
-                replay(base_url, workload, output / "measurement", context={"run_id": output.name, "policy": policy, "phase": "measurement"}),
+                replay(base_url, workload, output / "measurement", context={"run_id": output.name, "policy": strategy, "phase": "measurement"}),
                 timeout=config.get("measurement_timeout_seconds"))
             if summary["completed_requests"] != workload["requests"]:
                 raise ValueError("Incomplete workload")

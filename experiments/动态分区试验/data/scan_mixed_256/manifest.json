@@ -1,0 +1,18 @@
+{
+  "name": "prefix_subset_256",
+  "protocol": "dynamic-partition-controlled-v1",
+  "source_workload": "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/动态分区试验/data/mixed_scaled/workload.jsonl",
+  "source_workload_sha256": "014eed38a3d5d85348a6e8db847fbb595f29d5b6684b59861346e3fc74f0924a",
+  "workload_jsonl_sha256": "ab3221c21ccf53e832273e1fe8255e1065276a7a5be8d4b474abe50ed44ce700",
+  "n_turns": 256,
+  "n_sessions": 119,
+  "n_sessions_by_class": {
+    "openhands": 3,
+    "request": 116
+  },
+  "transformation": {
+    "type": "prefix_subset",
+    "rows": 256,
+    "timeline_scale": 0.1
+  }
+}

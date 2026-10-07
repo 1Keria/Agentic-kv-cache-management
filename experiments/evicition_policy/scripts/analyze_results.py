@@ -56,7 +56,10 @@ def audit_run(folder: Path) -> dict:
     if cleanup["remaining_group_members"]:
         errors.append("owned_processes_remain")
     cache_known = all(type(row["cached_tokens"]) is int and 0 <= row["cached_tokens"] <= row["prompt_tokens"] for row in records)
-    result = {"run": folder.name, "policy": state["policy"], "purpose": workload["purpose"],
+    result = {"run": folder.name, "policy": state["policy"],
+              "strategy": state.get("strategy", state["policy"]),
+              "exposure_barrier": state.get("exposure_barrier", False),
+              "purpose": workload["purpose"],
               "integrity_errors": sorted(set(errors)), "protocol_integrity_passed": not errors,
               "requests": len(records), "expected_requests": len(expected), "signature": signature,
               "prompt_tokens_total": sum(row["prompt_tokens"] for row in records),

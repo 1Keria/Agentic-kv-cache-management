@@ -1,0 +1,646 @@
+{
+  "integrity": {
+    "n_issued": 192,
+    "n_ok": 192,
+    "n_err": 0,
+    "error_breakdown": {},
+    "wall_clock_s": 458.037
+  },
+  "latency": {
+    "ttft_ms": {
+      "count": 192,
+      "p50": 305.04200000000003,
+      "p90": 1125.9710000000007,
+      "p99": 2972.04388,
+      "mean": 550.4111510416667
+    },
+    "tpot_ms": {
+      "count": 192,
+      "p50": 112.34899999999999,
+      "p90": 114.97219999999999,
+      "p99": 121.46877,
+      "mean": 112.41402083333332
+    },
+    "e2e_ms": {
+      "count": 192,
+      "p50": 2111.108,
+      "p90": 2926.5251,
+      "p99": 4812.45669,
+      "mean": 2349.035947916667
+    }
+  },
+  "kv": {
+    "n": 192,
+    "prompt_tokens_sum": 3091634,
+    "cached_tokens_sum": 2403072,
+    "completion_tokens_sum": 3072,
+    "token_weighted_hit": 0.777282,
+    "per_req_hit_rate": {
+      "count": 192,
+      "p50": 0.8695265,
+      "p90": 0.9860532000000001,
+      "p99": 0.9942739,
+      "mean": 0.5371900520833334
+    },
+    "cold_miss_rate": 0.416667,
+    "ttft_ms": {
+      "count": 192,
+      "p50": 305.04200000000003,
+      "p90": 1125.9710000000007,
+      "p99": 2972.04388,
+      "mean": 550.4111510416667
+    },
+    "tpot_ms": {
+      "count": 192,
+      "p50": 112.34899999999999,
+      "p90": 114.97219999999999,
+      "p99": 121.46877,
+      "mean": 112.41402083333332
+    },
+    "e2e_ms": {
+      "count": 192,
+      "p50": 2111.108,
+      "p90": 2926.5251,
+      "p99": 4812.45669,
+      "mean": 2349.035947916667
+    }
+  },
+  "schedule": {
+    "s_time_drift_ms": {
+      "count": 32,
+      "p50": 0.004060479113832116,
+      "p90": 0.004907470429316163,
+      "p99": 0.00790659396443516,
+      "mean": 0.004251432983437553
+    }
+  },
+  "throughput": {
+    "req_per_s": 0.4192,
+    "output_tok_per_s": 6.7069
+  },
+  "by_class": {
+    "openhands": {
+      "all": {
+        "n": 120,
+        "prompt_tokens_sum": 2696066,
+        "cached_tokens_sum": 2403072,
+        "completion_tokens_sum": 1920,
+        "token_weighted_hit": 0.891325,
+        "per_req_hit_rate": {
+          "count": 120,
+          "p50": 0.954634,
+          "p90": 0.9884524000000001,
+          "p99": 0.9947851000000001,
+          "mean": 0.8595040833333333
+        },
+        "cold_miss_rate": 0.066667,
+        "ttft_ms": {
+          "count": 120,
+          "p50": 331.64750000000004,
+          "p90": 2090.5141000000003,
+          "p99": 3072.93892,
+          "mean": 675.5576249999999
+        },
+        "tpot_ms": {
+          "count": 120,
+          "p50": 112.7675,
+          "p90": 115.13929999999999,
+          "p99": 120.76218,
+          "mean": 112.7215
+        },
+        "e2e_ms": {
+          "count": 120,
+          "p50": 2133.6414999999997,
+          "p90": 3900.1642,
+          "p99": 4909.75821,
+          "mean": 2479.1018833333337
+        }
+      },
+      "turn0": {
+        "n": 8,
+        "prompt_tokens_sum": 85312,
+        "cached_tokens_sum": 0,
+        "completion_tokens_sum": 128,
+        "token_weighted_hit": 0.0,
+        "per_req_hit_rate": {
+          "count": 8,
+          "p50": 0.0,
+          "p90": 0.0,
+          "p99": 0.0,
+          "mean": 0.0
+        },
+        "cold_miss_rate": 1.0,
+        "ttft_ms": {
+          "count": 8,
+          "p50": 627.2764999999999,
+          "p90": 1197.5099999999998,
+          "p99": 2386.2569999999996,
+          "mean": 790.45075
+        },
+        "tpot_ms": {
+          "count": 8,
+          "p50": 112.684,
+          "p90": 120.43950000000001,
+          "p99": 124.99754999999999,
+          "mean": 114.438875
+        },
+        "e2e_ms": {
+          "count": 8,
+          "p50": 2413.1915,
+          "p90": 3060.9339,
+          "p99": 4191.12429,
+          "mean": 2621.470125
+        }
+      },
+      "within_session": {
+        "n": 112,
+        "prompt_tokens_sum": 2610754,
+        "cached_tokens_sum": 2403072,
+        "completion_tokens_sum": 1792,
+        "token_weighted_hit": 0.920451,
+        "per_req_hit_rate": {
+          "count": 112,
+          "p50": 0.9591704999999999,
+          "p90": 0.9892156000000001,
+          "p99": 0.9948419,
+          "mean": 0.9208972321428571
+        },
+        "cold_miss_rate": 0.0,
+        "ttft_ms": {
+          "count": 112,
+          "p50": 330.57500000000005,
+          "p90": 2088.4645,
+          "p99": 3084.14948,
+          "mean": 667.3509732142857
+        },
+        "tpot_ms": {
+          "count": 112,
+          "p50": 112.7675,
+          "p90": 115.0614,
+          "p99": 117.93768,
+          "mean": 112.59883035714286
+        },
+        "e2e_ms": {
+          "count": 112,
+          "p50": 2130.3145000000004,
+          "p90": 3898.0385,
+          "p99": 4920.56949,
+          "mean": 2468.932723214286
+        }
+      }
+    },
+    "request": {
+      "all": {
+        "n": 72,
+        "prompt_tokens_sum": 395568,
+        "cached_tokens_sum": 0,
+        "completion_tokens_sum": 1152,
+        "token_weighted_hit": 0.0,
+        "per_req_hit_rate": {
+          "count": 72,
+          "p50": 0.0,
+          "p90": 0.0,
+          "p99": 0.0,
+          "mean": 0.0
+        },
+        "cold_miss_rate": 1.0,
+        "ttft_ms": {
+          "count": 72,
+          "p50": 302.898,
+          "p90": 305.98760000000004,
+          "p99": 1132.326070000016,
+          "mean": 341.83369444444446
+        },
+        "tpot_ms": {
+          "count": 72,
+          "p50": 111.778,
+          "p90": 113.852,
+          "p99": 118.32498000000004,
+          "mean": 111.90155555555556
+        },
+        "e2e_ms": {
+          "count": 72,
+          "p50": 2092.5815000000002,
+          "p90": 2149.4174000000003,
+          "p99": 2976.4063900000156,
+          "mean": 2132.259388888889
+        }
+      },
+      "turn0": {
+        "n": 24,
+        "prompt_tokens_sum": 131856,
+        "cached_tokens_sum": 0,
+        "completion_tokens_sum": 384,
+        "token_weighted_hit": 0.0,
+        "per_req_hit_rate": {
+          "count": 24,
+          "p50": 0.0,
+          "p90": 0.0,
+          "p99": 0.0,
+          "mean": 0.0
+        },
+        "cold_miss_rate": 1.0,
+        "ttft_ms": {
+          "count": 24,
+          "p50": 303.0585,
+          "p90": 308.1111,
+          "p99": 2329.526779999999,
+          "mean": 413.112375
+        },
+        "tpot_ms": {
+          "count": 24,
+          "p50": 111.352,
+          "p90": 113.64859999999999,
+          "p99": 115.92137,
+          "mean": 111.64145833333333
+        },
+        "e2e_ms": {
+          "count": 24,
+          "p50": 2087.1735,
+          "p90": 2125.6695,
+          "p99": 4129.648939999999,
+          "mean": 2199.3777083333334
+        }
+      },
+      "within_session": {
+        "n": 48,
+        "prompt_tokens_sum": 263712,
+        "cached_tokens_sum": 0,
+        "completion_tokens_sum": 768,
+        "token_weighted_hit": 0.0,
+        "per_req_hit_rate": {
+          "count": 48,
+          "p50": 0.0,
+          "p90": 0.0,
+          "p99": 0.0,
+          "mean": 0.0
+        },
+        "cold_miss_rate": 1.0,
+        "ttft_ms": {
+          "count": 48,
+          "p50": 302.8875,
+          "p90": 305.3462,
+          "p99": 378.3597500000001,
+          "mean": 306.19435416666664
+        },
+        "tpot_ms": {
+          "count": 48,
+          "p50": 111.87299999999999,
+          "p90": 113.94139999999999,
+          "p99": 119.46123000000001,
+          "mean": 112.03160416666667
+        },
+        "e2e_ms": {
+          "count": 48,
+          "p50": 2092.8824999999997,
+          "p90": 2152.2536,
+          "p99": 2232.45474,
+          "mean": 2098.7002291666668
+        }
+      }
+    }
+  },
+  "agent": {
+    "n": 120,
+    "prompt_tokens_sum": 2696066,
+    "cached_tokens_sum": 2403072,
+    "completion_tokens_sum": 1920,
+    "token_weighted_hit": 0.891325,
+    "per_req_hit_rate": {
+      "count": 120,
+      "p50": 0.954634,
+      "p90": 0.9884524000000001,
+      "p99": 0.9947851000000001,
+      "mean": 0.8595040833333333
+    },
+    "cold_miss_rate": 0.066667,
+    "ttft_ms": {
+      "count": 120,
+      "p50": 331.64750000000004,
+      "p90": 2090.5141000000003,
+      "p99": 3072.93892,
+      "mean": 675.5576249999999
+    },
+    "tpot_ms": {
+      "count": 120,
+      "p50": 112.7675,
+      "p90": 115.13929999999999,
+      "p99": 120.76218,
+      "mean": 112.7215
+    },
+    "e2e_ms": {
+      "count": 120,
+      "p50": 2133.6414999999997,
+      "p90": 3900.1642,
+      "p99": 4909.75821,
+      "mean": 2479.1018833333337
+    }
+  },
+  "agent_within_session": {
+    "n": 112,
+    "prompt_tokens_sum": 2610754,
+    "cached_tokens_sum": 2403072,
+    "completion_tokens_sum": 1792,
+    "token_weighted_hit": 0.920451,
+    "per_req_hit_rate": {
+      "count": 112,
+      "p50": 0.9591704999999999,
+      "p90": 0.9892156000000001,
+      "p99": 0.9948419,
+      "mean": 0.9208972321428571
+    },
+    "cold_miss_rate": 0.0,
+    "ttft_ms": {
+      "count": 112,
+      "p50": 330.57500000000005,
+      "p90": 2088.4645,
+      "p99": 3084.14948,
+      "mean": 667.3509732142857
+    },
+    "tpot_ms": {
+      "count": 112,
+      "p50": 112.7675,
+      "p90": 115.0614,
+      "p99": 117.93768,
+      "mean": 112.59883035714286
+    },
+    "e2e_ms": {
+      "count": 112,
+      "p50": 2130.3145000000004,
+      "p90": 3898.0385,
+      "p99": 4920.56949,
+      "mean": 2468.932723214286
+    }
+  },
+  "request": {
+    "n": 72,
+    "prompt_tokens_sum": 395568,
+    "cached_tokens_sum": 0,
+    "completion_tokens_sum": 1152,
+    "token_weighted_hit": 0.0,
+    "per_req_hit_rate": {
+      "count": 72,
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "mean": 0.0
+    },
+    "cold_miss_rate": 1.0,
+    "ttft_ms": {
+      "count": 72,
+      "p50": 302.898,
+      "p90": 305.98760000000004,
+      "p99": 1132.326070000016,
+      "mean": 341.83369444444446
+    },
+    "tpot_ms": {
+      "count": 72,
+      "p50": 111.778,
+      "p90": 113.852,
+      "p99": 118.32498000000004,
+      "mean": 111.90155555555556
+    },
+    "e2e_ms": {
+      "count": 72,
+      "p50": 2092.5815000000002,
+      "p90": 2149.4174000000003,
+      "p99": 2976.4063900000156,
+      "mean": 2132.259388888889
+    }
+  },
+  "request_turn0": {
+    "n": 24,
+    "prompt_tokens_sum": 131856,
+    "cached_tokens_sum": 0,
+    "completion_tokens_sum": 384,
+    "token_weighted_hit": 0.0,
+    "per_req_hit_rate": {
+      "count": 24,
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "mean": 0.0
+    },
+    "cold_miss_rate": 1.0,
+    "ttft_ms": {
+      "count": 24,
+      "p50": 303.0585,
+      "p90": 308.1111,
+      "p99": 2329.526779999999,
+      "mean": 413.112375
+    },
+    "tpot_ms": {
+      "count": 24,
+      "p50": 111.352,
+      "p90": 113.64859999999999,
+      "p99": 115.92137,
+      "mean": 111.64145833333333
+    },
+    "e2e_ms": {
+      "count": 24,
+      "p50": 2087.1735,
+      "p90": 2125.6695,
+      "p99": 4129.648939999999,
+      "mean": 2199.3777083333334
+    }
+  },
+  "request_within_session": {
+    "n": 48,
+    "prompt_tokens_sum": 263712,
+    "cached_tokens_sum": 0,
+    "completion_tokens_sum": 768,
+    "token_weighted_hit": 0.0,
+    "per_req_hit_rate": {
+      "count": 48,
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "mean": 0.0
+    },
+    "cold_miss_rate": 1.0,
+    "ttft_ms": {
+      "count": 48,
+      "p50": 302.8875,
+      "p90": 305.3462,
+      "p99": 378.3597500000001,
+      "mean": 306.19435416666664
+    },
+    "tpot_ms": {
+      "count": 48,
+      "p50": 111.87299999999999,
+      "p90": 113.94139999999999,
+      "p99": 119.46123000000001,
+      "mean": 112.03160416666667
+    },
+    "e2e_ms": {
+      "count": 48,
+      "p50": 2092.8824999999997,
+      "p90": 2152.2536,
+      "p99": 2232.45474,
+      "mean": 2098.7002291666668
+    }
+  },
+  "openhands": {
+    "n": 120,
+    "prompt_tokens_sum": 2696066,
+    "cached_tokens_sum": 2403072,
+    "completion_tokens_sum": 1920,
+    "token_weighted_hit": 0.891325,
+    "per_req_hit_rate": {
+      "count": 120,
+      "p50": 0.954634,
+      "p90": 0.9884524000000001,
+      "p99": 0.9947851000000001,
+      "mean": 0.8595040833333333
+    },
+    "cold_miss_rate": 0.066667,
+    "ttft_ms": {
+      "count": 120,
+      "p50": 331.64750000000004,
+      "p90": 2090.5141000000003,
+      "p99": 3072.93892,
+      "mean": 675.5576249999999
+    },
+    "tpot_ms": {
+      "count": 120,
+      "p50": 112.7675,
+      "p90": 115.13929999999999,
+      "p99": 120.76218,
+      "mean": 112.7215
+    },
+    "e2e_ms": {
+      "count": 120,
+      "p50": 2133.6414999999997,
+      "p90": 3900.1642,
+      "p99": 4909.75821,
+      "mean": 2479.1018833333337
+    }
+  },
+  "openhands_turn0": {
+    "n": 8,
+    "prompt_tokens_sum": 85312,
+    "cached_tokens_sum": 0,
+    "completion_tokens_sum": 128,
+    "token_weighted_hit": 0.0,
+    "per_req_hit_rate": {
+      "count": 8,
+      "p50": 0.0,
+      "p90": 0.0,
+      "p99": 0.0,
+      "mean": 0.0
+    },
+    "cold_miss_rate": 1.0,
+    "ttft_ms": {
+      "count": 8,
+      "p50": 627.2764999999999,
+      "p90": 1197.5099999999998,
+      "p99": 2386.2569999999996,
+      "mean": 790.45075
+    },
+    "tpot_ms": {
+      "count": 8,
+      "p50": 112.684,
+      "p90": 120.43950000000001,
+      "p99": 124.99754999999999,
+      "mean": 114.438875
+    },
+    "e2e_ms": {
+      "count": 8,
+      "p50": 2413.1915,
+      "p90": 3060.9339,
+      "p99": 4191.12429,
+      "mean": 2621.470125
+    }
+  },
+  "openhands_within_session": {
+    "n": 112,
+    "prompt_tokens_sum": 2610754,
+    "cached_tokens_sum": 2403072,
+    "completion_tokens_sum": 1792,
+    "token_weighted_hit": 0.920451,
+    "per_req_hit_rate": {
+      "count": 112,
+      "p50": 0.9591704999999999,
+      "p90": 0.9892156000000001,
+      "p99": 0.9948419,
+      "mean": 0.9208972321428571
+    },
+    "cold_miss_rate": 0.0,
+    "ttft_ms": {
+      "count": 112,
+      "p50": 330.57500000000005,
+      "p90": 2088.4645,
+      "p99": 3084.14948,
+      "mean": 667.3509732142857
+    },
+    "tpot_ms": {
+      "count": 112,
+      "p50": 112.7675,
+      "p90": 115.0614,
+      "p99": 117.93768,
+      "mean": 112.59883035714286
+    },
+    "e2e_ms": {
+      "count": 112,
+      "p50": 2130.3145000000004,
+      "p90": 3898.0385,
+      "p99": 4920.56949,
+      "mean": 2468.932723214286
+    }
+  },
+  "protocol": {
+    "name": "phased_bounded_inflight",
+    "max_inflight": 1,
+    "peak_inflight": 1,
+    "phase_events": [
+      {
+        "phase": "request_first",
+        "started_s": 0.0006712219910696149,
+        "finished_s": 79.53309718699893,
+        "n_requests": 36,
+        "warm_hit_by_session": {
+          "request_reuse:000:first": 0.0,
+          "request_reuse:001:first": 0.0,
+          "request_reuse:002:first": 0.0,
+          "request_reuse:003:first": 0.0,
+          "request_reuse:004:first": 0.0,
+          "request_reuse:005:first": 0.0,
+          "request_reuse:006:first": 0.0,
+          "request_reuse:007:first": 0.0,
+          "request_reuse:008:first": 0.0,
+          "request_reuse:009:first": 0.0,
+          "request_reuse:010:first": 0.0,
+          "request_reuse:011:first": 0.0
+        }
+      },
+      {
+        "phase": "agent_middle",
+        "started_s": 79.53318283997942,
+        "finished_s": 382.5426315549994,
+        "n_requests": 120
+      },
+      {
+        "phase": "request_second",
+        "started_s": 382.54267033498036,
+        "finished_s": 458.0368215040071,
+        "n_requests": 36,
+        "first_turn_hit_by_session": {
+          "request_reuse:000:second": 0.0,
+          "request_reuse:001:second": 0.0,
+          "request_reuse:002:second": 0.0,
+          "request_reuse:003:second": 0.0,
+          "request_reuse:004:second": 0.0,
+          "request_reuse:005:second": 0.0,
+          "request_reuse:006:second": 0.0,
+          "request_reuse:007:second": 0.0,
+          "request_reuse:008:second": 0.0,
+          "request_reuse:009:second": 0.0,
+          "request_reuse:010:second": 0.0,
+          "request_reuse:011:second": 0.0
+        },
+        "first_turn_hit_threshold": 0.5
+      }
+    ],
+    "all_phases_complete": true
+  }
+}

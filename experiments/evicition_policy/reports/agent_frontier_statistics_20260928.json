@@ -1,0 +1,279 @@
+{
+  "analysis_id": "agent_frontier_statistics_20260928_v2",
+  "created_date": "2026-09-28",
+  "scope": {
+    "sessions": 20,
+    "requests": 1206,
+    "input_tokens": 48787785,
+    "page_size": 256,
+    "source_suite": "results/runs/20260928T015431Z_a6d1c132"
+  },
+  "real_eviction_frontier": {
+    "status": "not_observable_from_existing_logs",
+    "fresh_tail_candidate_nodes": null,
+    "fresh_tail_candidate_physical_bytes": null,
+    "newly_exposed_ancestor_candidate_nodes": null,
+    "newly_exposed_ancestor_candidate_physical_bytes": null,
+    "revisited_leaf_candidate_nodes": null,
+    "revisited_leaf_candidate_physical_bytes": null,
+    "reference_bit_after_scan_distribution": null,
+    "evidence_audit": "results/analysis/agent_frontier_statistics_20260928/log_coverage_audit.json"
+  },
+  "input_content_demand": {
+    "unique_complete_input_content_pages": 7448,
+    "unique_complete_input_content_tokens": 1906688,
+    "page_request_references": 189975,
+    "complete_page_input_token_references": 48633600,
+    "unaligned_input_tail_token_references": 154185,
+    "pages_with_one_observed_request_demand": 354,
+    "pages_with_at_least_two_observed_request_demands": 7094,
+    "fraction_unique_pages_with_repeated_demand": 0.9524704618689581,
+    "singleton_pages_first_seen_in_last_observed_session_request": 32,
+    "singleton_pages_despite_later_observed_session_requests": 322,
+    "pages_referenced_by_multiple_sessions": 12,
+    "next_request_cohort": {
+      "eligible_requests": 1186,
+      "new_to_session_complete_pages": 7644,
+      "pages_demanded_in_next_request": 7059,
+      "pages_demanded_in_any_later_observed_request": 7322
+    },
+    "next_request_cohort_by_transition_into_birth_request": {
+      "first_observed_request": {
+        "requests_with_observed_next_request": 20,
+        "new_to_session_complete_pages": 1016,
+        "pages_demanded_in_next_request": 969,
+        "pages_demanded_in_any_later_observed_request": 1016
+      },
+      "strict_append": {
+        "requests_with_observed_next_request": 1107,
+        "new_to_session_complete_pages": 6110,
+        "pages_demanded_in_next_request": 5641,
+        "pages_demanded_in_any_later_observed_request": 5788
+      },
+      "rewrite": {
+        "requests_with_observed_next_request": 59,
+        "new_to_session_complete_pages": 518,
+        "pages_demanded_in_next_request": 449,
+        "pages_demanded_in_any_later_observed_request": 518
+      }
+    },
+    "censoring": "All pages without an observed later demand have unknown future; the last-request group has no following same-session opportunity at all. No singleton is labeled permanently useless."
+  },
+  "unbounded_input_history_tree_reference": {
+    "is_real_eviction_frontier": false,
+    "includes_generated_outputs": false,
+    "unit": "complete content-prefix page, not compressed radix node",
+    "policies": {
+      "lru": {
+        "observation_points": 1206,
+        "pages_with_no_prior_demand_total": 7448,
+        "pages_with_one_prior_demand_total": 7094,
+        "pages_with_at_least_two_prior_demands_total": 175433,
+        "fraction_request_page_references_with_at_least_two_prior_demands": 0.9234530859323595,
+        "leaf_once_fraction_across_request_snapshots": {
+          "count": 1206,
+          "sum": 1153.1314194590536,
+          "min": 0.6666666666666666,
+          "p50": 0.9574468085106383,
+          "p95": 1.0,
+          "p99": 1.0,
+          "max": 1.0
+        },
+        "snapshots_with_all_history_leaves_single_demand": 198,
+        "final_history_leaf_pages": 52,
+        "final_history_leaf_pages_single_demand": 50,
+        "final_history_leaf_pages_repeated_demand": 2,
+        "final_history_internal_pages": 7396,
+        "final_history_internal_pages_repeated_demand": 7092
+      },
+      "lfu": {
+        "observation_points": 1206,
+        "pages_with_no_prior_demand_total": 7448,
+        "pages_with_one_prior_demand_total": 7094,
+        "pages_with_at_least_two_prior_demands_total": 175433,
+        "fraction_request_page_references_with_at_least_two_prior_demands": 0.9234530859323595,
+        "leaf_once_fraction_across_request_snapshots": {
+          "count": 1206,
+          "sum": 1153.2251617086129,
+          "min": 0.6666666666666666,
+          "p50": 0.9574468085106383,
+          "p95": 1.0,
+          "p99": 1.0,
+          "max": 1.0
+        },
+        "snapshots_with_all_history_leaves_single_demand": 204,
+        "final_history_leaf_pages": 52,
+        "final_history_leaf_pages_single_demand": 50,
+        "final_history_leaf_pages_repeated_demand": 2,
+        "final_history_internal_pages": 7396,
+        "final_history_internal_pages_repeated_demand": 7092
+      },
+      "slru": {
+        "observation_points": 1206,
+        "pages_with_no_prior_demand_total": 7448,
+        "pages_with_one_prior_demand_total": 7094,
+        "pages_with_at_least_two_prior_demands_total": 175433,
+        "fraction_request_page_references_with_at_least_two_prior_demands": 0.9234530859323595,
+        "leaf_once_fraction_across_request_snapshots": {
+          "count": 1206,
+          "sum": 1152.483312215597,
+          "min": 0.6666666666666666,
+          "p50": 0.9574468085106383,
+          "p95": 1.0,
+          "p99": 1.0,
+          "max": 1.0
+        },
+        "snapshots_with_all_history_leaves_single_demand": 204,
+        "final_history_leaf_pages": 52,
+        "final_history_leaf_pages_single_demand": 50,
+        "final_history_leaf_pages_repeated_demand": 2,
+        "final_history_internal_pages": 7396,
+        "final_history_internal_pages_repeated_demand": 7092
+      }
+    }
+  },
+  "generated_output_content": {
+    "lru": {
+      "requests": 1206,
+      "unique_output_intersecting_content_pages": 2704,
+      "all_observed_requests": {
+        "output_tokens": 693217,
+        "complete_output_intersecting_page_occurrences": 2704,
+        "output_tokens_covered_by_complete_content_pages": 552215,
+        "page_occurrences_matched_in_next_session_input": 5,
+        "output_tokens_in_pages_matched_in_next_session_input": 288,
+        "page_occurrences_matched_in_later_session_input": 5,
+        "output_tokens_in_pages_matched_in_later_session_input": 288,
+        "page_occurrences_matched_in_later_any_session_input_after_completion": 5,
+        "output_tokens_in_pages_matched_in_later_any_session_input_after_completion": 288,
+        "output_tokens_not_covered_by_complete_content_pages": 141002
+      },
+      "requests_with_next_session_input": {
+        "requests": 1186,
+        "output_tokens": 681629,
+        "complete_output_intersecting_page_occurrences": 2656,
+        "output_tokens_covered_by_complete_content_pages": 542814,
+        "page_occurrences_matched_in_next_session_input": 5,
+        "output_tokens_in_pages_matched_in_next_session_input": 288,
+        "page_occurrences_matched_in_later_session_input": 5,
+        "output_tokens_in_pages_matched_in_later_session_input": 288,
+        "page_occurrences_matched_in_later_any_session_input_after_completion": 5,
+        "output_tokens_in_pages_matched_in_later_any_session_input_after_completion": 288,
+        "output_tokens_not_covered_by_complete_content_pages": 138815,
+        "raw_output_prefix_match_tokens_total": 1346,
+        "requests_with_entire_raw_output_matching_next_input": 2,
+        "requests_with_any_complete_output_page_matching_next_input": 5
+      },
+      "last_observed_session_requests_future_unknown": {
+        "requests": 20,
+        "output_tokens": 11588,
+        "complete_output_intersecting_page_occurrences": 48,
+        "output_tokens_covered_by_complete_content_pages": 9401,
+        "page_occurrences_matched_in_next_session_input": 0,
+        "output_tokens_in_pages_matched_in_next_session_input": 0,
+        "page_occurrences_matched_in_later_session_input": 0,
+        "output_tokens_in_pages_matched_in_later_session_input": 0,
+        "page_occurrences_matched_in_later_any_session_input_after_completion": 0,
+        "output_tokens_in_pages_matched_in_later_any_session_input_after_completion": 0,
+        "output_tokens_not_covered_by_complete_content_pages": 2187
+      }
+    },
+    "lfu": {
+      "requests": 1206,
+      "unique_output_intersecting_content_pages": 2704,
+      "all_observed_requests": {
+        "output_tokens": 693217,
+        "complete_output_intersecting_page_occurrences": 2704,
+        "output_tokens_covered_by_complete_content_pages": 552215,
+        "page_occurrences_matched_in_next_session_input": 5,
+        "output_tokens_in_pages_matched_in_next_session_input": 288,
+        "page_occurrences_matched_in_later_session_input": 5,
+        "output_tokens_in_pages_matched_in_later_session_input": 288,
+        "page_occurrences_matched_in_later_any_session_input_after_completion": 5,
+        "output_tokens_in_pages_matched_in_later_any_session_input_after_completion": 288,
+        "output_tokens_not_covered_by_complete_content_pages": 141002
+      },
+      "requests_with_next_session_input": {
+        "requests": 1186,
+        "output_tokens": 681629,
+        "complete_output_intersecting_page_occurrences": 2656,
+        "output_tokens_covered_by_complete_content_pages": 542814,
+        "page_occurrences_matched_in_next_session_input": 5,
+        "output_tokens_in_pages_matched_in_next_session_input": 288,
+        "page_occurrences_matched_in_later_session_input": 5,
+        "output_tokens_in_pages_matched_in_later_session_input": 288,
+        "page_occurrences_matched_in_later_any_session_input_after_completion": 5,
+        "output_tokens_in_pages_matched_in_later_any_session_input_after_completion": 288,
+        "output_tokens_not_covered_by_complete_content_pages": 138815,
+        "raw_output_prefix_match_tokens_total": 1260,
+        "requests_with_entire_raw_output_matching_next_input": 2,
+        "requests_with_any_complete_output_page_matching_next_input": 5
+      },
+      "last_observed_session_requests_future_unknown": {
+        "requests": 20,
+        "output_tokens": 11588,
+        "complete_output_intersecting_page_occurrences": 48,
+        "output_tokens_covered_by_complete_content_pages": 9401,
+        "page_occurrences_matched_in_next_session_input": 0,
+        "output_tokens_in_pages_matched_in_next_session_input": 0,
+        "page_occurrences_matched_in_later_session_input": 0,
+        "output_tokens_in_pages_matched_in_later_session_input": 0,
+        "page_occurrences_matched_in_later_any_session_input_after_completion": 0,
+        "output_tokens_in_pages_matched_in_later_any_session_input_after_completion": 0,
+        "output_tokens_not_covered_by_complete_content_pages": 2187
+      }
+    },
+    "slru": {
+      "requests": 1206,
+      "unique_output_intersecting_content_pages": 2704,
+      "all_observed_requests": {
+        "output_tokens": 693217,
+        "complete_output_intersecting_page_occurrences": 2704,
+        "output_tokens_covered_by_complete_content_pages": 552215,
+        "page_occurrences_matched_in_next_session_input": 3,
+        "output_tokens_in_pages_matched_in_next_session_input": 173,
+        "page_occurrences_matched_in_later_session_input": 3,
+        "output_tokens_in_pages_matched_in_later_session_input": 173,
+        "page_occurrences_matched_in_later_any_session_input_after_completion": 3,
+        "output_tokens_in_pages_matched_in_later_any_session_input_after_completion": 173,
+        "output_tokens_not_covered_by_complete_content_pages": 141002
+      },
+      "requests_with_next_session_input": {
+        "requests": 1186,
+        "output_tokens": 681629,
+        "complete_output_intersecting_page_occurrences": 2656,
+        "output_tokens_covered_by_complete_content_pages": 542814,
+        "page_occurrences_matched_in_next_session_input": 3,
+        "output_tokens_in_pages_matched_in_next_session_input": 173,
+        "page_occurrences_matched_in_later_session_input": 3,
+        "output_tokens_in_pages_matched_in_later_session_input": 173,
+        "page_occurrences_matched_in_later_any_session_input_after_completion": 3,
+        "output_tokens_in_pages_matched_in_later_any_session_input_after_completion": 173,
+        "output_tokens_not_covered_by_complete_content_pages": 138815,
+        "raw_output_prefix_match_tokens_total": 797,
+        "requests_with_entire_raw_output_matching_next_input": 1,
+        "requests_with_any_complete_output_page_matching_next_input": 3
+      },
+      "last_observed_session_requests_future_unknown": {
+        "requests": 20,
+        "output_tokens": 11588,
+        "complete_output_intersecting_page_occurrences": 48,
+        "output_tokens_covered_by_complete_content_pages": 9401,
+        "page_occurrences_matched_in_next_session_input": 0,
+        "output_tokens_in_pages_matched_in_next_session_input": 0,
+        "page_occurrences_matched_in_later_session_input": 0,
+        "output_tokens_in_pages_matched_in_later_session_input": 0,
+        "page_occurrences_matched_in_later_any_session_input_after_completion": 0,
+        "output_tokens_in_pages_matched_in_later_any_session_input_after_completion": 0,
+        "output_tokens_not_covered_by_complete_content_pages": 2187
+      }
+    }
+  },
+  "semantic_limits": [
+    "Content identity under one declared model/encoding context; full runtime namespace not observed.",
+    "All unmatched future demand is right-censored; final observed request is not an explicit lifecycle end.",
+    "Input demand, KV insertion, cache hit, decode reuse and eviction eligibility are distinct.",
+    "Output content pages do not prove KV commit; final sampled-token KV is especially unknown.",
+    "No physical occupancy, per-pool eviction cause, lost-retention cost or finite-cache counterfactual is estimated."
+  ]
+}

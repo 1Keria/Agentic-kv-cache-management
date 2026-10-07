@@ -1,0 +1,203 @@
+{
+  "report_id": "traditional_policies_20261007",
+  "generated_at_utc": "2026-10-07T10:19:06.041365+00:00",
+  "status": "formal_single_pass_reanalysis",
+  "source_suite": "results/runs/20260928T015431Z_a6d1c132",
+  "source_comparison": "results/runs/20260928T015431Z_a6d1c132/comparison.json",
+  "analysis_outputs": {
+    "request_level": "results/analysis/traditional_policies_20261007",
+    "deep_dive": "results/analysis/traditional_policies_deep_dive_20261007"
+  },
+  "scope": {
+    "engine_release": "sglang 0.5.13.post1",
+    "cache_backend": "UnifiedRadixCache",
+    "sessions": 20,
+    "requests_per_policy": 1206,
+    "prompt_tokens_per_policy": 48787785,
+    "output_tokens_per_policy": 693217,
+    "full_capacity_tokens": 524288,
+    "swa_capacity_tokens": 52224,
+    "page_size_tokens": 256,
+    "timing_scale": 0.3,
+    "strategy_order": [
+      "lru",
+      "lfu",
+      "slru"
+    ],
+    "repeats_per_policy": 1,
+    "real_tool_execution": false,
+    "fixed_input_hashes_equal": true,
+    "full_component_policy_only": true,
+    "swa_policy": "native LRU with coupled removal"
+  },
+  "strategies": {
+    "lru": "按节点最近访问时间淘汰。",
+    "lfu": "按命中次数优先，时间作为并列排序；频率累计不主动衰减。",
+    "slru": "hit_count < 2 为 probationary，hit_count >= 2 为 protected；组内按最近访问时间排序。没有独立保护段容量配额。"
+  },
+  "policy_results": [
+    {
+      "policy": "lru",
+      "requests": 1206,
+      "prompt_tokens": 48787785,
+      "cached_tokens": 32227072,
+      "token_weighted_hit_fraction": 0.6605561617523731,
+      "previous_input_lcp_shortfall_proxy_tokens": 14029568,
+      "requests_with_positive_shortfall_proxy": 468,
+      "ttft_p50_seconds": 0.5897316059563309,
+      "ttft_p95_seconds": 14.840088128810748,
+      "ttft_p99_seconds": 17.463142420025545,
+      "latency_p50_seconds": 7.472175567876548,
+      "latency_p95_seconds": 42.995051123783924,
+      "latency_p99_seconds": 93.77973651117652,
+      "evicted_tokens_counter_delta": 158650368.0,
+      "eviction_duration_count": 27528.0,
+      "eviction_duration_sum_seconds": 437.4886004002765
+    },
+    {
+      "policy": "lfu",
+      "requests": 1206,
+      "prompt_tokens": 48787785,
+      "cached_tokens": 31284480,
+      "token_weighted_hit_fraction": 0.6412359159162483,
+      "previous_input_lcp_shortfall_proxy_tokens": 14979584,
+      "requests_with_positive_shortfall_proxy": 522,
+      "ttft_p50_seconds": 0.4563816310837865,
+      "ttft_p95_seconds": 14.500811277423054,
+      "ttft_p99_seconds": 17.707747072633357,
+      "latency_p50_seconds": 7.640660877339542,
+      "latency_p95_seconds": 41.901442107977346,
+      "latency_p99_seconds": 96.28164107010247,
+      "evicted_tokens_counter_delta": 235229184.0,
+      "eviction_duration_count": 27736.0,
+      "eviction_duration_sum_seconds": 1252.0328194950707
+    },
+    {
+      "policy": "slru",
+      "requests": 1206,
+      "prompt_tokens": 48787785,
+      "cached_tokens": 32460544,
+      "token_weighted_hit_fraction": 0.6653416218834284,
+      "previous_input_lcp_shortfall_proxy_tokens": 13798656,
+      "requests_with_positive_shortfall_proxy": 458,
+      "ttft_p50_seconds": 0.4589129821397364,
+      "ttft_p95_seconds": 13.951335197896697,
+      "ttft_p99_seconds": 18.73283450880554,
+      "latency_p50_seconds": 7.070160151924938,
+      "latency_p95_seconds": 41.69365039782133,
+      "latency_p99_seconds": 95.88488598626573,
+      "evicted_tokens_counter_delta": 159455232.0,
+      "eviction_duration_count": 28310.0,
+      "eviction_duration_sum_seconds": 432.8699606996961
+    }
+  ],
+  "relative_to_lru": {
+    "lfu": {
+      "cached_tokens_delta": -942592,
+      "hit_percentage_points": -1.9320245836124794,
+      "cached_tokens_percent": -2.9248452977670425,
+      "ttft_p95_percent": -2.2862185752725916,
+      "latency_p95_percent": -2.543569520729372,
+      "evicted_tokens_counter_percent": 48.2689179769189,
+      "eviction_duration_sum_percent": 186.18638710803754
+    },
+    "slru": {
+      "cached_tokens_delta": 233472,
+      "hit_percentage_points": 0.4785460131055297,
+      "cached_tokens_percent": 0.7244592372524616,
+      "ttft_p95_percent": -5.988865586240122,
+      "latency_p95_percent": -3.0268616781401803,
+      "evicted_tokens_counter_percent": 0.5073193400976006,
+      "eviction_duration_sum_percent": -1.055716582410282
+    }
+  },
+  "request_level_differences": {
+    "slru_minus_lru": {
+      "cached_tokens_delta": 233472,
+      "gross_gain_tokens": 1893376,
+      "gross_loss_tokens": 1659904,
+      "net_as_fraction_of_gross_gain": 0.1233098972417523,
+      "better_requests": 117,
+      "worse_requests": 107,
+      "equal_requests": 982,
+      "delta_distribution": {
+        "count": 1206,
+        "sum": 233472,
+        "min": -117504,
+        "p50": 0.0,
+        "p95": 3072.0,
+        "p99": 58624.0,
+        "max": 121088
+      }
+    },
+    "lfu_minus_lru": {
+      "cached_tokens_delta": -942592,
+      "gross_gain_tokens": 1331200,
+      "gross_loss_tokens": 2273792,
+      "better_requests": 107,
+      "worse_requests": 157,
+      "equal_requests": 942,
+      "delta_distribution": {
+        "count": 1206,
+        "sum": -942592,
+        "min": -109312,
+        "p50": 0.0,
+        "p95": 3072.0,
+        "p99": 37555.20000000007,
+        "max": 68864
+      }
+    },
+    "slru_session_concentration": {
+      "sum": 233472,
+      "positive_sessions": 9,
+      "negative_sessions": 8,
+      "zero_sessions": 3,
+      "max": 305664,
+      "min": -123648
+    },
+    "lfu_session_concentration": {
+      "sum": -942592,
+      "positive_sessions": 6,
+      "negative_sessions": 11,
+      "zero_sessions": 3,
+      "max": 63232,
+      "min": -387072
+    }
+  },
+  "workload_structure": {
+    "transition_shape_counts": {
+      "first": 20,
+      "append": 1127,
+      "tail_rewrite": 0,
+      "partial_rewrite": 1,
+      "major_reset": 58
+    },
+    "strict_append_fraction_of_non_first": 0.9502529510961214,
+    "unique_complete_context_prefix_pages": 35040,
+    "cross_session_shared_prefix_pages": 12,
+    "common_failure_proxy_requests_8192": 356,
+    "policy_sensitive_requests_8192": 108,
+    "long_chain_unavailable_lru_proxy_requests": 186,
+    "long_chain_unavailable_lru_proxy_tokens": 9384960
+  },
+  "closed_loop_interleaving": {
+    "slru_vs_lru_submission_rank_changed_requests": 1092,
+    "slru_vs_lru_submission_rank_absolute_delta_p50": 5.0,
+    "slru_vs_lru_submission_time_absolute_delta_p50_seconds": 23.682494651293382,
+    "lfu_vs_lru_submission_rank_changed_requests": 1091,
+    "cache_delta_ttft_pearson_slru_minus_lru": -0.6345691873888555
+  },
+  "interpretation": {
+    "lru": "作为稳定的 recency 基线；其大部分失败与 LFU/SLRU 共存，说明排序并非全部问题。",
+    "lfu": "在此工作负载中频率累计会保留早期高频历史，挤压近期但即将续接的长链；该解释与大额 LFU-only 损失相符，但当前日志缺少同状态 victim 事件，仍属机制一致的归因。",
+    "slru": "保护阈值带来少量长链 cliff 收益，但收益与损失都集中在少数请求；没有固定保护段配额，不能把本实现等同经典 SLRU。",
+    "shared": "356 个请求三种策略都存在至少 8K 相邻前缀缺口代理，而只有 108 个请求对策略敏感；优先检查容量、Full/SWA 边界、节点释放粒度和准入。"
+  },
+  "limitations": [
+    "每种策略只有一次运行，顺序固定为 LRU → LFU → SLRU；没有方差、顺序平衡或显著性结论。",
+    "这是均匀缩短间隔的固定 Agent 轨迹回放，不是自然墙钟流量，也没有真实工具执行。",
+    "实际完成时间会改变后续全局请求交错；逐请求命中差异不是同一合法候选集上的反事实。",
+    "previous_input_lcp_shortfall_proxy 是内容级参照缺口，不是严格 h_infinity、额外重算或 victim regret。",
+    "原生回收计数混合 Full/SWA 活动；策略选择只改变 Full 评分，SWA 仍为原生 LRU 路径。"
+  ]
+}

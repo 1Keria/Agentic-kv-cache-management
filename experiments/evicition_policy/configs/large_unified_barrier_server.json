@@ -1,0 +1,25 @@
+{
+  "purpose": "large_scale_unified_exposure_barrier_comparison",
+  "measurement_timeout_seconds": 7200,
+  "model_path": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+  "host": "127.0.0.1",
+  "port": 31080,
+  "tensor_parallel_size": 8,
+  "mem_fraction_static": 0.45,
+  "max_total_tokens": 524288,
+  "max_running_requests": 8,
+  "context_length": 262144,
+  "chunked_prefill_size": 8192,
+  "page_size": 256,
+  "kv_cache_dtype": "fp8_e4m3",
+  "swa_full_tokens_ratio": 0.1,
+  "moe_runner_backend": "marlin",
+  "cuda_graph_max_bs": 8,
+  "enable_piecewise_cuda_graph": true,
+  "piecewise_cuda_graph_max_tokens": 8192,
+  "random_seed": 42,
+  "expected_effective_graphs": {
+    "decode": true,
+    "prefill": false
+  }
+}

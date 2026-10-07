@@ -84,6 +84,7 @@ from sglang.srt.mem_cache.common import (
     alloc_for_extend,
     evict_from_tree_cache,
     get_alloc_reserve_per_decode,
+    infer_batch_cache_region,
     release_kv_cache,
 )
 from sglang.srt.mem_cache.memory_pool import ReqToTokenPool
@@ -2403,7 +2404,16 @@ class ScheduleBatch(ScheduleBatchDisaggregationDecodeMixin):
 
     def check_decode_mem(self, selected_indices: Optional[List[int]] = None):
         num_tokens = self.new_tokens_required_next_decode(selected_indices)
-        evict_from_tree_cache(self.tree_cache, num_tokens)
+        requests = (
+            self.reqs
+            if selected_indices is None
+            else [self.reqs[i] for i in selected_indices]
+        )
+        evict_from_tree_cache(
+            self.tree_cache,
+            num_tokens,
+            region=infer_batch_cache_region(requests),
+        )
         return self.token_to_kv_pool_allocator.available_size() >= num_tokens
 
     def retract_all(self, server_args: ServerArgs):

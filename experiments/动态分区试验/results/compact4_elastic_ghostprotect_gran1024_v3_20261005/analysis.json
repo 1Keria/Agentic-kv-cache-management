@@ -1,0 +1,302 @@
+{
+  "compact4_elastic_ghostprotect_gran1024_v3_20261005": {
+    "config": {
+      "created_at_utc": "2026-10-05T04:16:38.731158+00:00",
+      "scenario": "compact4_elastic_ghostprotect_gran1024_v3_20261005",
+      "workload_dir": "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/动态分区试验/data/bidirectional_reuse_compact_4agent_mi1_20261002",
+      "expected_requests": 72,
+      "modes": [
+        "elastic"
+      ],
+      "gap_scale": 0.1,
+      "max_output_tokens": 16,
+      "agent_ratio": 0.5,
+      "window_requests_legacy": 0,
+      "alpha": 0.2,
+      "feedback_mode": "normalized_pressure",
+      "max_ratio_step": 0.05,
+      "pressure_hysteresis": 0.02,
+      "cooldown_evicted_tokens": 4096,
+      "min_ratio": 0.2,
+      "max_ratio": 0.8,
+      "elastic_reclaim_order": "request_first",
+      "elastic_preferred_reclaim": true,
+      "elastic_soft_step": 0.1,
+      "elastic_activity_window": 32,
+      "elastic_ghost_capacity_tokens": 1048576,
+      "elastic_ghost_pressure_decay": 0.995,
+      "elastic_ghost_bias": 0.0,
+      "elastic_ghost_reclaim": false,
+      "elastic_ghost_protect": true,
+      "elastic_ghost_protect_min_tokens": 1024,
+      "elastic_feedback": false,
+      "elastic_activity_requires_hit": "0",
+      "feedback_min_evicted_tokens": 0,
+      "borrow_high_watermark_tokens": 0,
+      "borrow_low_watermark_tokens": 0,
+      "borrowed_segment_tokens": 1024,
+      "disable_cuda_graph": "1",
+      "mem_fraction_static": 0.35,
+      "swa_full_tokens_ratio": null,
+      "chunked_prefill_size": null,
+      "random_seed": 42,
+      "cuda_visible_devices": "0,1,2,3,4,5,6,7",
+      "tp_size": "8",
+      "replay_protocol": "phased",
+      "replay_max_inflight": 1,
+      "allow_phase_requirement_failure": true,
+      "unified_engine_root": null,
+      "native_engine_root": null
+    },
+    "modes": {
+      "elastic": {
+        "summary": {
+          "requests_ok": 72,
+          "requests_err": 0,
+          "wall_clock_s": 247.246,
+          "request_per_s": 0.2912,
+          "output_token_per_s": 4.6593,
+          "overall_hit": 0.37913,
+          "cached_tokens": 523264,
+          "prompt_tokens": 1380171,
+          "uncached_prompt_tokens": 856907,
+          "agent_hit": 0.371099,
+          "request_hit": 0.775786,
+          "ttft_p50_ms": 926.2765,
+          "ttft_p90_ms": 2940.6458,
+          "ttft_mean_ms": 1311.2045972222222,
+          "agent_ttft_mean_ms": 1383.2990833333336,
+          "request_ttft_mean_ms": 950.7321666666667
+        },
+        "regions_after": {
+          "agent": {
+            "base_full_capacity_tokens": 36096,
+            "base_swa_capacity_tokens": 3584,
+            "full_capacity_tokens": 175872,
+            "swa_capacity_tokens": 13312,
+            "full_borrowed_tokens": 139776,
+            "swa_borrowed_tokens": 9728,
+            "full_cached_borrowed_tokens": 0,
+            "swa_cached_borrowed_tokens": 3840,
+            "full_cached_preferred_borrowed_tokens": 0,
+            "swa_cached_preferred_borrowed_tokens": 0,
+            "borrowed_eviction_count": 135,
+            "borrowed_full_evicted_tokens": 89600,
+            "borrowed_swa_evicted_tokens": 616960,
+            "borrow_reclaim_reasons": {
+              "global_overage": 135
+            },
+            "elastic_tail_first_activations": 0,
+            "elastic_tail_first_evicted_full_tokens": 0,
+            "elastic_tail_first_evicted_swa_tokens": 0,
+            "full_used_tokens": 80128,
+            "swa_used_tokens": 12544,
+            "full_evictable_tokens": 80128,
+            "swa_evictable_tokens": 12544,
+            "eviction_count": 185,
+            "full_evicted_tokens": 250112,
+            "swa_evicted_tokens": 831232,
+            "full_over_quota_tokens": 0,
+            "swa_over_quota_tokens": 0
+          },
+          "request": {
+            "base_full_capacity_tokens": 36095,
+            "base_swa_capacity_tokens": 3583,
+            "full_capacity_tokens": 100352,
+            "swa_capacity_tokens": 5376,
+            "full_borrowed_tokens": 64257,
+            "swa_borrowed_tokens": 1793,
+            "full_cached_borrowed_tokens": 0,
+            "swa_cached_borrowed_tokens": 0,
+            "full_cached_preferred_borrowed_tokens": 0,
+            "swa_cached_preferred_borrowed_tokens": 0,
+            "borrowed_eviction_count": 0,
+            "borrowed_full_evicted_tokens": 0,
+            "borrowed_swa_evicted_tokens": 0,
+            "borrow_reclaim_reasons": {},
+            "elastic_tail_first_activations": 0,
+            "elastic_tail_first_evicted_full_tokens": 0,
+            "elastic_tail_first_evicted_swa_tokens": 0,
+            "full_used_tokens": 4608,
+            "swa_used_tokens": 4608,
+            "full_evictable_tokens": 4608,
+            "swa_evictable_tokens": 4608,
+            "eviction_count": 0,
+            "full_evicted_tokens": 0,
+            "swa_evicted_tokens": 0,
+            "full_over_quota_tokens": 0,
+            "swa_over_quota_tokens": 0
+          }
+        },
+        "region_totals_after": {
+          "full_evicted_tokens": 250112,
+          "swa_evicted_tokens": 831232,
+          "max_full_effective_capacity_tokens": 175872,
+          "max_swa_effective_capacity_tokens": 13312
+        },
+        "controller_after": {
+          "policy": "elastic",
+          "current_agent_ratio": 0.5,
+          "elastic_feedback": false,
+          "elastic_feedback_phase_active": false,
+          "elastic_feedback_phase_updated": false,
+          "elastic_feedback_phase_region": null,
+          "elastic_reclaim_order": "request_first",
+          "elastic_preferred_reclaim": true,
+          "elastic_preferred_reclaim_active": true,
+          "elastic_soft_step": 0.1,
+          "elastic_activity_window": 32,
+          "elastic_activity_requires_hit": false,
+          "elastic_ghost_protect": true,
+          "elastic_ghost_protect_min_tokens": 1024,
+          "elastic_activity_floor_ratio": null,
+          "elastic_region_access_epoch": 72,
+          "elastic_region_last_access": {
+            "agent": 66,
+            "request": 72
+          },
+          "elastic_region_access_count": {
+            "agent": 60,
+            "request": 12
+          },
+          "elastic_region_run_length": {
+            "agent": 60,
+            "request": 6
+          },
+          "elastic_tail_first_activity_suppressed": 0,
+          "elastic_ghost": {
+            "enabled": true,
+            "page_size": 256,
+            "capacity_tokens": 1048576,
+            "resident_metadata_tokens": 121600,
+            "region_metadata_tokens": {
+              "agent": 121600,
+              "request": 0
+            },
+            "reserve_tokens": 104857,
+            "seen_regions": [
+              "agent"
+            ],
+            "entry_count": 475,
+            "pressure_decay": 0.995,
+            "pressure_tokens": {
+              "agent": 623913.8340305475,
+              "request": 0.0
+            },
+            "eviction_events": 402,
+            "evicted_tokens": {
+              "agent": 471808,
+              "request": 0
+            },
+            "revisit_events": {
+              "agent": 38,
+              "request": 0
+            },
+            "revisit_tokens": {
+              "agent": 713472,
+              "request": 0
+            },
+            "last_revisit_tokens": {
+              "agent": 0,
+              "request": 0
+            },
+            "event_step": 72,
+            "request_event_tracking": true,
+            "records_with_revisit": 35,
+            "revisit_score_total": 623913.8340305474
+          },
+          "elastic_tail_first_regions": [],
+          "elastic_tail_first_pressure_events": 0,
+          "elastic_tail_first_activations": {
+            "agent": 0,
+            "request": 0
+          },
+          "elastic_tail_first_reclaim_calls": 0,
+          "elastic_tail_first_evicted_full_tokens": {
+            "agent": 0,
+            "request": 0
+          },
+          "elastic_tail_first_evicted_swa_tokens": {
+            "agent": 0,
+            "request": 0
+          },
+          "agent_min_ratio": 0.2,
+          "request_min_ratio": 0.19999999999999996,
+          "elastic_observed_agent_ratio": 0.9095477386934674,
+          "elastic_target_agent_ratio": 0.8,
+          "elastic_soft_agent_ratio": 0.8,
+          "elastic_pool_ratio": 0.6000000000000001
+        },
+        "trajectory": {
+          "sample_count": 47,
+          "region_peaks": {
+            "agent": {
+              "full_used_tokens": 111104,
+              "swa_used_tokens": 13056,
+              "full_cached_borrowed_tokens": 21760,
+              "swa_cached_borrowed_tokens": 9472,
+              "full_over_quota_tokens": 0,
+              "swa_over_quota_tokens": 0
+            },
+            "request": {
+              "full_used_tokens": 4608,
+              "swa_used_tokens": 4608,
+              "full_cached_borrowed_tokens": 0,
+              "swa_cached_borrowed_tokens": 0,
+              "full_over_quota_tokens": 0,
+              "swa_over_quota_tokens": 0
+            }
+          },
+          "ratio_initial": 0.5,
+          "ratio_final": 0.5,
+          "ratio_min": 0.5,
+          "ratio_max": 0.5,
+          "update_count": 0,
+          "updates_observed_by_sampler": []
+        },
+        "phases": {
+          "request_first": {
+            "requests": 6,
+            "prompt_tokens": 13556,
+            "cached_tokens": 8192,
+            "token_weighted_hit": 0.604308055473591,
+            "ttft_mean_ms": 1638.994,
+            "first_turn_requests": 2,
+            "first_turn_cached_tokens": 0,
+            "first_turn_prompt_tokens": 4439,
+            "first_turn_token_weighted_hit": 0.0,
+            "actual_first_start_s": 0.008897755993530154,
+            "actual_last_end_s": 32.516614263991094
+          },
+          "agent_middle": {
+            "requests": 60,
+            "prompt_tokens": 1352782,
+            "cached_tokens": 502016,
+            "token_weighted_hit": 0.3710989649477891,
+            "ttft_mean_ms": 1383.2990833333336,
+            "first_turn_requests": 4,
+            "first_turn_cached_tokens": 9216,
+            "first_turn_prompt_tokens": 42944,
+            "first_turn_token_weighted_hit": 0.21460506706408347,
+            "actual_first_start_s": 32.5361534669064,
+            "actual_last_end_s": 223.11759666991335
+          },
+          "request_second": {
+            "requests": 6,
+            "prompt_tokens": 13833,
+            "cached_tokens": 13056,
+            "token_weighted_hit": 0.9438299718065496,
+            "ttft_mean_ms": 262.4703333333333,
+            "first_turn_requests": 2,
+            "first_turn_cached_tokens": 4352,
+            "first_turn_prompt_tokens": 4611,
+            "first_turn_token_weighted_hit": 0.9438299718065496,
+            "actual_first_start_s": 223.13629954797216,
+            "actual_last_end_s": 247.23559331192726
+          }
+        }
+      }
+    },
+    "comparisons": {}
+  }
+}

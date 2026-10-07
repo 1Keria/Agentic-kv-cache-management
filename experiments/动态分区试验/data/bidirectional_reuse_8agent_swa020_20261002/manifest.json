@@ -1,0 +1,18 @@
+{
+  "name": "bidirectional_reuse_8agent_swa020",
+  "protocol": "dynamic-partition-controlled-v2",
+  "source_workload": "experiments/动态分区试验/data/bidirectional_reuse_compact_4agent_mi1_20261002/workload.jsonl",
+  "n_turns": 132,
+  "n_sessions": 12,
+  "n_sessions_by_class": {
+    "agent": 8,
+    "request": 4
+  },
+  "workload_jsonl_sha256": "f9898685e3e2bbe29ac1982d15f25b97cbeec067717c6ccf132db168b6365ecf",
+  "transformation": {
+    "agent_duplicates": 4,
+    "duplicate_prefix": "unique system branch marker",
+    "swa_full_tokens_ratio": 0.2,
+    "purpose": "Full pressure with active Agent sequence below Agent quota; ordinary terminal prefixes are retained probes."
+  }
+}

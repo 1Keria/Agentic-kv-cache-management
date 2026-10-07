@@ -1,0 +1,14 @@
+{
+  "name": "bidirectional_reuse_8agent_requestheavy",
+  "protocol": "dynamic-partition-controlled-v2",
+  "source_workload": "experiments/动态分区试验/data/bidirectional_reuse_8agent_swa020_20261002/workload.jsonl",
+  "n_turns": 132,
+  "n_sessions": 12,
+  "workload_jsonl_sha256": "2b46047592dd241fccf0f132b048bcfffa18e402170df4981a2e7d3e9effbe39",
+  "transformation": {
+    "ordinary_padding_chars_approx": 28000,
+    "ordinary_terminal_working_set_target_tokens": 28000,
+    "agent_sessions": 8,
+    "swa_full_tokens_ratio": 0.2
+  }
+}

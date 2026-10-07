@@ -1,0 +1,37 @@
+{
+  "name": "bidirectional_reuse_phase_stress",
+  "protocol": "dynamic-partition-controlled-v2",
+  "source_workload": "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/固定分区试验对比/data/token_balanced_openhands_wildchat/workload.jsonl",
+  "source_workload_sha256": "90fce6bfac8779e89834c5149bb426fa3f4b191c25835b6e2e2eb54fece1fac8",
+  "workload_jsonl_sha256": "fa75dbef275ac6804f53fb405540c7d38b01e8273f9a6367159b297d8ccdefba",
+  "n_turns": 227,
+  "n_sessions": 11,
+  "n_sessions_by_class": {
+    "agent": 7,
+    "request": 4
+  },
+  "transformation": {
+    "type": "real_multiturn_bidirectional_reuse",
+    "request_sessions": 2,
+    "request_turns_per_wave": 4,
+    "header_chars": 6000,
+    "request_wave_intervals_s": [
+      [
+        0.0,
+        1.0
+      ],
+      [
+        0.0,
+        1.0
+      ]
+    ],
+    "agent_interval_s": [
+      0.0,
+      0.0
+    ],
+    "return_mode": "repeat_terminal_prompt",
+    "second_wave_prompts_match": "last_warmup_prompt",
+    "agent_prompt_bodies_unchanged": true,
+    "background": null
+  }
+}

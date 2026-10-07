@@ -22,7 +22,7 @@ from sglang.srt.mem_cache.triton_ops.common import (
 )
 from sglang.srt.server_args import ServerArgs, get_global_server_args
 from sglang.srt.utils import is_hip, support_triton
-from sglang.srt.utils.common import ceil_align
+from sglang.srt.utils.common import ceil_align, get_num_new_pages
 
 _is_hip = is_hip()
 
@@ -36,6 +36,64 @@ MAMBA_STATE_PER_REQ_PREFIX_CACHE_LAZY = 2
 MAMBA_STATE_PER_REQ_NO_CACHE = 1
 
 logger = logging.getLogger(__name__)
+
+
+def _request_cache_policy_for_log(tree_cache) -> Optional[str]:
+    policy = getattr(tree_cache, "request_cache_region_policy", None)
+    if policy is not None:
+        return policy
+    try:
+        return getattr(get_global_server_args(), "request_cache_region_policy", None)
+    except ValueError:
+        # Unit-test fakes and early allocator setup do not have global args.
+        return None
+
+
+_BORROWING_REGION_POLICIES = frozenset(
+    {
+        "borrow",
+        "borrow_dynamic",
+        "borrow_global",
+        "borrow_reclass",
+        "borrow_request_reclass",
+        "elastic",
+    }
+)
+
+
+def _evict_borrowed_fallback(
+    tree_cache: BasePrefixCache,
+    *,
+    full_num_tokens: int = 0,
+    swa_num_tokens: int = 0,
+) -> tuple[int, int]:
+    """Reclaim shared borrowed pages before an unscoped allocator fallback.
+
+    A region-scoped eviction can be short when the allocating region is held
+    by active requests.  For borrowing policies, the next safe candidates are
+    pages explicitly marked as borrowed in either region.  Keeping this step
+    before the legacy global LRU fallback preserves the partition guarantee in
+    the common case while retaining the final fallback for liveness when every
+    legal page is locked.
+    """
+    if _request_cache_policy_for_log(tree_cache) not in _BORROWING_REGION_POLICIES:
+        return 0, 0
+    full_num_tokens = max(int(full_num_tokens), 0)
+    swa_num_tokens = max(int(swa_num_tokens), 0)
+    if full_num_tokens <= 0 and swa_num_tokens <= 0:
+        return 0, 0
+    reclassify = getattr(tree_cache, "_reclassify_borrowed_for_fallback", None)
+    if reclassify is not None:
+        reclassify()
+    result = tree_cache.evict(
+        EvictParams(
+            num_tokens=full_num_tokens,
+            swa_num_tokens=swa_num_tokens,
+            borrowed_only=True,
+            borrow_reclaim_reason="allocator_fallback",
+        )
+    )
+    return int(result.num_tokens_evicted), int(result.swa_num_tokens_evicted)
 
 
 def kv_to_page_indices(kv_indices: np.ndarray, page_size: int):
@@ -217,9 +275,13 @@ def alloc_token_slots(
     tree_cache: BasePrefixCache,
     num_tokens: int,
     backup_state: bool = False,
+    region: Optional[str] = None,
 ):
     allocator = tree_cache.token_to_kv_pool_allocator
-    evict_from_tree_cache(tree_cache, num_tokens)
+    if region is None:
+        evict_from_tree_cache(tree_cache, num_tokens)
+    else:
+        evict_from_tree_cache(tree_cache, num_tokens, region=region)
 
     state = None
     if backup_state:
@@ -241,7 +303,11 @@ def alloc_token_slots(
     return (out_cache_loc, state) if backup_state else out_cache_loc
 
 
-def evict_from_tree_cache(tree_cache: BasePrefixCache | None, num_tokens: int):
+def evict_from_tree_cache(
+    tree_cache: BasePrefixCache | None,
+    num_tokens: int,
+    region: Optional[str] = None,
+):
     if tree_cache is None:
         return
 
@@ -258,13 +324,113 @@ def evict_from_tree_cache(tree_cache: BasePrefixCache | None, num_tokens: int):
         if full_available_size < num_tokens or swa_available_size < num_tokens:
             full_num_tokens = max(0, num_tokens - full_available_size)
             swa_num_tokens = max(0, num_tokens - swa_available_size)
-            tree_cache.evict(
-                EvictParams(num_tokens=full_num_tokens, swa_num_tokens=swa_num_tokens)
-            )
+            if region is None:
+                _evict_borrowed_fallback(
+                    tree_cache,
+                    full_num_tokens=full_num_tokens,
+                    swa_num_tokens=swa_num_tokens,
+                )
+                full_remaining = max(
+                    0, num_tokens - allocator.full_available_size()
+                )
+                swa_remaining = max(0, num_tokens - allocator.swa_available_size())
+                if full_remaining > 0 or swa_remaining > 0:
+                    tree_cache.evict(
+                        EvictParams(
+                            num_tokens=full_remaining,
+                            swa_num_tokens=swa_remaining,
+                        )
+                    )
+            else:
+                # Prefer reclaiming the allocating region. Active KV can make
+                # that reclaim short, so retain a global fallback for progress
+                # and record it explicitly for partition diagnostics.
+                tree_cache.evict(
+                    EvictParams(
+                        num_tokens=full_num_tokens,
+                        swa_num_tokens=swa_num_tokens,
+                        region=region,
+                    )
+                )
+                full_remaining = max(
+                    0, num_tokens - allocator.full_available_size()
+                )
+                swa_remaining = max(0, num_tokens - allocator.swa_available_size())
+                if full_remaining > 0 or swa_remaining > 0:
+                    _evict_borrowed_fallback(
+                        tree_cache,
+                        full_num_tokens=full_remaining,
+                        swa_num_tokens=swa_remaining,
+                    )
+                    full_remaining = max(
+                        0, num_tokens - allocator.full_available_size()
+                    )
+                    swa_remaining = max(
+                        0, num_tokens - allocator.swa_available_size()
+                    )
+                if full_remaining > 0 or swa_remaining > 0:
+                    logger.warning(
+                        "REGION_EVICT_FALLBACK policy=%s region=%s "
+                        "requested_full=%d requested_swa=%d "
+                        "remaining_full=%d remaining_swa=%d "
+                        "full_available=%d swa_available=%d",
+                        _request_cache_policy_for_log(tree_cache),
+                        region,
+                        int(full_num_tokens),
+                        int(swa_num_tokens),
+                        int(full_remaining),
+                        int(swa_remaining),
+                        int(allocator.full_available_size()),
+                        int(allocator.swa_available_size()),
+                    )
+                    tree_cache.evict(
+                        EvictParams(
+                            num_tokens=full_remaining,
+                            swa_num_tokens=swa_remaining,
+                        )
+                    )
     else:
         # Standard allocator
         if allocator.available_size() < num_tokens:
-            tree_cache.evict(EvictParams(num_tokens=num_tokens))
+            if region is None:
+                _evict_borrowed_fallback(
+                    tree_cache,
+                    full_num_tokens=num_tokens,
+                )
+                remaining = max(0, num_tokens - allocator.available_size())
+                if remaining > 0:
+                    tree_cache.evict(EvictParams(num_tokens=remaining))
+            else:
+                tree_cache.evict(EvictParams(num_tokens=num_tokens, region=region))
+                remaining = max(0, num_tokens - allocator.available_size())
+                if remaining > 0:
+                    _evict_borrowed_fallback(
+                        tree_cache,
+                        full_num_tokens=remaining,
+                    )
+                    remaining = max(0, num_tokens - allocator.available_size())
+                if remaining > 0:
+                    logger.warning(
+                        "REGION_EVICT_FALLBACK policy=%s region=%s "
+                        "requested=%d remaining=%d available=%d",
+                        _request_cache_policy_for_log(tree_cache),
+                        region,
+                        int(num_tokens),
+                        int(remaining),
+                        int(allocator.available_size()),
+                    )
+                    tree_cache.evict(EvictParams(num_tokens=remaining))
+
+
+def infer_batch_cache_region(reqs: list[Req]) -> Optional[str]:
+    """Return the cache region when all requests in a batch share one."""
+    regions = {getattr(req, "cache_region", None) for req in reqs}
+    regions.discard(None)
+    if len(regions) == 1 and all(
+        getattr(req, "cache_region", None) is not None for req in reqs
+    ):
+        return next(iter(regions))
+    return None
 
 
 def ensure_region_capacity_for_reqs(
@@ -282,8 +448,10 @@ def ensure_region_capacity_for_reqs(
             page_size = max(int(getattr(tree_cache, "page_size", 1)), 1)
             count = ((count + page_size - 1) // page_size) * page_size
             region_tokens[region] = region_tokens.get(region, 0) + count
-    for region, count in region_tokens.items():
-        tree_cache.ensure_region_capacity(region, count)
+    # The allocator writes the whole batch after this hook returns. Passing the
+    # aggregate reservation lets a borrow-aware cache account for both regions
+    # before a generic, region-agnostic eviction is triggered.
+    tree_cache.ensure_region_capacities(region_tokens)
 
 
 def region_allocation_token_counts(
@@ -321,11 +489,22 @@ def alloc_paged_token_slots_extend(
     last_loc: torch.Tensor,
     extend_num_tokens: int,
     backup_state: bool = False,
+    region: Optional[str] = None,
 ):
-    # Over estimate the number of tokens: assume each request needs a new page.
+    # Match the exact page count used by the region-aware reservation above.
+    # The old one-page-per-request estimate could trigger an extra,
+    # region-agnostic eviction pass for requests that reused their page.
     allocator = tree_cache.token_to_kv_pool_allocator
-    num_tokens = extend_num_tokens + len(seq_lens_cpu) * allocator.page_size
-    evict_from_tree_cache(tree_cache, num_tokens)
+    num_new_pages = get_num_new_pages(
+        seq_lens=seq_lens_cpu,
+        page_size=allocator.page_size,
+        prefix_lens=prefix_lens_cpu,
+    )
+    num_tokens = num_new_pages * allocator.page_size
+    if region is None:
+        evict_from_tree_cache(tree_cache, num_tokens)
+    else:
+        evict_from_tree_cache(tree_cache, num_tokens, region=region)
 
     state = None
     if backup_state:
@@ -410,6 +589,7 @@ def alloc_for_extend(
     prefix_lens_device = prefix_lens_cpu.to(batch.device, non_blocking=True)
     extend_lens_device = extend_lens_cpu.to(batch.device, non_blocking=True)
 
+    allocation_region = infer_batch_cache_region(batch.reqs)
     ensure_region_capacity_for_reqs(
         batch.tree_cache,
         batch.reqs,
@@ -429,7 +609,9 @@ def alloc_for_extend(
 
     # Allocate KV cache (throws exception on failure)
     if batch.tree_cache.page_size == 1:
-        out_cache_loc = alloc_token_slots(batch.tree_cache, batch.extend_num_tokens)
+        out_cache_loc = alloc_token_slots(
+            batch.tree_cache, batch.extend_num_tokens, region=allocation_region
+        )
     else:
         # Paged allocation - build last_loc
         last_loc = [
@@ -444,6 +626,7 @@ def alloc_for_extend(
             seq_lens_cpu=batch.seq_lens_cpu,
             last_loc=torch.cat(last_loc),
             extend_num_tokens=batch.extend_num_tokens,
+            region=allocation_region,
         )
 
     # Write to req_to_token_pool
@@ -470,12 +653,23 @@ def alloc_paged_token_slots_decode(
     seq_lens_cpu: torch.Tensor,
     last_loc: torch.Tensor,
     token_per_req: int = 1,
+    region: Optional[str] = None,
 ) -> torch.Tensor:
     """Allocate paged KV cache for decode batch."""
     allocator = tree_cache.token_to_kv_pool_allocator
-    # Over estimate the number of tokens: assume each request needs a new page.
-    num_tokens = len(seq_lens) * allocator.page_size
-    evict_from_tree_cache(tree_cache, num_tokens)
+    # Only evict pages that this decode batch will actually allocate. The old
+    # one-page-per-request estimate could evict cached prefixes even when all
+    # requests stayed within their current pages.
+    num_new_pages = get_num_new_pages(
+        seq_lens=seq_lens_cpu,
+        page_size=allocator.page_size,
+        decode=True,
+    )
+    num_tokens = num_new_pages * allocator.page_size
+    if region is None:
+        evict_from_tree_cache(tree_cache, num_tokens)
+    else:
+        evict_from_tree_cache(tree_cache, num_tokens, region=region)
 
     out_cache_loc = allocator.alloc_decode(seq_lens, seq_lens_cpu, last_loc)
 
@@ -507,6 +701,7 @@ def alloc_for_decode(batch: ScheduleBatch, token_per_req: int) -> torch.Tensor:
     bs = seq_lens_gpu.shape[0]
 
     seq_lens_next_cpu = batch.seq_lens_cpu + token_per_req
+    allocation_region = infer_batch_cache_region(batch.reqs)
     ensure_region_capacity_for_reqs(
         batch.tree_cache,
         batch.reqs,
@@ -520,7 +715,9 @@ def alloc_for_decode(batch: ScheduleBatch, token_per_req: int) -> torch.Tensor:
 
     if batch.tree_cache.page_size == 1:
         # Non-paged allocation
-        out_cache_loc = alloc_token_slots(batch.tree_cache, bs * token_per_req)
+        out_cache_loc = alloc_token_slots(
+            batch.tree_cache, bs * token_per_req, region=allocation_region
+        )
     else:
         # Paged allocation
         last_loc = batch.req_to_token_pool.req_to_token[
@@ -533,6 +730,7 @@ def alloc_for_decode(batch: ScheduleBatch, token_per_req: int) -> torch.Tensor:
             seq_lens_cpu=seq_lens_next_cpu,
             last_loc=last_loc,
             token_per_req=token_per_req,
+            region=allocation_region,
         )
 
     # Write to req_to_token_pool

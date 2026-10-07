@@ -1,0 +1,87 @@
+{
+  "schema": "agentkv_final_policy_vs_unified_v1",
+  "date": "2026-10-05",
+  "workload": "experiments/动态分区试验/data/bidirectional_reuse_short_phased_20261001",
+  "requests": 227,
+  "agent_requests": 211,
+  "request_requests": 16,
+  "protocol": {
+    "replay": "phased_bounded_inflight",
+    "max_inflight": 2,
+    "gap_scale": 0.1,
+    "fixed_output_tokens": 16,
+    "mem_fraction_static": 0.35,
+    "page_size": 256,
+    "tp_size": 8,
+    "seed": 42
+  },
+  "strategies": {
+    "unified": {
+      "regions": false,
+      "policy": "native_lru"
+    },
+    "final_elastic": {
+      "policy": "elastic",
+      "agent_ratio": 0.5,
+      "min_ratio": 0.2,
+      "max_ratio": 0.8,
+      "activity_window": 32,
+      "borrowed_segment_tokens": 1024,
+      "ghost_capacity_tokens": 1048576,
+      "ghost_pressure_decay": 0.995,
+      "ghost_protect": true,
+      "ghost_protect_min_tokens": 1024,
+      "ghost_reclaim": false,
+      "ghost_bias": 0.0
+    }
+  },
+  "metrics": {
+    "unified": {
+      "overall_hit": 0.400812,
+      "agent_hit": 0.398823,
+      "request_hit": 0.70431,
+      "cached_tokens": 3290368,
+      "prompt_tokens": 8209263,
+      "uncached_prompt_tokens": 4918895,
+      "shadow_extra_recompute_all": 4513792,
+      "shadow_extra_recompute_agent": 4507392,
+      "wall_clock_s": 591.931,
+      "ttft_p50_ms": 1899.396,
+      "ttft_p90_ms": 3745.5132,
+      "ttft_mean_ms": 1945.8334757709251
+    },
+    "final_elastic": {
+      "overall_hit": 0.541297,
+      "agent_hit": 0.540229,
+      "request_hit": 0.70431,
+      "cached_tokens": 4443648,
+      "prompt_tokens": 8209263,
+      "uncached_prompt_tokens": 3765615,
+      "shadow_extra_recompute_all": 3361280,
+      "shadow_extra_recompute_agent": 3354880,
+      "wall_clock_s": 565.598,
+      "ttft_p50_ms": 1813.857,
+      "ttft_p90_ms": 3637.558,
+      "ttft_mean_ms": 1961.4324889867842
+    }
+  },
+  "deltas": {
+    "overall_hit_delta_pp": 14.0485,
+    "agent_hit_delta_pp": 14.1406,
+    "request_hit_delta_pp": 0.0,
+    "cached_tokens_delta": 1153280,
+    "uncached_prompt_tokens_delta": -1153280,
+    "shadow_extra_recompute_all_delta": -1152512,
+    "shadow_extra_recompute_agent_delta": -1152512,
+    "wall_clock_delta_s": -26.333,
+    "ttft_p50_delta_ms": -85.539,
+    "ttft_p90_delta_ms": -107.9552,
+    "ttft_mean_delta_ms": 15.599013215859031
+  },
+  "source": "experiments/动态分区试验/results/fair_unified_vs_final_20261005",
+  "notes": [
+    "这是同一 workload 的一次成对正式对照。",
+    "shadow 只使用输入前缀，生成 token id 不在混合回放日志中，因此额外重算是诊断量。",
+    "历史候选复核使用了不同的 prompt token 统计口径，未与本次成对结果合并。"
+  ]
+}

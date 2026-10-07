@@ -1,0 +1,19 @@
+{
+  "name": "scan_mixed_256_serial",
+  "protocol": "dynamic-partition-controlled-v3",
+  "source_workload": "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/动态分区试验/data/scan_mixed_256/workload.jsonl",
+  "source_workload_sha256": "ab3221c21ccf53e832273e1fe8255e1065276a7a5be8d4b474abe50ed44ce700",
+  "workload_jsonl_sha256": "98f03b3da6ee9de46ca4a9d90dfb4f0db8dd2168d1779062323268be4844393a",
+  "n_turns": 256,
+  "n_sessions": 119,
+  "n_sessions_by_class": {
+    "openhands": 3,
+    "request": 116
+  },
+  "transformation": {
+    "type": "stable_file_order_serial_sessions",
+    "session_start_s": 0.0,
+    "prompt_bodies_unchanged": true,
+    "source_sha256": "ab3221c21ccf53e832273e1fe8255e1065276a7a5be8d4b474abe50ed44ce700"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "integrity": {
+    "n_issued": 1277,
+    "n_ok": 0,
+    "n_err": 0,
+    "error_breakdown": {},
+    "wall_clock_s": 0.036,
+    "dry_run": true
+  },
+  "latency": {
+    "ttft_ms": {},
+    "tpot_ms": {},
+    "e2e_ms": {}
+  },
+  "kv": {
+    "per_req_hit_rate": {}
+  },
+  "schedule": {
+    "s_time_drift_ms": {}
+  },
+  "throughput": {},
+  "by_class": {},
+  "agent": {
+    "n": 0,
+    "per_req_hit_rate": {},
+    "ttft_ms": {},
+    "tpot_ms": {}
+  },
+  "agent_within_session": {
+    "n": 0,
+    "per_req_hit_rate": {},
+    "ttft_ms": {},
+    "tpot_ms": {}
+  },
+  "request": {
+    "n": 0,
+    "per_req_hit_rate": {},
+    "ttft_ms": {},
+    "tpot_ms": {}
+  }
+}

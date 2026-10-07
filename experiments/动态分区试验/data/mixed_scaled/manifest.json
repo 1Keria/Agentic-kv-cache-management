@@ -1,0 +1,20 @@
+{
+  "name": "token_balanced_mixed_scaled",
+  "protocol": "dynamic-partition-controlled-v1",
+  "source_workload": "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/固定分区试验对比/data/token_balanced_openhands_wildchat/workload.jsonl",
+  "source_workload_sha256": "90fce6bfac8779e89834c5149bb426fa3f4b191c25835b6e2e2eb54fece1fac8",
+  "workload_jsonl_sha256": "014eed38a3d5d85348a6e8db847fbb595f29d5b6684b59861346e3fc74f0924a",
+  "n_turns": 1261,
+  "n_sessions": 555,
+  "n_sessions_by_class": {
+    "openhands": 7,
+    "request": 548
+  },
+  "transformation": {
+    "type": "scale_session_start",
+    "timeline_scale": 0.1,
+    "prompt_bodies_unchanged": true,
+    "session_order_unchanged": true,
+    "pre_gap_s_unchanged": true
+  }
+}

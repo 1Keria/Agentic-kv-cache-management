@@ -1,0 +1,49 @@
+{
+  "n_turns": 1277,
+  "classifier_confusion_max_tokens_16": {
+    "request->request": 1066,
+    "agent->agent": 211
+  },
+  "hot_request_sessions": [
+    {
+      "session_id": "request_reuse:000:first",
+      "prompt_tokens_per_turn": [
+        16844,
+        16927,
+        17167,
+        17381
+      ],
+      "consecutive_input_lcp_tokens": [
+        16843,
+        16926,
+        17166
+      ],
+      "terminal_prompt_sha256": "70c29acf0b9851bb4ca5a601aa023d3a8eb28a2fc511082e2ce8c041475eb62c",
+      "return_prompts_identical_to_terminal": true
+    },
+    {
+      "session_id": "request_reuse:001:first",
+      "prompt_tokens_per_turn": [
+        16861,
+        17343,
+        17436,
+        17729
+      ],
+      "consecutive_input_lcp_tokens": [
+        16860,
+        17342,
+        17435
+      ],
+      "terminal_prompt_sha256": "b10e3ef9c53469780cee6d1fd64d69bb39cf72bfdc0520721aae5fc0bda943dc",
+      "return_prompts_identical_to_terminal": true
+    }
+  ],
+  "latest_prompt_working_set_tokens": 35110,
+  "full_capacity_tokens_reference": 180480,
+  "request_base_full_capacity_tokens_reference": 70388,
+  "notes": [
+    "基于真实请求内容的受控压力构造；长 system 前缀和终末请求重复由实验脚本加入。",
+    "到达时间指定 session 启动时刻，不是阶段完成屏障。",
+    "LCP 只验证输入 token 前缀，不作为有限容量最优或无限 SWA 命中率。"
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "schema": "agentkv_large_unified_barrier_analysis_v1",
+  "suite": "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/evicition_policy/results/runs/large_unified_barrier_20260929T082959Z_7ce5cbe5",
+  "status": "completed",
+  "input_requests_aligned": true,
+  "runs": {
+    "lru": {
+      "path": "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/evicition_policy/results/runs/large_unified_barrier_20260929T082959Z_7ce5cbe5/01_lru",
+      "policy": "lru",
+      "exposure_barrier": false,
+      "requests": 1206,
+      "prompt_tokens": 48787785,
+      "output_tokens": 693217,
+      "cached_prompt_tokens": 28297216,
+      "token_weighted_cache_hit_fraction": 0.5800061634279974,
+      "ttft_seconds": {
+        "count": 1206,
+        "sum": 8100.1850416310335,
+        "min": 0.1363852880022023,
+        "p50": 2.091956869000569,
+        "p95": 19.602855220000492,
+        "p99": 23.87847924135022,
+        "max": 25.96297883999796
+      },
+      "latency_seconds": {
+        "count": 1206,
+        "sum": 21918.403195014063,
+        "min": 0.6908216040028492,
+        "p50": 12.440318738004862,
+        "p95": 56.14453970049726,
+        "p99": 126.69978423134602,
+        "max": 282.18124880000687
+      },
+      "measurement_seconds": 2509.3400758920034,
+      "queue": {
+        "validated_ranks": 8,
+        "mean_seconds_max_rank": 5.479984254459416,
+        "p95_bucket_upper_seconds_max_rank": 20.0
+      },
+      "retractions": 0,
+      "monitor_errors": 0,
+      "integrity_passed": true,
+      "post_flush_empty": true,
+      "gpu_released": true
+    },
+    "slru": {
+      "path": "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/evicition_policy/results/runs/large_unified_barrier_20260929T082959Z_7ce5cbe5/02_slru",
+      "policy": "slru",
+      "exposure_barrier": false,
+      "requests": 1206,
+      "prompt_tokens": 48787785,
+      "output_tokens": 693217,
+      "cached_prompt_tokens": 32184320,
+      "token_weighted_cache_hit_fraction": 0.6596798768380241,
+      "ttft_seconds": {
+        "count": 1206,
+        "sum": 6406.470970048074,
+        "min": 0.13674642000114545,
+        "p50": 0.5527566179953283,
+        "p95": 17.04301762074647,
+        "p99": 21.13488801514723,
+        "max": 23.524601644996437
+      },
+      "latency_seconds": {
+        "count": 1206,
+        "sum": 18278.188112182957,
+        "min": 0.6290247300057672,
+        "p50": 7.827137161002611,
+        "p95": 48.069450143248105,
+        "p99": 111.67179240404775,
+        "max": 266.02178473200183
+      },
+      "measurement_seconds": 2259.938096231999,
+      "queue": {
+        "validated_ranks": 8,
+        "mean_seconds_max_rank": 4.414262233959337,
+        "p95_bucket_upper_seconds_max_rank": 20.0
+      },
+      "retractions": 0,
+      "monitor_errors": 0,
+      "integrity_passed": true,
+      "post_flush_empty": true,
+      "gpu_released": true
+    },
+    "unified_exposure_barrier": {
+      "path": "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/evicition_policy/results/runs/large_unified_barrier_20260929T082959Z_7ce5cbe5/04_unified_exposure_barrier_retry1",
+      "policy": "lru",
+      "exposure_barrier": true,
+      "requests": 1206,
+      "prompt_tokens": 48787785,
+      "output_tokens": 693217,
+      "cached_prompt_tokens": 31135232,
+      "token_weighted_cache_hit_fraction": 0.6381767895386109,
+      "ttft_seconds": {
+        "count": 1206,
+        "sum": 6593.7998106560335,
+        "min": 0.134892863999994,
+        "p50": 0.6333760240013362,
+        "p95": 17.534772061255353,
+        "p99": 20.471217618149975,
+        "max": 23.1625270930017
+      },
+      "latency_seconds": {
+        "count": 1206,
+        "sum": 18882.243322120143,
+        "min": 0.6395325560006313,
+        "p50": 8.82148836000124,
+        "p95": 49.268892191254054,
+        "p99": 112.62376601645089,
+        "max": 263.7412487170004
+      },
+      "measurement_seconds": 2315.873324127002,
+      "queue": {
+        "validated_ranks": 8,
+        "mean_seconds_max_rank": 4.502965980343285,
+        "p95_bucket_upper_seconds_max_rank": 20.0
+      },
+      "retractions": 0,
+      "monitor_errors": 0,
+      "integrity_passed": true,
+      "post_flush_empty": true,
+      "gpu_released": true
+    }
+  },
+  "comparisons": {
+    "slru": {
+      "cached_prompt_token_delta_vs_lru": 3887104,
+      "cache_hit_percentage_point_delta_vs_lru": 7.967371341002671,
+      "ttft_p95_percent_vs_lru": -13.05849362516467,
+      "latency_p95_percent_vs_lru": -14.382680132966943,
+      "measurement_time_percent_vs_lru": -9.938946978772831,
+      "submission_rank_drift_vs_lru": {
+        "requests": 1206,
+        "changed": 1170,
+        "median_absolute_rank_delta": 21.0,
+        "p95_absolute_rank_delta": 72.0,
+        "maximum_absolute_rank_delta": 143
+      }
+    },
+    "unified_exposure_barrier": {
+      "cached_prompt_token_delta_vs_lru": 2838016,
+      "cache_hit_percentage_point_delta_vs_lru": 5.817062611061353,
+      "ttft_p95_percent_vs_lru": -10.549907835033673,
+      "latency_p95_percent_vs_lru": -12.246333385083059,
+      "measurement_time_percent_vs_lru": -7.709865778006559,
+      "submission_rank_drift_vs_lru": {
+        "requests": 1206,
+        "changed": 1158,
+        "median_absolute_rank_delta": 20.0,
+        "p95_absolute_rank_delta": 72.0,
+        "maximum_absolute_rank_delta": 135
+      }
+    }
+  },
+  "limitations": [
+    "One run per strategy in fixed LRU-SLRU-Barrier order.",
+    "Closed-loop completion changes global submission interleaving between strategies.",
+    "Historical inputs are fixed, but generated output content is not fed into later requests.",
+    "Latency and throughput differences remain descriptive until repeated and order-balanced."
+  ]
+}

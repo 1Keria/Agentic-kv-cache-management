@@ -1,0 +1,587 @@
+{
+  "analysis_id": "agent_policy_deep_dive_20260928",
+  "created_date": "2026-09-28",
+  "scope": {
+    "requests": 1206,
+    "sessions": 20,
+    "source_suite": "results/runs/20260928T015431Z_a6d1c132"
+  },
+  "closed_loop_ordering_drift": {
+    "lfu_vs_lru": {
+      "submission_rank_changed_requests": 1091,
+      "submission_rank_absolute_delta": {
+        "count": 1206,
+        "sum": 11066,
+        "min": 0,
+        "p50": 6.0,
+        "p95": 29.0,
+        "p99": 45.950000000000045,
+        "max": 80
+      },
+      "completion_rank_changed_requests": 1092,
+      "completion_rank_absolute_delta": {
+        "count": 1206,
+        "sum": 11112,
+        "min": 0,
+        "p50": 5.0,
+        "p95": 29.0,
+        "p99": 45.950000000000045,
+        "max": 82
+      },
+      "submitted_seconds_delta": {
+        "count": 1206,
+        "sum": -13734.209401234984,
+        "min": -92.79256536485627,
+        "p50": -9.19093622919172,
+        "p95": 16.389587435056455,
+        "p99": 69.26028287694812,
+        "max": 116.59483294514939
+      },
+      "submitted_seconds_absolute_delta": {
+        "count": 1206,
+        "sum": 21589.444111578166,
+        "min": 7.335096597671509e-05,
+        "p50": 11.842525162966922,
+        "p95": 57.97781512176152,
+        "p99": 87.63953056053727,
+        "max": 116.59483294514939
+      }
+    },
+    "slru_vs_lru": {
+      "submission_rank_changed_requests": 1092,
+      "submission_rank_absolute_delta": {
+        "count": 1206,
+        "sum": 10642,
+        "min": 0,
+        "p50": 5.0,
+        "p95": 31.0,
+        "p99": 45.950000000000045,
+        "max": 72
+      },
+      "completion_rank_changed_requests": 1085,
+      "completion_rank_absolute_delta": {
+        "count": 1206,
+        "sum": 10634,
+        "min": 0,
+        "p50": 5.0,
+        "p95": 31.0,
+        "p99": 46.950000000000045,
+        "max": 75
+      },
+      "submitted_seconds_delta": {
+        "count": 1206,
+        "sum": -29396.877657594625,
+        "min": -116.22524811234325,
+        "p50": -22.749981557251886,
+        "p95": 8.448067044024356,
+        "p99": 58.59956117905678,
+        "max": 92.59980067517608
+      },
+      "submitted_seconds_absolute_delta": {
+        "count": 1206,
+        "sum": 33511.35349002341,
+        "min": 0.00011067138984799385,
+        "p50": 23.682494651293382,
+        "p95": 70.7540989924455,
+        "p99": 100.82952504754074,
+        "max": 116.22524811234325
+      }
+    },
+    "interpretation": "Most request ranks drift across policies; aligned request deltas are end-to-end closed-loop associations, not same-state victim counterfactuals."
+  },
+  "retention_state": {
+    "lru": {
+      "transitions": {
+        "high_to_high": 568,
+        "high_to_low": 30,
+        "high_to_mid": 10,
+        "high_to_small_reference": 20,
+        "low_to_high": 34,
+        "low_to_low": 189,
+        "low_to_mid": 28,
+        "low_to_small_reference": 9,
+        "mid_to_high": 6,
+        "mid_to_low": 39,
+        "mid_to_mid": 99,
+        "mid_to_small_reference": 6,
+        "small_reference_to_high": 34,
+        "small_reference_to_low": 7,
+        "small_reference_to_mid": 14,
+        "small_reference_to_small_reference": 93
+      },
+      "high_to_high_fraction_excluding_small_reference": 0.9342105263157895,
+      "high_runs": {
+        "count": 74,
+        "max": 44,
+        "at_least_2": 58,
+        "at_least_4": 40
+      }
+    },
+    "lfu": {
+      "transitions": {
+        "high_to_high": 539,
+        "high_to_low": 30,
+        "high_to_mid": 11,
+        "high_to_small_reference": 18,
+        "low_to_high": 36,
+        "low_to_low": 194,
+        "low_to_mid": 32,
+        "low_to_small_reference": 8,
+        "mid_to_high": 5,
+        "mid_to_low": 46,
+        "mid_to_mid": 110,
+        "mid_to_small_reference": 9,
+        "small_reference_to_high": 32,
+        "small_reference_to_low": 5,
+        "small_reference_to_mid": 18,
+        "small_reference_to_small_reference": 93
+      },
+      "high_to_high_fraction_excluding_small_reference": 0.9293103448275862,
+      "high_runs": {
+        "count": 73,
+        "max": 54,
+        "at_least_2": 57,
+        "at_least_4": 41
+      }
+    },
+    "slru": {
+      "transitions": {
+        "high_to_high": 578,
+        "high_to_low": 32,
+        "high_to_mid": 8,
+        "high_to_small_reference": 19,
+        "low_to_high": 34,
+        "low_to_low": 177,
+        "low_to_mid": 32,
+        "low_to_small_reference": 5,
+        "mid_to_high": 6,
+        "mid_to_low": 37,
+        "mid_to_mid": 99,
+        "mid_to_small_reference": 11,
+        "small_reference_to_high": 34,
+        "small_reference_to_low": 5,
+        "small_reference_to_mid": 16,
+        "small_reference_to_small_reference": 93
+      },
+      "high_to_high_fraction_excluding_small_reference": 0.9352750809061489,
+      "high_runs": {
+        "count": 74,
+        "max": 56,
+        "at_least_2": 61,
+        "at_least_4": 41
+      }
+    }
+  },
+  "policy_cliffs": {
+    "slru_policy_cliff_wins": 29,
+    "lru_policy_cliff_wins": 26,
+    "sessions_with_any_cliff": 13,
+    "sessions_with_both_directions": 8,
+    "slru_cliff_previous_state_pairs": {
+      "lru_high__slru_high": 11,
+      "lru_low__slru_low": 4,
+      "lru_low__slru_high": 7,
+      "lru_high__slru_mid": 1,
+      "lru_high__slru_low": 2,
+      "lru_mid__slru_mid": 1,
+      "lru_small_reference__slru_small_reference": 1,
+      "lru_low__slru_mid": 1,
+      "lru_mid__slru_high": 1
+    },
+    "lru_cliff_previous_state_pairs": {
+      "lru_low__slru_low": 8,
+      "lru_high__slru_low": 6,
+      "lru_low__slru_mid": 1,
+      "lru_high__slru_high": 9,
+      "lru_low__slru_high": 1,
+      "lru_small_reference__slru_small_reference": 1
+    },
+    "execution_context": {
+      "all": {
+        "requests": 55,
+        "submission_rank_absolute_delta": {
+          "count": 55,
+          "sum": 540,
+          "min": 0,
+          "p50": 7.0,
+          "p95": 28.299999999999997,
+          "p99": 30.840000000000003,
+          "max": 33
+        },
+        "submitted_seconds_absolute_delta": {
+          "count": 55,
+          "sum": 2041.749241033569,
+          "min": 3.2456190357916057,
+          "p50": 38.84888323675841,
+          "p95": 70.4190600191243,
+          "p99": 80.51317900273949,
+          "max": 82.06039362354204
+        },
+        "submission_rank_delta_equal_zero": 4,
+        "submission_rank_absolute_delta_at_most_2": 15,
+        "submission_rank_absolute_delta_at_most_5": 20,
+        "zero_intervening_submissions_both_policies": 41,
+        "zero_submissions_with_inflight_others_both_policies": 41,
+        "active_other_requests_at_previous_completion_lru": {
+          "count": 55,
+          "sum": 413,
+          "min": 1,
+          "p50": 8.0,
+          "p95": 10.299999999999997,
+          "p99": 11.46,
+          "max": 12
+        },
+        "active_other_requests_at_previous_completion_slru": {
+          "count": 55,
+          "sum": 412,
+          "min": 2,
+          "p50": 8.0,
+          "p95": 10.299999999999997,
+          "p99": 11.0,
+          "max": 11
+        },
+        "effective_gap_under_100ms": 29,
+        "previous_state_high_under_both_policies": 20
+      },
+      "slru_wins": {
+        "requests": 29,
+        "submission_rank_absolute_delta": {
+          "count": 29,
+          "sum": 284,
+          "min": 0,
+          "p50": 7.0,
+          "p95": 22.0,
+          "p99": 27.039999999999992,
+          "max": 29
+        },
+        "submitted_seconds_absolute_delta": {
+          "count": 29,
+          "sum": 981.9009620812722,
+          "min": 3.2456190357916057,
+          "p50": 28.600172323640436,
+          "p95": 68.63049478661267,
+          "p99": 78.91438991919159,
+          "max": 82.06039362354204
+        },
+        "submission_rank_delta_equal_zero": 1,
+        "submission_rank_absolute_delta_at_most_2": 6,
+        "submission_rank_absolute_delta_at_most_5": 10,
+        "zero_intervening_submissions_both_policies": 22,
+        "zero_submissions_with_inflight_others_both_policies": 22,
+        "active_other_requests_at_previous_completion_lru": {
+          "count": 29,
+          "sum": 235,
+          "min": 1,
+          "p50": 9.0,
+          "p95": 11.0,
+          "p99": 11.719999999999999,
+          "max": 12
+        },
+        "active_other_requests_at_previous_completion_slru": {
+          "count": 29,
+          "sum": 194,
+          "min": 2,
+          "p50": 7.0,
+          "p95": 9.0,
+          "p99": 9.0,
+          "max": 9
+        },
+        "effective_gap_under_100ms": 16,
+        "previous_state_high_under_both_policies": 11
+      },
+      "lru_wins": {
+        "requests": 26,
+        "submission_rank_absolute_delta": {
+          "count": 26,
+          "sum": 256,
+          "min": 0,
+          "p50": 7.0,
+          "p95": 28.75,
+          "p99": 32.0,
+          "max": 33
+        },
+        "submitted_seconds_absolute_delta": {
+          "count": 26,
+          "sum": 1059.8482789522968,
+          "min": 4.14630183018744,
+          "p50": 40.72635806188919,
+          "p95": 67.56707326625474,
+          "p99": 76.95769323164131,
+          "max": 79.19518136279657
+        },
+        "submission_rank_delta_equal_zero": 3,
+        "submission_rank_absolute_delta_at_most_2": 9,
+        "submission_rank_absolute_delta_at_most_5": 10,
+        "zero_intervening_submissions_both_policies": 19,
+        "zero_submissions_with_inflight_others_both_policies": 19,
+        "active_other_requests_at_previous_completion_lru": {
+          "count": 26,
+          "sum": 178,
+          "min": 3,
+          "p50": 7.0,
+          "p95": 9.75,
+          "p99": 10.0,
+          "max": 10
+        },
+        "active_other_requests_at_previous_completion_slru": {
+          "count": 26,
+          "sum": 218,
+          "min": 4,
+          "p50": 8.0,
+          "p95": 11.0,
+          "p99": 11.0,
+          "max": 11
+        },
+        "effective_gap_under_100ms": 13,
+        "previous_state_high_under_both_policies": 9
+      }
+    }
+  },
+  "common_failure_context": {
+    "requests": 356,
+    "effective_gap_under_100ms": 189,
+    "zero_intervening_submissions_all_policies": 261,
+    "zero_submissions_with_inflight_others_all_policies": 261,
+    "low_availability_under_all_policies": 189
+  },
+  "cache_ttft_association": {
+    "nonzero_cached_delta_requests": 224,
+    "pearson_cached_delta_vs_ttft_delta": -0.6345691873888555,
+    "positive_cached_delta_requests": 117,
+    "positive_cached_delta_with_lower_ttft": 96,
+    "negative_cached_delta_requests": 107,
+    "negative_cached_delta_with_higher_ttft": 74,
+    "interpretation": "Descriptive closed-loop association only; ordering drift prevents a causal TTFT attribution."
+  },
+  "non_monotonicity": {
+    "continuation_depth_bins": [
+      {
+        "dimension": "continuation_depth_bin",
+        "bin": "0",
+        "requests": 79,
+        "slru_better_requests": 6,
+        "slru_worse_requests": 7,
+        "gross_gain_tokens": 18432,
+        "gross_loss_tokens": 21504,
+        "net_cached_tokens": -3072
+      },
+      {
+        "dimension": "continuation_depth_bin",
+        "bin": "1",
+        "requests": 67,
+        "slru_better_requests": 8,
+        "slru_worse_requests": 7,
+        "gross_gain_tokens": 75008,
+        "gross_loss_tokens": 38912,
+        "net_cached_tokens": 36096
+      },
+      {
+        "dimension": "continuation_depth_bin",
+        "bin": "2_3",
+        "requests": 105,
+        "slru_better_requests": 11,
+        "slru_worse_requests": 5,
+        "gross_gain_tokens": 142592,
+        "gross_loss_tokens": 55808,
+        "net_cached_tokens": 86784
+      },
+      {
+        "dimension": "continuation_depth_bin",
+        "bin": "4_7",
+        "requests": 165,
+        "slru_better_requests": 22,
+        "slru_worse_requests": 23,
+        "gross_gain_tokens": 227072,
+        "gross_loss_tokens": 256000,
+        "net_cached_tokens": -28928
+      },
+      {
+        "dimension": "continuation_depth_bin",
+        "bin": "8_plus",
+        "requests": 790,
+        "slru_better_requests": 70,
+        "slru_worse_requests": 65,
+        "gross_gain_tokens": 1430272,
+        "gross_loss_tokens": 1287680,
+        "net_cached_tokens": 142592
+      }
+    ],
+    "effective_gap_bins": [
+      {
+        "dimension": "gap_bin",
+        "bin": "[0,0.1)",
+        "requests": 659,
+        "slru_better_requests": 65,
+        "slru_worse_requests": 58,
+        "gross_gain_tokens": 912640,
+        "gross_loss_tokens": 715776,
+        "net_cached_tokens": 196864
+      },
+      {
+        "dimension": "gap_bin",
+        "bin": "[0.1,1)",
+        "requests": 378,
+        "slru_better_requests": 32,
+        "slru_worse_requests": 36,
+        "gross_gain_tokens": 502016,
+        "gross_loss_tokens": 640512,
+        "net_cached_tokens": -138496
+      },
+      {
+        "dimension": "gap_bin",
+        "bin": "[1,5)",
+        "requests": 77,
+        "slru_better_requests": 7,
+        "slru_worse_requests": 8,
+        "gross_gain_tokens": 141824,
+        "gross_loss_tokens": 177920,
+        "net_cached_tokens": -36096
+      },
+      {
+        "dimension": "gap_bin",
+        "bin": "[20,60)",
+        "requests": 20,
+        "slru_better_requests": 4,
+        "slru_worse_requests": 1,
+        "gross_gain_tokens": 68352,
+        "gross_loss_tokens": 3072,
+        "net_cached_tokens": 65280
+      },
+      {
+        "dimension": "gap_bin",
+        "bin": "[300,+inf)",
+        "requests": 1,
+        "slru_better_requests": 0,
+        "slru_worse_requests": 0,
+        "gross_gain_tokens": 0,
+        "gross_loss_tokens": 0,
+        "net_cached_tokens": 0
+      },
+      {
+        "dimension": "gap_bin",
+        "bin": "[5,20)",
+        "requests": 38,
+        "slru_better_requests": 5,
+        "slru_worse_requests": 2,
+        "gross_gain_tokens": 77824,
+        "gross_loss_tokens": 68352,
+        "net_cached_tokens": 9472
+      },
+      {
+        "dimension": "gap_bin",
+        "bin": "[60,300)",
+        "requests": 13,
+        "slru_better_requests": 3,
+        "slru_worse_requests": 2,
+        "gross_gain_tokens": 187648,
+        "gross_loss_tokens": 54272,
+        "net_cached_tokens": 133376
+      },
+      {
+        "dimension": "gap_bin",
+        "bin": "first_request",
+        "requests": 20,
+        "slru_better_requests": 1,
+        "slru_worse_requests": 0,
+        "gross_gain_tokens": 3072,
+        "gross_loss_tokens": 0,
+        "net_cached_tokens": 3072
+      }
+    ],
+    "lru_intervening_submission_count_bins": [
+      {
+        "dimension": "competition_request_count_bin_lru",
+        "bin": "0",
+        "requests": 1000,
+        "slru_better_requests": 96,
+        "slru_worse_requests": 89,
+        "gross_gain_tokens": 1411584,
+        "gross_loss_tokens": 1116160,
+        "net_cached_tokens": 295424
+      },
+      {
+        "dimension": "competition_request_count_bin_lru",
+        "bin": "[1,5)",
+        "requests": 129,
+        "slru_better_requests": 10,
+        "slru_worse_requests": 13,
+        "gross_gain_tokens": 151040,
+        "gross_loss_tokens": 418048,
+        "net_cached_tokens": -267008
+      },
+      {
+        "dimension": "competition_request_count_bin_lru",
+        "bin": "[100,+inf)",
+        "requests": 3,
+        "slru_better_requests": 1,
+        "slru_worse_requests": 1,
+        "gross_gain_tokens": 3072,
+        "gross_loss_tokens": 3072,
+        "net_cached_tokens": 0
+      },
+      {
+        "dimension": "competition_request_count_bin_lru",
+        "bin": "[20,100)",
+        "requests": 21,
+        "slru_better_requests": 5,
+        "slru_worse_requests": 2,
+        "gross_gain_tokens": 249856,
+        "gross_loss_tokens": 54272,
+        "net_cached_tokens": 195584
+      },
+      {
+        "dimension": "competition_request_count_bin_lru",
+        "bin": "[5,20)",
+        "requests": 33,
+        "slru_better_requests": 4,
+        "slru_worse_requests": 2,
+        "gross_gain_tokens": 74752,
+        "gross_loss_tokens": 68352,
+        "net_cached_tokens": 6400
+      },
+      {
+        "dimension": "competition_request_count_bin_lru",
+        "bin": "first_request",
+        "requests": 20,
+        "slru_better_requests": 1,
+        "slru_worse_requests": 0,
+        "gross_gain_tokens": 3072,
+        "gross_loss_tokens": 0,
+        "net_cached_tokens": 3072
+      }
+    ]
+  },
+  "hypothesis_assessment": [
+    {
+      "hypothesis": "Agent 流量主要由追加式长链续接构成。",
+      "assessment": "supported",
+      "evidence": "1,186 个非首轮转换中有 1,127 个是严格 append。"
+    },
+    {
+      "hypothesis": "续接深度越大，SLRU 就越应该保护该请求。",
+      "assessment": "not_supported_as_a_single_variable",
+      "evidence": "深度 4–7 的 SLRU 净差为负，8+ 为正；相近深度同时存在正反案例。"
+    },
+    {
+      "hypothesis": "等待越久或期间新提交请求越多，越能单调预测哪种策略更好。",
+      "assessment": "not_supported_as_a_single_variable",
+      "evidence": "等待和新提交竞争分桶中的 SLRU 净差正负交替，长等待桶样本也很少。"
+    },
+    {
+      "hypothesis": "SLRU 会稳定延长热链的驻留。",
+      "assessment": "weak_and_localized",
+      "evidence": "SLRU 的最长高可用运行更长，但 high-to-high 保持率与 LRU 几乎相同，且存在 26 个反向 cliff。"
+    },
+    {
+      "hypothesis": "无条件继承父链信用是安全的。",
+      "assessment": "not_identified_by_current_proxy",
+      "evidence": "当前只运行了 LRU/LFU/SLRU，且闭环顺序不同；8 个会话同时出现正反 cliff，只能说明父链热度不足以作为充分保护依据，不能直接检验信用继承。"
+    },
+    {
+      "hypothesis": "只改变候选排序就能消除大多数已观测前缀缺口。",
+      "assessment": "not_identified_by_current_proxy",
+      "evidence": "356 个请求在三策略下都有至少 8K 相邻前缀缺口代理，但该代理没有候选 frontier、锁、SWA/Full 归因；只有 108 个请求的策略敏感差异达到至少 8K。"
+    }
+  ],
+  "conclusion": "日志支持测试有界、衰减的续接信用，但不支持只按续接深度授予保护。机制需要保守上限、按竞争量失效，并在相同释放预算下做反事实验证。"
+}

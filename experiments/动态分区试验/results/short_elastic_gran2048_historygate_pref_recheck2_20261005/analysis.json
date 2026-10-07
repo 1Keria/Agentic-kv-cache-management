@@ -1,0 +1,272 @@
+{
+  "short_elastic_gran2048_historygate_pref_recheck2_20261005": {
+    "config": {
+      "created_at_utc": "2026-10-05T03:53:45.674380+00:00",
+      "scenario": "short_elastic_gran2048_historygate_pref_recheck2_20261005",
+      "workload_dir": "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/动态分区试验/data/bidirectional_reuse_short_phased_20261001",
+      "expected_requests": 227,
+      "modes": [
+        "elastic"
+      ],
+      "gap_scale": 0.1,
+      "max_output_tokens": 16,
+      "agent_ratio": 0.5,
+      "window_requests_legacy": 0,
+      "alpha": 0.2,
+      "feedback_mode": "normalized_pressure",
+      "max_ratio_step": 0.05,
+      "pressure_hysteresis": 0.02,
+      "cooldown_evicted_tokens": 4096,
+      "min_ratio": 0.2,
+      "max_ratio": 0.8,
+      "elastic_reclaim_order": "request_first",
+      "elastic_preferred_reclaim": true,
+      "elastic_soft_step": 0.1,
+      "elastic_activity_window": 32,
+      "elastic_ghost_capacity_tokens": 0,
+      "elastic_ghost_pressure_decay": 0.95,
+      "elastic_ghost_bias": 0.5,
+      "elastic_ghost_reclaim": false,
+      "elastic_ghost_protect": false,
+      "elastic_ghost_protect_min_tokens": 0,
+      "elastic_feedback": false,
+      "elastic_activity_requires_hit": "0",
+      "feedback_min_evicted_tokens": 0,
+      "borrow_high_watermark_tokens": 0,
+      "borrow_low_watermark_tokens": 0,
+      "borrowed_segment_tokens": 2048,
+      "disable_cuda_graph": "1",
+      "mem_fraction_static": 0.35,
+      "swa_full_tokens_ratio": null,
+      "chunked_prefill_size": null,
+      "random_seed": 42,
+      "cuda_visible_devices": "0,1,2,3,4,5,6,7",
+      "tp_size": "8",
+      "replay_protocol": "phased",
+      "replay_max_inflight": 2,
+      "allow_phase_requirement_failure": true,
+      "unified_engine_root": null,
+      "native_engine_root": null
+    },
+    "modes": {
+      "elastic": {
+        "summary": {
+          "requests_ok": 227,
+          "requests_err": 0,
+          "wall_clock_s": 554.919,
+          "request_per_s": 0.4091,
+          "output_token_per_s": 6.5451,
+          "overall_hit": 0.484096,
+          "cached_tokens": 3984896,
+          "prompt_tokens": 8231620,
+          "uncached_prompt_tokens": 4246724,
+          "agent_hit": 0.482169,
+          "request_hit": 0.772283,
+          "ttft_p50_ms": 1654.386,
+          "ttft_p90_ms": 3436.3622,
+          "ttft_mean_ms": 1804.6465418502203,
+          "agent_ttft_mean_ms": 1882.8049194312796,
+          "request_ttft_mean_ms": 773.9329375
+        },
+        "regions_after": {
+          "agent": {
+            "base_full_capacity_tokens": 36096,
+            "base_swa_capacity_tokens": 3584,
+            "full_capacity_tokens": 173824,
+            "swa_capacity_tokens": 14336,
+            "full_borrowed_tokens": 137728,
+            "swa_borrowed_tokens": 10752,
+            "full_cached_borrowed_tokens": 135936,
+            "swa_cached_borrowed_tokens": 8704,
+            "full_cached_preferred_borrowed_tokens": 15104,
+            "swa_cached_preferred_borrowed_tokens": 256,
+            "borrowed_eviction_count": 565,
+            "borrowed_full_evicted_tokens": 822016,
+            "borrowed_swa_evicted_tokens": 3568896,
+            "borrow_reclaim_reasons": {
+              "global_overage": 565
+            },
+            "elastic_tail_first_activations": 7,
+            "elastic_tail_first_evicted_full_tokens": 10496,
+            "elastic_tail_first_evicted_swa_tokens": 59904,
+            "full_used_tokens": 158464,
+            "swa_used_tokens": 14080,
+            "full_evictable_tokens": 158464,
+            "swa_evictable_tokens": 14080,
+            "eviction_count": 746,
+            "full_evicted_tokens": 2365696,
+            "swa_evicted_tokens": 4189696,
+            "full_over_quota_tokens": 0,
+            "swa_over_quota_tokens": 0
+          },
+          "request": {
+            "base_full_capacity_tokens": 36095,
+            "base_swa_capacity_tokens": 3583,
+            "full_capacity_tokens": 36095,
+            "swa_capacity_tokens": 3840,
+            "full_borrowed_tokens": 0,
+            "swa_borrowed_tokens": 257,
+            "full_cached_borrowed_tokens": 0,
+            "swa_cached_borrowed_tokens": 256,
+            "full_cached_preferred_borrowed_tokens": 0,
+            "swa_cached_preferred_borrowed_tokens": 256,
+            "borrowed_eviction_count": 0,
+            "borrowed_full_evicted_tokens": 0,
+            "borrowed_swa_evicted_tokens": 0,
+            "borrow_reclaim_reasons": {},
+            "elastic_tail_first_activations": 0,
+            "elastic_tail_first_evicted_full_tokens": 0,
+            "elastic_tail_first_evicted_swa_tokens": 0,
+            "full_used_tokens": 6656,
+            "swa_used_tokens": 3584,
+            "full_evictable_tokens": 6656,
+            "swa_evictable_tokens": 3584,
+            "eviction_count": 2,
+            "full_evicted_tokens": 3328,
+            "swa_evicted_tokens": 6400,
+            "full_over_quota_tokens": 0,
+            "swa_over_quota_tokens": 0
+          }
+        },
+        "region_totals_after": {
+          "full_evicted_tokens": 2369024,
+          "swa_evicted_tokens": 4196096,
+          "max_full_effective_capacity_tokens": 173824,
+          "max_swa_effective_capacity_tokens": 14336
+        },
+        "controller_after": {
+          "policy": "elastic",
+          "current_agent_ratio": 0.5,
+          "elastic_feedback": false,
+          "elastic_feedback_phase_active": false,
+          "elastic_feedback_phase_updated": false,
+          "elastic_feedback_phase_region": null,
+          "elastic_reclaim_order": "request_first",
+          "elastic_preferred_reclaim": true,
+          "elastic_preferred_reclaim_active": true,
+          "elastic_soft_step": 0.1,
+          "elastic_activity_window": 32,
+          "elastic_activity_requires_hit": false,
+          "elastic_ghost_protect": false,
+          "elastic_ghost_protect_min_tokens": 0,
+          "elastic_activity_floor_ratio": null,
+          "elastic_region_access_epoch": 392,
+          "elastic_region_last_access": {
+            "agent": 384,
+            "request": 392
+          },
+          "elastic_region_access_count": {
+            "agent": 376,
+            "request": 16
+          },
+          "elastic_region_run_length": {
+            "agent": 376,
+            "request": 8
+          },
+          "elastic_tail_first_activity_suppressed": 0,
+          "elastic_ghost": {
+            "enabled": false,
+            "capacity_tokens": 0,
+            "pressure_decay": 0.95,
+            "bias": 0.5,
+            "reclaim": false,
+            "protect": false,
+            "protect_min_tokens": 0
+          },
+          "elastic_tail_first_regions": [
+            "agent"
+          ],
+          "elastic_tail_first_pressure_events": 26,
+          "elastic_tail_first_activations": {
+            "agent": 7,
+            "request": 0
+          },
+          "elastic_tail_first_reclaim_calls": 19,
+          "elastic_tail_first_evicted_full_tokens": {
+            "agent": 10496,
+            "request": 0
+          },
+          "elastic_tail_first_evicted_swa_tokens": {
+            "agent": 59904,
+            "request": 0
+          },
+          "agent_min_ratio": 0.2,
+          "request_min_ratio": 0.19999999999999996,
+          "elastic_observed_agent_ratio": 0.9439775910364145,
+          "elastic_target_agent_ratio": 0.8,
+          "elastic_soft_agent_ratio": 0.8,
+          "elastic_pool_ratio": 0.6000000000000001
+        },
+        "trajectory": {
+          "sample_count": 108,
+          "region_peaks": {
+            "agent": {
+              "full_used_tokens": 167936,
+              "swa_used_tokens": 17408,
+              "full_cached_borrowed_tokens": 145408,
+              "swa_cached_borrowed_tokens": 16640,
+              "full_over_quota_tokens": 0,
+              "swa_over_quota_tokens": 0
+            },
+            "request": {
+              "full_used_tokens": 6656,
+              "swa_used_tokens": 6656,
+              "full_cached_borrowed_tokens": 0,
+              "swa_cached_borrowed_tokens": 256,
+              "full_over_quota_tokens": 0,
+              "swa_over_quota_tokens": 0
+            }
+          },
+          "ratio_initial": 0.5,
+          "ratio_final": 0.5,
+          "ratio_min": 0.5,
+          "ratio_max": 0.5,
+          "update_count": 0,
+          "updates_observed_by_sampler": []
+        },
+        "phases": {
+          "request_first": {
+            "requests": 8,
+            "prompt_tokens": 26819,
+            "cached_tokens": 18944,
+            "token_weighted_hit": 0.7063648905626608,
+            "ttft_mean_ms": 1262.003125,
+            "first_turn_requests": 2,
+            "first_turn_cached_tokens": 0,
+            "first_turn_prompt_tokens": 6537,
+            "first_turn_token_weighted_hit": 0.0,
+            "actual_first_start_s": 0.008694128948263824,
+            "actual_last_end_s": 42.15935956801793
+          },
+          "agent_middle": {
+            "requests": 211,
+            "prompt_tokens": 8176925,
+            "cached_tokens": 3942656,
+            "token_weighted_hit": 0.48216854135264786,
+            "ttft_mean_ms": 1882.8049194312796,
+            "first_turn_requests": 7,
+            "first_turn_cached_tokens": 12288,
+            "first_turn_prompt_tokens": 82656,
+            "first_turn_token_weighted_hit": 0.148664343786295,
+            "actual_first_start_s": 42.180330191971734,
+            "actual_last_end_s": 520.1851772049806
+          },
+          "request_second": {
+            "requests": 8,
+            "prompt_tokens": 27876,
+            "cached_tokens": 23296,
+            "token_weighted_hit": 0.8357009614004879,
+            "ttft_mean_ms": 285.86275,
+            "first_turn_requests": 2,
+            "first_turn_cached_tokens": 3328,
+            "first_turn_prompt_tokens": 6969,
+            "first_turn_token_weighted_hit": 0.4775434065145645,
+            "actual_first_start_s": 520.2016104409704,
+            "actual_last_end_s": 554.9075981340088
+          }
+        }
+      }
+    },
+    "comparisons": {}
+  }
+}

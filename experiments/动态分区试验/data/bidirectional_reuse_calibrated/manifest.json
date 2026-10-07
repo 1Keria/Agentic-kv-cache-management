@@ -1,0 +1,42 @@
+{
+  "name": "bidirectional_reuse_phase_stress",
+  "protocol": "dynamic-partition-controlled-v2",
+  "source_workload": "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/固定分区试验对比/data/token_balanced_openhands_wildchat/workload.jsonl",
+  "source_workload_sha256": "90fce6bfac8779e89834c5149bb426fa3f4b191c25835b6e2e2eb54fece1fac8",
+  "workload_jsonl_sha256": "127e48a76bfdd83b94f63cd96f7eea24f0646ec8da8db8daef5f8c1f13042626",
+  "n_turns": 1277,
+  "n_sessions": 559,
+  "n_sessions_by_class": {
+    "agent": 7,
+    "request": 552
+  },
+  "transformation": {
+    "type": "real_multiturn_bidirectional_reuse",
+    "request_sessions": 2,
+    "request_turns_per_wave": 4,
+    "header_chars": 32000,
+    "request_wave_intervals_s": [
+      [
+        60.0,
+        66.0
+      ],
+      [
+        270.0,
+        276.0
+      ]
+    ],
+    "agent_interval_s": [
+      90.0,
+      110.0
+    ],
+    "return_mode": "repeat_terminal_prompt",
+    "second_wave_prompts_match": "last_warmup_prompt",
+    "agent_prompt_bodies_unchanged": true,
+    "background": {
+      "workload": "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/动态分区试验/data/request_agent_request/workload.jsonl",
+      "sha256": "26c83bd98918f96642fb6d8d6deb67332e8afbf232374df654e94f05c11dc346",
+      "n_turns": 1050,
+      "prompt_bodies_unchanged": true
+    }
+  }
+}

@@ -388,6 +388,9 @@ class StreamingSession(BasePrefixCache):
     def region_stats(self):
         return self.inner.region_stats()
 
+    def region_quota_stats(self):
+        return self.inner.region_quota_stats()
+
     def inc_lock_ref(self, node: Any) -> IncLockRefResult:
         result = self.try_inc_lock_ref(node)
         if result is not None:

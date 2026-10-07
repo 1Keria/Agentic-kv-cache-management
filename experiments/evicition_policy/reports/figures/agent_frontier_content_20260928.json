@@ -1,0 +1,12 @@
+{
+  "purpose": "Scientific content-demand figure; not a real eviction-frontier plot",
+  "inputs": {
+    "results/analysis/agent_frontier_statistics_20260928_v2/summary.json": "a1fcaa09d337038ac21c770cc2d61d326ebc3b2b1fa2c7237e8abc95c0321be0",
+    "results/analysis/agent_frontier_statistics_20260928_v2/input_page_demand_histogram.csv": "1b6264a49157ef0ddf093f4392f55e02ee383305735d291648db89488b7c5968",
+    "scripts/plot_agent_frontier_statistics.py": "090dbb027b99563862351f10c9ff1398a0122c0143a699763a399ae407ed3fe6"
+  },
+  "outputs": {
+    "agent_frontier_content_20260928.png": "4df98a00b81258d30bdc69b682adb8c9876e875eca03d9275205204e3092c84a",
+    "agent_frontier_content_20260928.svg": "c0e723d542c971b99c0085a2c71a3ed38054c350570917c3c7a0b277748e46d6"
+  }
+}

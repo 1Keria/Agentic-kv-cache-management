@@ -1,0 +1,51 @@
+{
+  "name": "bidirectional_reuse_phased_barrier",
+  "protocol": "phased_bounded_inflight_v1",
+  "source_workload_sha256": "127e48a76bfdd83b94f63cd96f7eea24f0646ec8da8db8daef5f8c1f13042626",
+  "workload_jsonl_sha256": "4ac96ebe9776e95fa7c2c0353c10b4e56d59d457b10dcaa97c42638f425a2cc1",
+  "n_turns": 227,
+  "n_sessions": 11,
+  "n_sessions_by_class": {
+    "agent": 7,
+    "request": 4
+  },
+  "phases": [
+    {
+      "name": "ordinary_warm",
+      "execution": "serial",
+      "session_ids": [
+        "ordinary_hot:0:warm",
+        "ordinary_hot:1:warm"
+      ],
+      "require_warm_hit": 0.9
+    },
+    {
+      "name": "agent_pressure",
+      "execution": "parallel",
+      "session_ids": [
+        "openhands:0acf0b0cb9ba:jax-computing-basics__7b82fe37:strict000",
+        "openhands:27f16f04c9ca:tictoc-unnecessary-abort-detection__0bc7faec:strict001",
+        "openhands:1a0d24924cbf:dialogue-parser__6d38968a:strict000",
+        "openhands:21919fcf6f0c:quantum-numerical-simulation__eac1158c:strict000",
+        "openhands:0bb81a9cf635:drone-planning-control__33dce295:strict000",
+        "openhands:4885ceb3f32c:seismic-phase-picking__f95df21d:strict000",
+        "openhands:02f649423580:pddl-airport-planning__474d1ecf:strict000"
+      ]
+    },
+    {
+      "name": "ordinary_return",
+      "execution": "serial",
+      "session_ids": [
+        "ordinary_hot:0:return",
+        "ordinary_hot:1:return"
+      ],
+      "require_first_hit": 0.5
+    }
+  ],
+  "notes": [
+    "真实 Agent session 内容保持不变。",
+    "普通请求使用已验证可复用的两个真实末轮 prompt；每个预热/回访 session 内四次逐字重复。",
+    "阶段之间有完成屏障；Agent 阶段限制全局在途请求数。",
+    "本数据用于先验证双边复用，再在相同阶段结构上提高背景扫描压力。"
+  ]
+}

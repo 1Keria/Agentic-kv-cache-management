@@ -1,0 +1,20 @@
+{
+  "name": "bidirectional_reuse_shared_request_v2",
+  "protocol": "dynamic-partition-controlled-v3",
+  "source_workload": "experiments/动态分区试验/data/bidirectional_reuse_8agent_swa020_20261002/workload.jsonl",
+  "n_turns": 192,
+  "n_sessions": 32,
+  "n_sessions_by_class": {
+    "agent": 8,
+    "request": 24
+  },
+  "workload_jsonl_sha256": "424407d4d89505ef2aaf88179b0b585359e098298bf8b05369eb262c1f6b2ab6",
+  "transformation": {
+    "ordinary_sessions": 12,
+    "ordinary_shared_prefix": true,
+    "ordinary_independent_turns": true,
+    "ordinary_shared_blocks": 220,
+    "ordinary_unique_suffix_blocks": 50,
+    "purpose": "Independent repeated hot-prefix probes avoid dependence on generated assistant text; shared working set remains below request quota while Agent pressure fills unified capacity."
+  }
+}

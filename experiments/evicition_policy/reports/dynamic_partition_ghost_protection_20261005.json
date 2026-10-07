@@ -1,0 +1,57 @@
+{
+  "schema": "agentkv_dynamic_partition_ghost_protection_v1",
+  "date": "2026-10-05",
+  "workload": "experiments/动态分区试验/data/bidirectional_reuse_short_phased_20261001",
+  "candidate": {
+    "policy": "elastic",
+    "agent_ratio": 0.5,
+    "min_ratio": 0.2,
+    "max_ratio": 0.8,
+    "activity_window": 32,
+    "cold_start_ratio": 0.5,
+    "both_active_min_ratio": 0.2,
+    "shared_pool_ratio_when_both_active": 0.6,
+    "soft_step": 0.1,
+    "borrowed_segment_tokens": 1024,
+    "ghost_capacity_tokens": 1048576,
+    "ghost_pressure_decay": 0.995,
+    "ghost_protect": true,
+    "ghost_protect_min_tokens": 1024,
+    "ghost_reclaim": false
+  },
+  "full_short_runs": {
+    "baseline_no_ghost": [
+      {"scenario": "short_elastic_gran2048_historygate_pref_current_20261005", "overall_hit": 0.436265, "agent_hit": 0.434017, "request_hit": 0.772283, "cached_tokens": 3591168, "extra_recompute_tokens": 4220672, "wall_clock_s": 570.971, "ttft_p50_ms": 1707.945},
+      {"scenario": "short_elastic_gran2048_historygate_pref_recheck2_20261005", "overall_hit": 0.484096, "agent_hit": 0.482169, "request_hit": 0.772283, "cached_tokens": 3984896, "extra_recompute_tokens": 3827968, "wall_clock_s": 554.919, "ttft_p50_ms": 1654.386}
+    ],
+    "ghost_segment_2048": [
+      {"scenario": "short_elastic_gran2048_ghostprotect_requestwindow32_v2_20261005", "overall_hit": 0.520327, "agent_hit": 0.518642, "request_hit": 0.772283, "cached_tokens": 4283136, "extra_recompute_tokens": 3531008, "wall_clock_s": 568.970, "ttft_p50_ms": 1748.628},
+      {"scenario": "short_elastic_gran2048_ghostprotect_requestwindow32_v3_20261005", "overall_hit": 0.520327, "agent_hit": 0.518642, "request_hit": 0.772283, "cached_tokens": 4283136, "extra_recompute_tokens": 3531008, "wall_clock_s": 567.521, "ttft_p50_ms": 1763.329}
+    ],
+    "ghost_segment_1024": [
+      {"scenario": "short_elastic_ghostprotect_gran1024_v3_20261005", "overall_hit": 0.548846, "agent_hit": 0.547351, "request_hit": 0.772283, "cached_tokens": 4517888, "extra_recompute_tokens": 3297024, "wall_clock_s": 582.840, "ttft_p50_ms": 1835.787},
+      {"scenario": "short_elastic_ghostprotect_gran1024_repeat5_20261005", "overall_hit": 0.550090, "agent_hit": 0.548603, "request_hit": 0.772283, "cached_tokens": 4528128, "extra_recompute_tokens": 3283712, "wall_clock_s": 575.782, "ttft_p50_ms": 1813.644},
+      {"scenario": "short_elastic_ghostprotect_gran1024_repeat6_20261005", "overall_hit": 0.541941, "agent_hit": 0.540401, "request_hit": 0.772283, "cached_tokens": 4461056, "extra_recompute_tokens": 3353600, "wall_clock_s": 577.878, "ttft_p50_ms": 1790.495}
+    ]
+  },
+  "aggregates": {
+    "baseline_no_ghost_2048": {"n": 2, "overall_hit_mean": 0.4601805, "overall_hit_stdev": 0.0338216, "agent_hit_mean": 0.458093, "extra_recompute_mean": 4024320, "extra_recompute_stdev": 277683.7, "wall_clock_mean_s": 562.945, "ttft_p50_mean_ms": 1681.17},
+    "ghost_2048": {"n": 2, "overall_hit_mean": 0.520327, "overall_hit_stdev": 0.0, "agent_hit_mean": 0.518642, "extra_recompute_mean": 3531008, "extra_recompute_stdev": 0.0, "wall_clock_mean_s": 568.246, "ttft_p50_mean_ms": 1755.98},
+    "ghost_1024": {"n": 3, "overall_hit_mean": 0.546959, "overall_hit_stdev": 0.004390, "agent_hit_mean": 0.545452, "agent_hit_stdev": 0.004419, "request_hit_mean": 0.772283, "extra_recompute_mean": 3311445, "extra_recompute_stdev": 37108.8, "wall_clock_mean_s": 578.833, "ttft_p50_mean_ms": 1813.31}
+  },
+  "validation": {
+    "unit_tests": "79 passed, 19 warnings",
+    "ghost_event_step_is_request_deduplicated": true,
+    "full_swa_use_same_ghost_policy": true,
+    "full_swa_ghost_indexes_are_separate": true,
+    "split_invalidates_cached_ghost_fingerprints": true,
+    "full_1024_repeat": "three_valid_runs",
+    "failed_attempts": [
+      {"scenario": "short_elastic_ghostprotect_gran1024_repeat_20261005", "reason": "external_vllm_gpu_occupancy"},
+      {"scenario": "short_elastic_ghostprotect_gran1024_repeat2_20261005", "reason": "external_vllm_gpu_occupancy"},
+      {"scenario": "short_elastic_ghostprotect_gran1024_repeat3_20261005", "reason": "external_vllm_gpu_occupancy"},
+      {"scenario": "short_elastic_ghostprotect_gran1024_repeat4_20261005", "reason": "unified_radix_tree_does_not_support_regions"}
+    ],
+    "region_backend_guard": "v4flash_forces_classic_radix_for_region_caches"
+  }
+}

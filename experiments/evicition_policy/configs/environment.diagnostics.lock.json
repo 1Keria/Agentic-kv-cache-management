@@ -1,0 +1,27 @@
+{
+  "schema": 2,
+  "engine_version": "0.5.13.post1",
+  "features": {
+    "exposure_barrier_env": "AGENTKV_EXPOSURE_BARRIER=1",
+    "full": "defer parents exposed during the current reclaim round",
+    "swa": "defer same-chain candidates while independent frontier candidates remain"
+  },
+  "files": {
+    "unified_radix_cache.py": {
+      "pristine_sha256": "3bce5c884efa7c8d2cab680cf18fcb1574bb96431b99f396c4b3fd6a1de1efc7",
+      "patched_sha256": "61aa78aad440825958807db2f543f609463879b30df154195bcb171ca72d41cc"
+    },
+    "unified_cache_components/full_component.py": {
+      "pristine_sha256": "339cdb3ce23bb949d169ae2088326cc86f8fd35fc7746657c0e042719189330b",
+      "patched_sha256": "362ebdd8a8beccc45f384f8c8bd210caf35f37aeee2957e21f54c8819271b350"
+    },
+    "unified_cache_components/swa_component.py": {
+      "pristine_sha256": "2c85298a769db52be3e4438265ad8a483f12ee94a5930b488ad31d958769b624",
+      "patched_sha256": "edebf8cb4fef829ffac2e167553d4f5835202cc216b6110bc527fc2a91323d82"
+    },
+    "agentkv_diagnostics.py": {
+      "source_sha256": "ad42f010c04d189c8afb29b9dce9520a28784781162542a4d41331806a314812",
+      "installed_sha256": "ad42f010c04d189c8afb29b9dce9520a28784781162542a4d41331806a314812"
+    }
+  }
+}

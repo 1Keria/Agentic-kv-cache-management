@@ -3554,6 +3554,9 @@ class Scheduler(
         }
         if self.server_args.enable_request_cache_regions:
             ret["request_cache_regions"] = self.tree_cache.region_stats()
+            ret["request_cache_region_controller"] = (
+                self.tree_cache.region_quota_stats()
+            )
         ret["effective_max_running_requests_per_dp"] = self.max_running_requests
 
         if (

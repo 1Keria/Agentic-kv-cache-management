@@ -93,6 +93,9 @@ class EvictParams:
     swa_num_tokens: int = 0
     mamba_num: int = 0
     region: Optional[str] = None
+    borrowed_only: bool = False
+    preferred_borrowed_only: bool = False
+    borrow_reclaim_reason: Optional[str] = None
 
 
 @dataclasses.dataclass
@@ -266,8 +269,21 @@ class BasePrefixCache(ABC, PrefixCacheTrait):
         pass
 
     def ensure_region_capacity(self, region: Optional[str], num_tokens: int) -> None:
-        """Evict cached tokens until a request region fits its fixed quota."""
+        """Evict cached tokens until a request region fits its current quota."""
         return None
+
+    def ensure_region_capacities(self, region_tokens: dict[str, int]) -> None:
+        """Reserve capacity for all regions in one scheduling batch.
+
+        Cache implementations that support request regions may override this to
+        account for cross-region pressure before the allocator starts writing
+        the batch. The default preserves the single-region behavior.
+        """
+        for region, num_tokens in region_tokens.items():
+            self.ensure_region_capacity(region, num_tokens)
+
+    def region_quota_stats(self) -> dict[str, object]:
+        return {}
 
     @abstractmethod
     def inc_lock_ref(self, node: Any) -> IncLockRefResult:

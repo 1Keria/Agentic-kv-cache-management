@@ -1,0 +1,8 @@
+{
+  "name": "ordinary_reuse_lowpressure_probe",
+  "n_turns": 16,
+  "n_sessions": 1,
+  "workload_jsonl_sha256": "42e8cc6f34af0092faf8f025562047d9da491d5906eeb3cdbf53ed6bba57f17a",
+  "source_workload_sha256": "127e48a76bfdd83b94f63cd96f7eea24f0646ec8da8db8daef5f8c1f13042626",
+  "transformation": "Two calibrated terminal prompt bodies repeated A4 B4 A4 B4; one sequential client; no competing requests."
+}

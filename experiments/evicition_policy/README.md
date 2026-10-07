@@ -1,14 +1,35 @@
 # 纯 Agent 请求：原生 KV Cache 淘汰策略实验规划
 
-更新日期：2026-09-28。状态：**第一轮 LRU/LFU/SLRU 单次探索性对照已完成。成功 suite 为 `results/runs/20260928T015431Z_a6d1c132/`；三种策略均完整处理相同的 20 个会话、1,206 个请求、48,787,785 个输入 token 和 693,217 个输出 token，完整性、空缓存起点和资源释放检查全部通过，有效配置签名完全一致。单轮结果中 SLRU 的命中率、TTFT p95 和请求耗时 p95 均最好，是下一阶段最值得重复验证的候选；LFU 暂不优先。**
+当前混合流量动态分区的借用尾部分段复核见 [dynamic_partition_granularity_20261005](reports/dynamic_partition_granularity_20261005.md)，机器可读结果见 [JSON](reports/dynamic_partition_granularity_20261005.json)。在此基础上，最新的 ghost 保护与 1024-token 分段复核见 [dynamic_partition_ghost_protection_20261005](reports/dynamic_partition_ghost_protection_20261005.md)，机器可读结果见 [JSON](reports/dynamic_partition_ghost_protection_20261005.json)。当前已完成三次有效 1024-token 复核：总体命中率均值 54.6959%，额外重算均值 3,311,445 token；相对无 ghost 2048 分段基线分别提高 8.678 个百分点、减少 17.71% 额外重算。推荐候选为 1024-token 借用后缀分段 + history gate + 请求级 bounded ghost 保护；ghost 压力回收顺序保持关闭。
+
+固定保障份额、borrowed 页标记和高低水位的第一版实现与混合流量验证见 [固定保障借用高低水位实验结论](固定保障借用高低水位实验结论.md)。阶段切换 workload 中总体命中率提高 2.0469 个百分点，Full/SWA 驱逐分别减少 12.19%/19.89%；持续混合 workload 的收益较小，水位参数仍需事件级回收统计和固定输入扫描进一步校准。
+
+更新日期：2026-09-29。状态：**统一 Exposure Barrier 已完成 Full 与 SWA 两条回收路径的适配，并完成 10 组固定输入 GPU 对照。最新有效 suite 为 `results/pilot/exposure_barrier_20260929T073410Z/`。SWA-only 下额外处理 token 从 96,256 降至 33,792（-64.89%）；Full/SWA 联合压力下从 96,256 降至 59,136（-38.56%），累计 cached token 从 13,312 增至 50,432。LRU 与 SLRU 仍完全相同。下一步不再修改策略定义，转向 20 会话 workload、容量扫描、重复运行和顺序互换。**
+
+最新结论见 [Unified Exposure Barrier 适配实验结论](reports/UnifiedExposureBarrier适配实验结论.md)，机器结果为 `reports/agent_unified_exposure_barrier_20260929.json`。
+
+已完成 20 会话 / 1,206 请求的扩大测试。首轮因外部 GPU 占用失败的目录 `results/runs/large_unified_barrier_20260929T082959Z_7ce5cbe5/` 已通过独立恢复入口补跑完成；之后修复了“诊断补丁在关闭诊断时仍改变原生路径”的实现问题，并以修复后的统一版本重新完成固定顺序 LRU、SLRU、Unified Exposure Barrier 对照。最新报告见 [UnifiedExposureBarrier20会话扩大实验_固定版本](reports/UnifiedExposureBarrier20会话扩大实验_固定版本.md)，机器结果为 `reports/agent_large_unified_barrier_20260929_fixed_order.json`。在该单轮固定顺序结果中，SLRU 相对 LRU 多缓存 337,920 token（+0.6926 个百分点），Unified Exposure Barrier 多缓存 195,840 token（+0.4014 个百分点）；两者差异较小，不能据此形成稳定领先结论。
+统一策略仍以 LRU 为基础：Full 延迟本轮刚暴露的父节点；SWA 延迟本轮已选择链上的其他祖先/后代候选；独立前沿不足时使用同一安全回退。该策略不依赖 session ID、工具时间或下一轮到达预测。
+
+第一轮只接入 Full 的历史结果保留在 [Exposure Barrier 隔离实验结论](reports/ExposureBarrier隔离实验结论.md) 和 `reports/agent_exposure_barrier_20260929.json`，不再代表当前实现状态。
 
 最新方案见 [一小时完整会话回放设计](reports/一小时全量加速回放设计.md)，执行过程及旧失败证据见 [三策略执行与验证记录](reports/三策略执行与验证记录.md)，最终数字见 [LRU / LFU / SLRU 单次探索性对照](reports/三策略单次探索性对照.md)。冻结输入为 `data/workloads/exploration_1h_v4/`：Full 容量 524,288、SWA 容量 52,224；会话启动间隔从 90 秒统一缩放到 27 秒，所有会话内等待也乘 0.30。三次测量窗口分别为 35.69、35.46、35.30 分钟，完整流程均在 1 小时内。该容量只是冻结压力点，不是“最佳容量”结论。完整 `data/` 与 `results/` 已同步到私有 Hugging Face 数据集的同名路径，恢复方式见 [`docs/数据与模型迁移.md`](../../docs/数据与模型迁移.md)。
+
+三策略的逐请求原因分析见 [传统淘汰策略三策略实验与原因分析_20261007](reports/传统淘汰策略三策略实验与原因分析_20261007.md)，机器可读结果见同名 JSON；重新生成的明细位于 `results/analysis/traditional_policies_20261007/` 和 `results/analysis/traditional_policies_deep_dive_20261007/`。该报告确认 SLRU 是当前最值得复验的传统基线，LFU 在此 Agent-only 压力点命中率明显低于 LRU；两项结论均受单次固定顺序运行限制。
 
 本轮 token 加权命中率为 LRU 66.0556%、LFU 64.1236%、SLRU 66.5342%；TTFT p95 分别为 14.840、14.501、13.951 秒，请求耗时 p95 分别为 42.995、41.901、41.694 秒。相对 LRU，SLRU 命中率提高 0.4785 个百分点，约多命中 233,472 个输入 token，TTFT p95 降低 5.99%，请求耗时 p95 降低 3.03%。这仍是固定 `LRU → LFU → SLRU` 顺序下每策略一次的描述性结果，不能证明稳定领先或统计显著。
 
 **当前校准进度见 [完整会话校准与确认记录](reports/完整会话校准与确认记录.md)，工程验证历史见 [环境与回放准备结果](reports/环境与回放准备结果.md)。** [实验启动前检查](reports/实验启动前检查.md) 保留此前 CPU 检查历史，不再代表最新工程状态。最终三策略预跑的编码、长度、实际容量、空缓存和进程释放校验均通过，不作为策略收益结果。候选分布见 [全量候选请求画像](reports/全量候选请求画像.md)。
 
+新增中间过程证据包见 [Agent 定制淘汰策略参考与 Insight](reports/Agent定制淘汰策略参考与Insight.md)，紧凑机器可读快照为 `reports/agent_policy_insights_20260928.json`。可复现入口为 `scripts/analyze_agent_policy_insights.py`，完整机器结果位于 `results/analysis/agent_policy_insights_20260928/`，下一阶段 KV 事件与候选日志字段规范见 `configs/agent_policy_diagnostics_schema.json`。其中相邻输入 LCP 缺口始终标为代理量，不视为严格 `h_history`、额外重算或错误淘汰。
+
+进一步的闭环交错、在途竞争和双向 cliff 分析见 [Agent 定制淘汰策略日志深挖](reports/Agent定制淘汰策略日志深挖.md)，机器可读快照为 `reports/agent_policy_deep_dive_20260928.json`，复现脚本为 `scripts/analyze_agent_policy_deep_dive.py`。深挖确认逐请求策略差异混合了淘汰选择与全局请求交错变化；父链信用只能作为弱先验，不能仅按续接深度、等待时间或新提交请求数授予保护。
+
+针对“历史前缀是否几乎都会重复、只有当前尾部缺少自身回访证据”的统计见 [Agent 前缀重复需求与候选可观测性统计](reports/Agent前缀重复需求与候选可观测性统计.md)，[配套图](reports/figures/agent_frontier_content_20260928.png)及 SVG 位于 `reports/figures/`；机器结果为 `reports/agent_frontier_statistics_20260928.json`，明细位于 `results/analysis/agent_frontier_statistics_20260928_v2/`。内容级复现脚本为 `scripts/analyze_agent_frontier_statistics.py`，日志覆盖审计脚本为 `scripts/audit_agent_frontier_logs.py`。冻结的 20 个会话中，7,448 个完整输入页里 7,094 个在观察窗内被至少两个请求需要；但无容量输入树的最终末端页 52 个中有 50 个只有一次观察需求。两者分别描述历史内容复用和树末端形态，均不能替代真实合法回收候选。
+
 已确认的边界：Full 回收可切换 LRU/LFU/SLRU，SWA 独立回收仍为 LRU；TLRU 不在锁定发行版中。实际 decode CUDA Graph 开启，prefill 图被官方模型兼容规则自动禁用。不要把下文规划中的候选功能当成均已支持。
+
+候选前沿诊断已按 [Agent 策略下一阶段最小诊断方案](reports/Agent策略下一阶段最小诊断方案.md) 实施，最终结论见 [Agent 候选前沿实测诊断结论](reports/Agent候选前沿实测诊断结论.md)，机器结果为 `reports/agent_candidate_runtime_diagnostics_20260929.json`。Full 22 次回收中有 11 次继续处理刚暴露祖先；累计 Full/SWA 超额释放分别为 45,056/64,000 token。压力点下 23/27 个请求相对 control 累计多处理 96,256 token，且 Full LRU/SLRU 选择完全一致。
 
 当前数据准备进度见 [数据准备状态与恢复入口](reports/数据准备状态.md)。按照用户最新指定，当前实际目录为 `experiments/evicition_policy/`（保留该拼写），所有新增文件均落在此处。主数据已选定为 SkillsBench 的 OpenHands × DeepSeek-V4-Flash with-skills 原始轨迹；已通过镜像恢复历史清单对应的 181 个文件条目，覆盖 58 个任务名。文件条目数不等于去重后有效会话数。
 

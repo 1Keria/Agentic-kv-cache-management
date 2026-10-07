@@ -1,0 +1,124 @@
+{
+  "schema_version": "agent_policy_diagnostics_v1",
+  "status": "design_spec_not_collected_in_current_suite",
+  "purpose": "Define the minimum request, KV event, and eviction-decision records needed to validate a future Agent-specific policy.",
+  "identity_rules": {
+    "stable_prefix_digest": "Hash the complete cache namespace and page-aligned token prefix. Do not use transient node_id as the cross-event identity.",
+    "cache_namespace_hash": "Must include every namespace component used by the runtime matcher.",
+    "shared_prefix_accounting": "Count a shared physical prefix once and record referencing sessions separately."
+  },
+  "request_record": {
+    "currently_available_fields": [
+      "run_id",
+      "policy",
+      "session_id",
+      "task_id",
+      "turn_index",
+      "input_ids_sha256",
+      "prompt_tokens",
+      "cached_tokens",
+      "previous_input_lcp_tokens",
+      "previous_local_continuation_lcp_tokens",
+      "source_gap_seconds",
+      "effective_gap_seconds",
+      "submitted_seconds",
+      "first_token_seconds",
+      "completed_seconds",
+      "status"
+    ],
+    "required_new_fields": [
+      "request_seq",
+      "cache_namespace_hash",
+      "matched_stable_prefix_digest",
+      "matched_full_tokens",
+      "matched_swa_tokens",
+      "lifecycle_state",
+      "chain_continuation_count_before_request",
+      "observation_window_complete"
+    ],
+    "lifecycle_state_values": [
+      "first",
+      "continuation",
+      "branch",
+      "rewrite_or_compression",
+      "explicit_end",
+      "cancelled",
+      "future_unknown"
+    ]
+  },
+  "kv_event_record": {
+    "required_fields": [
+      "event_seq",
+      "event_time_monotonic_ns",
+      "cache_instance_id",
+      "tp_rank",
+      "pool",
+      "event_type",
+      "stable_prefix_digest",
+      "parent_stable_prefix_digest",
+      "transient_node_id",
+      "cache_namespace_hash",
+      "logical_tokens",
+      "physical_bytes",
+      "ref_count",
+      "locked",
+      "request_seq"
+    ],
+    "event_type_values": [
+      "store",
+      "demand",
+      "split",
+      "merge",
+      "lock",
+      "unlock",
+      "evict",
+      "flush"
+    ]
+  },
+  "eviction_decision_record": {
+    "required_fields": [
+      "eviction_id",
+      "event_seq",
+      "pool",
+      "policy",
+      "requested_free_tokens",
+      "requested_free_bytes",
+      "candidate_coverage_complete",
+      "candidate_count",
+      "selected_victim_digests",
+      "released_tokens",
+      "released_bytes"
+    ],
+    "candidate_fields": [
+      "stable_prefix_digest",
+      "legal_candidate",
+      "locked",
+      "logical_tokens",
+      "physical_bytes",
+      "path_tokens",
+      "last_demand_event_seq",
+      "last_demand_time_ns",
+      "demand_count",
+      "chain_continuation_count",
+      "newly_inserted_tokens_since_last_demand",
+      "distinct_prefixes_accessed_since_last_demand",
+      "policy_score",
+      "policy_rank"
+    ]
+  },
+  "derived_diagnostics": {
+    "h_policy": "Actual page-aligned matched tokens reported by the runtime for the request.",
+    "h_history": "Maximum page-aligned prefix provably present earlier under the same namespace and insertion semantics; initially a historical reference, not a strict physical infinite-cache bound.",
+    "extra_recompute": "max(0, h_history - h_policy); label as eviction-caused only when event coverage proves prior store, later eviction, and subsequent demand.",
+    "competition_tokens": "Distinct newly stored logical tokens between two demands of the same stable prefix.",
+    "counterfactual_net_loss": "Future loss of selected victims minus future loss of an alternative legal set that releases at least the same token/byte budget."
+  },
+  "quality_flags": [
+    "complete_event_window",
+    "complete_candidate_frontier",
+    "pool_identity_known",
+    "tp_deduplicated",
+    "generation_history_consistent",
+    "future_window_right_censored"
+  ]
+}

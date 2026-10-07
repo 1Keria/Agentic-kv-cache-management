@@ -474,6 +474,39 @@ class ServerArgs:
     request_classifier_checkpoint: Optional[str] = None
     request_classifier_threshold: float = 0.5
     request_agent_cache_ratio: float = 0.5
+    request_cache_region_policy: str = "fixed"
+    # Deprecated compatibility option; dynamic mode is eviction-feedback driven.
+    request_cache_ratio_window_requests: int = 0
+    request_cache_ratio_alpha: float = 0.2
+    request_cache_ratio_feedback_mode: str = "normalized_pressure"
+    request_cache_ratio_max_step: float = 0.05
+    request_cache_ratio_pressure_hysteresis: float = 0.02
+    request_cache_ratio_cooldown_evicted_tokens: int = 4096
+    request_cache_agent_min_ratio: float = 0.2
+    # This is also the ordinary-request minimum: max Agent ratio 0.8 leaves
+    # at least 20% of each cache pool for ordinary requests.
+    request_cache_agent_max_ratio: float = 0.8
+    request_cache_elastic_reclaim_order: str = "request_first"
+    request_cache_elastic_preferred_reclaim: bool = True
+    request_cache_elastic_soft_step: float = 1.0
+    request_cache_elastic_activity_window: int = 0
+    request_cache_elastic_activity_requires_hit: bool = False
+    request_cache_elastic_ghost_capacity_tokens: int = 0
+    request_cache_elastic_ghost_pressure_decay: float = 0.95
+    request_cache_elastic_ghost_bias: float = 0.5
+    request_cache_elastic_ghost_reclaim: bool = True
+    request_cache_elastic_ghost_protect: bool = False
+    request_cache_elastic_ghost_protect_min_tokens: int = 0
+    request_cache_elastic_feedback: bool = False
+    request_cache_feedback_min_evicted_tokens: int = 0
+    # Proactive borrowed-cache reclaim is opt-in. A zero high watermark keeps
+    # borrowed prefixes until the shared pool is actually over capacity.
+    request_cache_borrow_high_watermark_tokens: int = 0
+    request_cache_borrow_low_watermark_tokens: int = 0
+    request_cache_borrow_lazy_reclassify: bool = False
+    # Experimental bound on newly inserted borrowed radix suffix segments.
+    # Zero preserves the historical whole-suffix node layout.
+    request_cache_borrowed_segment_tokens: int = 0
     enable_prefill_delayer: bool = False
     prefill_delayer_max_delay_passes: int = 30
     prefill_delayer_token_usage_low_watermark: Optional[float] = None
@@ -955,6 +988,115 @@ class ServerArgs:
         if not 0.0 < self.request_agent_cache_ratio < 1.0:
             raise ValueError(
                 "--request-agent-cache-ratio must be strictly between 0 and 1"
+            )
+        if self.request_cache_region_policy not in (
+            "fixed",
+            "dynamic",
+            "borrow",
+            "borrow_dynamic",
+            "borrow_global",
+            "borrow_reclass",
+            "borrow_request_reclass",
+            "elastic",
+        ):
+            raise ValueError(
+                "--request-cache-region-policy must be 'fixed', 'dynamic', 'borrow', 'borrow_dynamic', 'borrow_global', 'borrow_reclass', 'borrow_request_reclass', or 'elastic'"
+            )
+        if self.request_cache_ratio_window_requests < 0:
+            raise ValueError(
+                "--request-cache-ratio-window-requests must be non-negative"
+            )
+        if (
+            self.request_cache_borrow_low_watermark_tokens < 0
+            or self.request_cache_borrow_high_watermark_tokens
+            < self.request_cache_borrow_low_watermark_tokens
+        ):
+            raise ValueError("borrow watermarks must satisfy 0 <= low <= high")
+        if self.request_cache_borrowed_segment_tokens < 0:
+            raise ValueError(
+                "request-cache-borrowed-segment-tokens must be non-negative"
+            )
+        if not 0.0 < self.request_cache_ratio_alpha <= 1.0:
+            raise ValueError("--request-cache-ratio-alpha must be in (0, 1]")
+        if self.request_cache_ratio_feedback_mode not in (
+            "eviction_share",
+            "normalized_pressure",
+        ):
+            raise ValueError(
+                "--request-cache-ratio-feedback-mode must be "
+                "'eviction_share' or 'normalized_pressure'"
+            )
+        if not 0.0 < self.request_cache_ratio_max_step <= 1.0:
+            raise ValueError(
+                "--request-cache-ratio-max-step must be in (0, 1]"
+            )
+        if self.request_cache_ratio_pressure_hysteresis < 0.0:
+            raise ValueError(
+                "--request-cache-ratio-pressure-hysteresis must be non-negative"
+            )
+        if self.request_cache_ratio_cooldown_evicted_tokens < 0:
+            raise ValueError(
+                "--request-cache-ratio-cooldown-evicted-tokens must be non-negative"
+            )
+        if self.request_cache_feedback_min_evicted_tokens < 0:
+            raise ValueError(
+                "--request-cache-feedback-min-evicted-tokens must be non-negative"
+            )
+        if not (
+            0.0
+            < self.request_cache_agent_min_ratio
+            < self.request_cache_agent_max_ratio
+            < 1.0
+        ):
+            raise ValueError(
+                "dynamic request cache ratio bounds must satisfy 0 < min < max < 1"
+            )
+        if self.request_cache_region_policy == "elastic" and (
+            self.request_cache_agent_min_ratio
+            + (1.0 - self.request_cache_agent_max_ratio)
+            >= 1.0
+        ):
+            raise ValueError(
+                "elastic request cache minimum guarantees must leave a positive shared pool"
+            )
+        if self.request_cache_elastic_reclaim_order not in (
+            "request_first",
+            "pressure_first",
+        ):
+            raise ValueError(
+                "request-cache-elastic-reclaim-order must be 'request_first' or 'pressure_first'"
+            )
+        if not 0.0 < self.request_cache_elastic_soft_step <= 1.0:
+            raise ValueError(
+                "request-cache-elastic-soft-step must be in (0, 1]"
+            )
+        if self.request_cache_elastic_activity_window < 0:
+            raise ValueError(
+                "request-cache-elastic-activity-window must be non-negative"
+            )
+        if self.request_cache_elastic_ghost_capacity_tokens < 0:
+            raise ValueError(
+                "request-cache-elastic-ghost-capacity-tokens must be non-negative"
+            )
+        if not 0.0 < self.request_cache_elastic_ghost_pressure_decay <= 1.0:
+            raise ValueError(
+                "request-cache-elastic-ghost-pressure-decay must be in (0, 1]"
+            )
+        if self.request_cache_elastic_ghost_bias < 0.0:
+            raise ValueError(
+                "request-cache-elastic-ghost-bias must be non-negative"
+            )
+        if self.request_cache_elastic_ghost_protect_min_tokens < 0:
+            raise ValueError(
+                "request-cache-elastic-ghost-protect-min-tokens must be non-negative"
+            )
+        if self.request_cache_region_policy in ("dynamic", "borrow_dynamic") and not (
+            self.request_cache_agent_min_ratio
+            <= self.request_agent_cache_ratio
+            <= self.request_cache_agent_max_ratio
+        ):
+            raise ValueError(
+                "--request-agent-cache-ratio must be within the dynamic ratio bounds"
             )
         if not 0.0 <= self.request_classifier_threshold <= 1.0:
             raise ValueError(
@@ -5362,7 +5504,233 @@ class ServerArgs:
             "--request-agent-cache-ratio",
             type=float,
             default=ServerArgs.request_agent_cache_ratio,
-            help="Fraction of committed KV-token cache capacity reserved for the agent region.",
+            help=(
+                "Fixed Agent cache fraction, or the initial fraction when the request "
+                "cache-region policy is dynamic."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-region-policy",
+            choices=[
+                "fixed",
+                "dynamic",
+                "borrow",
+                "borrow_dynamic",
+                "borrow_global",
+                "borrow_reclass",
+                "borrow_request_reclass",
+                "elastic",
+            ],
+            default=ServerArgs.request_cache_region_policy,
+            help=(
+                "Capacity policy for request cache regions. 'elastic' keeps the "
+                "configured minimum guarantees and treats the remaining pool as shared."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-ratio-window-requests",
+            type=int,
+            default=ServerArgs.request_cache_ratio_window_requests,
+            help=(
+                "Deprecated compatibility option; dynamic mode now updates "
+                "from eviction feedback instead of completed-request windows."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-ratio-alpha",
+            type=float,
+            default=ServerArgs.request_cache_ratio_alpha,
+            help="Feedback gain for the latest normalized eviction-pressure gap.",
+        )
+        parser.add_argument(
+            "--request-cache-ratio-feedback-mode",
+            choices=["eviction_share", "normalized_pressure"],
+            default=ServerArgs.request_cache_ratio_feedback_mode,
+            help=(
+                "Dynamic ratio feedback: legacy raw eviction share or bounded "
+                "two-sided normalized pressure."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-ratio-max-step",
+            type=float,
+            default=ServerArgs.request_cache_ratio_max_step,
+            help="Maximum ratio movement per normalized-pressure feedback update.",
+        )
+        parser.add_argument(
+            "--request-cache-ratio-pressure-hysteresis",
+            type=float,
+            default=ServerArgs.request_cache_ratio_pressure_hysteresis,
+            help="Minimum normalized pressure gap needed for a ratio update.",
+        )
+        parser.add_argument(
+            "--request-cache-ratio-cooldown-evicted-tokens",
+            type=int,
+            default=ServerArgs.request_cache_ratio_cooldown_evicted_tokens,
+            help=(
+                "Evicted-token cooldown after a ratio update; zero disables it."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-feedback-min-evicted-tokens",
+            type=int,
+            default=ServerArgs.request_cache_feedback_min_evicted_tokens,
+            help=(
+                "Minimum accumulated evicted KV tokens before a dynamic quota "
+                "update; zero updates at each eviction feedback boundary."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-agent-min-ratio",
+            type=float,
+            default=ServerArgs.request_cache_agent_min_ratio,
+            help="Minimum Agent cache fraction in dynamic mode.",
+        )
+        parser.add_argument(
+            "--request-cache-agent-max-ratio",
+            type=float,
+            default=ServerArgs.request_cache_agent_max_ratio,
+            help=(
+                "Maximum Agent cache fraction in dynamic mode; this also "
+                "guarantees at least (1 - value) for ordinary requests."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-elastic-reclaim-order",
+            choices=["request_first", "pressure_first"],
+            default=ServerArgs.request_cache_elastic_reclaim_order,
+            help=(
+                "Borrowed-page order for elastic shared-pool pressure. "
+                "'request_first' preserves Agent continuations; "
+                "'pressure_first' preserves the opposite region's return reserve."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-elastic-preferred-reclaim",
+            action=argparse.BooleanOptionalAction,
+            default=ServerArgs.request_cache_elastic_preferred_reclaim,
+            help=(
+                "Use the elastic soft-line preferred tier before the ordinary "
+                "borrowed-page LRU tier. Disable for a simpler LRU reclaim path."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-elastic-soft-step",
+            type=float,
+            default=ServerArgs.request_cache_elastic_soft_step,
+            help=(
+                "Maximum elastic soft-split movement per pressure boundary; "
+                "1 follows the resident mix immediately, smaller values add hysteresis."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-elastic-activity-window",
+            type=int,
+            default=ServerArgs.request_cache_elastic_activity_window,
+            help=(
+                "Number of classified requests in which the under-filled "
+                "region must have been active before tail-first reclaim; "
+                "zero disables the activity gate."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-elastic-activity-requires-hit",
+            action="store_true",
+            default=ServerArgs.request_cache_elastic_activity_requires_hit,
+            help=(
+                "For elastic activity gating, refresh recent activity only "
+                "after a real prefix or host-cache hit."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-elastic-ghost-capacity-tokens",
+            type=int,
+            default=ServerArgs.request_cache_elastic_ghost_capacity_tokens,
+            help=(
+                "Bounded metadata capacity for eviction-then-revisit feedback; "
+                "zero disables ghost feedback."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-elastic-ghost-pressure-decay",
+            type=float,
+            default=ServerArgs.request_cache_elastic_ghost_pressure_decay,
+            help="Per-request decay applied to recent ghost revisit pressure.",
+        )
+        parser.add_argument(
+            "--request-cache-elastic-ghost-bias",
+            type=float,
+            default=ServerArgs.request_cache_elastic_ghost_bias,
+            help=(
+                "Maximum ratio bias multiplier from normalized ghost revisit "
+                "pressure; zero disables the bias while retaining diagnostics."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-elastic-ghost-reclaim",
+            action=argparse.BooleanOptionalAction,
+            default=ServerArgs.request_cache_elastic_ghost_reclaim,
+            help=(
+                "Use recent ghost revisit pressure to choose which region's "
+                "borrowed pages are reclaimed first."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-elastic-ghost-protect",
+            action=argparse.BooleanOptionalAction,
+            default=ServerArgs.request_cache_elastic_ghost_protect,
+            help=(
+                "Protect borrowed radix nodes whose prefixes were previously "
+                "evicted and later caused observed recomputation."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-elastic-ghost-protect-min-tokens",
+            type=int,
+            default=ServerArgs.request_cache_elastic_ghost_protect_min_tokens,
+            help=(
+                "Minimum decayed ghost revisit score in tokens required to "
+                "protect a borrowed node; zero means one cache page."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-elastic-feedback",
+            action=argparse.BooleanOptionalAction,
+            default=ServerArgs.request_cache_elastic_feedback,
+            help=(
+                "In elastic mode, adapt the inactive-region return-reserve "
+                "ratio from actual borrowed-page eviction pressure."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-borrow-high-watermark-tokens",
+            type=int,
+            default=ServerArgs.request_cache_borrow_high_watermark_tokens,
+            help="Start reclaiming borrowed cache after this pressure watermark.",
+        )
+        parser.add_argument(
+            "--request-cache-borrow-low-watermark-tokens",
+            type=int,
+            default=ServerArgs.request_cache_borrow_low_watermark_tokens,
+            help="Stop hysteretic borrowed-cache reclaim at this pressure watermark.",
+        )
+        parser.add_argument(
+            "--request-cache-borrow-lazy-reclassify",
+            action="store_true",
+            default=ServerArgs.request_cache_borrow_lazy_reclassify,
+            help=(
+                "Promote stale surplus region pages to borrowed only when a "
+                "borrow-aware allocator fallback is needed. Experimental."
+            ),
+        )
+        parser.add_argument(
+            "--request-cache-borrowed-segment-tokens",
+            type=int,
+            default=ServerArgs.request_cache_borrowed_segment_tokens,
+            help=(
+                "Experimental page-aligned bound for newly inserted borrowed "
+                "radix suffix segments; zero keeps whole-suffix nodes."
+            ),
         )
         parser.add_argument(
             "--prefill-delayer-max-delay-ms",

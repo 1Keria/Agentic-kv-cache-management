@@ -1,0 +1,15 @@
+# Generated workloads contain request content and remain local.
+data/
+
+# Runtime environments and generated experiment outputs remain local.
+runtime/
+results/
+
+# Do not commit replay traces, server logs, metrics, or environment files.
+*.jsonl
+*.log
+*.prom
+*.env
+
+__pycache__/
+.pytest_cache/

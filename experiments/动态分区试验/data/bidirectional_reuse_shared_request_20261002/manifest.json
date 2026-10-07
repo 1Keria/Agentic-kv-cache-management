@@ -1,0 +1,18 @@
+{
+  "name": "bidirectional_reuse_shared_request",
+  "protocol": "dynamic-partition-controlled-v3",
+  "source_workload": "experiments/动态分区试验/data/bidirectional_reuse_8agent_swa020_20261002/workload.jsonl",
+  "n_turns": 192,
+  "n_sessions": 32,
+  "n_sessions_by_class": {
+    "agent": 8,
+    "request": 24
+  },
+  "workload_jsonl_sha256": "22c1f60af96c7252da5fd765e52766d0552863e8c066d1b56782704e709011a8",
+  "transformation": {
+    "ordinary_sessions": 12,
+    "ordinary_prompt_body_shared": true,
+    "ordinary_padding_blocks": 300,
+    "purpose": "Keep one ordinary hot working set below request quota while amplifying ordinary reuse volume; retain eight real Agent pressure chains."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "created_at_utc": "2026-10-01T21:59:46.011257+00:00",
+  "scenario": "shared_request_v2_mem035_swa030_serial_threeway",
+  "workload_dir": "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/动态分区试验/data/bidirectional_reuse_shared_request_v2_20261002",
+  "expected_requests": 192,
+  "modes": [
+    "unified",
+    "fixed",
+    "borrow"
+  ],
+  "gap_scale": 0.1,
+  "max_output_tokens": 16,
+  "agent_ratio": 0.61,
+  "window_requests": 64,
+  "alpha": 0.2,
+  "min_ratio": 0.2,
+  "max_ratio": 0.8,
+  "borrow_high_watermark_tokens": 0,
+  "borrow_low_watermark_tokens": 0,
+  "disable_cuda_graph": "1",
+  "mem_fraction_static": 0.35,
+  "swa_full_tokens_ratio": 0.3,
+  "chunked_prefill_size": null,
+  "random_seed": 42,
+  "replay_protocol": "phased",
+  "replay_max_inflight": 1,
+  "unified_engine_root": null,
+  "native_engine_root": null
+}

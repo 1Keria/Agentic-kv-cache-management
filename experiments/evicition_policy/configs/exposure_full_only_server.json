@@ -1,0 +1,22 @@
+{
+  "purpose": "exact_token_continuation_exposure_barrier_full_only_pressure",
+  "measurement_timeout_seconds": 3600,
+  "model_path": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+  "host": "127.0.0.1",
+  "port": 31080,
+  "tensor_parallel_size": 8,
+  "mem_fraction_static": 0.45,
+  "max_total_tokens": 16384,
+  "max_running_requests": 1,
+  "context_length": 16384,
+  "chunked_prefill_size": 4096,
+  "page_size": 256,
+  "kv_cache_dtype": "fp8_e4m3",
+  "swa_full_tokens_ratio": 1.0,
+  "moe_runner_backend": "marlin",
+  "cuda_graph_max_bs": 1,
+  "enable_piecewise_cuda_graph": true,
+  "piecewise_cuda_graph_max_tokens": 4096,
+  "random_seed": 42,
+  "expected_pool_tokens": {"full": 16384, "swa": 16384}
+}
