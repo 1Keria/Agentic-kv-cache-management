@@ -1,0 +1,12 @@
+{
+  "sources_sha256": {
+    "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/evicition_policy/results/analysis/checkpoint_frontier_native_20261009/summary.json": "61f10a582df6c63c13d795bb93bcd3eedf5bb36a28b37c76719d1b94659b0e2b",
+    "/mnt/dai-sys/zhoulongsheng/agentkv/experiments/evicition_policy/results/analysis/workspace_frontier_native_20261009/summary.json": "9526d96a9c22af6046075c781a4bb810bc244d95cd0d24391ee301ee810b7763"
+  },
+  "outputs_sha256": {
+    "native_checkpoint_comparison.pdf": "c5a01932c8576af3232e5c68b1c47957609ba5ec1511232c03ccb0d7b62e589a",
+    "native_checkpoint_comparison.svg": "49534f74a8ee0c0e42e70b26e6b31b7aa849032e80203c3de552ea6697a1ecd4",
+    "native_checkpoint_comparison.png": "c04d08dc2e282426facd10df70a25ed0d80fe2c7c58e02e609c7c038c81cd4af"
+  },
+  "scope": "Single deterministic trace. No GPU computation, latency measurements or population uncertainty estimates."
+}

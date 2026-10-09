@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "split_only": false,
+  "max_units": 8,
+  "full_budget_tokens": 262144,
+  "swa_budget_tokens": 4096,
+  "promote_only_on_reuse": true
+}

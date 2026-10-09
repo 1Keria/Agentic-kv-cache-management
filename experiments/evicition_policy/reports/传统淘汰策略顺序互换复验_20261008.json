@@ -1,0 +1,2753 @@
+{
+  "created_utc": "2026-10-08T06:48:28.541862+00:00",
+  "purpose": "opposite_order_repeat_descriptive_validation",
+  "source_batch": "results/order_balanced/20261008T035423Z_1593ea96",
+  "orders": [
+    [
+      "lru",
+      "slru"
+    ],
+    [
+      "slru",
+      "lru"
+    ]
+  ],
+  "all_runs_complete_and_audited": true,
+  "all_effective_signatures_equal": true,
+  "all_measurement_scripts_equal": true,
+  "workload_sha256": "75479ee67c42416df68e9228b54799263b41ced8c9a2ca89e173bd042e11700f",
+  "effective_signature_matches_release_except_model_path": true,
+  "run_repeats_per_policy": 2,
+  "runs": [
+    {
+      "run_id": "batch1_lru",
+      "batch": 1,
+      "position": 1,
+      "policy": "lru",
+      "path": "results/order_balanced/20261008T035423Z_1593ea96/01_lru_slru/01_lru",
+      "requests": 1206,
+      "prompt_tokens": 48787785,
+      "output_tokens": 693217,
+      "cached_tokens": 31902464,
+      "uncached_input_tokens": 16885321,
+      "hit_rate": 0.6539026930613883,
+      "previous_input_lcp_shortfall_proxy_tokens": 14357248,
+      "ttft_seconds": {
+        "count": 1206,
+        "sum": 5728.787932252279,
+        "min": 0.13628602400422096,
+        "p50": 0.4709057050058618,
+        "p95": 15.787586746795569,
+        "p99": 19.060289179265972,
+        "max": 20.782674518064596,
+        "mean": 4.750238749794592
+      },
+      "latency_seconds": {
+        "count": 1206,
+        "sum": 16856.47215409926,
+        "min": 0.6229874519631267,
+        "p50": 7.47087194758933,
+        "p95": 45.213214245508425,
+        "p99": 102.6475206139556,
+        "max": 216.4584486959502,
+        "mean": 13.977174257130399
+      },
+      "post_first_token_seconds": {
+        "count": 1206,
+        "sum": 11127.684221846983,
+        "min": 0.4630045349476859,
+        "p50": 3.7139013604610227,
+        "p95": 36.8557157299947,
+        "p99": 92.23135808577645,
+        "max": 215.64352736796718
+      },
+      "measurement_elapsed_seconds": 2188.6119120110525,
+      "native_num_retractions": {
+        "count": 1206,
+        "sum": 0,
+        "min": 0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0,
+        "missing_or_nonfinite": 0
+      },
+      "schedule_lag_seconds": {
+        "count": 1206,
+        "sum": 0.9087200305657461,
+        "min": 3.3664051443338394e-05,
+        "p50": 0.0006599189946427941,
+        "p95": 0.001597196765942499,
+        "p99": 0.0023201103496830913,
+        "max": 0.03994817100465298,
+        "missing_or_nonfinite": 0
+      },
+      "raw_native_counter_deltas": [
+        {
+          "name": "sglang:evicted_tokens_total",
+          "labels": {
+            "cache_type": "UnifiedRadixCache"
+          },
+          "before": 5439488.0,
+          "after": 166309888.0,
+          "raw_delta": 160870400.0,
+          "complete_monotone_pair": true
+        },
+        {
+          "name": "sglang:eviction_duration_seconds_count",
+          "labels": {
+            "cache_type": "UnifiedRadixCache"
+          },
+          "before": 688.0,
+          "after": 28584.0,
+          "raw_delta": 27896.0,
+          "complete_monotone_pair": true
+        },
+        {
+          "name": "sglang:eviction_duration_seconds_sum",
+          "labels": {
+            "cache_type": "UnifiedRadixCache"
+          },
+          "before": 102.40774823934771,
+          "after": 609.3715112035861,
+          "raw_delta": 506.9637629642384,
+          "complete_monotone_pair": true
+        }
+      ],
+      "scheduler_queue_by_rank": [
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "0"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4763.956079148222,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.950212337602174,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "1"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4763.841154296533,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.950117043363626,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "2"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4763.917158017284,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.9501800646909486,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "3"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4763.792032454046,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.9500763121509506,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "4"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4764.015144577366,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.9502613139115805,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "5"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4763.788528540754,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.9500734067502106,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "6"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4763.825035613612,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.9501036779549024,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "7"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4763.760759718483,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.950050381192772,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        }
+      ],
+      "monitor": {
+        "samples": 931,
+        "error_samples": 0,
+        "rank0_pool_accounting_mismatch_samples": 0,
+        "rank0_pool_resident_fraction": {
+          "full": {
+            "count": 931,
+            "sum": 857.81787109375,
+            "min": 0.0,
+            "p50": 0.99072265625,
+            "p95": 0.9990234375,
+            "p99": 0.99951171875,
+            "max": 0.99951171875
+          },
+          "swa": {
+            "count": 931,
+            "sum": 879.6470588235294,
+            "min": 0.0,
+            "p50": 0.9558823529411765,
+            "p95": 0.9950980392156863,
+            "p99": 0.9950980392156863,
+            "max": 0.9950980392156863
+          }
+        },
+        "rank0_pool_non_evictable_used_fraction": {
+          "full": {
+            "count": 931,
+            "sum": 391.9775390625,
+            "min": 0.0,
+            "p50": 0.46484375,
+            "p95": 0.732421875,
+            "p99": 0.8579589843750001,
+            "max": 0.91748046875
+          },
+          "swa": {
+            "count": 931,
+            "sum": 117.15196078431373,
+            "min": 0.0,
+            "p50": 0.11764705882352941,
+            "p95": 0.3137254901960784,
+            "p99": 0.37107843137254926,
+            "max": 0.4019607843137255
+          }
+        },
+        "rank0_pool_evictable_fraction": {
+          "full": {
+            "count": 931,
+            "sum": 465.84033203125,
+            "min": 0.0,
+            "p50": 0.4736328125,
+            "p95": 0.9052734375,
+            "p99": 0.96064453125,
+            "max": 0.9892578125
+          },
+          "swa": {
+            "count": 931,
+            "sum": 762.4950980392157,
+            "min": 0.0,
+            "p50": 0.8235294117647058,
+            "p95": 0.9803921568627451,
+            "p99": 0.9852941176470589,
+            "max": 0.9901960784313726
+          }
+        },
+        "gpu_temperature_celsius": {
+          "count": 7448,
+          "sum": 409269.0,
+          "min": 35.0,
+          "p50": 55.0,
+          "p95": 69.0,
+          "p99": 71.0,
+          "max": 74.0
+        },
+        "gpu_utilization_percent": {
+          "count": 7448,
+          "sum": 681430.0,
+          "min": 0.0,
+          "p50": 100.0,
+          "p95": 100.0,
+          "p99": 100.0,
+          "max": 100.0
+        },
+        "sampling_distribution_is_not_time_weighted": true
+      },
+      "integrity": {
+        "run": "01_lru",
+        "policy": "lru",
+        "strategy": "lru",
+        "exposure_barrier": false,
+        "purpose": "formal",
+        "integrity_errors": [],
+        "protocol_integrity_passed": true,
+        "requests": 1206,
+        "expected_requests": 1206,
+        "signature": {
+          "server": {
+            "model_path": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "version": "0.5.13.post1",
+            "attention_backend": "dsv4",
+            "kv_cache_dtype": "fp8_e4m3",
+            "page_size": 256,
+            "tp_size": 8,
+            "max_running_requests": 8,
+            "context_length": 262144,
+            "chunked_prefill_size": 8192,
+            "schedule_policy": "fcfs",
+            "moe_runner_backend": "marlin",
+            "random_seed": 42,
+            "cuda_graph_bs": [
+              1,
+              2,
+              4,
+              8
+            ],
+            "swa_full_tokens_ratio": 0.1
+          },
+          "graphs": {
+            "decode": true,
+            "prefill": false
+          },
+          "cache_backend": "UnifiedRadixCache",
+          "capacities": {
+            "full_tokens": 524288,
+            "swa_tokens": 52224,
+            "c4_slots": 131072,
+            "c128_slots": 4096,
+            "c4_state_slots": 3264,
+            "c128_state_slots": 52224
+          }
+        },
+        "prompt_tokens_total": 48787785,
+        "output_tokens_total": 693217,
+        "ttft_seconds": {
+          "count": 1206,
+          "sum": 5728.787932252279,
+          "min": 0.13628602400422096,
+          "p50": 0.4709057050058618,
+          "p95": 15.787586746795569,
+          "p99": 19.060289179265972,
+          "max": 20.782674518064596
+        },
+        "latency_seconds": {
+          "count": 1206,
+          "sum": 16856.47215409926,
+          "min": 0.6229874519631267,
+          "p50": 7.47087194758933,
+          "p95": 45.213214245508425,
+          "p99": 102.6475206139556,
+          "max": 216.4584486959502
+        },
+        "cached_tokens_all_known": true,
+        "cache_flush_acknowledged": true,
+        "post_flush_native_metrics_empty": true,
+        "generation_continuation_checks": 1186,
+        "generation_continuation_matches": 1,
+        "cleanup_confirmed": true,
+        "single_run_descriptive_comparison_allowed": true,
+        "performance_claim_allowed": false,
+        "token_weighted_cache_hit_fraction": 0.6539026930613883
+      },
+      "measurement_script_sha256": {
+        "run_suite.py": "649a4dadb390ea850af05a4cc5959f9da2f3dda41eb7c4b5c3e667d63b3a7243",
+        "shape_warmup.py": "2b689730d7eb6214feb70523ac9d411131cf64da916f421458806c2ac5a03c43",
+        "replay_agent.py": "6062996b101acd57d294a25a04a86145bf2dae2743ec7b908414b435a185f85d",
+        "server_command.py": "2264a16b25eee6bef9d6d5841f9f00e91820b10be0e35abd657adc039cbc802d",
+        "run_server.sh": "ef6dbebf716aa01d99b71b0d2b75c59c9756dec91ab1c37dedbcd131b7b38bbb",
+        "runtime_env.sh": "263a496c277e8438f926c253e2d508040ee43599c9d9d27b09f4b7e116982487",
+        "verify_protocol.py": "1a9f720b783a5b654009d3bded41a69129d7cc5b8e51fe017c777e3afc407045"
+      },
+      "measurement_deepgemm_jit_messages": 13,
+      "evidence_sha256": {
+        "state.json": "a33594d2c31ff1565d63ebb315805f64d9e113c279bf240281a374269e06e8fa",
+        "effective_signature.json": "80ab4e0ef171b9713e9847c19b8a18d6d3fe566549bf5fc0e1e209c1eac3d432",
+        "script_fingerprints.json": "672de8198038dea3e622cdb2c3b6aa9a87959a39ef41475b3f41ae768093f321",
+        "metrics_before.prom": "3adf64117510ecf2f8927de5bcdb68badc7d78cfb0ad88a5f460252dad38d990",
+        "metrics_after.prom": "e6de80e11ac94ccfa51214d9c6745cd69cc77fabbb23d96206c9ade418b44609",
+        "cleanup.json": "a16f9c9c0497b8883148484216b2f1ba3458e819decbc1dfc8f9307dfc0b9e92",
+        "measurement/summary.json": "9f4b303456217e97bf2f32b694eef9696c1484f995817d45bb701f4dd4e81d00",
+        "measurement/requests.jsonl": "ec520bd04c518a091a14f89affb7bd2910897a62b4bf76032f7a1ee9390d4423"
+      }
+    },
+    {
+      "run_id": "batch1_slru",
+      "batch": 1,
+      "position": 2,
+      "policy": "slru",
+      "path": "results/order_balanced/20261008T035423Z_1593ea96/01_lru_slru/02_slru",
+      "requests": 1206,
+      "prompt_tokens": 48787785,
+      "output_tokens": 693217,
+      "cached_tokens": 31563776,
+      "uncached_input_tokens": 17224009,
+      "hit_rate": 0.6469606275423244,
+      "previous_input_lcp_shortfall_proxy_tokens": 14695936,
+      "ttft_seconds": {
+        "count": 1206,
+        "sum": 5761.596194013138,
+        "min": 0.13535879494156688,
+        "p50": 0.5335184655268677,
+        "p95": 15.974759658507537,
+        "p99": 18.9724869171856,
+        "max": 21.49484953004867,
+        "mean": 4.777442946942901
+      },
+      "latency_seconds": {
+        "count": 1206,
+        "sum": 16988.770620834664,
+        "min": 0.6388304620049894,
+        "p50": 7.836558418523055,
+        "p95": 43.93887680748594,
+        "p99": 100.46956047624126,
+        "max": 213.84931264503393,
+        "mean": 14.086874478304033
+      },
+      "post_first_token_seconds": {
+        "count": 1206,
+        "sum": 11227.174426821526,
+        "min": 0.49243108404334635,
+        "p50": 3.8544614915153943,
+        "p95": 38.047519482759526,
+        "p99": 91.58576270974599,
+        "max": 212.6027162639657
+      },
+      "measurement_elapsed_seconds": 2203.1226314520463,
+      "native_num_retractions": {
+        "count": 1206,
+        "sum": 0,
+        "min": 0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0,
+        "missing_or_nonfinite": 0
+      },
+      "schedule_lag_seconds": {
+        "count": 1206,
+        "sum": 0.852971822489053,
+        "min": 3.584998194128275e-05,
+        "p50": 0.0006493999972008169,
+        "p95": 0.0015401470300275832,
+        "p99": 0.002070233132690191,
+        "max": 0.009931566077284515,
+        "missing_or_nonfinite": 0
+      },
+      "raw_native_counter_deltas": [
+        {
+          "name": "sglang:evicted_tokens_total",
+          "labels": {
+            "cache_type": "UnifiedRadixCache"
+          },
+          "before": 5439488.0,
+          "after": 174766080.0,
+          "raw_delta": 169326592.0,
+          "complete_monotone_pair": true
+        },
+        {
+          "name": "sglang:eviction_duration_seconds_count",
+          "labels": {
+            "cache_type": "UnifiedRadixCache"
+          },
+          "before": 688.0,
+          "after": 29392.0,
+          "raw_delta": 28704.0,
+          "complete_monotone_pair": true
+        },
+        {
+          "name": "sglang:eviction_duration_seconds_sum",
+          "labels": {
+            "cache_type": "UnifiedRadixCache"
+          },
+          "before": 100.96295854554046,
+          "after": 624.5794687320013,
+          "raw_delta": 523.6165101864608,
+          "complete_monotone_pair": true
+        }
+      ],
+      "scheduler_queue_by_rank": [
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "0"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4780.786493715714,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.96416790523691,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "1"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4780.638485170319,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.9640451784165163,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "2"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4780.7383887687465,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.964128017221183,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "3"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4780.625656085787,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.964034540701316,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "4"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4780.778682283824,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.96416142809604,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "5"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4780.632267244975,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.96404002259119,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "6"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4780.766101224115,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.9641509960398964,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "7"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4780.566120244912,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.9639851743324312,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        }
+      ],
+      "monitor": {
+        "samples": 935,
+        "error_samples": 0,
+        "rank0_pool_accounting_mismatch_samples": 0,
+        "rank0_pool_resident_fraction": {
+          "full": {
+            "count": 935,
+            "sum": 863.0400390625,
+            "min": 0.0,
+            "p50": 0.9931640625,
+            "p95": 0.99951171875,
+            "p99": 0.99951171875,
+            "max": 0.99951171875
+          },
+          "swa": {
+            "count": 935,
+            "sum": 878.4264705882352,
+            "min": 0.0,
+            "p50": 0.9558823529411765,
+            "p95": 0.9950980392156863,
+            "p99": 0.9950980392156863,
+            "max": 0.9950980392156863
+          }
+        },
+        "rank0_pool_non_evictable_used_fraction": {
+          "full": {
+            "count": 935,
+            "sum": 397.89111328125,
+            "min": 0.0,
+            "p50": 0.47119140625,
+            "p95": 0.75908203125,
+            "p99": 0.9015234375,
+            "max": 0.96337890625
+          },
+          "swa": {
+            "count": 935,
+            "sum": 118.58333333333333,
+            "min": 0.0,
+            "p50": 0.11274509803921569,
+            "p95": 0.3102941176470586,
+            "p99": 0.35617647058823515,
+            "max": 0.39705882352941174
+          }
+        },
+        "rank0_pool_evictable_fraction": {
+          "full": {
+            "count": 935,
+            "sum": 465.14892578125,
+            "min": 0.0,
+            "p50": 0.4755859375,
+            "p95": 0.90703125,
+            "p99": 0.9637011718749999,
+            "max": 0.9990234375
+          },
+          "swa": {
+            "count": 935,
+            "sum": 759.843137254902,
+            "min": 0.0,
+            "p50": 0.8186274509803921,
+            "p95": 0.9705882352941176,
+            "p99": 0.9803921568627451,
+            "max": 0.9852941176470589
+          }
+        },
+        "gpu_temperature_celsius": {
+          "count": 7480,
+          "sum": 407595.0,
+          "min": 34.0,
+          "p50": 55.0,
+          "p95": 68.0,
+          "p99": 71.0,
+          "max": 74.0
+        },
+        "gpu_utilization_percent": {
+          "count": 7480,
+          "sum": 677560.0,
+          "min": 0.0,
+          "p50": 100.0,
+          "p95": 100.0,
+          "p99": 100.0,
+          "max": 100.0
+        },
+        "sampling_distribution_is_not_time_weighted": true
+      },
+      "integrity": {
+        "run": "02_slru",
+        "policy": "slru",
+        "strategy": "slru",
+        "exposure_barrier": false,
+        "purpose": "formal",
+        "integrity_errors": [],
+        "protocol_integrity_passed": true,
+        "requests": 1206,
+        "expected_requests": 1206,
+        "signature": {
+          "server": {
+            "model_path": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "version": "0.5.13.post1",
+            "attention_backend": "dsv4",
+            "kv_cache_dtype": "fp8_e4m3",
+            "page_size": 256,
+            "tp_size": 8,
+            "max_running_requests": 8,
+            "context_length": 262144,
+            "chunked_prefill_size": 8192,
+            "schedule_policy": "fcfs",
+            "moe_runner_backend": "marlin",
+            "random_seed": 42,
+            "cuda_graph_bs": [
+              1,
+              2,
+              4,
+              8
+            ],
+            "swa_full_tokens_ratio": 0.1
+          },
+          "graphs": {
+            "decode": true,
+            "prefill": false
+          },
+          "cache_backend": "UnifiedRadixCache",
+          "capacities": {
+            "full_tokens": 524288,
+            "swa_tokens": 52224,
+            "c4_slots": 131072,
+            "c128_slots": 4096,
+            "c4_state_slots": 3264,
+            "c128_state_slots": 52224
+          }
+        },
+        "prompt_tokens_total": 48787785,
+        "output_tokens_total": 693217,
+        "ttft_seconds": {
+          "count": 1206,
+          "sum": 5761.596194013138,
+          "min": 0.13535879494156688,
+          "p50": 0.5335184655268677,
+          "p95": 15.974759658507537,
+          "p99": 18.9724869171856,
+          "max": 21.49484953004867
+        },
+        "latency_seconds": {
+          "count": 1206,
+          "sum": 16988.770620834664,
+          "min": 0.6388304620049894,
+          "p50": 7.836558418523055,
+          "p95": 43.93887680748594,
+          "p99": 100.46956047624126,
+          "max": 213.84931264503393
+        },
+        "cached_tokens_all_known": true,
+        "cache_flush_acknowledged": true,
+        "post_flush_native_metrics_empty": true,
+        "generation_continuation_checks": 1186,
+        "generation_continuation_matches": 2,
+        "cleanup_confirmed": true,
+        "single_run_descriptive_comparison_allowed": true,
+        "performance_claim_allowed": false,
+        "token_weighted_cache_hit_fraction": 0.6469606275423244
+      },
+      "measurement_script_sha256": {
+        "run_suite.py": "649a4dadb390ea850af05a4cc5959f9da2f3dda41eb7c4b5c3e667d63b3a7243",
+        "shape_warmup.py": "2b689730d7eb6214feb70523ac9d411131cf64da916f421458806c2ac5a03c43",
+        "replay_agent.py": "6062996b101acd57d294a25a04a86145bf2dae2743ec7b908414b435a185f85d",
+        "server_command.py": "2264a16b25eee6bef9d6d5841f9f00e91820b10be0e35abd657adc039cbc802d",
+        "run_server.sh": "ef6dbebf716aa01d99b71b0d2b75c59c9756dec91ab1c37dedbcd131b7b38bbb",
+        "runtime_env.sh": "263a496c277e8438f926c253e2d508040ee43599c9d9d27b09f4b7e116982487",
+        "verify_protocol.py": "1a9f720b783a5b654009d3bded41a69129d7cc5b8e51fe017c777e3afc407045"
+      },
+      "measurement_deepgemm_jit_messages": 13,
+      "evidence_sha256": {
+        "state.json": "a35e89e7f97d708682bf92cf4a1d3037b15afa03ad50b0a13461c068d51ad1df",
+        "effective_signature.json": "80ab4e0ef171b9713e9847c19b8a18d6d3fe566549bf5fc0e1e209c1eac3d432",
+        "script_fingerprints.json": "672de8198038dea3e622cdb2c3b6aa9a87959a39ef41475b3f41ae768093f321",
+        "metrics_before.prom": "0accced919b4670f2827b3dbdef48bd9d41b8f8ba645e5b86eba5ec54f5179ed",
+        "metrics_after.prom": "2313f4e82c00717479147fd07d36230f06a2690a8a178094bde830ccb51e2ed7",
+        "cleanup.json": "d00384f63823c22516ce005db91d77990cf1efd73f14b247d55c51d60b87998f",
+        "measurement/summary.json": "98fa97947be3b25e583ab4dc8e79de1329a5bef1adc13358e20cdd3c55d50b21",
+        "measurement/requests.jsonl": "faa5bd944a651c9b27106d58b9be7718cf38a2dab6fc59a77bf5651fe5badfd8"
+      }
+    },
+    {
+      "run_id": "batch2_slru",
+      "batch": 2,
+      "position": 1,
+      "policy": "slru",
+      "path": "results/order_balanced/20261008T035423Z_1593ea96/02_slru_lru/01_slru",
+      "requests": 1206,
+      "prompt_tokens": 48787785,
+      "output_tokens": 693217,
+      "cached_tokens": 32782080,
+      "uncached_input_tokens": 16005705,
+      "hit_rate": 0.6719321239937415,
+      "previous_input_lcp_shortfall_proxy_tokens": 13477632,
+      "ttft_seconds": {
+        "count": 1206,
+        "sum": 5537.813753259485,
+        "min": 0.1304178690770641,
+        "p50": 0.4086811660672538,
+        "p95": 14.997744712542044,
+        "p99": 19.046385647996797,
+        "max": 21.712490041041747,
+        "mean": 4.591885367545178
+      },
+      "latency_seconds": {
+        "count": 1206,
+        "sum": 16406.64467541233,
+        "min": 0.6505789199145511,
+        "p50": 7.024134297971614,
+        "p95": 42.732576860522386,
+        "p99": 104.42083088588583,
+        "max": 210.5041845079977,
+        "mean": 13.60418298127059
+      },
+      "post_first_token_seconds": {
+        "count": 1206,
+        "sum": 10868.830922152847,
+        "min": 0.49776779499370605,
+        "p50": 3.6430801405222155,
+        "p95": 34.99421887350036,
+        "p99": 91.95042443127032,
+        "max": 210.3389366689371
+      },
+      "measurement_elapsed_seconds": 2167.7894275740255,
+      "native_num_retractions": {
+        "count": 1206,
+        "sum": 0,
+        "min": 0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0,
+        "missing_or_nonfinite": 0
+      },
+      "schedule_lag_seconds": {
+        "count": 1206,
+        "sum": 0.8867153789615259,
+        "min": 4.294200334697962e-05,
+        "p50": 0.0006651760195381939,
+        "p95": 0.0016909147088881582,
+        "p99": 0.002324061386752875,
+        "max": 0.008066017064265907,
+        "missing_or_nonfinite": 0
+      },
+      "raw_native_counter_deltas": [
+        {
+          "name": "sglang:evicted_tokens_total",
+          "labels": {
+            "cache_type": "UnifiedRadixCache"
+          },
+          "before": 5439488.0,
+          "after": 162699264.0,
+          "raw_delta": 157259776.0,
+          "complete_monotone_pair": true
+        },
+        {
+          "name": "sglang:eviction_duration_seconds_count",
+          "labels": {
+            "cache_type": "UnifiedRadixCache"
+          },
+          "before": 688.0,
+          "after": 28200.0,
+          "raw_delta": 27512.0,
+          "complete_monotone_pair": true
+        },
+        {
+          "name": "sglang:eviction_duration_seconds_sum",
+          "labels": {
+            "cache_type": "UnifiedRadixCache"
+          },
+          "before": 100.53392893879209,
+          "after": 599.0806637441274,
+          "raw_delta": 498.5467348053353,
+          "complete_monotone_pair": true
+        }
+      ],
+      "scheduler_queue_by_rank": [
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "0"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4612.356825641822,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.82450814729836,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "1"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4612.220483328332,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.8243950939704248,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "2"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4612.227844541776,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.8244011977958343,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "3"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4612.201451418223,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.8243793129504335,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "4"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4612.249036562047,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.8244187699519463,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "5"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4612.206854662276,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.8243837932523017,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "6"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4612.216659774887,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.824391923528099,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "7"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4612.152917699539,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.824339069402603,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        }
+      ],
+      "monitor": {
+        "samples": 921,
+        "error_samples": 0,
+        "rank0_pool_accounting_mismatch_samples": 0,
+        "rank0_pool_resident_fraction": {
+          "full": {
+            "count": 921,
+            "sum": 849.84716796875,
+            "min": 0.0,
+            "p50": 0.994140625,
+            "p95": 0.99951171875,
+            "p99": 0.99951171875,
+            "max": 1.0
+          },
+          "swa": {
+            "count": 921,
+            "sum": 866.5147058823529,
+            "min": 0.0,
+            "p50": 0.9558823529411765,
+            "p95": 0.9950980392156863,
+            "p99": 0.9950980392156863,
+            "max": 0.9950980392156863
+          }
+        },
+        "rank0_pool_non_evictable_used_fraction": {
+          "full": {
+            "count": 921,
+            "sum": 381.9208984375,
+            "min": 0.0,
+            "p50": 0.46240234375,
+            "p95": 0.73046875,
+            "p99": 0.8349609374999999,
+            "max": 0.90771484375
+          },
+          "swa": {
+            "count": 921,
+            "sum": 112.1470588235294,
+            "min": 0.0,
+            "p50": 0.11274509803921569,
+            "p95": 0.30392156862745096,
+            "p99": 0.35784313725490197,
+            "max": 0.39705882352941174
+          }
+        },
+        "rank0_pool_evictable_fraction": {
+          "full": {
+            "count": 921,
+            "sum": 467.92626953125,
+            "min": 0.0,
+            "p50": 0.47607421875,
+            "p95": 0.91162109375,
+            "p99": 0.9868164062499999,
+            "max": 0.9990234375
+          },
+          "swa": {
+            "count": 921,
+            "sum": 754.3676470588235,
+            "min": 0.0,
+            "p50": 0.8235294117647058,
+            "p95": 0.9803921568627451,
+            "p99": 0.9852941176470589,
+            "max": 0.9901960784313726
+          }
+        },
+        "gpu_temperature_celsius": {
+          "count": 7368,
+          "sum": 400415.0,
+          "min": 35.0,
+          "p50": 54.0,
+          "p95": 68.0,
+          "p99": 71.0,
+          "max": 74.0
+        },
+        "gpu_utilization_percent": {
+          "count": 7368,
+          "sum": 664593.0,
+          "min": 0.0,
+          "p50": 100.0,
+          "p95": 100.0,
+          "p99": 100.0,
+          "max": 100.0
+        },
+        "sampling_distribution_is_not_time_weighted": true
+      },
+      "integrity": {
+        "run": "01_slru",
+        "policy": "slru",
+        "strategy": "slru",
+        "exposure_barrier": false,
+        "purpose": "formal",
+        "integrity_errors": [],
+        "protocol_integrity_passed": true,
+        "requests": 1206,
+        "expected_requests": 1206,
+        "signature": {
+          "server": {
+            "model_path": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "version": "0.5.13.post1",
+            "attention_backend": "dsv4",
+            "kv_cache_dtype": "fp8_e4m3",
+            "page_size": 256,
+            "tp_size": 8,
+            "max_running_requests": 8,
+            "context_length": 262144,
+            "chunked_prefill_size": 8192,
+            "schedule_policy": "fcfs",
+            "moe_runner_backend": "marlin",
+            "random_seed": 42,
+            "cuda_graph_bs": [
+              1,
+              2,
+              4,
+              8
+            ],
+            "swa_full_tokens_ratio": 0.1
+          },
+          "graphs": {
+            "decode": true,
+            "prefill": false
+          },
+          "cache_backend": "UnifiedRadixCache",
+          "capacities": {
+            "full_tokens": 524288,
+            "swa_tokens": 52224,
+            "c4_slots": 131072,
+            "c128_slots": 4096,
+            "c4_state_slots": 3264,
+            "c128_state_slots": 52224
+          }
+        },
+        "prompt_tokens_total": 48787785,
+        "output_tokens_total": 693217,
+        "ttft_seconds": {
+          "count": 1206,
+          "sum": 5537.813753259485,
+          "min": 0.1304178690770641,
+          "p50": 0.4086811660672538,
+          "p95": 14.997744712542044,
+          "p99": 19.046385647996797,
+          "max": 21.712490041041747
+        },
+        "latency_seconds": {
+          "count": 1206,
+          "sum": 16406.64467541233,
+          "min": 0.6505789199145511,
+          "p50": 7.024134297971614,
+          "p95": 42.732576860522386,
+          "p99": 104.42083088588583,
+          "max": 210.5041845079977
+        },
+        "cached_tokens_all_known": true,
+        "cache_flush_acknowledged": true,
+        "post_flush_native_metrics_empty": true,
+        "generation_continuation_checks": 1186,
+        "generation_continuation_matches": 1,
+        "cleanup_confirmed": true,
+        "single_run_descriptive_comparison_allowed": true,
+        "performance_claim_allowed": false,
+        "token_weighted_cache_hit_fraction": 0.6719321239937415
+      },
+      "measurement_script_sha256": {
+        "run_suite.py": "649a4dadb390ea850af05a4cc5959f9da2f3dda41eb7c4b5c3e667d63b3a7243",
+        "shape_warmup.py": "2b689730d7eb6214feb70523ac9d411131cf64da916f421458806c2ac5a03c43",
+        "replay_agent.py": "6062996b101acd57d294a25a04a86145bf2dae2743ec7b908414b435a185f85d",
+        "server_command.py": "2264a16b25eee6bef9d6d5841f9f00e91820b10be0e35abd657adc039cbc802d",
+        "run_server.sh": "ef6dbebf716aa01d99b71b0d2b75c59c9756dec91ab1c37dedbcd131b7b38bbb",
+        "runtime_env.sh": "263a496c277e8438f926c253e2d508040ee43599c9d9d27b09f4b7e116982487",
+        "verify_protocol.py": "1a9f720b783a5b654009d3bded41a69129d7cc5b8e51fe017c777e3afc407045"
+      },
+      "measurement_deepgemm_jit_messages": 13,
+      "evidence_sha256": {
+        "state.json": "77a7c008e9e187c8e371d985a1a03c197e99c1d5f325c7a869c758ecf28a0e26",
+        "effective_signature.json": "80ab4e0ef171b9713e9847c19b8a18d6d3fe566549bf5fc0e1e209c1eac3d432",
+        "script_fingerprints.json": "672de8198038dea3e622cdb2c3b6aa9a87959a39ef41475b3f41ae768093f321",
+        "metrics_before.prom": "1549706ef96dfba4b972d9f2a38e252796ad47cdac8a99d5603dd2b111fdf4d4",
+        "metrics_after.prom": "215627cef3d3aeba820a04352e907a4a344d523712aa41ba9e1c95daaeb9b0b5",
+        "cleanup.json": "ec4ad3bb255d26757318eb5e1df900fb923f75e3515db81754467ce18d4b28d4",
+        "measurement/summary.json": "1a0ca1d7c751ebdf69c6dbcf8f4cf97cfb12efd14689c60b54a5c15aad52e55d",
+        "measurement/requests.jsonl": "de4c9941b79103054008d3fe605f8dcb063cb18a69615f895583f5ccf0cb781d"
+      }
+    },
+    {
+      "run_id": "batch2_lru",
+      "batch": 2,
+      "position": 2,
+      "policy": "lru",
+      "path": "results/order_balanced/20261008T035423Z_1593ea96/02_slru_lru/02_lru",
+      "requests": 1206,
+      "prompt_tokens": 48787785,
+      "output_tokens": 693217,
+      "cached_tokens": 32522752,
+      "uncached_input_tokens": 16265033,
+      "hit_rate": 0.6666166951420319,
+      "previous_input_lcp_shortfall_proxy_tokens": 13740032,
+      "ttft_seconds": {
+        "count": 1206,
+        "sum": 5673.292491037399,
+        "min": 0.13676517899148166,
+        "p50": 0.3915656580356881,
+        "p95": 15.153268670168472,
+        "p99": 19.25933923888952,
+        "max": 23.748853319091722,
+        "mean": 4.704222629384244
+      },
+      "latency_seconds": {
+        "count": 1206,
+        "sum": 16618.708881015657,
+        "min": 0.6171876310836524,
+        "p50": 7.3578758189687505,
+        "p95": 42.75919709049049,
+        "p99": 99.23226892935935,
+        "max": 213.74307156796567,
+        "mean": 13.780023947774175
+      },
+      "post_first_token_seconds": {
+        "count": 1206,
+        "sum": 10945.416389978258,
+        "min": 0.42163777502719313,
+        "p50": 3.6756336854887195,
+        "p95": 36.05846619940712,
+        "p99": 87.66387186020734,
+        "max": 213.59534350701142
+      },
+      "measurement_elapsed_seconds": 2180.966899401974,
+      "native_num_retractions": {
+        "count": 1206,
+        "sum": 0,
+        "min": 0,
+        "p50": 0.0,
+        "p95": 0.0,
+        "p99": 0.0,
+        "max": 0,
+        "missing_or_nonfinite": 0
+      },
+      "schedule_lag_seconds": {
+        "count": 1206,
+        "sum": 0.838261540979147,
+        "min": 2.9749004170298576e-05,
+        "p50": 0.000650286499876529,
+        "p95": 0.0016004714998416603,
+        "p99": 0.0020844024431426102,
+        "max": 0.0038555390201509,
+        "missing_or_nonfinite": 0
+      },
+      "raw_native_counter_deltas": [
+        {
+          "name": "sglang:evicted_tokens_total",
+          "labels": {
+            "cache_type": "UnifiedRadixCache"
+          },
+          "before": 5439488.0,
+          "after": 162312192.0,
+          "raw_delta": 156872704.0,
+          "complete_monotone_pair": true
+        },
+        {
+          "name": "sglang:eviction_duration_seconds_count",
+          "labels": {
+            "cache_type": "UnifiedRadixCache"
+          },
+          "before": 688.0,
+          "after": 28088.0,
+          "raw_delta": 27400.0,
+          "complete_monotone_pair": true
+        },
+        {
+          "name": "sglang:eviction_duration_seconds_sum",
+          "labels": {
+            "cache_type": "UnifiedRadixCache"
+          },
+          "before": 101.89612485002726,
+          "after": 616.9695462676464,
+          "raw_delta": 515.0734214176191,
+          "complete_monotone_pair": true
+        }
+      ],
+      "scheduler_queue_by_rank": [
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "0"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4731.267632533563,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.923107489662988,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "1"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4731.101824365323,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.922970003619671,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "2"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4731.108151831664,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.922975250275012,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "3"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4731.119716474903,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.9229848395314284,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "4"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4731.270505405497,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.9231098718121866,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "5"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4731.048058990855,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.9229254220488015,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "6"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4731.084371163859,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.922955531644991,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        },
+        {
+          "labels": {
+            "engine_type": "unified",
+            "model_name": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "moe_ep_rank": "0",
+            "pp_rank": "0",
+            "tp_rank": "7"
+          },
+          "count_delta": 1206.0,
+          "sum_seconds_delta": 4731.0951234403765,
+          "expected_requests": 1206,
+          "measurement_coverage_validated": true,
+          "mean_seconds": 3.9229644472971614,
+          "quantile_bucket_bounds": {
+            "0.5": {
+              "lower_seconds": 0.001,
+              "upper_seconds": 0.005,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.95": {
+              "lower_seconds": 10.0,
+              "upper_seconds": 15.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            },
+            "0.99": {
+              "lower_seconds": 15.0,
+              "upper_seconds": 20.0,
+              "upper_unbounded": false,
+              "exact_percentile": false
+            }
+          },
+          "note": "Per-rank histogram differences; never add tensor-parallel copies; quantiles are bounds, not exact values."
+        }
+      ],
+      "monitor": {
+        "samples": 923,
+        "error_samples": 0,
+        "rank0_pool_accounting_mismatch_samples": 0,
+        "rank0_pool_resident_fraction": {
+          "full": {
+            "count": 923,
+            "sum": 850.94140625,
+            "min": 0.0,
+            "p50": 0.99267578125,
+            "p95": 0.9990234375,
+            "p99": 0.99951171875,
+            "max": 0.99951171875
+          },
+          "swa": {
+            "count": 923,
+            "sum": 867.7009803921569,
+            "min": 0.0,
+            "p50": 0.9558823529411765,
+            "p95": 0.9950980392156863,
+            "p99": 0.9950980392156863,
+            "max": 0.9950980392156863
+          }
+        },
+        "rank0_pool_non_evictable_used_fraction": {
+          "full": {
+            "count": 923,
+            "sum": 384.88818359375,
+            "min": 0.0,
+            "p50": 0.4599609375,
+            "p95": 0.7244140625,
+            "p99": 0.8437109374999998,
+            "max": 0.896484375
+          },
+          "swa": {
+            "count": 923,
+            "sum": 112.50980392156863,
+            "min": 0.0,
+            "p50": 0.11274509803921569,
+            "p95": 0.3137254901960784,
+            "p99": 0.3627450980392157,
+            "max": 0.39705882352941174
+          }
+        },
+        "rank0_pool_evictable_fraction": {
+          "full": {
+            "count": 923,
+            "sum": 466.05322265625,
+            "min": 0.0,
+            "p50": 0.47607421875,
+            "p95": 0.90673828125,
+            "p99": 0.926650390625,
+            "max": 0.99853515625
+          },
+          "swa": {
+            "count": 923,
+            "sum": 755.1911764705883,
+            "min": 0.0,
+            "p50": 0.8284313725490197,
+            "p95": 0.9754901960784313,
+            "p99": 0.9852941176470589,
+            "max": 0.9901960784313726
+          }
+        },
+        "gpu_temperature_celsius": {
+          "count": 7384,
+          "sum": 401446.0,
+          "min": 35.0,
+          "p50": 55.0,
+          "p95": 68.0,
+          "p99": 71.0,
+          "max": 74.0
+        },
+        "gpu_utilization_percent": {
+          "count": 7384,
+          "sum": 663257.0,
+          "min": 0.0,
+          "p50": 100.0,
+          "p95": 100.0,
+          "p99": 100.0,
+          "max": 100.0
+        },
+        "sampling_distribution_is_not_time_weighted": true
+      },
+      "integrity": {
+        "run": "02_lru",
+        "policy": "lru",
+        "strategy": "lru",
+        "exposure_barrier": false,
+        "purpose": "formal",
+        "integrity_errors": [],
+        "protocol_integrity_passed": true,
+        "requests": 1206,
+        "expected_requests": 1206,
+        "signature": {
+          "server": {
+            "model_path": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+            "version": "0.5.13.post1",
+            "attention_backend": "dsv4",
+            "kv_cache_dtype": "fp8_e4m3",
+            "page_size": 256,
+            "tp_size": 8,
+            "max_running_requests": 8,
+            "context_length": 262144,
+            "chunked_prefill_size": 8192,
+            "schedule_policy": "fcfs",
+            "moe_runner_backend": "marlin",
+            "random_seed": 42,
+            "cuda_graph_bs": [
+              1,
+              2,
+              4,
+              8
+            ],
+            "swa_full_tokens_ratio": 0.1
+          },
+          "graphs": {
+            "decode": true,
+            "prefill": false
+          },
+          "cache_backend": "UnifiedRadixCache",
+          "capacities": {
+            "full_tokens": 524288,
+            "swa_tokens": 52224,
+            "c4_slots": 131072,
+            "c128_slots": 4096,
+            "c4_state_slots": 3264,
+            "c128_state_slots": 52224
+          }
+        },
+        "prompt_tokens_total": 48787785,
+        "output_tokens_total": 693217,
+        "ttft_seconds": {
+          "count": 1206,
+          "sum": 5673.292491037399,
+          "min": 0.13676517899148166,
+          "p50": 0.3915656580356881,
+          "p95": 15.153268670168472,
+          "p99": 19.25933923888952,
+          "max": 23.748853319091722
+        },
+        "latency_seconds": {
+          "count": 1206,
+          "sum": 16618.708881015657,
+          "min": 0.6171876310836524,
+          "p50": 7.3578758189687505,
+          "p95": 42.75919709049049,
+          "p99": 99.23226892935935,
+          "max": 213.74307156796567
+        },
+        "cached_tokens_all_known": true,
+        "cache_flush_acknowledged": true,
+        "post_flush_native_metrics_empty": true,
+        "generation_continuation_checks": 1186,
+        "generation_continuation_matches": 1,
+        "cleanup_confirmed": true,
+        "single_run_descriptive_comparison_allowed": true,
+        "performance_claim_allowed": false,
+        "token_weighted_cache_hit_fraction": 0.6666166951420319
+      },
+      "measurement_script_sha256": {
+        "run_suite.py": "649a4dadb390ea850af05a4cc5959f9da2f3dda41eb7c4b5c3e667d63b3a7243",
+        "shape_warmup.py": "2b689730d7eb6214feb70523ac9d411131cf64da916f421458806c2ac5a03c43",
+        "replay_agent.py": "6062996b101acd57d294a25a04a86145bf2dae2743ec7b908414b435a185f85d",
+        "server_command.py": "2264a16b25eee6bef9d6d5841f9f00e91820b10be0e35abd657adc039cbc802d",
+        "run_server.sh": "ef6dbebf716aa01d99b71b0d2b75c59c9756dec91ab1c37dedbcd131b7b38bbb",
+        "runtime_env.sh": "263a496c277e8438f926c253e2d508040ee43599c9d9d27b09f4b7e116982487",
+        "verify_protocol.py": "1a9f720b783a5b654009d3bded41a69129d7cc5b8e51fe017c777e3afc407045"
+      },
+      "measurement_deepgemm_jit_messages": 13,
+      "evidence_sha256": {
+        "state.json": "77bc2fed9aa55daee3baca51a6e6d051d821c2fe5875314f10929ecd010a5cd7",
+        "effective_signature.json": "80ab4e0ef171b9713e9847c19b8a18d6d3fe566549bf5fc0e1e209c1eac3d432",
+        "script_fingerprints.json": "672de8198038dea3e622cdb2c3b6aa9a87959a39ef41475b3f41ae768093f321",
+        "metrics_before.prom": "8976633228de0bfde2ccb4d0c662eeb58fc8819905cac3acb46dfb813572e4bd",
+        "metrics_after.prom": "363d4ada4dfbdfae6fd3de5a900eecba8b3a936ba5c919049aebeaeb4202622e",
+        "cleanup.json": "1625bf8121726c13eb6ae3c07cb570fbfa5e578f4f629ec3f356c6fba4e45445",
+        "measurement/summary.json": "a14d10c108447894c31f9e920b44aa2b6321b3116eee2e42454b1e08bebecb94",
+        "measurement/requests.jsonl": "029faf83ca88a82bb40ad9c6c0792f377493c2c476bfcaefadf674db8272b585"
+      }
+    }
+  ],
+  "paired_comparisons": [
+    {
+      "batch": 1,
+      "order": [
+        "lru",
+        "slru"
+      ],
+      "cached_tokens_delta": -338688,
+      "hit_rate_delta_percentage_points": -0.6942065519063839,
+      "more_cached_requests": 90,
+      "less_cached_requests": 97,
+      "equal_cached_requests": 1019,
+      "positive_cached_tokens_delta": 1093120,
+      "negative_cached_tokens_delta": -1431808,
+      "changed_submission_rank_requests": 912,
+      "submission_rank_absolute_delta": {
+        "count": 1206,
+        "sum": 5656,
+        "min": 0,
+        "p50": 3.0,
+        "p95": 16.0,
+        "p99": 23.0,
+        "max": 33
+      },
+      "ttft_seconds_relative_change": {
+        "mean": 0.005726911547232261,
+        "p50": 0.13296241658449737,
+        "p95": 0.011855701236286764
+      },
+      "latency_seconds_relative_change": {
+        "mean": 0.007848526401369904,
+        "p50": 0.04894829860545569,
+        "p95": -0.028185066230921207
+      },
+      "elapsed_relative_change": 0.006630101646326381
+    },
+    {
+      "batch": 2,
+      "order": [
+        "slru",
+        "lru"
+      ],
+      "cached_tokens_delta": 259328,
+      "hit_rate_delta_percentage_points": 0.53154288517095,
+      "more_cached_requests": 95,
+      "less_cached_requests": 91,
+      "equal_cached_requests": 1020,
+      "positive_cached_tokens_delta": 1097472,
+      "negative_cached_tokens_delta": -838144,
+      "changed_submission_rank_requests": 908,
+      "submission_rank_absolute_delta": {
+        "count": 1206,
+        "sum": 6114,
+        "min": 0,
+        "p50": 3.0,
+        "p95": 18.0,
+        "p99": 24.0,
+        "max": 35
+      },
+      "ttft_seconds_relative_change": {
+        "mean": -0.02388009043988859,
+        "p50": 0.04371044211953268,
+        "p95": -0.010263393397927478
+      },
+      "latency_seconds_relative_change": {
+        "mean": -0.012760570458369092,
+        "p50": -0.045358406312966615,
+        "p95": -0.0006225615020732933
+      },
+      "elapsed_relative_change": -0.006042032014131782
+    }
+  ],
+  "aggregate_per_run_metrics": {
+    "lru": {
+      "hit_rate": {
+        "runs": 2,
+        "values": [
+          0.6539026930613883,
+          0.6666166951420319
+        ],
+        "mean": 0.66025969410171,
+        "min": 0.6539026930613883,
+        "max": 0.6666166951420319,
+        "range": 0.01271400208064366
+      },
+      "measurement_elapsed_seconds": {
+        "runs": 2,
+        "values": [
+          2188.6119120110525,
+          2180.966899401974
+        ],
+        "mean": 2184.789405706513,
+        "min": 2180.966899401974,
+        "max": 2188.6119120110525,
+        "range": 7.645012609078549
+      },
+      "ttft_seconds": {
+        "mean": {
+          "runs": 2,
+          "values": [
+            4.750238749794592,
+            4.704222629384244
+          ],
+          "mean": 4.727230689589418,
+          "min": 4.704222629384244,
+          "max": 4.750238749794592,
+          "range": 0.046016120410348194
+        },
+        "p50": {
+          "runs": 2,
+          "values": [
+            0.4709057050058618,
+            0.3915656580356881
+          ],
+          "mean": 0.43123568152077496,
+          "min": 0.3915656580356881,
+          "max": 0.4709057050058618,
+          "range": 0.07934004697017372
+        },
+        "p95": {
+          "runs": 2,
+          "values": [
+            15.787586746795569,
+            15.153268670168472
+          ],
+          "mean": 15.47042770848202,
+          "min": 15.153268670168472,
+          "max": 15.787586746795569,
+          "range": 0.6343180766270962
+        }
+      },
+      "latency_seconds": {
+        "mean": {
+          "runs": 2,
+          "values": [
+            13.977174257130399,
+            13.780023947774175
+          ],
+          "mean": 13.878599102452288,
+          "min": 13.780023947774175,
+          "max": 13.977174257130399,
+          "range": 0.19715030935622302
+        },
+        "p50": {
+          "runs": 2,
+          "values": [
+            7.47087194758933,
+            7.3578758189687505
+          ],
+          "mean": 7.4143738832790405,
+          "min": 7.3578758189687505,
+          "max": 7.47087194758933,
+          "range": 0.11299612862057984
+        },
+        "p95": {
+          "runs": 2,
+          "values": [
+            45.213214245508425,
+            42.75919709049049
+          ],
+          "mean": 43.98620566799946,
+          "min": 42.75919709049049,
+          "max": 45.213214245508425,
+          "range": 2.4540171550179366
+        }
+      }
+    },
+    "slru": {
+      "hit_rate": {
+        "runs": 2,
+        "values": [
+          0.6469606275423244,
+          0.6719321239937415
+        ],
+        "mean": 0.6594463757680329,
+        "min": 0.6469606275423244,
+        "max": 0.6719321239937415,
+        "range": 0.024971496451417052
+      },
+      "measurement_elapsed_seconds": {
+        "runs": 2,
+        "values": [
+          2203.1226314520463,
+          2167.7894275740255
+        ],
+        "mean": 2185.456029513036,
+        "min": 2167.7894275740255,
+        "max": 2203.1226314520463,
+        "range": 35.33320387802087
+      },
+      "ttft_seconds": {
+        "mean": {
+          "runs": 2,
+          "values": [
+            4.777442946942901,
+            4.591885367545178
+          ],
+          "mean": 4.68466415724404,
+          "min": 4.591885367545178,
+          "max": 4.777442946942901,
+          "range": 0.18555757939772288
+        },
+        "p50": {
+          "runs": 2,
+          "values": [
+            0.5335184655268677,
+            0.4086811660672538
+          ],
+          "mean": 0.47109981579706073,
+          "min": 0.4086811660672538,
+          "max": 0.5335184655268677,
+          "range": 0.12483729945961386
+        },
+        "p95": {
+          "runs": 2,
+          "values": [
+            15.974759658507537,
+            14.997744712542044
+          ],
+          "mean": 15.48625218552479,
+          "min": 14.997744712542044,
+          "max": 15.974759658507537,
+          "range": 0.9770149459654931
+        }
+      },
+      "latency_seconds": {
+        "mean": {
+          "runs": 2,
+          "values": [
+            14.086874478304033,
+            13.60418298127059
+          ],
+          "mean": 13.845528729787311,
+          "min": 13.60418298127059,
+          "max": 14.086874478304033,
+          "range": 0.48269149703344283
+        },
+        "p50": {
+          "runs": 2,
+          "values": [
+            7.836558418523055,
+            7.024134297971614
+          ],
+          "mean": 7.430346358247334,
+          "min": 7.024134297971614,
+          "max": 7.836558418523055,
+          "range": 0.8124241205514409
+        },
+        "p95": {
+          "runs": 2,
+          "values": [
+            43.93887680748594,
+            42.732576860522386
+          ],
+          "mean": 43.33572683400416,
+          "min": 42.732576860522386,
+          "max": 43.93887680748594,
+          "range": 1.2062999469635542
+        }
+      }
+    }
+  },
+  "within_policy_repeat_changes": {
+    "lru": {
+      "cached_tokens_delta": 620288,
+      "hit_rate_delta_percentage_points": 1.2714002080643751,
+      "more_cached_requests": 104,
+      "less_cached_requests": 96,
+      "equal_cached_requests": 1006,
+      "positive_cached_tokens_delta": 1587456,
+      "negative_cached_tokens_delta": -967168,
+      "changed_submission_rank_requests": 994,
+      "submission_rank_absolute_delta": {
+        "count": 1206,
+        "sum": 5368,
+        "min": 0,
+        "p50": 3.0,
+        "p95": 15.0,
+        "p99": 19.950000000000045,
+        "max": 29
+      }
+    },
+    "slru": {
+      "cached_tokens_delta": 1218304,
+      "hit_rate_delta_percentage_points": 2.4971496451417092,
+      "more_cached_requests": 105,
+      "less_cached_requests": 85,
+      "equal_cached_requests": 1016,
+      "positive_cached_tokens_delta": 1870592,
+      "negative_cached_tokens_delta": -652288,
+      "changed_submission_rank_requests": 987,
+      "submission_rank_absolute_delta": {
+        "count": 1206,
+        "sum": 6702,
+        "min": 0,
+        "p50": 4.0,
+        "p95": 17.0,
+        "p99": 24.950000000000045,
+        "max": 32
+      }
+    }
+  },
+  "cross_repeat_request_evidence": {
+    "both_positive_requests": 22,
+    "both_negative_requests": 24,
+    "opposite_sign_requests": 29,
+    "both_zero_requests": 908,
+    "both_at_least_8192_more_cached_requests": 7,
+    "both_at_least_8192_less_cached_requests": 2,
+    "all_four_at_least_8192_lcp_shortfall_proxy_requests": 363,
+    "all_four_minimum_lcp_shortfall_proxy_tokens_sum": 12200960
+  },
+  "per_session": [
+    {
+      "session_id": "openhands_0bb81a9cf635697f01fa3087a1d7d0bd204da9724c5b225b727ed68c84a5e1cc",
+      "task_id": "drone-planning-control",
+      "requests": 44,
+      "slru_minus_lru_batch1": 77312,
+      "slru_minus_lru_batch2": 62720
+    },
+    {
+      "session_id": "openhands_0ca57752127116f752c0aef0507a32422771d909683b1b911f87808524c87905",
+      "task_id": "syzkaller-ppdev-syzlang",
+      "requests": 85,
+      "slru_minus_lru_batch1": -130304,
+      "slru_minus_lru_batch2": 12288
+    },
+    {
+      "session_id": "openhands_16b53043119b542db95dd9a89651089b9d4e0f06dc89d9e926a3c0240646d674",
+      "task_id": "shock-analysis-supply",
+      "requests": 63,
+      "slru_minus_lru_batch1": 6144,
+      "slru_minus_lru_batch2": 0
+    },
+    {
+      "session_id": "openhands_218632be27549fb0775952cff1dc95191694673a2337aa0b239d200ac4ca7f9d",
+      "task_id": "energy-unit-commitment",
+      "requests": 35,
+      "slru_minus_lru_batch1": -3072,
+      "slru_minus_lru_batch2": 3072
+    },
+    {
+      "session_id": "openhands_3c5e8aab32524f5b9d7e24f8deb2d6640163162b8350326b84aace4ae8b1c51e",
+      "task_id": "dynamic-object-aware-egomotion",
+      "requests": 18,
+      "slru_minus_lru_batch1": 6144,
+      "slru_minus_lru_batch2": 6144
+    },
+    {
+      "session_id": "openhands_4b4b5c4eba81301c815ae52d4c3056977852491652c83790b002ed502f70d2d1",
+      "task_id": "earthquake-phase-association",
+      "requests": 91,
+      "slru_minus_lru_batch1": -86784,
+      "slru_minus_lru_batch2": 4096
+    },
+    {
+      "session_id": "openhands_644eacbc8324b29fddcbea870858066dd58fb3db00d5e45fd79aadee4fd9cd65",
+      "task_id": "quantum-numerical-simulation",
+      "requests": 34,
+      "slru_minus_lru_batch1": -47616,
+      "slru_minus_lru_batch2": -56576
+    },
+    {
+      "session_id": "openhands_7fddbb091e4e2c29e02e5d44cdb85cc3717ff223ae37414fd9e8d2597cd02730",
+      "task_id": "shock-analysis-demand",
+      "requests": 121,
+      "slru_minus_lru_batch1": -155136,
+      "slru_minus_lru_batch2": 61696
+    },
+    {
+      "session_id": "openhands_8e000b0a54a6a1c8320f077ca2a5726e6664a47956d1cd3d8291656a636e9711",
+      "task_id": "fix-erlang-ssh-cve",
+      "requests": 183,
+      "slru_minus_lru_batch1": 75520,
+      "slru_minus_lru_batch2": -58880
+    },
+    {
+      "session_id": "openhands_926a5bff64f8d85eff45792643b46b1b9a23ff11f5ef7face563c2280b28d056",
+      "task_id": "pddl-tpp-planning",
+      "requests": 76,
+      "slru_minus_lru_batch1": -115456,
+      "slru_minus_lru_batch2": 6144
+    },
+    {
+      "session_id": "openhands_943537ab2821d394c9863aeae0b3fef1cfe6a9464514710471da76cd015feee2",
+      "task_id": "debug-trl-grpo",
+      "requests": 36,
+      "slru_minus_lru_batch1": 0,
+      "slru_minus_lru_batch2": 0
+    },
+    {
+      "session_id": "openhands_adff36a1ba95fd8e320c7baa0dabbefbb1d67b1cc1caee16240febc3d3f185ae",
+      "task_id": "invoice-fraud-detection",
+      "requests": 39,
+      "slru_minus_lru_batch1": 25344,
+      "slru_minus_lru_batch2": 69888
+    },
+    {
+      "session_id": "openhands_b87511edcd5e2d5c09e4e02722e10df6a10bd98c7b70baf129a11863aaa87e8c",
+      "task_id": "setup-fuzzing-py",
+      "requests": 68,
+      "slru_minus_lru_batch1": 6912,
+      "slru_minus_lru_batch2": -34304
+    },
+    {
+      "session_id": "openhands_c5a065e1734a6c36448c3962fa3f2f55dc14e2611d110164434c572d432cbe02",
+      "task_id": "multilingual-video-dubbing",
+      "requests": 38,
+      "slru_minus_lru_batch1": 6144,
+      "slru_minus_lru_batch2": 3072
+    },
+    {
+      "session_id": "openhands_c9f6d09c73e1b939d4e7d442a2bc0cf6619b133c222177adf78a806404a8958e",
+      "task_id": "fix-visual-stability",
+      "requests": 25,
+      "slru_minus_lru_batch1": 6144,
+      "slru_minus_lru_batch2": -3072
+    },
+    {
+      "session_id": "openhands_d18eb09e77f3e071ba866ec9cea71215732c25fde65ce6471f8c1505213602ee",
+      "task_id": "fix-build-agentops",
+      "requests": 122,
+      "slru_minus_lru_batch1": -10752,
+      "slru_minus_lru_batch2": 77056
+    },
+    {
+      "session_id": "openhands_e4ca43cd4775b88f93bb54636a7a593cf33a8faeb051ed49093f49d76217598c",
+      "task_id": "dialogue-parser",
+      "requests": 20,
+      "slru_minus_lru_batch1": 0,
+      "slru_minus_lru_batch2": 0
+    },
+    {
+      "session_id": "openhands_e7f9832e9c0863997a471dd7cc526e8e128492a9f24f0b8a6bda3aa0aa9b6367",
+      "task_id": "offer-letter-generator",
+      "requests": 8,
+      "slru_minus_lru_batch1": 0,
+      "slru_minus_lru_batch2": 0
+    },
+    {
+      "session_id": "openhands_eb93634abc30eb8a8ec57b65cb8e09b977148deee8b970538fd4caeeadef880c",
+      "task_id": "drone-planning-control",
+      "requests": 71,
+      "slru_minus_lru_batch1": 3840,
+      "slru_minus_lru_batch2": 115200
+    },
+    {
+      "session_id": "openhands_fe65aa0644b0e69db3ed6acab9a02e887b6943cf91e421230b0824cae2866804",
+      "task_id": "crystallographic-wyckoff-position-analysis",
+      "requests": 29,
+      "slru_minus_lru_batch1": -3072,
+      "slru_minus_lru_batch2": -9216
+    }
+  ],
+  "source_summary_boolean_audit": [
+    {
+      "batch": 1,
+      "saved_all_effective_signatures_equal": false,
+      "recomputed_all_effective_signatures_equal": true,
+      "saved_boolean_disagrees": true
+    },
+    {
+      "batch": 2,
+      "saved_all_effective_signatures_equal": false,
+      "recomputed_all_effective_signatures_equal": true,
+      "saved_boolean_disagrees": true
+    }
+  ],
+  "statistical_significance_claim_allowed": false,
+  "limitations": [
+    "Two repeats per policy; ranges are descriptive, not confidence intervals.",
+    "Same content/dependencies, but closed-loop submission order changes with completion.",
+    "No complete Full/SWA victim/candidate events; cache differences are not causal attribution.",
+    "Native policy selection affects Full; SWA retains native LRU in this frozen backend.",
+    "Uncached input tokens include new content; they are not exact avoidable recomputation.",
+    "Native eviction counters may combine pools and TP copies; retain raw series.",
+    "Native response queue_time is untrusted; only scheduler histogram coverage is checked.",
+    "Historical next-turn inputs are not forced to contain the newly generated output."
+  ],
+  "provenance": {
+    "analyzer_sha256": "35dc09484b0174554c08f0658556389f01e2e17d258d7d001c175b079d823325",
+    "executed_runner_sha256": "dacdaa2344e6af7e97569bd87ca2a2250927a5503279f381d48c7281e4ec304b",
+    "batch_metadata_sha256": "8baa525431be41a2cee5f1f3ab1c7eb4a7ba5d4fb0ee2d8fb0af77b898c928f7",
+    "model_relocation": {
+      "from": "/inspire/hdd/global_public/public_models/deepseek-ai/deepSeek-V4-Flash",
+      "to": "/mnt/public/dai-sys/.cache/hub/hub/models--deepseek-ai--DeepSeek-V4-Flash/snapshots/fd53f944496234770ba80e15004f9b6d269a71f5",
+      "metadata_sha256": {
+        "config.json": "b628e63398a645abc711d92207f8737dd8140f7a4ef1e0a5b3616019e0ddd818",
+        "generation_config.json": "5fccff80f55a4d455bbe516bdd552edf3e9623df95e99fbf2a3c3389fdf91af0",
+        "tokenizer.json": "8f9f37ca37fdc4f5fd36d5cf4d3b0e8392edb4e894fd10cc0d70b4957c8633cf",
+        "tokenizer_config.json": "6ac8c8dc065ed118161d02dd532749ae3f52c243deac27872134fae2f50d8547",
+        "model.safetensors.index.json": "7e975ba3bef8947a94e7da0abd60888375b232b4dfad883d59653e65c6ba522a"
+      },
+      "weight_shards": 46,
+      "weight_bytes": 159617149040,
+      "content_matches_environment_lock": true
+    }
+  }
+}

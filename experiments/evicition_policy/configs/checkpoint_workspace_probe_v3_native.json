@@ -1,0 +1,244 @@
+{
+  "schema": "agentkv.checkpoint_frontier_protocol.v3",
+  "frozen_utc": "2026-10-09T04:12:49.300341+00:00",
+  "stage": "exploratory_native_cache_mechanism_validation",
+  "execution": "cpu_native_tree_and_allocator_no_kv_payload",
+  "workload": "data/workloads/exploration_1h_v4/evaluation.json",
+  "workload_sha256": "8c2e12c394c125edcfe73dc0f99f7a2d2954c5356d4a3be0d5fc88378e9ea07c",
+  "requests": 1206,
+  "complete_sessions": 20,
+  "ordering": "round_robin_manifest_session_order_preserving_turn_order",
+  "profiles": [
+    "constant",
+    "shrink_restore"
+  ],
+  "physical_capacity": {
+    "full": 589824,
+    "swa": 52224
+  },
+  "page_size": 256,
+  "sliding_window_size": 128,
+  "chunked_prefill_tokens": 8192,
+  "frontier_upper_limits": {
+    "max_units": 8,
+    "full_budget_tokens": 262144,
+    "swa_budget_tokens": 4096
+  },
+  "profile_events": {
+    "constant": [
+      {
+        "before_request_index": 0,
+        "phase": "constant",
+        "full": 589824,
+        "swa": 52224
+      }
+    ],
+    "shrink_restore": [
+      {
+        "before_request_index": 0,
+        "phase": "initial",
+        "full": 589824,
+        "swa": 52224
+      },
+      {
+        "before_request_index": 301,
+        "phase": "half",
+        "full": 294912,
+        "swa": 26112
+      },
+      {
+        "before_request_index": 603,
+        "phase": "quarter",
+        "full": 147456,
+        "swa": 13056
+      },
+      {
+        "before_request_index": 904,
+        "phase": "restored",
+        "full": 589824,
+        "swa": 52224
+      }
+    ]
+  },
+  "capacity_selection_basis": "Smallest tested quarter must admit every complete frozen input; observed maximum input 135896 tokens. Full C0=589824 is an engineering admission choice, not chosen by policy outcome.",
+  "source_session_files": [
+    {
+      "session_id": "openhands_16b53043119b542db95dd9a89651089b9d4e0f06dc89d9e926a3c0240646d674",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_16b53043119b542db95dd9a89651089b9d4e0f06dc89d9e926a3c0240646d674.jsonl.gz",
+      "sha256": "43a99146079108cf7af7f9c5eea42a78e1dbf0ec368e9bf9ad6f93de2a27476f",
+      "requests": 63
+    },
+    {
+      "session_id": "openhands_e7f9832e9c0863997a471dd7cc526e8e128492a9f24f0b8a6bda3aa0aa9b6367",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_e7f9832e9c0863997a471dd7cc526e8e128492a9f24f0b8a6bda3aa0aa9b6367.jsonl.gz",
+      "sha256": "0de30fdc5dfc751d51b19044eab4b47cc45622be92864f3a78ee0948efbae8cc",
+      "requests": 8
+    },
+    {
+      "session_id": "openhands_943537ab2821d394c9863aeae0b3fef1cfe6a9464514710471da76cd015feee2",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_943537ab2821d394c9863aeae0b3fef1cfe6a9464514710471da76cd015feee2.jsonl.gz",
+      "sha256": "09e5c3b4a0fb5054d3839f3ab16134f80785ce96ee5910d56bf711df0ea86200",
+      "requests": 36
+    },
+    {
+      "session_id": "openhands_e4ca43cd4775b88f93bb54636a7a593cf33a8faeb051ed49093f49d76217598c",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_e4ca43cd4775b88f93bb54636a7a593cf33a8faeb051ed49093f49d76217598c.jsonl.gz",
+      "sha256": "7785388db1a13eb9f750d103608859022ab0030e7c886ab670c40d09eab9ba58",
+      "requests": 20
+    },
+    {
+      "session_id": "openhands_7fddbb091e4e2c29e02e5d44cdb85cc3717ff223ae37414fd9e8d2597cd02730",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_7fddbb091e4e2c29e02e5d44cdb85cc3717ff223ae37414fd9e8d2597cd02730.jsonl.gz",
+      "sha256": "90b2a1366aa7449f1641099238d4429d7baed6b525730453cb59c9cff894c9b4",
+      "requests": 121
+    },
+    {
+      "session_id": "openhands_0ca57752127116f752c0aef0507a32422771d909683b1b911f87808524c87905",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_0ca57752127116f752c0aef0507a32422771d909683b1b911f87808524c87905.jsonl.gz",
+      "sha256": "e9ffb89df9e977d3faedd878ac276788b05d53e855b2086720f74759ebda21f2",
+      "requests": 85
+    },
+    {
+      "session_id": "openhands_0bb81a9cf635697f01fa3087a1d7d0bd204da9724c5b225b727ed68c84a5e1cc",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_0bb81a9cf635697f01fa3087a1d7d0bd204da9724c5b225b727ed68c84a5e1cc.jsonl.gz",
+      "sha256": "0da923898b757bebf7215638fb7732f9a83267efb882615b8b58a97982889859",
+      "requests": 44
+    },
+    {
+      "session_id": "openhands_218632be27549fb0775952cff1dc95191694673a2337aa0b239d200ac4ca7f9d",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_218632be27549fb0775952cff1dc95191694673a2337aa0b239d200ac4ca7f9d.jsonl.gz",
+      "sha256": "0df5d5657033d0243cdcbbdb1e6abb290f18858f2bba506ddf325b213465681e",
+      "requests": 35
+    },
+    {
+      "session_id": "openhands_926a5bff64f8d85eff45792643b46b1b9a23ff11f5ef7face563c2280b28d056",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_926a5bff64f8d85eff45792643b46b1b9a23ff11f5ef7face563c2280b28d056.jsonl.gz",
+      "sha256": "12a36193f4bc134a3f542d277e0bf4f70adbc5ba6ca137e52dfc3dd499177cf9",
+      "requests": 76
+    },
+    {
+      "session_id": "openhands_eb93634abc30eb8a8ec57b65cb8e09b977148deee8b970538fd4caeeadef880c",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_eb93634abc30eb8a8ec57b65cb8e09b977148deee8b970538fd4caeeadef880c.jsonl.gz",
+      "sha256": "1bae877a6ce465f47c8d7af68f727085ef4d7ecbe084d69b5277f353b8293d21",
+      "requests": 71
+    },
+    {
+      "session_id": "openhands_c5a065e1734a6c36448c3962fa3f2f55dc14e2611d110164434c572d432cbe02",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_c5a065e1734a6c36448c3962fa3f2f55dc14e2611d110164434c572d432cbe02.jsonl.gz",
+      "sha256": "40510817784d5560013c2953b440d6401d809e1edb79ad9620c99a6a82c3686c",
+      "requests": 38
+    },
+    {
+      "session_id": "openhands_d18eb09e77f3e071ba866ec9cea71215732c25fde65ce6471f8c1505213602ee",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_d18eb09e77f3e071ba866ec9cea71215732c25fde65ce6471f8c1505213602ee.jsonl.gz",
+      "sha256": "cc37e7db1ad1021b5579bc39ba70170bbd271e4966ee8c0fad2c49eeac9b6602",
+      "requests": 122
+    },
+    {
+      "session_id": "openhands_644eacbc8324b29fddcbea870858066dd58fb3db00d5e45fd79aadee4fd9cd65",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_644eacbc8324b29fddcbea870858066dd58fb3db00d5e45fd79aadee4fd9cd65.jsonl.gz",
+      "sha256": "874fd347097e3a9c0ed25a2a2c344d3871c6125c9dcd80991196ce1e4598c43a",
+      "requests": 34
+    },
+    {
+      "session_id": "openhands_fe65aa0644b0e69db3ed6acab9a02e887b6943cf91e421230b0824cae2866804",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_fe65aa0644b0e69db3ed6acab9a02e887b6943cf91e421230b0824cae2866804.jsonl.gz",
+      "sha256": "85e79581a02ea79b9f5d060645488da9c80fcad20985407cd133e46fb509ea73",
+      "requests": 29
+    },
+    {
+      "session_id": "openhands_8e000b0a54a6a1c8320f077ca2a5726e6664a47956d1cd3d8291656a636e9711",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_8e000b0a54a6a1c8320f077ca2a5726e6664a47956d1cd3d8291656a636e9711.jsonl.gz",
+      "sha256": "907eefe73b53480968c7f22e2f014af2162a42a1d946fd6608ad7832513c0018",
+      "requests": 183
+    },
+    {
+      "session_id": "openhands_4b4b5c4eba81301c815ae52d4c3056977852491652c83790b002ed502f70d2d1",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_4b4b5c4eba81301c815ae52d4c3056977852491652c83790b002ed502f70d2d1.jsonl.gz",
+      "sha256": "c9f88d9f3eba12f92eb53d4d7938b22c7ab43e375e4380045a906789ed08a928",
+      "requests": 91
+    },
+    {
+      "session_id": "openhands_b87511edcd5e2d5c09e4e02722e10df6a10bd98c7b70baf129a11863aaa87e8c",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_b87511edcd5e2d5c09e4e02722e10df6a10bd98c7b70baf129a11863aaa87e8c.jsonl.gz",
+      "sha256": "1f6826fdd5f7e3edff742688bbd4df4e4573a9b3da6c9b807e88f60a3db84887",
+      "requests": 68
+    },
+    {
+      "session_id": "openhands_c9f6d09c73e1b939d4e7d442a2bc0cf6619b133c222177adf78a806404a8958e",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_c9f6d09c73e1b939d4e7d442a2bc0cf6619b133c222177adf78a806404a8958e.jsonl.gz",
+      "sha256": "1b2d5041056a2154c45179efd409b7c578891cefb9ac7e229c7d616adfbcfcc8",
+      "requests": 25
+    },
+    {
+      "session_id": "openhands_adff36a1ba95fd8e320c7baa0dabbefbb1d67b1cc1caee16240febc3d3f185ae",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_adff36a1ba95fd8e320c7baa0dabbefbb1d67b1cc1caee16240febc3d3f185ae.jsonl.gz",
+      "sha256": "dfe9f1b952dfd346d38d9cc6d582e523695e4c878204e99dec7766a8d9384600",
+      "requests": 39
+    },
+    {
+      "session_id": "openhands_3c5e8aab32524f5b9d7e24f8deb2d6640163162b8350326b84aace4ae8b1c51e",
+      "path": "data/encoded/sglang_0513_thinking_max_v1/openhands_3c5e8aab32524f5b9d7e24f8deb2d6640163162b8350326b84aace4ae8b1c51e.jsonl.gz",
+      "sha256": "84389e3501c6e7ca79dddc4c562a3ea34f1d78c61fadac3b4a843d2f278c1ae0",
+      "requests": 18
+    }
+  ],
+  "required_checks": [
+    "same trace and hard budget events for both policies",
+    "no cache reset between budget events",
+    "actual allocator usage before every chunk allocation",
+    "actual native evict and free with locks intact",
+    "record remaining debt and reason",
+    "page and window semantics unchanged",
+    "all 1206 complete inputs processed",
+    "Checkpoint discovery is read-only; zero policy-added Full/input/SWA tail splits"
+  ],
+  "limitations": [
+    "No KV tensor payload or GPU kernels; no TTFT/serving speed claim.",
+    "Input-only historical replay; no generated output KV or real tool execution.",
+    "Synthetic round-robin order and frozen external budget; no claim of natural timing or online controller performance.",
+    "LRU uses original eviction rules under the same added logical budget controller; this is not an untouched serving baseline.",
+    "New capacity differs from the earlier fixed GPU point; do not combine absolute improvements across experiments."
+  ],
+  "original_protocol": "configs/resizable_native_probe_v1.json",
+  "original_protocol_sha256": "e704c99d0e30fac30a827b29b81e15ee9b10625614f84c08f3826f7783bc36d7",
+  "variants": [
+    "workspace"
+  ],
+  "implementation_sha256": {
+    "bounded_frontier.py": "5f742e3ca110c5e7174a7d67b60b6cfd8fe581144ca9e57c0226049bcf1f3a83",
+    "replay_resizable_native.py": "4d58d2125ca6e4954e9170d9a5b9f4f66b1dc2447091119b7cd109e699b63f5e",
+    "resizable_agent_budget.py": "4bb2456f6493d3f2521db6e72da843be0819fcd0efc5f0b45b4538053acebab7",
+    "retained_frontier.py": "d7739fad18e43caa44c2b4c44e3cf0691ff54354f4a696a2cd45ebba5a45a738",
+    "checkpoint_frontier.py": "149b1b85c5606d9a231f475e281aa33cc48d6a7aacf82166dd819558cfd99213",
+    "run_checkpoint_frontier.py": "f22700ef0215280aa43b5f9adb97f3fa895304e2d9433dd93de44cbb377ff0a7",
+    "workspace_checkpoint.py": "b6d5dde57349af4a43ae7685a673796605503eed00a63ef2ce5bee30daead00f",
+    "native_checkpoint_frontier.py": "dc28549c993cfb1ddf3ed4d712d4dcea9b35b83bdc166049da712966864c2695",
+    "run_native_checkpoint_frontier.py": "f188f0718f1d1ca39b99ade6308f8e88ce4201a4b9e36b70a31c690076828fea"
+  },
+  "settings": {
+    "workspace": {
+      "path": "configs/checkpoint_adaptive_v3.json",
+      "sha256": "4ef6864a5bc9140ad342de3e74856296c2b72ae2e13c8d7fb8aadffeaaee1799"
+    }
+  },
+  "hypothesis": "A conservative reserve of the largest complete arrived request prevents partial checkpoints consuming the Full execution workspace under extreme shrink.",
+  "acceptance": "Compare against v2/partial/v3 and identical archived LRU; require half/quarter net gain, audit online high water and real budget/physical frees. Double counted shared active/protected pages are a conservative limitation.",
+  "admission_change_only": false,
+  "no_post_result_parameter_adjustment": true,
+  "mechanisms": [
+    "real partial prefill checkpoints",
+    "resident-ancestor downgrade on protection-budget or eviction pressure",
+    "online conservative Full working-space reserve"
+  ],
+  "test_source_sha256": {
+    "test_checkpoint_frontier.py": "18273a6b3511140b7d1822f7b18f48c5640daa8a1a8088bd3ab125db622982a3",
+    "test_workspace_checkpoint.py": "1f693eeb1da6ef978047a6b31aea713f08178eae0acca5d7f18f15926165563c",
+    "test_native_checkpoint_frontier.py": "48e1aba8a9ae775b266ebf82a8387d9391027f261d95937f89b1b4a977ed2554"
+  },
+  "diagnostic_summary_sha256": "e71a7aca67fc70b241bd114a40b86552c5636d3fddd73d8001a9c4b1f5cf4e1b",
+  "supersedes_preflight": "Initial v3 and workspace runs retained but cannot pass the original zero-added-split gate; this correction only removes policy structural mutations.",
+  "workspace_rule": "protection_full_cap = min(original_cap, max(0, hard_full_budget - max_complete_arrived_request_page_working_set)); SWA upper cap unchanged.",
+  "boundary_discovery": "Exact existing radix endpoint only. Do not split compressed nodes or synthesize missing windows; charge whole resident node costs.",
+  "correction_basis": "26/18 added SWA tail splits observed in original constant/shrink partial variants; no budget, max-units or workspace reserve parameter changes."
+}

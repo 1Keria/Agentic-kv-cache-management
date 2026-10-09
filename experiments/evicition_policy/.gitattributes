@@ -1,0 +1,2 @@
+# Preserve generated SVG bytes and their recorded evidence hashes.
+reports/figures/**/*.svg whitespace=-blank-at-eol

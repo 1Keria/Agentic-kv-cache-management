@@ -1,0 +1,3682 @@
+{
+  "schema": "agentkv.mechanism_report.v1",
+  "suite": "results/mechanism/20261008T071917Z_ce85885f",
+  "native_decisions_unchanged": true,
+  "latency_ranking_allowed": false,
+  "source_files": {
+    "results/analysis/mechanism_diagnosis_20261008/summary.json": "3ea15a685c6c4437d2ae4cabfee60e65e7e0772fd514f7f454813c62411e97a6",
+    "results/analysis/mechanism_diagnosis_20261008/local_counterfactual.json": "2d928ce164e3e1ffb520d784c260bec284f569818349a717f9316253da0c7602"
+  },
+  "paired": {
+    "policy_event_counts_equal": false,
+    "match_coverage": {
+      "lru": 1.0,
+      "slru": 1.0
+    },
+    "parent_exposed_steps": {
+      "lru": 3008,
+      "slru": 3278
+    },
+    "same_chain_followup_steps": {
+      "lru": 1558,
+      "slru": 1476
+    },
+    "observed_materialization_shortfall_tokens": {
+      "lru": 13637888,
+      "slru": 14253056
+    },
+    "component_free_tokens": {
+      "lru": {
+        "swa": 15845632,
+        "full": 3057664
+      },
+      "slru": {
+        "swa": 16460288,
+        "full": 3428608
+      }
+    },
+    "request_level_shortfall": {
+      "paired_request_keys": 1206,
+      "lru_at_least_8192": 402,
+      "slru_at_least_8192": 421,
+      "both_at_least_8192": 392,
+      "both_minimum_shortfall_tokens": 12975360,
+      "both_at_least_8192_minimum_shortfall_tokens": 12729344,
+      "lru_sum": 13637888,
+      "slru_sum": 14253056,
+      "native_token_delta_slru_minus_lru": -615168
+    },
+    "victim_sequence_fingerprint": {
+      "lru": {
+        "count": 19469,
+        "sha256": "6294cc54b5a827b4629e48527db7b1b3731c0af912ea771b2123851f321bf357"
+      },
+      "slru": {
+        "count": 16816,
+        "sha256": "c5889055303e1337b1ad021a5905b7f6c12f53dce275c84fcdfab2b5a8b2c3e1"
+      }
+    },
+    "same_event_end_page_sequence_equal": false
+  },
+  "runs": [
+    {
+      "policy": "lru",
+      "event_file": "results/mechanism/20261008T071917Z_ce85885f/01_lru/runtime_events/events.rank0.pid955157.jsonl",
+      "event_file_sha256": "971f3e5872cc5fd10ca983c4b499f3bd7bacaa59f7e558f23994bfe5e415e66b",
+      "measurement_scope": {
+        "flush_event_seq": 1745,
+        "first_formal_match_event_seq": 1747,
+        "last_event_seq": 86049,
+        "excluded_pre_measurement_events": 1745
+      },
+      "requests": 1206,
+      "terminal_match_count": 1206,
+      "match_request_coverage": 1.0,
+      "audit": {
+        "all_formal_inspected_native_agreements": 1221,
+        "all_formal_match_events": 1221,
+        "terminal_inspected_native_disagreements": 0,
+        "terminal_client_cached_token_deltas": {
+          "0": 1206
+        },
+        "history_below_native_count": 0,
+        "resident_full_below_native_count": 0,
+        "reclaim_begin_end_complete": true,
+        "drive_begin_end_complete": true,
+        "component_free_matches_reclaim_released": true,
+        "victim_step_matches_reclaim_released": true,
+        "formal_requests_with_finished_commit": 1206
+      },
+      "event_counts": {
+        "page_definitions": 2554,
+        "match": 1221,
+        "lock": 5197,
+        "unlock": 5196,
+        "split": 1852,
+        "insert": 3976,
+        "request_commit": 3976,
+        "reclaim_begin": 3396,
+        "drive_begin": 6792,
+        "drive_end": 6792,
+        "component_free": 20487,
+        "victim_step": 19469,
+        "reclaim_end": 3396
+      },
+      "reclaims": 3396,
+      "reclaim_requested_tokens": {
+        "full": 1593036,
+        "swa": 11988412
+      },
+      "reclaim_released_tokens": {
+        "full": 3057664,
+        "swa": 15845632
+      },
+      "overshoot_tokens": {
+        "full": 1464628,
+        "swa": 3857220
+      },
+      "victims": {
+        "full_steps": 2722,
+        "swa_steps": 16747,
+        "parent_exposed_steps": 3008,
+        "same_chain_followup_steps": 1558,
+        "same_chain_followup_by_pool": {
+          "full": 1558
+        },
+        "same_chain_eventually_selected_by_pool": {
+          "full": 1558
+        },
+        "full_parent_exposed_steps": 2323,
+        "swa_parent_exposed_steps": 685,
+        "full_victim_tokens": 2803968,
+        "swa_victim_tokens": 15838720
+      },
+      "component_free_tokens_by_driver": {
+        "swa:swa": 15838720,
+        "swa:full": 253696,
+        "full:full": 2803968,
+        "full:swa": 6912
+      },
+      "match_tokens": {
+        "native": 33089792,
+        "historical_joint": 46727680,
+        "observed_materialization_shortfall": 13637888,
+        "history_beyond_resident_full": 962304,
+        "resident_full_without_joint_match": 12675584,
+        "resident_full_without_joint_share": 0.9294389277870592,
+        "native_hit_rate_over_prompt": 0.6782392764910316
+      },
+      "deepest_missing_joint_boundary": {
+        "counts": {
+          "requests_with_shortfall": 461,
+          "deepest_boundary_with_observed_swa_free": 447,
+          "driver_swa": 447,
+          "no_missing_resident_node_boundary": 14
+        },
+        "potential_boundary_tokens_by_free_driver": {
+          "swa": 12675584
+        },
+        "original_swa_free_size_tokens": {
+          "count": 447,
+          "min": 256.0,
+          "p50": 256.0,
+          "p95": 3072.0,
+          "max": 7680.0,
+          "mean": 478.78299776286354
+        },
+        "time_since_free_seconds": {
+          "count": 447,
+          "min": 0.160064358,
+          "p50": 9.479988043,
+          "p95": 26.8335494974,
+          "max": 97.66792703,
+          "mean": 11.517576275082774
+        },
+        "is_avoidable_loss_estimate": false
+      },
+      "selected_case_observations": [
+        {
+          "kind": "large_common_shortfall",
+          "session_id": "openhands_eb93634abc30eb8a8ec57b65cb8e09b977148deee8b970538fd4caeeadef880c",
+          "task_id": "drone-planning-control",
+          "turn_index": 63,
+          "minimum_four_run_lcp_proxy_tokens": 118016,
+          "request_id_observed": "3e44bab9531d442497ef56fc7cec512f",
+          "match_event_count": 1,
+          "terminal_match_used": true,
+          "matches": [
+            {
+              "native": 0,
+              "historical_joint": 121088,
+              "shortfall": 121088,
+              "resident_full": 120832,
+              "history_beyond_resident_full": 256,
+              "resident_full_without_joint_match": 120832,
+              "missing_full_cause_tokens": 256,
+              "swa_hole_count": 70,
+              "swa_hole_examples": [
+                {
+                  "end_page": "d35df62cd9d2eff8204c41c26fde9d4bd2e2f29524e5b0d58f9dbd4ca2576d2f",
+                  "path_tokens": 1536,
+                  "last_free": {
+                    "event_seq": 82385,
+                    "reclaim_id": 3282,
+                    "driver": "swa",
+                    "step": 17
+                  }
+                },
+                {
+                  "end_page": "8236b3648485c220bcfb21679770977d3e3a6475120f45f4de3decb9535750c3",
+                  "path_tokens": 2816,
+                  "last_free": {
+                    "event_seq": 82400,
+                    "reclaim_id": 3283,
+                    "driver": "swa",
+                    "step": 1
+                  }
+                },
+                {
+                  "end_page": "930b6b8c531ca2ea115a11d81f7d90bd17e07ded612458cc3f490d0ea2a14a20",
+                  "path_tokens": 3072,
+                  "last_free": {
+                    "event_seq": 82402,
+                    "reclaim_id": 3283,
+                    "driver": "swa",
+                    "step": 2
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "large_common_shortfall",
+          "session_id": "openhands_16b53043119b542db95dd9a89651089b9d4e0f06dc89d9e926a3c0240646d674",
+          "task_id": "shock-analysis-supply",
+          "turn_index": 62,
+          "minimum_four_run_lcp_proxy_tokens": 90112,
+          "request_id_observed": "3fd9371fdc6149b1be4337a1f1e5837e",
+          "match_event_count": 1,
+          "terminal_match_used": true,
+          "matches": [
+            {
+              "native": 0,
+              "historical_joint": 93184,
+              "shortfall": 93184,
+              "resident_full": 93184,
+              "history_beyond_resident_full": 0,
+              "resident_full_without_joint_match": 93184,
+              "missing_full_cause_tokens": 0,
+              "swa_hole_count": 107,
+              "swa_hole_examples": [
+                {
+                  "end_page": "930b6b8c531ca2ea115a11d81f7d90bd17e07ded612458cc3f490d0ea2a14a20",
+                  "path_tokens": 3072,
+                  "last_free": {
+                    "event_seq": 36097,
+                    "reclaim_id": 1495,
+                    "driver": "swa",
+                    "step": 6
+                  }
+                },
+                {
+                  "end_page": "b7719791ac9f7956b9c0ed395eff7f77bbf6281389b86c5f411538d1f98bcaf9",
+                  "path_tokens": 7936,
+                  "last_free": {
+                    "event_seq": 34886,
+                    "reclaim_id": 1446,
+                    "driver": "swa",
+                    "step": 7
+                  }
+                },
+                {
+                  "end_page": "77020f87e2387f9828da9cfdced8811269e1dc7db54b53e7e68aaf46651d6b14",
+                  "path_tokens": 8192,
+                  "last_free": {
+                    "event_seq": 34898,
+                    "reclaim_id": 1447,
+                    "driver": "swa",
+                    "step": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "large_common_shortfall",
+          "session_id": "openhands_d18eb09e77f3e071ba866ec9cea71215732c25fde65ce6471f8c1505213602ee",
+          "task_id": "fix-build-agentops",
+          "turn_index": 100,
+          "minimum_four_run_lcp_proxy_tokens": 79616,
+          "request_id_observed": "f785f81339ac4645bdadaaf7e876e335",
+          "match_event_count": 1,
+          "terminal_match_used": true,
+          "matches": [
+            {
+              "native": 0,
+              "historical_joint": 79616,
+              "shortfall": 79616,
+              "resident_full": 79616,
+              "history_beyond_resident_full": 0,
+              "resident_full_without_joint_match": 79616,
+              "missing_full_cause_tokens": 0,
+              "swa_hole_count": 88,
+              "swa_hole_examples": [
+                {
+                  "end_page": "930b6b8c531ca2ea115a11d81f7d90bd17e07ded612458cc3f490d0ea2a14a20",
+                  "path_tokens": 3072,
+                  "last_free": {
+                    "event_seq": 77611,
+                    "reclaim_id": 3112,
+                    "driver": "swa",
+                    "step": 3
+                  }
+                },
+                {
+                  "end_page": "80ac6e8e6b5c97a88285a7e84da3663168a47542ee40131120dc66d94a463292",
+                  "path_tokens": 11008,
+                  "last_free": {
+                    "event_seq": 76970,
+                    "reclaim_id": 3088,
+                    "driver": "swa",
+                    "step": 7
+                  }
+                },
+                {
+                  "end_page": "9ba3885f181b9f5c33b7209e85aca2d64fc696d8e40f48fcf491cace50004074",
+                  "path_tokens": 11264,
+                  "last_free": {
+                    "event_seq": 76982,
+                    "reclaim_id": 3089,
+                    "driver": "swa",
+                    "step": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "large_common_shortfall",
+          "session_id": "openhands_7fddbb091e4e2c29e02e5d44cdb85cc3717ff223ae37414fd9e8d2597cd02730",
+          "task_id": "shock-analysis-demand",
+          "turn_index": 70,
+          "minimum_four_run_lcp_proxy_tokens": 77824,
+          "request_id_observed": "17eff9a6ac30424a985a5724c3b4b74a",
+          "match_event_count": 1,
+          "terminal_match_used": true,
+          "matches": [
+            {
+              "native": 3072,
+              "historical_joint": 80896,
+              "shortfall": 77824,
+              "resident_full": 80896,
+              "history_beyond_resident_full": 0,
+              "resident_full_without_joint_match": 77824,
+              "missing_full_cause_tokens": 0,
+              "swa_hole_count": 105,
+              "swa_hole_examples": [
+                {
+                  "end_page": "faa2ffd7ae857d30768c03c248b70fde5128119aff7d49495a3e5dce162ff729",
+                  "path_tokens": 7424,
+                  "last_free": {
+                    "event_seq": 13356,
+                    "reclaim_id": 560,
+                    "driver": "swa",
+                    "step": 4
+                  }
+                },
+                {
+                  "end_page": "6ec4f673fd6e77eaaabda4c77aacaf17ce9883c5f6b8dc7947ea37bc922a3e95",
+                  "path_tokens": 7680,
+                  "last_free": {
+                    "event_seq": 13368,
+                    "reclaim_id": 561,
+                    "driver": "swa",
+                    "step": 1
+                  }
+                },
+                {
+                  "end_page": "31db66693580e8b25eada78ed8b576da72cc5643b3a10aff8624d9072fa70a08",
+                  "path_tokens": 7936,
+                  "last_free": {
+                    "event_seq": 13370,
+                    "reclaim_id": 561,
+                    "driver": "swa",
+                    "step": 2
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "stable_slru_more_cached",
+          "session_id": "openhands_0bb81a9cf635697f01fa3087a1d7d0bd204da9724c5b225b727ed68c84a5e1cc",
+          "task_id": "drone-planning-control",
+          "turn_index": 40,
+          "slru_minus_lru_batch1": 65792,
+          "slru_minus_lru_batch2": 65792,
+          "request_id_observed": "3a124d42e83e4527a517ab9290ebd80b",
+          "match_event_count": 1,
+          "terminal_match_used": true,
+          "matches": [
+            {
+              "native": 68864,
+              "historical_joint": 68864,
+              "shortfall": 0,
+              "resident_full": 68864,
+              "history_beyond_resident_full": 0,
+              "resident_full_without_joint_match": 0,
+              "missing_full_cause_tokens": 0,
+              "swa_hole_count": 18,
+              "swa_hole_examples": [
+                {
+                  "end_page": "b30b918bbd282371345ed53ea659416dc94e6862271bab12312901c4cf75918c",
+                  "path_tokens": 11008,
+                  "last_free": {
+                    "event_seq": 65838,
+                    "reclaim_id": 2643,
+                    "driver": "swa",
+                    "step": 7
+                  }
+                },
+                {
+                  "end_page": "2927da1ae09e88605a44cf84a1caedab9ed4754b596700b36f31db66361f3c3d",
+                  "path_tokens": 11264,
+                  "last_free": {
+                    "event_seq": 65850,
+                    "reclaim_id": 2644,
+                    "driver": "swa",
+                    "step": 1
+                  }
+                },
+                {
+                  "end_page": "25eeb43157b5871cdd2e0f3d0d711a9e89536db343b71ec1d07efd9d8ad09fe1",
+                  "path_tokens": 19200,
+                  "last_free": {
+                    "event_seq": 65852,
+                    "reclaim_id": 2644,
+                    "driver": "swa",
+                    "step": 2
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "stable_slru_more_cached",
+          "session_id": "openhands_eb93634abc30eb8a8ec57b65cb8e09b977148deee8b970538fd4caeeadef880c",
+          "task_id": "drone-planning-control",
+          "turn_index": 39,
+          "slru_minus_lru_batch1": 58368,
+          "slru_minus_lru_batch2": 58368,
+          "request_id_observed": "77fb1be6da2f4785b382537b3a0e8339",
+          "match_event_count": 1,
+          "terminal_match_used": true,
+          "matches": [
+            {
+              "native": 61440,
+              "historical_joint": 61440,
+              "shortfall": 0,
+              "resident_full": 61440,
+              "history_beyond_resident_full": 0,
+              "resident_full_without_joint_match": 0,
+              "missing_full_cause_tokens": 0,
+              "swa_hole_count": 76,
+              "swa_hole_examples": [
+                {
+                  "end_page": "930b6b8c531ca2ea115a11d81f7d90bd17e07ded612458cc3f490d0ea2a14a20",
+                  "path_tokens": 3072,
+                  "last_free": {
+                    "event_seq": 67677,
+                    "reclaim_id": 2717,
+                    "driver": "swa",
+                    "step": 4
+                  }
+                },
+                {
+                  "end_page": "2dc0da8b9035957b99beff646a58b57aa3290779d0bc3477b71067679efefa71",
+                  "path_tokens": 8192,
+                  "last_free": {
+                    "event_seq": 67332,
+                    "reclaim_id": 2706,
+                    "driver": "swa",
+                    "step": 5
+                  }
+                },
+                {
+                  "end_page": "102d8843ce87216d96bad02927bc77d6dd78cbd06e90b1937729b633d28702ea",
+                  "path_tokens": 11008,
+                  "last_free": {
+                    "event_seq": 67344,
+                    "reclaim_id": 2707,
+                    "driver": "swa",
+                    "step": 1
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "stable_slru_less_cached",
+          "session_id": "openhands_8e000b0a54a6a1c8320f077ca2a5726e6664a47956d1cd3d8291656a636e9711",
+          "task_id": "fix-erlang-ssh-cve",
+          "turn_index": 49,
+          "slru_minus_lru_batch1": -33024,
+          "slru_minus_lru_batch2": -33024,
+          "request_id_observed": "8a7abcb7a2234ebdbfbea3d4816aab6c",
+          "match_event_count": 1,
+          "terminal_match_used": true,
+          "matches": [
+            {
+              "native": 33024,
+              "historical_joint": 33024,
+              "shortfall": 0,
+              "resident_full": 33024,
+              "history_beyond_resident_full": 0,
+              "resident_full_without_joint_match": 0,
+              "missing_full_cause_tokens": 0,
+              "swa_hole_count": 38,
+              "swa_hole_examples": [
+                {
+                  "end_page": "349bbd3081419e4b80d54b50cdf98b45ad37c4838a73613af4623fcaa0d5267c",
+                  "path_tokens": 5120,
+                  "last_free": {
+                    "event_seq": 65717,
+                    "reclaim_id": 2639,
+                    "driver": "swa",
+                    "step": 7
+                  }
+                },
+                {
+                  "end_page": "6f7d3ff19aaa48bf2884e457f3d84fcebb181435c9e295ccbffc4dd0b15e449d",
+                  "path_tokens": 5376,
+                  "last_free": {
+                    "event_seq": 65719,
+                    "reclaim_id": 2639,
+                    "driver": "swa",
+                    "step": 8
+                  }
+                },
+                {
+                  "end_page": "770c491dbfef8aa1b6b142b54310dbaf88a9cb0c8d737ed54a2049afa63cb823",
+                  "path_tokens": 5632,
+                  "last_free": {
+                    "event_seq": 65721,
+                    "reclaim_id": 2639,
+                    "driver": "swa",
+                    "step": 9
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "stable_slru_less_cached",
+          "session_id": "openhands_b87511edcd5e2d5c09e4e02722e10df6a10bd98c7b70baf129a11863aaa87e8c",
+          "task_id": "setup-fuzzing-py",
+          "turn_index": 33,
+          "slru_minus_lru_batch1": -23296,
+          "slru_minus_lru_batch2": -20224,
+          "request_id_observed": "b9c076623b1b4840a38c2761c00c3fc6",
+          "match_event_count": 1,
+          "terminal_match_used": true,
+          "matches": [
+            {
+              "native": 23296,
+              "historical_joint": 23296,
+              "shortfall": 0,
+              "resident_full": 23296,
+              "history_beyond_resident_full": 0,
+              "resident_full_without_joint_match": 0,
+              "missing_full_cause_tokens": 0,
+              "swa_hole_count": 15,
+              "swa_hole_examples": [
+                {
+                  "end_page": "08a4c296c61fdf5e1a859c3559c7868271e6bcb0b60cc3d466c61003d6a33db0",
+                  "path_tokens": 4864,
+                  "last_free": {
+                    "event_seq": 65636,
+                    "reclaim_id": 2635,
+                    "driver": "swa",
+                    "step": 15
+                  }
+                },
+                {
+                  "end_page": "4a86003bda7f68552f68cac0ce65b68940f615d5d30118dfc8881eabef132979",
+                  "path_tokens": 5120,
+                  "last_free": {
+                    "event_seq": 65649,
+                    "reclaim_id": 2636,
+                    "driver": "swa",
+                    "step": 1
+                  }
+                },
+                {
+                  "end_page": "9af6ba98c3aa276021e3d038fc35dc5d3aa0106aa67a64c0e31fb63424688102",
+                  "path_tokens": 7936,
+                  "last_free": {
+                    "event_seq": 65651,
+                    "reclaim_id": 2636,
+                    "driver": "swa",
+                    "step": 2
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "counterfactual": {
+        "page_size": 256,
+        "sliding_window_size": 128,
+        "model_config_sha256": "b628e63398a645abc711d92207f8737dd8140f7a4ef1e0a5b3616019e0ddd818",
+        "native_validator_audit": {
+          "checked_formal_match_events": 1221,
+          "native_validator_disagreements": 0
+        },
+        "systematic_selection": "last eligible native internal SWA victim / oldest unselected equal-size initial internal candidate",
+        "systematic_dispositions": {
+          "active_swa_drives": 3000,
+          "no_legal_exact_size_swap": 212
+        },
+        "systematic_summary": {
+          "plans": 2788,
+          "status_counts": {
+            "expired_before_changed_match": 2778,
+            "first_changed_match": 7,
+            "trace_ended_before_changed_match": 3
+          },
+          "positive_first_effect": 6,
+          "negative_first_effect": 1,
+          "unique_positive_first_effect_requests": 5,
+          "unique_negative_first_effect_requests": 1,
+          "changed_native_terminal_matches": 7,
+          "zero_or_expired": 2781,
+          "positive_tokens_distribution": {
+            "count": 6,
+            "min": 3072.0,
+            "p50": 22144.0,
+            "p95": 62720.0,
+            "max": 72448.0,
+            "mean": 26069.333333333332
+          },
+          "negative_loss_tokens_distribution": {
+            "count": 1,
+            "min": 38656.0,
+            "p50": 38656.0,
+            "p95": 38656.0,
+            "max": 38656.0,
+            "mean": 38656.0
+          },
+          "summing_local_alternatives_as_policy_gain_allowed": false
+        },
+        "systematic_continued_equal_budget_summary": {
+          "plans": 2788,
+          "status_counts": {
+            "first_changed_match": 94,
+            "expired_before_changed_match": 2689,
+            "trace_ended_before_changed_match": 5
+          },
+          "positive_first_effect": 88,
+          "negative_first_effect": 6,
+          "unique_positive_first_effect_requests": 42,
+          "unique_negative_first_effect_requests": 1,
+          "changed_native_terminal_matches": 94,
+          "zero_or_expired": 2694,
+          "positive_tokens_distribution": {
+            "count": 88,
+            "min": 2048.0,
+            "p50": 16128.0,
+            "p95": 63987.2,
+            "max": 77824.0,
+            "mean": 24637.090909090908
+          },
+          "negative_loss_tokens_distribution": {
+            "count": 6,
+            "min": 12032.0,
+            "p50": 38656.0,
+            "p95": 38656.0,
+            "max": 38656.0,
+            "mean": 34218.666666666664
+          },
+          "summing_local_alternatives_as_policy_gain_allowed": false
+        },
+        "preregistered_case_alternatives": [
+          {
+            "kind": "large_common_shortfall",
+            "session_id": "openhands_eb93634abc30eb8a8ec57b65cb8e09b977148deee8b970538fd4caeeadef880c",
+            "task_id": "drone-planning-control",
+            "turn_index": 63,
+            "minimum_four_run_lcp_proxy_tokens": 118016,
+            "target_match_event_seq": 82447,
+            "target_native_tokens": 0,
+            "target_resident_full_tokens": 120832,
+            "selection_uses_target_after_the_fact": true,
+            "preserved_path_tokens": 120832,
+            "causal_free_event_seq": 81681,
+            "reclaim_id": 3264,
+            "legal_equal_size_choices": 29,
+            "option_summary": {
+              "plans": 29,
+              "status_counts": {
+                "expired_before_changed_match": 29
+              },
+              "positive_first_effect": 0,
+              "negative_first_effect": 0,
+              "unique_positive_first_effect_requests": 0,
+              "unique_negative_first_effect_requests": 0,
+              "changed_native_terminal_matches": 0,
+              "zero_or_expired": 29,
+              "positive_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "negative_loss_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "summing_local_alternatives_as_policy_gain_allowed": false
+            },
+            "oldest_equal_size_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 4078,
+                  "end_page": "c2817b498284425fd65e0a694e70774dbb2b25414ce103213fcfec29d6321b09",
+                  "path_tokens": 120832,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 13
+                },
+                "replacement": {
+                  "node_id": 4073,
+                  "end_page": "2cfea9f46f7a0eef1fcb278e5ac1d84f36678eec3e2bd5d9b7689feefc3a1a64",
+                  "path_tokens": 92928,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 27
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_later_free",
+                "stop_event_seq": 81733,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.356699146,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 81914,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 1.327696569,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 3,
+                "rebases": [
+                  {
+                    "native_free_event_seq": 81733,
+                    "replacement_end_page": "b24718bc370b4b965c754fbeae5a6fac7496a79514eec13553c6428c7a047e56",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 81810,
+                    "replacement_end_page": "462fae1c45ac6fdd92f1b4784cb0b7533b166e6d66ba18059f45c46f6ad111ac",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 81901,
+                    "replacement_end_page": "fc327be74c5d7429d1d9f29e58d2fa6ebd9aab58e96762919ab9ac325d8070da",
+                    "exact_additional_swa_release_tokens": 256
+                  }
+                ]
+              }
+            },
+            "hindsight_best_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 4078,
+                  "end_page": "c2817b498284425fd65e0a694e70774dbb2b25414ce103213fcfec29d6321b09",
+                  "path_tokens": 120832,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 13
+                },
+                "replacement": {
+                  "node_id": 4073,
+                  "end_page": "2cfea9f46f7a0eef1fcb278e5ac1d84f36678eec3e2bd5d9b7689feefc3a1a64",
+                  "path_tokens": 92928,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 27
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_later_free",
+                "stop_event_seq": 81733,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.356699146,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 81914,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 1.327696569,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 3,
+                "rebases": [
+                  {
+                    "native_free_event_seq": 81733,
+                    "replacement_end_page": "b24718bc370b4b965c754fbeae5a6fac7496a79514eec13553c6428c7a047e56",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 81810,
+                    "replacement_end_page": "462fae1c45ac6fdd92f1b4784cb0b7533b166e6d66ba18059f45c46f6ad111ac",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 81901,
+                    "replacement_end_page": "fc327be74c5d7429d1d9f29e58d2fa6ebd9aab58e96762919ab9ac325d8070da",
+                    "exact_additional_swa_release_tokens": 256
+                  }
+                ]
+              }
+            },
+            "status": "evaluated"
+          },
+          {
+            "kind": "large_common_shortfall",
+            "session_id": "openhands_16b53043119b542db95dd9a89651089b9d4e0f06dc89d9e926a3c0240646d674",
+            "task_id": "shock-analysis-supply",
+            "turn_index": 62,
+            "minimum_four_run_lcp_proxy_tokens": 90112,
+            "target_match_event_seq": 36110,
+            "target_native_tokens": 0,
+            "target_resident_full_tokens": 93184,
+            "selection_uses_target_after_the_fact": true,
+            "preserved_path_tokens": 93184,
+            "causal_free_event_seq": 35528,
+            "reclaim_id": 1470,
+            "legal_equal_size_choices": 24,
+            "option_summary": {
+              "plans": 24,
+              "status_counts": {
+                "expired_before_changed_match": 24
+              },
+              "positive_first_effect": 0,
+              "negative_first_effect": 0,
+              "unique_positive_first_effect_requests": 0,
+              "unique_negative_first_effect_requests": 0,
+              "changed_native_terminal_matches": 0,
+              "zero_or_expired": 24,
+              "positive_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "negative_loss_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "summing_local_alternatives_as_policy_gain_allowed": false
+            },
+            "oldest_equal_size_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 1975,
+                  "end_page": "89867f7f85f578e16882c9eb3f5254a01c906bd002f5256670fcaaf3a2af94ed",
+                  "path_tokens": 93184,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 1
+                },
+                "replacement": {
+                  "node_id": 942,
+                  "end_page": "5f014981d88925d8f836dc660fc87ba30ca40814f6c262ef55c6121e476732bc",
+                  "path_tokens": 8192,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 4
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_later_free",
+                "stop_event_seq": 35558,
+                "unaffected_matches": 1,
+                "elapsed_seconds": 0.489429945,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 35705,
+                "unaffected_matches": 1,
+                "elapsed_seconds": 2.654912919,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 6,
+                "rebases": [
+                  {
+                    "native_free_event_seq": 35558,
+                    "replacement_end_page": "acf8615f443aff904c903c2574469517d9d958a8c314289df56ad78824ae4e10",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 35574,
+                    "replacement_end_page": "4523066d1b04b41de0af61b77309dbf07573d85a8283c9fa64d524dcdad5ad07",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 35614,
+                    "replacement_end_page": "bff9b7f4056bcd26f6c1dd32453a39d63d1d6c05407177fcfbea50c6e8142e93",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 35648,
+                    "replacement_end_page": "8793c70ff8c2095a0767b1f0911b95edcfc5eb2248a769f8c1e7c5e58b08876e",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 35680,
+                    "replacement_end_page": "99cfa32afb618611392998a646f9747a9b8f9d5b929e26cca549255fd319f21e",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 35694,
+                    "replacement_end_page": "d8e17124fc93c7f137e25712299fe9df8aad5115ec16bacb19f304e596dee7af",
+                    "exact_additional_swa_release_tokens": 256
+                  }
+                ]
+              }
+            },
+            "hindsight_best_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 1975,
+                  "end_page": "89867f7f85f578e16882c9eb3f5254a01c906bd002f5256670fcaaf3a2af94ed",
+                  "path_tokens": 93184,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 1
+                },
+                "replacement": {
+                  "node_id": 942,
+                  "end_page": "5f014981d88925d8f836dc660fc87ba30ca40814f6c262ef55c6121e476732bc",
+                  "path_tokens": 8192,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 4
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_later_free",
+                "stop_event_seq": 35558,
+                "unaffected_matches": 1,
+                "elapsed_seconds": 0.489429945,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 35705,
+                "unaffected_matches": 1,
+                "elapsed_seconds": 2.654912919,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 6,
+                "rebases": [
+                  {
+                    "native_free_event_seq": 35558,
+                    "replacement_end_page": "acf8615f443aff904c903c2574469517d9d958a8c314289df56ad78824ae4e10",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 35574,
+                    "replacement_end_page": "4523066d1b04b41de0af61b77309dbf07573d85a8283c9fa64d524dcdad5ad07",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 35614,
+                    "replacement_end_page": "bff9b7f4056bcd26f6c1dd32453a39d63d1d6c05407177fcfbea50c6e8142e93",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 35648,
+                    "replacement_end_page": "8793c70ff8c2095a0767b1f0911b95edcfc5eb2248a769f8c1e7c5e58b08876e",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 35680,
+                    "replacement_end_page": "99cfa32afb618611392998a646f9747a9b8f9d5b929e26cca549255fd319f21e",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 35694,
+                    "replacement_end_page": "d8e17124fc93c7f137e25712299fe9df8aad5115ec16bacb19f304e596dee7af",
+                    "exact_additional_swa_release_tokens": 256
+                  }
+                ]
+              }
+            },
+            "status": "evaluated"
+          },
+          {
+            "kind": "large_common_shortfall",
+            "session_id": "openhands_d18eb09e77f3e071ba866ec9cea71215732c25fde65ce6471f8c1505213602ee",
+            "task_id": "fix-build-agentops",
+            "turn_index": 100,
+            "minimum_four_run_lcp_proxy_tokens": 79616,
+            "target_match_event_seq": 77737,
+            "target_native_tokens": 0,
+            "target_resident_full_tokens": 79616,
+            "selection_uses_target_after_the_fact": true,
+            "preserved_path_tokens": 79616,
+            "causal_free_event_seq": 77513,
+            "reclaim_id": 3109,
+            "legal_equal_size_choices": 17,
+            "option_summary": {
+              "plans": 17,
+              "status_counts": {
+                "expired_before_changed_match": 17
+              },
+              "positive_first_effect": 0,
+              "negative_first_effect": 0,
+              "unique_positive_first_effect_requests": 0,
+              "unique_negative_first_effect_requests": 0,
+              "changed_native_terminal_matches": 0,
+              "zero_or_expired": 17,
+              "positive_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "negative_loss_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "summing_local_alternatives_as_policy_gain_allowed": false
+            },
+            "oldest_equal_size_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 3740,
+                  "end_page": "346f16d3650bda390ca6998ee79a225717322148a060002b2fca2d6029fe9994",
+                  "path_tokens": 79616,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 10
+                },
+                "replacement": {
+                  "node_id": 3726,
+                  "end_page": "658747c9b66b88c090752c48160f0f99e8aa83cd2523b45fe491285981e6b42e",
+                  "path_tokens": 5376,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 16
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_later_free",
+                "stop_event_seq": 77537,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.36015761,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 77616,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 1.009683725,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 3,
+                "rebases": [
+                  {
+                    "native_free_event_seq": 77537,
+                    "replacement_end_page": "bee6c0f5c33d84120e14be76baf1e53b7278b8fd70be7b9e8c8f38cf382f0dfa",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 77574,
+                    "replacement_end_page": "03f1c294eedd0f0e4407ae67d577feeeb7280ce2139fdbe5adb91fd744d55c2d",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 77606,
+                    "replacement_end_page": "10ac4a3f0d6a7c2091b27a75a0ae30bd9bab0f8e8ede28a4a5d08b5108756814",
+                    "exact_additional_swa_release_tokens": 256
+                  }
+                ]
+              }
+            },
+            "hindsight_best_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 3740,
+                  "end_page": "346f16d3650bda390ca6998ee79a225717322148a060002b2fca2d6029fe9994",
+                  "path_tokens": 79616,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 10
+                },
+                "replacement": {
+                  "node_id": 3726,
+                  "end_page": "658747c9b66b88c090752c48160f0f99e8aa83cd2523b45fe491285981e6b42e",
+                  "path_tokens": 5376,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 16
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_later_free",
+                "stop_event_seq": 77537,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.36015761,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 77616,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 1.009683725,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 3,
+                "rebases": [
+                  {
+                    "native_free_event_seq": 77537,
+                    "replacement_end_page": "bee6c0f5c33d84120e14be76baf1e53b7278b8fd70be7b9e8c8f38cf382f0dfa",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 77574,
+                    "replacement_end_page": "03f1c294eedd0f0e4407ae67d577feeeb7280ce2139fdbe5adb91fd744d55c2d",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 77606,
+                    "replacement_end_page": "10ac4a3f0d6a7c2091b27a75a0ae30bd9bab0f8e8ede28a4a5d08b5108756814",
+                    "exact_additional_swa_release_tokens": 256
+                  }
+                ]
+              }
+            },
+            "status": "evaluated"
+          },
+          {
+            "kind": "large_common_shortfall",
+            "session_id": "openhands_7fddbb091e4e2c29e02e5d44cdb85cc3717ff223ae37414fd9e8d2597cd02730",
+            "task_id": "shock-analysis-demand",
+            "turn_index": 70,
+            "minimum_four_run_lcp_proxy_tokens": 77824,
+            "target_match_event_seq": 14596,
+            "target_native_tokens": 3072,
+            "target_resident_full_tokens": 80896,
+            "selection_uses_target_after_the_fact": true,
+            "preserved_path_tokens": 80896,
+            "causal_free_event_seq": 14229,
+            "reclaim_id": 596,
+            "legal_equal_size_choices": 15,
+            "option_summary": {
+              "plans": 15,
+              "status_counts": {
+                "first_changed_match": 15
+              },
+              "positive_first_effect": 15,
+              "negative_first_effect": 0,
+              "unique_positive_first_effect_requests": 1,
+              "unique_negative_first_effect_requests": 0,
+              "changed_native_terminal_matches": 15,
+              "zero_or_expired": 0,
+              "positive_tokens_distribution": {
+                "count": 15,
+                "min": 77824.0,
+                "p50": 77824.0,
+                "p95": 77824.0,
+                "max": 77824.0,
+                "mean": 77824.0
+              },
+              "negative_loss_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "summing_local_alternatives_as_policy_gain_allowed": false
+            },
+            "oldest_equal_size_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 1278,
+                  "end_page": "3c8141df31c5b31ee406eebf494dc5bd67c76a6eac6507e0215b0266bd5693cc",
+                  "path_tokens": 80896,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 0
+                },
+                "replacement": {
+                  "node_id": 476,
+                  "end_page": "d8e17124fc93c7f137e25712299fe9df8aad5115ec16bacb19f304e596dee7af",
+                  "path_tokens": 11264,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 4
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_later_free",
+                "stop_event_seq": 14271,
+                "unaffected_matches": 1,
+                "elapsed_seconds": 0.714544903,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "first_changed_match",
+                "first_changed_event_seq": 14596,
+                "request_id": "17eff9a6ac30424a985a5724c3b4b74a",
+                "session_id": "openhands_7fddbb091e4e2c29e02e5d44cdb85cc3717ff223ae37414fd9e8d2597cd02730",
+                "turn_index": 70,
+                "formal_request": true,
+                "native_matched_tokens": 3072,
+                "hypothetical_matched_tokens": 80896,
+                "preservation_gain_tokens": 77824,
+                "replacement_loss_tokens": 0,
+                "net_first_effect_tokens": 77824,
+                "unaffected_matches": 3,
+                "rebase_count": 11,
+                "rebases": [
+                  {
+                    "native_free_event_seq": 14271,
+                    "replacement_end_page": "6a39753a19c7c174f7bf001388abef832087ef18a578d896c0acc0c19fd158b1",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14295,
+                    "replacement_end_page": "bbad2f95a2100091dd6a2ea3964e78dc0e28e9629dc6b5b48d5e37ebbb7b670a",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14309,
+                    "replacement_end_page": "218509812309c85488ddcca6c2aa46004fbf171aba52782002b7f2b5344833f6",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14353,
+                    "replacement_end_page": "fae8d44b25a78b3c943ce4506d8cbe86f51663baa306ab97199bca07fc2e3f29",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14375,
+                    "replacement_end_page": "95be8e725e24ef6fd89b4ccff493968b0bfe68126c392ca48383c5ad6336be94",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14394,
+                    "replacement_end_page": "5407d684cb1220d635f673c4a77eb06228d3a21c0f363f40650188bd2facc227",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14415,
+                    "replacement_end_page": "5b609f1f073066217a404a06d4b52cc7fcff5394bdb42fa102e300725c6657ee",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14450,
+                    "replacement_end_page": "3589684d0f3e1463957f0e84d791157a4aa5e728cd1b50dd97237251bc274678",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14470,
+                    "replacement_end_page": "a6b6d2978bf37fc663199368a291fcd2670309ed781523d1711452914b0cb103",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14502,
+                    "replacement_end_page": "2927da1ae09e88605a44cf84a1caedab9ed4754b596700b36f31db66361f3c3d",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14580,
+                    "replacement_end_page": "bf9c16c29c9fd9eec19974c6abf5154a752e740c29cd15499cc93effd1d6dbdc",
+                    "exact_additional_swa_release_tokens": 256
+                  }
+                ],
+                "elapsed_seconds": 6.125216259,
+                "native_match_was_request_terminal": true
+              }
+            },
+            "hindsight_best_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 1278,
+                  "end_page": "3c8141df31c5b31ee406eebf494dc5bd67c76a6eac6507e0215b0266bd5693cc",
+                  "path_tokens": 80896,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 0
+                },
+                "replacement": {
+                  "node_id": 476,
+                  "end_page": "d8e17124fc93c7f137e25712299fe9df8aad5115ec16bacb19f304e596dee7af",
+                  "path_tokens": 11264,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 4
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_later_free",
+                "stop_event_seq": 14271,
+                "unaffected_matches": 1,
+                "elapsed_seconds": 0.714544903,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "first_changed_match",
+                "first_changed_event_seq": 14596,
+                "request_id": "17eff9a6ac30424a985a5724c3b4b74a",
+                "session_id": "openhands_7fddbb091e4e2c29e02e5d44cdb85cc3717ff223ae37414fd9e8d2597cd02730",
+                "turn_index": 70,
+                "formal_request": true,
+                "native_matched_tokens": 3072,
+                "hypothetical_matched_tokens": 80896,
+                "preservation_gain_tokens": 77824,
+                "replacement_loss_tokens": 0,
+                "net_first_effect_tokens": 77824,
+                "unaffected_matches": 3,
+                "rebase_count": 11,
+                "rebases": [
+                  {
+                    "native_free_event_seq": 14271,
+                    "replacement_end_page": "6a39753a19c7c174f7bf001388abef832087ef18a578d896c0acc0c19fd158b1",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14295,
+                    "replacement_end_page": "bbad2f95a2100091dd6a2ea3964e78dc0e28e9629dc6b5b48d5e37ebbb7b670a",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14309,
+                    "replacement_end_page": "218509812309c85488ddcca6c2aa46004fbf171aba52782002b7f2b5344833f6",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14353,
+                    "replacement_end_page": "fae8d44b25a78b3c943ce4506d8cbe86f51663baa306ab97199bca07fc2e3f29",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14375,
+                    "replacement_end_page": "95be8e725e24ef6fd89b4ccff493968b0bfe68126c392ca48383c5ad6336be94",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14394,
+                    "replacement_end_page": "5407d684cb1220d635f673c4a77eb06228d3a21c0f363f40650188bd2facc227",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14415,
+                    "replacement_end_page": "5b609f1f073066217a404a06d4b52cc7fcff5394bdb42fa102e300725c6657ee",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14450,
+                    "replacement_end_page": "3589684d0f3e1463957f0e84d791157a4aa5e728cd1b50dd97237251bc274678",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14470,
+                    "replacement_end_page": "a6b6d2978bf37fc663199368a291fcd2670309ed781523d1711452914b0cb103",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14502,
+                    "replacement_end_page": "2927da1ae09e88605a44cf84a1caedab9ed4754b596700b36f31db66361f3c3d",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 14580,
+                    "replacement_end_page": "bf9c16c29c9fd9eec19974c6abf5154a752e740c29cd15499cc93effd1d6dbdc",
+                    "exact_additional_swa_release_tokens": 256
+                  }
+                ],
+                "elapsed_seconds": 6.125216259,
+                "native_match_was_request_terminal": true
+              }
+            },
+            "status": "evaluated"
+          },
+          {
+            "kind": "stable_slru_more_cached",
+            "session_id": "openhands_0bb81a9cf635697f01fa3087a1d7d0bd204da9724c5b225b727ed68c84a5e1cc",
+            "task_id": "drone-planning-control",
+            "turn_index": 40,
+            "slru_minus_lru_batch1": 65792,
+            "slru_minus_lru_batch2": 65792,
+            "target_match_event_seq": 67578,
+            "target_native_tokens": 68864,
+            "target_resident_full_tokens": 68864,
+            "selection_uses_target_after_the_fact": true,
+            "preserved_path_tokens": 68608,
+            "causal_free_event_seq": 66646,
+            "reclaim_id": 2680,
+            "legal_equal_size_choices": 0,
+            "option_summary": {
+              "plans": 0,
+              "status_counts": {},
+              "positive_first_effect": 0,
+              "negative_first_effect": 0,
+              "unique_positive_first_effect_requests": 0,
+              "unique_negative_first_effect_requests": 0,
+              "changed_native_terminal_matches": 0,
+              "zero_or_expired": 0,
+              "positive_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "negative_loss_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "summing_local_alternatives_as_policy_gain_allowed": false
+            },
+            "oldest_equal_size_option": null,
+            "hindsight_best_option": null,
+            "status": "no_legal_exact_size_swap"
+          },
+          {
+            "kind": "stable_slru_more_cached",
+            "session_id": "openhands_eb93634abc30eb8a8ec57b65cb8e09b977148deee8b970538fd4caeeadef880c",
+            "task_id": "drone-planning-control",
+            "turn_index": 39,
+            "slru_minus_lru_batch1": 58368,
+            "slru_minus_lru_batch2": 58368,
+            "target_match_event_seq": 67741,
+            "target_native_tokens": 61440,
+            "target_resident_full_tokens": 61440,
+            "selection_uses_target_after_the_fact": true,
+            "preserved_path_tokens": 61184,
+            "causal_free_event_seq": 67672,
+            "reclaim_id": 2717,
+            "legal_equal_size_choices": 4,
+            "option_summary": {
+              "plans": 4,
+              "status_counts": {
+                "expired_before_changed_match": 4
+              },
+              "positive_first_effect": 0,
+              "negative_first_effect": 0,
+              "unique_positive_first_effect_requests": 0,
+              "unique_negative_first_effect_requests": 0,
+              "changed_native_terminal_matches": 0,
+              "zero_or_expired": 4,
+              "positive_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "negative_loss_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "summing_local_alternatives_as_policy_gain_allowed": false
+            },
+            "oldest_equal_size_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 768,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 2918,
+                  "end_page": "15c874da06dc25f89b0fa9934bbc48e2c3612f6109a6905a9ea6e6c80746cf2f",
+                  "path_tokens": 61184,
+                  "logical_tokens": 768,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 1
+                },
+                "replacement": {
+                  "node_id": 2128,
+                  "end_page": "22d307ca74ebcef888c5438a919bd448a9159dda7b6a735aab6e9b48780414a7",
+                  "path_tokens": 7424,
+                  "logical_tokens": 768,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 11
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 67733,
+                "unaffected_matches": 2,
+                "elapsed_seconds": 1.219735688,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 67733,
+                "unaffected_matches": 2,
+                "elapsed_seconds": 1.219735688,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              }
+            },
+            "hindsight_best_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 768,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 2918,
+                  "end_page": "15c874da06dc25f89b0fa9934bbc48e2c3612f6109a6905a9ea6e6c80746cf2f",
+                  "path_tokens": 61184,
+                  "logical_tokens": 768,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 1
+                },
+                "replacement": {
+                  "node_id": 2128,
+                  "end_page": "22d307ca74ebcef888c5438a919bd448a9159dda7b6a735aab6e9b48780414a7",
+                  "path_tokens": 7424,
+                  "logical_tokens": 768,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 11
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 67733,
+                "unaffected_matches": 2,
+                "elapsed_seconds": 1.219735688,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 67733,
+                "unaffected_matches": 2,
+                "elapsed_seconds": 1.219735688,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              }
+            },
+            "status": "evaluated"
+          },
+          {
+            "kind": "stable_slru_less_cached",
+            "session_id": "openhands_8e000b0a54a6a1c8320f077ca2a5726e6664a47956d1cd3d8291656a636e9711",
+            "task_id": "fix-erlang-ssh-cve",
+            "turn_index": 49,
+            "slru_minus_lru_batch1": -33024,
+            "slru_minus_lru_batch2": -33024,
+            "target_match_event_seq": 66398,
+            "target_native_tokens": 33024,
+            "target_resident_full_tokens": 33024,
+            "selection_uses_target_after_the_fact": true,
+            "preserved_path_tokens": 32768,
+            "causal_free_event_seq": 65831,
+            "reclaim_id": 2643,
+            "legal_equal_size_choices": 4,
+            "option_summary": {
+              "plans": 4,
+              "status_counts": {
+                "expired_before_changed_match": 4
+              },
+              "positive_first_effect": 0,
+              "negative_first_effect": 0,
+              "unique_positive_first_effect_requests": 0,
+              "unique_negative_first_effect_requests": 0,
+              "changed_native_terminal_matches": 0,
+              "zero_or_expired": 4,
+              "positive_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "negative_loss_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "summing_local_alternatives_as_policy_gain_allowed": false
+            },
+            "oldest_equal_size_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 2865,
+                  "end_page": "54c890478a53b13c09c8396e507a718f3b128c7c48f2f14b7f68a9e652d0ab89",
+                  "path_tokens": 32768,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 3
+                },
+                "replacement": {
+                  "node_id": 2834,
+                  "end_page": "2927da1ae09e88605a44cf84a1caedab9ed4754b596700b36f31db66361f3c3d",
+                  "path_tokens": 11264,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 7
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 65842,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.385398284,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 65842,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.385398284,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              }
+            },
+            "hindsight_best_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 2865,
+                  "end_page": "54c890478a53b13c09c8396e507a718f3b128c7c48f2f14b7f68a9e652d0ab89",
+                  "path_tokens": 32768,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 3
+                },
+                "replacement": {
+                  "node_id": 2834,
+                  "end_page": "2927da1ae09e88605a44cf84a1caedab9ed4754b596700b36f31db66361f3c3d",
+                  "path_tokens": 11264,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 7
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 65842,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.385398284,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 65842,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.385398284,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              }
+            },
+            "status": "evaluated"
+          },
+          {
+            "kind": "stable_slru_less_cached",
+            "session_id": "openhands_b87511edcd5e2d5c09e4e02722e10df6a10bd98c7b70baf129a11863aaa87e8c",
+            "task_id": "setup-fuzzing-py",
+            "turn_index": 33,
+            "slru_minus_lru_batch1": -23296,
+            "slru_minus_lru_batch2": -20224,
+            "target_match_event_seq": 66413,
+            "target_native_tokens": 23296,
+            "target_resident_full_tokens": 23296,
+            "selection_uses_target_after_the_fact": true,
+            "preserved_path_tokens": 23040,
+            "causal_free_event_seq": 65710,
+            "reclaim_id": 2639,
+            "legal_equal_size_choices": 0,
+            "option_summary": {
+              "plans": 0,
+              "status_counts": {},
+              "positive_first_effect": 0,
+              "negative_first_effect": 0,
+              "unique_positive_first_effect_requests": 0,
+              "unique_negative_first_effect_requests": 0,
+              "changed_native_terminal_matches": 0,
+              "zero_or_expired": 0,
+              "positive_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "negative_loss_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "summing_local_alternatives_as_policy_gain_allowed": false
+            },
+            "oldest_equal_size_option": null,
+            "hindsight_best_option": null,
+            "status": "no_legal_exact_size_swap"
+          }
+        ],
+        "representative_negative_example": {
+          "reclaim_id": 213,
+          "drive_begin_event_seq": 5222,
+          "drive_end_event_seq": 5230,
+          "native_step": 2,
+          "equal_size_choices": 28,
+          "swap": {
+            "swa_release_unchanged_tokens": 256,
+            "full_release_delta_tokens": 0,
+            "target_component_locks_zero": true,
+            "both_initial_internal_candidates": true,
+            "preserved": {
+              "node_id": 606,
+              "end_page": "052184af106f3b7f58aea915d4942aa7f7c10dfdb2d6a42d02bb1de71ab626a1",
+              "path_tokens": 24576,
+              "logical_tokens": 256,
+              "full_lock_ref": 1,
+              "swa_lock_ref": 0,
+              "policy_score": 1
+            },
+            "replacement": {
+              "node_id": 607,
+              "end_page": "046fdb0de8aa1054f62242889f063a8dc45a472dd30f2486493be4ba2b3b5aad",
+              "path_tokens": 34560,
+              "logical_tokens": 256,
+              "full_lock_ref": 1,
+              "swa_lock_ref": 0,
+              "policy_score": 4
+            }
+          },
+          "effect": {
+            "status": "expired_before_changed_match",
+            "reason": "replacement_later_free",
+            "stop_event_seq": 5254,
+            "unaffected_matches": 1,
+            "elapsed_seconds": 1.622449274,
+            "net_first_effect_tokens": 0,
+            "rebase_count": 0,
+            "rebases": []
+          },
+          "continued_equal_budget_effect": {
+            "status": "first_changed_match",
+            "first_changed_event_seq": 5429,
+            "request_id": "18d5e3d257534b218c8167e5dbafc3c4",
+            "session_id": "openhands_0ca57752127116f752c0aef0507a32422771d909683b1b911f87808524c87905",
+            "turn_index": 10,
+            "formal_request": true,
+            "native_matched_tokens": 41728,
+            "hypothetical_matched_tokens": 3072,
+            "preservation_gain_tokens": 0,
+            "replacement_loss_tokens": 38656,
+            "net_first_effect_tokens": -38656,
+            "unaffected_matches": 3,
+            "rebase_count": 5,
+            "rebases": [
+              {
+                "native_free_event_seq": 5254,
+                "replacement_end_page": "7aad6ccfd4fb0d494413e390bbe21cf5c278fad6b4ae6a75211d17b34d0d6809",
+                "exact_additional_swa_release_tokens": 256
+              },
+              {
+                "native_free_event_seq": 5303,
+                "replacement_end_page": "55b238c76d8049a3cecd8ea750e28554e72f8a13ac694ed1816bfd477cb3b7fa",
+                "exact_additional_swa_release_tokens": 256
+              },
+              {
+                "native_free_event_seq": 5339,
+                "replacement_end_page": "3a1c69b32f4f1b5117cebf9860efe4df966de4c9c42de5054a29963d9b95256c",
+                "exact_additional_swa_release_tokens": 256
+              },
+              {
+                "native_free_event_seq": 5380,
+                "replacement_end_page": "ae1fbef68afaec1178dcafe541971fafb8f4890ff8a005ce01e0cf7274a2e61c",
+                "exact_additional_swa_release_tokens": 256
+              },
+              {
+                "native_free_event_seq": 5418,
+                "replacement_end_page": "29b8ce765d8642d1d96f2794372b9c7954292fbdc457dfed366d66c9eafa02b3",
+                "exact_additional_swa_release_tokens": 256
+              }
+            ],
+            "elapsed_seconds": 4.071140441,
+            "native_match_was_request_terminal": true
+          }
+        }
+      }
+    },
+    {
+      "policy": "slru",
+      "event_file": "results/mechanism/20261008T071917Z_ce85885f/02_slru/runtime_events/events.rank0.pid1399725.jsonl",
+      "event_file_sha256": "a29f9860fdb2f5210e2325de19c7d6a421acf8932a4e62ab8af5c557ce90876e",
+      "measurement_scope": {
+        "flush_event_seq": 1744,
+        "first_formal_match_event_seq": 1746,
+        "last_event_seq": 81976,
+        "excluded_pre_measurement_events": 1744
+      },
+      "requests": 1206,
+      "terminal_match_count": 1206,
+      "match_request_coverage": 1.0,
+      "audit": {
+        "all_formal_inspected_native_agreements": 1225,
+        "all_formal_match_events": 1225,
+        "terminal_inspected_native_disagreements": 0,
+        "terminal_client_cached_token_deltas": {
+          "0": 1206
+        },
+        "history_below_native_count": 0,
+        "resident_full_below_native_count": 0,
+        "reclaim_begin_end_complete": true,
+        "drive_begin_end_complete": true,
+        "component_free_matches_reclaim_released": true,
+        "victim_step_matches_reclaim_released": true,
+        "formal_requests_with_finished_commit": 1206
+      },
+      "event_counts": {
+        "page_definitions": 2554,
+        "match": 1225,
+        "lock": 5272,
+        "unlock": 5271,
+        "split": 1945,
+        "insert": 4047,
+        "request_commit": 4047,
+        "reclaim_begin": 3447,
+        "drive_begin": 6894,
+        "drive_end": 6894,
+        "component_free": 18373,
+        "victim_step": 16816,
+        "reclaim_end": 3447
+      },
+      "reclaims": 3447,
+      "reclaim_requested_tokens": {
+        "full": 1972194,
+        "swa": 11893264
+      },
+      "reclaim_released_tokens": {
+        "full": 3428608,
+        "swa": 16460288
+      },
+      "overshoot_tokens": {
+        "full": 1456414,
+        "swa": 4567024
+      },
+      "victims": {
+        "full_steps": 3239,
+        "swa_steps": 13577,
+        "parent_exposed_steps": 3278,
+        "same_chain_followup_steps": 1476,
+        "same_chain_followup_by_pool": {
+          "full": 1476
+        },
+        "same_chain_eventually_selected_by_pool": {
+          "full": 1477
+        },
+        "full_parent_exposed_steps": 2758,
+        "swa_parent_exposed_steps": 520,
+        "full_victim_tokens": 3269888,
+        "swa_victim_tokens": 16215296
+      },
+      "component_free_tokens_by_driver": {
+        "swa:swa": 16215296,
+        "swa:full": 158720,
+        "full:full": 3269888,
+        "full:swa": 244992
+      },
+      "match_tokens": {
+        "native": 32474624,
+        "historical_joint": 46727680,
+        "observed_materialization_shortfall": 14253056,
+        "history_beyond_resident_full": 1318912,
+        "resident_full_without_joint_match": 12934144,
+        "resident_full_without_joint_share": 0.9074646167109706,
+        "native_hit_rate_over_prompt": 0.6656302187115074
+      },
+      "deepest_missing_joint_boundary": {
+        "counts": {
+          "requests_with_shortfall": 486,
+          "deepest_boundary_with_observed_swa_free": 463,
+          "driver_swa": 463,
+          "no_missing_resident_node_boundary": 23
+        },
+        "potential_boundary_tokens_by_free_driver": {
+          "swa": 12934144
+        },
+        "original_swa_free_size_tokens": {
+          "count": 463,
+          "min": 256.0,
+          "p50": 256.0,
+          "p95": 3072.0,
+          "max": 7168.0,
+          "mean": 648.0172786177105
+        },
+        "time_since_free_seconds": {
+          "count": 463,
+          "min": 0.037835802,
+          "p50": 12.036834604,
+          "p95": 51.52276417829997,
+          "max": 141.792476888,
+          "mean": 16.016940203103673
+        },
+        "is_avoidable_loss_estimate": false
+      },
+      "selected_case_observations": [
+        {
+          "kind": "large_common_shortfall",
+          "session_id": "openhands_eb93634abc30eb8a8ec57b65cb8e09b977148deee8b970538fd4caeeadef880c",
+          "task_id": "drone-planning-control",
+          "turn_index": 63,
+          "minimum_four_run_lcp_proxy_tokens": 118016,
+          "request_id_observed": "5cee9007130d41f0917b68c0c9dc45e6",
+          "match_event_count": 1,
+          "terminal_match_used": true,
+          "matches": [
+            {
+              "native": 3072,
+              "historical_joint": 121088,
+              "shortfall": 118016,
+              "resident_full": 120576,
+              "history_beyond_resident_full": 512,
+              "resident_full_without_joint_match": 117504,
+              "missing_full_cause_tokens": 512,
+              "swa_hole_count": 69,
+              "swa_hole_examples": [
+                {
+                  "end_page": "831a012b4205b14d3b9b46ee898076cb8e46daf63128f07c8cd4bdf129683072",
+                  "path_tokens": 7936,
+                  "last_free": {
+                    "event_seq": 73761,
+                    "reclaim_id": 3166,
+                    "driver": "swa",
+                    "step": 2
+                  }
+                },
+                {
+                  "end_page": "2dc0da8b9035957b99beff646a58b57aa3290779d0bc3477b71067679efefa71",
+                  "path_tokens": 8192,
+                  "last_free": {
+                    "event_seq": 73777,
+                    "reclaim_id": 3167,
+                    "driver": "swa",
+                    "step": 1
+                  }
+                },
+                {
+                  "end_page": "9291c4d4681d72bee5a7be41606a2ce48df111e8898bdd7303299d238f466809",
+                  "path_tokens": 9984,
+                  "last_free": {
+                    "event_seq": 73779,
+                    "reclaim_id": 3167,
+                    "driver": "swa",
+                    "step": 2
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "large_common_shortfall",
+          "session_id": "openhands_16b53043119b542db95dd9a89651089b9d4e0f06dc89d9e926a3c0240646d674",
+          "task_id": "shock-analysis-supply",
+          "turn_index": 62,
+          "minimum_four_run_lcp_proxy_tokens": 90112,
+          "request_id_observed": "002a558a08114b8ca0867eb2d579e736",
+          "match_event_count": 1,
+          "terminal_match_used": true,
+          "matches": [
+            {
+              "native": 3072,
+              "historical_joint": 93184,
+              "shortfall": 90112,
+              "resident_full": 93184,
+              "history_beyond_resident_full": 0,
+              "resident_full_without_joint_match": 90112,
+              "missing_full_cause_tokens": 0,
+              "swa_hole_count": 99,
+              "swa_hole_examples": [
+                {
+                  "end_page": "b7719791ac9f7956b9c0ed395eff7f77bbf6281389b86c5f411538d1f98bcaf9",
+                  "path_tokens": 7936,
+                  "last_free": {
+                    "event_seq": 33217,
+                    "reclaim_id": 1407,
+                    "driver": "swa",
+                    "step": 4
+                  }
+                },
+                {
+                  "end_page": "77020f87e2387f9828da9cfdced8811269e1dc7db54b53e7e68aaf46651d6b14",
+                  "path_tokens": 8192,
+                  "last_free": {
+                    "event_seq": 33229,
+                    "reclaim_id": 1408,
+                    "driver": "swa",
+                    "step": 1
+                  }
+                },
+                {
+                  "end_page": "eed97f5a7c8516edc96f39ba70751939d540d1664c1018cebb7de42cfe65331b",
+                  "path_tokens": 11264,
+                  "last_free": {
+                    "event_seq": 33231,
+                    "reclaim_id": 1408,
+                    "driver": "swa",
+                    "step": 2
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "large_common_shortfall",
+          "session_id": "openhands_d18eb09e77f3e071ba866ec9cea71215732c25fde65ce6471f8c1505213602ee",
+          "task_id": "fix-build-agentops",
+          "turn_index": 100,
+          "minimum_four_run_lcp_proxy_tokens": 79616,
+          "request_id_observed": "5aaf672be9234627aac639b71cb82b2f",
+          "match_event_count": 8,
+          "terminal_match_used": true,
+          "matches": [
+            {
+              "native": 3072,
+              "historical_joint": 79616,
+              "shortfall": 76544,
+              "resident_full": 78592,
+              "history_beyond_resident_full": 1024,
+              "resident_full_without_joint_match": 75520,
+              "missing_full_cause_tokens": 1024,
+              "swa_hole_count": 84,
+              "swa_hole_examples": [
+                {
+                  "end_page": "79e4fed11899dc608527c1faa208df10ad549118757b3c4da6a2cd781a063b9d",
+                  "path_tokens": 8960,
+                  "last_free": {
+                    "event_seq": 72839,
+                    "reclaim_id": 3136,
+                    "driver": "swa",
+                    "step": 11
+                  }
+                },
+                {
+                  "end_page": "80ac6e8e6b5c97a88285a7e84da3663168a47542ee40131120dc66d94a463292",
+                  "path_tokens": 11008,
+                  "last_free": {
+                    "event_seq": 72854,
+                    "reclaim_id": 3137,
+                    "driver": "swa",
+                    "step": 2
+                  }
+                },
+                {
+                  "end_page": "9ba3885f181b9f5c33b7209e85aca2d64fc696d8e40f48fcf491cace50004074",
+                  "path_tokens": 11264,
+                  "last_free": {
+                    "event_seq": 72856,
+                    "reclaim_id": 3137,
+                    "driver": "swa",
+                    "step": 3
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "large_common_shortfall",
+          "session_id": "openhands_7fddbb091e4e2c29e02e5d44cdb85cc3717ff223ae37414fd9e8d2597cd02730",
+          "task_id": "shock-analysis-demand",
+          "turn_index": 70,
+          "minimum_four_run_lcp_proxy_tokens": 77824,
+          "request_id_observed": "534a88cd738b4788b9bdf74e94c5f067",
+          "match_event_count": 1,
+          "terminal_match_used": true,
+          "matches": [
+            {
+              "native": 3072,
+              "historical_joint": 80896,
+              "shortfall": 77824,
+              "resident_full": 80896,
+              "history_beyond_resident_full": 0,
+              "resident_full_without_joint_match": 77824,
+              "missing_full_cause_tokens": 0,
+              "swa_hole_count": 103,
+              "swa_hole_examples": [
+                {
+                  "end_page": "faa2ffd7ae857d30768c03c248b70fde5128119aff7d49495a3e5dce162ff729",
+                  "path_tokens": 7424,
+                  "last_free": {
+                    "event_seq": 14762,
+                    "reclaim_id": 591,
+                    "driver": "swa",
+                    "step": 3
+                  }
+                },
+                {
+                  "end_page": "6ec4f673fd6e77eaaabda4c77aacaf17ce9883c5f6b8dc7947ea37bc922a3e95",
+                  "path_tokens": 7680,
+                  "last_free": {
+                    "event_seq": 14774,
+                    "reclaim_id": 592,
+                    "driver": "swa",
+                    "step": 1
+                  }
+                },
+                {
+                  "end_page": "31db66693580e8b25eada78ed8b576da72cc5643b3a10aff8624d9072fa70a08",
+                  "path_tokens": 7936,
+                  "last_free": {
+                    "event_seq": 14776,
+                    "reclaim_id": 592,
+                    "driver": "swa",
+                    "step": 2
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "stable_slru_more_cached",
+          "session_id": "openhands_0bb81a9cf635697f01fa3087a1d7d0bd204da9724c5b225b727ed68c84a5e1cc",
+          "task_id": "drone-planning-control",
+          "turn_index": 40,
+          "slru_minus_lru_batch1": 65792,
+          "slru_minus_lru_batch2": 65792,
+          "request_id_observed": "4f0a2501fec04fbd89ac7c14a1b189d5",
+          "match_event_count": 1,
+          "terminal_match_used": true,
+          "matches": [
+            {
+              "native": 68864,
+              "historical_joint": 68864,
+              "shortfall": 0,
+              "resident_full": 68864,
+              "history_beyond_resident_full": 0,
+              "resident_full_without_joint_match": 0,
+              "missing_full_cause_tokens": 0,
+              "swa_hole_count": 68,
+              "swa_hole_examples": [
+                {
+                  "end_page": "654f3250ed03ebf1382d7922f597d6c75c8d57bce6d16e82cdf11f00150efe36",
+                  "path_tokens": 8192,
+                  "last_free": {
+                    "event_seq": 62654,
+                    "reclaim_id": 2697,
+                    "driver": "swa",
+                    "step": 1
+                  }
+                },
+                {
+                  "end_page": "b30b918bbd282371345ed53ea659416dc94e6862271bab12312901c4cf75918c",
+                  "path_tokens": 11008,
+                  "last_free": {
+                    "event_seq": 62656,
+                    "reclaim_id": 2697,
+                    "driver": "swa",
+                    "step": 2
+                  }
+                },
+                {
+                  "end_page": "2927da1ae09e88605a44cf84a1caedab9ed4754b596700b36f31db66361f3c3d",
+                  "path_tokens": 11264,
+                  "last_free": {
+                    "event_seq": 62658,
+                    "reclaim_id": 2697,
+                    "driver": "swa",
+                    "step": 3
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "stable_slru_more_cached",
+          "session_id": "openhands_eb93634abc30eb8a8ec57b65cb8e09b977148deee8b970538fd4caeeadef880c",
+          "task_id": "drone-planning-control",
+          "turn_index": 39,
+          "slru_minus_lru_batch1": 58368,
+          "slru_minus_lru_batch2": 58368,
+          "request_id_observed": "5d22fb4bbf4e49af926ea4d17d1e1541",
+          "match_event_count": 1,
+          "terminal_match_used": true,
+          "matches": [
+            {
+              "native": 61440,
+              "historical_joint": 61440,
+              "shortfall": 0,
+              "resident_full": 61440,
+              "history_beyond_resident_full": 0,
+              "resident_full_without_joint_match": 0,
+              "missing_full_cause_tokens": 0,
+              "swa_hole_count": 59,
+              "swa_hole_examples": [
+                {
+                  "end_page": "2dc0da8b9035957b99beff646a58b57aa3290779d0bc3477b71067679efefa71",
+                  "path_tokens": 8192,
+                  "last_free": {
+                    "event_seq": 63174,
+                    "reclaim_id": 2720,
+                    "driver": "swa",
+                    "step": 4
+                  }
+                },
+                {
+                  "end_page": "102d8843ce87216d96bad02927bc77d6dd78cbd06e90b1937729b633d28702ea",
+                  "path_tokens": 11008,
+                  "last_free": {
+                    "event_seq": 63186,
+                    "reclaim_id": 2721,
+                    "driver": "swa",
+                    "step": 1
+                  }
+                },
+                {
+                  "end_page": "50afb1530e2462a6266db08a11a56564f3d2b0a79755e75148fc8369e253859c",
+                  "path_tokens": 11264,
+                  "last_free": {
+                    "event_seq": 63188,
+                    "reclaim_id": 2721,
+                    "driver": "swa",
+                    "step": 2
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "stable_slru_less_cached",
+          "session_id": "openhands_8e000b0a54a6a1c8320f077ca2a5726e6664a47956d1cd3d8291656a636e9711",
+          "task_id": "fix-erlang-ssh-cve",
+          "turn_index": 49,
+          "slru_minus_lru_batch1": -33024,
+          "slru_minus_lru_batch2": -33024,
+          "request_id_observed": "0537dea7e9534f3a943814b7ee6183b2",
+          "match_event_count": 1,
+          "terminal_match_used": true,
+          "matches": [
+            {
+              "native": 0,
+              "historical_joint": 33024,
+              "shortfall": 33024,
+              "resident_full": 32768,
+              "history_beyond_resident_full": 256,
+              "resident_full_without_joint_match": 32768,
+              "missing_full_cause_tokens": 256,
+              "swa_hole_count": 29,
+              "swa_hole_examples": [
+                {
+                  "end_page": "930b6b8c531ca2ea115a11d81f7d90bd17e07ded612458cc3f490d0ea2a14a20",
+                  "path_tokens": 3072,
+                  "last_free": {
+                    "event_seq": 62641,
+                    "reclaim_id": 2696,
+                    "driver": "swa",
+                    "step": 4
+                  }
+                },
+                {
+                  "end_page": "349bbd3081419e4b80d54b50cdf98b45ad37c4838a73613af4623fcaa0d5267c",
+                  "path_tokens": 5120,
+                  "last_free": {
+                    "event_seq": 61836,
+                    "reclaim_id": 2657,
+                    "driver": "swa",
+                    "step": 2
+                  }
+                },
+                {
+                  "end_page": "6f7d3ff19aaa48bf2884e457f3d84fcebb181435c9e295ccbffc4dd0b15e449d",
+                  "path_tokens": 5376,
+                  "last_free": {
+                    "event_seq": 61838,
+                    "reclaim_id": 2657,
+                    "driver": "swa",
+                    "step": 3
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "stable_slru_less_cached",
+          "session_id": "openhands_b87511edcd5e2d5c09e4e02722e10df6a10bd98c7b70baf129a11863aaa87e8c",
+          "task_id": "setup-fuzzing-py",
+          "turn_index": 33,
+          "slru_minus_lru_batch1": -23296,
+          "slru_minus_lru_batch2": -20224,
+          "request_id_observed": "8c0bb81c7c324bfb85870ea00acaa181",
+          "match_event_count": 1,
+          "terminal_match_used": true,
+          "matches": [
+            {
+              "native": 0,
+              "historical_joint": 23296,
+              "shortfall": 23296,
+              "resident_full": 23040,
+              "history_beyond_resident_full": 256,
+              "resident_full_without_joint_match": 23040,
+              "missing_full_cause_tokens": 256,
+              "swa_hole_count": 9,
+              "swa_hole_examples": [
+                {
+                  "end_page": "930b6b8c531ca2ea115a11d81f7d90bd17e07ded612458cc3f490d0ea2a14a20",
+                  "path_tokens": 3072,
+                  "last_free": {
+                    "event_seq": 60437,
+                    "reclaim_id": 2599,
+                    "driver": "swa",
+                    "step": 3
+                  }
+                },
+                {
+                  "end_page": "9af6ba98c3aa276021e3d038fc35dc5d3aa0106aa67a64c0e31fb63424688102",
+                  "path_tokens": 7936,
+                  "last_free": {
+                    "event_seq": 60344,
+                    "reclaim_id": 2594,
+                    "driver": "swa",
+                    "step": 5
+                  }
+                },
+                {
+                  "end_page": "4feb22ab0da2357679525b363a2ec4f2dc32362d4336911d07cd19ca6729ac3a",
+                  "path_tokens": 11008,
+                  "last_free": {
+                    "event_seq": 60356,
+                    "reclaim_id": 2595,
+                    "driver": "swa",
+                    "step": 1
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "counterfactual": {
+        "page_size": 256,
+        "sliding_window_size": 128,
+        "model_config_sha256": "b628e63398a645abc711d92207f8737dd8140f7a4ef1e0a5b3616019e0ddd818",
+        "native_validator_audit": {
+          "checked_formal_match_events": 1225,
+          "native_validator_disagreements": 0
+        },
+        "systematic_selection": "last eligible native internal SWA victim / oldest unselected equal-size initial internal candidate",
+        "systematic_dispositions": {
+          "active_swa_drives": 2940,
+          "no_legal_exact_size_swap": 203
+        },
+        "systematic_summary": {
+          "plans": 2737,
+          "status_counts": {
+            "expired_before_changed_match": 2723,
+            "first_changed_match": 11,
+            "trace_ended_before_changed_match": 3
+          },
+          "positive_first_effect": 5,
+          "negative_first_effect": 6,
+          "unique_positive_first_effect_requests": 5,
+          "unique_negative_first_effect_requests": 6,
+          "changed_native_terminal_matches": 11,
+          "zero_or_expired": 2726,
+          "positive_tokens_distribution": {
+            "count": 5,
+            "min": 3072.0,
+            "p50": 3072.0,
+            "p95": 45465.59999999999,
+            "max": 55552.0,
+            "mean": 13977.6
+          },
+          "negative_loss_tokens_distribution": {
+            "count": 6,
+            "min": 3072.0,
+            "p50": 3072.0,
+            "p95": 3072.0,
+            "max": 3072.0,
+            "mean": 3072.0
+          },
+          "summing_local_alternatives_as_policy_gain_allowed": false
+        },
+        "systematic_continued_equal_budget_summary": {
+          "plans": 2737,
+          "status_counts": {
+            "first_changed_match": 72,
+            "expired_before_changed_match": 2660,
+            "trace_ended_before_changed_match": 5
+          },
+          "positive_first_effect": 65,
+          "negative_first_effect": 7,
+          "unique_positive_first_effect_requests": 34,
+          "unique_negative_first_effect_requests": 6,
+          "changed_native_terminal_matches": 72,
+          "zero_or_expired": 2665,
+          "positive_tokens_distribution": {
+            "count": 65,
+            "min": 2304.0,
+            "p50": 20480.0,
+            "p95": 67993.59999999999,
+            "max": 77824.0,
+            "mean": 24930.46153846154
+          },
+          "negative_loss_tokens_distribution": {
+            "count": 7,
+            "min": 3072.0,
+            "p50": 3072.0,
+            "p95": 3072.0,
+            "max": 3072.0,
+            "mean": 3072.0
+          },
+          "summing_local_alternatives_as_policy_gain_allowed": false
+        },
+        "preregistered_case_alternatives": [
+          {
+            "kind": "large_common_shortfall",
+            "session_id": "openhands_eb93634abc30eb8a8ec57b65cb8e09b977148deee8b970538fd4caeeadef880c",
+            "task_id": "drone-planning-control",
+            "turn_index": 63,
+            "minimum_four_run_lcp_proxy_tokens": 118016,
+            "target_match_event_seq": 78534,
+            "target_native_tokens": 3072,
+            "target_resident_full_tokens": 120576,
+            "selection_uses_target_after_the_fact": true,
+            "preserved_path_tokens": 120576,
+            "causal_free_event_seq": 77693,
+            "reclaim_id": 3330,
+            "legal_equal_size_choices": 30,
+            "option_summary": {
+              "plans": 30,
+              "status_counts": {
+                "expired_before_changed_match": 30
+              },
+              "positive_first_effect": 0,
+              "negative_first_effect": 0,
+              "unique_positive_first_effect_requests": 0,
+              "unique_negative_first_effect_requests": 0,
+              "changed_native_terminal_matches": 0,
+              "zero_or_expired": 30,
+              "positive_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "negative_loss_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "summing_local_alternatives_as_policy_gain_allowed": false
+            },
+            "oldest_equal_size_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 4162,
+                  "end_page": "2ff40fdffc4b0a62682bb24b64e78f7f23c5c159e07055d1cf741c97c7d0e533",
+                  "path_tokens": 120576,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 8
+                },
+                "replacement": {
+                  "node_id": 4146,
+                  "end_page": "2cfea9f46f7a0eef1fcb278e5ac1d84f36678eec3e2bd5d9b7689feefc3a1a64",
+                  "path_tokens": 92928,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 15
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_later_free",
+                "stop_event_seq": 77731,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.359835863,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 77834,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.974821994,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 2,
+                "rebases": [
+                  {
+                    "native_free_event_seq": 77731,
+                    "replacement_end_page": "2438cdc6cd7b1d758c2498cbf1e8f1848f1babaf25f77a80fee2887327ead5ae",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 77796,
+                    "replacement_end_page": "b1e0a2d4bcdd64eb409d31f147f87a199e47f46dd2bc8a0f2549aeb94617ef01",
+                    "exact_additional_swa_release_tokens": 256
+                  }
+                ]
+              }
+            },
+            "hindsight_best_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 4162,
+                  "end_page": "2ff40fdffc4b0a62682bb24b64e78f7f23c5c159e07055d1cf741c97c7d0e533",
+                  "path_tokens": 120576,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 8
+                },
+                "replacement": {
+                  "node_id": 4146,
+                  "end_page": "2cfea9f46f7a0eef1fcb278e5ac1d84f36678eec3e2bd5d9b7689feefc3a1a64",
+                  "path_tokens": 92928,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 15
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_later_free",
+                "stop_event_seq": 77731,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.359835863,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 77834,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.974821994,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 2,
+                "rebases": [
+                  {
+                    "native_free_event_seq": 77731,
+                    "replacement_end_page": "2438cdc6cd7b1d758c2498cbf1e8f1848f1babaf25f77a80fee2887327ead5ae",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 77796,
+                    "replacement_end_page": "b1e0a2d4bcdd64eb409d31f147f87a199e47f46dd2bc8a0f2549aeb94617ef01",
+                    "exact_additional_swa_release_tokens": 256
+                  }
+                ]
+              }
+            },
+            "status": "evaluated"
+          },
+          {
+            "kind": "large_common_shortfall",
+            "session_id": "openhands_16b53043119b542db95dd9a89651089b9d4e0f06dc89d9e926a3c0240646d674",
+            "task_id": "shock-analysis-supply",
+            "turn_index": 62,
+            "minimum_four_run_lcp_proxy_tokens": 90112,
+            "target_match_event_seq": 34138,
+            "target_native_tokens": 3072,
+            "target_resident_full_tokens": 93184,
+            "selection_uses_target_after_the_fact": true,
+            "preserved_path_tokens": 93184,
+            "causal_free_event_seq": 33563,
+            "reclaim_id": 1420,
+            "legal_equal_size_choices": 10,
+            "option_summary": {
+              "plans": 10,
+              "status_counts": {
+                "expired_before_changed_match": 10
+              },
+              "positive_first_effect": 0,
+              "negative_first_effect": 0,
+              "unique_positive_first_effect_requests": 0,
+              "unique_negative_first_effect_requests": 0,
+              "changed_native_terminal_matches": 0,
+              "zero_or_expired": 10,
+              "positive_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "negative_loss_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "summing_local_alternatives_as_policy_gain_allowed": false
+            },
+            "oldest_equal_size_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 2009,
+                  "end_page": "89867f7f85f578e16882c9eb3f5254a01c906bd002f5256670fcaaf3a2af94ed",
+                  "path_tokens": 93184,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 4
+                },
+                "replacement": {
+                  "node_id": 1415,
+                  "end_page": "a17604312b16655cbf863f66fc74219415e4edf419a7d9ad3399f509f6f9c6bc",
+                  "path_tokens": 11264,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 10
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_later_free",
+                "stop_event_seq": 33587,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.341956289,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 33663,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 1.829103127,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 4,
+                "rebases": [
+                  {
+                    "native_free_event_seq": 33587,
+                    "replacement_end_page": "2d60f9192fbeb24e2023b4402871c8e29ebe0313f694b6bbcbe776f7e01b49e6",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 33607,
+                    "replacement_end_page": "0676c1d254e24e870ab9b0edd44f81b42460db979ef256f1ad23b22af7efd6e6",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 33623,
+                    "replacement_end_page": "77323c26412d5913256e163fb2e08d5ce74be9c3f89c5345d50d4f9f347de7d1",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 33653,
+                    "replacement_end_page": "d8e17124fc93c7f137e25712299fe9df8aad5115ec16bacb19f304e596dee7af",
+                    "exact_additional_swa_release_tokens": 256
+                  }
+                ]
+              }
+            },
+            "hindsight_best_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 2009,
+                  "end_page": "89867f7f85f578e16882c9eb3f5254a01c906bd002f5256670fcaaf3a2af94ed",
+                  "path_tokens": 93184,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 4
+                },
+                "replacement": {
+                  "node_id": 1415,
+                  "end_page": "a17604312b16655cbf863f66fc74219415e4edf419a7d9ad3399f509f6f9c6bc",
+                  "path_tokens": 11264,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 10
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_later_free",
+                "stop_event_seq": 33587,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.341956289,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 33663,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 1.829103127,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 4,
+                "rebases": [
+                  {
+                    "native_free_event_seq": 33587,
+                    "replacement_end_page": "2d60f9192fbeb24e2023b4402871c8e29ebe0313f694b6bbcbe776f7e01b49e6",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 33607,
+                    "replacement_end_page": "0676c1d254e24e870ab9b0edd44f81b42460db979ef256f1ad23b22af7efd6e6",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 33623,
+                    "replacement_end_page": "77323c26412d5913256e163fb2e08d5ce74be9c3f89c5345d50d4f9f347de7d1",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 33653,
+                    "replacement_end_page": "d8e17124fc93c7f137e25712299fe9df8aad5115ec16bacb19f304e596dee7af",
+                    "exact_additional_swa_release_tokens": 256
+                  }
+                ]
+              }
+            },
+            "status": "evaluated"
+          },
+          {
+            "kind": "large_common_shortfall",
+            "session_id": "openhands_d18eb09e77f3e071ba866ec9cea71215732c25fde65ce6471f8c1505213602ee",
+            "task_id": "fix-build-agentops",
+            "turn_index": 100,
+            "minimum_four_run_lcp_proxy_tokens": 79616,
+            "target_match_event_seq": 73891,
+            "target_native_tokens": 3072,
+            "target_resident_full_tokens": 78592,
+            "selection_uses_target_after_the_fact": true,
+            "preserved_path_tokens": 78592,
+            "causal_free_event_seq": 73511,
+            "reclaim_id": 3158,
+            "legal_equal_size_choices": 12,
+            "option_summary": {
+              "plans": 12,
+              "status_counts": {
+                "expired_before_changed_match": 12
+              },
+              "positive_first_effect": 0,
+              "negative_first_effect": 0,
+              "unique_positive_first_effect_requests": 0,
+              "unique_negative_first_effect_requests": 0,
+              "changed_native_terminal_matches": 0,
+              "zero_or_expired": 12,
+              "positive_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "negative_loss_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "summing_local_alternatives_as_policy_gain_allowed": false
+            },
+            "oldest_equal_size_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 3690,
+                  "end_page": "b50939e65cfaf2e6f19d781b9e85289e412c38d6c2877bbc36f475fd493752b6",
+                  "path_tokens": 78592,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 5
+                },
+                "replacement": {
+                  "node_id": 3830,
+                  "end_page": "fd7a13f61c0d5b6492b5de3464fe333273618b26a7899106a51ca452b3d5313c",
+                  "path_tokens": 46080,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 15
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_later_free",
+                "stop_event_seq": 73572,
+                "unaffected_matches": 1,
+                "elapsed_seconds": 0.360296993,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 73650,
+                "unaffected_matches": 2,
+                "elapsed_seconds": 0.94284214,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 2,
+                "rebases": [
+                  {
+                    "native_free_event_seq": 73572,
+                    "replacement_end_page": "f2da6ec5b7ef6013e60b5a647c290d33edc1aa7682b3c7c076574b52b4ceb79c",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 73637,
+                    "replacement_end_page": "5c2f2328d9d53a180d06788b4a13ef0fce86b1c810afb6bd5cc49795b2f8ab06",
+                    "exact_additional_swa_release_tokens": 256
+                  }
+                ]
+              }
+            },
+            "hindsight_best_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 3690,
+                  "end_page": "b50939e65cfaf2e6f19d781b9e85289e412c38d6c2877bbc36f475fd493752b6",
+                  "path_tokens": 78592,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 5
+                },
+                "replacement": {
+                  "node_id": 3830,
+                  "end_page": "fd7a13f61c0d5b6492b5de3464fe333273618b26a7899106a51ca452b3d5313c",
+                  "path_tokens": 46080,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 15
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_later_free",
+                "stop_event_seq": 73572,
+                "unaffected_matches": 1,
+                "elapsed_seconds": 0.360296993,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 73650,
+                "unaffected_matches": 2,
+                "elapsed_seconds": 0.94284214,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 2,
+                "rebases": [
+                  {
+                    "native_free_event_seq": 73572,
+                    "replacement_end_page": "f2da6ec5b7ef6013e60b5a647c290d33edc1aa7682b3c7c076574b52b4ceb79c",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 73637,
+                    "replacement_end_page": "5c2f2328d9d53a180d06788b4a13ef0fce86b1c810afb6bd5cc49795b2f8ab06",
+                    "exact_additional_swa_release_tokens": 256
+                  }
+                ]
+              }
+            },
+            "status": "evaluated"
+          },
+          {
+            "kind": "large_common_shortfall",
+            "session_id": "openhands_7fddbb091e4e2c29e02e5d44cdb85cc3717ff223ae37414fd9e8d2597cd02730",
+            "task_id": "shock-analysis-demand",
+            "turn_index": 70,
+            "minimum_four_run_lcp_proxy_tokens": 77824,
+            "target_match_event_seq": 15441,
+            "target_native_tokens": 3072,
+            "target_resident_full_tokens": 80896,
+            "selection_uses_target_after_the_fact": true,
+            "preserved_path_tokens": 80896,
+            "causal_free_event_seq": 15152,
+            "reclaim_id": 610,
+            "legal_equal_size_choices": 29,
+            "option_summary": {
+              "plans": 29,
+              "status_counts": {
+                "first_changed_match": 29
+              },
+              "positive_first_effect": 29,
+              "negative_first_effect": 0,
+              "unique_positive_first_effect_requests": 1,
+              "unique_negative_first_effect_requests": 0,
+              "changed_native_terminal_matches": 29,
+              "zero_or_expired": 0,
+              "positive_tokens_distribution": {
+                "count": 29,
+                "min": 77824.0,
+                "p50": 77824.0,
+                "p95": 77824.0,
+                "max": 77824.0,
+                "mean": 77824.0
+              },
+              "negative_loss_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "summing_local_alternatives_as_policy_gain_allowed": false
+            },
+            "oldest_equal_size_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 1316,
+                  "end_page": "3c8141df31c5b31ee406eebf494dc5bd67c76a6eac6507e0215b0266bd5693cc",
+                  "path_tokens": 80896,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 3
+                },
+                "replacement": {
+                  "node_id": 573,
+                  "end_page": "2927da1ae09e88605a44cf84a1caedab9ed4754b596700b36f31db66361f3c3d",
+                  "path_tokens": 11264,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 7
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_later_free",
+                "stop_event_seq": 15177,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.566308302,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "first_changed_match",
+                "first_changed_event_seq": 15441,
+                "request_id": "534a88cd738b4788b9bdf74e94c5f067",
+                "session_id": "openhands_7fddbb091e4e2c29e02e5d44cdb85cc3717ff223ae37414fd9e8d2597cd02730",
+                "turn_index": 70,
+                "formal_request": true,
+                "native_matched_tokens": 3072,
+                "hypothetical_matched_tokens": 80896,
+                "preservation_gain_tokens": 77824,
+                "replacement_loss_tokens": 0,
+                "net_first_effect_tokens": 77824,
+                "unaffected_matches": 2,
+                "rebase_count": 8,
+                "rebases": [
+                  {
+                    "native_free_event_seq": 15177,
+                    "replacement_end_page": "bf9c16c29c9fd9eec19974c6abf5154a752e740c29cd15499cc93effd1d6dbdc",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 15201,
+                    "replacement_end_page": "e79ce0c9ac11374ddad6f881679655261fadbc04915913d0d043b45ca854ea88",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 15229,
+                    "replacement_end_page": "e066965b31b3dbf9147347a0c99e55bd8562a947f7cb1c27039aee49cac17af9",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 15259,
+                    "replacement_end_page": "ab74ccdd43e7a5e9722ec280bac2c12b018dee7c5f8cfccf57391c5b97fc9dfe",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 15307,
+                    "replacement_end_page": "5a3a4ab63717cf2541c784b4fc094fbe2442df154c58a096d3d397b04f19b625",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 15332,
+                    "replacement_end_page": "f34e26ebbbb6ff1dfc48ed84f9581383b1e9f0fe2f5db5acc86e6e38ab4f1e4a",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 15351,
+                    "replacement_end_page": "a0507917a22bce683f9d788da8bd05094553bb5dfe752bc04c239639237fb311",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 15367,
+                    "replacement_end_page": "d8e17124fc93c7f137e25712299fe9df8aad5115ec16bacb19f304e596dee7af",
+                    "exact_additional_swa_release_tokens": 256
+                  }
+                ],
+                "elapsed_seconds": 5.274001658,
+                "native_match_was_request_terminal": true
+              }
+            },
+            "hindsight_best_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 1316,
+                  "end_page": "3c8141df31c5b31ee406eebf494dc5bd67c76a6eac6507e0215b0266bd5693cc",
+                  "path_tokens": 80896,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 0,
+                  "swa_lock_ref": 0,
+                  "policy_score": 3
+                },
+                "replacement": {
+                  "node_id": 573,
+                  "end_page": "2927da1ae09e88605a44cf84a1caedab9ed4754b596700b36f31db66361f3c3d",
+                  "path_tokens": 11264,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 7
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_later_free",
+                "stop_event_seq": 15177,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.566308302,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "first_changed_match",
+                "first_changed_event_seq": 15441,
+                "request_id": "534a88cd738b4788b9bdf74e94c5f067",
+                "session_id": "openhands_7fddbb091e4e2c29e02e5d44cdb85cc3717ff223ae37414fd9e8d2597cd02730",
+                "turn_index": 70,
+                "formal_request": true,
+                "native_matched_tokens": 3072,
+                "hypothetical_matched_tokens": 80896,
+                "preservation_gain_tokens": 77824,
+                "replacement_loss_tokens": 0,
+                "net_first_effect_tokens": 77824,
+                "unaffected_matches": 2,
+                "rebase_count": 8,
+                "rebases": [
+                  {
+                    "native_free_event_seq": 15177,
+                    "replacement_end_page": "bf9c16c29c9fd9eec19974c6abf5154a752e740c29cd15499cc93effd1d6dbdc",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 15201,
+                    "replacement_end_page": "e79ce0c9ac11374ddad6f881679655261fadbc04915913d0d043b45ca854ea88",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 15229,
+                    "replacement_end_page": "e066965b31b3dbf9147347a0c99e55bd8562a947f7cb1c27039aee49cac17af9",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 15259,
+                    "replacement_end_page": "ab74ccdd43e7a5e9722ec280bac2c12b018dee7c5f8cfccf57391c5b97fc9dfe",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 15307,
+                    "replacement_end_page": "5a3a4ab63717cf2541c784b4fc094fbe2442df154c58a096d3d397b04f19b625",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 15332,
+                    "replacement_end_page": "f34e26ebbbb6ff1dfc48ed84f9581383b1e9f0fe2f5db5acc86e6e38ab4f1e4a",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 15351,
+                    "replacement_end_page": "a0507917a22bce683f9d788da8bd05094553bb5dfe752bc04c239639237fb311",
+                    "exact_additional_swa_release_tokens": 256
+                  },
+                  {
+                    "native_free_event_seq": 15367,
+                    "replacement_end_page": "d8e17124fc93c7f137e25712299fe9df8aad5115ec16bacb19f304e596dee7af",
+                    "exact_additional_swa_release_tokens": 256
+                  }
+                ],
+                "elapsed_seconds": 5.274001658,
+                "native_match_was_request_terminal": true
+              }
+            },
+            "status": "evaluated"
+          },
+          {
+            "kind": "stable_slru_more_cached",
+            "session_id": "openhands_0bb81a9cf635697f01fa3087a1d7d0bd204da9724c5b225b727ed68c84a5e1cc",
+            "task_id": "drone-planning-control",
+            "turn_index": 40,
+            "slru_minus_lru_batch1": 65792,
+            "slru_minus_lru_batch2": 65792,
+            "target_match_event_seq": 63416,
+            "target_native_tokens": 68864,
+            "target_resident_full_tokens": 68864,
+            "selection_uses_target_after_the_fact": true,
+            "preserved_path_tokens": 68608,
+            "causal_free_event_seq": 62956,
+            "reclaim_id": 2710,
+            "legal_equal_size_choices": 0,
+            "option_summary": {
+              "plans": 0,
+              "status_counts": {},
+              "positive_first_effect": 0,
+              "negative_first_effect": 0,
+              "unique_positive_first_effect_requests": 0,
+              "unique_negative_first_effect_requests": 0,
+              "changed_native_terminal_matches": 0,
+              "zero_or_expired": 0,
+              "positive_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "negative_loss_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "summing_local_alternatives_as_policy_gain_allowed": false
+            },
+            "oldest_equal_size_option": null,
+            "hindsight_best_option": null,
+            "status": "no_legal_exact_size_swap"
+          },
+          {
+            "kind": "stable_slru_more_cached",
+            "session_id": "openhands_eb93634abc30eb8a8ec57b65cb8e09b977148deee8b970538fd4caeeadef880c",
+            "task_id": "drone-planning-control",
+            "turn_index": 39,
+            "slru_minus_lru_batch1": 58368,
+            "slru_minus_lru_batch2": 58368,
+            "target_match_event_seq": 63542,
+            "target_native_tokens": 61440,
+            "target_resident_full_tokens": 61440,
+            "selection_uses_target_after_the_fact": true,
+            "preserved_path_tokens": 59648,
+            "causal_free_event_seq": 63517,
+            "reclaim_id": 2733,
+            "legal_equal_size_choices": 0,
+            "option_summary": {
+              "plans": 0,
+              "status_counts": {},
+              "positive_first_effect": 0,
+              "negative_first_effect": 0,
+              "unique_positive_first_effect_requests": 0,
+              "unique_negative_first_effect_requests": 0,
+              "changed_native_terminal_matches": 0,
+              "zero_or_expired": 0,
+              "positive_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "negative_loss_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "summing_local_alternatives_as_policy_gain_allowed": false
+            },
+            "oldest_equal_size_option": null,
+            "hindsight_best_option": null,
+            "status": "no_legal_exact_size_swap"
+          },
+          {
+            "kind": "stable_slru_less_cached",
+            "session_id": "openhands_8e000b0a54a6a1c8320f077ca2a5726e6664a47956d1cd3d8291656a636e9711",
+            "task_id": "fix-erlang-ssh-cve",
+            "turn_index": 49,
+            "slru_minus_lru_batch1": -33024,
+            "slru_minus_lru_batch2": -33024,
+            "target_match_event_seq": 62731,
+            "target_native_tokens": 0,
+            "target_resident_full_tokens": 32768,
+            "selection_uses_target_after_the_fact": true,
+            "preserved_path_tokens": 32768,
+            "causal_free_event_seq": 61930,
+            "reclaim_id": 2661,
+            "legal_equal_size_choices": 26,
+            "option_summary": {
+              "plans": 26,
+              "status_counts": {
+                "expired_before_changed_match": 26
+              },
+              "positive_first_effect": 0,
+              "negative_first_effect": 0,
+              "unique_positive_first_effect_requests": 0,
+              "unique_negative_first_effect_requests": 0,
+              "changed_native_terminal_matches": 0,
+              "zero_or_expired": 26,
+              "positive_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "negative_loss_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "summing_local_alternatives_as_policy_gain_allowed": false
+            },
+            "oldest_equal_size_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 2983,
+                  "end_page": "54c890478a53b13c09c8396e507a718f3b128c7c48f2f14b7f68a9e652d0ab89",
+                  "path_tokens": 32768,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 1
+                },
+                "replacement": {
+                  "node_id": 842,
+                  "end_page": "50afb1530e2462a6266db08a11a56564f3d2b0a79755e75148fc8369e253859c",
+                  "path_tokens": 11264,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 5
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 61938,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.387398308,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 61938,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.387398308,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              }
+            },
+            "hindsight_best_option": {
+              "swap": {
+                "swa_release_unchanged_tokens": 256,
+                "full_release_delta_tokens": 0,
+                "target_component_locks_zero": true,
+                "both_initial_internal_candidates": true,
+                "preserved": {
+                  "node_id": 2983,
+                  "end_page": "54c890478a53b13c09c8396e507a718f3b128c7c48f2f14b7f68a9e652d0ab89",
+                  "path_tokens": 32768,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 1
+                },
+                "replacement": {
+                  "node_id": 842,
+                  "end_page": "50afb1530e2462a6266db08a11a56564f3d2b0a79755e75148fc8369e253859c",
+                  "path_tokens": 11264,
+                  "logical_tokens": 256,
+                  "full_lock_ref": 1,
+                  "swa_lock_ref": 0,
+                  "policy_score": 5
+                }
+              },
+              "single_swap_effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 61938,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.387398308,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              },
+              "effect": {
+                "status": "expired_before_changed_match",
+                "reason": "replacement_in_window_insert",
+                "stop_event_seq": 61938,
+                "unaffected_matches": 0,
+                "elapsed_seconds": 0.387398308,
+                "net_first_effect_tokens": 0,
+                "rebase_count": 0,
+                "rebases": []
+              }
+            },
+            "status": "evaluated"
+          },
+          {
+            "kind": "stable_slru_less_cached",
+            "session_id": "openhands_b87511edcd5e2d5c09e4e02722e10df6a10bd98c7b70baf129a11863aaa87e8c",
+            "task_id": "setup-fuzzing-py",
+            "turn_index": 33,
+            "slru_minus_lru_batch1": -23296,
+            "slru_minus_lru_batch2": -20224,
+            "target_match_event_seq": 60494,
+            "target_native_tokens": 0,
+            "target_resident_full_tokens": 23040,
+            "selection_uses_target_after_the_fact": true,
+            "preserved_path_tokens": 23040,
+            "causal_free_event_seq": 60378,
+            "reclaim_id": 2596,
+            "legal_equal_size_choices": 0,
+            "option_summary": {
+              "plans": 0,
+              "status_counts": {},
+              "positive_first_effect": 0,
+              "negative_first_effect": 0,
+              "unique_positive_first_effect_requests": 0,
+              "unique_negative_first_effect_requests": 0,
+              "changed_native_terminal_matches": 0,
+              "zero_or_expired": 0,
+              "positive_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "negative_loss_tokens_distribution": {
+                "count": 0,
+                "min": null,
+                "p50": null,
+                "p95": null,
+                "max": null,
+                "mean": null
+              },
+              "summing_local_alternatives_as_policy_gain_allowed": false
+            },
+            "oldest_equal_size_option": null,
+            "hindsight_best_option": null,
+            "status": "no_legal_exact_size_swap"
+          }
+        ],
+        "representative_negative_example": {
+          "reclaim_id": 376,
+          "drive_begin_event_seq": 9536,
+          "drive_end_event_seq": 9539,
+          "native_step": 1,
+          "equal_size_choices": 1,
+          "swap": {
+            "swa_release_unchanged_tokens": 3072,
+            "full_release_delta_tokens": 0,
+            "target_component_locks_zero": true,
+            "both_initial_internal_candidates": true,
+            "preserved": {
+              "node_id": 1023,
+              "end_page": "aef68b17951fa167f89d4e45219fb742fe67cda86e336d1b34964b9e0f81680a",
+              "path_tokens": 11264,
+              "logical_tokens": 3072,
+              "full_lock_ref": 0,
+              "swa_lock_ref": 0,
+              "policy_score": 0
+            },
+            "replacement": {
+              "node_id": 280,
+              "end_page": "930b6b8c531ca2ea115a11d81f7d90bd17e07ded612458cc3f490d0ea2a14a20",
+              "path_tokens": 3072,
+              "logical_tokens": 3072,
+              "full_lock_ref": 8,
+              "swa_lock_ref": 0,
+              "policy_score": 22
+            }
+          },
+          "effect": {
+            "status": "first_changed_match",
+            "first_changed_event_seq": 9548,
+            "request_id": "a333321de0e248e1b2afe6ad4681dd42",
+            "session_id": "openhands_644eacbc8324b29fddcbea870858066dd58fb3db00d5e45fd79aadee4fd9cd65",
+            "turn_index": 0,
+            "formal_request": true,
+            "native_matched_tokens": 3072,
+            "hypothetical_matched_tokens": 0,
+            "preservation_gain_tokens": 0,
+            "replacement_loss_tokens": 3072,
+            "net_first_effect_tokens": -3072,
+            "unaffected_matches": 0,
+            "rebase_count": 0,
+            "rebases": [],
+            "elapsed_seconds": 0.4314689,
+            "native_match_was_request_terminal": true
+          },
+          "continued_equal_budget_effect": {
+            "status": "first_changed_match",
+            "first_changed_event_seq": 9548,
+            "request_id": "a333321de0e248e1b2afe6ad4681dd42",
+            "session_id": "openhands_644eacbc8324b29fddcbea870858066dd58fb3db00d5e45fd79aadee4fd9cd65",
+            "turn_index": 0,
+            "formal_request": true,
+            "native_matched_tokens": 3072,
+            "hypothetical_matched_tokens": 0,
+            "preservation_gain_tokens": 0,
+            "replacement_loss_tokens": 3072,
+            "net_first_effect_tokens": -3072,
+            "unaffected_matches": 0,
+            "rebase_count": 0,
+            "rebases": [],
+            "elapsed_seconds": 0.4314689,
+            "native_match_was_request_terminal": true
+          }
+        }
+      }
+    }
+  ],
+  "counterfactual_limitations": [
+    "Native later victims are frozen, not rescored; stop before a victim becomes invalid or component state changes.",
+    "First changed match includes replacement loss if it arrives first; later consequences are outside the local window.",
+    "Independent overlapping alternatives cannot be summed into aggregate policy savings.",
+    "Selected cases use hindsight to locate causal holes; systematic victim/replacement selection uses no future demand.",
+    "This diagnoses Full/SWA reuse dependency, not a proposed separate attention-specific policy.",
+    "Time and scheduler feedback require a later implementation experiment."
+  ],
+  "research_decision": "validate a bounded reusable-frontier mechanism with common Full/SWA semantics; aggregate gain remains unmeasured",
+  "input_sha256": {
+    "config": "15f332b06c67bbe6a3722618fde1e0de9ede4bbb338c39371d974dab204e5ba5",
+    "workload": "8c2e12c394c125edcfe73dc0f99f7a2d2954c5356d4a3be0d5fc88378e9ea07c",
+    "warmup": "9147d34b784c2b6b2b74dea06c30f470f28ca33b355e6f4f6997d18bba4fe14f",
+    "shape_warmup": "0af6c0d174c315cc5ba94c420b38520af5be3d3b8a8f1eb2bdd81c17303cdeef"
+  },
+  "overlay_lock_sha256": "a5b25ba629d0f8689ab8ad1c66c978c1f798ea7367d482f4824691fc08647a53",
+  "validation": {
+    "mechanism_tests_passed": 16,
+    "exploration_tests_passed": 14,
+    "source_hashes_verified": true,
+    "report_links_verified": true,
+    "python_compile_passed": true,
+    "diff_check_passed": true,
+    "owned_gpu_allocations_released": true
+  }
+}

@@ -47,6 +47,11 @@ async def run_shapes(client, base_url: str, plan: dict, output: Path) -> dict:
                        "sampling_params": {"temperature": 0, "sampling_seed": 42,
                                            "max_new_tokens": case["output_tokens"], "ignore_eos": True}}
             async with client.post(base_url + "/generate", json=payload,
+                                   # Large shape requests can outlive the server's
+                                   # keep-alive socket.  Closing this connection
+                                   # after each response prevents the next large
+                                   # request from writing to a stale socket.
+                                   headers={"Connection": "close"},
                                    timeout=aiohttp.ClientTimeout(total=1800)) as response:
                 response.raise_for_status()
                 result = await response.json()

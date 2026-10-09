@@ -199,12 +199,25 @@ async def run_once(
     *,
     strategy=None,
     exposure_barrier=False,
+    observation_overlay=None,
+    frontier_overlay=None,
+    frontier_settings=None,
+    pristine_overlay=None,
 ):
+    if sum((bool(exposure_barrier), observation_overlay is not None,
+            frontier_overlay is not None, pristine_overlay is not None)) > 1:
+        raise ValueError("Choose one isolated engine overlay")
+    if (frontier_overlay is None) != (frontier_settings is None):
+        raise ValueError("Frontier overlay and settings must be supplied together")
+    if frontier_overlay is not None and policy != "lru":
+        raise ValueError("Frontier prototype uses LRU as its shared fallback")
     strategy = strategy or policy
     output.mkdir(parents=True, exist_ok=False)
     state = {"status": "starting", "policy": policy, "strategy": strategy,
              "exposure_barrier": bool(exposure_barrier), "purpose": workload["purpose"],
              "started_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat()}
+    if frontier_settings is not None:
+        state["frontier_settings"] = frontier_settings
     save_json(output / "state.json", state)
     save_json(output / "config.resolved.json", config)
     save_json(output / "workload.json", workload)
@@ -220,7 +233,12 @@ async def run_once(
         state.update(status="failed", error="GPU compute processes already present")
         save_json(output / "state.json", state)
         raise RuntimeError(f"GPUs already have compute processes; refusing interference: {occupied}")
-    command = ["bash", str(ROOT / "scripts/run_server.sh"), "--config", str(config_path), "--policy", policy]
+    if observation_overlay is not None and exposure_barrier:
+        raise ValueError("Observation-only runs must use native decisions")
+    wrapper = ("run_pristine_server.sh" if pristine_overlay is not None else
+               "run_frontier_server.sh" if frontier_overlay is not None else
+               "run_observed_server.sh" if observation_overlay is not None else "run_server.sh")
+    command = ["bash", str(ROOT / "scripts" / wrapper), "--config", str(config_path), "--policy", policy]
     patch_lock = ROOT / "configs/environment.diagnostics.lock.json"
     save_json(output / "command.json", {"wrapper": command, "resolved": build_command(config, policy),
                                         "strategy": strategy, "exposure_barrier": bool(exposure_barrier),
@@ -231,6 +249,33 @@ async def run_once(
     save_json(output / "script_fingerprints.json", {path.name: digest_file(path) for path in scripts})
     log_file = (output / "server.log").open("x")
     env = os.environ.copy()
+    env.pop("AGENTKV_MECHANISM_OVERLAY", None)
+    env.pop("AGENTKV_MECHANISM_DIR", None)
+    for name in ("AGENTKV_FRONTIER_OVERLAY", "AGENTKV_FRONTIER_SETTINGS", "AGENTKV_FRONTIER_METRICS_DIR",
+                 "AGENTKV_PRISTINE_OVERLAY"):
+        env.pop(name, None)
+    if pristine_overlay is not None:
+        env["AGENTKV_PRISTINE_OVERLAY"] = str(Path(pristine_overlay).resolve())
+        save_json(output / "pristine_engine.json", {
+            "path": str(Path(pristine_overlay).resolve()),
+            "lock_sha256": digest_file(Path(pristine_overlay) / "engine.lock.json"),
+            "source_unmodified": True})
+    if frontier_overlay is not None:
+        save_json(output / "frontier_settings.json", frontier_settings)
+        env["AGENTKV_FRONTIER_OVERLAY"] = str(Path(frontier_overlay).resolve())
+        env["AGENTKV_FRONTIER_SETTINGS"] = str((output / "frontier_settings.json").resolve())
+        env["AGENTKV_FRONTIER_METRICS_DIR"] = str((output / "frontier_events").resolve())
+        save_json(output / "frontier_overlay.json", {
+            "path": str(Path(frontier_overlay).resolve()),
+            "lock_sha256": digest_file(Path(frontier_overlay) / "frontier.lock.json"),
+            "settings_sha256": digest_file(output / "frontier_settings.json")})
+    if observation_overlay is not None:
+        env["AGENTKV_MECHANISM_OVERLAY"] = str(Path(observation_overlay).resolve())
+        env["AGENTKV_MECHANISM_DIR"] = str((output / "runtime_events").resolve())
+        save_json(output / "observation_overlay.json", {
+            "path": str(Path(observation_overlay).resolve()),
+            "lock_sha256": digest_file(Path(observation_overlay) / "observation.lock.json"),
+            "purpose": "mechanism_diagnosis_not_latency_comparison"})
     if exposure_barrier:
         env["AGENTKV_EXPOSURE_BARRIER"] = "1"
     else:
